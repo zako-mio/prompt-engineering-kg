@@ -182,14 +182,16 @@ RES_URL_ATTR_RE = re.compile(r'\bhref\s*=\s*"[^"]*"|\bcontent\s*=\s*"(?:[a-zA-Z]
 # ★ 必须替换成一个**非词字符**（⛔ 不是空串）：否则 `…/prompt-engineering-kg/…` 里
 #   `zako-mio` 前是 `//`、后是 `.`，删空后仍会被 `\b…\b` 命中（本轮实测：删了等于没删）。
 HOST_URL_TOKEN_RE = re.compile(r"[a-zA-Z][a-zA-Z0-9+.\-]*://[^\s<>\"]+")
-# ★ **元数据面**文件（只需文件名，与目录无关）：这些文件的**职责**就是承载本站的绝对 URL，
+# ★ **元数据面**文件（只需文件名，与目录无关）：这些文件的**职责**就是承载本站的绝对 URL / 仓库标识，
 #   ⇒ 「主机名」一项对它们不适用（它们既不是 Pages 上的页面，也不是「正文」）。
 #   · `sitemap.xml` / `robots.txt`：发布发现协议的载体（按规范其全部内容就是绝对 URL）
 #   · `README.md`：**仓库门面**（GitHub 仓库页显示的那一份，⛔ 不在 Pages 上）
-#   ★ 2026-10-16 第 8 轮：这三件都在**发布根**上，且都**不是** `data-page-kind` 页面
-#     ⇒ 对它们的「主机名」断言会把「规范要求写的东西」判成违例（判据对象 ≠ 断言对象）。
+#   · `PUBLISH-STATE.json`：**发布态台账**（机器可读）；第 8 轮起它承载 `publish.repo` 与
+#     `publish.entry_url` 两处**发布事实**（P13 的一致性断言正是拿它们判的）
+#   ★ 2026-10-16 第 8 轮：这四件都在**发布根**上，且都**不是** `data-page-kind` 页面
+#     ⇒ 对它们判「正文不得含主机名」＝把规范要求写的东西判成违例（判据对象 ≠ 断言对象）。
 #   ★ ⛔ 收窄的是**对象**不是阈值：HTML 页的正文里出现裸主机名照样 FAIL（夹具 `mut_p12` 守着）。
-HOST_CARRIER_FILES = ("sitemap.xml", "robots.txt", "README.md")
+HOST_CARRIER_FILES = ("sitemap.xml", "robots.txt", "README.md", "PUBLISH-STATE.json")
 _CTX_ASSET_EXTS = (".webp", ".png", ".jpg", ".jpeg", ".svg", ".avif")
 
 
@@ -1239,8 +1241,31 @@ def check_p13(ctx):
         bad.append(("pending ∪ published ≠ 全量注册", ""))
     if not isinstance(state.get("counts"), dict) or not isinstance(state.get("gates"), dict):
         bad.append(("PUBLISH-STATE 缺 counts/gates", ""))
-    if state.get("published") is not False:
-        bad.append(("PUBLISH-STATE.published 应为 false", state.get("published")))
+    # ★ 2026-10-16 第 8 轮**对象收窄**（原为 `published is not False ⇒ FAIL`，见 `CRITERIA-CHANGE-R08.md`）：
+    #   原断言把第 1 轮「本轮不发布」这条**历史意图**固化成了判据 —— 它在本站**真的发布**（第 8 轮）
+    #   之后就恒 FAIL，而它断言的并不是任何产物事实。⇒ 改为**内部一致性**断言：
+    #     · `published == False` ⇒ `publish` 键**必须不存在**（⛔ 不得残留过期的发布事实）；
+    #     · `published == True`  ⇒ `publish` 键必须齐备（repo / entry_url / pages_build_type / hub_listed），
+    #       且 `entry_url` 必须等于本站基址（**拿判据自己的站点基址去撞**，⛔ 不是只查非空）。
+    pub = state.get("published")
+    pinfo = state.get("publish")
+    if pub is True:
+        need = ("repo", "entry_url", "pages_build_type", "hub_listed")
+        if not isinstance(pinfo, dict):
+            bad.append(("published=true 但缺 publish 事实段", pub))
+        else:
+            miss = [k for k in need if not str(pinfo.get(k, "")).strip()]
+            if miss:
+                bad.append(("publish 段缺字段", miss))
+            if pinfo.get("entry_url") and not str(pinfo["entry_url"]).startswith(
+                    re.sub(r"/[^/]*$", "/", ctx.site_base_url + "x")):
+                bad.append(("publish.entry_url 与本站基址不符",
+                            (pinfo.get("entry_url"), ctx.site_base_url)))
+    elif pub is False:
+        if pinfo is not None:
+            bad.append(("published=false 却残留 publish 段（过期事实）", type(pinfo).__name__))
+    else:
+        bad.append(("published 字段缺失或非布尔", pub))
     # ---- ★ G12（2026-10-16 第 6 轮）：`counts` 与**产物 / 真相源实数**逐项一致 ----
     counts = state.get("counts") or {}
     # ★ MD 镜像集合（`15-md/` 下）：与 `ctx.md`（含手写 README）分开计数，两个口径各判一次
@@ -2538,6 +2563,22 @@ def mut_p13(ctx):
     c = copy.deepcopy(ctx)
     out.append(_patch_md(c, "%s/nodes/pe-f-01.md" % MD_DIR,
                          _md_flat(p0), "（已改写为占位）"))
+    # ★ 2026-10-16 第 8 轮新增 2 条：`published` 与 `publish` 段的**内部一致性**（D-2 的对象）。
+    #   ⑤ `published=true` 却把 `publish` 段整个删掉 ⇒ 发布事实缺载体（FAIL）
+    c = copy.deepcopy(ctx)
+    st = json.loads(c.files[STATE_FILE])
+    st["published"] = True
+    st.pop("publish", None)
+    c.files[STATE_FILE] = json.dumps(st, ensure_ascii=False, indent=2, sort_keys=True) + "\n"
+    out.append(c)
+    #   ⑥ `published=false` 却残留 `publish` 段 ⇒ 过期事实（FAIL）
+    c = copy.deepcopy(ctx)
+    st = json.loads(c.files[STATE_FILE])
+    st["published"] = False
+    st["publish"] = {"repo": "x/y", "entry_url": "https://example.com/", "pages_build_type": "legacy",
+                     "hub_listed": True}
+    c.files[STATE_FILE] = json.dumps(st, ensure_ascii=False, indent=2, sort_keys=True) + "\n"
+    out.append(c)
     return out
 
 

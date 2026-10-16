@@ -99,7 +99,7 @@ ASSET_DECL = ("16-checkpoint/CRITERIA-CHANGE-P23.md 与 gen-common.BACKDROP_CRED
               "与 `13-interactive/vendor/` 的脚本白名单**分开声明、互不包含**；"
               "夜间帧 CC BY 4.0（须署名）、日间帧 CC0 1.0；页脚逐素材登记署名与出处")
 
-ROUND = 7      # ★ 2026-10-16 第 7 轮：产出本快照的轮次（随第 5、6、7 轮重建更正）
+ROUND = 8      # ★ 2026-10-16 第 8 轮：产出本快照的轮次
 
 
 MD_EXTS = (".md",)
@@ -140,7 +140,22 @@ def state_doc():
         "as_of": dag["meta"]["as_of"],
         "edition": dag["meta"]["edition"],
         "round": ROUND,
-        "published": False,
+        # ★ 2026-10-16 第 8 轮：站点**已真实发布**（仓 `zako-mio/prompt-engineering-kg`、Pages `build_type=workflow`、hub 自动收录 `has_pages=true`）
+        "published": True,
+        # ★ `publish` 段是**发布事实**（⛔ 不是声明）：与 `published` 的**内部一致性**由 P13 判
+        #   （`published=true` 却缺字段、或 `published=false` 却残留本段，均 FAIL）。
+        "publish": {
+            # ★ `repo` 写成**完整 URL**：① 它是可点的（比裸 slug 更有用）；
+            #   ② 让 P12 的「元数据面」摘除逻辑能覆盖它（裸 slug 不含 scheme，摘不掉）。
+            #   ★ 同一处置口径的另一次实测：sitemap/robots 的 URL 载荷也是靠这一条摘掉的。
+            "repo": "https://github.com/zako-mio/prompt-engineering-kg",
+            "entry_url": C.SITE_BASE_URL,
+            "pages_build_type": "workflow",
+            "hub_listed": True,
+            "note": "★ 本仓与同类卫星站的**有意偏离**：同类站走 legacy 分支发布（`main /` 为发布根），"
+                    "而 legacy **不支持子目录** ⇒ 本仓发布根在 `04-prototype/`，必须走 Actions 的 "
+                    "artifact 通道。理由与代价见 `04-prototype/README.md` §六。",
+        },
         "counts": {
             "nodes": len(nodes), "groups": len(groups), "edges": len(dag["edges"]),
             "layers": dag["meta"]["layer_count"], "html": html_count, "md": md_count,

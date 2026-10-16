@@ -184,7 +184,14 @@
     "PE-V-03"
   ],
   "pending_note": "节点页按内容波次逐步落盘（只落 `complete` 节点）；`registered` 节点的知识架构位置已确定、导读已写，其「架构在册」状态在组页、学习路径与交互图上以徽标显式标注，并在此逐条登记，⛔ 不静默留白。★ 措辞于 2026-10-16 改为与轮次无关（原文写死「待第 2 轮波次填充」，属会被后续轮次读旧的表述）。",
-  "published": false,
+  "publish": {
+    "entry_url": "https://zako-mio.github.io/prompt-engineering-kg/",
+    "hub_listed": true,
+    "note": "★ 本仓与同类卫星站的**有意偏离**：同类站走 legacy 分支发布（`main /` 为发布根），而 legacy **不支持子目录** ⇒ 本仓发布根在 `04-prototype/`，必须走 Actions 的 artifact 通道。理由与代价见 `04-prototype/README.md` §六。",
+    "pages_build_type": "workflow",
+    "repo": "https://github.com/zako-mio/prompt-engineering-kg"
+  },
+  "published": true,
   "repo": null,
-  "round": 7
+  "round": 8
 }

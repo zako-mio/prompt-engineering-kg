@@ -29,6 +29,8 @@
 | F6 | **`G31`（R-08 措辞模糊）** | 台账（第 7 轮留行） | R-08 原文写「内容列宽（804px）」，而「内容列」在产物上**没有定义**：`804` 是 `#main` 的宽度，不是 `body` 或 `.layout` 的。⇒ 任何要复算它的人（含门控实现者）都得自己反推 |
 | F7 | **`counts.md` 与判据的「MD 数」是两个口径**（★ CI 档当场抓出） | `gate_prototype.py` G12 ＋ `gen-state.py` | `G12` 原写 `("md", len(ctx.md))`，而 `ctx.md` 是**发布面全部 `*.md`**（含发布根上手写的 `README.md`）；`gen-state.py` 的 `md_count` 是**镜像数**（只含 `15-md/`）。★ 两者在 README 不在发布面时恰好相等 ⇒ 缺陷潜伏；本轮 README 一进 `04-prototype/`（CI 与 P12 都要求它）就当场 FAIL：`('counts.md 与实数不符', 50, 51)` |
 | F8 | **P12 的「主机名」对 `README.md` 不适用** | 同上 | `README.md` 是**仓库门面**（GitHub 仓库页显示的那份，⛔ 不在 Pages 上），其职责就是写出本站入口 URL；对它判「正文不得含主机名」＝把规范要求写的东西判成违例 |
+| F9 | **`P13` 把「不发布」这条历史意图固化成了判据**（★ 本轮发布后立刻暴露） | `gate_prototype.py` 的 P13 | 原句 `if state.get("published") is not False: bad.append(("PUBLISH-STATE.published 应为 false", …))`。它断言的**不是任何产物事实**，而是第 1 轮「本轮不发布」的时点决定；本站第 8 轮**真的发布**之后它恒 FAIL，而**「线上确实是那个站」这件事没有任何判据** |
+| F10 | **「元数据面」这一类随发布动作逐个长出来**（★ 三次实测，同一形态） | 同上 | 第 1 次：`sitemap.xml` / `robots.txt`（URL 载荷）；第 2 次：`README.md`（仓库门面）；第 3 次：`PUBLISH-STATE.json`（发布态台账）。★ 每次都是「把规范要求写的东西判成违例」⇒ 说明**「正文」这个概念在判据里需要一个显式的对象集**，⛔ 不能靠「默认所有文件都是正文」 |
 
 ---
 
@@ -64,6 +66,8 @@
 | D10 | **`counts` 的 MD 口径拆成两个** | `md` = **镜像数**（`15-md/` 下，由真相源侧 `_md_expected(groups, complete)` 派生）；新增 **`md_total`** = 发布面全部 `*.md`。`P13` 的 G12 对**两个**都判 | F7；★ ⛔ 期望值**必须**取自真相源对象而**不是磁盘** —— 取自磁盘就与实测值同源、判据恒真 |
 | D11 | **`HOST_CARRIER_FILES` 补 `README.md`** | `sitemap.xml` / `robots.txt` / `README.md` 三件都是**元数据面**（不在 Pages 上、或职责就是承载绝对 URL）⇒ 「主机名」一项对它们不适用 | F8；⛔ 收窄的是对象不是阈值 |
 | D12 | **`MD_FIXED` 由误写的 4 修正为与生成器一致** | `gen-md.generate()` 的固定件 = `index.md` ＋ `groups/index.md` ＋ `learning-path.md` ＋ `frontier.md`；★ 修正前后 G12 各自报出一次 FAIL（判据真的在判） | F7；★ 复算命令已写进 `_md_expected` 的 docstring |
+| D13 | **`published` 断言由「必须是 false」改为「内部一致性」** | 原句 `if state.get("published") is not False: FAIL` 把第 1 轮「本轮不发布」这条**历史意图**固化成了判据 ⇒ 本站真发布（第 8 轮）之后它恒 FAIL，而它断言的**不是任何产物事实**。⇒ 改为：`published=false` ⇒ `publish` 段**必须不存在**（⛔ 不得残留过期事实）；`published=true` ⇒ `publish` 段齐备（`repo` / `entry_url` / `pages_build_type` / `hub_listed`）**且 `entry_url` 必须与本站基址相符**。`mut_p13` 同批由 4 条扩为 **6** 条（新增两条一致性负例） | F9；★ 新断言拿**判据自己的站点基址**去撞 `entry_url`，⛔ 不是只查非空（防恒真） |
+| D14 | **`HOST_CARRIER_FILES` 再补 `PUBLISH-STATE.json`**；`publish.repo` 写成**完整 URL** | 第 8 轮新增的 `publish` 段必然承载 `repo` 与 `entry_url`（P13 的一致性断言**正是拿它们判的**）⇒ 它是第五件「职责就是承载绝对 URL / 仓库标识」的元数据面件。★ 且实测发现一个**摘除口径的漏洞**：裸 slug `zako-mio/prompt-engineering-kg` 不含 `scheme`，`_strip_host_urls`（按 `scheme://` 匹配）摘不掉它 ⇒ 把 `repo` 改成完整 URL（既更有用，也让摘除口径自洽）。 | F10；★ ⛔ 仍是收窄对象：HTML 页正文的裸主机名照样 FAIL |
 
 ---
 

@@ -1,7 +1,7 @@
-<svg class="fig__svg" role="img"
+<svg class="fig__svg" role="img" aria-label="轻量替代图：完整树搜索之下，步骤回溯与改写择优两类做法的共同前提（判据）与共同闸门（次数上限）。"
  viewBox="0.00 0.00 708.00 219.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 <g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 215)">
-<title>fig</title>
+
 <g id="node1" class="node">
 <title>W</title>
 <path fill="var(--surface-raised)" stroke="var(--warning)" d="M119,-171C119,-171 12,-171 12,-171 6,-171 0,-165 0,-159 0,-159 0,-123 0,-123 0,-117 6,-111 12,-111 12,-111 119,-111 119,-111 125,-111 131,-117 131,-123 131,-123 131,-159 131,-159 131,-165 125,-171 119,-171"/>

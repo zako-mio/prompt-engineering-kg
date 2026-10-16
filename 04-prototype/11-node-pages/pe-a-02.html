@@ -6,6 +6,13 @@
 <title>直接与间接提示词注入 · 新一代提示词工程 · 知识全景图</title>
 <!-- base: ../ (相对本站根) -->
 <!-- template: shell-v2 -->
+<meta name="description" content="注入是固有属性，没有可靠拦截式预防；防御须落在权限、隔离与校验上。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="直接与间接提示词注入">
+<meta property="og:description" content="注入是固有属性，没有可靠拦截式预防；防御须落在权限、隔离与校验上。">
+<meta property="og:url" content="https://zako-mio.github.io/prompt-engineering-kg/11-node-pages/pe-a-02.html">
+<meta property="og:image" content="https://zako-mio.github.io/prompt-engineering-kg/og.png">
+<link rel="canonical" href="https://zako-mio.github.io/prompt-engineering-kg/11-node-pages/pe-a-02.html">
 <meta name="theme-color" content="#f4f7fc" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#060a14" media="(prefers-color-scheme: dark)">
 <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
@@ -705,10 +712,10 @@ html.js-motion [data-reveal].is-in{
 <p class="meta-line"><span class="nid">PE-A-02</span><span class="badge badge--ok">内容已写满</span><a class="gchip" href="../12-groups/g06.html"><span class="gseq">G06</span><span class="gchip__name">安全与鲁棒性</span></a><span>第 3 层</span></p>
 <div class="tag-row" aria-label="标签"><span class="tier">安全</span><span class="tier">提示注入</span><span class="tier">攻击面</span></div>
 <section class="read-map" aria-label="本页导读" data-reveal="1" style="--i:0"><p class="read-map__label">一句话结论</p><p class="read-map__claim">注入是固有属性，没有可靠拦截式预防；防御须落在权限、隔离与校验上。</p><p class="read-map__label">本页结构（可跳转）</p><ul class="read-map__nav"><li><a href="#sec-why">01 为什么需要它</a></li><li><a href="#sec-intro">02 机制说明</a></li><li><a href="#sec-when">03 何时该用 / 何时不该用</a></li><li><a href="#sec-lab">04 实验台</a></li><li><a href="#sec-evidence">05 证据</a></li><li><a href="#sec-terms">06 术语</a></li><li><a href="#sec-pitfalls">07 失效模式</a></li><li><a href="#sec-rel">08 在本站知识结构中的位置</a></li></ul></section>
-<figure class="fig" id="fig-pe-a-02" data-reveal="1" style="--i:1"><svg class="fig__svg" role="img"
+<figure class="fig" id="fig-pe-a-02" data-reveal="1" style="--i:1"><svg class="fig__svg" role="img" aria-label="攻击面图：直接注入与间接注入两类路径，三条放大危害的属性，以及「模型架构上不区分指令与数据 ⇒ 无可靠拦截式预防」这一反直觉结论。"
  viewBox="0.00 0.00 856.00 216.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 <g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 212)">
-<title>fig</title>
+
 <g id="node1" class="node">
 <title>D1</title>
 <path fill="var(--surface-raised)" stroke="var(--warning)" d="M201.5,-208C201.5,-208 56.5,-208 56.5,-208 50.5,-208 44.5,-202 44.5,-196 44.5,-196 44.5,-160 44.5,-160 44.5,-154 50.5,-148 56.5,-148 56.5,-148 201.5,-148 201.5,-148 207.5,-148 213.5,-154 213.5,-160 213.5,-160 213.5,-196 213.5,-196 213.5,-202 207.5,-208 201.5,-208"/>

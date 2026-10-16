@@ -1,7 +1,7 @@
-<svg class="fig__svg" role="img"
+<svg class="fig__svg" role="img" aria-label="结构图：技能文件的「主文件 + 按需展开」与旧写法的对照。"
  viewBox="0.00 0.00 529.00 297.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 <g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 293)">
-<title>fig</title>
+
 <g id="clust1" class="cluster">
 <title>cluster_new</title>
 <path fill="transparent" stroke="var(--border-line)" stroke-dasharray="5,2" d="M20,-70C20,-70 457.5,-70 457.5,-70 463.5,-70 469.5,-76 469.5,-82 469.5,-82 469.5,-269 469.5,-269 469.5,-275 463.5,-281 457.5,-281 457.5,-281 20,-281 20,-281 14,-281 8,-275 8,-269 8,-269 8,-82 8,-82 8,-76 14,-70 20,-70"/>

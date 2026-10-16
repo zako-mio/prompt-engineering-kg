@@ -6,6 +6,13 @@
 <title>提示词版本化与回归 · 新一代提示词工程 · 知识全景图</title>
 <!-- base: ../ (相对本站根) -->
 <!-- template: shell-v2 -->
+<meta name="description" content="把提示词与评测集一并版本化，每次改动跑同一评测集对照基线，并同时记录成本与延迟；换模型后必须重建基线，使评审与回滚都能机械执行。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="提示词版本化与回归">
+<meta property="og:description" content="把提示词与评测集一并版本化，每次改动跑同一评测集对照基线，并同时记录成本与延迟；换模型后必须重建基线，使评审与回滚都能机械执行。">
+<meta property="og:url" content="https://zako-mio.github.io/prompt-engineering-kg/11-node-pages/pe-e-09.html">
+<meta property="og:image" content="https://zako-mio.github.io/prompt-engineering-kg/og.png">
+<link rel="canonical" href="https://zako-mio.github.io/prompt-engineering-kg/11-node-pages/pe-e-09.html">
 <meta name="theme-color" content="#f4f7fc" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#060a14" media="(prefers-color-scheme: dark)">
 <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
@@ -705,10 +712,10 @@ html.js-motion [data-reveal].is-in{
 <p class="meta-line"><span class="nid">PE-E-09</span><span class="badge badge--ok">内容已写满</span><a class="gchip" href="../12-groups/g05.html"><span class="gseq">G05</span><span class="gchip__name">评测与自动优化</span></a><span>第 21 层</span></p>
 <div class="tag-row" aria-label="标签"><span class="tier">版本化</span><span class="tier">回归</span><span class="tier">基线</span></div>
 <section class="read-map" aria-label="本页导读" data-reveal="1" style="--i:0"><p class="read-map__label">一句话结论</p><p class="read-map__claim">把提示词与评测集一并版本化，每次改动跑同一评测集对照基线，并同时记录成本与延迟；换模型后必须重建基线，使评审与回滚都能机械执行。</p><p class="read-map__label">本页结构（可跳转）</p><ul class="read-map__nav"><li><a href="#sec-why">01 为什么需要它</a></li><li><a href="#sec-intro">02 机制说明</a></li><li><a href="#sec-when">03 何时该用 / 何时不该用</a></li><li><a href="#sec-lab">04 实验台</a></li><li><a href="#sec-evidence">05 证据</a></li><li><a href="#sec-terms">06 术语</a></li><li><a href="#sec-pitfalls">07 失效模式</a></li><li><a href="#sec-rel">08 在本站知识结构中的位置</a></li></ul></section>
-<figure class="fig" id="fig-pe-e-09" data-reveal="1" style="--i:1"><svg class="fig__svg" role="img"
+<figure class="fig" id="fig-pe-e-09" data-reveal="1" style="--i:1"><svg class="fig__svg" role="img" aria-label="版本—回归图：提示词版本与评测基线必须成对留档、换模型必须重建基线，以及「跑全量」「同时跟踪成本与延迟」两条回归纪律。"
  viewBox="0.00 0.00 652.50 322.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 <g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 318)">
-<title>fig</title>
+
 <g id="node1" class="node">
 <title>P1</title>
 <path fill="var(--brand-soft)" stroke="var(--brand-primary)" d="M110,-309C110,-309 12,-309 12,-309 6,-309 0,-303 0,-297 0,-297 0,-285 0,-285 0,-279 6,-273 12,-273 12,-273 110,-273 110,-273 116,-273 122,-279 122,-285 122,-285 122,-297 122,-297 122,-303 116,-309 110,-309"/>

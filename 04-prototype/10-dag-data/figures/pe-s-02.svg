@@ -1,7 +1,7 @@
-<svg class="fig__svg" role="img"
+<svg class="fig__svg" role="img" aria-label="分档图：自然语言要求 / 结构契约 / 约束解码三档的强度递增，与成本、可移植性的同向递减。"
  viewBox="0.00 0.00 856.00 164.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 <g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 160)">
-<title>fig</title>
+
 <g id="node1" class="node">
 <title>T1</title>
 <path fill="var(--surface-raised)" stroke="var(--warning)" d="M175.5,-156C175.5,-156 37.5,-156 37.5,-156 31.5,-156 25.5,-150 25.5,-144 25.5,-144 25.5,-108 25.5,-108 25.5,-102 31.5,-96 37.5,-96 37.5,-96 175.5,-96 175.5,-96 181.5,-96 187.5,-102 187.5,-108 187.5,-108 187.5,-144 187.5,-144 187.5,-150 181.5,-156 175.5,-156"/>

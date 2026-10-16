@@ -6,6 +6,13 @@
 <title>结构模式与约束解码 · 新一代提示词工程 · 知识全景图</title>
 <!-- base: ../ (相对本站根) -->
 <!-- template: shell-v2 -->
+<meta name="description" content="把结构合法性下沉到解码层去保证，语义正确性仍必须由评测集与业务校验承担。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="结构模式与约束解码">
+<meta property="og:description" content="把结构合法性下沉到解码层去保证，语义正确性仍必须由评测集与业务校验承担。">
+<meta property="og:url" content="https://zako-mio.github.io/prompt-engineering-kg/11-node-pages/pe-s-01.html">
+<meta property="og:image" content="https://zako-mio.github.io/prompt-engineering-kg/og.png">
+<link rel="canonical" href="https://zako-mio.github.io/prompt-engineering-kg/11-node-pages/pe-s-01.html">
 <meta name="theme-color" content="#f4f7fc" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#060a14" media="(prefers-color-scheme: dark)">
 <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
@@ -705,10 +712,10 @@ html.js-motion [data-reveal].is-in{
 <p class="meta-line"><span class="nid">PE-S-01</span><span class="badge badge--ok">内容已写满</span><a class="gchip" href="../12-groups/g01.html"><span class="gseq">G01</span><span class="gchip__name">确定性输出</span></a><span>第 6 层</span></p>
 <div class="tag-row" aria-label="标签"><span class="tier">确定性输出</span><span class="tier">JSON Schema</span><span class="tier">约束解码</span></div>
 <section class="read-map" aria-label="本页导读" data-reveal="1" style="--i:0"><p class="read-map__label">一句话结论</p><p class="read-map__claim">把结构合法性下沉到解码层去保证，语义正确性仍必须由评测集与业务校验承担。</p><p class="read-map__label">本页结构（可跳转）</p><ul class="read-map__nav"><li><a href="#sec-why">01 为什么需要它</a></li><li><a href="#sec-intro">02 机制说明</a></li><li><a href="#sec-when">03 何时该用 / 何时不该用</a></li><li><a href="#sec-lab">04 实验台</a></li><li><a href="#sec-evidence">05 证据</a></li><li><a href="#sec-terms">06 术语</a></li><li><a href="#sec-pitfalls">07 失效模式</a></li><li><a href="#sec-rel">08 在本站知识结构中的位置</a></li></ul></section>
-<figure class="fig" id="fig-pe-s-01" data-reveal="1" style="--i:1"><svg class="fig__svg" role="img"
+<figure class="fig" id="fig-pe-s-01" data-reveal="1" style="--i:1"><svg class="fig__svg" role="img" aria-label="机制图：约束解码在生成期屏蔽非法路径——从概率分布到「过滤后再取样」，与「生成后校验」的位置对照。"
  viewBox="0.00 0.00 634.00 232.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 <g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 228)">
-<title>fig</title>
+
 <g id="node1" class="node">
 <title>A</title>
 <path fill="var(--brand-soft)" stroke="var(--brand-primary)" d="M144,-161C144,-161 12,-161 12,-161 6,-161 0,-155 0,-149 0,-149 0,-127 0,-127 0,-121 6,-115 12,-115 12,-115 144,-115 144,-115 150,-115 156,-121 156,-127 156,-127 156,-149 156,-149 156,-155 150,-161 144,-161"/>

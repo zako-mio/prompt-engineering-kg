@@ -1,7 +1,7 @@
-<svg class="fig__svg" role="img"
+<svg class="fig__svg" role="img" aria-label="位置图：同一段上下文的三个位置（窗口条）可用性差异，以及由此推出的三个工程动作。"
  viewBox="0.00 0.00 475.00 250.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 <g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 246)">
-<title>fig</title>
+
 <g id="clust1" class="cluster">
 <title>cluster_win</title>
 <path fill="transparent" stroke="var(--border-line)" stroke-dasharray="5,2" d="M56.5,-75C56.5,-75 444.5,-75 444.5,-75 450.5,-75 456.5,-81 456.5,-87 456.5,-87 456.5,-146 456.5,-146 456.5,-152 450.5,-158 444.5,-158 444.5,-158 56.5,-158 56.5,-158 50.5,-158 44.5,-152 44.5,-146 44.5,-146 44.5,-87 44.5,-87 44.5,-81 50.5,-75 56.5,-75"/>

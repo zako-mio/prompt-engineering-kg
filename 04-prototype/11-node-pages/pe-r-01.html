@@ -6,6 +6,13 @@
 <title>思维链与零样本思维链 · 新一代提示词工程 · 知识全景图</title>
 <!-- base: ../ (相对本站根) -->
 <!-- template: shell-v2 -->
+<meta name="description" content="CoT 不是通用加速器：先看模型有没有原生思考、任务串行深度够不够，两个门控都通过才写显式推理指令。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="思维链与零样本思维链">
+<meta property="og:description" content="CoT 不是通用加速器：先看模型有没有原生思考、任务串行深度够不够，两个门控都通过才写显式推理指令。">
+<meta property="og:url" content="https://zako-mio.github.io/prompt-engineering-kg/11-node-pages/pe-r-01.html">
+<meta property="og:image" content="https://zako-mio.github.io/prompt-engineering-kg/og.png">
+<link rel="canonical" href="https://zako-mio.github.io/prompt-engineering-kg/11-node-pages/pe-r-01.html">
 <meta name="theme-color" content="#f4f7fc" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#060a14" media="(prefers-color-scheme: dark)">
 <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
@@ -705,10 +712,10 @@ html.js-motion [data-reveal].is-in{
 <p class="meta-line"><span class="nid">PE-R-01</span><span class="badge badge--ok">内容已写满</span><a class="gchip" href="../12-groups/g02.html"><span class="gseq">G02</span><span class="gchip__name">推理增强</span></a><span>第 6 层</span></p>
 <div class="tag-row" aria-label="标签"><span class="tier">推理增强</span><span class="tier">思维链</span><span class="tier">自适应思考</span></div>
 <section class="read-map" aria-label="本页导读" data-reveal="1" style="--i:0"><p class="read-map__label">一句话结论</p><p class="read-map__claim">CoT 不是通用加速器：先看模型有没有原生思考、任务串行深度够不够，两个门控都通过才写显式推理指令。</p><p class="read-map__label">本页结构（可跳转）</p><ul class="read-map__nav"><li><a href="#sec-why">01 为什么需要它</a></li><li><a href="#sec-intro">02 机制说明</a></li><li><a href="#sec-when">03 何时该用 / 何时不该用</a></li><li><a href="#sec-lab">04 实验台</a></li><li><a href="#sec-evidence">05 证据</a></li><li><a href="#sec-terms">06 术语</a></li><li><a href="#sec-pitfalls">07 失效模式</a></li><li><a href="#sec-rel">08 在本站知识结构中的位置</a></li></ul></section>
-<figure class="fig" id="fig-pe-r-01" data-reveal="1" style="--i:1"><svg class="fig__svg" role="img"
+<figure class="fig" id="fig-pe-r-01" data-reveal="1" style="--i:1"><svg class="fig__svg" role="img" aria-label="判据分流图：按「模型类别 × 任务串行深度」决定写不写显式推理指令，并把思考内容的回传约束单列。"
  viewBox="0.00 0.00 736.00 259.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 <g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 255)">
-<title>fig</title>
+
 <g id="node1" class="node">
 <title>Q</title>
 <path fill="var(--brand-soft)" stroke="var(--brand-primary)" d="M466.5,-251C466.5,-251 260.5,-251 260.5,-251 254.5,-251 248.5,-245 248.5,-239 248.5,-239 248.5,-217 248.5,-217 248.5,-211 254.5,-205 260.5,-205 260.5,-205 466.5,-205 466.5,-205 472.5,-205 478.5,-211 478.5,-217 478.5,-217 478.5,-239 478.5,-239 478.5,-245 472.5,-251 466.5,-251"/>

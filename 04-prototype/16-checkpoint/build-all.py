@@ -26,9 +26,12 @@ DEFAULT_ROOT = os.path.normpath(os.path.join(HERE, ".."))
 
 GENERATORS = ("gen-nodes.py", "gen-groups.py", "gen-views.py", "gen-root.py",
               "gen-md.py", "gen-interactive.py", "gen-state.py")
+# ★ 2026-10-16 第 8 轮：站点级元数据（sitemap.xml / robots.txt）必须在**全部页面产出之后**才生成
+#   —— 它的输入是「本次构建的全部页面清单」，⛔ 不是任何单一页面的函数。
+META_GENERATOR = "gen-meta.py"
 
 OWNED_DIRS = ("11-node-pages", "12-groups", "14-views", "15-md", "13-interactive")
-OWNED_ROOT_FILES = ("index.html", "PUBLISH-STATE.json")
+OWNED_ROOT_FILES = ("index.html", "PUBLISH-STATE.json", "sitemap.xml", "robots.txt")
 OWNED_SKIP_PREFIX = ("13-interactive/vendor/",)
 
 
@@ -40,12 +43,22 @@ def _imp(path, name):
 
 
 def generate_all():
-    """把全部生成器的产物合并为 {相对路径: 文本}；重复路径即报错（防两套生成源）。"""
+    """把全部生成器的产物合并为 {相对路径: 文本}；重复路径即报错（防两套生成源）。
+
+    ★ 2026-10-16 第 8 轮：站级元数据生成器**最后**跑，输入 = 前序全部产出的 **HTML 页面清单**
+      （⭐ 页面清单的唯一真相源就是「本次真产出了哪些 HTML」，⛔ 不由 `gen-meta` 另推一份；
+      `gen_seo_meta` 的 S9 再拿磁盘上的真实 HTML 集合与 sitemap 对账，两份分叉即 FAIL）。
+    """
     out = {}
     origin = {}
-    for g in GENERATORS:
+    order = list(GENERATORS) + [META_GENERATOR]
+    for g in order:
         mod = _imp(os.path.join(HERE, g), "pekg_" + g.replace(".py", "").replace("-", "_"))
-        files = mod.generate()
+        if g == META_GENERATOR:
+            pages = sorted(rel for rel in out if rel.endswith(".html"))
+            files = mod.generate(pages=pages)
+        else:
+            files = mod.generate()
         for rel, text in files.items():
             if rel in out:
                 raise SystemExit("[FAIL] 产物路径冲突：%s 由 %s 与 %s 同时产出"

@@ -1,7 +1,7 @@
-<svg class="fig__svg" role="img"
+<svg class="fig__svg" role="img" aria-label="对照图：同一技巧在两类条件下符号相反，以及判定纪律。"
  viewBox="0.00 0.00 600.00 256.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 <g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 252)">
-<title>fig</title>
+
 <g id="node1" class="node">
 <title>q</title>
 <path fill="var(--brand-soft)" stroke="var(--brand-primary)" d="M301,-248C301,-248 121,-248 121,-248 115,-248 109,-242 109,-236 109,-236 109,-214 109,-214 109,-208 115,-202 121,-202 121,-202 301,-202 301,-202 307,-202 313,-208 313,-214 313,-214 313,-236 313,-236 313,-242 307,-248 301,-248"/>

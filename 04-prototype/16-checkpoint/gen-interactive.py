@@ -897,7 +897,7 @@ APP_JS = r"""
 """
 
 
-def interactive_page():
+def interactive_page(page_rel=None):
     data = build_data()
     groups = data["groups"]
     lay = data["layout"]
@@ -917,14 +917,17 @@ def interactive_page():
     body = []
     body.append(C.crumbs(BASE, [("首页", "index.html"), ("交互全景图", None)]))
     body.append("<h1>交互全景图</h1>")
-    body.append('<p class="lede">%s。本页先给出 <strong>组级总览</strong>（%d 个分组节点与它们之间的依赖），'
-                "分组节点按<strong>依赖层分行</strong>摆放：行自上而下依赖逐层加深，行内自左向右是课程顺序，"
-                "因此无需缩放或拖拽即可一眼看全。点击任一分组即下钻到该组的全部节点；"
-                "虚线边框表示内容待填充的节点，实线边框表示内容已写满。"
-                "依赖方向约定：A→B 表示先学 A 再学 B；双向箭头表示两个方向都有依赖"
-                "（互为正反的两条依赖合成一条连线，避免两条边完全重合）。组身份由序号与名称承载，"
-                "画布统一使用品牌色，不按分组分配色相。</p>"
-                % (C.esc(data["meta"]["audience"]), data["meta"]["groupCount"]))
+    # ★ SH4：本页导语提成局部变量 ⇒ `description` 与页首 `.lede` **同源**
+    #   （⛔ 不为搜索引擎另写一句，避免同一页两种口径）
+    lede = ('%s。本页先给出 <strong>组级总览</strong>（%d 个分组节点与它们之间的依赖），'
+            '分组节点按<strong>依赖层分行</strong>摆放：行自上而下依赖逐层加深，行内自左向右是课程顺序，'
+            '因此无需缩放或拖拽即可一眼看全。点击任一分组即下钻到该组的全部节点；'
+            '虚线边框表示内容待填充的节点，实线边框表示内容已写满。'
+            '依赖方向约定：A→B 表示先学 A 再学 B；双向箭头表示两个方向都有依赖'
+            '（互为正反的两条依赖合成一条连线，避免两条边完全重合）。组身份由序号与名称承载，'
+            '画布统一使用品牌色，不按分组分配色相。'
+            % (C.esc(data["meta"]["audience"]), data["meta"]["groupCount"]))
+    body.append('<p class="lede">%s</p>' % lede)
     body.append('<p class="meta-line"><span>节点 %d</span><span>边 %d</span><span>分组 %d</span>'
                 "<span>依赖深度层 %d</span><span>数据时点 %s</span><span>版次 %s</span></p>"
                 % (data["meta"]["nodeCount"], data["meta"]["edgeCount"], data["meta"]["groupCount"],
@@ -957,11 +960,21 @@ def interactive_page():
     body.append("<script>%s</script>" % APP_JS.replace("__FONT__", json.dumps(FONT_STACK)))
     head_extra = '<script src="vendor/cytoscape.min.js"></script>\n'
     return C.page_shell(BASE, "interactive", "INTERACTIVE", "交互全景图", "\n".join(body),
-                        head_extra=head_extra)
+                        head_extra=head_extra,
+                        # ★ SH4：description 取本页导语首句（与页首 `.lede` 同源）。
+                        #   ★ 但**首句是受众从句**（「面向…工程师。」），它 ① 只有 20 字
+                        #     ② 与站点标语高度近义 ⇒ 对搜索引擎等于没有信息（`og:description`
+                        #     也失去摘要价值）。⇒ 判据 `gate_seo_meta.py` 的 S11 会对
+                        #     「过短」与「与站点标语近义」判 FAIL，故这里传**整段导语**，
+                        #     由 `clip_desc` 截到 160 字 —— 它才是这一页真正在讲什么。
+                        meta_desc=lede,
+                        page_rel=page_rel or C._derive_page_rel("interactive", "INTERACTIVE"))
 
 
 def generate(root=None):
-    return {"%s/index.html" % C.DIR_INTERACTIVE: interactive_page()}
+    # ★ SH4：把**产物路径本身**传给页面构建器 ⇒ canonical 与产物同源（⛔ 不在别处另推一份）
+    rel = "%s/index.html" % C.DIR_INTERACTIVE
+    return {rel: interactive_page(page_rel=rel)}
 
 
 if __name__ == "__main__":

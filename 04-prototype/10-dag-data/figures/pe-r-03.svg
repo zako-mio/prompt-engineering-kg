@@ -1,7 +1,7 @@
-<svg class="fig__svg" role="img"
+<svg class="fig__svg" role="img" aria-label="曲线对照图：自一致性的两个前提与样本数收益的早期饱和，以及系统偏见下「路径同错、投票放大置信度」。"
  viewBox="0.00 0.00 507.50 284.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 <g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 280)">
-<title>fig</title>
+
 <g id="node1" class="node">
 <title>P</title>
 <path fill="var(--brand-soft)" stroke="var(--brand-primary)" d="M349.5,-276C349.5,-276 143.5,-276 143.5,-276 137.5,-276 131.5,-270 131.5,-264 131.5,-264 131.5,-242 131.5,-242 131.5,-236 137.5,-230 143.5,-230 143.5,-230 349.5,-230 349.5,-230 355.5,-230 361.5,-236 361.5,-242 361.5,-242 361.5,-264 361.5,-264 361.5,-270 355.5,-276 349.5,-276"/>

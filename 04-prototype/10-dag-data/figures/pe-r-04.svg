@@ -1,7 +1,7 @@
-<svg class="fig__svg" role="img"
+<svg class="fig__svg" role="img" aria-label="搜索结构图：从候选思维到评估、展开与剪枝的树状搜索拓扑（含被丢弃的分支），以及思维图允许的中间结果合并。"
  viewBox="0.00 0.00 635.00 330.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 <g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 326)">
-<title>fig</title>
+
 <g id="node1" class="node">
 <title>S</title>
 <path fill="var(--brand-soft)" stroke="var(--brand-primary)" d="M119,-208C119,-208 12,-208 12,-208 6,-208 0,-202 0,-196 0,-196 0,-174 0,-174 0,-168 6,-162 12,-162 12,-162 119,-162 119,-162 125,-162 131,-168 131,-174 131,-174 131,-196 131,-196 131,-202 125,-208 119,-208"/>

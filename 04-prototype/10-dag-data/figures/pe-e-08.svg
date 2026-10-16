@@ -1,7 +1,7 @@
-<svg class="fig__svg" role="img"
+<svg class="fig__svg" role="img" aria-label="层次图：元提示处在被优化对象的上一层、三种典型用法，以及「提高候选生成速度、判定权仍在评测集」的对照纪律。"
  viewBox="0.00 0.00 844.00 288.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 <g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 284)">
-<title>fig</title>
+
 <g id="node1" class="node">
 <title>M</title>
 <path fill="var(--brand-soft)" stroke="var(--brand-primary)" d="M182,-184C182,-184 12,-184 12,-184 6,-184 0,-178 0,-172 0,-172 0,-150 0,-150 0,-144 6,-138 12,-138 12,-138 182,-138 182,-138 188,-138 194,-144 194,-150 194,-150 194,-172 194,-172 194,-178 188,-184 182,-184"/>

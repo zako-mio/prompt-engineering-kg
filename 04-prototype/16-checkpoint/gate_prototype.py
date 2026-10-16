@@ -10,6 +10,12 @@ P34 为 2026-10-15 用户走查反馈轮新增（见 CRITERIA-CHANGE-P34.md）�
 P22 于 2026-10-16 变更：「content_status 数量配额」→「**状态↔内容一致性**」，见 CRITERIA-CHANGE-P22.md。
 P35 ⑧ / ④ 的作用域于 2026-10-16（第 6 轮）变更：R-07 由「每页」收敛为**知识承载页（节点页 / 组页）**、
 R-03 对齐为**正文承载页**，两处均带**显式对象集 + 全集闭合断言**，见 CRITERIA-CHANGE-R07.md。
+★ 2026-10-16（第 8 轮）三条判据的**对象收窄** ＋ 新增发布级元数据判据族：P09（R-18）的 `<link>`
+按 **rel 闭集**分流（元数据类 rel 不当加载类资源，⛔ 不再「一切 link 皆资源」）、P12（R-19）的「主机名」
+一项只在**正文**上判（属性取值归 P09/P30，sitemap/robots 的 URL 载荷另有摘除口径）、R-08 的「内容列」
+落实为可复算口径；同批新增 **A1–A7**（`gate_a11y.py`）与 **S1–S11**（`gate_seo_meta.py`）。
+触发事实：SH4 落地时 P09/P12 **整站 FAIL**（判假探针 `_probe/r8_t1_p09_probe.py` 实测），
+根因是「判据对象 > 断言对象」（R-23 同型第 3 次复发）。见 CRITERIA-CHANGE-R08.md。
 
 ★ 判据编号说明（⛔ 不改任何判据的作用域）：本文件的编号集合现为 **P01–P41**；文件头曾写作
   「P01–P37」（第 35–37 条落地前的时点快照），于 2026-10-16 随 P22 变更同批更正为 P01–P40，
@@ -144,6 +150,46 @@ GROUP_HUE_CLASS_RE = re.compile(r"\bg-(?:[0-9]{2}|dn)\b")
 GROUP_HUE_TOKEN_RE = re.compile(r"--group-[a-z0-9]+")
 
 LINK_IMAGE_RELS = ("icon", "apple-touch-icon", "mask-icon", "image_src")
+
+# --- P09 / P12：`<link>` 的 rel 分类（★ 2026-10-16 第 8 轮新增，见 CRITERIA-CHANGE-R08.md）---
+# 判据对象纪律（R-23 / 契约 §4⑤ 第 3 条）：`<link>` **不全是加载类资源**。
+# `rel="canonical"` / `rel="icon"` / `rel="alternate"` 是**元数据声明**——浏览器不为它们取资源
+# （唯一例外是图标，由浏览器按需取且属站点自有资产）。P09 的立意是「零**外链**资源」，
+# 若把「一切 `<link>`」都算成资源，它就在**自己不该管的对象**上 FAIL ⇒ 一加 SH4 元数据即整站红
+# （⛔ 那不是「零外链」的加强，而是判据对象 ≠ 断言对象）。
+# ★ 这不是放宽阈值：把对象收窄到它本来要管的那个，并**同批**加两条断言防退化 ——
+#   ① **rel 闭集**：未分类的 rel（`preload` / `dns-prefetch` / `modulepreload` / `prefetch`…）⇒ FAIL；
+#   ② 元数据类 rel 的 href **必须无主机**（⛔ 不得指向站外，防「元数据」被当成外链后门）。
+# ★ 与姊妹站同源先例：`algorithm-knowledge-graph` 的 T12 口径重述（对象从「全部 `<link>`」
+#   收窄为 `rel="stylesheet"` 的 `<link>`）；本件是它的完整形态（闭集 + 无主机双断言）。
+LINK_META_RELS = ("canonical", "icon", "apple-touch-icon", "mask-icon", "alternate")
+# ★ 允许**带主机**的元数据类 rel（⛔ 其余元数据 rel 一律不得带主机）：
+#   `canonical` 与 `alternate` 的取值按规范就是**绝对自指 URL**（`https://<本仓发布基址>/…`）。
+#   把它们也判「不得带主机」会得到一个**无解**的判据（本轮实测：51 页全 FAIL）。
+#   ⇒ 断言改为「带主机时**必须**是本站基址」（`gen-common.SITE_BASE_URL`），
+#     既容许绝对自指 URL，也挡住「元数据被当成外链后门」（`https://evil.example.com/…` 照样 FAIL）。
+LINK_META_HOSTED_OK = ("canonical", "alternate")
+LINK_REL_RE = re.compile(r'rel\s*=\s*"([^"]*)"', re.I)
+LINK_HREF_RE = re.compile(r'href\s*=\s*"([^"]*)"', re.I)
+# 属性值里**带主机**的形态：`https://…` / `http://…` / `//cdn…`（协议相对）/ `mailto:…` 等带 scheme 的
+# ⇒ 取反即「无主机的站内路径」。⛔ 不用 `urlparse` 之类的额外依赖，判据保持纯正则可复算。
+HOSTED_URL_RE = re.compile(r"^(?:[a-zA-Z][a-zA-Z0-9+.\-]*:|//)")
+# P12 用：摘掉「属性值里的 URL 载体」= ① 一切 `href="…"`（本站任何 `<a href>` 都是站内相对路径）
+#   ② `content="<带主机的 URL>"`（og:url / og:image）。★ 二者都**不动** `theme-color` 与 `viewport`
+#   （前者是色值、后者是尺寸；实测 DOM 里 `content=` 只服务这两者）。
+RES_URL_ATTR_RE = re.compile(r'\bhref\s*=\s*"[^"]*"|\bcontent\s*=\s*"(?:[a-zA-Z][a-zA-Z0-9+.\-]*:|//)[^"]*"', re.I)
+# P12 用：摘掉**正文里**的绝对 URL（sitemap / robots 的文本内容）。
+# ★ 必须替换成一个**非词字符**（⛔ 不是空串）：否则 `…/prompt-engineering-kg/…` 里
+#   `zako-mio` 前是 `//`、后是 `.`，删空后仍会被 `\b…\b` 命中（本轮实测：删了等于没删）。
+HOST_URL_TOKEN_RE = re.compile(r"[a-zA-Z][a-zA-Z0-9+.\-]*://[^\s<>\"]+")
+# ★ **元数据面**文件（只需文件名，与目录无关）：这些文件的**职责**就是承载本站的绝对 URL，
+#   ⇒ 「主机名」一项对它们不适用（它们既不是 Pages 上的页面，也不是「正文」）。
+#   · `sitemap.xml` / `robots.txt`：发布发现协议的载体（按规范其全部内容就是绝对 URL）
+#   · `README.md`：**仓库门面**（GitHub 仓库页显示的那一份，⛔ 不在 Pages 上）
+#   ★ 2026-10-16 第 8 轮：这三件都在**发布根**上，且都**不是** `data-page-kind` 页面
+#     ⇒ 对它们的「主机名」断言会把「规范要求写的东西」判成违例（判据对象 ≠ 断言对象）。
+#   ★ ⛔ 收窄的是**对象**不是阈值：HTML 页的正文里出现裸主机名照样 FAIL（夹具 `mut_p12` 守着）。
+HOST_CARRIER_FILES = ("sitemap.xml", "robots.txt", "README.md")
 _CTX_ASSET_EXTS = (".webp", ".png", ".jpg", ".jpeg", ".svg", ".avif")
 
 
@@ -414,10 +460,67 @@ def backdrop_subtree(html_text):
     return html_text[m.end():i]
 
 
+def _link_tags(text):
+    """返回 [(rel, href, tag)]：页内 `<link>` 的**分类所需三件**（rel ∈ 闭集 / href / 原标签）。
+
+    ★ 与 `_resource_refs` 的分工：后者回答「哪些引用会被当资源取」，本函数回答
+      「一个 `<link>` 的 rel 属于资源类还是元数据类」—— P09 的两条断言分别用这两者。
+    ★ `rel` 允许出现多个值（如 `rel="icon alternate"`）⇒ 逐 token 归一为小写。
+    """
+    out = []
+    for m in LINK_TAG_RE.finditer(text):
+        tag = m.group(0)
+        h = LINK_HREF_RE.search(tag)
+        r = LINK_REL_RE.search(tag)
+        rel = " ".join((r.group(1) if r else "").lower().split())
+        out.append((rel, (h.group(1).strip() if h else None), tag))
+    return out
+
+
+def _is_meta_link(ref):
+    """该条资源引用是否属于**元数据类 `<link>`**（`canonical` / `icon` / …）。
+
+    ★ 这是 P09 的**单一分流点**：`check_p09` 的两条子断言（受检页集合、交互页）都经它判断，
+      ⛔ 不各写一份判法（两处各写一份会让「rel 是什么」出现两个口径）。
+    """
+    if ref[0] != "link":
+        return False
+    attrs = ref[2] or ""
+    r = LINK_REL_RE.search(attrs)
+    return bool(r) and " ".join(r.group(1).lower().split()) in LINK_META_RELS
+
+
+def _strip_url_attrs(text):
+    """把**属性值里的 URL 载体**摘掉（`href=` / `content=`），只留正文。
+
+    ★ 为什么 P12 需要它：P12 的「主机名」断言的立意是「公开**正文**里不得出现内部主机名」。
+      而 SH4 标准档要求每页写 `canonical` / `og:url` / `og:image` 的**绝对自指 URL**
+      （含 `zako-mio.github.io`）⇒ 若把属性值也计入，P12 会在**它自己要求写的东西**上 FAIL。
+      摘掉 URL 载体后，「标签属性的取值」归 P09/P30 管（那里的断言更精确：rel 闭集 + 自指基址 +
+      白名单），P12 只管正文 —— 这是**判据对象收窄**（R-23），⛔ 不是放宽阈值。
+    """
+    return RES_URL_ATTR_RE.sub("", text)
+
+
+def _strip_host_urls(text):
+    """把**正文里的绝对 URL 一词**整段摘掉（替换为一个空格），只留散文。
+
+    ★ 为什么 sitemap / robots 需要它：这两件的**全部内容**按规范就是绝对 URL
+      （`<loc>https://…</loc>` / `Sitemap: https://…`）。它们不是「内部主机名泄漏」，
+      而是**发布发现协议的载体**（与 `llms.txt` / RSS 同类）⇒ 判「正文含主机名」是判错了对象。
+      ⇒ 只在这两件上摘掉 URL 词；⛔ HTML 页**不摘**（页面正文里的裸主机名照样 FAIL ——
+        负例夹具 `mut_p12` 第 2 条守着这个面）。
+    """
+    return HOST_URL_TOKEN_RE.sub(" ", text)
+
+
 def _resource_refs(text):
     """返回 [(kind, value, attrs)]：**加载类**资源引用。
 
     ★ 作用域纪律（HANDOFF-R2 §三.2）：只认加载类引用；`<a href>` 是引用不是资源，不在此列。
+    ★ 2026-10-16 第 8 轮补：`<link>` 是否算「加载类」由 `check_p09` 按 rel 闭集裁决
+      （元数据类 rel 由「无主机」断言管），本函数**仍然返回**全部 `<link>`
+      —— 保留它是因为 P30 要按「引用命中 assets/ 前缀」判定，而那与 rel 正交。
     """
     refs = []
     for m in re.finditer(r"<script\b([^>]*)>", text, re.I):
@@ -520,6 +623,7 @@ class Ctx(object):
         self.contract_roles = []
         self.snapshot_sha = ""
         self.probe = {}
+        self.site_base_url = ""
         self.notes = []
         self.report_lines = []
 
@@ -528,6 +632,7 @@ def load_ctx(with_probe=True):
     ctx = Ctx()
     C = _imp(os.path.join(HERE, "gen-common.py"), "pekg_common")
     ctx.template_id = C.TEMPLATE_ID
+    ctx.site_base_url = C.SITE_BASE_URL      # ★ 2026-10-16 第 8 轮：P09 判「绝对自指 URL」要用它
     ctx.tokens_css = C.tokens_css()
     ctx.tokens_block_sha = sha(ctx.tokens_css.rstrip("\n"))
     ctx.asset_prefix = C.ASSET_PREFIX
@@ -866,9 +971,33 @@ def check_p09(ctx):
     bad = []
     inline_shas = {}
     img_refs = []
+    meta_link_n = 0            # 元数据类 `<link>`（canonical / icon / …）的计数
     for rel in sorted(self_pages):
         text = ctx.html[rel]
+        # ★ 2026-10-16 第 8 轮：`<link>` 按 **rel 闭集**分流（见 LINK_META_RELS 的注释块）。
+        #   元数据类走「无主机」断言；其余（含未分类 rel）走资源白名单断言。
+        meta_hrefs = set()
+        for lrel, lhref, ltag in _link_tags(text):
+            if lrel in LINK_META_RELS:
+                meta_link_n += 1
+                if lhref:
+                    meta_hrefs.add((lrel, lhref))
+                continue
+            if lrel not in ("", "stylesheet", "preload", "modulepreload",
+                            "prefetch", "dns-prefetch", "preconnect"):
+                bad.append((rel, "`<link>` 的 rel 落在闭集之外（未分类）", (lrel, ltag[:70])))
+        for lrel, h in sorted(meta_hrefs):
+            if not h:
+                continue
+            if not HOSTED_URL_RE.match(h):
+                continue               # 无主机（站内相对路径）⇒ 通过
+            # 带主机 ⇒ 只允许 `canonical` / `alternate` 的**本站自指 URL**
+            if lrel not in LINK_META_HOSTED_OK or not h.startswith(ctx.site_base_url):
+                bad.append((rel, "元数据类 `<link>` 的 href 带主机且不是本站自指 URL", (lrel, h[:90])))
         for kind, value, attrs in _resource_refs(text):
+            if kind == "link" and LINK_REL_RE.search(attrs or "") \
+                    and " ".join(LINK_REL_RE.search(attrs).group(1).lower().split()) in LINK_META_RELS:
+                continue           # 已由上面的「无主机」断言处置，⛔ 不再当资源引用
             if _is_image_ref(kind, value, attrs, ctx.asset_prefix, ctx.asset_exts, page_rel=rel):
                 img_refs.append((rel, kind, value))
                 continue
@@ -892,10 +1021,13 @@ def check_p09(ctx):
     #   但第二类白名单（站点级图片资产）对**所有页面**都成立，交互页同样要引用背景帧与图标
     #   ⇒ 初版把 11 处合法的图片引用判成「脚本白名单例外扩散」（本轮实测 11 处假阳）。
     #   正确断言＝「每条引用**要么**命中脚本白名单，**要么**是图片白名单引用」。
+    # ★ 2026-10-16 第 8 轮：交互页同样要被**元数据类 `<link>` 分流**（它也是 SH4 的受检页）
+    #   —— 否则它的 `canonical` 会被当成「脚本白名单例外扩散」（本轮实测 1 处假阳）。
     bad_it = [r for r in it_refs
               if not (r[1].startswith(WHITELIST_PREFIX)
                       or _is_image_ref(r[0], r[1], r[2], ctx.asset_prefix, ctx.asset_exts,
-                                        page_rel=INTERACTIVE))]
+                                        page_rel=INTERACTIVE)
+                      or _is_meta_link(r))]
     if URL_HTTP_RE.search(itext):
         bad_it.append(("css-url", "站外 url()", ""))
     bad += [(INTERACTIVE, "脚本白名单例外扩散/站外引用", (r[0], r[1])) for r in bad_it]
@@ -912,11 +1044,18 @@ def check_p09(ctx):
     ctx.notes.append("P09 口径：受检集合的「脚本」约束取「外链脚本 = 0」并**加强**为"
                      "「每页内联脚本恰好 1 个且全站逐字节一致（唯一的界面引导脚本）」；"
                      "资源引用只允许两类白名单——13-interactive/ 同目录 vendor/ 脚本、"
-                     "以 assets/ 前缀的相对路径图片（扩展名 %s）。" % (ctx.asset_exts,))
+                     "以 assets/ 前缀的相对路径图片（扩展名 %s）。"
+                     "★ 2026-10-16 第 8 轮补：`<link>` 按 **rel 闭集**分流 —— 元数据类 %s "
+                     "走「href 必须无主机」断言（⛔ 不当作资源引用），其余走资源白名单断言；"
+                     "落在闭集之外的 rel（preload / dns-prefetch / modulepreload…）一律 FAIL。"
+                     "这是**判据对象收窄**（R-23），不是放宽阈值：同批加了闭集与无主机两条断言，"
+                     "见 `CRITERIA-CHANGE-R08.md`。"
+                     % (ctx.asset_exts, list(LINK_META_RELS)))
     return (not bad), ("受检页面 %d 个：外链资源 0 / 外链脚本 0 / @import 0 / 跨目录资源 0；"
-                       "内联引导脚本每页 1 个且全站同一 sha256（%d 种）；"
+                       "内联引导脚本每页 1 个且全站同一 sha256（%d 种）；元数据类 `<link>` %d 处（进 rel 闭集；`canonical`/`alternate` 容许本站绝对自指 URL）；"
                        "脚本白名单引用 %d 处、图片白名单引用 %d 处；违例 %d 处 %s"
-                       % (len(self_pages), len(uniq), len(it_refs), len(img_refs), len(bad), bad[:4]))
+                       % (len(self_pages), len(uniq), meta_link_n, len(it_refs), len(img_refs),
+                          len(bad), bad[:4]))
 
 
 def check_p10(ctx):
@@ -1021,24 +1160,38 @@ def check_p11(ctx):
 
 
 def check_p12(ctx):
-    """公开产物中内部编号 / 绝对路径 / 主机名 / 令牌串命中 = 0。"""
+    """公开产物中内部编号 / 绝对路径 / 主机名 / 令牌串命中 = 0。
+
+    ★ 2026-10-16 第 8 轮作用域收窄（见 `CRITERIA-CHANGE-R08.md`）：「主机名」一项只在**正文**
+      上判 —— 判据对象 ＝ `_strip_url_attrs(text)`（摘掉 `href="…"` 与带主机的 `content="…"`）。
+      理由：SH4 标准档要求每页写 `canonical` / `og:url` / `og:image` 的**绝对自指 URL**（含本站主机名），
+      而属性里的 URL 归 P09（rel 闭集 + 元数据无主机）与 P30（assets/ 白名单）管 —— 那两条的断言更精确。
+      ⛔ 这不是放宽阈值：正文里的裸主机名照样 FAIL（负例夹具 `mut_p12` 第 3 条守着）。
+    """
     cats = {"内部编号": [], "绝对路径": [], "主机名": [], "令牌串": [], "file:// URL": []}
+    host_scope_files = 0
     for rel, text in sorted(ctx.files.items()):
-        for m in SECTION_RE.finditer(text):
+        prose = _strip_url_attrs(text)
+        if os.path.basename(rel) in HOST_CARRIER_FILES:
+            prose = _strip_host_urls(prose)   # 发布发现协议的载体，见 `_strip_host_urls`
+        host_scope_files += 1
+        for m in SECTION_RE.finditer(prose):
             cats["内部编号"].append((rel, m.group(0)))
-        for m in TIER_WORD_RE.finditer(text):
+        for m in TIER_WORD_RE.finditer(prose):
             cats["内部编号"].append((rel, m.group(0)))
-        for m in ABS_PATH_RE.finditer(text):
+        for m in ABS_PATH_RE.finditer(prose):
             cats["绝对路径"].append((rel, m.group(1)))
-        for m in HOST_RE.finditer(text):
+        for m in HOST_RE.finditer(prose):
             cats["主机名"].append((rel, m.group(0)))
-        for m in SECRET_RE.finditer(text):
+        for m in SECRET_RE.finditer(prose):
             cats["令牌串"].append((rel, m.group(0)[:12]))
-        for m in FILE_URL_RE.finditer(text):
+        for m in FILE_URL_RE.finditer(prose):
             cats["file:// URL"].append((rel, "file://"))
     total = sum(len(v) for v in cats.values())
-    return (total == 0), "受检产物 %d 个；命中 %d 处 %s" % (
-        len(ctx.files), total, {k: v[:3] for k, v in cats.items() if v})
+    return (total == 0), ("受检产物 %d 个（主机名一项在**正文**上判：摘掉 href 与带主机的 content 后 %d 个文件）；"
+                          "命中 %d 处 %s" % (
+                              len(ctx.files), host_scope_files, total,
+                              {k: v[:3] for k, v in cats.items() if v}))
 
 
 def check_p13(ctx):
@@ -1090,9 +1243,17 @@ def check_p13(ctx):
         bad.append(("PUBLISH-STATE.published 应为 false", state.get("published")))
     # ---- ★ G12（2026-10-16 第 6 轮）：`counts` 与**产物 / 真相源实数**逐项一致 ----
     counts = state.get("counts") or {}
+    # ★ MD 镜像集合（`15-md/` 下）：与 `ctx.md`（含手写 README）分开计数，两个口径各判一次
+    md_mirrors = [r for r in ctx.md if r.startswith(MD_DIR + "/")]
     want_counts = [
         # 产物侧实数（判据自己数，⛔ 不采信 state 自报）
-        ("html", len(ctx.html)), ("md", len(ctx.md)),
+        ("html", len(ctx.html)),
+        # ★ 2026-10-16 第 8 轮对象收窄：`counts.md` 是**MD 镜像数**（`15-md/` 下），
+        #   ⛔ 不是 `ctx.md` 的全部（那里面还有发布根上的手写 `README.md`）。
+        #   原写法把两者当同一个数 ⇒ 生成器与判据各算一个口径，README 一进发布面就当场 FAIL。
+        #   ★ 两个口径都必须**显式**：`len(ctx.md)`（全部 .md）与 `len(md_mirrors)`（仅镜像）各判一次。
+        ("md", len(md_mirrors)),
+        ("md_total", len(ctx.md)),
         ("node_pages", len(complete)),
         ("group_pages", len(dag["groups"]) + 1),
         ("view_pages", len([r for r in ctx.html if r.startswith("14-views/")])),
@@ -2282,11 +2443,32 @@ def mut_p09(ctx):
     # ★ 夹具修正（2026-10-15）：初版只删 `<link rel="icon" …assets/favicon.svg>`，而各页还有
     #   背景帧的 `url("…assets/backdrop/*.webp")` ⇒ 图片白名单集合**远未清空**，空集守卫不触发
     #   （本轮实测「负例未触发」）。⇒ 必须把**全部**图片引用一并去掉，才真正检验空集守卫。
+    # ★ 2026-10-16 第 8 轮：连元数据类 `<link>` 也一并去掉 —— 否则「有元数据链接」会遮蔽
+    #   「无图片资产」这个空集条件（判据本要检的是后者）。
     for rel in list(c.html):
-        t = re.sub(r'<link rel="icon"[^>]*>', "", c.html[rel])
+        t = re.sub(r'<link\b[^>]*>', "", c.html[rel], flags=re.I)
         t = re.sub(r'url\("[^"]*assets/backdrop/[^"]*"\)', "none", t)
         c.html[rel] = c.files[rel] = t
     out.append(c)
+    # ★ 2026-10-16 第 8 轮新增 3 条负例：守住「判据对象收窄」不许退化成「有 link 就放过」。
+    #   ① rel 闭集之外的 `preload`（浏览器会真去取资源 ⇒ 必须 FAIL）
+    c = copy.deepcopy(ctx)
+    out.append(_patch(c, k, "</head>",
+                      '<link rel="preload" href="../assets/backdrop/day-1920.webp" as="image"></head>'))
+    #   ② 元数据类 rel 的 href 带主机（元数据不得成为外链后门）
+    c = copy.deepcopy(ctx)
+    out.append(_patch(c, k, "</head>",
+                      '<link rel="icon" href="https://cdn.example.com/favicon.svg"></head>'))
+    #   ③ canonical 指站外（元数据无主机断言的第 2 个面）
+    c = copy.deepcopy(ctx)
+    out.append(_patch(c, k, "</head>",
+                      '<link rel="canonical" href="https://evil.example.com/x.html"></head>'))
+    #   ④ ★ 2026-10-16 第 8 轮新增：`canonical` 指向**本站基址之外**的另一台主机
+    #      （`LINK_META_HOSTED_OK` 只容许 canonical/alternate 带主机，且必须是**本站自指**）
+    c = copy.deepcopy(ctx)
+    out.append(_patch(c, k, "</head>",
+                      '<link rel="canonical" href="https://zako-mio.github.io/other-repo/x.html">'
+                      "</head>"))
     return out
 
 
@@ -2312,9 +2494,17 @@ def mut_p11(ctx):
 
 
 def mut_p12(ctx):
+    """★ 2026-10-16 第 8 轮由 1 条扩为 2 条：判据对象收窄（「主机名」只在正文上判）后，
+    ⛔ 必须有一条负例**专门守住正文侧**，否则收窄会悄悄退化成「主机名永远不判」。"""
+    out = []
     k = _first_html(ctx)
-    return _patch(ctx, k, "</main>",
-                  "<p>见 §8 与门控级口径；/home/user/secret；host zako-mio</p></main>")
+    # ① 正文里的内部编号 + 绝对路径 + 裸主机名（原有；覆盖全部四类命中的正文侧）
+    out.append(_patch(ctx, k, "</main>",
+                      "<p>见 §8 与门控级口径；/home/user/secret；host zako-mio</p></main>"))
+    # ② 正文里只放一个**裸主机名**（不带任何其它违例）⇒ 若收窄过头，这一条就再也触发不了
+    out.append(_patch(ctx, k, "</main>",
+                      "<p>本页由 zako-mio 维护。</p></main>"))
+    return out
 
 
 def mut_p13(ctx):
@@ -4929,7 +5119,9 @@ CHECKS = [
     ("P06", "pitfalls 与 evidence 契约（含 GD-N 未证实例外）", check_p06, mut_p06),
     ("P07", "terms 逐条可在术语台账解析", check_p07, mut_p07),
     ("P08", "全站 HTML 断链 = 0", check_p08, mut_p08),
-    ("P09", "自包含：0 外链资源 / 0 外链脚本 / 0 @import / 0 跨目录资源（两类白名单不扩散）",
+    ("P09", "自包含：0 外链资源 / 0 外链脚本 / 0 @import / 0 跨目录资源（两类白名单不扩散；"
+            "★ 2026-10-16 第 8 轮：`<link>` 按 rel 闭集分流 —— 元数据类 rel 走「无主机或本站自指」断言，"
+            "闭集之外的 rel 一律 FAIL，见 `CRITERIA-CHANGE-R08.md`）",
      check_p09, mut_p09),
     ("P10", "主题根唯一 + 令牌声明点唯一", check_p10, mut_p10),
     ("P11", "对比度：站点调色板三元组逐条复核（硬判与 report-only 分离）", check_p11, mut_p11),

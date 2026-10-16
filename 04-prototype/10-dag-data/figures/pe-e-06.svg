@@ -1,7 +1,7 @@
-<svg class="fig__svg" role="img"
+<svg class="fig__svg" role="img" aria-label="编译流水线图：签名 / 模块 / 优化器三个构件与「按指标搜索产出指令与示例」的编译过程，以及选型两轴与「无单一最优」的官方边界。"
  viewBox="0.00 0.00 637.00 256.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 <g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 252)">
-<title>fig</title>
+
 <g id="node1" class="node">
 <title>A</title>
 <path fill="var(--brand-soft)" stroke="var(--brand-primary)" d="M144,-248C144,-248 25,-248 25,-248 19,-248 13,-242 13,-236 13,-236 13,-214 13,-214 13,-208 19,-202 25,-202 25,-202 144,-202 144,-202 150,-202 156,-208 156,-214 156,-214 156,-236 156,-236 156,-242 150,-248 144,-248"/>

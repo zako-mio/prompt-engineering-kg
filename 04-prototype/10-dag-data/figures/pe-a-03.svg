@@ -1,7 +1,7 @@
-<svg class="fig__svg" role="img"
+<svg class="fig__svg" role="img" aria-label="阶段映射图：十大风险按工程阶段分派为四组检查项（设计 / 接入 / 上线 / 运行），以及「覆盖检查表而非合规认证、引用必须标版本」。"
  viewBox="0.00 0.00 829.00 356.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 <g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 352)">
-<title>fig</title>
+
 <g id="node1" class="node">
 <title>S1</title>
 <path fill="var(--brand-soft)" stroke="var(--brand-primary)" d="M293,-348C293,-348 60,-348 60,-348 54,-348 48,-342 48,-336 48,-336 48,-300 48,-300 48,-294 54,-288 60,-288 60,-288 293,-288 293,-288 299,-288 305,-294 305,-300 305,-300 305,-336 305,-336 305,-342 299,-348 293,-348"/>

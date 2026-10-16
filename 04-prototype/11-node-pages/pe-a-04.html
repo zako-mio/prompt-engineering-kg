@@ -6,6 +6,13 @@
 <title>过拒与安全—可用性权衡 · 新一代提示词工程 · 知识全景图</title>
 <!-- base: ../ (相对本站根) -->
 <!-- template: shell-v2 -->
+<meta name="description" content="安全策略要同时报拦截率与过拒率两列，把处置拆成继续、降级、中止三种可判定结果；权衡的落点由业务风险决定，并须留下取舍记录。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="过拒与安全—可用性权衡">
+<meta property="og:description" content="安全策略要同时报拦截率与过拒率两列，把处置拆成继续、降级、中止三种可判定结果；权衡的落点由业务风险决定，并须留下取舍记录。">
+<meta property="og:url" content="https://zako-mio.github.io/prompt-engineering-kg/11-node-pages/pe-a-04.html">
+<meta property="og:image" content="https://zako-mio.github.io/prompt-engineering-kg/og.png">
+<link rel="canonical" href="https://zako-mio.github.io/prompt-engineering-kg/11-node-pages/pe-a-04.html">
 <meta name="theme-color" content="#f4f7fc" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#060a14" media="(prefers-color-scheme: dark)">
 <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
@@ -705,10 +712,10 @@ html.js-motion [data-reveal].is-in{
 <p class="meta-line"><span class="nid">PE-A-04</span><span class="badge badge--ok">内容已写满</span><a class="gchip" href="../12-groups/g06.html"><span class="gseq">G06</span><span class="gchip__name">安全与鲁棒性</span></a><span>第 16 层</span></p>
 <div class="tag-row" aria-label="标签"><span class="tier">安全</span><span class="tier">过拒</span><span class="tier">可用性</span></div>
 <section class="read-map" aria-label="本页导读" data-reveal="1" style="--i:0"><p class="read-map__label">一句话结论</p><p class="read-map__claim">安全策略要同时报拦截率与过拒率两列，把处置拆成继续、降级、中止三种可判定结果；权衡的落点由业务风险决定，并须留下取舍记录。</p><p class="read-map__label">本页结构（可跳转）</p><ul class="read-map__nav"><li><a href="#sec-why">01 为什么需要它</a></li><li><a href="#sec-intro">02 机制说明</a></li><li><a href="#sec-when">03 何时该用 / 何时不该用</a></li><li><a href="#sec-lab">04 实验台</a></li><li><a href="#sec-evidence">05 证据</a></li><li><a href="#sec-terms">06 术语</a></li><li><a href="#sec-pitfalls">07 失效模式</a></li><li><a href="#sec-rel">08 在本站知识结构中的位置</a></li></ul></section>
-<figure class="fig" id="fig-pe-a-04" data-reveal="1" style="--i:1"><svg class="fig__svg" role="img"
+<figure class="fig" id="fig-pe-a-04" data-reveal="1" style="--i:1"><svg class="fig__svg" role="img" aria-label="权衡图：过拒的三类成因、三条改进方向，以及「拦截率与过拒率必须双向度量」的度量纪律与业务侧落点。"
  viewBox="0.00 0.00 759.00 224.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 <g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 220)">
-<title>fig</title>
+
 <g id="node1" class="node">
 <title>C1</title>
 <path fill="var(--surface-raised)" stroke="var(--danger)" d="M160,-46C160,-46 25,-46 25,-46 19,-46 13,-40 13,-34 13,-34 13,-12 13,-12 13,-6 19,0 25,0 25,0 160,0 160,0 166,0 172,-6 172,-12 172,-12 172,-34 172,-34 172,-40 166,-46 160,-46"/>

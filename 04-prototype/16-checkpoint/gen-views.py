@@ -94,7 +94,7 @@ def chapter_sid(i):
     return "sec-chapter-%s" % ROMAN[i - 1]
 
 
-def learning_path_page(dag, page_exists):
+def learning_path_page(dag, page_exists, page_rel=None):
     nodes = dag["nodes"]
     edges = dag["edges"]
     by_layer = {}
@@ -127,7 +127,10 @@ def learning_path_page(dag, page_exists):
             ns = sorted(by_layer[lv], key=lambda x: x["id"])
             body.append(C.layer_block_html(lv, ns, edges, page_exists, BASE, show_group=True))
         body.append("</section>")
-    return C.page_shell(BASE, "view", "01-learning-path", "学习路径", "\n".join(body))
+    return C.page_shell(BASE, "view", "01-learning-path", "学习路径", "\n".join(body),
+                        # ★ SH4：description 取本页导语首句（与 `.read-map` 同源）
+                        meta_desc=C.lead_sentence(intro),
+                        page_rel=page_rel or C._derive_page_rel("view", "01-learning-path"))
 
 
 def _item_html(item, as_of, edition, nxt):
@@ -175,7 +178,7 @@ def _item_html(item, as_of, edition, nxt):
 _PUBLISHED = set()
 
 
-def frontier_page(frontier, page_exists):
+def frontier_page(frontier, page_exists, page_rel=None):
     global _PUBLISHED
     _PUBLISHED = set(page_exists)
     as_of = frontier.get("as_of", "")
@@ -223,16 +226,22 @@ def frontier_page(frontier, page_exists):
                 "条目对应的知识节点在 <a href=\"%s\">交互全景图</a> 中可定位。</p>"
                 % (C.esc(BASE + C.group_page_rel("GD-N")), C.group_chip("GD-N", "新一代模块"),
                    C.esc(BASE + C.DIR_INTERACTIVE + "/index.html#group-GD-N")))
-    return C.page_shell(BASE, "view", "02-frontier", "新一代模块", "\n".join(body))
+    return C.page_shell(BASE, "view", "02-frontier", "新一代模块", "\n".join(body),
+                        # ★ SH4：description 取本页导语首句（与 `.read-map` 同源）
+                        meta_desc=C.lead_sentence(FRONTIER_INTRO),
+                        page_rel=page_rel or C._derive_page_rel("view", "02-frontier"))
 
 
 def generate(root=None):
     data = C.load_sources()
     dag = data["dag"]
     page_exists = {n["id"] for n in dag["nodes"] if n["content_status"] == "complete"}
+    # ★ SH4：把**产物路径本身**传给页面构建器 ⇒ canonical 与产物同源（⛔ 不在别处另推一份）
+    lp_rel = "%s/01-learning-path.html" % C.DIR_VIEWS
+    fr_rel = "%s/02-frontier.html" % C.DIR_VIEWS
     return {
-        "%s/01-learning-path.html" % C.DIR_VIEWS: learning_path_page(dag, page_exists),
-        "%s/02-frontier.html" % C.DIR_VIEWS: frontier_page(data["frontier"], page_exists),
+        lp_rel: learning_path_page(dag, page_exists, page_rel=lp_rel),
+        fr_rel: frontier_page(data["frontier"], page_exists, page_rel=fr_rel),
     }
 
 

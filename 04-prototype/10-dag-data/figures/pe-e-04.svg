@@ -1,7 +1,7 @@
-<svg class="fig__svg" role="img"
+<svg class="fig__svg" role="img" aria-label="三层落地图：本地批量 / 持续集成回归 / 对抗评测三层工具链，断言类型的二分，以及红蓝对抗必须同时报告「攻击成功率」与「正常请求拒绝率」。"
  viewBox="0.00 0.00 778.50 287.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 <g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 283)">
-<title>fig</title>
+
 <g id="node1" class="node">
 <title>L1</title>
 <path fill="var(--brand-soft)" stroke="var(--brand-primary)" d="M207.5,-279C207.5,-279 22.5,-279 22.5,-279 16.5,-279 10.5,-273 10.5,-267 10.5,-267 10.5,-231 10.5,-231 10.5,-225 16.5,-219 22.5,-219 22.5,-219 207.5,-219 207.5,-219 213.5,-219 219.5,-225 219.5,-231 219.5,-231 219.5,-267 219.5,-267 219.5,-273 213.5,-279 207.5,-279"/>

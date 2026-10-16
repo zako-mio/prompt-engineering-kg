@@ -1,0 +1,79 @@
+{
+  "site": "prompt-engineering-kg",
+  "schema_note": "范式沿用同类卫星站的声明式门控清单（形状照 hub 的 `scripts/check_ci_manifest.py`）。★ 本文件由**站点仓内**版本化，⛔ 不含任何豁免 / 白名单字段（`waivers` / `exempt` / `allow` / `skip` / `ignore` 一类键在本件中**不存在** —— 缺口一律写进 `not_covered`）。",
+  "generated_by": "2026-10-16 第 8 轮（发布级强化）：本站在此之前**没有**声明式门控清单，判据实现与执行入口分散在 `gate_prototype.py` 的文件头与 `_ci_gate.sh` 的 `--only` 清单里 ⇒ 「本仓有哪几条判据、各在什么强度下执行、哪些面**没有**判据」三问都要读源码才能回答。本件把它变成可机读的一份。★ 判据实现见 `gate_prototype.py`（P01–P41）、`gate_a11y.py`（A1–A7）、`gate_seo_meta.py`（S1–S11）；登记见 `CRITERIA-CHANGE-R08.md`。",
+  "coverage_modes": {
+    "push_fast": "push 档（每次 push 到 main）：`_ci_gate.sh fast` —— 跑 `gate_prototype.py` 的**结构性判据子集** ＋ A 段 7 条 ＋ S 段 11 条，各带 `--selftest`。★ 有意不跑：P38（需渲染证据与开工期探测）、P41（源文件散文扫描，属轮次收口对象）。",
+    "full": "全量档（`workflow_dispatch` ＋ 每周一 03:17 UTC）：`_ci_gate.sh full` —— 全部 P01–P41 ＋ `--selftest`（41 条判据 / 176 条负例夹具）＋ 数据侧 `10-dag-data/_selfcheck.py` ＋ 图件规格两侧探针 `_selfcheck_figs_spec.py`。",
+    "local_render": "本机渲染档（⛔ 不进 CI）：`_render.py`（非 snap Chrome）＋ `_probe_channel.py`（像素读数与横向溢出直接量）＋ `_geom_interactive.py`（交互图几何复算）。★ 本机有该通道；CI runner 没有，故如实列为未覆盖。"
+  },
+  "gates": [
+    {
+      "id": "prototype-criteria",
+      "script": "gate_prototype.py",
+      "mode": "mixed",
+      "mode_note": "★ 本门控**不按单一强度执行**：它 41 条判据里有硬判与报告项两类（报告项在输出里以 `[NOTE]` 形式给出且⛔ 不判 FAIL），另有两个档（push 子集 / full 全量）。⇒ 本字段写 `mixed` 并以下面 `judges[]` 的 `mode` 逐条给强度，⛔ 不用一个词概括。",
+      "judges": [
+        {"id": "P01-P08", "mode": "hard", "note": "真相源结构与取值域、id/边可解析、DAG 无环与层序、组非空、字段长度、pitfalls/evidence 契约、terms 台账解析、全站断链 0"},
+        {"id": "P09", "mode": "hard", "note": "自包含：0 外链资源 / 0 外链脚本 / 0 @import / 0 跨目录资源；`<link>` 按 **rel 闭集**分流（元数据类走「无主机或本站自指」断言）"},
+        {"id": "P10-P15", "mode": "hard", "note": "主题根唯一、对比度逐对复核、公开文案无内部编号/绝对路径/主机名、MD 镜像覆盖与内容一致、导航可达、模板标识唯一"},
+        {"id": "P16-P21", "mode": "hard", "note": "幂等（两次独立生成的逐文件 sha256）、dry-run 清单闭合、孤儿产物 0、令牌漂移可判假、契约角色覆盖 11/11、前沿刷新隔离"},
+        {"id": "P22-P33", "mode": "hard", "note": "状态↔内容一致性、令牌来源唯一、令牌外硬编码 0、:hover 门控、主题三态、背景层护栏、动效预算、交互作用面双向闭合、资产白名单、色相不承载身份、许可证登记、内部记号 0"},
+        {"id": "P34-P37", "mode": "hard", "note": "宽屏左栏完整性、内容层级与阅读单元、图件合规（含字形覆盖 fail-closed）、交互全景图结构化布局"},
+        {"id": "P38", "mode": "hard", "note": "验证通道：能力声明与事实一致 ＋ 渲染产物非退化（判据自己解码 PNG）；★ 依赖 `_probe/channel.json`，**不进 push 档**"},
+        {"id": "P39-P40", "mode": "hard", "note": "判据变更登记件引用解析（双向闭合 ＋ 结构化出口闭合）、轮次台账结构合规"},
+        {"id": "P41", "mode": "hard", "note": "源文件散文能力声明扫描（窄版：只判已登记的历史句是否复活）；★ **不进 push 档**"},
+        {"id": "P35-report", "mode": "report-only", "note": "长文可扫性（无因果阈值可定 ⇒ 只打印、⛔ 不判 FAIL；该面由真实渲染 + 人看兜）"}
+      ],
+      "selftest": "python3 gate_prototype.py --selftest（41 条判据 / 176 条负例夹具，逐条触发）",
+      "not_covered": []
+    },
+    {
+      "id": "a11y",
+      "script": "gate_a11y.py",
+      "mode": "hard",
+      "judges": [
+        {"id": "A1", "mode": "hard", "note": "每页 `a.skip` 恰 1 且其 `href=\"#id\"` 的目标 id 在本页存在"},
+        {"id": "A2", "mode": "hard", "note": "每页 `:focus-visible` 规则 ≥1"},
+        {"id": "A3", "mode": "hard", "note": "每页 `<main>` 恰 1"},
+        {"id": "A4", "mode": "hard", "note": "每个内联 `<svg>`/`<canvas>` 可访问：非装饰须有可访问名；装饰须 `aria-hidden=\"true\"` 且⛔ 不得同带可访问名（冲突声明）"},
+        {"id": "A5", "mode": "hard", "note": "每页 `<html lang>` 非空"},
+        {"id": "A6", "mode": "hard", "note": "每页 `rel=\"icon\"` 声明 ≥1（仅断声明存在，可达性归 S7）"},
+        {"id": "A7", "mode": "hard", "note": "`a.skip` 是正文内第一个可聚焦元素（WCAG 2.4.1 的实现前提）"}
+      ],
+      "selftest": "python3 gate_a11y.py --selftest（7 条判据 / 9 条负例夹具）",
+      "not_covered": []
+    },
+    {
+      "id": "metadata",
+      "script": "gate_seo_meta.py",
+      "mode": "hard",
+      "judges": [
+        {"id": "S1", "mode": "hard", "note": "head 元数据区 `<title>` 恰 1 且含站点名（★ 对象不含内联 SVG 的节点标签 `<title>`）"},
+        {"id": "S2", "mode": "hard", "note": "`meta description` 恰 1 且非空"},
+        {"id": "S3", "mode": "hard", "note": "`og:type` / `og:title` / `og:description` / `og:url` / `og:image` 五项齐备且非空"},
+        {"id": "S4", "mode": "hard", "note": "`rel=\"canonical\"` 恰 1 且非空"},
+        {"id": "S5", "mode": "hard", "note": "canonical **自指**（归一化口径 `X/index.html` ≡ `X/`）且目标在发布面现存页集合内"},
+        {"id": "S6", "mode": "hard", "note": "`og:url` 与 canonical 一致（归一化后）"},
+        {"id": "S7", "mode": "hard", "note": "每页 `rel=\"icon\"` 的目标解析到盘上存在"},
+        {"id": "S8", "mode": "hard", "note": "`robots.txt` 存在、非空、含 `Sitemap:` 行且指向本仓 sitemap.xml"},
+        {"id": "S9", "mode": "hard", "note": "`sitemap.xml` 的 `loc` 集合 ⟺ 发布面 HTML 集合（双向闭合，⛔ 不抽样）"},
+        {"id": "S10", "mode": "hard", "note": "`sitemap.xml` 良构（XML 真解析）且⛔ 无 `<lastmod>`（墙钟时间戳破坏构建幂等）"},
+        {"id": "S11", "mode": "hard", "note": "`description` 长度 ≥16 且⛔ 不等于站点标语（长度**护栏**，⛔ 不是可读性阈值）"}
+      ],
+      "selftest": "python3 gate_seo_meta.py --selftest（11 条判据 / 18 条负例夹具）",
+      "not_covered": []
+    }
+  ],
+  "not_covered": [
+    "★ **渲染期像素层未进 CI**：`P38` 的渲染产物非退化断言、`_probe_channel.py` 的横向溢出直接量、`P11` 的背景合成对比度，三者都要**非 snap Chrome**（本机在 `~/.cache/ms-playwright/`）⇒ CI runner 没有该通道。本机 `full` 档照样跑，⛔ 但 CI 全绿**不得**读作「像素层已验证」。",
+    "★ **`P41` 的扫描面不含任务根与 `_probe/`**：它只扫 `16-checkpoint/` 顶层的 `*.py` ⇒ 上一级与 `_probe/` 下的脚本**没有判据管辖**（台账 `G39` 已登记，本轮未扩面）。",
+    "★ **`_probe/` 目录本身无判据管辖**：它的四类对象（取证件 / 核对台 / PNG 凭证 / 假绿物证）按人为清理纪律维护；删错不会有任何门控报警。",
+    "★ **A/S 两段是两个独立脚本**：CI 必须分别调用三个门控（`_ci_gate.sh` 已这么做），⚠ 但**漏调其中一个不会有任何报警** —— 这是「装置覆盖」缺口，不是判据缺口。",
+    "★ **`G18` 的 5 项长期欠账仍在**（第 7 轮留行，本轮未动）：P35 ⑫ 代理判据未退役 / 分组索引 6 列短值表未被判据覆盖 / 组页 `intro` 无枚举模式 / P38 不判 PNG 新鲜度 / `report.html` 的 `<title>` 仍写「第 1 轮」。",
+    "★ **窄视口交互图 zoom < 1 未修**（`G9`）：`canvas_768` 实测 cyW 718，首个 zoom < 1 出现在视口 768（0.8755）。P37 的 `zoom=1` 只在**声明画布**口径下成立 ⇒ 本条只登记、⛔ 不假装覆盖。",
+    "★ **边框色对底色的非文本对比度未纳入任何渲染期判据**（`G15`）：本站 `--border` 对底色仅 1.0:1（浅）/ 1.06:1（深），而**没有任何门控会失败** —— 跨仓议题（应向共享令牌契约提 WCAG 1.4.11 式 3:1 下限），⛔ 不在本仓修。",
+    "★ **「公开产物是否真含书籍/论文正文」不可机检**：`R-07` 的引用纪律（只允许题录、链接与 ≤200 字关键句）由引文库的登记字段与人工复核兜，⛔ 无判据。",
+    "★ **本清单自身无判据校验**：⛔ 没有任何脚本断言「`gates[].judges[]` 的编号集合 ⟺ 门控脚本里真实的判据集合」⇒ 本件与实现的漂移要靠人核。★ 这是本件最薄的一环，如实留行（同类卫星站有 `check_gate_manifest.py` 做这件事，本轮**未** vendor 它）。"
+  ]
+}

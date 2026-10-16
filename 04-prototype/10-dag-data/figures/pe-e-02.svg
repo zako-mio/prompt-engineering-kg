@@ -1,7 +1,7 @@
-<svg class="fig__svg" role="img"
+<svg class="fig__svg" role="img" aria-label="构造动作图：测试集的四个构造动作（真实采样 / 失败模式分层 / 负例与边界例 / 判据与容差）、留出集，及「只收典型样本」的对照。"
  viewBox="0.00 0.00 716.00 288.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 <g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 284)">
-<title>fig</title>
+
 <g id="node1" class="node">
 <title>A1</title>
 <path fill="var(--brand-soft)" stroke="var(--brand-primary)" d="M144,-280C144,-280 12,-280 12,-280 6,-280 0,-274 0,-268 0,-268 0,-232 0,-232 0,-226 6,-220 12,-220 12,-220 144,-220 144,-220 150,-220 156,-226 156,-232 156,-232 156,-268 156,-268 156,-274 150,-280 144,-280"/>

@@ -1,7 +1,7 @@
-<svg class="fig__svg" role="img"
+<svg class="fig__svg" role="img" aria-label="机制图：从概率分布到确定性边界——三类工程手段各自作用在哪一步。"
  viewBox="0.00 0.00 512.00 370.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 <g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 366)">
-<title>fig</title>
+
 <g id="node1" class="node">
 <title>m</title>
 <path fill="var(--surface-raised)" stroke="var(--border-line)" d="M211,-280C211,-280 12,-280 12,-280 6,-280 0,-274 0,-268 0,-268 0,-246 0,-246 0,-240 6,-234 12,-234 12,-234 211,-234 211,-234 217,-234 223,-240 223,-246 223,-246 223,-268 223,-268 223,-274 217,-280 211,-280"/>

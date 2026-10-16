@@ -33,7 +33,7 @@ C = _imp(os.path.join(HERE, "gen-common.py"), "pekg_common")
 BASE = ""
 
 
-def root_page(dag, frontier, page_exists):
+def root_page(dag, frontier, page_exists, page_rel=None):
     nodes = dag["nodes"]
     groups = sorted(dag["groups"], key=lambda g: g["order"])
     edges = dag["edges"]
@@ -122,14 +122,20 @@ def root_page(dag, frontier, page_exists):
                 "<li>判断某条技巧是否仍然成立时，先看新一代模块的状态徽标与取代关系。</li></ol>")
     body.append('<p class="lede">本站的依赖方向约定：边 A→B 表示先学 A 再学 B；'
                 "层序由该方向推导，同一层的节点彼此无先后约束。</p>")
-    return C.page_shell(BASE, "root", "ROOT", meta["mission"], "\n".join(body))
+    return C.page_shell(BASE, "root", "ROOT", meta["mission"], "\n".join(body),
+                        # ★ SH4：description 就用本页已有的 `meta["mission"]`（页 h1 同值，
+                        #   ⛔ 不为搜索引擎另写一句）
+                        meta_desc=meta["mission"],
+                        page_rel=page_rel or C._derive_page_rel("root", "ROOT"))
 
 
 def generate(root=None):
     data = C.load_sources()
     dag = data["dag"]
     page_exists = {n["id"] for n in dag["nodes"] if n["content_status"] == "complete"}
-    return {"index.html": root_page(dag, data["frontier"], page_exists)}
+    # ★ SH4：把**产物路径本身**传给页面构建器 ⇒ canonical 与产物同源（⛔ 不在别处另推一份）
+    rel = "index.html"
+    return {rel: root_page(dag, data["frontier"], page_exists, page_rel=rel)}
 
 
 if __name__ == "__main__":

@@ -1,7 +1,7 @@
-<svg class="fig__svg" role="img"
+<svg class="fig__svg" role="img" aria-label="两条优化路线对照图：文本梯度把自然语言评价当梯度回传到各组件，反思式进化由执行轨迹生成改进规则；共同前提是轨迹与评分函数。"
  viewBox="0.00 0.00 832.00 238.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 <g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 234)">
-<title>fig</title>
+
 <g id="node1" class="node">
 <title>Q</title>
 <path fill="var(--brand-soft)" stroke="var(--brand-primary)" d="M147,-145C147,-145 12,-145 12,-145 6,-145 0,-139 0,-133 0,-133 0,-97 0,-97 0,-91 6,-85 12,-85 12,-85 147,-85 147,-85 153,-85 159,-91 159,-97 159,-97 159,-133 159,-133 159,-139 153,-145 147,-145"/>

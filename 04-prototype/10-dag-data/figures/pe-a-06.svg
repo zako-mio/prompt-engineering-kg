@@ -1,7 +1,7 @@
-<svg class="fig__svg" role="img"
+<svg class="fig__svg" role="img" aria-label="四步隔离图：标注 / 声明 / 收窄 / 校验四个动作，以及「提示层的标注不构成安全边界、权限收窄才是关键」的分界。"
  viewBox="0.00 0.00 609.00 363.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 <g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 359)">
-<title>fig</title>
+
 <g id="node1" class="node">
 <title>T</title>
 <path fill="var(--brand-soft)" stroke="var(--brand-primary)" d="M157,-355C157,-355 12,-355 12,-355 6,-355 0,-349 0,-343 0,-343 0,-307 0,-307 0,-301 6,-295 12,-295 12,-295 157,-295 157,-295 163,-295 169,-301 169,-307 169,-307 169,-343 169,-343 169,-349 163,-355 157,-355"/>

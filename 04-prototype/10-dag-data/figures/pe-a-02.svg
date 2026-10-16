@@ -1,7 +1,7 @@
-<svg class="fig__svg" role="img"
+<svg class="fig__svg" role="img" aria-label="攻击面图：直接注入与间接注入两类路径，三条放大危害的属性，以及「模型架构上不区分指令与数据 ⇒ 无可靠拦截式预防」这一反直觉结论。"
  viewBox="0.00 0.00 856.00 216.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 <g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 212)">
-<title>fig</title>
+
 <g id="node1" class="node">
 <title>D1</title>
 <path fill="var(--surface-raised)" stroke="var(--warning)" d="M201.5,-208C201.5,-208 56.5,-208 56.5,-208 50.5,-208 44.5,-202 44.5,-196 44.5,-196 44.5,-160 44.5,-160 44.5,-154 50.5,-148 56.5,-148 56.5,-148 201.5,-148 201.5,-148 207.5,-148 213.5,-154 213.5,-160 213.5,-160 213.5,-196 213.5,-196 213.5,-202 207.5,-208 201.5,-208"/>

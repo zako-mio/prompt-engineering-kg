@@ -1,7 +1,7 @@
-<svg class="fig__svg" role="img"
+<svg class="fig__svg" role="img" aria-label="结构图：四类内容各自被固定标签划出边界后交给模型解析，与「连成一段的裸文本」对照。"
  viewBox="0.00 0.00 572.00 260.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 <g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 256)">
-<title>fig</title>
+
 <g id="node1" class="node">
 <title>T</title>
 <path fill="var(--brand-soft)" stroke="var(--brand-primary)" d="M107,-252C107,-252 12,-252 12,-252 6,-252 0,-246 0,-240 0,-240 0,-218 0,-218 0,-212 6,-206 12,-206 12,-206 107,-206 107,-206 113,-206 119,-212 119,-218 119,-218 119,-240 119,-240 119,-246 113,-252 107,-252"/>

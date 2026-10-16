@@ -1,7 +1,7 @@
-<svg class="fig__svg" role="img"
+<svg class="fig__svg" role="img" aria-label="压缩比对照图：原报告的最优极简程度与代码任务上的实测节省幅度差距悬殊，以及质量损失与「预算也是待调参量」。"
  viewBox="0.00 0.00 636.00 245.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 <g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 241)">
-<title>fig</title>
+
 <g id="node1" class="node">
 <title>A</title>
 <path fill="var(--brand-soft)" stroke="var(--brand-primary)" d="M437,-237C437,-237 173,-237 173,-237 167,-237 161,-231 161,-225 161,-225 161,-203 161,-203 161,-197 167,-191 173,-191 173,-191 437,-191 437,-191 443,-191 449,-197 449,-203 449,-203 449,-225 449,-225 449,-231 443,-237 437,-237"/>

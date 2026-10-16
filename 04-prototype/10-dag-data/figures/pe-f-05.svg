@@ -1,7 +1,7 @@
-<svg class="fig__svg" role="img"
+<svg class="fig__svg" role="img" aria-label="双维图：具体性（说多少细节）与可验证性（能否判定）方向相反却不矛盾，因为对象不同。"
  viewBox="0.00 0.00 536.50 176.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 <g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 172)">
-<title>fig</title>
+
 <g id="node1" class="node">
 <title>A</title>
 <path fill="var(--brand-soft)" stroke="var(--brand-primary)" d="M204,-168C204,-168 12,-168 12,-168 6,-168 0,-162 0,-156 0,-156 0,-120 0,-120 0,-114 6,-108 12,-108 12,-108 204,-108 204,-108 210,-108 216,-114 216,-120 216,-120 216,-156 216,-156 216,-162 210,-168 204,-168"/>

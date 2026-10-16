@@ -74,6 +74,27 @@ OWNED_SKIP_PREFIX = (DIR_INTERACTIVE + "/vendor/",)
 SITE_TITLE = "新一代提示词工程 · 知识全景图"
 SITE_TAGLINE = "面向有工程基础、提示词工程尚未系统化的工程师"
 
+# ★ 2026-10-16 第 8 轮（SH4 head 元数据）新增：
+#   发布落点是 GitHub **项目站**（`https://<user>.github.io/<repo>/`）⇒ 绝对 URL 必须**显式**
+#   带上仓名子路径，⛔ 不能只写域名（写域名会把 canonical 指到用户站根，那是错的）。
+SITE_REPO_SLUG = "prompt-engineering-kg"
+SITE_OWNER = "zako-mio"
+SITE_BASE_URL = "https://%s.github.io/%s/" % (SITE_OWNER, SITE_REPO_SLUG)
+#   逐页 `og:image` 指向发布根下的社交卡（静态资产，⛔ 无生成器；见 `_probe/README.md`）
+SITE_OG_IMAGE = SITE_BASE_URL + "og.png"
+#   `description` 上限：⛔ 不写死一个「可读性阈值」—— 这里只做**长度护栏**（超过搜索引擎截断长度会浪费），
+#   下限由「非空且非空洞」管（`gate_seo_meta.py` 的 S 段）
+META_DESC_MAX = 160
+
+
+def clip_desc(text, limit=META_DESC_MAX):
+    """把一段散文压成 `description`：去标签 / 折叠空白 / 截到 `limit`（按字符，⛔ 不按词）。"""
+    t = re.sub(r"<[^>]+>", "", text or "")
+    t = re.sub(r"\s+", " ", t).strip()
+    if len(t) <= limit:
+        return t
+    return t[: limit - 1].rstrip() + "…"
+
 NAV_ITEMS = (
     ("index.html", "首页"),
     (DIR_INTERACTIVE + "/index.html", "全景图"),
@@ -1499,7 +1520,34 @@ def _page_id_of(href):
     return "INTERACTIVE" if href.startswith(DIR_INTERACTIVE) else m.group(1)
 
 
-def page_shell(base, kind, page_id, title, body, head_extra="", nav_extra=(), backdrop=True):
+def _abs_url(rel):
+    """站内相对路径 → 发布站上的绝对 URL（★ 发布落点是 GitHub 项目站，⛔ 不能只拼域名）。"""
+    return SITE_BASE_URL + rel.lstrip("/")
+
+
+def _derive_page_rel(kind, page_id):
+    """由 `kind` + `page_id` 推导产物相对路径（★ 只在调用方未传 `page_rel` 时兜底）。
+
+    ★ 这里是**推导规则**而不是产物清单：产物路径的真相源在各生成器的 `generate()`。
+      两者若分叉，`canonical` 会指向不存在的页 ⇒ `gate_seo_meta.py` 的 S5 当场判假。
+    """
+    if kind == "root":
+        return "index.html"
+    if kind == "interactive":
+        return DIR_INTERACTIVE + "/index.html"
+    if kind == "node":
+        return "%s/%s.html" % (DIR_NODES, page_id.lower())
+    if kind == "group":
+        return "%s/index.html" % DIR_GROUPS if page_id == "GROUPS-INDEX" \
+            else "%s/%s.html" % (DIR_GROUPS, page_id.lower())
+    if kind == "view":
+        return "%s/%s.html" % (DIR_VIEWS, page_id)
+    raise SystemExit("[FAIL] `page_shell` 收到未知 kind=%r（⛔ 无法派生 canonical，"
+                     "且新增页族必须同时登记进 gate_seo_meta 的对象集）" % (kind,))
+
+
+def page_shell(base, kind, page_id, title, body, head_extra="", nav_extra=(), backdrop=True,
+               meta_desc=None, page_rel=None):
     """★ 全站唯一外壳函数。
 
     base      —— 本页相对本站根的路径前缀（"../" 或 ""）
@@ -1510,9 +1558,21 @@ def page_shell(base, kind, page_id, title, body, head_extra="", nav_extra=(), ba
     head_extra—— 追加进 <head> 的片段（仅交互入口用于同目录 vendor 脚本）
     nav_extra —— 追加到页眉导航的条目
     backdrop  —— 是否渲染背景层（全站一致开启；留参数以便未来按页裁剪）
+    meta_desc —— ★ 2026-10-16 第 8 轮（SH4）新增：本页 `description` 的**内容来源**。
+                 ⛔ 不写死一句全站通用描述（那等于没有描述）；由各生成器传**本页**的摘要/导读。
+                 缺省时退化为站点标语（仅限确实没有本页摘要的页）。
+    page_rel  —— ★ 本页**产物相对本站根的路径**（如 `11-node-pages/pe-a-01.html`），
+                 供本函数派生 `<link rel="canonical">` 与 `og:url`。
+                 ⛔ 不得由调用方**手抄 URL**（那是「同一条信息两处各存一份」的老毛病，抄错无人能判）；
+                 由 `page_rel` 一处派生。缺省时按 `kind` + 目录契约推导（见 `_derive_page_rel`）。
+
+    ★ `page_rel` 与产物路径必须一致：不一致会让 `canonical` 指向一个不存在的页 ——
+      这一点由 `gate_seo_meta.py` 的 S5「canonical 自指且可达」当场判假（⛔ 不靠人核）。
     """
     root_href = (base + "index.html") if base else "index.html"
     rail = _rail_html(base, page_id, nav_extra)
+    canon_url = _abs_url(page_rel if page_rel else _derive_page_rel(kind, page_id))
+    desc = meta_desc if meta_desc else SITE_TAGLINE
     return "".join([
         "<!DOCTYPE html>\n",
         '<html lang="zh-CN" data-theme="auto">\n',
@@ -1522,6 +1582,19 @@ def page_shell(base, kind, page_id, title, body, head_extra="", nav_extra=(), ba
         "<title>%s · %s</title>\n" % (esc(title), esc(SITE_TITLE)),
         "<!-- base: %s (相对本站根) -->\n" % esc(base if base else "./"),
         "<!-- template: %s -->\n" % TEMPLATE_ID,
+        # ★ SH4 标准档的 head 六件（2026-10-16 第 8 轮新增）：
+        #   description / og:type / og:title / og:description / og:url / og:image ＋ canonical。
+        #   ★ 判据对应 `gate_seo_meta.py` 的 S1–S11；同批登记件 `CRITERIA-CHANGE-R08.md`。
+        #   ★ `canonical` 与 `og:url` 是绝对自指 URL；`og:image` 是绝对站点资产 URL。
+        #     这三者在 `<link href>` / `<meta content>` 里，**不**触发 P09（元数据类 rel）
+        #     与 P12（其「主机名」一项只在正文上判）—— 口径见 `CRITERIA-CHANGE-R08.md`。
+        '<meta name="description" content="%s">\n' % esc(clip_desc(desc)),
+        '<meta property="og:type" content="%s">\n' % esc("website" if kind == "root" else "article"),
+        '<meta property="og:title" content="%s">\n' % esc(title),
+        '<meta property="og:description" content="%s">\n' % esc(clip_desc(desc)),
+        '<meta property="og:url" content="%s">\n' % esc(canon_url),
+        '<meta property="og:image" content="%s">\n' % esc(SITE_OG_IMAGE),
+        '<link rel="canonical" href="%s">\n' % esc(canon_url),
         # ★ theme-color 两条 meta 按媒体查询分档，值必须与 --surface-page 的浅/深值同步
         '<meta name="theme-color" content="%s" media="(prefers-color-scheme: light)">\n'
         % esc(palette_css_value("surface.page", "light")),

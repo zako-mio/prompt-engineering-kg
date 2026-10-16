@@ -1,7 +1,7 @@
-<svg class="fig__svg" role="img"
+<svg class="fig__svg" role="img" aria-label="判据分流图：按「模型类别 × 任务串行深度」决定写不写显式推理指令，并把思考内容的回传约束单列。"
  viewBox="0.00 0.00 736.00 259.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 <g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 255)">
-<title>fig</title>
+
 <g id="node1" class="node">
 <title>Q</title>
 <path fill="var(--brand-soft)" stroke="var(--brand-primary)" d="M466.5,-251C466.5,-251 260.5,-251 260.5,-251 254.5,-251 248.5,-245 248.5,-239 248.5,-239 248.5,-217 248.5,-217 248.5,-211 254.5,-205 260.5,-205 260.5,-205 466.5,-205 466.5,-205 472.5,-205 478.5,-211 478.5,-217 478.5,-217 478.5,-239 478.5,-239 478.5,-245 472.5,-251 466.5,-251"/>

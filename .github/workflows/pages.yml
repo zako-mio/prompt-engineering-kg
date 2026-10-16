@@ -1,0 +1,153 @@
+name: "Pages · build → gate → deploy（ADR-003 三 job 契约）"
+
+# ★ 本仓与同类卫星站**有意偏离**（见 `04-prototype/README.md` §六）：
+#   同类站走 legacy 分支发布（`main /` 为发布根）；本仓是**双面仓**，发布面在其下的
+#   `04-prototype/`，而 **legacy 分支发布不支持子目录** ⇒ 必须走本工作流的 artifact 通道。
+#
+# ★ 三条约束（照 ADR-003 三 job 契约）：
+#     ① `deploy.needs` 指向 `gate`（⛔ 不得让 deploy 只依赖 build）；
+#     ② 门控在**部署产物上传之前**运行；
+#     ③ deploy 阶段不得有任何写回仓的通道（无 `contents: write` / 无 `git push`）。
+# ★ `.nojekyll`：仓内已提交一份（保证 `04-prototype/` 直接可用），build job **再** `touch` 一次
+#   （满足「谁产出发布目录、谁负责 `.nojekyll`」）。
+# ★ 发布目录按站显式参数化：`04-prototype`（⛔ 不把仓根当发布根 —— 仓根含生成器与过程留档）。
+#
+# ★ 为什么 gate 也重跑一遍生成器（⛔ 不是重复劳动、也不是「部署已生成的产物」）：
+#   `gate_prototype.py` 会从 `SITE_ROOT`（＝ `04-prototype/`）读产物，而上传的 artifact 落在仓外
+#   `_site/`。两个选择：① 把 `_site/` 拷回 `04-prototype/`；② 在 gate job 里按同一命令**再生成一遍**。
+#   选 ② 的理由：生成器是**幂等**的（`build` 已断言二次比对干净），两 job 在**同一 commit** 上
+#   独立产出同一批字节 ⇒ 这同时是一次**跨环境的幂等实测**；而选 ① 会让 gate 判「被搬运过的产物」，
+#   反而离开「判据读本站产物」的口径。deploy 阶段仍取 **build 上传的那份 artifact**（⛔ 不用 gate 的临时产物）。
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+  schedule:
+    # 每周一 03:17 UTC 跑一次全量档（含渲染证据与几何复算的对象）
+    - cron: "17 3 * * 1"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pages-prompt-engineering-kg
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v4
+
+      - name: setup python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: 安装 graphviz 与 CJK 字体（出图判据 P36 与生成器需要）
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq graphviz fonts-noto-cjk
+
+      - name: 生成发布面（幂等落盘）
+        working-directory: 04-prototype
+        run: |
+          python3 16-checkpoint/build-all.py --dry-run
+          python3 16-checkpoint/build-all.py --write
+
+      - name: 产出 .nojekyll（谁产出发布目录谁负责）
+        working-directory: 04-prototype
+        run: touch .nojekyll
+
+      - name: 装配发布目录（★ 显式对象集：⛔ 不整目录 cp —— 生成器/门控/台账不进发布面）
+        run: |
+          rm -rf _site
+          mkdir -p _site
+          cd 04-prototype
+          for d in assets 10-dag-data 11-node-pages 12-groups 13-interactive 14-views 15-md; do
+            cp -a "$d" ../_site/
+          done
+          for f in index.html favicon.svg og.png robots.txt sitemap.xml .nojekyll; do
+            cp -a "$f" ../_site/
+          done
+          echo "--- 发布面根清单 ---"
+          ls -a ../_site
+          echo "--- 页数 ---"
+          find ../_site -name '*.html' | wc -l
+
+      - name: 覆盖完备性（发布面 ≠ 仓根；⛔ 生成器与过程留档一个都不得进）
+        run: |
+          bad=0
+          for p in 16-checkpoint PUBLISH-STATE.json README.md; do
+            if [ -e "_site/$p" ]; then echo "FAIL 发布面出现了 $p"; bad=1; fi
+          done
+          if [ ! -f _site/.nojekyll ]; then echo "FAIL 发布面缺 .nojekyll"; bad=1; fi
+          for f in index.html favicon.svg og.png robots.txt sitemap.xml; do
+            if [ ! -e "_site/$f" ]; then echo "FAIL 发布面缺 $f"; bad=1; fi
+          done
+          exit $bad
+
+      - name: 上传构建产物（此时**尚未**部署）
+        uses: actions/upload-artifact@v4
+        with:
+          name: site-prompt-engineering-kg
+          path: _site
+          include-hidden-files: true
+
+  gate:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout（门控脚本随仓版本化）
+        uses: actions/checkout@v4
+
+      - name: setup python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: 安装 graphviz 与 CJK 字体（门控的探针会真跑生成链路若干次）
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq graphviz fonts-noto-cjk
+
+      - name: 按同一命令重新生成（见本文件头「为什么 gate 也重跑一遍生成器」）
+        working-directory: 04-prototype
+        run: |
+          python3 16-checkpoint/build-all.py --write
+          touch .nojekyll
+
+      - name: 门控（main 的 push 跑 fast 档；schedule / 手动 / 其它分支一律 full 档）
+        working-directory: 04-prototype/16-checkpoint
+        run: |
+          if [ "${{ github.event_name }}" = "push" ]; then
+            bash _ci_gate.sh fast
+          else
+            bash _ci_gate.sh full
+          fi
+
+  deploy:
+    needs: gate
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: 取回已过门控的产物
+        uses: actions/download-artifact@v4
+        with:
+          name: site-prompt-engineering-kg
+          path: _site
+
+      - name: configure pages
+        uses: actions/configure-pages@v5
+
+      - name: upload pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+      - name: deploy to github pages
+        id: deployment
+        uses: actions/deploy-pages@v4

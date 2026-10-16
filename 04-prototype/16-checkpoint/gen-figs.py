@@ -938,8 +938,28 @@ def all_figs():
 
 # ---------------------------------------------------------------- 后处理
 
-def postprocess(svg):
-    """确定性后处理五步；⛔ 任一步骤不得依赖时钟/环境。"""
+def _xml_attr(text):
+    """属性值转义（`&` 先转，⛔ 否则会把后面转出来的 `&` 再转一次）。"""
+    return (text.replace("&", "&amp;").replace('"', "&quot;")
+            .replace("<", "&lt;").replace(">", "&gt;"))
+
+
+def _a11y_name(caption, limit=80):
+    """由图注派生图件的**可访问名**：取首句（到第一个句末标点），超长再截到 `limit`。
+
+    ★ 为什么取首句而不是整段图注：整段图注就在同一页的 `<figcaption>` 里，读屏会把两处各念一遍。
+      首句是这条图的**结论**，既够短又够判「这条图在讲什么」。
+    """
+    t = re.sub(r"\s+", " ", (caption or "").strip())
+    for mk in ("。", "；"):
+        i = t.find(mk)
+        if 0 < i <= limit:
+            return t[: i + 1]
+    return t[:limit]
+
+
+def postprocess(svg, caption=""):
+    """确定性后处理六步；⛔ 任一步骤不得依赖时钟/环境。"""
     s = svg
     s = re.sub(r"<\?xml[^>]*\?>\s*", "", s)
     s = re.sub(r"<!DOCTYPE[^>]*>\s*", "", s)
@@ -960,8 +980,20 @@ def postprocess(svg):
     s = re.sub(r'#([0-9a-fA-F]{6})\b', sub_hex, s)
     # ⑤ 字体栈统一
     s = re.sub(r'font-family="[^"]*"', 'font-family="%s"' % FONT_STACK.replace('"', "'"), s)
-    # 补 a11y 与响应式钩子（★ 去尺寸后 `<svg` 后面跟的是换行 ⇒ ⛔ 不能按 `<svg ` 匹配）
-    s = re.sub(r"<svg\b", '<svg class="fig__svg" role="img"', s, count=1)
+    # ⑥ 补 a11y 与响应式钩子（★ 去尺寸后 `<svg` 后面跟的是换行 ⇒ ⛔ 不能按 `<svg ` 匹配）
+    #    ★ 2026-10-16 第 8 轮（SH2 / gate_a11y 的 A4）：`role="img"` **必须**带可访问名，
+    #      否则读屏只会念出「图像」——而 Graphviz 自动写的那条 `<title>` 内容是**图件 id**
+    #      （如 `fig`），既不是结论也是无信息。⇒ 用图注首句作 `aria-label`，
+    #      并把 Graphviz 的那条无信息 `<title>` 一并去掉（⛔ 不留「有名字但名字无用」的中间态）。
+    a11y = _a11y_name(caption)
+    # ★ 必须按 XML 属性转义：本站的图注里**真的有 `>`**（如 `系统 > 开发者 > 用户`）——
+    #   未转义时属性值在第一个 `>` 处被截断（本轮实测：`aria-label="层级图：系统 ` 就断了），
+    #   属「看起来写了 a11y、实际是半句」的静默缺陷。`>` 转义为 `&gt;` 属合法 XML。
+    s = re.sub(r"<svg\b", '<svg class="fig__svg" role="img" aria-label="%s"'
+               % _xml_attr(a11y), s, count=1)
+    #    Graphviz 给外层图的 `<title>` 内容是**字面量 `fig`**（既不是 fid 也不是题名）⇒ 无信息，
+    #    去掉它；⛔ 不误伤节点级 `<title>`（那些值是节点标签，如 `L1`）。
+    s = re.sub(r"<title>fig</title>", "", s, count=1)
     return s.strip() + "\n"
 
 
@@ -1004,18 +1036,18 @@ def check_spec(fid, svg):
     return rendered_h
 
 
-def render(dot_src):
+def render(dot_src, caption=""):
     p = subprocess.run(["dot", "-Tsvg"], input=dot_src, capture_output=True, text=True, timeout=120)
     if p.returncode != 0:
         raise SystemExit("[FAIL] dot 渲染失败：%s" % p.stderr[:400])
-    return postprocess(p.stdout)
+    return postprocess(p.stdout, caption)
 
 
 def build():
     out = {}
     for fid, spec in sorted(all_figs().items()):
         out[fid + ".dot"] = spec["dot"].strip() + "\n"
-        svg = render(spec["dot"])
+        svg = render(spec["dot"], spec.get("caption", ""))
         check_spec(fid, svg)
         out[fid + ".svg"] = svg
     return out

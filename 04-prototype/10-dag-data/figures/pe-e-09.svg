@@ -1,7 +1,7 @@
-<svg class="fig__svg" role="img"
+<svg class="fig__svg" role="img" aria-label="版本—回归图：提示词版本与评测基线必须成对留档、换模型必须重建基线，以及「跑全量」「同时跟踪成本与延迟」两条回归纪律。"
  viewBox="0.00 0.00 652.50 322.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 <g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 318)">
-<title>fig</title>
+
 <g id="node1" class="node">
 <title>P1</title>
 <path fill="var(--brand-soft)" stroke="var(--brand-primary)" d="M110,-309C110,-309 12,-309 12,-309 6,-309 0,-303 0,-297 0,-297 0,-285 0,-285 0,-279 6,-273 12,-273 12,-273 110,-273 110,-273 116,-273 122,-279 122,-285 122,-285 122,-297 122,-297 122,-303 116,-309 110,-309"/>

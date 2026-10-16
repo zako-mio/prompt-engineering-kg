@@ -1,7 +1,7 @@
-<svg class="fig__svg" role="img"
+<svg class="fig__svg" role="img" aria-label="时间轴：三代范式的重心迁移——三代是叠加而非替代，判断投入方向的依据是当前瓶颈落在哪一代。"
  viewBox="0.00 0.00 676.00 68.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 <g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 64)">
-<title>fig</title>
+
 <g id="node1" class="node">
 <title>g1</title>
 <path fill="var(--surface-raised)" stroke="var(--border-line)" d="M161,-60C161,-60 12,-60 12,-60 6,-60 0,-54 0,-48 0,-48 0,-12 0,-12 0,-6 6,0 12,0 12,0 161,0 161,0 167,0 173,-6 173,-12 173,-12 173,-48 173,-48 173,-54 167,-60 161,-60"/>

@@ -137,7 +137,8 @@ def _incoming_blocks(incoming, groups_by_id, node_group, page_exists):
     return C.kv_blocks_html(blocks)
 
 
-def group_page(g, members, groups, edges, page_exists, node_group, groups_by_id, grp_figs):
+def group_page(g, members, groups, edges, page_exists, node_group, groups_by_id, grp_figs,
+               page_rel=None):
     gid = g["id"]
     nxt = C.reveal_seq()
     cn_name, en_name = C.split_name(g["name"], g.get("en", ""))
@@ -190,7 +191,10 @@ def group_page(g, members, groups, edges, page_exists, node_group, groups_by_id,
     incoming = [e for e in edges if e["target"] in mem_ids and e["source"] not in mem_ids]
     body.append(_incoming_blocks(incoming, groups_by_id, node_group, page_exists))
     return C.page_shell(BASE, "group", gid, "%s %s" % (gid, g["name"]), "\n".join(body),
-                        nav_extra=[(BASE + C.DIR_GROUPS + "/index.html", "知识分组索引")])
+                        nav_extra=[(BASE + C.DIR_GROUPS + "/index.html", "知识分组索引")],
+                        # ★ SH4：description 取**本页**页首导读的结论句（与 `.read-map` 同源）
+                        meta_desc=C.lead_sentence(g.get("intro", "")),
+                        page_rel=page_rel or C._derive_page_rel("group", gid))
 
 
 def _layer_blocks(members, edges_all, page_exists, nxt):
@@ -211,7 +215,7 @@ def _layer_blocks(members, edges_all, page_exists, nxt):
     return "\n".join(out)
 
 
-def index_page(groups, nodes, edges, page_exists):
+def index_page(groups, nodes, edges, page_exists, page_rel=None):
     nxt = C.reveal_seq()
     body = []
     body.append(C.crumbs(BASE, [("首页", "index.html"), ("知识分组", None)]))
@@ -248,7 +252,10 @@ def index_page(groups, nodes, edges, page_exists):
     body.append(C.prose_html(GROUPS_INDEX_HOWTO))
     body.append('<p class="lede">入口：<a href="%s">学习路径</a>（按依赖顺序读）。</p>'
                 % C.esc(BASE + C.DIR_VIEWS + "/01-learning-path.html"))
-    return C.page_shell(BASE, "group", "GROUPS-INDEX", "知识分组", "\n".join(body))
+    return C.page_shell(BASE, "group", "GROUPS-INDEX", "知识分组", "\n".join(body),
+                        # ★ SH4：description 取本页导语首句（与 `.read-map` 同源）
+                        meta_desc=C.lead_sentence(groups_index_intro(groups)),
+                        page_rel=page_rel or C._derive_page_rel("group", "GROUPS-INDEX"))
 
 
 def _same_group(e, nodes):
@@ -266,12 +273,15 @@ def generate(root=None):
     page_exists = {n["id"] for n in nodes if n["content_status"] == "complete"}
     node_group = {n["id"]: n["group"] for n in nodes}
     groups_by_id = {g["id"]: g for g in groups}
-    out = {"%s/index.html" % C.DIR_GROUPS: index_page(groups, nodes, edges, page_exists)}
+    # ★ SH4：把**产物路径本身**传给页面构建器 ⇒ canonical 与产物同源（⛔ 不在别处另推一份）
+    index_rel = "%s/index.html" % C.DIR_GROUPS
+    out = {index_rel: index_page(groups, nodes, edges, page_exists, page_rel=index_rel)}
     grp_figs = F.group_figs(nodes, groups, edges)     # ★ 单源：caption 与 gen-figs 出图同源
     for g in groups:
         mem = [n for n in nodes if n["group"] == g["id"]]
-        out["%s/%s.html" % (C.DIR_GROUPS, g["id"].lower())] = group_page(
-            g, mem, groups, edges, page_exists, node_group, groups_by_id, grp_figs)
+        rel = "%s/%s.html" % (C.DIR_GROUPS, g["id"].lower())
+        out[rel] = group_page(g, mem, groups, edges, page_exists, node_group, groups_by_id,
+                              grp_figs, page_rel=rel)
     return out
 
 

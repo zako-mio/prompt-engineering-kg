@@ -1,7 +1,7 @@
-<svg class="fig__svg" role="img"
+<svg class="fig__svg" role="img" aria-label="收益曲线图：示例从 0 到 3 到 10 的边际收益，以及它在推理模型上发生的符号反转。"
  viewBox="0.00 0.00 490.00 212.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 <g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 208)">
-<title>fig</title>
+
 <g id="node1" class="node">
 <title>Z</title>
 <path fill="var(--brand-soft)" stroke="var(--brand-primary)" d="M197,-204C197,-204 12,-204 12,-204 6,-204 0,-198 0,-192 0,-192 0,-180 0,-180 0,-174 6,-168 12,-168 12,-168 197,-168 197,-168 203,-168 209,-174 209,-180 209,-180 209,-192 209,-192 209,-198 203,-204 197,-204"/>

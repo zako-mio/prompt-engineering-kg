@@ -1,7 +1,7 @@
-<svg class="fig__svg" role="img"
+<svg class="fig__svg" role="img" aria-label="循环图：ReAct 的「思考—行动—观察」三步回路，三条现行实现路径，以及四类失效计数与轮数上限。"
  viewBox="0.00 0.00 718.00 188.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 <g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 184)">
-<title>fig</title>
+
 <g id="node1" class="node">
 <title>T</title>
 <path fill="var(--brand-soft)" stroke="var(--brand-primary)" d="M93,-108C93,-108 12,-108 12,-108 6,-108 0,-102 0,-96 0,-96 0,-60 0,-60 0,-54 6,-48 12,-48 12,-48 93,-48 93,-48 99,-48 105,-54 105,-60 105,-60 105,-96 105,-96 105,-102 99,-108 93,-108"/>

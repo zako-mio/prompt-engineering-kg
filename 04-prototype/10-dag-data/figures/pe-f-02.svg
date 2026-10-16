@@ -1,7 +1,7 @@
-<svg class="fig__svg" role="img"
+<svg class="fig__svg" role="img" aria-label="分层图：三层的稳定性与特权递减，以及「缓存命中面」恰好切在稳定前缀与易变后缀之间。"
  viewBox="0.00 0.00 548.50 284.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 <g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 280)">
-<title>fig</title>
+
 <g id="node1" class="node">
 <title>L1</title>
 <path fill="var(--brand-soft)" stroke="var(--brand-primary)" d="M207,-276C207,-276 12,-276 12,-276 6,-276 0,-270 0,-264 0,-264 0,-228 0,-228 0,-222 6,-216 12,-216 12,-216 207,-216 207,-216 213,-216 219,-222 219,-228 219,-228 219,-264 219,-264 219,-270 213,-276 207,-276"/>

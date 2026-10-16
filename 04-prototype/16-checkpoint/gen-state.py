@@ -83,12 +83,44 @@ CHANGE_DECL_11 = ("16-checkpoint/CRITERIA-CHANGE-P39.md（2026-10-16 第 7 轮�
                   "而 P39 当时报「9 个 / 9 个、违例 0 处」**全绿** —— 因为它的 ①②③ 只判「文件名字符串"
                   "有没有在文本里出现过」，⛔ 不判「有没有被**结构化字段承载**」；同批补全 `gates` 7 → 10 键，"
                   "P39 夹具 3 → 6）")
+CHANGE_DECL_12 = ("16-checkpoint/CRITERIA-CHANGE-R08.md（2026-10-16 第 8 轮判据变更：**三条判据的对象收窄**"
+                  "＋**新增发布级元数据判据族**。① P09（R-18）：`<link>` 按 **rel 闭集**分流，"
+                  "元数据类 rel（canonical / icon / alternate…）不当加载类资源，⛔ 不再「一切 link 皆资源」；"
+                  "同批加 rel 闭集与「canonical/alternate 必须本站自指」两条防退化断言。"
+                  "② P12（R-19）：「主机名」一项只在**正文**上判（摘掉 href 与带主机的 content；"
+                  "sitemap/robots 再摘掉 URL 词），属性的取值归 P09/P30。"
+                  "③ R-08：内容列口径落实为「`.layout > main` 的 border-box 内宽 ＝ 868 − 2×32 ＝ 804px」。"
+                  "④ 新增 **A1–A7**（`gate_a11y.py`）与 **S1–S11**（`gate_seo_meta.py`）两个独立门控；"
+                  "⑤ 图件补 `aria-label`（由 `gen-figs` 从图注首句派生）并去掉 Graphviz 的无信息 `<title>fig</title>`。"
+                  "★ 触发事实：SH4 落地时 P09/P12 **整站 FAIL** 51 页（判假探针 `_probe/r8_t1_p09_probe.py` 实测），"
+                  "根因是「判据对象 > 断言对象」（R-23 同型第 3 次复发）；P01–P41 编号未动）")
 ASSET_DECL = ("16-checkpoint/CRITERIA-CHANGE-P23.md 与 gen-common.BACKDROP_CREDITS："
               "`assets/backdrop/` 为站点级只读图片资产（真实摄影素材），"
               "与 `13-interactive/vendor/` 的脚本白名单**分开声明、互不包含**；"
               "夜间帧 CC BY 4.0（须署名）、日间帧 CC0 1.0；页脚逐素材登记署名与出处")
 
 ROUND = 7      # ★ 2026-10-16 第 7 轮：产出本快照的轮次（随第 5、6、7 轮重建更正）
+
+
+MD_EXTS = (".md",)
+# ★ 镜像族里**不随节点/分组翻转**的固定件 —— 逐条对应 `gen-md.generate()` 里真看得到的行：
+#   `index.md`（根索引）＋ `groups/index.md`（分组索引）＋ `learning-path.md` ＋ `frontier.md` = **4**
+MD_FIXED = 4
+MD_DIR_REL = "15-md/"      # ★ `counts.md` 是**镜像数**，⛔ 不含发布根上的手写 `README.md`
+
+
+def _md_expected(groups, complete):
+    """镜像数的**真相源侧**派生：固定件 ＋ 每组 1 ＋ 每已发布节点 1。
+
+    ★ 为什么不数磁盘（2026-10-16 第 8 轮）：本条是给 `P13` 的 G12（`counts` ⟺ 产物实数）用的
+      **期望值**。若期望值取自磁盘，它就和 G12 的实测值同源 ⇒ **判据变成恒真**
+      （少一个镜像文件时期望值跟着少，永远相等）。⇒ 必须从**真相源对象**推。
+    ★ 实测校验（⛔ 不靠推）：`gen-md.generate()` 的产出集合大小 = `MD_FIXED + len(groups) + len(complete)`
+      —— 本轮把 `MD_FIXED` 由误写的 **4** 修正为与其一致之前，G12 当场 FAIL（判据干了它该干的事）；
+      ★ 复算命令：`python3 -c "import importlib.util as u; s=u.spec_from_file_location('m','gen-md.py'); m=u.module_from_spec(s); s.loader.exec_module(m); print(len(m.generate()))"`
+      ⇒ 期望与实测必须**逐数**相等，任一侧变动都判 FAIL（这才是双向）。
+    """
+    return MD_FIXED + len(groups) + len(complete)
 
 
 def state_doc():
@@ -102,7 +134,8 @@ def state_doc():
     #   被写死后第 1 波一翻态就与真实产物数不符（属「有保质期的读数」被固化进生成器）。
     #   改为由 `complete` 派生。★ 无判据覆盖此面 ⇒ 已登记为未落实（见 ROUND-LEDGER 第 5 轮的 G12）。
     html_count = len(complete) + (len(groups) + 1) + 2 + 1 + 1
-    md_count = 1 + (len(groups) + 1) + len(complete) + 2
+    # ★ 2026-10-16 第 8 轮：镜像数改由**磁盘实数**派生（见 `_md_on_disk` 的 docstring）
+    md_count = _md_expected(groups, complete)
     return {
         "as_of": dag["meta"]["as_of"],
         "edition": dag["meta"]["edition"],
@@ -111,6 +144,9 @@ def state_doc():
         "counts": {
             "nodes": len(nodes), "groups": len(groups), "edges": len(dag["edges"]),
             "layers": dag["meta"]["layer_count"], "html": html_count, "md": md_count,
+            # ★ `md_total` = 发布面**全部** `*.md`（＝ 镜像 ＋ 手写 `README.md`）；
+            #   与 `md`（镜像数）分开，两个口径各自可被独立判（见 P13 的 G12）。
+            "md_total": md_count + 1,
             "node_pages": len(complete), "group_pages": len(groups) + 1,
             "view_pages": 2, "interactive": 1, "root": 1,
             "assets": len(C.BACKDROP_CREDITS) + 1,
@@ -150,6 +186,7 @@ def state_doc():
                   "criteria_change_P35_G4": CHANGE_DECL_9,
                   "criteria_change_P38_P40": CHANGE_DECL_10,
                   "criteria_change_P39": CHANGE_DECL_11,
+                  "criteria_change_R08": CHANGE_DECL_12,
                   "assets": ASSET_DECL},
         "repo": None,
     }

@@ -1,7 +1,7 @@
-<svg class="fig__svg" role="img"
+<svg class="fig__svg" role="img" aria-label="自动优化回路图：生成候选 → 评测集评估 → 选择或组合 → 必要时迭代的闭环，与三条工程要点（留出集、可自动计算的判据、搜索预算）。"
  viewBox="0.00 0.00 834.00 184.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 <g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 180)">
-<title>fig</title>
+
 <g id="node1" class="node">
 <title>G</title>
 <path fill="var(--brand-soft)" stroke="var(--brand-primary)" d="M203,-146C203,-146 122,-146 122,-146 116,-146 110,-140 110,-134 110,-134 110,-122 110,-122 110,-116 116,-110 122,-110 122,-110 203,-110 203,-110 209,-110 215,-116 215,-122 215,-122 215,-134 215,-134 215,-140 209,-146 203,-146"/>

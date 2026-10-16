@@ -116,7 +116,7 @@ def _missing(what="本轮未写。"):
     return '<p class="lede">%s</p>' % C.esc(what)
 
 
-def node_page(node, groups_by_id, page_exists, glossary):
+def node_page(node, groups_by_id, page_exists, glossary, page_rel=None):
     gid = node["group"]
     g = groups_by_id[gid]
     nid = node["id"]
@@ -179,7 +179,11 @@ def node_page(node, groups_by_id, page_exists, glossary):
                 % C.esc(BASE + C.DIR_INTERACTIVE + "/index.html#node-" + nid))
 
     return C.page_shell(BASE, "node", nid, cn_name, "\n".join(body),
-                        nav_extra=[(BASE + C.group_page_rel(gid), g["name"])])
+                        nav_extra=[(BASE + C.group_page_rel(gid), g["name"])],
+                        # ★ 2026-10-16 第 8 轮（SH4）：description 取**本页**页首导读的结论句
+                        #   （＝已有结论，⛔ 不新写一句给搜索引擎看的话，避免同一页两种口径）
+                        meta_desc=node.get("summary", ""),
+                        page_rel=page_rel or C._derive_page_rel("node", nid))
 
 
 def generate(root=None):
@@ -192,8 +196,10 @@ def generate(root=None):
     page_exists = {n["id"] for n in published}
     out = {}
     for n in sorted(published, key=lambda x: x["id"]):
-        out["%s/%s.html" % (C.DIR_NODES, C.id_slug(n["id"]))] = node_page(
-            n, groups_by_id, page_exists, data["glossary"])
+        rel = "%s/%s.html" % (C.DIR_NODES, C.id_slug(n["id"]))
+        # ★ 2026-10-16 第 8 轮（SH4）：把**产物路径本身**传给页面构建器 ⇒ canonical 与产物同源，
+        #   ⛔ 不在 page_shell 里另推一份（同一条信息两处各存一份是本站的老毛病）。
+        out[rel] = node_page(n, groups_by_id, page_exists, data["glossary"], page_rel=rel)
     return out
 
 

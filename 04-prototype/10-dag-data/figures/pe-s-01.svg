@@ -1,7 +1,7 @@
-<svg class="fig__svg" role="img"
+<svg class="fig__svg" role="img" aria-label="机制图：约束解码在生成期屏蔽非法路径——从概率分布到「过滤后再取样」，与「生成后校验」的位置对照。"
  viewBox="0.00 0.00 634.00 232.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 <g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 228)">
-<title>fig</title>
+
 <g id="node1" class="node">
 <title>A</title>
 <path fill="var(--brand-soft)" stroke="var(--brand-primary)" d="M144,-161C144,-161 12,-161 12,-161 6,-161 0,-155 0,-149 0,-149 0,-127 0,-127 0,-121 6,-115 12,-115 12,-115 144,-115 144,-115 150,-115 156,-121 156,-127 156,-127 156,-149 156,-149 156,-155 150,-161 144,-161"/>

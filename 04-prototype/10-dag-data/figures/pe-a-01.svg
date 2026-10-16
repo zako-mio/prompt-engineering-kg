@@ -1,7 +1,7 @@
-<svg class="fig__svg" role="img"
+<svg class="fig__svg" role="img" aria-label="层级图：系统 &gt; 开发者 &gt; 用户 &gt; 外部内容的特权递减，三层实现路径（提示 / 训练 / 架构），以及「降低而非消除、必须配合权限收窄」。"
  viewBox="0.00 0.00 622.00 321.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 <g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 317)">
-<title>fig</title>
+
 <g id="node1" class="node">
 <title>L1</title>
 <path fill="var(--brand-soft)" stroke="var(--brand-primary)" d="M149,-313C149,-313 30,-313 30,-313 24,-313 18,-307 18,-301 18,-301 18,-279 18,-279 18,-273 24,-267 30,-267 30,-267 149,-267 149,-267 155,-267 161,-273 161,-279 161,-279 161,-301 161,-301 161,-307 155,-313 149,-313"/>

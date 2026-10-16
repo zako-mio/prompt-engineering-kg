@@ -6,6 +6,13 @@
 <title>不可信内容的标注与隔离 · 新一代提示词工程 · 知识全景图</title>
 <!-- base: ../ (相对本站根) -->
 <!-- template: shell-v2 -->
+<meta name="description" content="不可信内容的处置由标注、声明、收窄、校验四步配套完成，任一步缺失都会让防线出现缺口。处置顺序是先给外部内容写明来源与不可信属性，再交代只可引用的处理规则，随后把高风险步骤放进权限受限的子流程并加确认，最后用输出校验拦下越界结果。标注体系要模板化并版本化，不可见字符要在入库前清洗。由于提示层不是安全边界，这套办法只能降…">
+<meta property="og:type" content="article">
+<meta property="og:title" content="不可信内容的标注与隔离">
+<meta property="og:description" content="不可信内容的处置由标注、声明、收窄、校验四步配套完成，任一步缺失都会让防线出现缺口。处置顺序是先给外部内容写明来源与不可信属性，再交代只可引用的处理规则，随后把高风险步骤放进权限受限的子流程并加确认，最后用输出校验拦下越界结果。标注体系要模板化并版本化，不可见字符要在入库前清洗。由于提示层不是安全边界，这套办法只能降…">
+<meta property="og:url" content="https://zako-mio.github.io/prompt-engineering-kg/11-node-pages/pe-a-06.html">
+<meta property="og:image" content="https://zako-mio.github.io/prompt-engineering-kg/og.png">
+<link rel="canonical" href="https://zako-mio.github.io/prompt-engineering-kg/11-node-pages/pe-a-06.html">
 <meta name="theme-color" content="#f4f7fc" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#060a14" media="(prefers-color-scheme: dark)">
 <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
@@ -705,10 +712,10 @@ html.js-motion [data-reveal].is-in{
 <p class="meta-line"><span class="nid">PE-A-06</span><span class="badge badge--ok">内容已写满</span><a class="gchip" href="../12-groups/g06.html"><span class="gseq">G06</span><span class="gchip__name">安全与鲁棒性</span></a><span>第 18 层</span></p>
 <div class="tag-row" aria-label="标签"><span class="tier">安全</span><span class="tier">不可信内容</span><span class="tier">隔离</span></div>
 <section class="read-map" aria-label="本页导读" data-reveal="1" style="--i:0"><p class="read-map__label">一句话结论</p><p class="read-map__claim">不可信内容的处置由标注、声明、收窄、校验四步配套完成，任一步缺失都会让防线出现缺口。处置顺序是先给外部内容写明来源与不可信属性，再交代只可引用的处理规则，随后把高风险步骤放进权限受限的子流程并加确认，最后用输出校验拦下越界结果。标注体系要模板化并版本化，不可见字符要在入库前清洗。由于提示层不是安全边界，这套办法只能降低概率，必须与最小权限一同使用。</p><p class="read-map__label">本页结构（可跳转）</p><ul class="read-map__nav"><li><a href="#sec-why">01 为什么需要它</a></li><li><a href="#sec-intro">02 机制说明</a></li><li><a href="#sec-when">03 何时该用 / 何时不该用</a></li><li><a href="#sec-lab">04 实验台</a></li><li><a href="#sec-evidence">05 证据</a></li><li><a href="#sec-terms">06 术语</a></li><li><a href="#sec-pitfalls">07 失效模式</a></li><li><a href="#sec-rel">08 在本站知识结构中的位置</a></li></ul></section>
-<figure class="fig" id="fig-pe-a-06" data-reveal="1" style="--i:1"><svg class="fig__svg" role="img"
+<figure class="fig" id="fig-pe-a-06" data-reveal="1" style="--i:1"><svg class="fig__svg" role="img" aria-label="四步隔离图：标注 / 声明 / 收窄 / 校验四个动作，以及「提示层的标注不构成安全边界、权限收窄才是关键」的分界。"
  viewBox="0.00 0.00 609.00 363.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 <g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 359)">
-<title>fig</title>
+
 <g id="node1" class="node">
 <title>T</title>
 <path fill="var(--brand-soft)" stroke="var(--brand-primary)" d="M157,-355C157,-355 12,-355 12,-355 6,-355 0,-349 0,-343 0,-343 0,-307 0,-307 0,-301 6,-295 12,-295 12,-295 157,-295 157,-295 163,-295 169,-301 169,-307 169,-307 169,-343 169,-343 169,-349 163,-355 157,-355"/>

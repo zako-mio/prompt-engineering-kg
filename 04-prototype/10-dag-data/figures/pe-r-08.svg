@@ -1,7 +1,7 @@
-<svg class="fig__svg" role="img"
+<svg class="fig__svg" role="img" aria-label="强度阶梯图：自评 / 独立评估 / 外部信号驱动三种反思来源的可靠性递增，与纯自评对事实性错误的失灵机制。"
  viewBox="0.00 0.00 799.00 205.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 <g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 201)">
-<title>fig</title>
+
 <g id="node1" class="node">
 <title>S1</title>
 <path fill="var(--surface-raised)" stroke="var(--danger)" d="M150,-197C150,-197 12,-197 12,-197 6,-197 0,-191 0,-185 0,-185 0,-149 0,-149 0,-143 6,-137 12,-137 12,-137 150,-137 150,-137 156,-137 162,-143 162,-149 162,-149 162,-185 162,-185 162,-191 156,-197 150,-197"/>

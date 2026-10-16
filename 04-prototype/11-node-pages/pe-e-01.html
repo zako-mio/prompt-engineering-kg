@@ -6,6 +6,13 @@
 <title>为什么必须先建评测集 · 新一代提示词工程 · 知识全景图</title>
 <!-- base: ../ (相对本站根) -->
 <!-- template: shell-v2 -->
+<meta name="description" content="先把判据与样本落成可复跑的评测集，再让每次提示词改动同基线相比，并随故障增补。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="为什么必须先建评测集">
+<meta property="og:description" content="先把判据与样本落成可复跑的评测集，再让每次提示词改动同基线相比，并随故障增补。">
+<meta property="og:url" content="https://zako-mio.github.io/prompt-engineering-kg/11-node-pages/pe-e-01.html">
+<meta property="og:image" content="https://zako-mio.github.io/prompt-engineering-kg/og.png">
+<link rel="canonical" href="https://zako-mio.github.io/prompt-engineering-kg/11-node-pages/pe-e-01.html">
 <meta name="theme-color" content="#f4f7fc" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#060a14" media="(prefers-color-scheme: dark)">
 <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
@@ -705,10 +712,10 @@ html.js-motion [data-reveal].is-in{
 <p class="meta-line"><span class="nid">PE-E-01</span><span class="badge badge--ok">内容已写满</span><a class="gchip" href="../12-groups/g05.html"><span class="gseq">G05</span><span class="gchip__name">评测与自动优化</span></a><span>第 10 层</span></p>
 <div class="tag-row" aria-label="标签"><span class="tier">评测</span><span class="tier">评测集</span><span class="tier">判据</span></div>
 <section class="read-map" aria-label="本页导读" data-reveal="1" style="--i:0"><p class="read-map__label">一句话结论</p><p class="read-map__claim">先把判据与样本落成可复跑的评测集，再让每次提示词改动同基线相比，并随故障增补。</p><p class="read-map__label">本页结构（可跳转）</p><ul class="read-map__nav"><li><a href="#sec-why">01 为什么需要它</a></li><li><a href="#sec-intro">02 机制说明</a></li><li><a href="#sec-when">03 何时该用 / 何时不该用</a></li><li><a href="#sec-lab">04 实验台</a></li><li><a href="#sec-evidence">05 证据</a></li><li><a href="#sec-terms">06 术语</a></li><li><a href="#sec-pitfalls">07 失效模式</a></li><li><a href="#sec-rel">08 在本站知识结构中的位置</a></li></ul></section>
-<figure class="fig" id="fig-pe-e-01" data-reveal="1" style="--i:1"><svg class="fig__svg" role="img"
+<figure class="fig" id="fig-pe-e-01" data-reveal="1" style="--i:1"><svg class="fig__svg" role="img" aria-label="三件套结构图：评测集的输入 / 期望输出 / 判据，两类判据的先后关系，以及按失败模式分层与版本化的两条组织要求。"
  viewBox="0.00 0.00 601.00 288.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 <g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 284)">
-<title>fig</title>
+
 <g id="node1" class="node">
 <title>I</title>
 <path fill="var(--brand-soft)" stroke="var(--brand-primary)" d="M83.5,-141C83.5,-141 21.5,-141 21.5,-141 15.5,-141 9.5,-135 9.5,-129 9.5,-129 9.5,-117 9.5,-117 9.5,-111 15.5,-105 21.5,-105 21.5,-105 83.5,-105 83.5,-105 89.5,-105 95.5,-111 95.5,-117 95.5,-117 95.5,-129 95.5,-129 95.5,-135 89.5,-141 83.5,-141"/>

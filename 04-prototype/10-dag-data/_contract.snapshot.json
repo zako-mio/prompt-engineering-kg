@@ -1,0 +1,420 @@
+{
+  "contract_version": "1.1.1",
+  "frozen_at": "2026-09-27",
+  "derived": {
+    "generator": "tools/derive_contract.py",
+    "source": "/home/zako-mio/opencode/archive/Mission-file/2026-09/0928-前端设计方法论建设/本体设计-雏形/05-值契约/value-contract.json",
+    "direction": "方法论值件 → 本件派生区（单向）：派生区由生成器写入，本件其余字段为手写面（生成器不得触碰）",
+    "regions": [
+      "roles.*.tier",
+      "roles.*.kind",
+      "roles.*",
+      "palettes.*.values.*.light",
+      "palettes.*.values.*.dark",
+      "palettes.*.values.*"
+    ],
+    "not_derived": [
+      "roles.*.purpose",
+      "usage_tiers",
+      "bindings",
+      "styles",
+      "intake",
+      "authority",
+      "derived"
+    ],
+    "rule": "⛔ 派生区勿手改：手改会被 `python3 tools/derive_contract.py --check` 判 FAIL（漂移）；改值一律改上游值件后跑 change_flow。派生失败语义为**拒写**（非零退出、零写入、不半途写入）。",
+    "source_note": "方法论值件是 roles[*].tier/kind ＋ role id 集 ＋ palettes[*].values 的**单一编辑点**（ADR-002／R5-DEC-11）；prose（roles[*].purpose）与 usage_tiers 整段仍在**本件手写**，不属派生区。",
+    "adr_ref": "ADR-002",
+    "boundary_ref": "BD-002"
+  },
+  "title": "前端 starter 共享令牌契约",
+  "purpose": "单一真相源：定义语义角色（role）→ 各栈令牌名 的绑定、用途档与对比度约束；由 tools/build_tokens.py 派生进四个模板，由 tools/check_starter.py 对账；roles[*].tier/kind＋role id 集＋palettes[*].values 这四类**派生区**由 tools/derive_contract.py 从上游方法论值件写入。",
+  "authority": {
+    "note": "本件是**角色词表 ＋ 用途档 ＋ 每栈绑定**的真相源；它不发明阈值，也不重述任何栈定位。",
+    "threshold_source": "~/opencode/archive/Mission-file/2026-09/0916-前端技术栈基线/adr/ADR-004.json 第 6/7/8 条",
+    "usage_spec": "~/opencode/archive/Mission-file/2026-09/0916-前端技术栈基线/TOKEN-USAGE-SPEC.md",
+    "value_source": "四个已验证目标工程的令牌层逐值抄录（逐条 provenance 见下），⛔ 不新增/不发明色值"
+  },
+  "usage_tiers": {
+    "body": {
+      "min_contrast": {
+        "light": 4.5,
+        "dark": 4.5
+      },
+      "allowed_use": "正文类（p/li/dd/dt/blockquote 内文本）与非正文类均可",
+      "gate": "hard"
+    },
+    "non-body": {
+      "min_contrast": {
+        "light": null,
+        "dark": null
+      },
+      "allowed_use": "⛔ 仅非正文类（表头 / 表单标签 / 图标旁说明 / 占位符 / 装饰性分隔）",
+      "gate": "report-only",
+      "note": "本档**不达标即不判**：其浅色实测低于 4.5:1 是已登记缺陷，本契约的处置是「限定用途」而非「放宽阈值」（与 TOKEN-USAGE-SPEC §2 同口径）。"
+    },
+    "non-text": {
+      "min_contrast": {
+        "light": null,
+        "dark": null
+      },
+      "allowed_use": "非文本元素（边框 / 底色 / 分隔线）",
+      "gate": "report-only"
+    }
+  },
+  "roles": {
+    "text.primary": {
+      "tier": "body",
+      "kind": "text",
+      "purpose": "主文字：标题与正文默认档"
+    },
+    "text.secondary": {
+      "tier": "body",
+      "kind": "text",
+      "purpose": "次要文字：正文类默认档 / 辅助说明"
+    },
+    "text.tertiary": {
+      "tier": "non-body",
+      "kind": "text",
+      "purpose": "三级灰：⛔ 仅非正文（表头/标签/图标/占位符）"
+    },
+    "link": {
+      "tier": "body",
+      "kind": "text",
+      "purpose": "链接文字（按页面底色计对比度）"
+    },
+    "brand.primary": {
+      "tier": "non-text",
+      "kind": "brand",
+      "purpose": "品牌主色（按钮底/选中态底，非文字对比度对象）"
+    },
+    "border.line": {
+      "tier": "non-text",
+      "kind": "border",
+      "purpose": "强分隔：表格线 / 输入框描边"
+    },
+    "border.subtle": {
+      "tier": "non-text",
+      "kind": "border",
+      "purpose": "弱分隔：容器描边"
+    },
+    "surface.page": {
+      "tier": "non-text",
+      "kind": "surface",
+      "purpose": "页面底色（对比度计算的参考背景）"
+    },
+    "surface.raised": {
+      "tier": "non-text",
+      "kind": "surface",
+      "purpose": "容器/卡片底色"
+    },
+    "surface.subtle": {
+      "tier": "non-text",
+      "kind": "surface",
+      "purpose": "次级底色：hover / 表头 / 代码块"
+    },
+    "surface.stripe": {
+      "tier": "non-text",
+      "kind": "surface",
+      "purpose": "斑马纹底色"
+    }
+  },
+  "palettes": {
+    "content": {
+      "family": "内容展示族（长文/文档/报告）",
+      "source": "experiments/content-ui/assets/M3-tokens.css",
+      "values": {
+        "text.primary": {
+          "light": "#16191d",
+          "dark": "#e3e6ea"
+        },
+        "text.secondary": {
+          "light": "#4a5058",
+          "dark": "#a9b3bd"
+        },
+        "link": {
+          "light": "#0b57d0",
+          "dark": "#8ab4f8"
+        },
+        "border.line": {
+          "light": "#d8dde3",
+          "dark": "#2f363d"
+        },
+        "surface.page": {
+          "light": "#ffffff",
+          "dark": "#14171a"
+        },
+        "surface.subtle": {
+          "light": "#f6f8fa",
+          "dark": "#1b2026"
+        },
+        "surface.stripe": {
+          "light": "#fbfcfd",
+          "dark": "#181d22"
+        }
+      }
+    },
+    "app": {
+      "family": "应用族 · Bootstrap / antd（hex 调色板）",
+      "source": "projects/exp-admin-a-bootstrap/assets/css/theme.css ＋ projects/exp-admin-b-antd/src/theme.ts",
+      "values": {
+        "text.primary": {
+          "light": "#141414",
+          "dark": "#e6e6e6"
+        },
+        "text.secondary": {
+          "light": "#595959",
+          "dark": "#a6a6a6"
+        },
+        "text.tertiary": {
+          "light": "#8c8c8c",
+          "dark": "#8c8c8c"
+        },
+        "brand.primary": {
+          "light": "#1677ff",
+          "dark": "#1677ff"
+        },
+        "border.line": {
+          "light": "#d9d9d9",
+          "dark": "#424242"
+        },
+        "border.subtle": {
+          "light": "#f0f0f0",
+          "dark": "#303030"
+        },
+        "surface.page": {
+          "light": "#f5f5f5",
+          "dark": "#141414"
+        },
+        "surface.raised": {
+          "light": "#ffffff",
+          "dark": "#1f1f1f"
+        },
+        "surface.subtle": {
+          "light": "#fafafa",
+          "dark": "#262626"
+        }
+      }
+    },
+    "app-oklch": {
+      "family": "应用族 · Tailwind 4 / shadcn（oklch 调色板）",
+      "source": "projects/exp-admin-c-antd/src/styles/globals.css",
+      "values": {
+        "text.primary": {
+          "light": "oklch(0.145 0 0)",
+          "dark": "oklch(0.985 0 0)"
+        },
+        "text.secondary": {
+          "light": "oklch(0.556 0 0)",
+          "dark": "oklch(0.708 0 0)"
+        },
+        "brand.primary": {
+          "light": "oklch(0.205 0 0)",
+          "dark": "oklch(0.922 0 0)"
+        },
+        "border.line": {
+          "light": "oklch(0.922 0 0)",
+          "dark": "oklch(1 0 0 / 10%)"
+        },
+        "surface.page": {
+          "light": "oklch(1 0 0)",
+          "dark": "oklch(0.145 0 0)"
+        },
+        "surface.raised": {
+          "light": "oklch(1 0 0)",
+          "dark": "oklch(0.205 0 0)"
+        }
+      }
+    }
+  },
+  "styles": {
+    "lightdark-inplace": "在目标 CSS 文件的 marker 区内就地生成 `--x: light-dark(浅, 深);`（配套 `color-scheme: light dark`）",
+    "pair-inplace": "在目标 CSS 文件的两处 marker 区内分别生成浅/深两套声明（`:root` / `.dark`）",
+    "ts-module": "整文件生成 TS 模块（供 antd ThemeConfig 消费）"
+  },
+  "bindings": [
+    {
+      "template": "content-a-static",
+      "palette": "content",
+      "stack_role": "内容展示族 · 零构建静态（网页线 A 形态）",
+      "dark_mechanism": "css-light-dark（`color-scheme: light dark` ＋ `light-dark()` 双值；手动覆盖由 assets/theme-toggle.js 写 inline color-scheme）",
+      "targets": [
+        {
+          "style": "lightdark-inplace",
+          "file": "templates/content-a-static/assets/M3-tokens.css",
+          "map": {
+            "text.primary": "--fg",
+            "text.secondary": "--fg-muted",
+            "link": "--link",
+            "border.line": "--rule",
+            "surface.page": "--bg",
+            "surface.subtle": "--bg-soft",
+            "surface.stripe": "--bg-stripe"
+          }
+        }
+      ],
+      "mechanism_markers": [
+        "color-scheme: light dark",
+        "light-dark(",
+        "localStorage",
+        "prefers-color-scheme"
+      ]
+    },
+    {
+      "template": "app-a-bootstrap",
+      "palette": "app",
+      "stack_role": "应用族 · 零构建静态 ＋ Bootstrap 5.3.8（网页线 A 形态）",
+      "dark_mechanism": "css-light-dark ＋ data-bs-theme（手动覆盖由 assets/js/theme.js 写 inline color-scheme 并同步 data-bs-theme）",
+      "targets": [
+        {
+          "style": "lightdark-inplace",
+          "file": "templates/app-a-bootstrap/assets/css/theme.css",
+          "map": {
+            "text.primary": "--app-text-primary",
+            "text.secondary": "--app-text-secondary",
+            "text.tertiary": "--app-text-tertiary",
+            "brand.primary": "--app-primary",
+            "border.line": "--app-border-strong",
+            "border.subtle": "--app-border",
+            "surface.page": "--app-bg-layout",
+            "surface.raised": "--app-bg-container",
+            "surface.subtle": "--app-bg-hover"
+          }
+        }
+      ],
+      "mechanism_markers": [
+        "color-scheme: light dark",
+        "light-dark(",
+        "localStorage",
+        "data-bs-theme"
+      ]
+    },
+    {
+      "template": "app-b-vite-antd",
+      "palette": "app",
+      "stack_role": "应用族 · Vite ＋ React 19 ＋ TS ＋ antd（网页线 B 形态）",
+      "dark_mechanism": "css-light-dark（`color-scheme: light dark` ＋ `light-dark()` 双值；手动覆盖由 src/theme-mode.ts 写 inline color-scheme 实现）＋ antd darkAlgorithm（组件层 JS 令牌）。⚠ **前置条件（实测）**：`build.target` 须为 `esnext`，否则 Vite 8（rolldown-vite）的 Lightning CSS 会按 target 把 `light-dark()` 降级为 `--lightningcss-*` 双变量（只挂 `@media prefers-color-scheme`）⇒ 手动覆盖对页面底色静默失效（详见 templates/app-b-vite-antd/vite.config.ts 注释与 docs/STACK-NOTES.md）",
+      "targets": [
+        {
+          "style": "lightdark-inplace",
+          "file": "templates/app-b-vite-antd/src/styles.css",
+          "map": {
+            "text.primary": "--text-primary",
+            "surface.page": "--surface-page"
+          },
+          "note": "本模板的 CSS 通道**只承载 html/body 两个角色**（这两处位于 antd ConfigProvider 作用域之外，读不到 --ant-* 变量）；其余角色走 antd JS 通道 ⇒ 通道分工由实测消费点决定，⛔ 不声明无人消费的死令牌（check_starter.py C5 硬判）。"
+        },
+        {
+          "style": "ts-module",
+          "file": "templates/app-b-vite-antd/src/tokens.generated.ts",
+          "consumers": [
+            "templates/app-b-vite-antd/src/theme.ts"
+          ],
+          "map": {
+            "text.primary": "text.primary",
+            "text.secondary": "text.secondary",
+            "text.tertiary": "text.tertiary",
+            "brand.primary": "brand.primary",
+            "border.line": "border.line",
+            "border.subtle": "border.subtle",
+            "surface.page": "surface.page",
+            "surface.raised": "surface.raised",
+            "surface.subtle": "surface.subtle"
+          }
+        }
+      ],
+      "mechanism_markers": [
+        "color-scheme: light dark",
+        "light-dark(",
+        "localStorage",
+        "darkAlgorithm"
+      ]
+    },
+    {
+      "template": "app-c-next-antd",
+      "palette": "app-oklch",
+      "stack_role": "应用族 · Next 15 ＋ antd（网页线 C 形态）",
+      "dark_mechanism": "dark-class（`.dark` 类为深色开关，pre-paint 脚本落类；配 antd darkAlgorithm）；⛔ 不用 `light-dark()`（Tailwind v4 经 Lightning CSS 降级，运行时改 color-scheme 不重算 —— 已实测例外）",
+      "targets": [
+        {
+          "style": "pair-inplace",
+          "file": "templates/app-c-next-antd/src/styles/globals.css",
+          "regions": {
+            "light": "contract-light",
+            "dark": "contract-dark"
+          },
+          "map": {
+            "text.primary": "--foreground",
+            "text.secondary": "--muted-foreground",
+            "brand.primary": "--primary",
+            "border.line": "--border",
+            "surface.page": "--background",
+            "surface.raised": "--card"
+          }
+        },
+        {
+          "style": "ts-module",
+          "file": "templates/app-c-next-antd/src/tokens.generated.ts",
+          "palette": "app",
+          "note": "本目标的 antd 通道用 hex 调色板（与 CSS 通道的 oklch 不同源）—— 两者都是**已验证目标工程**的既有值，契约只做登记与绑定，⛔ 不强行归一。",
+          "consumers": [
+            "templates/app-c-next-antd/src/app/_components/antd-provider.tsx"
+          ],
+          "map": {
+            "text.primary": "text.primary",
+            "text.secondary": "text.secondary",
+            "text.tertiary": "text.tertiary",
+            "brand.primary": "brand.primary",
+            "border.line": "border.line",
+            "border.subtle": "border.subtle",
+            "surface.page": "surface.page",
+            "surface.raised": "surface.raised"
+          }
+        }
+      ],
+      "mechanism_markers": [
+        ".dark",
+        "classList",
+        "localStorage",
+        "darkAlgorithm"
+      ]
+    }
+  ],
+  "intake": {
+    "status": "pending-upstream",
+    "note": "★ 接入面（不是内容）：定义「设计侧产物」进入本 starter 的**唯一入口**与变更流程。⛔ 上游件（前端设计方法论本体）整体仍未实现（`upstream[0].status = not_implemented`）；但其中「角色与值」这三类产物已就位为**本体侧值件**，且派生链方向已翻转（见下 `upstream[0].note` 与 `derived` 段）。",
+    "upstream": [
+      {
+        "id": "frontend-design-methodology",
+        "status": "not_implemented",
+        "note": "★ 描述口径（2026-09-29 第 6 轮回刷，状态值不变）：『值件已就位、派生链已翻转』——`roles[*].tier/kind`／role id 集／`palettes[*].values` 现由本体侧值件经 `tools/derive_contract.py` 派生进本契约的 `derived.regions`；`roles[*].purpose` 与 `usage_tiers` 仍为本件手写（镜像面）。本体整体（薄入口／两档流程等）**仍未装成**，故上游件的整体状态如实保持 `not_implemented`。 ★ 加法回刷（2026-10-11 第 21 轮）：本体**入口**已安装（opencode skill ＋ DSH 派生副本；裁决与形态见 0928 线 `本体设计-雏形/02-架构/ADR-009.*` 与 `00-薄入口/INSTALL-PLAN.md §七`）；★ **状态值仍不变**——理由有二：① `check_starter.py` 的 `C10` 是**单向判据**（`upstream[].status` 只接受 `not_implemented`，取任何其它值即 FAIL），该字段目前**无「已实现」表达通道**；② 「入口已装」× 不等于「本体整体已被消费」（消费证据仍待采集）。⇒ 本轮只回刷本 `note`，× 不改 `status`；C10 的单向性已登记为第 21 轮发现（待裁）。",
+        "expected_outputs": [
+          "语义角色集（角色 id ＋ 用途档）",
+          "各语义角色的浅色值 / 深色值",
+          "非正文档的允许用途清单"
+        ],
+        "lands_on": [
+          "roles",
+          "usage_tiers",
+          "palettes.*.values"
+        ],
+        "lands_on_note": "落地方式三者不同：`roles` 与 `palettes.*.values` 现为**派生区**（值件 → tools/derive_contract.py → 本件；口径见 ADR-002）；`usage_tiers` 为**镜像面**（本件手写、值件抄录，一致性由本体侧值件门控 `G-V5b` 镜像面对账看住，⛔ 不由派生器写入——其阈值权威在 0916）。",
+        "rule": "上游件只提供**角色与值**；本 starter 提供**机制与绑定**（每栈令牌名 / 派生风格 / 深色开关）。⛔ 上游件不得直接改模板文件；一律经契约 → 派生器 → 门控。"
+      }
+    ],
+    "change_flow": [
+      "python3 tools/derive_contract.py --apply  # 写",
+      "python3 tools/build_tokens.py  # 写",
+      "python3 tools/check_starter.py  # 只读",
+      "python3 tools/smoke_starter.py  # 只读",
+      "python3 tools/sync_handoff.py  # 写"
+    ],
+    "capability_layer": {
+      "ref": "capability-handoff/IMPORT.md",
+      "record_draft": "capability-handoff/records/frontend-starter-token-contract.json",
+      "status": "ready-not-admitted",
+      "note": "接入材料已按层内契约准备并自检（H1–H6）；⛔ 未主张已入层——落位与准入由能力层窗口执行。"
+    },
+    "boundary": "⛔ 本段只定义位置与流程，不预设上游件内容（该件未实现，其结论以其自身为准）。"
+  }
+}

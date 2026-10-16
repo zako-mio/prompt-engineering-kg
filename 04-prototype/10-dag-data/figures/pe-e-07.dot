@@ -1,0 +1,29 @@
+digraph fig {
+  rankdir=LR; bgcolor="transparent";
+  node[shape=box, style="rounded,filled", fillcolor="#ffffff", color="#7c8aa5", fontcolor="#0e1729", fontname="Noto Sans CJK SC", fontsize=13, margin="0.20,0.12"]; edge[color="#7c8aa5", fontcolor="#46536b", fontname="Noto Sans CJK SC", fontsize=11, arrowsize=0.7];
+  Q [label="共同前提
+① 能拿到完整执行轨迹
+② 有可用的评分函数", fillcolor="#dfe6fb", color="#2f4bd8"];
+  A1 [label="路线一 文本梯度
+把每个可变部分（提示、代码片段、输出）
+表示为变量", color="#136f3a"];
+  A2 [label="模型给出自然语言评价
+评价作为「梯度」回传到变量
+⇒ 逐组件更新", color="#136f3a"];
+  B1 [label="路线二 反思式进化
+让模型看到自己的推理轨迹
+与评分", color="#9a5310"];
+  B2 [label="模型生成改进规则并更新提示
+报告称在多任务上优于强化学习基线
+且所需采样次数大幅减少", color="#9a5310"];
+  Q -> A1; A1 -> A2;
+  Q -> B1 [style=dashed]; B1 -> B2 [style=dashed];
+  {rank=same; A1; B1;}
+  {rank=same; A2; B2; N;}
+  N [label="边界
+无轨迹 ⇒ 反思失去依据
+无评分函数 ⇒ 无法判断改进方向、优化不可收敛
+部分实现的收益还依赖底座模型规模与任务可分解性", shape=note, fillcolor="#e9eef8"];
+  A2 -> N [style=dotted, arrowhead=none];
+  B2 -> N [style=dotted, arrowhead=none, constraint=false];
+}

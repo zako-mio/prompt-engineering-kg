@@ -1,0 +1,62 @@
+<svg class="fig__svg" role="img"
+ viewBox="0.00 0.00 636.00 245.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 241)">
+<title>fig</title>
+<g id="node1" class="node">
+<title>A</title>
+<path fill="var(--brand-soft)" stroke="var(--brand-primary)" d="M437,-237C437,-237 173,-237 173,-237 167,-237 161,-231 161,-225 161,-225 161,-203 161,-203 161,-197 167,-191 173,-191 173,-191 437,-191 437,-191 443,-191 449,-197 449,-203 449,-203 449,-225 449,-225 449,-231 443,-237 437,-237"/>
+<text text-anchor="middle" x="305" y="-217.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">完整思维链</text>
+<text text-anchor="middle" x="305" y="-203.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">token 基线 100%</text>
+</g>
+<g id="node2" class="node">
+<title>B</title>
+<path fill="var(--surface-raised)" stroke="var(--success)" d="M276,-143C276,-143 12,-143 12,-143 6,-143 0,-137 0,-131 0,-131 0,-109 0,-109 0,-103 6,-97 12,-97 12,-97 276,-97 276,-97 282,-97 288,-103 288,-109 288,-109 288,-131 288,-131 288,-137 282,-143 276,-143"/>
+<text text-anchor="middle" x="144" y="-123.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">原报告的最优情形：token 最少降到 7.6%</text>
+<text text-anchor="middle" x="144" y="-109.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">准确率持平或超越完整思维链</text>
+</g>
+<g id="edge1" class="edge">
+<title>A&#45;&gt;B</title>
+<path fill="none" stroke="var(--border-line)" d="M266.44,-190.96C243.02,-177.59 213.05,-160.45 188.61,-146.49"/>
+<polygon fill="var(--border-line)" stroke="var(--border-line)" points="189.82,-144.36 182.53,-143.02 187.39,-148.62 189.82,-144.36"/>
+<text text-anchor="middle" x="252" y="-164.2" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="11.00" fill="var(--text-secondary)">原报告</text>
+</g>
+<g id="node3" class="node">
+<title>C</title>
+<path fill="var(--surface-raised)" stroke="var(--danger)" d="M616,-143C616,-143 318,-143 318,-143 312,-143 306,-137 306,-131 306,-131 306,-109 306,-109 306,-103 312,-97 318,-97 318,-97 616,-97 616,-97 622,-97 628,-103 628,-109 628,-109 628,-131 628,-131 628,-137 622,-143 616,-143"/>
+<text text-anchor="middle" x="467" y="-123.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">代码任务全量样本实测：最省时变体仍用 55.4%</text>
+<text text-anchor="middle" x="467" y="-109.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">且仅保持原有代码质量的九成以上（存在质量损失）</text>
+</g>
+<g id="edge2" class="edge">
+<title>A&#45;&gt;C</title>
+<path fill="none" stroke="var(--border-line)" d="M343.8,-190.96C367.36,-177.59 397.53,-160.45 422.11,-146.49"/>
+<polygon fill="var(--border-line)" stroke="var(--border-line)" points="423.36,-148.6 428.23,-143.02 420.94,-144.34 423.36,-148.6"/>
+<text text-anchor="middle" x="419" y="-164.2" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="11.00" fill="var(--text-secondary)">跨域外推</text>
+</g>
+<g id="node5" class="node">
+<title>E</title>
+<polygon fill="var(--surface-subtle)" stroke="var(--border-line)" points="282,-60 0,-60 0,0 288,0 288,-54 282,-60"/>
+<polyline fill="none" stroke="var(--border-line)" points="282,-60 282,-54 "/>
+<polyline fill="none" stroke="var(--border-line)" points="288,-54 282,-54 "/>
+<text text-anchor="middle" x="144" y="-40.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">结论口径</text>
+<text text-anchor="middle" x="144" y="-26.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">7.6% 是各任务中的最优情形，不是目标值</text>
+<text text-anchor="middle" x="144" y="-12.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">极简草稿应当作待测变体</text>
+</g>
+<g id="edge4" class="edge">
+<title>B&#45;&gt;E</title>
+<path fill="none" stroke="var(--border-line)" stroke-dasharray="1,5" d="M144,-96.79C144,-85.69 144,-72.12 144,-60.19"/>
+</g>
+<g id="node4" class="node">
+<title>D</title>
+<polygon fill="var(--surface-subtle)" stroke="var(--border-line)" points="605,-60 323,-60 323,0 611,0 611,-54 605,-60"/>
+<polyline fill="none" stroke="var(--border-line)" points="605,-60 605,-54 "/>
+<polyline fill="none" stroke="var(--border-line)" points="611,-54 605,-54 "/>
+<text text-anchor="middle" x="467" y="-40.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">另一条路线：在提示中声明 token 预算</text>
+<text text-anchor="middle" x="467" y="-26.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">预算取值本身决定压缩成效</text>
+<text text-anchor="middle" x="467" y="-12.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">⇒ 预算也是需要调参的对象</text>
+</g>
+<g id="edge3" class="edge">
+<title>C&#45;&gt;D</title>
+<path fill="none" stroke="var(--border-line)" stroke-dasharray="1,5" d="M467,-96.79C467,-85.69 467,-72.12 467,-60.19"/>
+</g>
+</g>
+</svg>

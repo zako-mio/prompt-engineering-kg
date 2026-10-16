@@ -1,0 +1,75 @@
+<svg class="fig__svg" role="img"
+ viewBox="0.00 0.00 633.00 224.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 220)">
+<title>fig</title>
+<g id="node1" class="node">
+<title>Q</title>
+<path fill="var(--brand-soft)" stroke="var(--brand-primary)" d="M145,-131C145,-131 12,-131 12,-131 6,-131 0,-125 0,-119 0,-119 0,-97 0,-97 0,-91 6,-85 12,-85 12,-85 145,-85 145,-85 151,-85 157,-91 157,-97 157,-97 157,-119 157,-119 157,-125 151,-131 145,-131"/>
+<text text-anchor="middle" x="78.5" y="-111.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">同一个任务</text>
+<text text-anchor="middle" x="78.5" y="-97.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">要推理 + 要结构化输出</text>
+</g>
+<g id="node2" class="node">
+<title>A1</title>
+<path fill="var(--surface-raised)" stroke="var(--success)" d="M349,-186C349,-186 230,-186 230,-186 224,-186 218,-180 218,-174 218,-174 218,-152 218,-152 218,-146 224,-140 230,-140 230,-140 349,-140 349,-140 355,-140 361,-146 361,-152 361,-152 361,-174 361,-174 361,-180 355,-186 349,-186"/>
+<text text-anchor="middle" x="289.5" y="-166.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">形态 A：先自由推理</text>
+<text text-anchor="middle" x="289.5" y="-152.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">输出契约不参与解码</text>
+</g>
+<g id="edge1" class="edge">
+<title>Q&#45;&gt;A1</title>
+<path fill="none" stroke="var(--border-line)" d="M157.03,-128.4C174.56,-133.02 193.19,-137.92 210.74,-142.54"/>
+<polygon fill="var(--border-line)" stroke="var(--border-line)" points="210.27,-144.95 217.66,-144.36 211.52,-140.21 210.27,-144.95"/>
+</g>
+<g id="node4" class="node">
+<title>B1</title>
+<path fill="var(--surface-raised)" stroke="var(--danger)" d="M374,-99C374,-99 205,-99 205,-99 199,-99 193,-93 193,-87 193,-87 193,-65 193,-65 193,-59 199,-53 205,-53 205,-53 374,-53 374,-53 380,-53 386,-59 386,-65 386,-65 386,-87 386,-87 386,-93 380,-99 374,-99"/>
+<text text-anchor="middle" x="289.5" y="-79.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">形态 B：边推理边守 schema</text>
+<text text-anchor="middle" x="289.5" y="-65.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">每一步都屏蔽大部分候选</text>
+</g>
+<g id="edge3" class="edge">
+<title>Q&#45;&gt;B1</title>
+<path fill="none" stroke="var(--border-line)" stroke-dasharray="5,2" d="M157.03,-96.13C166.37,-94.7 176.03,-93.22 185.67,-91.74"/>
+<polygon fill="var(--border-line)" stroke="var(--border-line)" points="186.13,-94.15 192.68,-90.67 185.39,-89.31 186.13,-94.15"/>
+</g>
+<g id="node3" class="node">
+<title>A2</title>
+<path fill="var(--surface-raised)" stroke="var(--success)" d="M584.5,-216C584.5,-216 462.5,-216 462.5,-216 456.5,-216 450.5,-210 450.5,-204 450.5,-204 450.5,-168 450.5,-168 450.5,-162 456.5,-156 462.5,-156 462.5,-156 584.5,-156 584.5,-156 590.5,-156 596.5,-162 596.5,-168 596.5,-168 596.5,-204 596.5,-204 596.5,-210 590.5,-216 584.5,-216"/>
+<text text-anchor="middle" x="523.5" y="-196.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">再一次调用格式化</text>
+<text text-anchor="middle" x="523.5" y="-182.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">按 schema 整理结论</text>
+<text text-anchor="middle" x="523.5" y="-168.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">推理质量完整保留</text>
+</g>
+<g id="edge2" class="edge">
+<title>A1&#45;&gt;A2</title>
+<path fill="none" stroke="var(--border-line)" d="M361.05,-169.99C387,-172.57 416.54,-175.5 443.2,-178.14"/>
+<polygon fill="var(--border-line)" stroke="var(--border-line)" points="443.07,-180.59 450.28,-178.84 443.55,-175.71 443.07,-180.59"/>
+</g>
+<g id="node6" class="node">
+<title>N</title>
+<polygon fill="var(--surface-subtle)" stroke="var(--border-line)" points="619,-138 422,-138 422,-78 625,-78 625,-132 619,-138"/>
+<polyline fill="none" stroke="var(--border-line)" points="619,-138 619,-132 "/>
+<polyline fill="none" stroke="var(--border-line)" points="625,-132 619,-132 "/>
+<text text-anchor="middle" x="523.5" y="-118.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">代价与收益</text>
+<text text-anchor="middle" x="523.5" y="-104.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">A：调用次数与延迟上升</text>
+<text text-anchor="middle" x="523.5" y="-90.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">B：一次调用，但推理表现下降</text>
+</g>
+<g id="edge5" class="edge">
+<title>A2&#45;&gt;N</title>
+<path fill="none" stroke="var(--border-line)" stroke-dasharray="1,5" d="M523.5,-155.73C523.5,-149.87 523.5,-144.02 523.5,-138.16"/>
+</g>
+<g id="node5" class="node">
+<title>B2</title>
+<path fill="var(--surface-raised)" stroke="var(--danger)" d="M589.5,-60C589.5,-60 457.5,-60 457.5,-60 451.5,-60 445.5,-54 445.5,-48 445.5,-48 445.5,-12 445.5,-12 445.5,-6 451.5,0 457.5,0 457.5,0 589.5,0 589.5,0 595.5,0 601.5,-6 601.5,-12 601.5,-12 601.5,-48 601.5,-48 601.5,-54 595.5,-60 589.5,-60"/>
+<text text-anchor="middle" x="523.5" y="-40.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">中间状态无法自由试探</text>
+<text text-anchor="middle" x="523.5" y="-26.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">格式约束挤占推理预算</text>
+<text text-anchor="middle" x="523.5" y="-12.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">⇒ 质量可差一截</text>
+</g>
+<g id="edge4" class="edge">
+<title>B1&#45;&gt;B2</title>
+<path fill="none" stroke="var(--border-line)" stroke-dasharray="5,2" d="M386.2,-57.02C403.46,-53.6 421.33,-50.06 438.23,-46.71"/>
+<polygon fill="var(--border-line)" stroke="var(--border-line)" points="439.02,-49.05 445.41,-45.28 438.07,-44.24 439.02,-49.05"/>
+</g>
+<g id="edge6" class="edge">
+<title>B2&#45;&gt;N</title>
+<path fill="none" stroke="var(--border-line)" stroke-dasharray="1,5" d="M523.5,-60.16C523.5,-66.02 523.5,-71.87 523.5,-77.73"/>
+</g>
+</g>
+</svg>

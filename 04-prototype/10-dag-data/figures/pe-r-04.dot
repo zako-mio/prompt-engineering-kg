@@ -1,0 +1,26 @@
+digraph fig {
+  rankdir=LR; bgcolor="transparent";
+  node[shape=box, style="rounded,filled", fillcolor="#ffffff", color="#7c8aa5", fontcolor="#0e1729", fontname="Noto Sans CJK SC", fontsize=13, margin="0.20,0.12"]; edge[color="#7c8aa5", fontcolor="#46536b", fontname="Noto Sans CJK SC", fontsize=11, arrowsize=0.7];
+  S [label="一步推理
+生成多个候选思维", fillcolor="#dfe6fb", color="#2f4bd8"];
+  T1 [label="候选一", color="#136f3a", width=1.2];
+  T2 [label="候选二", color="#136f3a", width=1.2];
+  T3 [label="候选三", color="#b3181f", width=1.2];
+  {rank=same; S; T1; T2; T3;}
+  E [label="评估环节
+打分 / 判可行性", fillcolor="#dfe6fb", color="#2f4bd8"];
+  S -> E [style=invis];
+  T1 -> E; T2 -> E; T3 -> E;
+  X [label="展开得分高的候选 ⇒ 可回溯的树状搜索", color="#136f3a"];
+  P [label="其余候选被剪枝：按搜索策略放弃，不再展开", color="#b3181f"];
+  G [label="思维图：中间结果可合并与复用，树扩展为图", color="#136f3a"];
+  N [label="两条冲突结论（现行研究）
+低预算下某方法有冷启动瓶颈
+另一种方法的激进合并
+会永久丢弃未探索路径
+⇒ 不存在跨预算通用的固定策略", shape=note, fillcolor="#e9eef8"];
+  {rank=same; X; P; G; N;}
+  E -> X [label="保留"];
+  E -> P [style=dashed, label="丢弃"];
+  G -> N [style=dotted, arrowhead=none, constraint=false];
+}

@@ -1,0 +1,76 @@
+<svg class="fig__svg" role="img"
+ viewBox="0.00 0.00 736.00 259.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 255)">
+<title>fig</title>
+<g id="node1" class="node">
+<title>Q</title>
+<path fill="var(--brand-soft)" stroke="var(--brand-primary)" d="M466.5,-251C466.5,-251 260.5,-251 260.5,-251 254.5,-251 248.5,-245 248.5,-239 248.5,-239 248.5,-217 248.5,-217 248.5,-211 254.5,-205 260.5,-205 260.5,-205 466.5,-205 466.5,-205 472.5,-205 478.5,-211 478.5,-217 478.5,-217 478.5,-239 478.5,-239 478.5,-245 472.5,-251 466.5,-251"/>
+<text text-anchor="middle" x="363.5" y="-231.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">要不要写显式推理指令</text>
+<text text-anchor="middle" x="363.5" y="-217.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">（CoT / 零样本 CoT）</text>
+</g>
+<g id="node2" class="node">
+<title>A</title>
+<path fill="var(--surface-raised)" stroke="var(--success)" d="M211,-157C211,-157 12,-157 12,-157 6,-157 0,-151 0,-145 0,-145 0,-109 0,-109 0,-103 6,-97 12,-97 12,-97 211,-97 211,-97 217,-97 223,-103 223,-109 223,-109 223,-145 223,-145 223,-151 217,-157 211,-157"/>
+<text text-anchor="middle" x="111.5" y="-137.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">条件 A：非推理模型</text>
+<text text-anchor="middle" x="111.5" y="-123.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">或任务串行深度高</text>
+<text text-anchor="middle" x="111.5" y="-109.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">⇒ 显式引导推理步骤仍有明确收益</text>
+</g>
+<g id="edge1" class="edge">
+<title>Q&#45;&gt;A</title>
+<path fill="none" stroke="var(--border-line)" d="M307.26,-204.91C273.53,-191.65 230.06,-174.58 192.65,-159.88"/>
+<polygon fill="var(--border-line)" stroke="var(--border-line)" points="193.16,-157.45 185.74,-157.17 191.36,-162.01 193.16,-157.45"/>
+<text text-anchor="middle" x="272" y="-178.2" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="11.00" fill="var(--text-secondary)">该写</text>
+</g>
+<g id="node3" class="node">
+<title>B</title>
+<path fill="var(--surface-raised)" stroke="var(--danger)" d="M467,-157C467,-157 260,-157 260,-157 254,-157 248,-151 248,-145 248,-145 248,-109 248,-109 248,-103 254,-97 260,-97 260,-97 467,-97 467,-97 473,-97 479,-103 479,-109 479,-109 479,-145 479,-145 479,-151 473,-157 467,-157"/>
+<text text-anchor="middle" x="363.5" y="-137.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">条件 B：推理模型且原生思考已开启</text>
+<text text-anchor="middle" x="363.5" y="-123.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">⇒ 边际收益趋零甚至为负</text>
+<text text-anchor="middle" x="363.5" y="-109.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">（官方口径：偏好一般性指令）</text>
+</g>
+<g id="edge2" class="edge">
+<title>Q&#45;&gt;B</title>
+<path fill="none" stroke="var(--border-line)" d="M363.5,-204.54C363.5,-192.69 363.5,-177.88 363.5,-164.44"/>
+<polygon fill="var(--border-line)" stroke="var(--border-line)" points="365.95,-164.14 363.5,-157.14 361.05,-164.14 365.95,-164.14"/>
+<text text-anchor="middle" x="380.5" y="-178.2" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="11.00" fill="var(--text-secondary)">不该写</text>
+</g>
+<g id="node4" class="node">
+<title>C</title>
+<path fill="var(--surface-raised)" stroke="var(--warning)" d="M716,-150C716,-150 509,-150 509,-150 503,-150 497,-144 497,-138 497,-138 497,-116 497,-116 497,-110 503,-104 509,-104 509,-104 716,-104 716,-104 722,-104 728,-110 728,-116 728,-116 728,-138 728,-138 728,-144 722,-150 716,-150"/>
+<text text-anchor="middle" x="612.5" y="-130.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">条件 C：推理模型的思考功能被关闭</text>
+<text text-anchor="middle" x="612.5" y="-116.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">⇒ 手写思维链降级为兜底手段</text>
+</g>
+<g id="edge3" class="edge">
+<title>Q&#45;&gt;C</title>
+<path fill="none" stroke="var(--border-line)" d="M419.07,-204.91C457.96,-189.44 509.94,-168.78 550.23,-152.76"/>
+<polygon fill="var(--border-line)" stroke="var(--border-line)" points="551.5,-154.89 557.1,-150.03 549.69,-150.34 551.5,-154.89"/>
+<text text-anchor="middle" x="500" y="-178.2" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="11.00" fill="var(--text-secondary)">可写</text>
+</g>
+<g id="node6" class="node">
+<title>D</title>
+<polygon fill="var(--surface-subtle)" stroke="var(--border-line)" points="206.5,-60 2.5,-60 2.5,0 212.5,0 212.5,-54 206.5,-60"/>
+<polyline fill="none" stroke="var(--border-line)" points="206.5,-60 206.5,-54 "/>
+<polyline fill="none" stroke="var(--border-line)" points="212.5,-54 206.5,-54 "/>
+<text text-anchor="middle" x="107.5" y="-40.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">零样本形态的差别</text>
+<text text-anchor="middle" x="107.5" y="-26.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">只加一句「一步一步思考」</text>
+<text text-anchor="middle" x="107.5" y="-12.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">⇒ 不需要示例即可诱发推理步骤</text>
+</g>
+<g id="edge5" class="edge">
+<title>A&#45;&gt;D</title>
+<path fill="none" stroke="var(--border-line)" stroke-dasharray="1,5" d="M110.28,-96.98C109.79,-85.3 109.22,-71.86 108.73,-60.17"/>
+</g>
+<g id="node5" class="node">
+<title>N</title>
+<polygon fill="var(--surface-subtle)" stroke="var(--border-line)" points="496,-60 231,-60 231,0 502,0 502,-54 496,-60"/>
+<polyline fill="none" stroke="var(--border-line)" points="496,-60 496,-54 "/>
+<polyline fill="none" stroke="var(--border-line)" points="502,-54 496,-54 "/>
+<text text-anchor="middle" x="366.5" y="-40.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">另有一条与写法无关的硬约束（多轮对话）</text>
+<text text-anchor="middle" x="366.5" y="-26.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">含思考内容的历史必须原样追加回传</text>
+<text text-anchor="middle" x="366.5" y="-12.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">⇒ 改写历史会被报错或丢弃</text>
+</g>
+<g id="edge4" class="edge">
+<title>B&#45;&gt;N</title>
+<path fill="none" stroke="var(--border-line)" stroke-dasharray="1,5" d="M364.42,-96.98C364.79,-85.3 365.21,-71.86 365.58,-60.17"/>
+</g>
+</g>
+</svg>

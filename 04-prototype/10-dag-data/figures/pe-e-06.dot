@@ -1,0 +1,26 @@
+digraph fig {
+  rankdir=LR; bgcolor="transparent";
+  node[shape=box, style="rounded,filled", fillcolor="#ffffff", color="#7c8aa5", fontcolor="#0e1729", fontname="Noto Sans CJK SC", fontsize=13, margin="0.20,0.12"]; edge[color="#7c8aa5", fontcolor="#46536b", fontname="Noto Sans CJK SC", fontsize=11, arrowsize=0.7];
+  A [label="构件一 签名
+声明输入与输出字段", fillcolor="#dfe6fb", color="#2f4bd8"];
+  B [label="构件二 模块
+把调用组织成流水线", fillcolor="#dfe6fb", color="#2f4bd8"];
+  C [label="构件三 优化器
+在指令与示例空间中搜索", fillcolor="#dfe6fb", color="#2f4bd8"];
+  {rank=same; A; B; C;}
+  D [label="编译器按指标在训练集上搜索
+产出可直接使用的指令与少量示例", color="#136f3a"];
+  A -> D [style=invis];
+  B -> D; C -> D;
+  {rank=same; D; T;}
+  T [label="选型两轴（官方口径）
+① 瓶颈在指令、示例还是权重
+② 可用的算力预算
+⇒ 官方明确否认存在单一最优优化器，也不提供自动选择", color="#9a5310"];
+  C -> T [style=dotted, arrowhead=none];
+  {rank=same; T; O;}
+  O [label="两个已具名定位
+入门路径：某个基于反思的优化器（其结构化指令提议器已设为默认）
+另一优化器的定位：指令与示例需要一起调时最先进", shape=note, fillcolor="#e9eef8"];
+  D -> O [style=dotted, arrowhead=none];
+}

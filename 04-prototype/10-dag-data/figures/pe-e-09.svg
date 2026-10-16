@@ -1,0 +1,72 @@
+<svg class="fig__svg" role="img"
+ viewBox="0.00 0.00 652.50 322.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 318)">
+<title>fig</title>
+<g id="node1" class="node">
+<title>P1</title>
+<path fill="var(--brand-soft)" stroke="var(--brand-primary)" d="M110,-309C110,-309 12,-309 12,-309 6,-309 0,-303 0,-297 0,-297 0,-285 0,-285 0,-279 6,-273 12,-273 12,-273 110,-273 110,-273 116,-273 122,-279 122,-285 122,-285 122,-297 122,-297 122,-303 116,-309 110,-309"/>
+<text text-anchor="middle" x="61" y="-287.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">提示词 v1</text>
+</g>
+<g id="node2" class="node">
+<title>P2</title>
+<path fill="var(--brand-soft)" stroke="var(--brand-primary)" d="M279.5,-309C279.5,-309 152.5,-309 152.5,-309 146.5,-309 140.5,-303 140.5,-297 140.5,-297 140.5,-285 140.5,-285 140.5,-279 146.5,-273 152.5,-273 152.5,-273 279.5,-273 279.5,-273 285.5,-273 291.5,-279 291.5,-285 291.5,-285 291.5,-297 291.5,-297 291.5,-303 285.5,-309 279.5,-309"/>
+<text text-anchor="middle" x="216" y="-287.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">改动后的提示词 v2</text>
+</g>
+<g id="node3" class="node">
+<title>E</title>
+<path fill="var(--surface-raised)" stroke="var(--success)" d="M478,-314C478,-314 322,-314 322,-314 316,-314 310,-308 310,-302 310,-302 310,-280 310,-280 310,-274 316,-268 322,-268 322,-268 478,-268 478,-268 484,-268 490,-274 490,-280 490,-280 490,-302 490,-302 490,-308 484,-314 478,-314"/>
+<text text-anchor="middle" x="400" y="-294.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">评测集</text>
+<text text-anchor="middle" x="400" y="-280.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">（自身也要版本化）</text>
+</g>
+<g id="node4" class="node">
+<title>B</title>
+<polygon fill="var(--surface-subtle)" stroke="var(--border-line)" points="429,-220 61,-220 61,-184 435,-184 435,-214 429,-220"/>
+<polyline fill="none" stroke="var(--border-line)" points="429,-220 429,-214 "/>
+<polyline fill="none" stroke="var(--border-line)" points="435,-214 429,-214 "/>
+<text text-anchor="middle" x="248" y="-198.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">基线：提示词版本 × 评测集版本 之间的对应关系</text>
+</g>
+<g id="edge1" class="edge">
+<title>E&#45;&gt;B</title>
+<path fill="none" stroke="var(--border-line)" stroke-dasharray="5,2" d="M361.25,-267.82C337.61,-254.29 307.59,-237.11 284.4,-223.83"/>
+<polygon fill="var(--border-line)" stroke="var(--border-line)" points="285.34,-221.55 278.05,-220.2 282.9,-225.8 285.34,-221.55"/>
+<text text-anchor="middle" x="340.5" y="-241.2" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="11.00" fill="var(--text-secondary)">固定</text>
+</g>
+<g id="node7" class="node">
+<title>N</title>
+<polygon fill="var(--surface-subtle)" stroke="var(--border-line)" points="638.5,-74 281.5,-74 281.5,0 644.5,0 644.5,-68 638.5,-74"/>
+<polyline fill="none" stroke="var(--border-line)" points="638.5,-74 638.5,-68 "/>
+<polyline fill="none" stroke="var(--border-line)" points="644.5,-68 638.5,-68 "/>
+<text text-anchor="middle" x="463" y="-54.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">三条纪律</text>
+<text text-anchor="middle" x="463" y="-40.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">① 评测集不版本化 ⇒ 基线不可比</text>
+<text text-anchor="middle" x="463" y="-26.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">② 除准确率外同时跟踪成本与延迟（改动常以成本换质量）</text>
+<text text-anchor="middle" x="463" y="-12.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">③ 换模型必须重建基线，否则把模型差异误判为提示词差异</text>
+</g>
+<g id="edge4" class="edge">
+<title>E&#45;&gt;N</title>
+<path fill="none" stroke="var(--border-line)" stroke-dasharray="1,5" d="M417.72,-267.72C427.17,-254.59 438.05,-237.23 444,-220 460.75,-171.5 463.93,-111.76 463.99,-74.27"/>
+</g>
+<g id="node5" class="node">
+<title>V</title>
+<path fill="var(--surface-raised)" stroke="var(--success)" d="M370,-147C370,-147 20,-147 20,-147 14,-147 8,-141 8,-135 8,-135 8,-123 8,-123 8,-117 14,-111 20,-111 20,-111 370,-111 370,-111 376,-111 382,-117 382,-123 382,-123 382,-135 382,-135 382,-141 376,-147 370,-147"/>
+<text text-anchor="middle" x="195" y="-125.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">回归判定：与基线比较 ⇒ 接受或回退，结论与版本一并留档</text>
+</g>
+<g id="edge2" class="edge">
+<title>B&#45;&gt;V</title>
+<path fill="none" stroke="var(--border-line)" d="M235.17,-183.81C228.2,-174.48 219.5,-162.83 211.98,-152.75"/>
+<polygon fill="var(--border-line)" stroke="var(--border-line)" points="213.86,-151.17 207.71,-147.03 209.94,-154.1 213.86,-151.17"/>
+</g>
+<g id="node6" class="node">
+<title>S</title>
+<polygon fill="var(--surface-subtle)" stroke="var(--border-line)" points="257.5,-67 18.5,-67 18.5,-7 263.5,-7 263.5,-61 257.5,-67"/>
+<polyline fill="none" stroke="var(--border-line)" points="257.5,-67 257.5,-61 "/>
+<polyline fill="none" stroke="var(--border-line)" points="263.5,-61 257.5,-61 "/>
+<text text-anchor="middle" x="141" y="-47.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">另一条边界</text>
+<text text-anchor="middle" x="141" y="-33.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">只跑改动点相关的用例会漏掉交叉影响</text>
+<text text-anchor="middle" x="141" y="-19.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">⇒ 须定期跑全量</text>
+</g>
+<g id="edge3" class="edge">
+<title>V&#45;&gt;S</title>
+<path fill="none" stroke="var(--border-line)" stroke-dasharray="1,5" d="M184.59,-110.65C177.23,-98.39 167.2,-81.66 158.61,-67.34"/>
+</g>
+</g>
+</svg>

@@ -1,0 +1,36 @@
+digraph grp {
+  rankdir=LR; bgcolor="transparent";
+  node[shape=box, style="rounded,filled", fillcolor="#ffffff", color="#7c8aa5", fontcolor="#0e1729", fontname="Noto Sans CJK SC", fontsize=13, margin="0.20,0.12"]; edge[color="#7c8aa5", fontcolor="#46536b", fontname="Noto Sans CJK SC", fontsize=11, arrowsize=0.7];
+  n0 [label="思维链与零样本思维链\n(PE-R-01 · 第 6 层)", fillcolor="#dfe6fb", color="#2f4bd8"];
+  n1 [label="范式反转：推理模型上经典…\n(PE-R-02 · 第 7 层)", fillcolor="#dfe6fb", color="#2f4bd8"];
+  n2 [label="自一致性与多数投票\n(PE-R-03 · 第 11 层)", fillcolor="#dfe6fb", color="#2f4bd8"];
+  n3 [label="思维树与思维图\n(PE-R-04 · 第 12 层)", fillcolor="#dfe6fb", color="#2f4bd8"];
+  n4 [label="步骤回溯与改写变体\n(PE-R-05 · 第 13 层)", fillcolor="#dfe6fb", color="#2f4bd8"];
+  n5 [label="极简推理草稿\n(PE-R-06 · 第 14 层)", fillcolor="#dfe6fb", color="#2f4bd8"];
+  n6 [label="ReAct 推理—行动交…\n(PE-R-07 · 第 15 层)", fillcolor="#dfe6fb", color="#2f4bd8"];
+  n7 [label="反思与自评回路\n(PE-R-08 · 第 16 层)", fillcolor="#dfe6fb", color="#2f4bd8"];
+  {rank=same; n0; n1; n2;}
+  {rank=same; n3; n4; n5;}
+  {rank=same; n6; n7;}
+  n2 -> n3 [style=invis, weight=100];
+  n5 -> n6 [style=invis, weight=100];
+  n0 -> n1 [constraint=false];
+  n1 -> n2 [constraint=false];
+  n2 -> n3 [color="#7c8aa5"];
+  n3 -> n4 [constraint=false];
+  n4 -> n5 [constraint=false];
+  n5 -> n6 [color="#7c8aa5"];
+  n0 -> n6 [color="#7c8aa5"];
+  n6 -> n7 [constraint=false];
+  stub_in [label="组外接口\n入 3 条", shape=note, style="filled", fillcolor="#e9eef8", color="#9a5310"];
+  {rank=same; stub_in; n0; n1; n2;}
+  stub_in -> n0 [style=dashed, constraint=false, arrowhead=none];
+  stub_in -> n1 [style=dashed, constraint=false, arrowhead=none];
+  stub_in -> n2 [style=dashed, constraint=false, arrowhead=none];
+  stub_out [label="组外接口\n出 4 条", shape=note, style="filled", fillcolor="#e9eef8", color="#9a5310"];
+  {rank=same; stub_out; n6; n7;}
+  n1 -> stub_out [style=dashed, constraint=false, arrowhead=none];
+  n3 -> stub_out [style=dashed, constraint=false, arrowhead=none];
+  n5 -> stub_out [style=dashed, constraint=false, arrowhead=none];
+  n7 -> stub_out [style=dashed, constraint=false, arrowhead=none];
+}

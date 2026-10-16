@@ -1,0 +1,27 @@
+digraph grp {
+  rankdir=LR; bgcolor="transparent";
+  node[shape=box, style="rounded,filled", fillcolor="#ffffff", color="#7c8aa5", fontcolor="#0e1729", fontname="Noto Sans CJK SC", fontsize=13, margin="0.20,0.12"]; edge[color="#7c8aa5", fontcolor="#46536b", fontname="Noto Sans CJK SC", fontsize=11, arrowsize=0.7];
+  n0 [label="概率采样与确定性边界\n(PE-F-01 · 第 0 层)", fillcolor="#dfe6fb", color="#2f4bd8"];
+  n1 [label="系统 / 开发者 / 用…\n(PE-F-02 · 第 1 层)", fillcolor="#dfe6fb", color="#2f4bd8"];
+  n2 [label="分隔符与上下文隔离\n(PE-F-03 · 第 2 层)", fillcolor="#dfe6fb", color="#2f4bd8"];
+  n3 [label="零样本与少样本\n(PE-F-04 · 第 3 层)", fillcolor="#dfe6fb", color="#2f4bd8"];
+  n4 [label="指令的具体性与可验证性\n(PE-F-05 · 第 4 层)", fillcolor="#dfe6fb", color="#2f4bd8"];
+  n5 [label="注意力预算与上下文衰减\n(PE-F-06 · 第 5 层)", fillcolor="#dfe6fb", color="#2f4bd8"];
+  {rank=same; n0; n1;}
+  {rank=same; n2; n3;}
+  {rank=same; n4; n5;}
+  n1 -> n2 [style=invis, weight=100];
+  n3 -> n4 [style=invis, weight=100];
+  n0 -> n1 [constraint=false];
+  n1 -> n2 [color="#7c8aa5"];
+  n2 -> n3 [constraint=false];
+  n3 -> n4 [color="#7c8aa5"];
+  n4 -> n5 [constraint=false];
+  stub_out [label="组外接口\n出 8 条", shape=note, style="filled", fillcolor="#e9eef8", color="#9a5310"];
+  {rank=same; stub_out; n4; n5;}
+  n0 -> stub_out [style=dashed, constraint=false, arrowhead=none];
+  n1 -> stub_out [style=dashed, constraint=false, arrowhead=none];
+  n2 -> stub_out [style=dashed, constraint=false, arrowhead=none];
+  n3 -> stub_out [style=dashed, constraint=false, arrowhead=none];
+  n5 -> stub_out [style=dashed, constraint=false, arrowhead=none];
+}

@@ -1,0 +1,40 @@
+<svg class="fig__svg" role="img"
+ viewBox="0.00 0.00 536.50 176.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 172)">
+<title>fig</title>
+<g id="node1" class="node">
+<title>A</title>
+<path fill="var(--brand-soft)" stroke="var(--brand-primary)" d="M204,-168C204,-168 12,-168 12,-168 6,-168 0,-162 0,-156 0,-156 0,-120 0,-120 0,-114 6,-108 12,-108 12,-108 204,-108 204,-108 210,-108 216,-114 216,-120 216,-120 216,-156 216,-156 216,-162 210,-168 204,-168"/>
+<text text-anchor="middle" x="108" y="-148.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">具体性：说了多少细节</text>
+<text text-anchor="middle" x="108" y="-134.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">现行口径向「更一般」移动</text>
+<text text-anchor="middle" x="108" y="-120.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">（推理路径不写死）</text>
+</g>
+<g id="node2" class="node">
+<title>B</title>
+<path fill="var(--brand-soft)" stroke="var(--brand-primary)" d="M204,-60C204,-60 12,-60 12,-60 6,-60 0,-54 0,-48 0,-48 0,-12 0,-12 0,-6 6,0 12,0 12,0 204,0 204,0 210,0 216,-6 216,-12 216,-12 216,-48 216,-48 216,-54 210,-60 204,-60"/>
+<text text-anchor="middle" x="108" y="-40.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">可验证性：结果能否被判定</text>
+<text text-anchor="middle" x="108" y="-26.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">现行口径向「更严格」移动</text>
+<text text-anchor="middle" x="108" y="-12.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">（交付契约必须可判定）</text>
+</g>
+<g id="edge1" class="edge">
+<title>A&#45;&gt;B</title>
+<path fill="none" stroke="var(--border-line)" d="M108,-100.6C108,-89.87 108,-78.12 108,-67.39"/>
+<polygon fill="var(--border-line)" stroke="var(--border-line)" points="105.55,-100.75 108,-107.75 110.45,-100.75 105.55,-100.75"/>
+<polygon fill="var(--border-line)" stroke="var(--border-line)" points="110.45,-67.15 108,-60.15 105.55,-67.15 110.45,-67.15"/>
+<text text-anchor="middle" x="215" y="-81.2" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="11.00" fill="var(--text-secondary)">不矛盾：一个管推理路径，一个管交付契约</text>
+</g>
+<g id="node3" class="node">
+<title>N</title>
+<polygon fill="var(--surface-subtle)" stroke="var(--border-line)" points="522.5,-60 251.5,-60 251.5,0 528.5,0 528.5,-54 522.5,-60"/>
+<polyline fill="none" stroke="var(--border-line)" points="522.5,-60 522.5,-54 "/>
+<polyline fill="none" stroke="var(--border-line)" points="528.5,-54 522.5,-54 "/>
+<text text-anchor="middle" x="390" y="-40.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">混为一谈的两种后果</text>
+<text text-anchor="middle" x="390" y="-26.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">把「具体」当「长」 ⇒ 重复指令只烧 token</text>
+<text text-anchor="middle" x="390" y="-12.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">把「一般」当「模糊」 ⇒ 契约不可判定</text>
+</g>
+<g id="edge2" class="edge">
+<title>B&#45;&gt;N</title>
+<path fill="none" stroke="var(--border-line)" stroke-dasharray="1,5" d="M216.23,-30C227.88,-30 239.53,-30 251.19,-30"/>
+</g>
+</g>
+</svg>

@@ -1,0 +1,32 @@
+digraph fig {
+  rankdir=LR; bgcolor="transparent";
+  node[shape=box, style="rounded,filled", fillcolor="#ffffff", color="#7c8aa5", fontcolor="#0e1729", fontname="Noto Sans CJK SC", fontsize=13, margin="0.20,0.12"]; edge[color="#7c8aa5", fontcolor="#46536b", fontname="Noto Sans CJK SC", fontsize=11, arrowsize=0.7];
+  B1 [label="位置偏差
+候选顺序影响评分", color="#b3181f"];
+  B2 [label="冗长偏好
+更长的回答更易得高分", color="#b3181f"];
+  B3 [label="自我偏好
+倾向给同族模型更高分", color="#b3181f"];
+  B4 [label="准则漂移
+同一准则跨批次理解不一致", color="#b3181f"];
+  {rank=same; B1; B2; B3; B4;}
+  M1 [label="随机化顺序", color="#136f3a"];
+  M2 [label="长度归一或显式准则", color="#136f3a"];
+  M3 [label="多模型交叉评分", color="#136f3a"];
+  M4 [label="固定准则文本与示例校准", color="#136f3a"];
+  {rank=same; M1; M2; M3; M4;}
+  B1 -> M1; B2 -> M2; B3 -> M3; B4 -> M4;
+  P [label="并用纪律
+能用确定性断言判定的部分绝不用模型裁判
+必须用时：固定准则文本、随机化顺序
+并在小样本上与人工标注做一致性校准
+裁判结果保留原始评分与理由", color="#2f4bd8", fillcolor="#dfe6fb"];
+  M3 -> P;
+  {rank=same; P; S;}
+  S [label="边界
+适合相对比较与粗筛
+不适合作为唯一判据
+对高风险判定须与确定性断言
+或人工抽检交叉验证", shape=note, fillcolor="#e9eef8"];
+  M4 -> S [style=dotted, arrowhead=none];
+}

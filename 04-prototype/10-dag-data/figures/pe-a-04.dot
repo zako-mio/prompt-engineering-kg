@@ -1,0 +1,30 @@
+digraph fig {
+  rankdir=LR; bgcolor="transparent";
+  node[shape=box, style="rounded,filled", fillcolor="#ffffff", color="#7c8aa5", fontcolor="#0e1729", fontname="Noto Sans CJK SC", fontsize=13, margin="0.20,0.12"]; edge[color="#7c8aa5", fontcolor="#46536b", fontname="Noto Sans CJK SC", fontsize=11, arrowsize=0.7];
+  C1 [label="成因一 分类器粒度过粗
+把整段内容判为可疑", color="#b3181f"];
+  C2 [label="成因二 安全指令过于绝对
+遇任何可疑内容即中止", color="#b3181f"];
+  C3 [label="成因三 层级冲突处理过保守
+一律拒绝而非降级", color="#b3181f"];
+  {rank=same; C1; C2; C3;}
+  F1 [label="改进一 拦截粒度做细
+只剔除可疑片段而非整段失败", color="#136f3a"];
+  F2 [label="改进二 处置规则可判定
+区分继续 / 降级 / 中止三种结果", color="#136f3a"];
+  F3 [label="改进三 为可降级场景设计降级路径
+读取外部内容时尤其关键", color="#136f3a"];
+  C1 -> F1; C2 -> F2; C3 -> F3;
+  {rank=same; F1; F2; F3;}
+  M [label="度量纪律
+同时记录攻击成功率与正常请求拒绝率
+定期用正常流量样本估算过拒率
+⇒ 只优化一侧会把系统推向极端", color="#2f4bd8", fillcolor="#dfe6fb"];
+  F2 -> M;
+  {rank=same; M; N;}
+  N [label="边界
+权衡落点由业务风险决定，没有普适最优点
+高风险场景可接受更高过拒率
+但必须是有意识的取舍并写进指标", shape=note, fillcolor="#e9eef8"];
+  F3 -> N [style=dotted, arrowhead=none];
+}

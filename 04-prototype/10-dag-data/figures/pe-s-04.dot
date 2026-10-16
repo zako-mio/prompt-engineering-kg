@@ -1,0 +1,13 @@
+digraph fig {
+  rankdir=LR; bgcolor="transparent";
+  node[shape=box, style="rounded,filled", fillcolor="#ffffff", color="#7c8aa5", fontcolor="#0e1729", fontname="Noto Sans CJK SC", fontsize=13, margin="0.20,0.12"]; edge[color="#7c8aa5", fontcolor="#46536b", fontname="Noto Sans CJK SC", fontsize=11, arrowsize=0.7];
+  H [label="同一份信息\n四种承载形态\n条宽 ＝ 相对 token 量\n以缩进 JSON 为基线 1.0", fillcolor="#dfe6fb", color="#2f4bd8"];
+  {rank=same; J; Y; M; S;}
+  J [label="缩进 JSON 1.0", width=4.40];
+  Y [label="YAML 0.70", width=3.08];
+  M [label="Markdown 表 0.55", width=2.42];
+  S [label="TSV 0.35", width=1.54];
+  H -> J [style=invis];
+  N [label="三个选型判据\n① 下游是否要流式解析\n② 是否含大量重复结构\n③ 解析失败的代价\n长列表看 ① · 单对象看 ③", shape=note, fillcolor="#e9eef8"];
+  M -> N [style=invis];
+}

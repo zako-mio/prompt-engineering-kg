@@ -1,0 +1,32 @@
+digraph fig {
+  rankdir=TB; bgcolor="transparent";
+  node[shape=box, style="rounded,filled", fillcolor="#ffffff", color="#7c8aa5", fontcolor="#0e1729", fontname="Noto Sans CJK SC", fontsize=13, margin="0.20,0.12"]; edge[color="#7c8aa5", fontcolor="#46536b", fontname="Noto Sans CJK SC", fontsize=11, arrowsize=0.7];
+  L1 [label="第一层 本地批量评测
+改动时跑
+答「这次改动是否变好」", fillcolor="#dfe6fb", color="#2f4bd8", width=2.9];
+  L2 [label="第二层 持续集成回归
+提交时跑固定子集
+答「是否打破既有行为」", fillcolor="#dfe6fb", color="#2f4bd8", width=2.9];
+  L3 [label="第三层 对抗评测
+安全改动或定期跑
+答「攻击面是否被扩大」", color="#dfe6fb", color="#2f4bd8", width=2.9];
+  {rank=same; L1; L2; L3;}
+  D [label="确定性断言
+相等 / 包含 / 正则 / JSON 合法性
+脚本 / 延迟 / 成本 / 工具调用指标", color="#136f3a", width=3.2];
+  A [label="模型辅助断言
+相似度 / 分类器 / 评分准则
+答案相关性 / 上下文忠实度 / 事实性", color="#9a5310", width=3.2];
+  L1 -> D [label="断言类型"];
+  D -> A [style=dashed, label="不足时"];
+  {rank=same; D; A;}
+  R [label="红蓝对抗的产出应有两列
+拦截率（攻击成功率）
+过拒率（正常请求拒绝率）
+⇒ 两者共同构成防御质量画像", color="#136f3a", width=3.4];
+  L3 -> R;
+  {rank=same; R; N;}
+  N [label="只测拦截率会奖励过度保守的防御
+并伤害可用性", shape=note, fillcolor="#e9eef8", width=3.0];
+  A -> N [style=dotted, arrowhead=none];
+}

@@ -1,0 +1,19 @@
+digraph fig {
+  rankdir=TB; bgcolor="transparent";
+  node[shape=box, style="rounded,filled", fillcolor="#ffffff", color="#7c8aa5", fontcolor="#0e1729", fontname="Noto Sans CJK SC", fontsize=13, margin="0.20,0.12"]; edge[color="#7c8aa5", fontcolor="#46536b", fontname="Noto Sans CJK SC", fontsize=11, arrowsize=0.7];
+  L1 [label="系统层\n产品身份 · 长期约束 · 安全策略\n几乎不变 ⇒ 可缓存", fillcolor="#dfe6fb", color="#2f4bd8"];
+  L2 [label="开发者层\n任务级指令 · 输出契约\n随调用点变化"];
+  L3 [label="用户层\n本次输入\n完全不可信", color="#b3181f"];
+  L1 -> L2 [label="特权递减"];
+  L2 -> L3 [label="特权递减"];
+  C [label="稳定前缀\n缓存命中面", color="#136f3a", width=2.2];
+  X [label="易变后缀\n每次重算", color="#b3181f", width=2.2];
+  L1 -> C [style=dashed, arrowhead=none];
+  L2 -> X [style=dashed, arrowhead=none];
+  L3 -> X [style=dashed, arrowhead=none];
+  {rank=same; L1; C;}
+  {rank=same; L2; X;}
+  {rank=same; L3; X;}
+  N [label="放错层的代价\n易变内容进了系统层 ⇒ 前缀失效、缓存归零\n（还顺手把「谁说了算」也搅乱了）", shape=note, fillcolor="#e9eef8"];
+  L3 -> N [style=dotted, arrowhead=none, label="失配"];
+}

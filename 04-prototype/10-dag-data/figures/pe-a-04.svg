@@ -1,0 +1,84 @@
+<svg class="fig__svg" role="img"
+ viewBox="0.00 0.00 759.00 224.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 220)">
+<title>fig</title>
+<g id="node1" class="node">
+<title>C1</title>
+<path fill="var(--surface-raised)" stroke="var(--danger)" d="M160,-46C160,-46 25,-46 25,-46 19,-46 13,-40 13,-34 13,-34 13,-12 13,-12 13,-6 19,0 25,0 25,0 160,0 160,0 166,0 172,-6 172,-12 172,-12 172,-34 172,-34 172,-40 166,-46 160,-46"/>
+<text text-anchor="middle" x="92.5" y="-26.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">成因一 分类器粒度过粗</text>
+<text text-anchor="middle" x="92.5" y="-12.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">把整段内容判为可疑</text>
+</g>
+<g id="node4" class="node">
+<title>F1</title>
+<path fill="var(--surface-raised)" stroke="var(--success)" d="M417.5,-46C417.5,-46 247.5,-46 247.5,-46 241.5,-46 235.5,-40 235.5,-34 235.5,-34 235.5,-12 235.5,-12 235.5,-6 241.5,0 247.5,0 247.5,0 417.5,0 417.5,0 423.5,0 429.5,-6 429.5,-12 429.5,-12 429.5,-34 429.5,-34 429.5,-40 423.5,-46 417.5,-46"/>
+<text text-anchor="middle" x="332.5" y="-26.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">改进一 拦截粒度做细</text>
+<text text-anchor="middle" x="332.5" y="-12.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">只剔除可疑片段而非整段失败</text>
+</g>
+<g id="edge1" class="edge">
+<title>C1&#45;&gt;F1</title>
+<path fill="none" stroke="var(--border-line)" d="M172.09,-23C189.9,-23 209.08,-23 227.75,-23"/>
+<polygon fill="var(--border-line)" stroke="var(--border-line)" points="228.16,-25.45 235.16,-23 228.16,-20.55 228.16,-25.45"/>
+</g>
+<g id="node2" class="node">
+<title>C2</title>
+<path fill="var(--surface-raised)" stroke="var(--danger)" d="M166.5,-110C166.5,-110 18.5,-110 18.5,-110 12.5,-110 6.5,-104 6.5,-98 6.5,-98 6.5,-76 6.5,-76 6.5,-70 12.5,-64 18.5,-64 18.5,-64 166.5,-64 166.5,-64 172.5,-64 178.5,-70 178.5,-76 178.5,-76 178.5,-98 178.5,-98 178.5,-104 172.5,-110 166.5,-110"/>
+<text text-anchor="middle" x="92.5" y="-90.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">成因二 安全指令过于绝对</text>
+<text text-anchor="middle" x="92.5" y="-76.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">遇任何可疑内容即中止</text>
+</g>
+<g id="node5" class="node">
+<title>F2</title>
+<path fill="var(--surface-raised)" stroke="var(--success)" d="M422.5,-110C422.5,-110 242.5,-110 242.5,-110 236.5,-110 230.5,-104 230.5,-98 230.5,-98 230.5,-76 230.5,-76 230.5,-70 236.5,-64 242.5,-64 242.5,-64 422.5,-64 422.5,-64 428.5,-64 434.5,-70 434.5,-76 434.5,-76 434.5,-98 434.5,-98 434.5,-104 428.5,-110 422.5,-110"/>
+<text text-anchor="middle" x="332.5" y="-90.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">改进二 处置规则可判定</text>
+<text text-anchor="middle" x="332.5" y="-76.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">区分继续 / 降级 / 中止三种结果</text>
+</g>
+<g id="edge2" class="edge">
+<title>C2&#45;&gt;F2</title>
+<path fill="none" stroke="var(--border-line)" d="M178.75,-87C193.08,-87 208.12,-87 222.94,-87"/>
+<polygon fill="var(--border-line)" stroke="var(--border-line)" points="223.2,-89.45 230.2,-87 223.2,-84.55 223.2,-89.45"/>
+</g>
+<g id="node3" class="node">
+<title>C3</title>
+<path fill="var(--surface-raised)" stroke="var(--danger)" d="M173,-202C173,-202 12,-202 12,-202 6,-202 0,-196 0,-190 0,-190 0,-168 0,-168 0,-162 6,-156 12,-156 12,-156 173,-156 173,-156 179,-156 185,-162 185,-168 185,-168 185,-190 185,-190 185,-196 179,-202 173,-202"/>
+<text text-anchor="middle" x="92.5" y="-182.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">成因三 层级冲突处理过保守</text>
+<text text-anchor="middle" x="92.5" y="-168.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">一律拒绝而非降级</text>
+</g>
+<g id="node6" class="node">
+<title>F3</title>
+<path fill="var(--surface-raised)" stroke="var(--success)" d="M432,-202C432,-202 233,-202 233,-202 227,-202 221,-196 221,-190 221,-190 221,-168 221,-168 221,-162 227,-156 233,-156 233,-156 432,-156 432,-156 438,-156 444,-162 444,-168 444,-168 444,-190 444,-190 444,-196 438,-202 432,-202"/>
+<text text-anchor="middle" x="332.5" y="-182.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">改进三 为可降级场景设计降级路径</text>
+<text text-anchor="middle" x="332.5" y="-168.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">读取外部内容时尤其关键</text>
+</g>
+<g id="edge3" class="edge">
+<title>C3&#45;&gt;F3</title>
+<path fill="none" stroke="var(--border-line)" d="M185.18,-179C194.46,-179 203.99,-179 213.5,-179"/>
+<polygon fill="var(--border-line)" stroke="var(--border-line)" points="213.77,-181.45 220.77,-179 213.77,-176.55 213.77,-181.45"/>
+</g>
+<g id="node7" class="node">
+<title>M</title>
+<path fill="var(--brand-soft)" stroke="var(--brand-primary)" d="M726,-124C726,-124 505,-124 505,-124 499,-124 493,-118 493,-112 493,-112 493,-62 493,-62 493,-56 499,-50 505,-50 505,-50 726,-50 726,-50 732,-50 738,-56 738,-62 738,-62 738,-112 738,-112 738,-118 732,-124 726,-124"/>
+<text text-anchor="middle" x="615.5" y="-104.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">度量纪律</text>
+<text text-anchor="middle" x="615.5" y="-90.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">同时记录攻击成功率与正常请求拒绝率</text>
+<text text-anchor="middle" x="615.5" y="-76.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">定期用正常流量样本估算过拒率</text>
+<text text-anchor="middle" x="615.5" y="-62.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">⇒ 只优化一侧会把系统推向极端</text>
+</g>
+<g id="edge4" class="edge">
+<title>F2&#45;&gt;M</title>
+<path fill="none" stroke="var(--border-line)" d="M434.55,-87C451.07,-87 468.38,-87 485.47,-87"/>
+<polygon fill="var(--border-line)" stroke="var(--border-line)" points="485.78,-89.45 492.78,-87 485.78,-84.55 485.78,-89.45"/>
+</g>
+<g id="node8" class="node">
+<title>N</title>
+<polygon fill="var(--surface-subtle)" stroke="var(--border-line)" points="745,-216 480,-216 480,-142 751,-142 751,-210 745,-216"/>
+<polyline fill="none" stroke="var(--border-line)" points="745,-216 745,-210 "/>
+<polyline fill="none" stroke="var(--border-line)" points="751,-210 745,-210 "/>
+<text text-anchor="middle" x="615.5" y="-196.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">边界</text>
+<text text-anchor="middle" x="615.5" y="-182.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">权衡落点由业务风险决定，没有普适最优点</text>
+<text text-anchor="middle" x="615.5" y="-168.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">高风险场景可接受更高过拒率</text>
+<text text-anchor="middle" x="615.5" y="-154.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">但必须是有意识的取舍并写进指标</text>
+</g>
+<g id="edge5" class="edge">
+<title>F3&#45;&gt;N</title>
+<path fill="none" stroke="var(--border-line)" stroke-dasharray="1,5" d="M444.16,-179C455.83,-179 467.79,-179 479.69,-179"/>
+</g>
+</g>
+</svg>

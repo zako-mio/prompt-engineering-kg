@@ -1,0 +1,27 @@
+digraph fig {
+  rankdir=TB; bgcolor="transparent";
+  node[shape=box, style="rounded,filled", fillcolor="#ffffff", color="#7c8aa5", fontcolor="#0e1729", fontname="Noto Sans CJK SC", fontsize=13, margin="0.20,0.12"]; edge[color="#7c8aa5", fontcolor="#46536b", fontname="Noto Sans CJK SC", fontsize=11, arrowsize=0.7];
+  Q [label="要不要写显式推理指令
+（CoT / 零样本 CoT）", fillcolor="#dfe6fb", color="#2f4bd8", width=3.2];
+  A [label="条件 A：非推理模型
+或任务串行深度高
+⇒ 显式引导推理步骤仍有明确收益", color="#136f3a"];
+  B [label="条件 B：推理模型且原生思考已开启
+⇒ 边际收益趋零甚至为负
+（官方口径：偏好一般性指令）", color="#b3181f"];
+  C [label="条件 C：推理模型的思考功能被关闭
+⇒ 手写思维链降级为兜底手段", color="#9a5310"];
+  Q -> A [label="该写"];
+  Q -> B [label="不该写"];
+  Q -> C [label="可写"];
+  {rank=same; A; B; C;}
+  N [label="另有一条与写法无关的硬约束（多轮对话）
+含思考内容的历史必须原样追加回传
+⇒ 改写历史会被报错或丢弃", shape=note, fillcolor="#e9eef8", width=3.2];
+  B -> N [style=dotted, arrowhead=none];
+  {rank=same; N; D;}
+  D [label="零样本形态的差别
+只加一句「一步一步思考」
+⇒ 不需要示例即可诱发推理步骤", shape=note, fillcolor="#e9eef8"];
+  A -> D [style=dotted, arrowhead=none];
+}

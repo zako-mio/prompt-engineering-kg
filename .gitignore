@@ -1,0 +1,54 @@
+# ===== prompt-engineering-kg .gitignore =====
+#
+# ★ 本仓是**双面仓**：仓库根 = 过程归档面，发布根 = `04-prototype/`。
+#   发布形态见 `.github/workflows/pages.yml`（build → gate → deploy，artifact 只收 `04-prototype/`）。
+#
+# 本文件的两条**硬规则**（依据 D1「输入件不公开，仅作内部输入」与同类站的路径级隔离先例）：
+#   规则 ①：**私密输入层整层排除** —— 调研 / 需求 / 架构三层含用户提供的二手手册正文与其逐条核查表，
+#           ⛔ 不得进入公开仓（那是「不公开、仅作内部输入」的落地点）。
+#           ★ 若将来要把核查表当教学案例公开，须另行取数（见 `02-requirements/handoff.json` 的 Q1）。
+#   规则 ②：**过程证据整层排除** —— 逾百个取证件 / 轮次快照 / 渲染凭证约 53M，是**过程**而非**产物**；
+#           它们已另行整层归档到 `04-prototype/16-checkpoint/_LOCAL_ARCHIVE/`（见该目录的 README）。
+#           ★ 台账里的引用路径一律指向**原路径**（本地文件系统），⛔ 不指向本仓路径 —— 避免制造第二条真相。
+
+# --- 规则 ①：私密输入层（整层）---
+01-research/
+02-requirements/
+03-architecture/
+
+# --- 规则 ①-补：任务根上的**过程留档与游离物**（⛔ 非站点产物）---
+#   `report.md`/`report.html` 是任务留档（十一轮报告，含轮次内情），归留档面不归发布面；
+#   `figs/` 是阶段 A 调研的图件暂存（`_style.json` + `figs/_vendor/` 的第三方技能副本）；
+#   两个根级探针 `.py` 是第 4–5 轮的一次性取证件（台账 `G39` 已登记它们不在 P41 扫描面内）。
+report.md
+report.html
+figs/
+_audit_r5_probe.py
+_selfcheck_stage1.py
+
+# --- 规则 ②：过程证据（整层）---
+04-prototype/16-checkpoint/_probe/
+04-prototype/16-checkpoint/_r6_backup/
+04-prototype/16-checkpoint/_r7_backup/
+04-prototype/16-checkpoint/_render-proof/
+04-prototype/16-checkpoint/_LOCAL_ARCHIVE/
+04-prototype/16-checkpoint/_reflection-candidates/
+04-prototype/16-checkpoint/_wave2_parts/
+04-prototype/16-checkpoint/_wave3_parts/
+04-prototype/16-checkpoint/__pycache__/
+04-prototype/16-checkpoint/_wave3_solo/
+
+# --- 上游站点的 vendor 例外：`13-interactive/vendor/` **须入库**（它是发布产物的一部分）---
+!04-prototype/13-interactive/vendor/
+
+# --- 中间产物 / 临时件 ---
+.Mission-file-work/
+*.pyc
+__pycache__/
+
+# --- 系统 / 编辑器 ---
+.DS_Store
+Thumbs.db
+*.log
+.vscode/
+.idea/

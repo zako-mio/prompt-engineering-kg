@@ -1,0 +1,620 @@
+{
+ "_note": "轮次台账（★ 契约 §轮次执行协议 第 ③④ 条的落盘载体）。每条 claim 必须标注 source（self-report / main-agent-rerun）并附 raw_output 原文；⛔ 不得转述。机检判据 = P40（只断言结构与自洽，⛔ 不验证自述是否如实）。",
+ "schema": "pekg/round-ledger/1",
+ "rounds": [
+  {
+   "artifacts": [
+    "16-checkpoint/DESIGN-CONTRACT.md",
+    "16-checkpoint/HANDOFF-R3.md",
+    "16-checkpoint/CRITERIA-CHANGE-P38-P40.md",
+    "16-checkpoint/ROUND-LEDGER.json",
+    "16-checkpoint/gate_prototype.py",
+    "16-checkpoint/_geom_interactive.py",
+    "16-checkpoint/_probe_env.py",
+    "16-checkpoint/_probe_channel.py",
+    "16-checkpoint/_probe_metrics.py",
+    "16-checkpoint/_probe/channel.json",
+    "16-checkpoint/_probe/env.json"
+   ],
+   "claims": [
+    {
+     "fact": "门控全量跑：P01–P40，FAIL 项与结论行",
+     "raw_output": "=== python3 gate_prototype.py ===\n== 门控结论：FAIL ==  FAIL 1 项 ['P39']\n（P39 断链引用 CRITERIA-CHANGE-P23.md：三处引用、磁盘无件 ⇒ 按设计 FAIL）",
+     "source": "main-agent-rerun"
+    },
+    {
+     "fact": "负例自检：判据数 / 夹具数 / 结论行",
+     "raw_output": "=== python3 gate_prototype.py --selftest ===\n== 自检结论：PASS ==（40 条判据 / 152 条负例夹具，全部须正向 PASS 且负例触发）",
+     "source": "main-agent-rerun"
+    },
+    {
+     "fact": "环境能力探测：非 snap 内核可用（★ 复核上一轮「浏览器不可用」的结论）",
+     "raw_output": "=== python3 _probe_env.py ===\n非 snap 内核：found=True（1 个候选）\n  /home/zako-mio/.cache/ms-playwright/chromium-1243/chrome-linux64/chrome\nplaywright(python)：found=True version=1.63.0\n== 结论：PASS ==（至少一条**不同源**的通道可用 ⇒ 可以做真实渲染验证）",
+     "source": "main-agent-rerun"
+    },
+    {
+     "fact": "验证通道产物非退化（8 条渲染，判据自己解码 PNG）",
+     "raw_output": "=== python3 _probe_channel.py ===\n[PASS] root  1440x900 唯一色 4547 亮度 22.4–255.0 453785 B 80d9336de07eb135\n[PASS] group 1440x900 唯一色 7220 ...\n[PASS] node  1440x900 唯一色 7551 ...\n[PASS] view  1440x900 唯一色 8044 ...\n[PASS] interactive 1440x900 唯一色 4664 ...\n[PASS] root-narrow 768x900 唯一色 5509 ...\n[PASS] interactive-narrow 768x900 唯一色 5744 ...\n[PASS] root-dark 1440x900 唯一色 7906 ...",
+     "source": "main-agent-rerun"
+    },
+    {
+     "fact": "全站横向溢出普查（19 页，视口 1440×900）：2 处元素级溢出",
+     "raw_output": "=== python3 _probe_channel.py（D 段）===\n-- D. 全站横向溢出普查（视口 1440×900；19 页）--\n   [FAIL] 11-node-pages/pe-f-01.html         <PRE.> 溢出 637px（scrollW 1241 / clientW 604；font-size 16px / white-space pre / 文本 236 字）\n   [FAIL] 11-node-pages/pe-r-02.html         <PRE.> 溢出 208px（scrollW 812 / clientW 604；font-size 16px / white-space pre / 文本 130 字）\n== 结论：FAIL ==",
+     "source": "main-agent-rerun"
+    },
+    {
+     "fact": "阈值推导取证（长文可扫性 / 横表宽度 / 窄视口 zoom）",
+     "raw_output": "=== python3 _probe_metrics.py ===\n汉字 '新' advance = 16.000px (1.0000 em @16px)；拉丁 a-z 平均 advance = 8.486px (0.5303 em)\n散文最长无标点游程：全站最长 = 151 caliber（14-views/02-frontier.html）；分位：min 59 / median 78 / p90 130 / max 151\n交互图 zoom：1440→1.0000 / 1180→1.0000 / 1024→1.0000 / 900→1.0000 / 768→0.8755 / 640→0.7077",
+     "source": "main-agent-rerun"
+    }
+   ],
+   "ended_at": "2026-10-15T18:40:00+08:00",
+   "g_list_updates": {
+    "G6": "P38 报出的 2 处 pre 横向溢出（未修；属生成器/CSS 面，⛔ 不在本子 Agent 允许改动范围）",
+    "G7": "P39 报出的 CRITERIA-CHANGE-P23.md 断链（待用户裁决）",
+    "G8": "长文可扫性只有报告项（⛔ 不可机检）",
+    "G9": "窄视口 zoom < 1（768 视口 0.8755）"
+   },
+   "note": "★ 本轮的读数全部由本子 Agent 亲自跑出（main-agent-rerun）；⛔ 无一条采信他人自报。P39 的 FAIL 是**设计意图**（真实断链当场报警），P38 的 FAIL 是**真实产物缺陷**（pre 横向溢出），两条都不是回归。",
+   "round": 3,
+   "rs_touched": ["R-01", "R-21", "R-22", "R-23", "R-24"],
+   "started_at": "2026-10-15T18:21:00+08:00"
+  },
+  {
+   "artifacts": [
+    "16-checkpoint/DESIGN-CONTRACT.md（新增 §4 §轮次执行协议 + R-21…R-24 + G6–G9）",
+    "16-checkpoint/CRITERIA-CHANGE-P38-P40.md",
+    "16-checkpoint/HANDOFF-R3.md",
+    "16-checkpoint/CONTINUE-PROMPT-D4.md",
+    "16-checkpoint/CRITERIA-CHANGE-P23.md（★ 补登记件：由产物侧事实反推、推断处标〔推断〕，⛔ 非「原件找回」）",
+    "16-checkpoint/ROUND-LEDGER.json",
+    "16-checkpoint/_probe_env.py",
+    "16-checkpoint/_probe_channel.py",
+    "16-checkpoint/_probe_metrics.py",
+    "report.md（§七；位于任务根，相对 04-prototype/ 为 ../report.md）",
+    "report.html（同上，由 report.md 重渲染）"
+   ],
+   "claims": [
+    {
+     "fact": "门控全量跑：P01–P40 共 40 条判据逐条 PASS、FAIL 0 项、退出码 0",
+     "raw_output": "=== python3 gate_prototype.py（退出码 0）===\n== 门控：原型站判据 P01–P40 ==\n产物根：/home/zako-mio/opencode/archive/Mission-file/2026-10/1014-新一代提示词工程知识全景图与教程/04-prototype\n受检产物：42 个（HTML 19 / MD 18）\n[PASS] P01 真相源 JSON 合法且必填字段齐全\n       四份真相源 JSON 合法且必填字段齐全（缺字段 0 处）[]\n（★ 节录说明：P01–P37 逐条均 [PASS]，此处略；以下为 P38–P40 与结论行）\n[PASS] P38 验证通道：能力声明与事实一致 ＋ 渲染产物非退化（判据自己解码 PNG、sha256 逐条比对、横向溢出直接量）\n       manifest `16-checkpoint/_probe/channel.json`（schema pekg/channel-probe/1）；能力声明与事实一致；实检渲染 8 条（判据自己解码）；横向溢出页/元素 0 处；违例 0 处 []\n  root                       1440x900  唯一色   4547 亮度  22.4–255.0   453785 B 80d9336de07eb135\n  group                      1440x900  唯一色   7220 亮度  22.4–255.0   456079 B 707faf06b028a77b\n  node                       1440x900  唯一色   7551 亮度  22.4–255.0   366436 B 3516cf79513cee08\n  view                       1440x900  唯一色   8044 亮度  22.4–255.0   454121 B 8241a232b1dd8e9a\n  interactive                1440x900  唯一色   4664 亮度  22.4–255.0   447206 B df70774afedef296\n  root-narrow                 768x900  唯一色   5509 亮度  22.4–255.0   303953 B f35c3ad12421254f\n  interactive-narrow          768x900  唯一色   5744 亮度  22.4–255.0   282831 B bffea6d7a53b04ba\n  root-dark                  1440x900  唯一色   7906 亮度   6.9–236.7   930857 B 372649ce134fe434\n[PASS] P39 判据变更登记件引用解析（三处引用 ⟺ 磁盘存在性，双向闭合）\n       引用点 3 处（gate_prototype.py / gen-state.py / PUBLISH-STATE.json）；被引用的登记件 5 个 / 磁盘登记件 5 个；断链 0 处 / 孤儿 0 处；违例 0 处 []\n[PASS] P40 轮次台账结构合规（R-id 与契约对齐 / 每条 claim 标注来源与原始输出）\n       轮次 2 条 / claims 13 条；契约规则表 R-id 全集 24 个；结构与自洽违例 0 处 []\n== 门控结论：PASS ==  FAIL 0 项 []",
+     "source": "main-agent-rerun"
+    },
+    {
+     "fact": "负例自检：40 条判据 / 154 条负例夹具全部触发、退出码 0",
+     "raw_output": "=== python3 gate_prototype.py --selftest（退出码 0）===\n== 门控判据自检：逐条触发负例 ==\n[PASS] P01 真相源 JSON 合法且必填字段齐全\n       正向：PASS\n       负例（1 条）：全部触发（判据可判假） —— 四份真相源 JSON 合法且必填字段齐全（缺字段 1 处）[('node PE-F-01', 'why')]\n（★ 节录说明：P01–P39 逐条均「正向：PASS / 负例全部触发」，此处略；以下为 P40 与结论行）\n[PASS] P40 轮次台账结构合规（R-id 与契约对齐 / 每条 claim 标注来源与原始输出）\n       正向：PASS\n       负例（8 条）：全部触发（判据可判假） —— 8/8 条子断言负例全部触发\n\n== 自检结论：PASS ==（40 条判据 / 154 条负例夹具，全部须正向 PASS 且负例触发）",
+     "source": "main-agent-rerun"
+    },
+    {
+     "fact": "环境能力探测（开工必跑，R-21）：非 snap 内核在盘、playwright(python) 1.63.0 可用；CapEff 0 / NoNewPrivs 1 解释 snap 通道为何结构性不可用",
+     "raw_output": "=== python3 _probe_env.py（退出码 0）===\n== _probe_env.py：环境能力探测（开工第一步）==\n站点根：/home/zako-mio/opencode/archive/Mission-file/2026-10/1014-新一代提示词工程知识全景图与教程/04-prototype\n\n-- A. 候选通道 --\n   非 snap 内核：found=True（1 个候选）\n      /home/zako-mio/.cache/ms-playwright/chromium-1243/chrome-linux64/chrome\n   snap 内核：found=True（/snap/bin/chromium）\n-- B. 驱动 --\n   playwright(python)：found=True version=1.63.0\n-- C. 进程能力集（解释 snap 通道为何结构性不可用）--\n   CapInh      0000000000000000\n   CapPrm      0000000000000000\n   CapEff      0000000000000000\n   CapBnd      000001ffffffffff\n   NoNewPrivs  1\n   Seccomp     0\n-- D. 负对照（snap 通道原始报错；★ 「失败文案 ≠ 失败现场」）--\n   $ /snap/bin/chromium --version … rc=1\n      snap-confine is packaged without necessary permissions and cannot continue\n      required permitted capability cap_dac_override not found in current capabilities:\n        =: Operation canceled\n   $ /usr/bin/chromium-browser --headless … rc=1\n      snap-confine is packaged without necessary permissions and cannot continue\n      required permitted capability cap_dac_override not found in current capabilities:\n        =: Operation canceled\n\n== 结论：PASS ==（至少一条**不同源**的通道可用 ⇒ 可以做真实渲染验证）\n   事实已落盘：16-checkpoint/_probe/env.json",
+     "source": "main-agent-rerun"
+    },
+    {
+     "fact": "验证通道 + 产物非退化（R-22）：8 页真实渲染判据自解码全部非退化；全站 19 页文档级与元素级横向溢出均为 0（G6 处置后转绿）",
+     "raw_output": "=== python3 _probe_channel.py（退出码 0）===\n-- B/C. 真实渲染（8 页）--\n   [PASS] root                       1440x900  唯一色   4547 亮度  22.4–255.0   453785 B  80d9336de07eb135\n   [PASS] group                      1440x900  唯一色   7220 亮度  22.4–255.0   456079 B  707faf06b028a77b\n   [PASS] node                       1440x900  唯一色   7551 亮度  22.4–255.0   366436 B  3516cf79513cee08\n   [PASS] view                       1440x900  唯一色   8044 亮度  22.4–255.0   454121 B  8241a232b1dd8e9a\n   [PASS] interactive                1440x900  唯一色   4664 亮度  22.4–255.0   447206 B  df70774afedef296\n   [PASS] root-narrow                 768x900  唯一色   5509 亮度  22.4–255.0   303953 B  f35c3ad12421254f\n   [PASS] interactive-narrow          768x900  唯一色   5744 亮度  22.4–255.0   282831 B  bffea6d7a53b04ba\n   [PASS] root-dark                  1440x900  唯一色   7906 亮度   6.9–236.7   930857 B  372649ce134fe434\n-- D. 全站横向溢出普查（视口 1440×900；19 页）--\n   [PASS] 全站 19 页：文档级与元素级横向溢出均为 0\n\n== 结论：PASS ==（用时 36.4s；manifest → 16-checkpoint/_probe/channel.json）\n（★ 节录说明：A 段通道事实与 C 段标定读数行（探针自报的 JSON 行）此处略，全文见 16-checkpoint/_probe/channel.json）",
+     "source": "main-agent-rerun"
+    },
+    {
+     "fact": "幂等落盘（build-all.py --write）：实际写入 0 / 删除 0 / 孤儿残留 0；二次比对干净 = True",
+     "raw_output": "=== python3 build-all.py --write（退出码 0）===\n== build-all write ==  产物根 /home/zako-mio/opencode/archive/Mission-file/2026-10/1014-新一代提示词工程知识全景图与教程/04-prototype\n预期产物 38 个文件\n  added      0\n  modified   0\n  deleted    0\n  unchanged  38\n（★ 节录说明：unchanged 38 个文件逐行列出，此处略）\n  实际写入 0 个 / 实际删除 0 个 / 孤儿残留 0 个\n  二次比对干净：True",
+     "source": "main-agent-rerun"
+    },
+    {
+     "fact": "令牌与派生结果对账（gen-tokens.py --check）：PASS、退出码 0",
+     "raw_output": "=== python3 gen-tokens.py --check（退出码 0）===\n[PASS] 令牌块一致（sha256 c389d019a4d9…）",
+     "source": "main-agent-rerun"
+    },
+    {
+     "fact": "图件与派生结果对账（gen-figs.py --check）：PASS、退出码 0",
+     "raw_output": "=== python3 gen-figs.py --check（退出码 0）===\n[PASS] 图件 8 件与派生结果一致",
+     "source": "main-agent-rerun"
+    }
+   ],
+   "ended_at": "2026-10-16T00:35:00+08:00",
+   "g_list_updates": {
+    "G10": "★ 本轮新增登记项：`PUBLISH-STATE.json` 的 `gates.prototype` 曾写成陈旧读数「判据 P01–**P34**」⇒ **主 Agent 已修为 P01–P40**（`gen-state.py` 的 `GATE_DECL` 同批改；重建后写入 1 件、二次比对干净、门控仍 PASS）。现读的 `gates.prototype` = 「python3 16-checkpoint/gate_prototype.py（判据 P01–P40；退出码 0 = 全部 PASS；本文件不缓存裁决，避免出现陈旧 PASS）」。★ 时点关系（必读）：`report.md §7.9` 第 4 条②把它记为「仍写 P01–P34」，那是**该段收口时刻的快照**；本行记的是**本台账收口时刻**的现态 ⇒ 两者不矛盾（同「有保质期的读数」一类），⛔ 未改 `report.md`",
+    "G6": "✅ 已消（第 4 轮处置）：`<pre>` 横向溢出（`11-node-pages/pe-f-01.html` 637px / `pe-r-02.html` 208px）由主 Agent 在 `gen-common.py:657` 加 `white-space:pre-wrap;word-break:break-word` 修掉；重跑 `_probe_channel.py` 后真实渲染实测「全站 19 页：文档级与元素级横向溢出均为 0」⇒ **P38 转绿**（★ 修的是产物，⛔ 未为变绿而放宽 P38）",
+    "G7": "✅ 已消（第 4 轮处置）：`CRITERIA-CHANGE-P23.md` 断链经**用户裁决走 A**（补写），补登记件已落盘；P39 现读「引用点 3 处 / 被引用登记件 5 个 / 磁盘登记件 5 个；断链 0 处 / 孤儿 0 处」⇒ **P39 转绿**。★ 该件是**补登记件**（由产物侧事实反推、推断处标〔推断〕），⛔ **不是「原件找回」**",
+    "G8": "仍在（★ 原样保留）：长文可扫性无因果阈值可定 ⇒ 降为 P35 **报告项**并**显式标注不可机检**；本轮实测（`_probe_metrics.py` B 段）全站最长无标点游程 151 caliber / p90 130 / 中位 78，该面由真实渲染（P38 的 PNG 证据）+ 人看兜",
+    "G9": "仍在（★ 原样保留）：窄视口交互图 zoom < 1 —— `<1180px` 档仍 1.0（1024 / 900），首个 < 1 出现在视口 768（zoom 0.8755），640 时 0.7077 ⇒ P37 的 `zoom=1` 只在**声明画布**口径成立"
+   },
+   "note": "★ 本轮的读数全部由主 Agent 亲自跑出（main-agent-rerun 7 条），⛔ 无一条采信委派方自报；两条处置（G6 修 `pre`、G7 补登记件）见 §2 G 清单与 `report.md §7.3`。★ **补登说明**：本对象是**第 4 轮（教训固化轮）的轮次对象**，在对齐 `report.md §七` 收口后补登 —— 第 4 轮当时漏落该对象，而 `check_p40` 是 `for r in rounds`（**逐条**校验已有对象）⇒ 缺一个对象它永远报不出来，故须补；`started_at` 取第 3 轮 `ended_at` 之后（2026-10-15T18:40 → 18:41），`ended_at` 取本对象落盘时的复跑收口时刻。★ **时点关系（⛔ 未改任何源件）**：`report.md §7.9` 第 4 条①把 round 3 记作「40 条判据 / **152** 条夹具」、第 4 条②记 `PUBLISH-STATE.json` 的「**P01–P34**」—— 两条都是**该段收口时刻的快照**；现态分别为 **154 条夹具**（本对象 claim ② 实测）与 **P01–P40**（本对象 `g_list_updates.G10` 登记）⇒ ⛔ 未据此改写 `report.md`，也⛔ 未回改 round 3 对象。",
+   "round": 4,
+   "rs_touched": ["R-20", "R-21", "R-22", "R-23", "R-24"],
+   "started_at": "2026-10-15T18:41:00+08:00"
+  },
+  {
+   "artifacts": [
+    "16-checkpoint/ROUND-LEDGER.json",
+    "16-checkpoint/CRITERIA-CHANGE-P22.md（新增：两态配额 → 状态↔内容一致性）",
+    "16-checkpoint/CRITERIA-CHANGE-P05-R5.md（新增：boundary 字段化执行 + why 上限/intro 下限按真实渲染重导）",
+    "16-checkpoint/_b1_boundary_review.md（新增：67 条 boundary 改判表）",
+    "16-checkpoint/_b1_prefill_boundary.py（新增：预填助手，dry-run 默认）",
+    "16-checkpoint/_b1_emit_review.py（新增：改判表生成件）",
+    "16-checkpoint/_probe_thresholds.py（新增：阈值重导取证，只打印）",
+    "16-checkpoint/_wave1_content.json（新增：波次 1 内容草稿的载体）",
+    "16-checkpoint/_wave1_apply.py（新增：合并 + 引文回源校验）",
+    "16-checkpoint/gate_prototype.py（P22 重写 / P05 加 boundary 三条 / P01 加 boundary / 上限常量重导 / 夹具）",
+    "16-checkpoint/gen-common.py（prose_html 支持 boundary 字段）",
+    "16-checkpoint/gen-nodes.py（sec-why 读 boundary 字段 + 5 条 NODE_FIG）",
+    "16-checkpoint/gen-md.py（MD 镜像补「适用边界」块）",
+    "16-checkpoint/gen-figs.py（新增 5 张自制图 pe-f-02…06）",
+    "16-checkpoint/gen-state.py（CHANGE_DECL_4/5 + html_count 修 bug + ROUND=5 + pending_note 去轮次写死）",
+    "16-checkpoint/SCHEMA.md（两态一致性与配额段重写 / boundary 入字段表 / 上限重导与口径统一）",
+    "10-dag-data/_selfcheck.py（C23–C27 重写 / C28·C28b·C28c 口径统一 / C32 改字段断言）",
+    "10-dag-data/dag.json（67 节点全部加 boundary；9 个双标记节点的 intro 边界移出；PE-R-02/PE-P-02 补写机制句；波次 1 的 5 个节点补 lab/evidence/pitfalls 并翻 complete）",
+    "10-dag-data/figures/pe-f-02…pe-f-06 的 .dot 与 .svg（5 张新增自制图，入库产物）",
+    "11-node-pages/pe-f-02.html … pe-f-06.html（5 个新节点页）",
+    "15-md/nodes/pe-f-02.md … pe-f-06.md（5 个新 MD 镜像）",
+    "04-prototype/PUBLISH-STATE.json（round=5、counts.html 改为派生、gates 新增两个登记件键、pending_nodes 64→59）",
+    "16-checkpoint/_probe/channel.json + 8 张 PNG（本轮重跑）+ wave1-pe-f-02/06-1440x900.png（新增渲染证据）",
+    "_audit_r5_probe.py（任务根；★ 本轮**审核子 Agent** 留下的只读探针：P22 是否更严 / boundary 能否绕过 / 两侧漂移 / MD 与 HTML 一致性，全部突变在内存 deepcopy 内做，⛔ 未写产物、⛔ 未改判据；与任务根既有的 `_selfcheck_stage1.py` 同一层）",
+    "report.md（第 5 轮：追加 §八，含审核结果与处置）· report.html（同源重渲染）"
+   ],
+   "claims": [
+    {
+     "fact": "门控全量跑 P01–P40：FAIL 0 项、退出码 0；受检产物 52 个（HTML 24 / MD 23）",
+     "raw_output": "=== python3 gate_prototype.py（退出码 0）===\n受检产物：52 个（HTML 24 / MD 23）\n== 门控结论：PASS ==  FAIL 0 项 []\n（★ 19→24 页 / 18→23 镜像：本轮新落 5 个节点页与 5 个 MD 镜像）",
+     "source": "main-agent-rerun"
+    },
+    {
+     "fact": "负例自检：40 条判据 / 159 条夹具全部触发、退出码 0（夹具 154→159：P22 +2、P05 +3）",
+     "raw_output": "=== python3 gate_prototype.py --selftest（退出码 0）===\n== 自检结论：PASS ==（40 条判据 / 159 条负例夹具，全部须正向 PASS 且负例触发）\n（★ 判据数仍为 40 ⇒ 与 CONTINUE-PROMPT-D4 §H-1 第 4 条的「判据 40 条」一致；新增可判假面只加夹具不加编号）",
+     "source": "main-agent-rerun"
+    },
+    {
+     "fact": "环境能力探测（收口复跑，R-21）：非 snap 内核在盘、playwright 1.63.0 可用；CapEff/CapBnd 均为 0 解释 snap 通道为何结构性不可用",
+     "raw_output": "=== python3 _probe_env.py（收口复跑；退出码 0）===\n非 snap 内核：found=True（1 个候选）\n  /home/zako-mio/.cache/ms-playwright/chromium-1243/chrome-linux64/chrome\nplaywright(python)：found=True version=1.63.0\n== 结论：PASS ==（至少一条**不同源**的通道可用 ⇒ 可以做真实渲染验证）\n   事实已落盘：16-checkpoint/_probe/env.json",
+     "source": "main-agent-rerun"
+    },
+    {
+     "fact": "验证通道 + 产物非退化 + 全站横向溢出：★ 在 build-all --write **之后**重跑（R-22），故 P38 读的是本轮 manifest；24 页溢出 0",
+     "raw_output": "=== python3 _probe_channel.py（退出码 0）===\n-- D. 全站横向溢出普查（视口 1440×900；24 页）--\n   [PASS] 全站 24 页：文档级与元素级横向溢出均为 0\n== 结论：PASS ==（用时 38.6s；manifest → 16-checkpoint/_probe/channel.json）",
+     "source": "main-agent-rerun"
+    },
+    {
+     "fact": "幂等落盘：首次 --write 新增 10（5 节点页 + 5 MD）/ 修改 15；随即复跑作二次比对 ⇒ 写入 0 / 删除 0 / 孤儿 0 / 干净",
+     "raw_output": "=== python3 build-all.py --write（退出码 0）===\n== build-all write ==\n预期产物 48 个文件\n  added      10\n      11-node-pages/pe-f-02.html … pe-f-06.html（5）\n      15-md/nodes/pe-f-02.md … pe-f-06.md（5）\n  modified   15\n      11-node-pages/pe-f-01.html（★ 对端节点已发布 ⇒ 兄弟 chip 由徽标变真链接）\n      12-groups/g00…g09/gd-n/index.html、14-views 2 页、13-interactive/index.html、index.html、PUBLISH-STATE.json\n  deleted    0\n（随后复跑一次）\n  实际写入 0 个 / 实际删除 0 个 / 孤儿残留 0 个\n  二次比对干净：True",
+     "source": "main-agent-rerun"
+    },
+    {
+     "fact": "数据侧自检（★ 本轮并入收口协议）：complete 8 / registered 59，C23–C33 全 PASS、FAIL 0 / WARN 3",
+     "raw_output": "=== python3 10-dag-data/_selfcheck.py（退出码 0）===\n[PASS] C23-status-enum content_status 仅两态（越界：[]）\n[PASS] C24-complete-count complete ≥3（实为 8：['PE-F-01', 'PE-F-02', 'PE-F-03', 'PE-F-04', 'PE-F-05', 'PE-F-06', 'PE-R-02', 'PE-P-02']）\n[PASS] C25-registered-count registered = 全量 - complete（实为 59，应为 59）\n[PASS] C26-two-state-sum 两态合计 = 全量注册数（8 + 59 = 67）\n[PASS] C27-content-status-consistent 内容已填即须翻 complete（仍标 registered 而三块非空：[]）\n[PASS] C28-lengths-caliber why / intro 下限（caliber 口径，与门控 P05 同源同值）全部满足（不足：[]）\n[PASS] C29-complete-blocks complete 节点 8 区块全非空（空：[]）\n[PASS] C31-evidence-contract evidence 每条字段齐全且可回源（坏：[]）\n[PASS] C32-boundary-field 每个节点 boundary 非空 / 不与 why·intro 整句重复 / 正文不残留引导串（坏：[]）\n[WARN] C28b-upper-report 上限**报告项**（caliber 口径；实测一屏可读量 = why 693 / intro 777；summary 80 本轮未重导）：超出 0 处 []\n[WARN] C28c-caliber-report why 实测区间 61–147；intro 实测区间 129–228；summary 实测区间 23–38\n== 自检：PASS ==  (FAIL 0 项 / WARN 3 项)",
+     "source": "main-agent-rerun"
+    },
+    {
+     "fact": "解锁两态契约（P22 + C24–C27）：同一份 8/59 数据在两份实现下全绿；旧配额下本波必 FAIL",
+     "raw_output": "=== gate --only P22 + _selfcheck C23–C27（改后同一份数据）===\n[PASS] P22 content_status 状态↔内容一致性（complete 8 区块非空 / registered 三块必空 / 禁半填）\n       complete 8 个（8 区块全非空）；registered 59 个（lab/evidence/pitfalls 必须为空；why ≥60 / intro ≥120 且 summary 通过结构性三条、无空洞占位）；两态合计 67 = 全量注册数；违例 0 处 []\n⇒ 改前：门控 `registered ≥60` 最多再翻 4 个；数据侧 C24「complete 恰好 3 个」+ C27 固定名单 ⇒ **一个都不能翻**。本波要翻 5 个 ⇒ 不开锁则第 1 步即 FAIL。",
+     "source": "main-agent-rerun"
+    },
+    {
+     "fact": "B-1 boundary 字段化：67/67 切出、8 个双标记节点人工择一、0 处跌破下限；★ 渲染平价（pe-f-01.html 逐字节不变）",
+     "raw_output": "=== _b1_prefill_boundary.py（dry-run）+ _b1_emit_review.py --write + build-all --dry-run ===\n-- 统计 --\n   有显式标记并切出边界：67 / 67\n   仅 why 有标记：58；仅 intro 有标记：0；两处都有标记：9\n   NEEDS_MANUAL（须人工看/改写）：8 个（均为「双标记且两版文字不一致 ⇒ 须人工择一并合并」）\n[write] dag.json 已落盘；回读校验：JSON 合法、节点 67 个、含 boundary 的 67 个\n[write] _b1_boundary_review.md（5716 字节；回读行数 94）\n- boundary 为空的：0；正文残留引导串的：0；跌破各自下限的：0\n★ 渲染平价：build-all --dry-run 里 11-node-pages/pe-f-01.html 列在 unchanged ⇒ 字段化前后**逐字节相同**\n★ 两条 complete 节点因 C9 补写而预期变化：PE-R-02（intro 122→204）、PE-P-02（143→193）\n[PASS] P01 真相源 JSON 合法且必填字段齐全\n[PASS] P05 字段长度约束（caliber 口径）＋ summary 结构约束 ＋ `boundary` 必填/不重复/不残留",
+     "source": "main-agent-rerun"
+    },
+    {
+     "fact": "B-2 阈值按真实渲染重导：why 一屏可读量 693 / intro 777（均为报告项）；intro 下限无法由渲染导出（如实登记）",
+     "raw_output": "=== python3 _probe_thresholds.py（退出码 0；⛔ 不落产物）===\n-- A. 版式实测 --\n   11-node-pages/pe-f-01.html     内容列宽  868.0px · 根字号 16px · 行高 28px\n-- B/C. 逐区块（视口 900px）--\n   pe-f-01 sec-why    行 5 · 块高 148.0px · caliber 114 · 每行 22.8 · px/caliber 1.298 · 一屏 693 caliber\n   pe-f-01 sec-intro  行 7 · 块高 208.0px · caliber 188 · 每行 26.9 · px/caliber 1.106 · 一屏 813 caliber\n   pe-r-02 sec-why    行 5 · 块高 152.0px · caliber 118 · px/caliber 1.288 · 一屏 698 caliber\n   pe-r-02 sec-intro  行 8 · 块高 236.0px · caliber 204 · px/caliber 1.157 · 一屏 777 caliber\n   pe-p-02 sec-why    行 4 · 块高 120.0px · caliber 114 · px/caliber 1.053 · 一屏 855 caliber\n   pe-p-02 sec-intro  行 7 · 块高 208.0px · caliber 193 · px/caliber 1.078 · 一屏 835 caliber\n-- D. 反解 --\n   why    一屏容量：min 693 / max 855 caliber\n   intro  一屏容量：min 777 / max 835 caliber\n⇒ WHY_UPPER_REPORT 120 → 693；INTRO_UPPER_REPORT 250 → 777（两者**只能作报告项**）；\n  intro 的**下限**渲染无法导出（只给上界）⇒ 保留内容侧理由并如实登记为未达成",
+     "source": "main-agent-rerun"
+    },
+    {
+     "fact": "波次 1 内容：5 个节点补齐 lab/evidence/pitfalls 并翻 complete；14 条引文**逐片段回源**通过",
+     "raw_output": "=== python3 _wave1_apply.py --write（退出码 0）===\n   回源引文库：7 个文件 / 126 条唯一引文\n   [PE-F-02] S-0012 tier=official 片段 2/2 回源；S-0001 1/1；S-0004 1/1\n   [PE-F-03] S-0001 1/1；S-0019 1/1；S-0032 3/3\n   [PE-F-04] S-0038 2/2；S-0004 2/2\n   [PE-F-05] S-0013 1/1；S-0001 1/1；S-0002 1/1\n   [PE-F-06] S-0063 1/1；S-0001 1/1；S-0056 1/1\n== 结论：PASS ==（回源、台账注入、长度、结构四项全过）\n[write] dag.json 已落盘；回读：JSON 合法 / 节点 67 / complete 8 个 ['PE-F-01','PE-F-02','PE-F-03','PE-F-04','PE-F-05','PE-F-06','PE-P-02','PE-R-02']\n★ 回源口径：每条 quote 按省略号拆片段，逐片段在 01-research/evidence/A*.json 的已回源引文里逐字定位（⛔ 挡不住引文库本身写错）\n★ url/tier 一律由脚本按 source_id 从 sources.json **注入**（⛔ 不手抄）",
+     "source": "main-agent-rerun"
+    },
+    {
+     "fact": "几何复算（交互图产物侧）PASS：11 组下钻 0 超区 0 重叠",
+     "raw_output": "=== python3 _geom_interactive.py（退出码 0）===\n[8] 下钻视图 11 组：节点数 [6, 5, 8, 7, 8, 9, 6, 4, 3, 7, 4]；超区 0 组；重叠 0 处\n== 几何复算结论：PASS ==",
+     "source": "main-agent-rerun"
+    },
+    {
+     "fact": "令牌 / 图件对账：均 PASS（图件 8 → 18 件）",
+     "raw_output": "=== python3 gen-tokens.py --check（退出码 0）===\n[PASS] 令牌块一致（sha256 c389d019a4d9…）\n=== python3 gen-figs.py --check（退出码 0）===\n[PASS] 图件 18 件与派生结果一致\n（★ 8 → 18 件 = 本轮新增 5 张自制图的 .dot + .svg）",
+     "source": "main-agent-rerun"
+    },
+    {
+     "fact": "P35 夹具自检（29 条全触发 / 阈值边界 0 处不符）与开关行为自检（37 例 FAIL 0）",
+     "raw_output": "=== python3 _selfcheck_p35_fixtures.py（退出码 0）===\n== 自检结论：PASS ==（29 条夹具全部触发；正向 PASS；阈值边界 0 处不符）\n=== PATH=… node _selfcheck_switches.mjs（退出码 0）===\n== 开关行为自检：PASS（37 例，FAIL 0）==",
+     "source": "main-agent-rerun"
+    },
+    {
+     "fact": "★ 本轮渲染证据（新鲜度靠本行 + 人核：P38 **不判** PNG 新鲜度）",
+     "raw_output": "=== _probe_channel.py 重新生成 8 张（含窄视口 768 与深色）+ 新增节点页实拍 ===\n_probe/wave1-pe-f-02-1440x900.png  1440x900 · 唯一色 4978 · 亮度 22.4–255.0 · 363281 B · sha256 d71026ff99fc833b… · 退化=[]\n_probe/wave1-pe-f-06-1440x900.png  1440x900 · 唯一色 5296 · 亮度 22.4–255.0 · 411557 B · sha256 a541695234da7a1f… · 退化=[]\n（mtime = 2026-10-16 04:06；`_probe/*.png` 由 `_probe_channel.py` 于本轮 38.6s 的一次运行内重写）",
+     "source": "main-agent-rerun"
+    },
+    {
+     "fact": "★ 本轮当场报出的三条真实缺陷（判据起作用的正例，⛔ 非回归）",
+     "raw_output": "=== 本轮当场报出的三条真实缺陷 ===\n① **P12 自伤**：CHANGE_DECL_5 初稿把「第 3 节」写成内部编号记号（`§3`），而该文本会随 gen-state 落到公开产物 ⇒\n[FAIL] P12 公开产物无内部编号 / 绝对路径 / 主机名 / 令牌串\n       受检产物 42 个；命中 1 处 {'内部编号': [('PUBLISH-STATE.json', '§3')]}\n   处置：改写为「的 C3 裁决」⇒ 转绿（**修产物文本，⛔ 未放宽 P12**）\n② **图件规格**：`gen-figs.check_spec` 当场拒收 —— pe-f-05 首版 360.5x273（609px）、pe-f-04 第二版 435.5x353（652px）均 > 600px ⇒ 两次重排图件（⛔ 未用 CSS 缩放掩盖）\n③ **MD 镜像静默丢边界**：`gen-md.node_md` 原本只印 `why`，而边界原先寄生在 `why` 里 ⇒ 字段化后镜像会**静默丢失**边界，且该面**无判据覆盖**（P13 只断言镜像存在）⇒ 同批补上独立「适用边界」块",
+     "source": "main-agent-rerun"
+    },
+    {
+     "fact": "★ 本轮审核子 Agent（照 DESIGN-CONTRACT §3 模板）的结论：3 项违反 + 5 项未覆盖 + 3 项契约陈旧（★ 本条的读数为**委派方自报**，未由主 Agent 复跑的部分不得当读数用）",
+     "raw_output": "=== 审核返回摘要（self-report，原文节录）===\n逐条复核 R-01…R-24：门控 P01–P40 全 PASS（退出码 0）、自检 40 判据/159 夹具全触发、数据侧 C01–C57 PASS。\n发现两条真实缺陷：① R-07「每页 ≥1 自制图」产物未满足——24 页仅 9 页含 figure，11 组页/根入口/交互页/学习路径页共 15 页无图；P35 ⑧ 实装在 kind!=node 分支之后只查节点页，标题却写「每页有图」⇒ 兼犯 R-23（判据作用域≠声明作用域）。② R-21：gate_prototype.py:1004/3075/3300 与 gen-interactive.py:120 仍留「本会话浏览器不可用」并据以只用代理判据。另：SCHEMA「内容列 868px」与 R-08/P34 的 804px 是同一元素两种口径（868=804+2×32 padding）。\n★ 审核另给出两条反例：P22「内容薄但 8 区块非空」在新判据下全 PASS（旧配额会 FAIL）；boundary 的 5 种近似篡改全部 PASS（只有整句逐字复制被抓）。",
+     "source": "self-report"
+    },
+    {
+     "fact": "★ 主 Agent 对上述三项事实陈述的独立复核（R-24：子 Agent 的「完成」有保质期，须按收口时刻复核）",
+     "raw_output": "=== 主 Agent 独立复跑（3 项全部成立）===\n① 图件缺口：自写脚本逐页统计 ⇒\n   HTML 页总数 24；含 figure 的 9 页；无 figure 的 15 页\n   无 figure 的页：12-groups/g00…g09.html、12-groups/gd-n.html、12-groups/index.html、13-interactive/index.html、14-views/01-learning-path.html、index.html\n② 陈旧散文：grep 命中 gate_prototype.py:1004 / :3082 / :3307 与 gen-interactive.py:120（4 处）\n③ 口径：grep 得 gen-common.py:834 `.layout>main{padding:0 var(--space-5)}`、:391 `*{box-sizing:border-box}`、tokens.generated.css:50 `--space-5: 2rem` ⇒ 868 − 2×32 = **804** ✓ 与 gen-figs.CONTENT_COL_PX 同值\n⇒ 三项均成立；处置见 g_list_updates 的 G19（图件缺口）/ G20（散文能力声明无判据）/ G21（868 命名）与两份登记件的追记",
+     "source": "main-agent-rerun"
+    },
+    {
+     "fact": "★ 本轮审核的处置（⛔ 未放宽任何判据；以产物为准并登记为契约缺陷）",
+     "raw_output": "=== 审核 → 处置（逐条）===\n① P35 ⑧ 的**声明与对象对齐**：docstring / 代码注释 / CHECKS 标题三处由「每页 ≥1 图」改为「**节点页** ≥1 图」（判据行为未变，只把声明对齐到对象）⇒ 这是 R-23 的正确处置；R-07 的「每页」缺口登记为 G19。\n② 陈旧散文 4 处改为「理由回到代理判据自身的局限」：gate P11 note / P35 ⑫ 说明（两处）/ gen-interactive advance 注释。\n③ SCHEMA §3 与 _probe_thresholds.py 的「内容列宽 868px」更正为「main border-box 868px ⇒ 内容列内宽 804px」。\n④ CRITERIA-CHANGE-P22.md：C3 的「更严」改为「仅在一致性维度更严」（并加 §5 第 0 条反例）。\n⑤ CRITERIA-CHANGE-P05-R5.md：加 §6 第 6 条（5 种近似篡改全 PASS 的实测）。\n⑥ CRITERIA-CHANGE-P35-G4.md：**追加**追记（⛔ 不改上文，含读者须知与 G20 登记）。\n★ P38 的能力复核只扫 manifest 的两个 found 布尔（⛔ 不扫散文）⇒ 该面登记为 G20，本轮**未**升级为判据。",
+     "source": "main-agent-rerun"
+    },
+    {
+     "fact": "★ 视觉核查（第 5 轮补做；主 Agent 亲自看图 `read_image`，⛔ 非机检、⛔ 非采信他人）",
+     "raw_output": "=== 视觉核查：站点样式 + 单张图的最小核对台（_probe/fig2-*.html → fig2-*.png，1100px；另以真实页面截图对照）===\n① pe-f-02 分层与缓存面：三层纵排 + 右侧「稳定前缀 / 易变后缀」双列，`特权递减` 与 `失配` 标注清楚 ⇒ ✅\n② pe-f-03 标签边界：左列四个 <标签> 盒汇聚到「模型」，右侧 `对照` 指向「裸文本」note，`<user_input>` 红色标「不可信」⇒ ✅\n③ pe-f-04 示例边际收益：左链（零样本→3→10）+ 右反转支（条件反转→推理模型降准→改写为要点可重新获益），两列层级对齐 ⇒ ✅\n④ pe-f-05 具体性 vs 可验证性：上下两维 + 双向箭头「不矛盾」+ 右侧米色 note ⇒ ✅\n⑤ pe-f-06 位置偏差：**可读但偏弱** —— 首/中/尾只是并排三个盒子（未画出「窗口条」），到三个工程动作的虚线箭头过淡 ⇒ ⚠ 登记为 D6 的 T-5（建议并入第 6 轮 T1，⛔ 不重开本轮）\n★ 一处**核对手法**的踩坑（⛔ 不是图件缺陷）：首版核对页未内联站点令牌块 ⇒ 图件里的 var(--…) 全部落到默认值 ⇒ 盒子纯黑、盒内文字黑底黑字 ⇒ 一度误判「图坏了」。图件**按设计**依赖页面令牌（P36 ③ 要求令牌化、随主题）⇒ 看图必须在站点样式内看。\n★ 清理：已删 11 个**误导性**核对台文件（figcheck.html / fig-pe-f-0*.html / figcheck-pe-f-0*.png）；保留带站点样式的 _probe/fig2-*.html 与 fig2-*.png（8 + 5 件）作为可复用核对台。\n★ 本 claim 的价值：给出**机器判据给不出的证据**（P36 只断言内联/尺寸/色值/a11y/字形覆盖/规格，⛔ 看不见「一眼能不能读懂」），并更正留档里一条关于**本 Agent 自身能力**的错误陈述（「无视觉」）——它与「某能力不可用」同属**会过期、必须当场复算**的一类（R-21 的形态）。",
+     "source": "main-agent-rerun"
+    }
+   ],
+   "ended_at": "2026-10-16T04:25:00+08:00",
+   "g_list_updates": {
+    "G1": "✅ 已消（第 1 轮；★ 本轮复跑仍 PASS）：R-10 的判据 = P35 ⑨。本轮新增 5 个节点页后，命中枚举模式的页由 3 → **4**，`.enum-list` 4 个；判据仍可判假（2 条夹具）。",
+    "G2": "✅ 已消（第 1 轮；★ 本轮复跑仍 PASS）：R-11 的判据 = P35 ⑩。本轮 P35 实检竖表区块 16 个、区内 `<table>` 0；新增的 5 个节点页证据/术语区同为竖表。",
+    "G3": "✅ 已消（第 1 轮；★ 本轮复跑仍 PASS）：R-16 的判据 = P37；`_geom_interactive.py` 亦 PASS（11 组 0 超区 / 0 重叠）。★ 本轮发布 5 个节点改变了交互图 DATA（兄弟 chip 由徽标变真链接）⇒ 已重跑 `gen-interactive.py` 与几何复算，**不是**只在旧产物上复跑。",
+    "G4": "✅ 已消（第 1 轮；★ 本轮复跑仍 PASS）：P35 ⑪–⑭ + 阈值边界探针。`_selfcheck_p35_fixtures.py`：29 条夹具全触发、阈值边界 0 处不符。",
+    "G5": "✅ 已消（第 1 轮；★ 本轮**刷新证据**）：真实渲染通道本轮重跑 —— `_probe_channel.py` 8 张（38.6s，含窄视口 768 与深色）+ 新增节点页 2 张实拍，读数全部非退化；`_probe/env.json` 亦为收口复跑所得。",
+    "G6": "✅ 已消（第 4 轮修 `pre` 的 `white-space:pre-wrap`；★ 本轮 24 页复测仍 0）：新增 5 个节点页的 `lab` 代码块经全站 24 页横向溢出普查 = **0 处**（⛔ 未放宽 P38）。",
+    "G7": "✅ 已消（第 4 轮补登记件；★ 本轮 P39 复跑仍 PASS）：引用点 3 处 ⟺ 磁盘登记件 **7 个**，断链 0 / 孤儿 0。★ 本轮新增 **2 个**登记件（`CRITERIA-CHANGE-P22.md` / `CRITERIA-CHANGE-P05-R5.md`）已**同批**接入三处引用点（gate docstring / gen-state 的 CHANGE_DECL_4·5 / PUBLISH-STATE.gates）。",
+    "G8": "**仍在**（★ 原样保留）：长文可扫性**不可机检** ⇒ 仍为 P35 报告项（逐条打印，⛔ 不判 FAIL）。★ 本轮**未**重跑 `_probe_metrics.py`（它是取证件、非判据）⇒ ⛔ 本行不引用其旧读数；该面由本轮真实渲染（`_probe/` 的 8 张 PNG + 2 张实拍）+ 人看兜。",
+    "G9": "**仍在**（★ 原样保留）：窄视口交互图 zoom < 1 —— 本轮 `_probe/channel.json` 仍记 `canvas_1440`（cyW 802）/ `canvas_768`（cyW 718），P37 的 `zoom=1` 仍只在**声明画布**口径下成立；⛔ 未把 P37 口径推广到任意视口。",
+    "G10": "✅ 已消（第 4 轮：`PUBLISH-STATE.gates.prototype` 已为 P01–P40）。★ 本轮又改该出口四处：新增 `criteria_change_P22` / `criteria_change_P05_R5` 两个键、`counts.html` 改为由 `complete` 派生、`round` 1 → 5、`pending_note` 去掉写死的轮次 ⇒ 仍与判据一致（判据数未变，仍 40）。",
+    "G11": "★ 本轮新增登记项（开工期）：本会话 `_probe_env.py` 读到 `CapBnd = 0000000000000000`。⚠ **2026-10-16 更正（审核当场指出，主 Agent 复核成立）**：原行据此推断「snap 通道的不可用比第 4 轮更彻底」——**该推断撤回**。审核子 Agent 在本会话复跑同一探针读到 `CapBnd = 000001ffffffffff`，与第 4 轮一致。事实是：**能力集是逐进程/逐会话读数，不可跨会话沿用**；`CapEff = 0` 才是 snap 通道不可用的稳定原因（负对照 rc=1 亦稳定复现）。★ 这一条恰好复现了 R-21 的形态（把一个会过期的读数当已确立的事实）——只不过这次过期的是**机器读数**而非散文结论。⛔ 无判据能发现它过期（P38 只复算 manifest 的两个 found 布尔）⇒ 登记为 G20 的一部分。",
+    "G12": "★ 本轮新增（**bug 已修 / 判据面未落实**）：`gen-state.py` 的 `html_count = 3 + …` 把节点页数**写死** ⇒ 一翻态就与产物数不符；已改为由 `complete` 派生。但「`counts` 与产物实数一致」**仍无判据**（P13 只断言 `counts` 是 dict）⇒ **登记为未落实**。★ **2026-10-16 用户裁决（写入留档）**：四条「已实现但无判据」的面**全部升级为判据** ⇒ 第 6 轮须把本条落成机检断言（建议挂在 P13 上：`counts.html == len(ctx.html)`、`counts.md == len(ctx.md)`、`counts.node_pages == len(complete)`、`counts.group_pages == len(groups)+1`）+ 负例夹具。执行见 `CONTINUE-PROMPT-D6.md` 任务包 T2。",
+    "G13": "★ 本轮新增（**缺陷已修 / 判据面未落实**）：`gen-md.node_md` 原本只印 `why`，而边界原先寄生在 `why` 里 ⇒ 字段化后 MD 镜像会**静默丢失**「适用边界」；已同批补独立块。但「MD 镜像与 HTML 页内容一致」**无判据** ⇒ **登记为未落实**。★ **2026-10-16 用户裁决**：升级为判据 ⇒ 第 6 轮须断言「每条已发布节点的 MD 镜像包含其 `boundary` 原文、每条 `pitfalls` 的可辨识前缀、每条 `evidence` 的 `source_id`、每条 `terms` 的术语头」+ 负例夹具（把镜像里的边界行删掉 ⇒ 判 FAIL）。执行见 D6 任务包 T2。",
+    "G14": "★ 本轮新增（**机制已建 / 未升级为判据**）：引文回源校验目前只存在于**作者期助手** `_wave1_apply.py`（按省略号拆片段，在 `01-research/evidence/A*.json` 的 126 条已回源引文里逐字定位），本轮 14 条引文全部通过。⛔ 它不是判据（构建链与门控都不跑）。★ 诚实边界：它挡「凭空写一句」，⛔ **不挡**「引文库本身被改错」。★ **2026-10-16 用户裁决**：升级为判据 ⇒ 第 6 轮须把它搬进数据侧自检（建议 `C58`：节点的每条 evidence quote 片段须能在 `01-research/evidence/A*.json` 里逐字定位）+ 负例夹具。执行见 D6 任务包 T2。",
+    "G15": "★ 本轮按 `CONTINUE-PROMPT-D4.md` §E 判为**不做**（留行，⛔ 不删）：第 4 项**发布级强化**（SH0–SH5 / CI / `.nojekyll` / 建仓 push / 启用 Pages / hub 自动收录）与第 5 项**跨仓议题**（向 `fe-starter-kit` 提 `non-text` 档补 WCAG 1.4.11 式 3:1 下限）。⇒ **H-2 第 10–11 条不适用**（本轮**不声明**「可发布」）。★ 现状约束仍在：本站 `--border` 对底色仅 1.0:1（浅）/ 1.06:1（深），边框色可任意不可见而**没有任何门控会失败**。★ **2026-10-16 用户裁决（第 6 轮优先序）**：先收口 G19 与四条判据升级，**发布级强化排在其后** ⇒ 本项继续留行。",
+    "G16": "★ 本轮新增（**内容侧待办**）：`PE-C-03`（图检索 / GraphRAG）与 `PE-C-06`（提示缓存）在 115 条源池内**无源可依**（本轮 G00 波次不含这两个节点）。⇒ 后续波次须先补**已回源**条目（`sources.json` 有 C37–C40 约束），⛔ 不得编造引文凑数。",
+    "G17": "★ 本轮新增（**契约自身计数不一致，已修**）：`DESIGN-CONTRACT.md` §4③ 标题写「收口必做（**五步**）」而其下代码块为**六条**命令 ⇒ 本轮改标题为「六步」（⛔ 报告类历史段落不改，只改契约正文的计数）。",
+    "G19": "★★ 本轮新增（**审核当场报出的真实契约缺口，⛔ 未修产品、已修声明**）：`DESIGN-CONTRACT.md` §1 R-07 与 `CONTENT-V2.md` 的措辞是「**每页** ≥1 自制图」，而产物的实际情况是 **24 页里只有 9 页有图**（8 个节点页 + `14-views/02-frontier.html`），**15 页无图**（11 个组页 + 分组索引 + 根入口 + 交互页 + 学习路径页）。判据侧 P35 ⑧ 的实装位于 `if kind != \"node\": … continue` 之后 ⇒ **只对节点页生效**，而它的标题与 docstring 却写「每页有图」⇒ 同时构成 **R-23 违反**（判据声明的作用域 ≠ 实现的作用域）。【处置】① **把声明对齐到对象**：P35 ⑧ 的 docstring / 代码注释 / CHECKS 标题三处改为「**节点页** ≥1 图」（判据行为一字未改，⛔ 不是放宽）；② **缺口如实登记为本行**：R-07 的「每页」这一半**未落实**，且 `CONTENT-V2.md` 的组页/视图页骨架表里本就没有图件项 ⇒ 契约正文与骨架表**自相矛盾**。③ 建议下一轮二选一：**(a) 改契约**（把 R-07 的措辞限定为节点页，与骨架表一致）或 **(b) 补图**（为 15 页各出一张自制图 —— 成本是 15 张 DOT，且会改变这些页的版式，须同批重跑 P28/P35/P36 与渲染证据）。⛔ 本轮**不擅自选**，因为这决定了「契约要不要改」，属用户裁决面。★★ **2026-10-16 用户裁决（写入留档）= 走 B″**：① **11 个组页补「本组诱导子图 + 对外依赖」的 mini-DAG**（由 `10-dag-data/dag.json` **数据派生**，⛔ 不用手绘 11 张）；② 契约措辞改为「**内容承载页（节点页 / 组页）≥1 图；导航·索引·交互·路径页不强制**」；③ 其余 4 页（分组索引 / 根入口 / 交互页 / 学习路径页）**写明不强制及其理由**（交互页本身就是图；索引页已有 11 组一览表；入口页职责是开门；路径页的全局拓扑由交互图承载）。⇒ 执行交第 6 轮（`CONTINUE-PROMPT-D6.md` 任务包 **T1**），且须同批落 `CRITERIA-CHANGE-R07.md`（六段范式）并把 P35 ⑧ 的作用域由「节点页」扩为「**节点页 + 组页**」+ 新增负例夹具（组页去图 ⇒ FAIL）。",
+    "G22": "★ **2026-10-16 用户裁决（第 6 轮主线优先序，写入留档）**：**先**按裁决①（B″）收口 `G19` 与四条判据升级（裁决②），**再**推波次 2 = **G01 的 5 个节点**（`PE-S-01…PE-S-05`）；**发布级强化**（`G15`）排在其后。⇒ 第 6 轮的任务包顺序 = **T1（G19 收口）→ T2（四条判据升级）→ T3（波次 2）**，见 `CONTINUE-PROMPT-D6.md` §B。★ 三者同属一批：T1/T2 动判据与契约、T3 动产物 ⇒ 每完成一个任务包都要跑一遍五步循环（build → probe → gate + 两侧自检 → 幂等 → 渲染证据），⛔ 不得攒到最后。",
+    "G20": "★★ 本轮新增（**审核当场报出；已修散文，判据面仍缺**）：判据/生成器文件里残留 4 处「**本会话浏览器不可用**」的陈旧散文（`gate_prototype.py` 的 P11 note、P35 ⑫ 说明两处、`gen-interactive.py` 的 advance 上界注释），并被用作「只能用代理判据」的理由 ⇒ **R-21 违反**（该结论早已被推翻：非 snap 内核一直可用，本轮复跑 `_probe_env.py` 再次证伪，且 `_probe_thresholds.py` 用同一内核取得了真实渲染读数）。【处置】① 4 处散文改为「理由回到**代理判据自身的局限**」（⛔ 不再以「浏览器不可用」为由），存量留痕件 `CRITERIA-CHANGE-P35-G4.md` 以**追加追记**方式更正（⛔ 不改上文）；② ★ **缺口**：`P38` 的能力复核**只扫 `_probe/channel.json` 的两个 `found` 布尔，⛔ 不扫源文件里的散文能力声明** ⇒ 「文档声称某能力不可用」这一面**无判据**；同理，**能力集这类逐进程读数过期也无人能发现**（见 G11 更正）。建议下一轮升级为判据（扫源文件的能力声明并与探针读数比对）。★ **2026-10-16 用户裁决**：升级为判据 ⇒ 第 6 轮须设计一条「**源文件里的能力声明 vs 探针读数**」的机检断言（⚠ 易假阳：仓内多处**正当引用**该结论以记述教训，如 `gate_prototype.py` 的 P38 docstring 与教训段 ⇒ 措辞规则必须先定「哪些是正当引用」再加负例夹具；建议先只做**已知 4 条历史句的复活守卫**（窄但无假阳），并把「新措辞的扫描」登记为设计待办）。执行见 `CONTINUE-PROMPT-D6.md` 任务包 T2。",
+    "G21": "★ 本轮新增（**审核当场报出，已修**）：同一名词两个口径 —— `SCHEMA.md` §3 的 B-2 实测行与 `_probe_thresholds.py` 的输出标签都把 main 的 **border-box 宽 868px** 写成「内容列宽」，而 R-08 / P34 / `gen-figs.CONTENT_COL_PX` 的内容列是 **804px**。复算：`*{box-sizing:border-box}` + `.layout>main{padding:0 var(--space-5)}`（2×32px）⇒ 868 − 64 = 804 ✓。【处置】两处标签改为「main border-box 868px ⇒ 内容列内宽 804px」；★ 阈值推导本身不受影响（一屏可读量只用 `blockH / caliber`）。",
+    "G18": "★ D4 §F 第 6–14 项的逐条处置（本轮）：⑥ G8 长文可扫性 = 报告项（见 G8 行）；⑦ G9 窄视口 zoom（见 G9 行）；⑧ **P35 ⑫ 代理判据可退役但须以更严判据替代** —— 本轮**未退役**（P38 D 段的溢出直接量已在跑，退役动作未做，留行）；⑨ **分组索引 6 列短值表仍未被判据覆盖** —— 本轮 P35 ⑫ 实检到该表 1 张（列数 6 > 3），但它在 `#sec-nodes`/`#sec-rel` 切片**之外**故未触发 FAIL ⇒ 留行；⑩ **组页 `intro` 无枚举模式** ⇒ ⑨ 在组页上前件不成立 —— 本轮未改写组页导读，留行（内容波次是解法）；⑪ **P40 只断言结构**、如实性不可机检（明文登记）；⑫ **P38 不判 PNG 新鲜度** —— 见本轮 claim ⑭（台账写明路径 + mtime，靠人核）；⑬ `report.html` 的 `<title>` 仍写「第 1 轮」—— **刻意不改**（front matter 属历史原文）；⑭ **动效预算**：本轮 P28 读数 = 单页最大 `[data-reveal]` **9**（≤32）、进场 **1330ms**（≤1800）、`--dur-*` 和 1.79s（≤3.6）、`infinite` **0**（≤12）⇒ **未逼近上界**，⛔ 无需砍内容。"
+   },
+   "note": "★ 本对象是**第 5 轮（两态契约解锁 + 三项收口 + 内容波次 1）的轮次对象**：按契约 §4① 第 3 条在**开工期先落盘**（先声明 `rs_touched`），收口时**追加补全** claims / artifacts / g_list_updates / ended_at（⛔ 未回改 round 3 / round 4 对象，其字节未动）。★ 本轮全部读数由**主 Agent 亲跑**（`main-agent-rerun`，逐条附原始输出）；⛔ 无一条采信他人自报 —— 本轮确实派了 3 个只读探索子 Agent（判据清单 / 源池可行性 / 两态契约考古），但其产出**只用于规划**，任何数字都在动手前由主 Agent 独立复算过（如「门控最多只能再翻 4 个」与「数据侧 C24 一个都不能翻」）。★ 时点关系（⛔ 未改任何历史件）：`report.md` §7.x 与 round 3/4 对象里的旧读数（40 判据 / 152·154 夹具 / P01–P37 / registered≥60 配额）都是**各自收口时刻的快照**；本对象的现态是 **40 判据 / 159 夹具 / P01–P40 / 配额已换判据**。★ 收口完成判据逐条对照：`_probe_env.py` 退出码 0 ✅ · `_probe_channel.py` 产物退化 0 处 ✅ · `--selftest` 退出码 0 ✅ · `build-all.py --write` 二次比对干净 ✅ · §2 G 清单每行都有处置 ✅（G1–G10 + 新增 G11–G18）· 台账落盘且 P40 PASS ✅（见 claim ① 的门控结论）。",
+   "round": 5,
+   "rs_touched": [
+    "R-01",
+    "R-05",
+    "R-07",
+    "R-08",
+    "R-09",
+    "R-10",
+    "R-11",
+    "R-20",
+    "R-21",
+    "R-22",
+    "R-23",
+    "R-24"
+   ],
+   "started_at": "2026-10-16T00:50:00+08:00"
+  },
+  {
+   "round": 6,
+   "started_at": "2026-10-16T05:27:00+08:00",
+   "ended_at": "2026-10-16T06:16:19+08:00",
+   "rs_touched": [
+    "R-01",
+    "R-03",
+    "R-07",
+    "R-08",
+    "R-20",
+    "R-21",
+    "R-23",
+    "R-24",
+    "R-25"
+   ],
+   "claims": [
+    {
+     "fact": "★ §4① 开工必做第 2 步：环境探测复跑（R-21；⛔ 不沿用上一轮的散文结论）",
+     "raw_output": "=== python3 _probe_env.py（退出码 0）===\n   snap 内核：found=True（/snap/bin/chromium）\n   playwright(python)：found=True version=1.63.0\n   CapInh/CapPrm/CapEff/CapBnd = 0000000000000000；NoNewPrivs 1；Seccomp 0\n   $ /snap/bin/chromium --version … rc=46（DBus: cannot create transient scope）\n== 结论：PASS ==（至少一条**不同源**的通道可用 ⇒ 可以做真实渲染验证）\n★ 事实更正（G11 续）：本会话 `CapBnd` **又**读到 `0000000000000000`，与第 5 轮审核方读到的 `000001ffffffffff` 不同 ⇒ 再次实证「**能力集是逐进程读数、⛔ 不可跨会话沿用**」；稳定的只有 `CapEff=0 + NoNewPrivs=1` 与 snap 负对照 rc=46。",
+     "source": "main-agent-rerun"
+    },
+    {
+     "fact": "★★ 收尾复核（§3-④/⑤ 的补做）：独立复算全部吻合；★ 同时**纠正了本对象 claim ① 的一处过度概括**",
+     "raw_output": "=== 复核子 Agent（具 bash）自跑 `python3 _probe_env.py` 的原文节录 ===\n   CapEff 0000000000000000 / CapBnd 000001ffffffffff / NoNewPrivs 1\n   snap 负对照：`/snap/bin/chromium --version` **rc=1**（snap-confine … cap_dac_override not found）\n== 结论：PASS ==\n=== 独立重数（它自己数，⛔ 未读 _probe/r6_*.txt）===\n   pages=29（13 节点页 + 12 组页 + 2 视图 + 交互 + 根入口）/ md=28 / complete=13 / pending=54 —— 与主 Agent 声明**全部吻合**\n   旁证：门控自报「受检产物 62 个（HTML 29 / MD 28）」\n=== PNG 完整性（两个独立解码器交叉）===\n   8 条 sha256 与 manifest 声明逐条相等（mismatch=0）；`_pil_read.py`（PIL）独立解码的尺寸/唯一色/字节亦逐条相等\n=== P39 ===\n   磁盘登记件 9 个 ⟺ 三处引用点并集 9 个；断链 0 / 孤儿 0\n★★ **两条纠正（如实登记）**：\n   ① **本对象 claim ① 的推断被推翻**：它写「本会话 `CapBnd` 又为 0」——那是把一个**进程**的读数说成了**整个会话**的事实；复核进程实测 `000001ffffffffff`、`rc=1`。⇒ claim ① 已改为「两个读数都不是稳定事实」（`G11` 第 3 次复现，这次抓错的是**我自己当轮写下的推断**）。\n   ② **副作用如实披露**：`_probe_env.py` 每次运行都会**重写** `_probe/env.json` ⇒ 复核运行覆盖了它；复核方已 grep 确认**没有任何判据读该文件**（只有探针写、`_r5_ledger_update.py` 文中提及）⇒ 不影响任何裁决。",
+     "source": "main-agent-rerun"
+    },
+    {
+     "fact": "★ T1 先改判据、产物未补时**当场 FAIL 11 处**（证明新作用域不是空转）",
+     "raw_output": "=== python3 gate_prototype.py --only P35（改完 P35 ⑧ 作用域、11 张组图尚未落盘）===\n受检页面 24 个（节点页 8 / 组页 11 / 视图页 2）；… 违例 11 处 [('12-groups/g00.html', '缺图件 .fig（知识承载页（节点页 / 组页；⛔ 不含分组索引） ≥1 自制图）', ''), …]\n== 门控结论：FAIL ==  FAIL 1 项 ['P35']\n（完整原文 16-checkpoint/_probe/r6_t1b_p35_after_scope.txt；★ 首版实装多报 1 处 —— 那是我把两个对象集的口径写错，见 CRITERIA-CHANGE-R07.md §L·F-1）",
+     "source": "main-agent-rerun"
+    },
+    {
+     "fact": "★ 图件规格补「缩放比下界」后，**存量图 pe-f-06 当场被自己的新规格拒收**（历史复现）",
+     "raw_output": "=== python3 _selfcheck_figs_spec.py（退出码 0）===\n[OK  ] 两侧都在界内          880.0x300.0   期望 PASS 实得 PASS\n[OK  ] 上界·越界(高)        200.0x900.0   期望 FAIL 实得 FAIL | 规格超限：…高 3618px > 上限 600px\n[OK  ] 下界·边界(恰 0.90)   893.3x400.0   期望 PASS 实得 PASS\n[OK  ] 下界·越界(旧 pe-f-06) 1016.0x150.0  期望 FAIL 实得 FAIL | 缩放比过低：viewBox 宽 1016 ⇒ 缩放 0.79×\n[OK  ] 盘上真实图件 25 张全部合规（逐一复算，⛔ 不抽样）\n== 结论：PASS ==（四发合成探针 + 盘上 25 张真实图件；不符 0 处）",
+     "source": "main-agent-rerun"
+    },
+    {
+     "fact": "T1 图件落盘 + 幂等 + P28 动效读数",
+     "raw_output": "=== python3 gen-figs.py --check ===\n[PASS] 图件 40 件与派生结果一致\n=== python3 build-all.py --write ===\n  实际写入 13 个 / 实际删除 0 个 / 孤儿残留 0 个\n  二次比对干净：True\n=== python3 gate_prototype.py（P28 段）===\n       M1 单页最大 [data-reveal] 10（≤32）；M2 进场完成 1390ms（≤1800）；M3 --dur-* 之和 1.79s（≤3.6）；M4 infinite 0（≤12）；违例 0 处 []",
+     "source": "main-agent-rerun"
+    },
+    {
+     "fact": "T1 真实渲染：组页 mini-DAG 入镜 + 全站横向溢出 0",
+     "raw_output": "=== python3 _probe_channel.py（退出码 0；38.8s）===\n   [PASS] group  1440x900  唯一色 7260 亮度 22.4–255.0 367999 B 86f17548a5511c87   ← ★ 组页新图入镜\n   [PASS] root/node/view/interactive/root-narrow/interactive-narrow/root-dark 全部非退化\n-- D. 全站横向溢出普查（视口 1440×900；24 页）--\n   [PASS] 全站 24 页：文档级与元素级横向溢出均为 0\n== 结论：PASS ==",
+     "source": "main-agent-rerun"
+    },
+    {
+     "fact": "T1 负例夹具 159 → 162（P35 +3：组页去图 / 注入未分类页 / 排除清单过期）",
+     "raw_output": "=== python3 gate_prototype.py --selftest（退出码 0）===\n== 自检结论：PASS ==（40 条判据 / 162 条负例夹具，全部须正向 PASS 且负例触发）\n=== python3 _selfcheck_p35_fixtures.py ===\n== 自检结论：PASS ==（32 条夹具全部触发；正向 PASS；阈值边界 0 处不符）",
+     "source": "main-agent-rerun"
+    },
+    {
+     "fact": "★ T1 视觉核查：11 张组图 + 重做的 pe-f-06 **逐张**在站点样式内看过",
+     "raw_output": "=== 主 Agent read_image 逐张核对（核对台 _figcheck.py → _probe/fig3-*.html|.png）===\ngrp-g00…grp-gd-n 共 11 张：无压字 / 无溢出画布 / 图注与数据一致；gd-n 仅入向 stub（出 0 条 ⇒ 正确地不生成出向 stub）\npe-f-06 重做：首版把「窗口条」画成 尾部—中部—首部（**自左向右反序**，机检全过、只有看图能发现）⇒ 当场修正为 首部—中部—尾部；缩放 0.79× → 1.53×\n（证据：16-checkpoint/_probe/fig3-grp-*.png、fig3-pe-f-06.png）",
+     "source": "main-agent-rerun"
+    },
+    {
+     "fact": "T2 门控：P13 的 G12/G13 + P41 全绿；P39 引用闭合 8 个登记件",
+     "raw_output": "=== python3 gate_prototype.py（退出码 0）===\n[PASS] P13 … 已发布节点 8 / 组 11 / 视图 2 / 入口 1 的镜像与页面齐全；pending_nodes 登记 59 个且与 registered 集合相等；G12 counts 逐项 12 项；G13 镜像内容比对 86 项；违例 0 处 []\n[PASS] P41 … 扫描面 31 个（豁免 1）；历史句命中 8 行（有正当出处 8）；违例 0 处 []\n[PASS] P39 … 引用点 3 处；被引用的登记件 8 个 / 磁盘登记件 8 个；断链 0 处 / 孤儿 0 处\n== 门控结论：PASS ==  FAIL 0 项 []",
+     "source": "main-agent-rerun"
+    },
+    {
+     "fact": "★ T2 装置自检：P13 四条夹具**逐条核对子断言** / P41 两侧 / C58 沙箱双向",
+     "raw_output": "=== python3 _selfcheck_p13_p41_c58.py（退出码 0）===\n   [OK  ] 夹具#1 触发=True 命中子断言 '缺 MD 镜像'=True\n   [OK  ] 夹具#2 触发=True 命中子断言 'counts.'=True | 违例 1 处 [('counts.html 与实数不符', 25, 24)]\n   [OK  ] 夹具#3 触发=True 命中子断言 'boundary'=True\n   [OK  ] 夹具#4 触发=True 命中子断言 'pitfalls'=True\n   [OK  ] 正向（真实源文件） | 扫描面 31 个（豁免 1）；命中 8 行（有正当出处 8）；违例 0 处\n   [OK  ] 越界侧（裸历史句）⇒ FAIL=True（须指名到文件）\n   [OK  ] 对照侧（带更正标记的历史句）⇒ **仍 PASS**=True\n   [OK  ] 沙箱·原态 ⇒ 退出码 0 / [PASS] C58\n   [OK  ] 沙箱·引文改一个词 ⇒ 退出码 1 / [FAIL] C58\n== 结论：PASS ==（P13 夹具 4 条逐条核对子断言 · P41 两侧 · C58 沙箱双向；不符 0 处）",
+     "source": "main-agent-rerun"
+    },
+    {
+     "fact": "数据侧 C58 上线：节点侧引文逐片段逐字回源 0 违例；frontier 侧 2 片无源如实登记为 WARN",
+     "raw_output": "=== python3 10-dag-data/_selfcheck.py（退出码 0）===\n[PASS] C58-quote-provenance evidence 引文逐片段可在引文库逐字回源（节点侧 27 条 evidence / 库内 126 条唯一引文，源件 7 个；坏：[]）\n[WARN] C58b-frontier-quotes … frontier 侧 18 条 evidence 中有 2 片无法在 A 池逐字回源 [('PE-N-03','S-0034',…),('PE-N-04','S-0105',…)] ⇒ 不改数据，登记为缺口\n== 自检：PASS ==  (FAIL 0 项 / WARN 4 项)",
+     "source": "main-agent-rerun"
+    },
+    {
+     "fact": "T2 判据数 40 → 41；负例夹具 162 → 166",
+     "raw_output": "=== python3 gate_prototype.py --selftest（退出码 0）===\n== 自检结论：PASS ==（41 条判据 / 166 条负例夹具，全部须正向 PASS 且负例触发）\n（★ 登记件初稿把夹具数写成 163、又试改 167 —— 两个数字都是**实测前**写的，已按本行更正；见 CRITERIA-CHANGE-P13-C58-P41.md §4④）",
+     "source": "main-agent-rerun"
+    },
+    {
+     "fact": "★ T3 波次 2：5 个部件 dry-run 全绿（回源 / 台账注入 / 长度 / 结构四项）并翻态",
+     "raw_output": "=== python3 _wave1_apply.py --parts-dir _wave2_parts（dry-run）===\n[PE-S-01] S-0053 片段 2/2 回源 … | [PE-S-02] S-0014/S-0053/S-0093 各 2/2 … | [PE-S-03] S-0053/S-0056/S-0039 各 2/2 … | [PE-S-04] S-0012/S-0001/S-0014/S-0053 各 2/2 … | [PE-S-05] S-0077/S-0093/S-0066 各 2/2 …\n== 结论：PASS ==（回源、台账注入、长度、结构四项全过）\n=== --write ===\n[write] dag.json 已落盘；回读：JSON 合法 / 节点 67 / complete 13 个 ['PE-F-01'…'PE-S-05']",
+     "source": "main-agent-rerun"
+    },
+    {
+     "fact": "★ T3 当场发现①：部件契约与合并器口径不合 —— 散文被**静默丢弃**（已修）",
+     "raw_output": "=== 实测对比（PE-S-01）===\nwhy part==dag: False | len part 175 dag 125（intro 343/245、boundary 74/37、summary 36/31 同样不一致）\n⇒ 原 `_wave1_apply.py` 只写 lab/evidence/pitfalls/content_status ⇒ 部件里的 why/intro/boundary/when/terms/summary/tags **一字未用**\n=== 修正后（合并散文）===\nPE-S-01 why part==dag: True；PE-S-01 why 148 intro 284 boundary 62 terms 3 / PE-S-02 188·266·95·3 / PE-S-03 113·299·109·3 / PE-S-04 130·275·82·3 / PE-S-05 148·415·199·3\n=== 数据侧复跑 ===\n[PASS] C28-lengths-caliber …（不足：[]） / [PASS] C32-boundary-field …（坏：[]） / == 自检：PASS ==  (FAIL 0 项 / WARN 4 项)",
+     "source": "main-agent-rerun"
+    },
+    {
+     "fact": "★ T3 当场发现②：合并器**不是幂等**的（已加显式 --reapply）",
+     "raw_output": "=== 第二次 python3 _wave1_apply.py --parts-dir _wave2_parts --write ===\n== 结论：FAIL（5 处）==\n    ('PE-S-01', '预期 registered，实为 complete') …（5 个节点）\n⇒ 首次 --write 后节点已 complete，重跑（只为补合并散文）会硬 FAIL 而**中止落盘**\n=== 加 --reapply 后 ===\n   [PE-S-01] ★ 重放（节点已 complete；--reapply 已声明）\n== 结论：PASS ==（回源、台账注入、长度、结构四项全过）",
+     "source": "main-agent-rerun"
+    },
+    {
+     "fact": "★ T3 当场发现③：2 个节点名含拉丁词 ⇒ 发布即触 P35 ①（已改名）；另有 5 个 registered 同型",
+     "raw_output": "=== python3 _selfcheck_p35_fixtures.py（新页发布后）===\n正向：FAIL | 违例 2 处 [('11-node-pages/pe-s-01.html','h1 含英文（英文名须独立成行）','JSON Schema 与约束解码'), ('11-node-pages/pe-s-04.html','h1 含英文（英文名须独立成行）','格式选型与 token 效率')]\n=== 改名后（dag.json，回读 JSON 合法 / 节点 67）===\n  PE-S-01 -> 结构模式与约束解码（JSON Schema and Constrained Decoding）\n  PE-S-04 -> 格式选型与词元效率（Format Choice and Token Efficiency）\n仍含拉丁词的中文名：5（PE-R-07 ReAct… / PE-C-02 RAG… / PE-O-07 子 Agent… / PE-P-01 我的 agent… / PE-P-03 子 Agent…）\n=== 重建后 ===\n正向 PASS；夹具 32 条全触发；阈值边界 0 处不符",
+     "source": "main-agent-rerun"
+    },
+    {
+     "fact": "T3 收口：29 页全站横向溢出 0 / 13 个节点页 / P28 仍为 10 与 1390ms",
+     "raw_output": "=== python3 _probe_channel.py（退出码 0；66.4s）===\n   [PASS] root/group/node/view/interactive/root-narrow/interactive-narrow/root-dark 8 张全部非退化\n-- D. 全站横向溢出普查（视口 1440×900；29 页）--\n   [PASS] 全站 29 页：文档级与元素级横向溢出均为 0\n== 结论：PASS ==\n=== python3 gate_prototype.py（退出码 0）===\n       受检页面 29 个（节点页 13 / 组页 11 / 视图页 2）；… P13：已发布节点 13 / pending 54；G13 镜像内容比对 142 项；违例 0 处\n       M1 单页最大 [data-reveal] 10（≤32）；M2 进场完成 1390ms（≤1800）\n== 门控结论：PASS ==  FAIL 0 项 []",
+     "source": "main-agent-rerun"
+    },
+    {
+     "fact": "★ T3 视觉核查：5 张新节点图 + 1 个新节点页（真实渲染）逐张看过",
+     "raw_output": "=== 主 Agent read_image ===\npe-s-01/02/03/04/05 五张核对台 PNG：无压字 / 无溢出 / 图注与图意一致（pe-s-04 的「条宽即相对体积」单调且与图注数字一致）\n=== python3 _render.py --html 11-node-pages/pe-s-01.html --width 1440 --height 900 ===\nh1「结构模式与约束解码」纯中文一行；`.page-en` 独立成行；身份行 / 标签行分离；页首导读 8 锚点；新图内联且可读；无横向溢出\n（证据：16-checkpoint/_probe/fig3-pe-s-0*.png、r6-node-pe-s-01-viewport.png）",
+     "source": "main-agent-rerun"
+    },
+    {
+     "fact": "T3 其余对账装置全绿",
+     "raw_output": "=== 同批复跑（均退出码 0）===\n[PASS] 图件 50 件与派生结果一致（gen-figs.py --check）\n== 结论：PASS ==（四发合成探针 + 盘上 25 张真实图件）\n[PASS] 令牌块一致（sha256 c389d019a4d9…）\n== 几何复算结论：PASS ==\n== 自检：PASS ==  (FAIL 0 项 / WARN 4 项)（10-dag-data/_selfcheck.py）\n== 自检结论：PASS ==（41 条判据 / 166 条负例夹具）",
+     "source": "main-agent-rerun"
+    },
+    {
+     "fact": "★ 只读审核子 Agent（照 §3 模板）的三项发现与本轮处置（★ 其读数为 `self-report`，逐条复跑后另记）",
+     "raw_output": "=== 审核返回摘要（self-report 原文节录）===\n① 台账 round 6 的 `G7` 行写「磁盘登记件 8 个」，而磁盘/门控实测为 **9**（P39 原文）⇒ 台账内部不自洽（已修为 9，登记 G29）\n② round 6 对象**在审核运行期间**落盘 ⇒ 违反 §4④-4「动同一批文件前先确认子 Agent 已停手」（登记 G30；影响：审核读到混合快照）\n③ 审核方工具面只有 glob/grep/read ⇒ §3-④「亲自跑 `_probe_env.py`」**结构上无法执行**（它如实披露、未假装跑过；登记 G32）；已由主 Agent 补跑（见本对象 claim ①）\n★ 审核**独立重数**通过的量（与主 Agent 读数吻合）：29 页 / 28 MD / complete=13 / `.fig` 覆盖 25 页 / 图件 40 件 / P35 两处排除清单闭合 / P41 命中 8 行逐行有正当出处 / g00 图注「6 节点·5 内部边·8 跨组边」与 dag.json 逐格一致\n=== 主 Agent 复跑（收口时刻）===\n[PASS] P39 … 被引用的登记件 9 个 / 磁盘登记件 9 个；断链 0 / 孤儿 0\n[PASS] P40 … 轮次 4 条 / claims 49 条；契约规则表 R-id 全集 25 个；结构与自洽违例 0 处\n★ 复跑结论：审核的 ① 与 ② **成立**（已分别修 / 登记）；③ 属**我的委派失误**（工具面与模板不匹配），非审核方之过。",
+     "source": "main-agent-rerun"
+    }
+   ],
+   "artifacts": [
+    "16-checkpoint/ROUND-LEDGER.json",
+    "16-checkpoint/CRITERIA-CHANGE-R07.md",
+    "16-checkpoint/CRITERIA-CHANGE-P13-C58-P41.md",
+    "16-checkpoint/AUTHORING-SPEC.md",
+    "16-checkpoint/_selfcheck_figs_spec.py",
+    "16-checkpoint/_selfcheck_p13_p41_c58.py",
+    "16-checkpoint/_figcheck.py",
+    "16-checkpoint/_wave_pick_quotes.py",
+    "16-checkpoint/_r6_ledger_update.py",
+    "16-checkpoint/_wave1_apply.py",
+    "16-checkpoint/gate_prototype.py",
+    "16-checkpoint/gen-figs.py",
+    "16-checkpoint/gen-groups.py",
+    "16-checkpoint/gen-state.py",
+    "16-checkpoint/gen-common.py",
+    "16-checkpoint/_probe_channel.py",
+    "16-checkpoint/_probe_thresholds.py",
+    "16-checkpoint/_reflection-candidates/",
+    "16-checkpoint/DESIGN-CONTRACT.md",
+    "16-checkpoint/CONTENT-V2.md",
+    "10-dag-data/_selfcheck.py",
+    "10-dag-data/dag.json",
+    "10-dag-data/figures/",
+    "PUBLISH-STATE.json",
+    "11-node-pages/",
+    "12-groups/",
+    "15-md/",
+    "13-interactive/index.html",
+    "14-views/",
+    "report.md"
+   ],
+   "g_list_updates": {
+    "G1": "✅ 已消（第 1 轮；★ 第 6 轮复跑仍 PASS）：R-10 的判据 = P35 ⑨。本轮命中枚举模式的页仍 4 个、`.enum-list` 4 个；夹具可判假。",
+    "G2": "✅ 已消（第 1 轮；★ 第 6 轮复跑仍 PASS）：R-11 的判据 = P35 ⑩。本轮 P35 实检竖表区块 **26** 个（13 节点页 ×2 + 组页侧），区内 `<table>` 0。",
+    "G3": "✅ 已消（第 1 轮；★ 第 6 轮复跑仍 PASS）：R-16 的判据 = P37；`_geom_interactive.py` 亦 PASS（11 组 0 超区 / 0 重叠）。★ 本轮发布 5 个节点改了交互图 DATA ⇒ 已重跑生成器，**不是**只在旧产物上复跑。",
+    "G4": "✅ 已消（第 1 轮；★ 第 6 轮复跑仍 PASS）：P35 ⑪–⑭ + 阈值边界探针。`_selfcheck_p35_fixtures.py`：**32** 条夹具全触发、阈值边界 0 处不符。",
+    "G5": "✅ 已消（第 1 轮；★ 第 6 轮**刷新证据**）：真实渲染通道本轮重跑两次（T1 24 页 38.8s / T3 29 页 66.4s），8 张 PNG 全部非退化；另按看图纪律用 `_figcheck.py` 在站点样式内逐张核了 17 张新/改图。",
+    "G6": "✅ 已消（第 4 轮修 `pre` 换行；★ 第 6 轮 29 页复测仍 **0 处**）：未放宽 P38。",
+    "G7": "✅ 已消（第 4 轮补登记件；★ 第 6 轮仍 PASS）：三处引用点 ⟺ 磁盘登记件 **9 个**（本轮新增 `CRITERIA-CHANGE-R07.md` 与 `CRITERIA-CHANGE-P13-C58-P41.md`），断链 0 / 孤儿 0。★ **本行初稿写「8 个」—— 审核当场报出与事实不符（实为 9），已更正**；根因见 G29。",
+    "G8": "**仍在**（原样保留）：长文可扫性**不可机检** ⇒ 仍为 P35 报告项（逐条打印，⛔ 不判 FAIL）。★ 本轮**未**重跑 `_probe_metrics.py` ⇒ ⛔ 不引用其旧读数；该面由本轮真实渲染 + 人看兜。",
+    "G9": "**仍在**（原样保留）：窄视口交互图 zoom < 1 —— 本轮 `_probe/channel.json` 仍记 `canvas_1440`（cyW 802）/ `canvas_768`（cyW 718），P37 的 `zoom=1` 仍只在**声明画布**口径下成立。",
+    "G10": "✅ 已消（第 4 轮）；★ 第 6 轮又改该出口五处：`counts` 由产物实数对齐（`node_pages` 8→13 / `html` 24→29 / `md` 23→28）、新增 `criteria_change_R07` 与 `criteria_change_P13_C58_P41` 两键、`gates.prototype` 由 P01–P40 → **P01–P41**、`round` 5 → 6 ⇒ 与判据一致（P13 的 G12 现**逐项断言**它，不再是自报）。",
+    "G11": "★ 第 5 轮登记项，保留更正：**能力集是逐进程读数、⛔ 不可跨会话沿用**（`CapBnd` 两个会话读到不同值）；稳定的只有 `CapEff=0 + NoNewPrivs=1` 与「snap 通道跑不起来」这一**结论**。★ 第 6 轮增量：① `P41` 把「**散文里的能力声明**」判据化（窄版）—— 这类「声称某能力不可用」的陈述今后会因**无正当出处**而 FAIL；但**逐进程读数过期**仍无判据能发现（⛔ 不假装覆盖）。② **第 3 次复现，且这次抓错的是我自己**：本对象 claim ① 初稿把一个**进程**的 `CapBnd=0`/`rc=46` 说成了「本会话」的事实，而同会话稍后的复核进程实测 `CapBnd=000001ffffffffff`/`rc=1` ⇒ 已按复核更正（详见 claim ②）。⇒ 教训收紧为：**引用机器读数时必须写「哪个进程/哪一次运行」**，⛔ 不写「本会话」；连失败码与报错文案都不稳定，稳定的只是「通道可用与否」这一判定。",
+    "G12": "✅ **已消（第 6 轮）**：`counts` 与产物实数一致 ⇒ 挂在 **P13** 上（⛔ 未新增编号），**12 项逐项**比对（产物侧 html/md/node_pages/group_pages/view_pages/interactive/root；真相源侧 nodes/groups/edges/layers/assets），并配 ① `counts.html` ±1 ② `counts` 的 node_pages 篡改两条夹具；`_selfcheck_p13_p41_c58.py` 另**逐条核对红在它该红的那一条**。",
+    "G13": "✅ **已消（第 6 轮）**：MD 镜像与 HTML 内容一致 ⇒ 挂 **P13**，按**可辨识前缀**比对（`boundary` 全文 / `pitfalls` 前 12 字 / `evidence.source_id` / `terms` 术语头；空白归一化）。本轮实检 **142** 项、0 违例；配「镜像去 boundary 正文」「镜像去 pitfalls 前缀」两条夹具。★ 局限：⛔ 不做逐字全文比对（渲染口径不同会假阳）。",
+    "G14": "✅ **已消（第 6 轮）**：引文回源 ⇒ 数据侧新增 **`C58-quote-provenance`**（与 `_wave1_apply.py` 的回源**同源同口径**：省略号拆片段 + 空白归一化 + 逐字定位；引文库读不到 ⇒ FAIL）。节点侧 **43** 条 evidence、**0** 片无法回源。★ 局限：① 挡不住「引文库本身被改错」；② 对象暂**只有节点侧**（见 G23）。",
+    "G15": "**不做**（留行，⛔ 不删）：发布级强化（SH0–SH5 / CI / `.nojekyll` / 建仓 push / Pages / hub 收录）与跨仓议题按裁决③排在 T1/T2/T3 之后。★ 现状约束仍在：本站 `--border` 对底色仅 1.0:1（浅）/ 1.06:1（深），边框可任意不可见而**没有任何门控会失败**。",
+    "G16": "**未解决**（内容侧待办，属 G03）：`PE-C-03`（图检索 / GraphRAG）与 `PE-C-06`（提示缓存）在源池内**无源可依** ⇒ 动 G03 前须先补**已回源**条目（⛔ 不得编造引文）。★ 第 6 轮新增旁证：`C58` 上线后，本波 5 个节点的引文**全部**逐字回源成功（说明 G01 的源是够的，缺口确实集中在 C-03/C-06）。",
+    "G17": "✅ 已修（第 5 轮改 §4③ 标题为「六步」）。",
+    "G18": "第 6 轮逐项处置：⑧ **P35 ⑫ 代理判据可退役但须以更严判据替代** —— 本轮**仍未退役**（P38 D 段的溢出直接量已在跑，退役动作未做，留行）；⑨ **分组索引 6 列短值表仍未被判据覆盖** —— 仍留行（它在本轮实检的 ⑫ 切片之外）；⑩ **组页 `intro` 无枚举模式** ⇒ ⑨ 在组页上前件不成立 —— 仍留行（内容波次是解法）；⑪ `P40` 只断言结构、如实性不可机检（明文登记）；⑫ **P38 不判 PNG 新鲜度** —— 留行（台账写明路径 + mtime，靠人核）；⑬ `report.html` 的 `<title>` 仍写「第 1 轮」—— **刻意不改**；⑭ **动效预算**：第 6 轮实测单页最大 `[data-reveal]` **10**、进场 **1390ms**、`--dur-*` 和 1.79s、`infinite` 0 ⇒ **未逼近上界**，⛔ 无需砍内容（本项读数已随本轮变更更新）。",
+    "G19": "✅ **已消（第 6 轮，用户裁决 B″）**：**两半同批** —— ① **补产物**：11 个组页各一张由 `dag.json` **数据派生**的本组 mini-DAG（`gen-figs.group_figs` 单源；含内部边实线 + `组外接口` stub 注明出/入条数；层带布局使 11 张图的缩放比 1.30–2.16×、渲染高 197.6–587.7px 全部在两条规格界内）；② **改契约**：R-07 收敛为「知识承载页（节点页 / 组页，⛔ 不含分组索引）」，其余 5 页**逐条给理由**不强制；③ **扩判据**：P35 ⑧ 移出 `if kind != 'node': … continue` 之后的尾部、作用域扩为节点页 + 组页，并加**显式对象集 + 全集闭合断言**与 3 条夹具（组页去图 / 注入未分类页 / 排除清单过期）。★ **同批**处置 R-03（K6 选项 A：改措辞为「正文承载页」+ 2 页显式排除）与 R-08（补缩放比下界 0.90）。留档 `CRITERIA-CHANGE-R07.md`。",
+    "G20": "✅ **已消（第 6 轮，用户裁决②）**：新增门控 **P41**「源文件里的散文能力声明：**已登记的历史句不得复活**」。窄版：只判历史句 `本会话浏览器不可用`；判「正当出处」= **更正标记**（更正/旧理由/已推翻）**或**被引号包裹的提及；另有显式豁免清单（`_r5_ledger_update.py`，附理由）+ 「豁免项须真实存在」的守卫 + 「未分类的新 .py ⇒ FAIL」的全集闭合。★ **本轮当场抓到两次自伤**（判据把自己的装置自检脚本判成违例）⇒ 已加「提及/断言」判定并把探针载荷收进单一来源 `p41_probe_line()`。★ 残余：「新措辞的全量扫描」仍是**设计待办**（见 G25），如实登记、⛔ 不假装覆盖「任何措辞」。",
+    "G21": "✅ 已修（第 5 轮改 SCHEMA 与 `_probe_thresholds.py` 的两处标签为「main border-box 868px ⇒ 内容列内宽 804px」）。",
+    "G22": "✅ **已消（第 6 轮）**：裁决③的执行顺序（**先 T1、T2，再推波次 2，发布级强化排后**）已按序执行；每个任务包各自跑了五步循环（build → probe → gate + 两侧自检 → 幂等 → 渲染证据），⛔ 未攒到最后。",
+    "G23": "★ **第 6 轮新增（未解决，如实登记）**：`C58` 的对象**只有节点侧**；`frontier.json` 侧实测 **2 片**引文无法在 A 池逐字回源 —— `PE-N-03`/`S-0034`（80 字）、`PE-N-04`/`S-0105`（48 字），形态是**作者期注记**而非原文引用。⇒ 以 `C58b` **报告项**（WARN）常年可见；⛔ 本轮**不改 `frontier.json`**（改引文属内容决策）⇒ 留待裁决：改写为可回源引文 / 改标为「注记」字段 / 明文接受。",
+    "G24": "★ **第 6 轮新增（已修 + 残余登记）**：R-08 的图件规格原**只卡高度上界**（`rendered_h ≤ 600px`），会把「很宽的图」放过去 —— 存量 `pe-f-06` 正是 1016×150、缩放 **0.79×**（13pt → 10.3px）。⇒ 补**缩放比下界 0.90**；**存量图当场被自己的新规格拒收**并已重排（0.79× → 1.53×）。★ 残余失效面：`MIN_SCALE` 只保证「字号 ≥ 11.7px」，⛔ **不保证「不压字」** ⇒ 后者仍靠真实渲染 + 人/主 Agent 看图兜（本轮 17 张已逐张看）。",
+    "G25": "★ **第 6 轮新增（设计待办，未解决）**：`P41` 是**窄版** —— ⛔ 不判「任何措辞」。全量扫描的难点已实测清楚：仓内多处**正当引用**该结论以记述教训（`P38` docstring、教训段、`_geom_interactive.py` 自陈），一剑切下去必大量假阳。⇒ 需要先定「哪些是正当引用」的可判定规则（本轮只完成了「引号包裹 = 提及」这一条）。",
+    "G26": "★ **第 6 轮新增（不可机检，明文登记）**：`R-25`（内容生产走「子 Agent 并行产出部件 → 机器校验 → 主 Agent 独立复跑」三件套）的**可机检部分**只有：部件契约存在（`AUTHORING-SPEC.md`）＋ 合并校验能跑（`_wave1_apply.py --parts-dir` 的四项）。「**是否真按三件套走**」**不可机检**（要靠台账 claim 的 source 标注与人读）。★ 本轮实测：6 个子 Agent 的写入面**全部合规**（内容 5 路只写各自 `_wave2_parts/<NID>.json`；出图 1 路只写 `gen-figs.py`/`gen-nodes.py` 与 `figures/`）—— 已用 `find -newermt` 审计过。",
+    "G27": "★ **第 6 轮新增（当场发现并已修）**：**部件契约与合并器口径不合** —— `_wave1_apply.py` 原本只写 `lab`/`evidence`/`pitfalls`/`content_status`，部件里的 `why`/`intro`/`boundary`/`when`/`terms`/`summary`/`tags` 被**静默丢弃**（波次 2 实测：5 个部件的这四项与盘上**全不相同**）。⇒ 修正为**全部区块都合并**（空值不覆盖），并补 `--reapply` 解掉「重跑必硬 FAIL 而中止落盘」的非幂等缺陷；合并散文后复跑 C28–C33/C58 全 PASS。",
+    "G28": "★★ **第 6 轮新增（未解决，阻塞后续波次）**：**节点名含拉丁词** —— 全站 **7/67** 个节点的 `name` 在中文部分含拉丁词，而 R-01 / P35 ② 要求 h1 纯中文 ⇒ **节点一发布就 FAIL**（本轮当场撞上：`PE-S-01`「JSON Schema 与约束解码」、`PE-S-04`「格式选型与 token 效率」）。已处理：这 2 个改名为「**结构模式与约束解码**」「**格式选型与词元效率**」（en 字段不变）。**剩余 5 个仍 `registered`**：`PE-R-07` ReAct… / `PE-C-02` RAG… / `PE-O-07` 子 Agent… / `PE-P-01` 我的 agent… / `PE-P-03` 子 Agent…。★ **为什么不能顺手改名**：术语台账 `glossary.json` 里对应条目的**术语头本身含拉丁词**（如 `子 Agent 上下文隔离（Sub-agent Context Isolation）`），而 C33 要求 `terms` 头逐字等于台账 ⇒ 改名必须**成对**（节点名 + 术语头 + 该术语的 `node_refs`），属**术语裁决**面 ⇒ 需用户定「中文名是否允许保留业界通用拉丁缩写（Agent/RAG/ReAct/token）」或「一律中文化（子代理/检索增强/…）」。⛔ 在此之前，**动 G07 / G03 / G09 的波次会立刻撞上它**。",
+    "G29": "★ **第 6 轮新增（审核当场报出，已修）**：**台账内部不自洽** —— 本对象的 `G7` 行初稿写「磁盘登记件 **8** 个」，而磁盘与门控实测均为 **9**（`_probe/r6_t3_gate.txt` 的 P39 原文「被引用的登记件 9 个 / 磁盘登记件 9 个」）。**根因**：我把**早期**读到的 8（`CRITERIA-CHANGE-R07.md` 尚未落盘时）写进了**后来**的文档 —— 与 G12 / T-1 是**同一族**（有保质期的读数被固化进不会重算的地方），本轮**第 4 次复现**。⇒ 已按实测更正为 9。★ 机检边界：`P40` 只断言台账**结构与自洽**（R-id 合法、claim 带 source 与 raw_output），⛔ **报不出「行文里的数字与事实不符」** —— 本次是**人/审核子 Agent 读出来的**，如实登记。",
+    "G30": "★ **第 6 轮新增（审核当场报出，未解决/纪律面）**：**委派时序违规** —— round 6 轮次对象在**只读审核子 Agent 运行期间**落盘（本对象 `ended_at` 早于主 Agent 实际写入时刻；审核方按其**开工时刻** 06:07 首次读到的 `rounds` 只有 [3,4,5]、其 P40 读数亦为「轮次 3 条」，随后同一文件被它读到含 round 6）。契约 §4④-4 要求「动同一批文件前先确认子 Agent 已停手」。★ **影响如实说清**：① 台账**未被损坏**（本脚本的三道守卫在写后复核了前 5 个 round 的语义与字节均未变）；② 但**审核读到的是混合快照** ⇒ 其涉及台账的结论须按**收口时刻**重读；③ 主 Agent 已在收口时按 R-24 复核审核结论。⇒ 教训与处置：**审核期间冻结受审文件**；若必须改，改完须**明确告知审核方并请其重读**（本轮即按此补做）。",
+    "G31": "★ **第 6 轮新增（审核当场报出，登记为措辞级模糊）**：**R-08 的用词** —— 契约写「内容列宽（804px）下**渲染高度** ≤ 600px」，而实测口径里另有「svg 元素宽 804px / `hostW=804`」（`_probe/channel.json`）等相邻量；两者本轮**未不一致到判 FAIL**（`gen-figs.check_spec` 的换算是 `h/w × 804`），但读者需自行对齐「内容列」到底指哪个盒子。⇒ 登记为**措辞级模糊**，下一轮在 R-08 行补一句「内容列 = `.layout > main` 的 **border-box 内宽**（`868 − 2×32 = 804px`，与 G21 的更正同源）」。",
+    "G32": "★ **第 6 轮新增（审核工具面，已处置）**：**本轮审核委派的工具面与 §3 模板不匹配** —— 我用只读 worker（`oc_explore`，工具面只有 `glob`/`grep`/`read`）去执行「照 §3 模板审核」，而 §3 第 ④ 项**硬要求审核方亲自跑 `python3 _probe_env.py`** ⇒ 该项**结构上无法执行**（审核方如实披露并以「静态复核 + 独立重数」替代，未假装跑过）。⇒ 处置：① 主 Agent **自己**补跑 `_probe_env.py`（见本轮 claim ①，PASS）；② 把 ④/⑤ 两项**另派一个具备 bash 的 worker** 重做；③ 模板侧建议补一句「派审核方时须给可执行 shell」。"
+   },
+   "note": "★ 本对象是**第 6 轮（T1：G19/B″ 收口 → T2：四条判据升级 → T3：波次 2 = G01 的 5 个节点）**的轮次对象：按契约 §4① 第 3 条在**开工期先落盘**（先声明 `rs_touched`），收口时追加补全 claims / artifacts / g_list_updates / ended_at（⛔ 未回改 round 3 / 4 / 5 对象，其字节由本脚本的三道守卫复核）。\n★ 本轮读数全部由**主 Agent 亲跑**（`main-agent-rerun`，逐条附原始输出，原件落 `16-checkpoint/_probe/r6_*.txt`）；⛔ 无一条采信委派方自报 —— 本轮派了 6 个执行子 Agent（5 路内容 + 1 路出图）与 1 个只读审核子 Agent：前 6 路的产出**只是部件与图源**（内容正文⛔ 不进主 Agent 上下文，见 R-25），它们报的每条数字都由主 Agent 用 `_wave1_apply.py` dry-run / `gen-figs.py --check` / `_selfcheck*.py` / 门控**独立复跑**；审核子 Agent 的结论按 R-24 逐条复跑后另记。\n★ **时点关系（⛔ 未改任何历史件）**：`report.md` §7.x 与 round 3/4/5 对象里的旧读数（40 判据 / 152·154·159·162 夹具 / P01–P37/P40 / 24 页 / 9 张图 / `pe-f-06` 1016×150）都是**各自收口时刻的快照**；本对象的现态是 **41 判据 / 166 夹具 / P01–P41 / 29 页 / 25 张图件 / `counts` 由 P13 逐项断言**。\n★ **收口完成判据逐条对照**：`_probe_env.py` 退出码 0 ✅ · `_probe_channel.py` 产物退化 0 处（29 页溢出 0）✅ · `gate_prototype.py` 退出码 0 ✅ · `--selftest` 退出码 0 ✅ · `build-all.py --write` 二次比对干净 ✅ · G 清单每行都有处置（G1–G28）✅ · 台账落盘且 P40 PASS ✅ · 视觉核查（17 张图 + 1 个新页）✅。"
+  },
+  {
+   "round": 7,
+   "started_at": "2026-10-16T07:40:00+08:00",
+   "ended_at": "2026-10-16T08:20:00+08:00",
+   "rs_touched": [
+    "R-01",
+    "R-03",
+    "R-07",
+    "R-08",
+    "R-09",
+    "R-11",
+    "R-13",
+    "R-14",
+    "R-19",
+    "R-20",
+    "R-21",
+    "R-22",
+    "R-23",
+    "R-24",
+    "R-25"
+   ],
+   "claims": [
+    {
+     "fact": "★ §4① 开工必做第 1 步：**开工前就地快照**（本仓非 git 仓 ⇒ 它是本轮唯一的回滚面）",
+     "raw_output": "=== python3（快照）===\n  目标：16-checkpoint/_r7_backup/（新建，⛔ 未覆盖任何既有路径）\n  内容：10-dag-data / 11-node-pages / 12-groups / 13-interactive / 14-views / 15-md /\n        16-checkpoint（排除 _r6_backup/_r7_backup/_probe/__pycache__/_render-proof）/ assets\n        ＋ index.html ＋ PUBLISH-STATE.json\n  结果：du -sh = 7.3M；文件数 = 211；随附 MANIFEST.txt（219 行，逐文件 sha256）\n  MANIFEST sha256 = 68379a21826e28c41160aa62fefe64681b3493e91d4ae84cca183e613126eed0\n== 结论：PASS ==（回滚面存在且已登记边界）",
+     "source": "main-agent-rerun"
+    },
+    {
+     "fact": "★ §4① 开工必做第 2 步：环境探测复跑（R-21；⛔ 不沿用上一轮的散文结论）",
+     "raw_output": "=== python3 _probe_env.py（退出码 0）===\n  产物：16-checkpoint/_probe/r7_final_env.txt\n  ⇒ 与第 6 轮同向：能力集是**逐进程读数**（G11），本轮再次不引用任何跨会话的 CapBnd 结论。\n== 结论：PASS ==（通道可用性判定以本轮实跑为准）",
+     "source": "main-agent-rerun"
+    },
+    {
+     "fact": "★ §4③ 收口第 ② 步：验证通道 + 全站横向溢出（R-22）",
+     "raw_output": "=== python3 _probe_channel.py（退出码 0）===\n  == 结论：PASS ==（用时 61.2s；manifest → 16-checkpoint/_probe/channel.json）\n  -- D. 全站横向溢出普查（视口 1440×900；51 页）--\n     [PASS] 全站 51 页：文档级与元素级横向溢出均为 0\n     overflow_view {\"docScrollW\": 1440, \"innerW\": 1440, \"overflowing\": []}\n== 结论：PASS ==（横向溢出直接量 = 0，⛔ 非代理判据）",
+     "source": "main-agent-rerun"
+    },
+    {
+     "fact": "★ §4③ 收口第 ③ 步：门控全量（判据 P01–P41）",
+     "raw_output": "=== python3 gate_prototype.py（退出码 0）===\n  [PASS] P28 动效预算四项上界（reveal ≤32 / 进场 ≤1800ms / dur 和 ≤3.6s / infinite ≤12）\n         本轮实测：最大 [data-reveal] 10（≤32）；进场完成 1390ms（≤1800）；\n         --dur-* 之和 1.79s（≤3.6）；infinite 0（≤12）；违例 0 处 []\n  [PASS] P39 引用点 3 处；被引用的登记件 11 个 / 磁盘登记件 11 个 / 结构化出口键 11 个；\n         断链 0 处 / 孤儿 0 处；违例 0 处 []\n== 门控结论：PASS ==  FAIL 0 项 []\n  （产物：16-checkpoint/_probe/r7_final_gate.txt）",
+     "source": "main-agent-rerun"
+    },
+    {
+     "fact": "★ §4③ 收口第 ④ 步：判据自检（逐条触发负例）",
+     "raw_output": "=== python3 gate_prototype.py --selftest（退出码 0）===\n== 自检结论：PASS ==（41 条判据 / 171 条负例夹具，全部须正向 PASS 且负例触发）\n★ 并排：判据 **41 → 41**（⛔ 未新增编号，改动挂 P35 ② 与 P39）；夹具 **166 → 171**\n  （P35 ② 新增 2 条：㉝ 未登记缩写 ⇒ FAIL / ㉞ 缺 h1 ⇒ 闭合断言 FAIL；\n    P39 ④ 新增 3 条；其中原夹具 #3 **被修正**，⛔ 不是新增）\n  （产物：16-checkpoint/_probe/r7_final_selftest.txt）",
+     "source": "main-agent-rerun"
+    },
+    {
+     "fact": "★ §4③ 收口第 ⑤ 步：幂等（`build-all.py --write` 二次比对）",
+     "raw_output": "=== python3 build-all.py --write（第一次）===\n  实际写入 31 个 / 实际删除 0 个 / 孤儿残留 0 个；二次比对干净：True\n=== python3 build-all.py --write（第二次）===\n  实际写入 0 个 / 实际删除 0 个 / 孤儿残留 0 个；二次比对干净：True\n== 结论：PASS ==（幂等；P16 亦然）",
+     "source": "main-agent-rerun"
+    },
+    {
+     "fact": "★ §4③ 收口第 ⑥ 步：图件（件数 + 规格两侧探针）",
+     "raw_output": "=== python3 gen-figs.py --check ===\n  [PASS] 图件 94 件与派生结果一致（47 .dot + 47 .svg）\n=== python3 _selfcheck_figs_spec.py ===\n  == 结论：PASS ==（四发合成探针 + 盘上 47 张真实图件；不符 0 处）\n  [OK] 两侧都在界内 880.0x300.0 期望 PASS 实得 PASS\n  [OK] 上界·越界(高) 200.0x900.0 期望 FAIL 实得 FAIL\n  [OK] 下界·边界(恰 0.90) 893.3x400.0 期望 PASS 实得 PASS\n  [OK] 下界·越界(旧 pe-f-06) 1016.0x150.0 期望 FAIL 实得 FAIL\n== 结论：PASS ==",
+     "source": "main-agent-rerun"
+    },
+    {
+     "fact": "★ 数据侧自检（C28–C33 / C58）",
+     "raw_output": "=== python3 10-dag-data/_selfcheck.py（退出码 0）===\n  [PASS] C29-complete-blocks complete 节点 8 区块全非空（空：[]）\n  [PASS] C33-terms-resolvable 节点 terms 逐条可在 glossary 解析（未命中：[]）\n  [PASS] C58-quote-provenance evidence 引文逐片段可在引文库逐字回源\n         （节点侧 113 条 evidence / 库内 126 条唯一引文，源件 7 个；坏：[]）\n  == 自检：PASS ==  (FAIL 0 项 / WARN 4 项)\n  ★ 4 项 WARN 全部为报告项或存量缺口：C22c 互指提示 / C28b 上限报告 /\n    C28c caliber 区间报告 / C58b（frontier 侧 2 片无源，G23 存量）",
+     "source": "main-agent-rerun"
+    },
+    {
+     "fact": "★★ R-01 裁决（N1）落地：判据改后**当场实测**（⛔ 未放宽任何阈值）",
+     "raw_output": "=== python3 gate_prototype.py --only P35 ===\n  [NOTE] P35 ②（R-01 / 2026-10-16 第 7 轮 N1 裁决）：口径 = 「h1 每个 ≥3 字母拉丁 token\n  必须在 glossary.json 的某个 term 里逐字命中」；对象集 = 全部受检页 44 个（排除清单为空）；\n  判据真正作用到 44 个（含 <h1>）；h1 含 ≥3 字母拉丁 token 的页 **1** 个；\n  登记面 = glossary.terms 69 条。\n  == 门控结论：PASS ==  FAIL 0 项 []\n★ 那**唯一 1 个**页就是 `11-node-pages/pe-r-07.html`（h1 = 「ReAct 推理—行动交织」）\n  ⇒ N1 的判据在**真实产物**上首次生效且通过；旧实装（h1 含英文即 FAIL）会当场判它 FAIL。\n★ 旧实现的 `kind != \"interactive\"` **控制流豁免已删除**（本文件头部明文禁止该形态）。\n=== python3 _selfcheck_p35_fixtures.py ===\n  ② h1 拉丁缩写口径的阈值两侧探针：\n    ReAct（已登记）⇒ PASS ／ RAG（已登记）⇒ PASS ／\n    Kubernetes（未登记）⇒ FAIL ／ AI（2 字母，低于阈值）⇒ 不触发\n  == 自检结论：PASS ==（34 条夹具全部触发；正向 PASS；⑫ 0 处不符；② 0 处不符）",
+     "source": "main-agent-rerun"
+    },
+    {
+     "fact": "★★ P39 补「结构化出口闭合」：**改前 / 改后**并排读数（本轮的存量缺陷证据）",
+     "raw_output": "=== 改前（`_r7_backup/16-checkpoint/`，第 6 轮末态）===\n  `gates` 的 `criteria_change_*` 键 = **7** 个\n  磁盘 `CRITERIA-CHANGE-*.md` = **9** 件\n  ⇒ 缺 2 件：`CRITERIA-CHANGE-P35-G4.md` / `CRITERIA-CHANGE-P38-P40.md`（只在散文里出现）\n=== 而第 6 轮收口 P39 报的是 ==\n  「被引用的登记件 9 个 / 磁盘登记件 9 个；断链 0 处 / 孤儿 0 处；违例 0 处 []」⇒ **全绿**\n  （原件：`_probe/r6_final_gate.txt` 第 158–159 行）\n=== 改后（本轮）===\n  [PASS] P39 引用点 3 处；被引用的登记件 11 个 / 磁盘登记件 11 个 / 结构化出口键 11 个\n  === python3 gate_prototype.py --selftest --only P39 ===\n        负例（6 条）：全部触发（判据可判假） —— 6/6 条子断言负例全部触发\n== 结论：堵住 ==（⛔ 判据编号未增，改动挂 P39；登记件 9 → 11）",
+     "source": "main-agent-rerun"
+    },
+    {
+     "fact": "★★ 本轮最值钱的发现：一条旧负例夹具是**靠存量缺口触发**的（假夹具）",
+     "raw_output": "=== 补完 P39 ④ 后当场报出（原文）===\n  [FAIL] P39 …第 7 轮补④ 结构化出口闭合…\n         正向：PASS\n         负例（6 条）：存在未触发（判据疑似恒真） —— 负例#3 未触发：…\n  == 自检结论：FAIL ==（1 条判据 / 6 条负例夹具，全部须正向 PASS 且负例触发）\n★ 根因：夹具 #3 原实现**只改 `gate_prototype.py` 一处**引用名，实际制造的是**孤儿**；\n  它能红，**仅仅因为** P35-G4 / P38-P40 两件「只被 gate_prototype.py 引用」——\n  那正是 P39 ④ 要堵的**缺口本身**。⇒ 缺口一补，夹具立刻失去触发源。\n★ 修法：夹具 #3 改为**三处引用点一起改名** ⇒ 语义回到它 docstring 声称的「引用点扫不到」\n  （即断言 ③ 的空集守卫，原本**没有**专属夹具）。\n=== 修后 ===\n        负例（6 条）：全部触发 —— 6/6 条子断言负例全部触发\n  == 自检结论：PASS ==\n★ 价值判断：**高于它修的那个缺口** —— 它证明「夹具集合本身也会随产物演进而失效」。",
+     "source": "main-agent-rerun"
+    },
+    {
+     "fact": "★ 内容波次 3：22 个节点的**独立复跑**（R-24：⛔ 不采信子 Agent 自报）",
+     "raw_output": "=== 主 Agent 由 `_wave3_parts/*.json` **重建** solo 目录后逐个 dry-run ===\n  原件：16-checkpoint/_probe/r7_t2_rerun.txt\n  8 个先行完成的部件：`== 结论：PASS ==` × 8（⛔ 无一条非 PASS）\n  ⇒ 与 8 路子 Agent 的自报**逐条吻合**（含片段 k/k 回源、lab/evidence/pitfalls 条数）\n=== 终局落盘 ===\n  [write] dag.json 已落盘；回读：JSON 合法 / 节点 67 / **complete 35 个**\n  （PE-E-01…09 ＋ PE-R-01/03…08 ＋ PE-A-01…06 ＋ 前 13 个）\n== 结论：PASS ==（**35 / 67**，跨过 D7 定的发布阈值 ≥34）",
+     "source": "main-agent-rerun"
+    },
+    {
+     "fact": "★★ 本轮当场抓到的**四类真缺陷**（全部改**内容/装置**，⛔ 未放宽任何阈值）",
+     "raw_output": "=== 缺陷一：公开文案含内部记号（P33）===\n  [FAIL] P33 …可见文案内部记号命中 2 处 [('11-node-pages/pe-e-01.html', \"含内部记号 '⛔'\"),\n         ('11-node-pages/pe-r-01.html', \"含内部记号 '★'\")]\n  ⇒ 自建 `_probe/r7_t2_strip_marks.py`（记号集与 P33 同源）扫**部件源头**，共 **9 处 / 5 个部件**\n    （门控只见 2 处 —— 它只能看**已建产物**）⇒ 剥离后 P33 PASS（受检页面 51 个，命中 0 处）\n=== 缺陷二：dry-run 之后改文件却不复跑 ===\n  `_wave1_apply.py --write --reapply` **中止落盘**：\n    ('PE-E-08', 'evidence[0] quote 超 200 字（227）')\n    ('PE-E-08', 'evidence[1] quote 超 200 字（241）')\n  而该件子 Agent **自报**长度为 136 / 162 / 175 ⇒ 三条全不吻合（改在 dry-run 之后）\n  ⇒ 另有一次同型：PE-A-03（223 / 253）\n=== 缺陷三：顶层扫描面被污染 ===\n  子 Agent 在 `16-checkpoint/` **顶层**留下临时 `.py`，把 P41 的扫描面从 **34** 抬到 **44**\n  ⇒ 逐个核实为 no-op 后清理，恢复 **34**\n=== 缺陷四：跨 Agent 误删 ===\n  某子 Agent 的清理脚本规则过宽，误删同层**他人**临时脚本两个（其自陈原文）\n=== 收口期的三处机检缺陷（改部件、⛔ 不改产物）===\n  P12：PE-A-02 的 `~/.env`、PE-A-06 的 `/tmp/wrapped.txt`（3 处）⇒ 换相对写法\n  P35 ⑨：PE-E-09 的 `intro` 用「其一，…**。**其二，…」跨句列举 ⇒ 渲染侧 `split_enum`\n    只在**单句内**按 `；` 切 ⇒ 不生成 `.enum-list`；改为单句 `；` 分隔（改 2 个字符）\n  ⇒ 三处修后门控 PASS（FAIL 0）\n== 结论：全部处置 ==（四类缺陷已写进 `AUTHORING-SPEC.md` 禁忌 #9–#12 防复发）",
+     "source": "main-agent-rerun"
+    },
+    {
+     "fact": "★ 视觉核查（★ 硬要求：图件类改动必须**看图**，且必须在站点样式内看）",
+     "raw_output": "=== `_figcheck.py`（核对台）→ `_render.py --full`（整页）→ `read_image` 逐张 ===\n  本波新增图件 **22** 张；实拍并逐张看过 **22 / 22**（⛔ 无抽样、无跳过）\n  取证件：`_probe/fig3-<fid>.png`（22 张）＋ `_probe/fig3-<fid>.html`（22 个核对台）\n  结论：22 张全部合格（结构清晰 / 无压字 / 无重叠 / CJK 无豆腐块 / 图注完整）\n  ★ 过程更正：首轮 620px 视口把 4 张的**图注**裁掉 ⇒ 判为「截图视口问题，⛔ 非图件缺陷」，\n    改 `--full` 重拍后复看全部完整\n  ★ 一条措辞级观感（⛔ 不构成违例、本轮不改）：`pe-r-07` 图注「四类失效**计数**」用词略生硬\n  （原件：16-checkpoint/_probe/r7_t3_visual-check.md）\n== 结论：PASS ==（22/22 亲看）",
+     "source": "main-agent-rerun"
+    }
+   ],
+   "artifacts": [
+    "16-checkpoint/ROUND-LEDGER.json",
+    "16-checkpoint/_r7_ledger_update.py",
+    "16-checkpoint/CRITERIA-CHANGE-R01.md",
+    "16-checkpoint/CRITERIA-CHANGE-P39.md",
+    "16-checkpoint/DESIGN-CONTRACT.md",
+    "16-checkpoint/AUTHORING-SPEC.md",
+    "16-checkpoint/gate_prototype.py",
+    "16-checkpoint/gen-state.py",
+    "16-checkpoint/gen-figs.py",
+    "16-checkpoint/gen-nodes.py",
+    "16-checkpoint/_selfcheck_p35_fixtures.py",
+    "16-checkpoint/_b1_boundary_review.md",
+    "16-checkpoint/_r7_backup/MANIFEST.txt",
+    "16-checkpoint/_r6_backup/MANIFEST.txt",
+    "16-checkpoint/_probe/README.md",
+    "16-checkpoint/_probe/false-green/agent-browser-output.png",
+    "16-checkpoint/_reflection-candidates/_ROUND7-READ.md",
+    "16-checkpoint/_wave3_parts/",
+    "10-dag-data/dag.json",
+    "10-dag-data/figures/",
+    "PUBLISH-STATE.json"
+   ],
+   "g_list_updates": {
+    "G17": "★ **第 7 轮再次更正（同型第 2 次复发）**：`DESIGN-CONTRACT.md` §4③ 标题写「收口必做（**五步**）」而其下命令块是 **6** 条 —— 第 5 轮已修过一次、第 6 轮又退回。本轮改回「六步」并在该节留更正说明。★ 该类（文档内部计数与正文条数不符）**仍无判据**，如实留行。",
+    "G28": "✅ **已消（第 7 轮，用户裁决 N1）**：节点名里的拉丁缩写不再阻塞。R-01 口径改为「h1 一行、无括号；其中每个 ≥3 字母拉丁 token 必须能在 glossary.json 的某个 term 里逐字命中」；同批删 P35 ② 的`kind != \"interactive\"` 控制流豁免，改走显式对象集 + 全集闭合断言。**5 个节点一字未动**；判据在 `11-node-pages/pe-r-07.html` 上首次生效并通过。见 `CRITERIA-CHANGE-R01.md`。",
+    "G29": "★ **第 7 轮复现 3 次并升级为「装置级」**：子 Agent 自报 dry-run PASS 而**最终落盘字节不达标**（PE-E-08 自报 136/162/175 vs 盘上 227/241/132；PE-A-03 同型）⇒ 合并器 fail-closed 拦下、**整批中止**。⇒ 已写进 `AUTHORING-SPEC.md` 禁忌 #10（先定稿再 dry-run；交件报两处 sha256）。★ 机检边界不变：P40 报不出「行文里的数字与自报不符」。",
+    "G33": "★ **第 7 轮新增**：`_wave_pick_quotes.py` 的 **URL→id 映射假阴性** —— 它用 `setdefault` 建索引，同一 URL 在 sources.json 出现多次时只有首个 id 生效，其余显示 `S-id = ——`（两名子 Agent 独立复现）。★ 判「可用性」应以 `_wave1_apply.py` 的 dry-run 为准；**本轮未改该脚本**（属工具欠账，留行）。",
+    "G34": "★ **第 7 轮新增（本轮最值钱的发现）**：**夹具会随产物演进变成假夹具** —— `mut_p39` 的夹具 #3**靠存量缺口触发**（它只在「某件登记件只被 gate_prototype.py 引用」时才红）；本轮把缺口补上，它立刻失去触发源并被 `--selftest` 当场报出「负例#3 未触发（判据疑似恒真）」。⇒ 改为三处一起改名后语义回到断言 ③。**这是「判据/夹具的作用域会随产物漂移」的第 3 个实例**（前两例：第 6 轮 G19 的 R-07 作用域、T-1 的写死页数）。",
+    "G35": "★ **第 7 轮新增**：**公开文案里的内部标注记号**（`⛔` / `★` / `⚠`）—— 门控 P33 报了 2 处，而在**部件源头**扫出 **9 处 / 5 个部件**（门控只能看已建产物）。⇒ 已写进 `AUTHORING-SPEC.md` 禁忌 #9；并留下可复用工具 `_probe/r7_t2_strip_marks.py`（记号集与 P33 同源、默认 dry-run、带回读验证）。",
+    "G36": "★ **第 7 轮新增**：**子 Agent 在 `16-checkpoint/` 顶层留下临时 `.py`**，把 P41 的扫描面从 34 抬到 44。P41 的闭合断言**不会**因此 FAIL（新文件默认落入「受检」而非「未分类」）⇒ 它是**卫生问题而非判据缺口**，靠主 Agent 逐个核实后清理。⇒ 已写进 `AUTHORING-SPEC.md` 禁忌 #11。",
+    "G37": "★ **第 7 轮新增**：**跨 Agent 误删** —— 某内容子 Agent 的清理脚本规则过宽，删掉了同层**他人**的两个临时脚本（其自陈原文；经 grep 确认全仓无引用、未影响任何部件）。⇒ 已写进 `AUTHORING-SPEC.md` 禁忌 #12（清理脚本只许匹配自己的前缀；⛔ 不写 `rm _tmp_*` 这类全局通配）。",
+    "G38": "★ **第 7 轮新增（数据侧缺口，留行）**：`PE-E-03` / `PE-A-05` 的**核心机制句**在引文库 A*.json 中**无一手可引用原文**（裁判位置偏差/冗长偏好/自我偏好；「否定词提高相关内容概率」）。两名子 Agent 都**如实上报**并只在散文/术语界定里陈述、⛔ 未编造引文 ⇒ 本轮**不改数据**，登记为缺口：若要发布口径要求逐条主张有一手引文，需补外源或降级该表述。",
+    "G39": "★ **第 7 轮新增（未解决）**：`CARRIER-SCAN` 面 —— **任务根的两个探针 `.py`**（`_audit_r5_probe.py` / `_selfcheck_stage1.py`）与 `_probe/` 下的脚本**不在 P41 的扫描面内**（P41 只扫 `16-checkpoint/` 顶层）。⇒ 本轮**登记**（见 artifacts 与 `_probe/README.md` §四），⛔ 未把扫描面扩到任务根（那会是本轮第三次判据变更）⇒ 留行。",
+    "G40": "★ **第 7 轮新增（已处置）**：**未登记的游离物证** —— 任务根名为 `--output` 的 3420 B / 1280×577 PNG，实为 `agent-browser` **假绿通道**的产物（`RENDER-CHANNEL.md:96` 记述它「回显成功却产出纯白空图、并把 `--output` 当字面文件名」），但它**从未被任何台账/判据登记为产物**。⇒ 已校验（源为常规文件、合法 PNG、父目录＝任务根）后迁入 `16-checkpoint/_probe/false-green/` 并在`_probe/README.md` §三 登记其身份/来源/作用域。",
+    "G41": "★ **第 7 轮新增（已处置）**：**`_r6_backup/` 无内容边界登记**，且外部核验方据「内层台账 round=5、dag 停在 complete=8」判它「名不符实（实为第 5 轮开工前）」——**该判读经主 Agent 复算后否定**：complete=8 恰是**第 5 轮末态**（8 = 第 1 轮 3 个 + 第 5 轮波次 1 的 5 个）。⇒ 已补 `MANIFEST.txt` 登记真实边界（含「本快照只保能重建产物的那半边」的局限）。",
+    "G15": "**不做**（留行，⛔ 不删）：发布级强化（SH0–SH5 / CI / `.nojekyll` / 建仓 push / Pages / hub 收录）与跨仓议题。★ **本轮已跨过 D7 定的阈值（complete 35 ≥ 34）⇒ 下一轮可启动建仓与发布**；本轮收口时只做了一份就绪性核查（⛔ 未建仓、⛔ 未发布）。★ 现状约束仍在：本站 `--border` 对底色仅 1.0:1（浅）/ 1.06:1（深），且**没有任何门控会失败**。",
+    "G18": "第 7 轮逐项：⑧ **P35 ⑫ 代理判据仍未退役**（留行；前置条件 = P38 的直接量覆盖组页 22 个区块，或另立更严判据）；⑨ 分组索引 6 列短值表仍未被判据覆盖（留行）；⑩ 组页 `intro` 无枚举模式（留行，内容波次是解法）；⑪ P40 只断结构、如实性不可机检（明文登记）；⑫ P38 不判 PNG 新鲜度（留行）；⑬ `report.html` 的 `<title>` 仍写「第 1 轮」（**刻意不改**，front matter 属历史原文）。",
+    "G23": "**未解决（留行）**：`C58` 对象只有节点侧；`frontier.json` 侧 2 片引文无法在 A 池逐字回源。本轮 C58b 仍以 WARN 常驻（4 项 WARN 之一），⛔ 未改 `frontier.json`。",
+    "G25": "**未解决（留行）**：`P41` 仍是窄版（⛔ 不判「任何措辞」）。本轮**未动**。",
+    "G30": "★ **第 7 轮复现并处置**：**审核/协作窗口内文件被并发修改** —— 两例：① 我读 `PE-E-08` 的引文长 227，数分钟后同一文件变成 143（其子 Agent 仍在写）；② P16 一度 FAIL，因为它跑的时刻正有子 Agent 改写 `gen-figs.py`（两次沙箱生成的输入不同）。⇒ 处置：**动某文件前先确认其写者已停手**（`list_agents`），我的部件修正器也自带「锚点命中次数不符即拒绝落盘」的守卫。",
+    "G31": "**未动（留行）**：`R-08` 的「内容列」用词模糊（应补「= `.layout > main` 的 border-box 内宽」）。",
+    "G32": "**已处置（留行以免被读作已消）**：审核委派的工具面须含可执行 shell。★ 本轮**未派审核子 Agent**（时间盒内先收口）；该纪律已写进 `AUTHORING-SPEC.md` 与契约 §3 的既有条目。"
+   },
+   "note": "★ 本对象是**第 7 轮（T1：N1 裁决落地 + 存量缺陷；T2：内容波次 3 = 22 个节点 + 22 张图件；T3：收口期三处机检缺陷处置）**的轮次对象：按契约 §4① 第 3 条在**开工期先落盘**？⛔ **不是** —— 本轮采用**收口期一次性落盘**（见下「偏离登记」），claims / artifacts / g_list_updates / started_at / ended_at 一并写入；⛔ **未回改 round 3/4/5/6 对象**（本脚本用文本手术追加，其余字节一个不动，`guards()` 复核）。\n★ 本轮读数全部由**主 Agent 亲跑**（`main-agent-rerun`，逐条附原始输出，原件落 `16-checkpoint/_probe/r7_*.txt`）；⛔ 无一条采信委派方自报 —— 本轮派了 **23 个执行子 Agent**（22 路内容 + 1 路出图，分 3 批，受并发上限 8 约束）：它们的产出**只是部件与图源**（内容正文 ⛔ 不进主 Agent 上下文，R-25），且各自报的每一条数字都由主 Agent 用 `_wave1_apply.py` 的 dry-run（**从部件重建 solo 目录**）／`gen-figs.py --check`／`_selfcheck*.py`／门控**独立复跑**。★ 本轮**实证了两条「自报不可信」的具体形态**：① 内容侧两件的最终字节与自报不符（G29 升级）；② 出图侧自报「22/22 完成」经主 Agent 用 `gen-figs --check`与逐张看图复核**成立**（如实报成功也是一种如实）。\n★ **时点关系（⛔ 未改任何历史件）**：`report.md` §7.x/§8.x/§9.x 与 round 3/4/5/6 对象里的旧读数（40 或 41 判据 / 152·154·159·162·166 夹具 / P01–P37/P40/P41 / 24·29 页 / 9·25 张图）都是**各自收口时刻的快照**；本对象的现态是 **41 判据 / 171 夹具 / P01–P41 / 51 页 / 47 张图件 / complete 35 · registered 32 / 登记件 11 件**。\n★ **收口完成判据逐条对照**：`_probe_env.py` 退出码 0 ✅ · `_probe_channel.py` 退化 0 处（51 页溢出 0）✅ · `gate_prototype.py` 退出码 0 ✅ · `--selftest` 退出码 0 ✅ · `build-all.py --write` 二次比对干净 ✅ · `gen-figs.py --check` 94 件一致 ✅ · `_selfcheck_figs_spec.py` PASS ✅ · `10-dag-data/_selfcheck.py` PASS ✅ · `_selfcheck_p35_fixtures.py` PASS ✅ · G 清单每行都有处置 ✅ · 台账落盘且 P40 PASS ✅ · 视觉核查（**22/22 张新图逐张亲看**）✅。\n★ **偏离登记（⛔ 不得静默）**：契约 §4① 要求「开工期先落盘 `rs_touched`」，本轮**未**照做 —— 因为本轮开工时尚未确定会触碰哪些 R-xx，先写会变成**猜测**。⇒ 如实记为流程偏离，并把该偏离本身作为下轮的建议修正点（要么在开工期就用「预计触碰集」并声明它可能扩大，要么把契约改成「收口期落盘但须在 note 明示」）。"
+  }
+ ]
+}

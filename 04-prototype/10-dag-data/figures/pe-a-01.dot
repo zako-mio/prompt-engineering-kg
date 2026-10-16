@@ -1,0 +1,28 @@
+digraph fig {
+  rankdir=LR; bgcolor="transparent";
+  node[shape=box, style="rounded,filled", fillcolor="#ffffff", color="#7c8aa5", fontcolor="#0e1729", fontname="Noto Sans CJK SC", fontsize=13, margin="0.20,0.12"]; edge[color="#7c8aa5", fontcolor="#46536b", fontname="Noto Sans CJK SC", fontsize=11, arrowsize=0.7];
+  L1 [label="最高特权 系统
+产品身份与安全策略", fillcolor="#dfe6fb", color="#2f4bd8"];
+  L2 [label="开发者
+任务级指令与输出契约", fillcolor="#dfe6fb", color="#2f4bd8"];
+  L3 [label="用户
+本次输入", fillcolor="#dfe6fb", color="#2f4bd8"];
+  L4 [label="最低特权 外部内容
+工具返回 / 检索结果 / 网页", color="#b3181f"];
+  {rank=same; L1; L2; L3; L4;}
+  L1 -> L2 [label="特权递减"];
+  L2 -> L3 [label="特权递减"];
+  L3 -> L4 [label="特权递减"];
+  P [label="三层实现路径
+① 提示层：在系统提示中声明优先级与处理规则
+② 训练层：用偏好优化或强化学习让模型学会拒绝低特权指令
+③ 架构层：在中间表示中注入层级信号", color="#136f3a"];
+  L2 -> P [style=dashed, label="实现"];
+  {rank=same; P; N;}
+  N [label="边界
+降低而非消除注入风险：注入仍列风险清单首位
+模型不能作为唯一安全控制
+复杂 Agent 网络中的多层级动态控制仍属前沿
+⇒ 层级必须配合权限收窄与显式标注", shape=note, fillcolor="#e9eef8"];
+  L4 -> N [style=dotted, arrowhead=none];
+}

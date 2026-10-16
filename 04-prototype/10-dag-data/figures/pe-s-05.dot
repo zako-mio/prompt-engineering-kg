@@ -1,0 +1,15 @@
+digraph fig {
+  rankdir=LR; bgcolor="transparent";
+  node[shape=box, style="rounded,filled", fillcolor="#ffffff", color="#7c8aa5", fontcolor="#0e1729", fontname="Noto Sans CJK SC", fontsize=13, margin="0.20,0.12"]; edge[color="#7c8aa5", fontcolor="#46536b", fontname="Noto Sans CJK SC", fontsize=11, arrowsize=0.7];
+  G [label="生成\n按提示与结构契约出结果"];
+  V [label="校验\n结构校验 + 业务规则\n写成与模型无关的纯函数", fillcolor="#dfe6fb", color="#2f4bd8"];
+  P [label="通过\n交付下游", color="#136f3a"];
+  R [label="失败：把具体错误回喂\n给出位置与期望值\n（不是笼统的「格式错误」）", color="#9a5310"];
+  G -> V;
+  V -> P [label="通过"];
+  V -> R [style=dashed, label="失败"];
+  R -> G [style=dashed, label="限次重生成"];
+  {rank=same; P; R; N;}
+  N [label="限次闭环 ≠ 异常分支\n重试上限必须显式写死\n超限样本必须落盘可查\n并区分首次通过率与最终通过率", shape=note, fillcolor="#e9eef8"];
+  V -> N [style=dotted, arrowhead=none, constraint=false];
+}

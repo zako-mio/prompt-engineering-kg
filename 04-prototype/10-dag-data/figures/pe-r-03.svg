@@ -1,0 +1,66 @@
+<svg class="fig__svg" role="img"
+ viewBox="0.00 0.00 507.50 284.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 280)">
+<title>fig</title>
+<g id="node1" class="node">
+<title>P</title>
+<path fill="var(--brand-soft)" stroke="var(--brand-primary)" d="M349.5,-276C349.5,-276 143.5,-276 143.5,-276 137.5,-276 131.5,-270 131.5,-264 131.5,-264 131.5,-242 131.5,-242 131.5,-236 137.5,-230 143.5,-230 143.5,-230 349.5,-230 349.5,-230 355.5,-230 361.5,-236 361.5,-242 361.5,-242 361.5,-264 361.5,-264 361.5,-270 355.5,-276 349.5,-276"/>
+<text text-anchor="middle" x="246.5" y="-256.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">自一致性的两个前提</text>
+<text text-anchor="middle" x="246.5" y="-242.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">① 答案唯一 ② 错误路径彼此发散</text>
+</g>
+<g id="node2" class="node">
+<title>A</title>
+<path fill="var(--surface-raised)" stroke="var(--success)" d="M219.5,-182C219.5,-182 49.5,-182 49.5,-182 43.5,-182 37.5,-176 37.5,-170 37.5,-170 37.5,-134 37.5,-134 37.5,-128 43.5,-122 49.5,-122 49.5,-122 219.5,-122 219.5,-122 225.5,-122 231.5,-128 231.5,-134 231.5,-134 231.5,-170 231.5,-170 231.5,-176 225.5,-182 219.5,-182"/>
+<text text-anchor="middle" x="134.5" y="-162.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">前提成立</text>
+<text text-anchor="middle" x="134.5" y="-148.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">正确路径收敛、错误路径分散</text>
+<text text-anchor="middle" x="134.5" y="-134.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">⇒ 多数投票有效</text>
+</g>
+<g id="edge1" class="edge">
+<title>P&#45;&gt;A</title>
+<path fill="none" stroke="var(--border-line)" d="M221.37,-229.78C207.11,-217.18 188.98,-201.15 172.97,-187"/>
+<polygon fill="var(--border-line)" stroke="var(--border-line)" points="174.5,-185.08 167.63,-182.28 171.25,-188.76 174.5,-185.08"/>
+<text text-anchor="middle" x="213" y="-203.2" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="11.00" fill="var(--text-secondary)">成立</text>
+</g>
+<g id="node3" class="node">
+<title>B</title>
+<path fill="var(--surface-raised)" stroke="var(--danger)" d="M474.5,-182C474.5,-182 278.5,-182 278.5,-182 272.5,-182 266.5,-176 266.5,-170 266.5,-170 266.5,-134 266.5,-134 266.5,-128 272.5,-122 278.5,-122 278.5,-122 474.5,-122 474.5,-122 480.5,-122 486.5,-128 486.5,-134 486.5,-134 486.5,-170 486.5,-170 486.5,-176 480.5,-182 474.5,-182"/>
+<text text-anchor="middle" x="376.5" y="-162.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">前提不成立：模型存在系统性偏见</text>
+<text text-anchor="middle" x="376.5" y="-148.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">所有路径犯同一个错</text>
+<text text-anchor="middle" x="376.5" y="-134.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">⇒ 投票高置信度地输出错答案</text>
+</g>
+<g id="edge2" class="edge">
+<title>P&#45;&gt;B</title>
+<path fill="none" stroke="var(--border-line)" d="M275.67,-229.78C292.36,-217.07 313.64,-200.87 332.33,-186.63"/>
+<polygon fill="var(--border-line)" stroke="var(--border-line)" points="333.96,-188.47 338.05,-182.28 330.99,-184.58 333.96,-188.47"/>
+<text text-anchor="middle" x="328.5" y="-203.2" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="11.00" fill="var(--text-secondary)">不成立</text>
+</g>
+<g id="node4" class="node">
+<title>S</title>
+<path fill="var(--surface-raised)" stroke="var(--warning)" d="M239,-74C239,-74 12,-74 12,-74 6,-74 0,-68 0,-62 0,-62 0,-12 0,-12 0,-6 6,0 12,0 12,0 239,0 239,0 245,0 251,-6 251,-12 251,-12 251,-62 251,-62 251,-68 245,-74 239,-74"/>
+<text text-anchor="middle" x="125.5" y="-54.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">样本数与收益（现行证据）</text>
+<text text-anchor="middle" x="125.5" y="-40.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">20 个样本：HotpotQA +0.4 个百分点</text>
+<text text-anchor="middle" x="125.5" y="-26.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">MATH&#45;500 +1.6 个百分点</text>
+<text text-anchor="middle" x="125.5" y="-12.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">token 成本近线性增长 ⇒ 收益早期饱和</text>
+</g>
+<g id="edge3" class="edge">
+<title>A&#45;&gt;S</title>
+<path fill="none" stroke="var(--border-line)" d="M132.18,-121.9C131.2,-109.54 130.03,-94.87 128.95,-81.28"/>
+<polygon fill="var(--border-line)" stroke="var(--border-line)" points="131.39,-81.07 128.39,-74.29 126.5,-81.46 131.39,-81.07"/>
+<text text-anchor="middle" x="143" y="-95.2" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="11.00" fill="var(--text-secondary)">实测</text>
+</g>
+<g id="node5" class="node">
+<title>T</title>
+<polygon fill="var(--surface-subtle)" stroke="var(--border-line)" points="493.5,-74 269.5,-74 269.5,0 499.5,0 499.5,-68 493.5,-74"/>
+<polyline fill="none" stroke="var(--border-line)" points="493.5,-74 493.5,-68 "/>
+<polyline fill="none" stroke="var(--border-line)" points="499.5,-68 493.5,-68 "/>
+<text text-anchor="middle" x="384.5" y="-54.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">另一种收益口径</text>
+<text text-anchor="middle" x="384.5" y="-40.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">需要推理忠实度而非仅准确率时</text>
+<text text-anchor="middle" x="384.5" y="-26.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">投票可能提高忠实度</text>
+<text text-anchor="middle" x="384.5" y="-12.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">但方向须实测确认</text>
+</g>
+<g id="edge4" class="edge">
+<title>B&#45;&gt;T</title>
+<path fill="none" stroke="var(--border-line)" stroke-dasharray="1,5" d="M378.56,-121.9C379.59,-107.38 380.84,-89.68 381.93,-74.29"/>
+</g>
+</g>
+</svg>

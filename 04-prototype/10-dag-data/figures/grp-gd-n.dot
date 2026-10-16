@@ -1,0 +1,19 @@
+digraph grp {
+  rankdir=LR; bgcolor="transparent";
+  node[shape=box, style="rounded,filled", fillcolor="#ffffff", color="#7c8aa5", fontcolor="#0e1729", fontname="Noto Sans CJK SC", fontsize=13, margin="0.20,0.12"]; edge[color="#7c8aa5", fontcolor="#46536b", fontname="Noto Sans CJK SC", fontsize=11, arrowsize=0.7];
+  n0 [label="三代范式脉络\n(PE-N-01 · 第 26 层)", fillcolor="#dfe6fb", color="#2f4bd8"];
+  n1 [label="当前共识与争议\n(PE-N-02 · 第 27 层)", fillcolor="#dfe6fb", color="#2f4bd8"];
+  n2 [label="模块维护机制\n(PE-N-03 · 第 28 层)", fillcolor="#dfe6fb", color="#2f4bd8"];
+  n3 [label="跟踪渠道\n(PE-N-04 · 第 29 层)", fillcolor="#dfe6fb", color="#2f4bd8"];
+  {rank=same; n0; n1;}
+  {rank=same; n2; n3;}
+  n1 -> n2 [style=invis, weight=100];
+  n0 -> n1 [constraint=false];
+  n1 -> n2 [color="#7c8aa5"];
+  n2 -> n3 [constraint=false];
+  stub_in [label="组外接口\n入 3 条", shape=note, style="filled", fillcolor="#e9eef8", color="#9a5310"];
+  {rank=same; stub_in; n0; n1;}
+  stub_in -> n0 [style=dashed, constraint=false, arrowhead=none];
+  stub_in -> n2 [style=dashed, constraint=false, arrowhead=none];
+  stub_in -> n3 [style=dashed, constraint=false, arrowhead=none];
+}

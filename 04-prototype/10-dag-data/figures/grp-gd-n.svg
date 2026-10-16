@@ -1,0 +1,65 @@
+<svg class="fig__svg" role="img"
+ viewBox="0.00 0.00 374.06 182.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 178)">
+<title>grp</title>
+<g id="node1" class="node">
+<title>n0</title>
+<path fill="var(--brand-soft)" stroke="var(--brand-primary)" d="M166.06,-174C166.06,-174 38.06,-174 38.06,-174 32.06,-174 26.06,-168 26.06,-162 26.06,-162 26.06,-140 26.06,-140 26.06,-134 32.06,-128 38.06,-128 38.06,-128 166.06,-128 166.06,-128 172.06,-128 178.06,-134 178.06,-140 178.06,-140 178.06,-162 178.06,-162 178.06,-168 172.06,-174 166.06,-174"/>
+<text text-anchor="middle" x="102.06" y="-154.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">三代范式脉络</text>
+<text text-anchor="middle" x="102.06" y="-140.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">(PE&#45;N&#45;01 · 第 26 层)</text>
+</g>
+<g id="node2" class="node">
+<title>n1</title>
+<path fill="var(--brand-soft)" stroke="var(--brand-primary)" d="M166.06,-110C166.06,-110 38.06,-110 38.06,-110 32.06,-110 26.06,-104 26.06,-98 26.06,-98 26.06,-76 26.06,-76 26.06,-70 32.06,-64 38.06,-64 38.06,-64 166.06,-64 166.06,-64 172.06,-64 178.06,-70 178.06,-76 178.06,-76 178.06,-98 178.06,-98 178.06,-104 172.06,-110 166.06,-110"/>
+<text text-anchor="middle" x="102.06" y="-90.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">当前共识与争议</text>
+<text text-anchor="middle" x="102.06" y="-76.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">(PE&#45;N&#45;02 · 第 27 层)</text>
+</g>
+<g id="edge2" class="edge">
+<title>n0&#45;&gt;n1</title>
+<path fill="none" stroke="var(--border-line)" d="M102.06,-127.9C102.06,-124.46 102.06,-121.01 102.06,-117.57"/>
+<polygon fill="var(--border-line)" stroke="var(--border-line)" points="104.51,-117.5 102.06,-110.5 99.61,-117.5 104.51,-117.5"/>
+</g>
+<g id="node3" class="node">
+<title>n2</title>
+<path fill="var(--brand-soft)" stroke="var(--brand-primary)" d="M354.06,-110C354.06,-110 226.06,-110 226.06,-110 220.06,-110 214.06,-104 214.06,-98 214.06,-98 214.06,-76 214.06,-76 214.06,-70 220.06,-64 226.06,-64 226.06,-64 354.06,-64 354.06,-64 360.06,-64 366.06,-70 366.06,-76 366.06,-76 366.06,-98 366.06,-98 366.06,-104 360.06,-110 354.06,-110"/>
+<text text-anchor="middle" x="290.06" y="-90.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">模块维护机制</text>
+<text text-anchor="middle" x="290.06" y="-76.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">(PE&#45;N&#45;03 · 第 28 层)</text>
+</g>
+<g id="edge3" class="edge">
+<title>n1&#45;&gt;n2</title>
+<path fill="none" stroke="var(--border-line)" d="M178.18,-93.64C187.58,-93.76 197.23,-93.78 206.74,-93.71"/>
+<polygon fill="var(--border-line)" stroke="var(--border-line)" points="206.99,-96.16 213.97,-93.64 206.94,-91.26 206.99,-96.16"/>
+</g>
+<g id="node4" class="node">
+<title>n3</title>
+<path fill="var(--brand-soft)" stroke="var(--brand-primary)" d="M354.06,-46C354.06,-46 226.06,-46 226.06,-46 220.06,-46 214.06,-40 214.06,-34 214.06,-34 214.06,-12 214.06,-12 214.06,-6 220.06,0 226.06,0 226.06,0 354.06,0 354.06,0 360.06,0 366.06,-6 366.06,-12 366.06,-12 366.06,-34 366.06,-34 366.06,-40 360.06,-46 354.06,-46"/>
+<text text-anchor="middle" x="290.06" y="-26.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">跟踪渠道</text>
+<text text-anchor="middle" x="290.06" y="-12.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">(PE&#45;N&#45;04 · 第 29 层)</text>
+</g>
+<g id="edge4" class="edge">
+<title>n2&#45;&gt;n3</title>
+<path fill="none" stroke="var(--border-line)" d="M290.06,-63.9C290.06,-60.46 290.06,-57.01 290.06,-53.57"/>
+<polygon fill="var(--border-line)" stroke="var(--border-line)" points="292.51,-53.5 290.06,-46.5 287.61,-53.5 292.51,-53.5"/>
+</g>
+<g id="node5" class="node">
+<title>stub_in</title>
+<polygon fill="var(--surface-subtle)" stroke="var(--warning)" points="136.06,-46 62.06,-46 62.06,0 142.06,0 142.06,-40 136.06,-46"/>
+<polyline fill="none" stroke="var(--warning)" points="136.06,-46 136.06,-40 "/>
+<polyline fill="none" stroke="var(--warning)" points="142.06,-40 136.06,-40 "/>
+<text text-anchor="middle" x="102.06" y="-26.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">组外接口</text>
+<text text-anchor="middle" x="102.06" y="-12.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">入 3 条</text>
+</g>
+<g id="edge5" class="edge">
+<title>stub_in&#45;&gt;n0</title>
+<path fill="none" stroke="var(--border-line)" stroke-dasharray="5,2" d="M61.63,-29.62C41.72,-35.18 19.57,-45.37 8.06,-64 -2.69,-81.39 -2.69,-92.61 8.06,-110 12.55,-117.27 18.67,-123.25 25.63,-128.18"/>
+</g>
+<g id="edge6" class="edge">
+<title>stub_in&#45;&gt;n2</title>
+<path fill="none" stroke="var(--border-line)" stroke-dasharray="5,2" d="M142.51,-36.57C165.65,-44.54 195.5,-54.81 222.21,-64"/>
+</g>
+<g id="edge7" class="edge">
+<title>stub_in&#45;&gt;n3</title>
+<path fill="none" stroke="var(--border-line)" stroke-dasharray="5,2" d="M142.51,-23C163.3,-23 189.51,-23 214,-23"/>
+</g>
+</g>
+</svg>

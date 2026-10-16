@@ -1,0 +1,65 @@
+<svg class="fig__svg" role="img"
+ viewBox="0.00 0.00 637.00 256.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 252)">
+<title>fig</title>
+<g id="node1" class="node">
+<title>A</title>
+<path fill="var(--brand-soft)" stroke="var(--brand-primary)" d="M144,-248C144,-248 25,-248 25,-248 19,-248 13,-242 13,-236 13,-236 13,-214 13,-214 13,-208 19,-202 25,-202 25,-202 144,-202 144,-202 150,-202 156,-208 156,-214 156,-214 156,-236 156,-236 156,-242 150,-248 144,-248"/>
+<text text-anchor="middle" x="84.5" y="-228.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">构件一 签名</text>
+<text text-anchor="middle" x="84.5" y="-214.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">声明输入与输出字段</text>
+</g>
+<g id="node4" class="node">
+<title>D</title>
+<path fill="var(--surface-raised)" stroke="var(--success)" d="M515,-216C515,-216 319,-216 319,-216 313,-216 307,-210 307,-204 307,-204 307,-182 307,-182 307,-176 313,-170 319,-170 319,-170 515,-170 515,-170 521,-170 527,-176 527,-182 527,-182 527,-204 527,-204 527,-210 521,-216 515,-216"/>
+<text text-anchor="middle" x="417" y="-196.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">编译器按指标在训练集上搜索</text>
+<text text-anchor="middle" x="417" y="-182.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">产出可直接使用的指令与少量示例</text>
+</g>
+<g id="node2" class="node">
+<title>B</title>
+<path fill="var(--brand-soft)" stroke="var(--brand-primary)" d="M144,-184C144,-184 25,-184 25,-184 19,-184 13,-178 13,-172 13,-172 13,-150 13,-150 13,-144 19,-138 25,-138 25,-138 144,-138 144,-138 150,-138 156,-144 156,-150 156,-150 156,-172 156,-172 156,-178 150,-184 144,-184"/>
+<text text-anchor="middle" x="84.5" y="-164.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">构件二 模块</text>
+<text text-anchor="middle" x="84.5" y="-150.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">把调用组织成流水线</text>
+</g>
+<g id="edge2" class="edge">
+<title>B&#45;&gt;D</title>
+<path fill="none" stroke="var(--border-line)" d="M156.4,-167.86C198.16,-171.91 252.01,-177.12 299.83,-181.75"/>
+<polygon fill="var(--border-line)" stroke="var(--border-line)" points="299.64,-184.19 306.84,-182.43 300.11,-179.32 299.64,-184.19"/>
+</g>
+<g id="node3" class="node">
+<title>C</title>
+<path fill="var(--brand-soft)" stroke="var(--brand-primary)" d="M157,-106C157,-106 12,-106 12,-106 6,-106 0,-100 0,-94 0,-94 0,-72 0,-72 0,-66 6,-60 12,-60 12,-60 157,-60 157,-60 163,-60 169,-66 169,-72 169,-72 169,-94 169,-94 169,-100 163,-106 157,-106"/>
+<text text-anchor="middle" x="84.5" y="-86.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">构件三 优化器</text>
+<text text-anchor="middle" x="84.5" y="-72.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">在指令与示例空间中搜索</text>
+</g>
+<g id="edge3" class="edge">
+<title>C&#45;&gt;D</title>
+<path fill="none" stroke="var(--border-line)" d="M131.68,-106.05C144.14,-112.9 157.38,-120.79 169,-129 186.48,-141.35 185.62,-151.91 205,-161 234.16,-174.68 267.84,-182.75 299.62,-187.46"/>
+<polygon fill="var(--border-line)" stroke="var(--border-line)" points="299.52,-189.92 306.79,-188.47 300.2,-185.07 299.52,-189.92"/>
+</g>
+<g id="node5" class="node">
+<title>T</title>
+<path fill="var(--surface-raised)" stroke="var(--warning)" d="M580,-74C580,-74 254,-74 254,-74 248,-74 242,-68 242,-62 242,-62 242,-12 242,-12 242,-6 248,0 254,0 254,0 580,0 580,0 586,0 592,-6 592,-12 592,-12 592,-62 592,-62 592,-68 586,-74 580,-74"/>
+<text text-anchor="middle" x="417" y="-54.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">选型两轴（官方口径）</text>
+<text text-anchor="middle" x="417" y="-40.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">① 瓶颈在指令、示例还是权重</text>
+<text text-anchor="middle" x="417" y="-26.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">② 可用的算力预算</text>
+<text text-anchor="middle" x="417" y="-12.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">⇒ 官方明确否认存在单一最优优化器，也不提供自动选择</text>
+</g>
+<g id="edge4" class="edge">
+<title>C&#45;&gt;T</title>
+<path fill="none" stroke="var(--border-line)" stroke-dasharray="1,5" d="M169.33,-71.33C191.61,-68.23 216.52,-64.76 241.71,-61.26"/>
+</g>
+<g id="node6" class="node">
+<title>O</title>
+<polygon fill="var(--surface-subtle)" stroke="var(--border-line)" points="623,-152 205,-152 205,-92 629,-92 629,-146 623,-152"/>
+<polyline fill="none" stroke="var(--border-line)" points="623,-152 623,-146 "/>
+<polyline fill="none" stroke="var(--border-line)" points="629,-146 623,-146 "/>
+<text text-anchor="middle" x="417" y="-132.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">两个已具名定位</text>
+<text text-anchor="middle" x="417" y="-118.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">入门路径：某个基于反思的优化器（其结构化指令提议器已设为默认）</text>
+<text text-anchor="middle" x="417" y="-104.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">另一优化器的定位：指令与示例需要一起调时最先进</text>
+</g>
+<g id="edge5" class="edge">
+<title>D&#45;&gt;O</title>
+<path fill="none" stroke="var(--border-line)" stroke-dasharray="1,5" d="M417,-169.75C417,-163.91 417,-158.07 417,-152.23"/>
+</g>
+</g>
+</svg>

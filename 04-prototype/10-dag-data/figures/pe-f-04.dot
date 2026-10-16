@@ -1,0 +1,15 @@
+digraph fig {
+  rankdir=TB; bgcolor="transparent";
+  node[shape=box, style="rounded,filled", fillcolor="#ffffff", color="#7c8aa5", fontcolor="#0e1729", fontname="Noto Sans CJK SC", fontsize=13, margin="0.20,0.12"]; edge[color="#7c8aa5", fontcolor="#46536b", fontname="Noto Sans CJK SC", fontsize=11, arrowsize=0.7];
+  Z [label="零样本：先量基线", fillcolor="#dfe6fb", color="#2f4bd8", width=2.9];
+  F [label="3 个示例：消歧 + 格式对齐", fillcolor="#dfe6fb", color="#2f4bd8", width=2.9];
+  T [label="10 个示例：边际收益趋零", width=2.9];
+  R [label="推理模型：示例可持续降准", color="#b3181f", width=2.9];
+  R2 [label="改写为显式要点：可重新获益", color="#136f3a", width=2.9];
+  Z -> F [label="格式违规下降"];
+  F -> T [label="收益饱和"];
+  F -> R [label="条件反转"];
+  R -> R2 [style=dashed, label="形态变了"];
+  {rank=same; F; R;}
+  {rank=same; T; R2;}
+}

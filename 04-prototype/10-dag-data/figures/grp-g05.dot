@@ -1,0 +1,39 @@
+digraph grp {
+  rankdir=LR; bgcolor="transparent";
+  node[shape=box, style="rounded,filled", fillcolor="#ffffff", color="#7c8aa5", fontcolor="#0e1729", fontname="Noto Sans CJK SC", fontsize=13, margin="0.20,0.12"]; edge[color="#7c8aa5", fontcolor="#46536b", fontname="Noto Sans CJK SC", fontsize=11, arrowsize=0.7];
+  n0 [label="为什么必须先建评测集\n(PE-E-01 · 第 10 层)", fillcolor="#dfe6fb", color="#2f4bd8"];
+  n1 [label="测试集构造\n(PE-E-02 · 第 11 层)", fillcolor="#dfe6fb", color="#2f4bd8"];
+  n2 [label="模型即裁判及其偏差\n(PE-E-03 · 第 13 层)", fillcolor="#dfe6fb", color="#2f4bd8"];
+  n3 [label="自动提示词工程\n(PE-E-05 · 第 17 层)", fillcolor="#dfe6fb", color="#2f4bd8"];
+  n4 [label="声明式编译与签名\n(PE-E-06 · 第 18 层)", fillcolor="#dfe6fb", color="#2f4bd8"];
+  n5 [label="评测工具链与红蓝对抗\n(PE-E-04 · 第 19 层)", fillcolor="#dfe6fb", color="#2f4bd8"];
+  n6 [label="文本梯度与反思式进化\n(PE-E-07 · 第 19 层)", fillcolor="#dfe6fb", color="#2f4bd8"];
+  n7 [label="元提示\n(PE-E-08 · 第 20 层)", fillcolor="#dfe6fb", color="#2f4bd8"];
+  n8 [label="提示词版本化与回归\n(PE-E-09 · 第 21 层)", fillcolor="#dfe6fb", color="#2f4bd8"];
+  {rank=same; n0; n1; n2;}
+  {rank=same; n3; n4; n5; n6;}
+  {rank=same; n7; n8;}
+  n2 -> n3 [style=invis, weight=100];
+  n6 -> n7 [style=invis, weight=100];
+  n0 -> n1 [constraint=false];
+  n1 -> n2 [constraint=false];
+  n2 -> n5 [color="#7c8aa5"];
+  n5 -> n8 [color="#7c8aa5"];
+  n1 -> n3 [color="#7c8aa5"];
+  n3 -> n4 [constraint=false];
+  n4 -> n6 [constraint=false];
+  n6 -> n7 [color="#7c8aa5"];
+  n7 -> n8 [constraint=false];
+  stub_in [label="组外接口\n入 5 条", shape=note, style="filled", fillcolor="#e9eef8", color="#9a5310"];
+  {rank=same; stub_in; n0; n1; n2;}
+  stub_in -> n0 [style=dashed, constraint=false, arrowhead=none];
+  stub_in -> n2 [style=dashed, constraint=false, arrowhead=none];
+  stub_in -> n5 [style=dashed, constraint=false, arrowhead=none];
+  stub_in -> n3 [style=dashed, constraint=false, arrowhead=none];
+  stub_out [label="组外接口\n出 4 条", shape=note, style="filled", fillcolor="#e9eef8", color="#9a5310"];
+  {rank=same; stub_out; n7; n8;}
+  n0 -> stub_out [style=dashed, constraint=false, arrowhead=none];
+  n4 -> stub_out [style=dashed, constraint=false, arrowhead=none];
+  n6 -> stub_out [style=dashed, constraint=false, arrowhead=none];
+  n8 -> stub_out [style=dashed, constraint=false, arrowhead=none];
+}

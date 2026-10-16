@@ -1,0 +1,84 @@
+<svg class="fig__svg" role="img"
+ viewBox="0.00 0.00 542.50 246.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 242)">
+<title>grp</title>
+<g id="node1" class="node">
+<title>n0</title>
+<path fill="var(--brand-soft)" stroke="var(--brand-primary)" d="M156.5,-203C156.5,-203 37.5,-203 37.5,-203 31.5,-203 25.5,-197 25.5,-191 25.5,-191 25.5,-169 25.5,-169 25.5,-163 31.5,-157 37.5,-157 37.5,-157 156.5,-157 156.5,-157 162.5,-157 168.5,-163 168.5,-169 168.5,-169 168.5,-191 168.5,-191 168.5,-197 162.5,-203 156.5,-203"/>
+<text text-anchor="middle" x="97" y="-183.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">结构模式与约束解码</text>
+<text text-anchor="middle" x="97" y="-169.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">(PE&#45;S&#45;01 · 第 6 层)</text>
+</g>
+<g id="node2" class="node">
+<title>n1</title>
+<path fill="var(--brand-soft)" stroke="var(--brand-primary)" d="M156.5,-110C156.5,-110 37.5,-110 37.5,-110 31.5,-110 25.5,-104 25.5,-98 25.5,-98 25.5,-76 25.5,-76 25.5,-70 31.5,-64 37.5,-64 37.5,-64 156.5,-64 156.5,-64 162.5,-64 168.5,-70 168.5,-76 168.5,-76 168.5,-98 168.5,-98 168.5,-104 162.5,-110 156.5,-110"/>
+<text text-anchor="middle" x="97" y="-90.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">三档严格度</text>
+<text text-anchor="middle" x="97" y="-76.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">(PE&#45;S&#45;02 · 第 7 层)</text>
+</g>
+<g id="edge3" class="edge">
+<title>n0&#45;&gt;n1</title>
+<path fill="none" stroke="var(--border-line)" d="M97,-156.84C97,-143.74 97,-130.63 97,-117.53"/>
+<polygon fill="var(--border-line)" stroke="var(--border-line)" points="99.45,-117.25 97,-110.25 94.55,-117.25 99.45,-117.25"/>
+</g>
+<g id="node7" class="node">
+<title>stub_out</title>
+<polygon fill="var(--surface-subtle)" stroke="var(--warning)" points="493,-238 419,-238 419,-192 499,-192 499,-232 493,-238"/>
+<polyline fill="none" stroke="var(--warning)" points="493,-238 493,-232 "/>
+<polyline fill="none" stroke="var(--warning)" points="499,-232 493,-232 "/>
+<text text-anchor="middle" x="459" y="-218.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">组外接口</text>
+<text text-anchor="middle" x="459" y="-204.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">出 2 条</text>
+</g>
+<g id="edge8" class="edge">
+<title>n0&#45;&gt;stub_out</title>
+<path fill="none" stroke="var(--border-line)" stroke-dasharray="5,2" d="M168.7,-186.87C243.44,-194.14 358.64,-205.34 418.63,-211.17"/>
+</g>
+<g id="node3" class="node">
+<title>n2</title>
+<path fill="var(--brand-soft)" stroke="var(--brand-primary)" d="M335.5,-110C335.5,-110 216.5,-110 216.5,-110 210.5,-110 204.5,-104 204.5,-98 204.5,-98 204.5,-76 204.5,-76 204.5,-70 210.5,-64 216.5,-64 216.5,-64 335.5,-64 335.5,-64 341.5,-64 347.5,-70 347.5,-76 347.5,-76 347.5,-98 347.5,-98 347.5,-104 341.5,-110 335.5,-110"/>
+<text text-anchor="middle" x="276" y="-90.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">推理与格式的冲突</text>
+<text text-anchor="middle" x="276" y="-76.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">(PE&#45;S&#45;03 · 第 8 层)</text>
+</g>
+<g id="edge4" class="edge">
+<title>n1&#45;&gt;n2</title>
+<path fill="none" stroke="var(--border-line)" d="M168.72,-93.63C178.08,-93.76 187.72,-93.78 197.19,-93.71"/>
+<polygon fill="var(--border-line)" stroke="var(--border-line)" points="197.42,-96.15 204.4,-93.63 197.37,-91.25 197.42,-96.15"/>
+</g>
+<g id="node4" class="node">
+<title>n3</title>
+<path fill="var(--brand-soft)" stroke="var(--brand-primary)" d="M335.5,-174C335.5,-174 216.5,-174 216.5,-174 210.5,-174 204.5,-168 204.5,-162 204.5,-162 204.5,-140 204.5,-140 204.5,-134 210.5,-128 216.5,-128 216.5,-128 335.5,-128 335.5,-128 341.5,-128 347.5,-134 347.5,-140 347.5,-140 347.5,-162 347.5,-162 347.5,-168 341.5,-174 335.5,-174"/>
+<text text-anchor="middle" x="276" y="-154.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">格式选型与词元效率</text>
+<text text-anchor="middle" x="276" y="-140.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">(PE&#45;S&#45;04 · 第 9 层)</text>
+</g>
+<g id="edge5" class="edge">
+<title>n2&#45;&gt;n3</title>
+<path fill="none" stroke="var(--border-line)" d="M276,-110C276,-113.64 276,-117.29 276,-120.93"/>
+<polygon fill="var(--border-line)" stroke="var(--border-line)" points="273.55,-120.94 276,-127.94 278.45,-120.94 273.55,-120.94"/>
+</g>
+<g id="node5" class="node">
+<title>n4</title>
+<path fill="var(--brand-soft)" stroke="var(--brand-primary)" d="M522.5,-174C522.5,-174 395.5,-174 395.5,-174 389.5,-174 383.5,-168 383.5,-162 383.5,-162 383.5,-140 383.5,-140 383.5,-134 389.5,-128 395.5,-128 395.5,-128 522.5,-128 522.5,-128 528.5,-128 534.5,-134 534.5,-140 534.5,-140 534.5,-162 534.5,-162 534.5,-168 528.5,-174 522.5,-174"/>
+<text text-anchor="middle" x="459" y="-154.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">校验与修复回路</text>
+<text text-anchor="middle" x="459" y="-140.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">(PE&#45;S&#45;05 · 第 10 层)</text>
+</g>
+<g id="edge6" class="edge">
+<title>n3&#45;&gt;n4</title>
+<path fill="none" stroke="var(--border-line)" d="M347.76,-157.61C357.08,-157.74 366.7,-157.78 376.19,-157.72"/>
+<polygon fill="var(--border-line)" stroke="var(--border-line)" points="376.43,-160.17 383.41,-157.66 376.39,-155.27 376.43,-160.17"/>
+</g>
+<g id="edge9" class="edge">
+<title>n4&#45;&gt;stub_out</title>
+<path fill="none" stroke="var(--border-line)" stroke-dasharray="5,2" d="M459,-174.25C459,-180.09 459,-185.92 459,-191.76"/>
+</g>
+<g id="node6" class="node">
+<title>stub_in</title>
+<polygon fill="var(--surface-subtle)" stroke="var(--warning)" points="131,-46 57,-46 57,0 137,0 137,-40 131,-46"/>
+<polyline fill="none" stroke="var(--warning)" points="131,-46 131,-40 "/>
+<polyline fill="none" stroke="var(--warning)" points="137,-40 131,-40 "/>
+<text text-anchor="middle" x="97" y="-26.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">组外接口</text>
+<text text-anchor="middle" x="97" y="-12.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">入 1 条</text>
+</g>
+<g id="edge7" class="edge">
+<title>stub_in&#45;&gt;n0</title>
+<path fill="none" stroke="var(--border-line)" stroke-dasharray="5,2" d="M56.73,-30.79C38.29,-36.62 18.19,-46.7 7.5,-64 -3.25,-81.39 -1.46,-91.62 7.5,-110 17.01,-129.51 34.87,-145.17 52.15,-156.7"/>
+</g>
+</g>
+</svg>

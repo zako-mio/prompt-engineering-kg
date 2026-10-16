@@ -1,0 +1,29 @@
+digraph fig {
+  rankdir=LR; bgcolor="transparent";
+  node[shape=box, style="rounded,filled", fillcolor="#ffffff", color="#7c8aa5", fontcolor="#0e1729", fontname="Noto Sans CJK SC", fontsize=13, margin="0.20,0.12"]; edge[color="#7c8aa5", fontcolor="#46536b", fontname="Noto Sans CJK SC", fontsize=11, arrowsize=0.7];
+  M [label="元提示层
+让模型生成或改进提示词本身", fillcolor="#dfe6fb", color="#2f4bd8"];
+  U1 [label="用法一 扩写
+粗糙指令 ⇒ 完整提示", color="#136f3a"];
+  U2 [label="用法二 压缩
+长提示 ⇒ 要点", color="#136f3a"];
+  U3 [label="用法三 归一
+一组提示统一结构", color="#136f3a"];
+  M -> U1; M -> U2; M -> U3;
+  {rank=same; U1; U2; U3;}
+  N [label="三条工程要点
+① 必须附带明确目标与约束
+（目标模型、输出契约、风格要求）
+② 候选必须经评测集筛选，不能直接采用
+③ 保留改写前后的对照记录", shape=note, fillcolor="#e9eef8"];
+  {rank=same; N;}
+  M -> N [style=dotted, arrowhead=none];
+  C [label="批量产出的候选", fillcolor="#dfe6fb", color="#2f4bd8"];
+  U2 -> C;
+  {rank=same; C; D;}
+  D [label="价值与边界
+价值在规模：大量同类提示逐条人工改写不现实
+边界：提高的是候选生成速度，判定权仍在评测集
+无基线与判据时不能替代人工判断", shape=note, fillcolor="#e9eef8"];
+  C -> D [style=dotted, arrowhead=none];
+}

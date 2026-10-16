@@ -1,0 +1,21 @@
+digraph fig {
+  rankdir=LR; bgcolor="transparent";
+  node[shape=box, style="rounded,filled", fillcolor="#ffffff", color="#7c8aa5", fontcolor="#0e1729", fontname="Noto Sans CJK SC", fontsize=13, margin="0.20,0.12"]; edge[color="#7c8aa5", fontcolor="#46536b", fontname="Noto Sans CJK SC", fontsize=11, arrowsize=0.7];
+  G [label="生成候选指令", fillcolor="#dfe6fb", color="#2f4bd8"];
+  V [label="在评测集上评估", fillcolor="#dfe6fb", color="#2f4bd8"];
+  S [label="按指标选择
+或组合", fillcolor="#dfe6fb", color="#2f4bd8"];
+  G -> V -> S;
+  S -> G [style=dashed, label="必要时迭代"];
+  N [label="三条工程要点
+① 评测集必须含留出部分，防搜索过拟合
+② 判据必须可自动计算：人工判断先固化为代理指标
+③ 限制搜索预算并记录最优候选", shape=note, fillcolor="#e9eef8"];
+  {rank=same; G; N;}
+  G -> N [style=dotted, arrowhead=none];
+  F [label="前提与边界
+无评测集与判据时，搜索没有目标函数
+推理模型上自动优化的空间与人工优化一样被压缩", shape=note, fillcolor="#e9eef8"];
+  {rank=same; S; F;}
+  S -> F [style=dotted, arrowhead=none];
+}

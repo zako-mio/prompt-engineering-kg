@@ -1,0 +1,45 @@
+<svg class="fig__svg" role="img"
+ viewBox="0.00 0.00 745.00 225.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 221)">
+<title>fig</title>
+<g id="node1" class="node">
+<title>H</title>
+<path fill="var(--brand-soft)" stroke="var(--brand-primary)" d="M155,-74C155,-74 12,-74 12,-74 6,-74 0,-68 0,-62 0,-62 0,-12 0,-12 0,-6 6,0 12,0 12,0 155,0 155,0 161,0 167,-6 167,-12 167,-12 167,-62 167,-62 167,-68 161,-74 155,-74"/>
+<text text-anchor="middle" x="83.5" y="-54.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">同一份信息</text>
+<text text-anchor="middle" x="83.5" y="-40.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">四种承载形态</text>
+<text text-anchor="middle" x="83.5" y="-26.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">条宽 ＝ 相对 token 量</text>
+<text text-anchor="middle" x="83.5" y="-12.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">以缩进 JSON 为基线 1.0</text>
+</g>
+<g id="node2" class="node">
+<title>J</title>
+<path fill="var(--surface-raised)" stroke="var(--border-line)" d="M508,-55C508,-55 215,-55 215,-55 209,-55 203,-49 203,-43 203,-43 203,-31 203,-31 203,-25 209,-19 215,-19 215,-19 508,-19 508,-19 514,-19 520,-25 520,-31 520,-31 520,-43 520,-43 520,-49 514,-55 508,-55"/>
+<text text-anchor="middle" x="361.5" y="-33.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">缩进 JSON 1.0</text>
+</g>
+<g id="node3" class="node">
+<title>Y</title>
+<path fill="var(--surface-raised)" stroke="var(--border-line)" d="M460.5,-109C460.5,-109 262.5,-109 262.5,-109 256.5,-109 250.5,-103 250.5,-97 250.5,-97 250.5,-85 250.5,-85 250.5,-79 256.5,-73 262.5,-73 262.5,-73 460.5,-73 460.5,-73 466.5,-73 472.5,-79 472.5,-85 472.5,-85 472.5,-97 472.5,-97 472.5,-103 466.5,-109 460.5,-109"/>
+<text text-anchor="middle" x="361.5" y="-87.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">YAML 0.70</text>
+</g>
+<g id="node4" class="node">
+<title>M</title>
+<path fill="var(--surface-raised)" stroke="var(--border-line)" d="M436.5,-163C436.5,-163 286.5,-163 286.5,-163 280.5,-163 274.5,-157 274.5,-151 274.5,-151 274.5,-139 274.5,-139 274.5,-133 280.5,-127 286.5,-127 286.5,-127 436.5,-127 436.5,-127 442.5,-127 448.5,-133 448.5,-139 448.5,-139 448.5,-151 448.5,-151 448.5,-157 442.5,-163 436.5,-163"/>
+<text text-anchor="middle" x="361.5" y="-141.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">Markdown 表 0.55</text>
+</g>
+<g id="node6" class="node">
+<title>N</title>
+<polygon fill="var(--surface-subtle)" stroke="var(--border-line)" points="731,-189 556,-189 556,-101 737,-101 737,-183 731,-189"/>
+<polyline fill="none" stroke="var(--border-line)" points="731,-189 731,-183 "/>
+<polyline fill="none" stroke="var(--border-line)" points="737,-183 731,-183 "/>
+<text text-anchor="middle" x="646.5" y="-169.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">三个选型判据</text>
+<text text-anchor="middle" x="646.5" y="-155.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">① 下游是否要流式解析</text>
+<text text-anchor="middle" x="646.5" y="-141.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">② 是否含大量重复结构</text>
+<text text-anchor="middle" x="646.5" y="-127.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">③ 解析失败的代价</text>
+<text text-anchor="middle" x="646.5" y="-113.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">长列表看 ① · 单对象看 ③</text>
+</g>
+<g id="node5" class="node">
+<title>S</title>
+<path fill="var(--surface-raised)" stroke="var(--border-line)" d="M405,-217C405,-217 318,-217 318,-217 312,-217 306,-211 306,-205 306,-205 306,-193 306,-193 306,-187 312,-181 318,-181 318,-181 405,-181 405,-181 411,-181 417,-187 417,-193 417,-193 417,-205 417,-205 417,-211 411,-217 405,-217"/>
+<text text-anchor="middle" x="361.5" y="-195.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">TSV 0.35</text>
+</g>
+</g>
+</svg>

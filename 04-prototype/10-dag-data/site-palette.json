@@ -1,0 +1,519 @@
+{
+  "_meta": {
+    "artifact": "prompt-engineering-kg 站点调色板与令牌值（令牌层唯一真相源）",
+    "as_of": "2026-10-15",
+    "role_vocabulary_source": "/home/zako-mio/opencode/projects/fe-starter-kit/tokens/contract.json（v1.1.1，frozen 2026-09-27）",
+    "alignment_scope": "★ 与契约对齐的是**角色词表**（11 个 role id），⛔ 不是色值。依据：hub 的 globals.css 自述同为『角色令牌集（11 角色）与 fe-starter-kit tokens/contract.json 的 roles 对齐』，而 hub 的色值与契约三族均不相同；且契约**没有任何单一调色板含全 11 角色**（content 7 / app 9 / app-oklch 6）。",
+    "value_provenance": "色值取自 hub（zako-mio.github.io）的 globals.css，以保证『与 hub 视觉可过渡』这一用户要求；逐条来源见 values[*].from",
+    "excluded_from_hub": {
+      "tokens": [
+        "surface.inset",
+        "shadow.3",
+        "shadow.card",
+        "shadow.card-hover",
+        "glass.brd"
+      ],
+      "reason": "★ 这 5 个在 hub 自身**零 var() 消费**，与 hub 自己的铁律『⛔ 不留无人消费的令牌』相抵 ⇒ 属 hub 未修的既有缺陷，⛔ 本站不照抄（见 H1-hub-design-system.md §1.3）"
+    },
+    "usage_tiers": {
+      "body": {
+        "min_contrast": 4.5,
+        "gate": "hard"
+      },
+      "non-body": {
+        "min_contrast": 3.0,
+        "gate": "hard",
+        "note": "契约此档为 report-only（min_contrast null）；★ 本站采 **hub 的收紧值 3.0 硬判**，理由：契约把它定为 report-only 的处置是『限定用途』，而 hub 实测把它收紧为机检硬 3.0 —— 与 hub 对齐即采收紧值。"
+      },
+      "non-text": {
+        "min_contrast": 3.0,
+        "gate": "hard",
+        "note": "同上：契约 report-only → 本站采 hub 的硬 3.0（WCAG 2.2 SC 1.4.11）。"
+      }
+    },
+    "contrast_triples": [
+      {
+        "label": "正文 / 页面底",
+        "fg": "text.primary",
+        "bg": "surface.page",
+        "min": 4.5,
+        "tier": "body"
+      },
+      {
+        "label": "正文 / 卡片底",
+        "fg": "text.primary",
+        "bg": "surface.raised",
+        "min": 4.5,
+        "tier": "body"
+      },
+      {
+        "label": "正文 / 次级底",
+        "fg": "text.primary",
+        "bg": "surface.subtle",
+        "min": 4.5,
+        "tier": "body"
+      },
+      {
+        "label": "二级文字 / 页面底",
+        "fg": "text.secondary",
+        "bg": "surface.page",
+        "min": 4.5,
+        "tier": "body"
+      },
+      {
+        "label": "二级文字 / 卡片底",
+        "fg": "text.secondary",
+        "bg": "surface.raised",
+        "min": 4.5,
+        "tier": "body"
+      },
+      {
+        "label": "二级文字 / 次级底",
+        "fg": "text.secondary",
+        "bg": "surface.subtle",
+        "min": 4.5,
+        "tier": "body"
+      },
+      {
+        "label": "链接 / 页面底",
+        "fg": "link",
+        "bg": "surface.page",
+        "min": 4.5,
+        "tier": "body"
+      },
+      {
+        "label": "链接 / 卡片底",
+        "fg": "link",
+        "bg": "surface.raised",
+        "min": 4.5,
+        "tier": "body"
+      },
+      {
+        "label": "品牌底上的前景",
+        "fg": "on.brand",
+        "bg": "brand.primary",
+        "min": 4.5,
+        "tier": "body"
+      },
+      {
+        "label": "三级灰 / 页面底",
+        "fg": "text.tertiary",
+        "bg": "surface.page",
+        "min": 3.0,
+        "tier": "non-body"
+      },
+      {
+        "label": "三级灰 / 次级底",
+        "fg": "text.tertiary",
+        "bg": "surface.subtle",
+        "min": 3.0,
+        "tier": "non-body"
+      },
+      {
+        "label": "成功色 / 页面底",
+        "fg": "semantic.success",
+        "bg": "surface.page",
+        "min": 4.5,
+        "tier": "non-body"
+      },
+      {
+        "label": "警告色 / 页面底",
+        "fg": "semantic.warning",
+        "bg": "surface.page",
+        "min": 4.5,
+        "tier": "non-body"
+      },
+      {
+        "label": "危险色 / 页面底",
+        "fg": "semantic.danger",
+        "bg": "surface.page",
+        "min": 4.5,
+        "tier": "non-body"
+      },
+      {
+        "label": "控件描边 / 页面底",
+        "fg": "border.line",
+        "bg": "surface.page",
+        "min": 3.0,
+        "tier": "non-text"
+      },
+      {
+        "label": "卡片描边 / 页面底",
+        "fg": "border.card",
+        "bg": "surface.page",
+        "min": 3.0,
+        "tier": "non-text",
+        "report_only": true,
+        "report_only_reason": "★ `border.card` 的定位是「看得见但不像框」（hub 原话），实测对页面底仅 1.34:1 / 1.47:1 ⇒ **它按定义就不在 3:1 判据面内**（3:1 判的是「必须被看见才能用」的控件边界，而它是装饰性柔边）。列入三元组只为**报告可见**，⛔ 不判 FAIL。⚠ 与它形成对照的是 `border.line`（3.24:1 / 6.77:1 硬判）——两级描边按**语义**分工，⛔ 不得混用。"
+      },
+      {
+        "label": "焦点环 / 页面底",
+        "fg": "focus.ring",
+        "bg": "surface.page",
+        "min": 3.0,
+        "tier": "non-text"
+      },
+      {
+        "label": "焦点环 / 卡片底",
+        "fg": "focus.ring",
+        "bg": "surface.raised",
+        "min": 3.0,
+        "tier": "non-text"
+      }
+    ],
+    "note_on_border_card": "★ `border.card` 的定位是『看得见但不像框』（hub 原话），其实测对页面底仅 1.34:1 ⇒ **它不属 3:1 判据面**。本表把它列入 `contrast_triples` 是为了**报告可见**，其 `min` 值仅供对照；⛔ 门控对它按 `report_only` 处理（见 contrast_triples 中的 report_only 标记）。"
+  },
+  "values": {
+    "text.primary": {
+      "light": "#0e1729",
+      "dark": "#e8edf7",
+      "from": "hub --text-primary"
+    },
+    "text.secondary": {
+      "light": "#46536b",
+      "dark": "#a7b3c8",
+      "from": "hub --text-secondary"
+    },
+    "text.tertiary": {
+      "light": "#5f6d84",
+      "dark": "#8e9cb3",
+      "from": "hub --text-tertiary"
+    },
+    "link": {
+      "light": "#2a46cf",
+      "dark": "#8fb4ff",
+      "from": "hub --link"
+    },
+    "brand.primary": {
+      "light": "#2f4bd8",
+      "dark": "#8fb4ff",
+      "from": "hub --brand-primary"
+    },
+    "border.line": {
+      "light": "#7c8aa5",
+      "dark": "#8798b5",
+      "from": "hub --border-line（hub 已收紧至 ≥3:1）"
+    },
+    "border.subtle": {
+      "light": "#dde4f0",
+      "dark": "#1e2740",
+      "from": "hub --border-subtle"
+    },
+    "surface.page": {
+      "light": "#f4f7fc",
+      "dark": "#060a14",
+      "from": "hub --surface-page"
+    },
+    "surface.raised": {
+      "light": "#ffffff",
+      "dark": "#0d1424",
+      "from": "hub --surface-raised"
+    },
+    "surface.subtle": {
+      "light": "#e9eef8",
+      "dark": "#151d31",
+      "from": "hub --surface-subtle"
+    },
+    "surface.stripe": {
+      "light": "#f0f4fa",
+      "dark": "#0a1120",
+      "from": "hub --surface-stripe"
+    },
+    "surface.sunken": {
+      "light": "#eaeff8",
+      "dark": "#04070e",
+      "from": "hub --surface-sunken"
+    },
+    "border.card": {
+      "light": "#cfd8e8",
+      "dark": "#232e48",
+      "from": "hub --border-card",
+      "tier": "report_only"
+    },
+    "edge.highlight": {
+      "light": "rgba(255, 255, 255, 0.92)",
+      "dark": "rgba(255, 255, 255, 0.06)",
+      "from": "hub --edge-highlight"
+    },
+    "brand.bright": {
+      "light": "#5470ff",
+      "dark": "#b0caff",
+      "from": "hub --brand-bright"
+    },
+    "brand.deep": {
+      "light": "#1d33a6",
+      "dark": "#5c86e8",
+      "from": "hub --brand-deep"
+    },
+    "brand.soft": {
+      "light": "rgba(47, 75, 216, 0.1)",
+      "dark": "rgba(143, 180, 255, 0.14)",
+      "from": "hub --brand-soft"
+    },
+    "brand.tint": {
+      "light": "rgba(47, 75, 216, 0.16)",
+      "dark": "rgba(143, 180, 255, 0.24)",
+      "from": "hub --brand-tint"
+    },
+    "on.brand": {
+      "light": "#ffffff",
+      "dark": "#060a14",
+      "from": "hub --on-brand"
+    },
+    "semantic.success": {
+      "light": "#136f3a",
+      "dark": "#4ade80",
+      "from": "hub --success"
+    },
+    "semantic.warning": {
+      "light": "#9a5310",
+      "dark": "#fbbf24",
+      "from": "hub --warning"
+    },
+    "semantic.danger": {
+      "light": "#b3181f",
+      "dark": "#f87171",
+      "from": "hub --danger"
+    },
+    "focus.ring": {
+      "light": "#2f4bd8",
+      "dark": "#8fb4ff",
+      "from": "hub --focus-ring"
+    },
+    "shadow.1": {
+      "light": "0 1px 2px rgba(19, 32, 64, 0.06), 0 2px 6px -1px rgba(19, 32, 64, 0.07)",
+      "dark": "0 1px 2px rgba(0, 0, 0, 0.5)",
+      "from": "hub --shadow-1"
+    },
+    "shadow.2": {
+      "light": "0 2px 4px rgba(19, 32, 64, 0.05), 0 8px 20px -6px rgba(19, 32, 64, 0.12), 0 18px 40px -18px rgba(19, 32, 64, 0.16)",
+      "dark": "0 2px 6px rgba(0, 0, 0, 0.5), 0 16px 36px -14px rgba(0, 0, 0, 0.6)",
+      "from": "hub --shadow-2"
+    },
+    "ease.out": {
+      "light": "cubic-bezier(0.22, 1, 0.36, 1)",
+      "dark": "cubic-bezier(0.22, 1, 0.36, 1)",
+      "from": "hub --ease-out"
+    },
+    "ease.inout": {
+      "light": "cubic-bezier(0.4, 0, 0.2, 1)",
+      "dark": "cubic-bezier(0.4, 0, 0.2, 1)",
+      "from": "hub --ease-in-out"
+    },
+    "dur.1": {
+      "light": "0.16s",
+      "dark": "0.16s",
+      "from": "hub --dur-1"
+    },
+    "dur.2": {
+      "light": "0.28s",
+      "dark": "0.28s",
+      "from": "hub --dur-2"
+    },
+    "dur.3": {
+      "light": "0.5s",
+      "dark": "0.5s",
+      "from": "hub --dur-3"
+    },
+    "dur.4": {
+      "light": "0.85s",
+      "dark": "0.85s",
+      "from": "hub --dur-4"
+    },
+    "reveal.shift": {
+      "light": "16px",
+      "dark": "16px",
+      "from": "hub --reveal-shift"
+    },
+    "font.sans": {
+      "light": "system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', 'Source Han Sans SC', sans-serif",
+      "dark": "system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', 'Source Han Sans SC', sans-serif",
+      "from": "hub --font-sans"
+    },
+    "font.mono": {
+      "light": "ui-monospace, 'SF Mono', SFMono-Regular, Menlo, Consolas, 'Liberation Mono', 'Noto Sans Mono CJK SC', 'Courier New', monospace",
+      "dark": "ui-monospace, 'SF Mono', SFMono-Regular, Menlo, Consolas, 'Liberation Mono', 'Noto Sans Mono CJK SC', 'Courier New', monospace",
+      "from": "hub --font-mono"
+    },
+    "fs.hero": {
+      "light": "clamp(1.5rem, 0.6rem + 2.2vw, 3rem)",
+      "dark": "clamp(1.5rem, 0.6rem + 2.2vw, 3rem)",
+      "from": "★ 本站改写（v1 为 hub --fs-hero = clamp(2.25rem, 1.2rem + 3.9vw, 4rem)）：用户反馈「首页标题字号太大、不能一行内显示、两端不能留空」。改值依据为**可复算的宽度预算**而非观感——根入口 h1 文案 16 个汉字（CJK 每字进宽 = 1em），letter-spacing -0.035em ⇒ 行宽 = 16 × fs × 0.965；宽屏内容列 = --container(1120) − --rail-w(252) − 2×--space-5(32) = 804px ⇒ fs 上界须 ≤ 804/15.44 = 52.1px，取 3rem(48px) 留两侧各 31px 余量。旧值 4rem(64px) 行宽 988px > 804px ⇒ 必然折行（本轮实测）。该预算由门控 P34 逐次复算，⛔ 不得只写在注释里。"
+    },
+    "fs.section": {
+      "light": "clamp(1.375rem, 1rem + 1.5vw, 2rem)",
+      "dark": "clamp(1.375rem, 1rem + 1.5vw, 2rem)",
+      "from": "hub --fs-section"
+    },
+    "fs.cardtitle": {
+      "light": "1.25rem",
+      "dark": "1.25rem",
+      "from": "hub --fs-card-title"
+    },
+    "fs.body": {
+      "light": "1rem",
+      "dark": "1rem",
+      "from": "hub --fs-body"
+    },
+    "fs.label": {
+      "light": "0.8125rem",
+      "dark": "0.8125rem",
+      "from": "hub --fs-label"
+    },
+    "fs.nav": {
+      "light": "0.9375rem",
+      "dark": "0.9375rem",
+      "from": "hub --fs-nav"
+    },
+    "space.1": {
+      "light": "0.25rem",
+      "dark": "0.25rem",
+      "from": "hub --space-1  ★ 2026-10-15 改为 rem（原 4px）：使「字号：大」档改根字号时**全站等比缩放**（栏宽/间距/内容列宽同步放大），层次比例逐字不变；16px 根字号下渲染值与原来逐像素相同。"
+    },
+    "space.2": {
+      "light": "0.5rem",
+      "dark": "0.5rem",
+      "from": "hub --space-2  ★ 2026-10-15 改为 rem（原 8px）：使「字号：大」档改根字号时**全站等比缩放**（栏宽/间距/内容列宽同步放大），层次比例逐字不变；16px 根字号下渲染值与原来逐像素相同。"
+    },
+    "space.3": {
+      "light": "1rem",
+      "dark": "1rem",
+      "from": "hub --space-3  ★ 2026-10-15 改为 rem（原 16px）：使「字号：大」档改根字号时**全站等比缩放**（栏宽/间距/内容列宽同步放大），层次比例逐字不变；16px 根字号下渲染值与原来逐像素相同。"
+    },
+    "space.4": {
+      "light": "1.5rem",
+      "dark": "1.5rem",
+      "from": "hub --space-4  ★ 2026-10-15 改为 rem（原 24px）：使「字号：大」档改根字号时**全站等比缩放**（栏宽/间距/内容列宽同步放大），层次比例逐字不变；16px 根字号下渲染值与原来逐像素相同。"
+    },
+    "space.5": {
+      "light": "2rem",
+      "dark": "2rem",
+      "from": "hub --space-5  ★ 2026-10-15 改为 rem（原 32px）：使「字号：大」档改根字号时**全站等比缩放**（栏宽/间距/内容列宽同步放大），层次比例逐字不变；16px 根字号下渲染值与原来逐像素相同。"
+    },
+    "space.6": {
+      "light": "3rem",
+      "dark": "3rem",
+      "from": "hub --space-6  ★ 2026-10-15 改为 rem（原 48px）：使「字号：大」档改根字号时**全站等比缩放**（栏宽/间距/内容列宽同步放大），层次比例逐字不变；16px 根字号下渲染值与原来逐像素相同。"
+    },
+    "space.7": {
+      "light": "4rem",
+      "dark": "4rem",
+      "from": "hub --space-7  ★ 2026-10-15 改为 rem（原 64px）：使「字号：大」档改根字号时**全站等比缩放**（栏宽/间距/内容列宽同步放大），层次比例逐字不变；16px 根字号下渲染值与原来逐像素相同。"
+    },
+    "container": {
+      "light": "70rem",
+      "dark": "70rem",
+      "from": "hub --container  ★ 2026-10-15 改为 rem（原 1120px）：使「字号：大」档改根字号时**全站等比缩放**（栏宽/间距/内容列宽同步放大），层次比例逐字不变；16px 根字号下渲染值与原来逐像素相同。"
+    },
+    "measure": {
+      "light": "66ch",
+      "dark": "66ch",
+      "from": "hub --measure"
+    },
+    "radius": {
+      "light": "12px",
+      "dark": "12px",
+      "from": "hub --radius"
+    },
+    "radius.lg": {
+      "light": "18px",
+      "dark": "18px",
+      "from": "hub --radius-lg"
+    },
+    "radius.pill": {
+      "light": "999px",
+      "dark": "999px",
+      "from": "本站追加：徽标/标签/开关的胶囊圆角。★ 追加理由：v1 在 .badge / .theme-switch button 上硬编码了 999px（属「令牌外硬编码」），而 hub 的 --radius/--radius-lg 两档都是矩形圆角、无法表达胶囊形态 ⇒ 与其把 999px 留在产物里当字面值，不如把它收进令牌表使圆角只走令牌。本令牌为**单值**（浅深同值），不引入主题差异。"
+    },
+    "nav.h": {
+      "light": "4rem",
+      "dark": "4rem",
+      "from": "hub --nav-h  ★ 2026-10-15 改为 rem（原 64px）：使「字号：大」档改根字号时**全站等比缩放**（栏宽/间距/内容列宽同步放大），层次比例逐字不变；16px 根字号下渲染值与原来逐像素相同。"
+    },
+    "rail.w": {
+      "light": "15.75rem",
+      "dark": "15.75rem",
+      "from": "hub --rail-w  ★ 2026-10-15 改为 rem（原 252px）：使「字号：大」档改根字号时**全站等比缩放**（栏宽/间距/内容列宽同步放大），层次比例逐字不变；16px 根字号下渲染值与原来逐像素相同。"
+    },
+    "scrim.1": {
+      "light": "12%",
+      "dark": "26%",
+      "from": "hub --scrim-1"
+    },
+    "scrim.2": {
+      "light": "28%",
+      "dark": "44%",
+      "from": "hub --scrim-2"
+    },
+    "scrim.3": {
+      "light": "62%",
+      "dark": "70%",
+      "from": "hub --scrim-3"
+    },
+    "fs.root.lg": {
+      "light": "1.125rem",
+      "dark": "1.125rem",
+      "from": "★ 本站追加（2026-10-15 用户反馈轮）：侧栏「字号：标准 / 大」开关的**大档**，作用于**根字号**（16→18px）。★ 为什么必须改根字号而不是 body：只改 body 时，标题/导航/标签各自走自己的 --fs-* 令牌、不随动 ⇒ 用户实测「部分生效」且层次比例失真。改根字号后，配合上表布局令牌 rem 化，全站（字号+间距+栏宽+内容列宽）等比放大，层次比例不变。"
+    }
+  },
+  "css_names": {
+    "text.primary": "--text-primary",
+    "text.secondary": "--text-secondary",
+    "text.tertiary": "--text-tertiary",
+    "link": "--link",
+    "brand.primary": "--brand-primary",
+    "border.line": "--border-line",
+    "border.subtle": "--border-subtle",
+    "surface.page": "--surface-page",
+    "surface.raised": "--surface-raised",
+    "surface.subtle": "--surface-subtle",
+    "surface.stripe": "--surface-stripe",
+    "surface.sunken": "--surface-sunken",
+    "border.card": "--border-card",
+    "edge.highlight": "--edge-highlight",
+    "brand.bright": "--brand-bright",
+    "brand.deep": "--brand-deep",
+    "brand.soft": "--brand-soft",
+    "brand.tint": "--brand-tint",
+    "on.brand": "--on-brand",
+    "semantic.success": "--success",
+    "semantic.warning": "--warning",
+    "semantic.danger": "--danger",
+    "focus.ring": "--focus-ring",
+    "shadow.1": "--shadow-1",
+    "shadow.2": "--shadow-2",
+    "ease.out": "--ease-out",
+    "ease.inout": "--ease-in-out",
+    "dur.1": "--dur-1",
+    "dur.2": "--dur-2",
+    "dur.3": "--dur-3",
+    "dur.4": "--dur-4",
+    "reveal.shift": "--reveal-shift",
+    "font.sans": "--font-sans",
+    "font.mono": "--font-mono",
+    "fs.hero": "--fs-hero",
+    "fs.section": "--fs-section",
+    "fs.cardtitle": "--fs-card-title",
+    "fs.body": "--fs-body",
+    "fs.label": "--fs-label",
+    "fs.nav": "--fs-nav",
+    "space.1": "--space-1",
+    "space.2": "--space-2",
+    "space.3": "--space-3",
+    "space.4": "--space-4",
+    "space.5": "--space-5",
+    "space.6": "--space-6",
+    "space.7": "--space-7",
+    "container": "--container",
+    "measure": "--measure",
+    "radius": "--radius",
+    "radius.lg": "--radius-lg",
+    "radius.pill": "--radius-pill",
+    "nav.h": "--nav-h",
+    "rail.w": "--rail-w",
+    "scrim.1": "--scrim-1",
+    "scrim.2": "--scrim-2",
+    "scrim.3": "--scrim-3",
+    "fs.root.lg": "--fs-root-lg"
+  }
+}

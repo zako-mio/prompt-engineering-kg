@@ -1,0 +1,15 @@
+digraph fig {
+  rankdir=LR; bgcolor="transparent";
+  node[shape=box, style="rounded,filled", fillcolor="#ffffff", color="#7c8aa5", fontcolor="#0e1729", fontname="Noto Sans CJK SC", fontsize=13, margin="0.20,0.12"]; edge[color="#7c8aa5", fontcolor="#46536b", fontname="Noto Sans CJK SC", fontsize=11, arrowsize=0.7];
+  T1 [label="第一档：自然语言要求\n「只输出 JSON」\n可靠性最差 · 成本最低", color="#9a5310"];
+  T2 [label="第二档：结构契约\n把 schema 放进提示\n可靠性中等 · 必须有重试兜底", fillcolor="#dfe6fb", color="#2f4bd8"];
+  T3 [label="第三档：约束解码\n解码期按 schema 屏蔽候选\n结构必然合法", color="#136f3a"];
+  T1 -> T2 [label="强度递增"];
+  T2 -> T3 [label="强度递增"];
+  {rank=same; T3; X;}
+  X [label="同一轴上的另一档位差\n强度递增 ⇒ 成本与可移植性同向递减\n（可移植性：换模型换供应商是否还成立）", shape=note, fillcolor="#e9eef8"];
+  T3 -> X [style=dotted, arrowhead=none];
+  {rank=same; T1; L;}
+  L [label="松 ⇒ 必须配人工或后置校验\n中 ⇒ 必须配重试\n紧 ⇒ 才可把结构失败视为已消除", shape=note, fillcolor="#e9eef8"];
+  T1 -> L [style=dotted, arrowhead=none];
+}

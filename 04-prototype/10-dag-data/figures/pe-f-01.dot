@@ -1,0 +1,16 @@
+digraph fig {
+  rankdir=TB; bgcolor="transparent";
+  node[shape=box, style="rounded,filled", fillcolor="#ffffff", color="#7c8aa5", fontcolor="#0e1729", fontname="Noto Sans CJK SC", fontsize=13, margin="0.20,0.12"]; edge[color="#7c8aa5", fontcolor="#46536b", fontname="Noto Sans CJK SC", fontsize=11, arrowsize=0.7];
+  m  [label="自回归模型\n每步输出下一个 token 的概率分布"];
+  s  [label="解码策略：贪心 / 温度 / top-p\n只改取样规则，不改结论"];
+  o  [label="一次输出 ＝ 分布的一个样本", fillcolor="#dfe6fb", color="#2f4bd8"];
+  d1 [label="① 约束解码\n按文法或 schema 屏蔽非法路径"];
+  d2 [label="② 结构校验与重试\n把失败当常规分支"];
+  d3 [label="③ 固定可固定的一切\n提示 · 顺序 · 工具 · 参数"];
+  m -> s -> o;
+  d1 -> o [style=dashed]; d2 -> o [style=dashed]; d3 -> o [style=dashed];
+  d1 -> d2 -> d3 [style=invis];
+  node[shape=note, style="filled", fillcolor="#e9eef8", color="#9a5310", fontcolor="#0e1729", fontname="Noto Sans CJK SC", fontsize=12];
+  b  [label="适用边界\n把随机性压到零 ≠ 结果稳定"];
+  o -> b [style=dotted, arrowhead=none];
+}

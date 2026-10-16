@@ -1,0 +1,25 @@
+digraph fig {
+  rankdir=LR; bgcolor="transparent";
+  node[shape=box, style="rounded,filled", fillcolor="#ffffff", color="#7c8aa5", fontcolor="#0e1729", fontname="Noto Sans CJK SC", fontsize=13, margin="0.20,0.12"]; edge[color="#7c8aa5", fontcolor="#46536b", fontname="Noto Sans CJK SC", fontsize=11, arrowsize=0.7];
+  A [label="原提示「不要提到 X」", color="#b3181f"];
+  B [label="机制：提示中的词本身激活相关表征
+⇒ X 被放进上下文，可及性反而提高
+⇒ 否定词在后续 token 预测中提高而非降低相关内容概率（模型规模越小越明显）", color="#b3181f"];
+  A -> B;
+  {rank=same; B; C;}
+  C [label="改法：描述期望行为而不是禁止行为
+与其说「不要用某类格式」
+不如说「回答应由怎样的结构组成」", color="#136f3a"];
+  B -> C [label="改写"];
+  {rank=same; C; D;}
+  D [label="无法正向化的约束
+（例如必须拒绝某类请求）
+⇒ 改为可判定的处置规则并配合输出校验", color="#9a5310"];
+  C -> D [style=dashed];
+  {rank=same; D; N;}
+  N [label="清查纪律
+把每条「不要」改写为对应的正向描述
+并检查改写后是否仍覆盖原意
+负向清单只作兜底，不承担主要行为控制职责", shape=note, fillcolor="#e9eef8"];
+  C -> N [style=dotted, arrowhead=none];
+}

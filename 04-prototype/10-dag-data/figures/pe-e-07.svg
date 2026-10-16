@@ -1,0 +1,79 @@
+<svg class="fig__svg" role="img"
+ viewBox="0.00 0.00 832.00 238.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 234)">
+<title>fig</title>
+<g id="node1" class="node">
+<title>Q</title>
+<path fill="var(--brand-soft)" stroke="var(--brand-primary)" d="M147,-145C147,-145 12,-145 12,-145 6,-145 0,-139 0,-133 0,-133 0,-97 0,-97 0,-91 6,-85 12,-85 12,-85 147,-85 147,-85 153,-85 159,-91 159,-97 159,-97 159,-133 159,-133 159,-139 153,-145 147,-145"/>
+<text text-anchor="middle" x="79.5" y="-125.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">共同前提</text>
+<text text-anchor="middle" x="79.5" y="-111.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">① 能拿到完整执行轨迹</text>
+<text text-anchor="middle" x="79.5" y="-97.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">② 有可用的评分函数</text>
+</g>
+<g id="node2" class="node">
+<title>A1</title>
+<path fill="var(--surface-raised)" stroke="var(--success)" d="M454,-207C454,-207 207,-207 207,-207 201,-207 195,-201 195,-195 195,-195 195,-159 195,-159 195,-153 201,-147 207,-147 207,-147 454,-147 454,-147 460,-147 466,-153 466,-159 466,-159 466,-195 466,-195 466,-201 460,-207 454,-207"/>
+<text text-anchor="middle" x="330.5" y="-187.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">路线一 文本梯度</text>
+<text text-anchor="middle" x="330.5" y="-173.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">把每个可变部分（提示、代码片段、输出）</text>
+<text text-anchor="middle" x="330.5" y="-159.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">表示为变量</text>
+</g>
+<g id="edge1" class="edge">
+<title>Q&#45;&gt;A1</title>
+<path fill="none" stroke="var(--border-line)" d="M159.29,-134.62C172.88,-138 187.31,-141.6 201.8,-145.2"/>
+<polygon fill="var(--border-line)" stroke="var(--border-line)" points="201.54,-147.66 208.92,-146.98 202.72,-142.91 201.54,-147.66"/>
+</g>
+<g id="node4" class="node">
+<title>B1</title>
+<path fill="var(--surface-raised)" stroke="var(--warning)" d="M409.5,-106C409.5,-106 251.5,-106 251.5,-106 245.5,-106 239.5,-100 239.5,-94 239.5,-94 239.5,-58 239.5,-58 239.5,-52 245.5,-46 251.5,-46 251.5,-46 409.5,-46 409.5,-46 415.5,-46 421.5,-52 421.5,-58 421.5,-58 421.5,-94 421.5,-94 421.5,-100 415.5,-106 409.5,-106"/>
+<text text-anchor="middle" x="330.5" y="-86.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">路线二 反思式进化</text>
+<text text-anchor="middle" x="330.5" y="-72.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">让模型看到自己的推理轨迹</text>
+<text text-anchor="middle" x="330.5" y="-58.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">与评分</text>
+</g>
+<g id="edge3" class="edge">
+<title>Q&#45;&gt;B1</title>
+<path fill="none" stroke="var(--border-line)" stroke-dasharray="5,2" d="M159.29,-102.66C182.37,-99.04 207.89,-95.05 231.99,-91.27"/>
+<polygon fill="var(--border-line)" stroke="var(--border-line)" points="232.54,-93.67 239.08,-90.16 231.78,-88.83 232.54,-93.67"/>
+</g>
+<g id="node3" class="node">
+<title>A2</title>
+<path fill="var(--surface-raised)" stroke="var(--success)" d="M748,-230C748,-230 578,-230 578,-230 572,-230 566,-224 566,-218 566,-218 566,-182 566,-182 566,-176 572,-170 578,-170 578,-170 748,-170 748,-170 754,-170 760,-176 760,-182 760,-182 760,-218 760,-218 760,-224 754,-230 748,-230"/>
+<text text-anchor="middle" x="663" y="-210.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">模型给出自然语言评价</text>
+<text text-anchor="middle" x="663" y="-196.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">评价作为「梯度」回传到变量</text>
+<text text-anchor="middle" x="663" y="-182.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">⇒ 逐组件更新</text>
+</g>
+<g id="edge2" class="edge">
+<title>A1&#45;&gt;A2</title>
+<path fill="none" stroke="var(--border-line)" d="M466.4,-186.39C497.3,-188.54 529.67,-190.79 558.98,-192.83"/>
+<polygon fill="var(--border-line)" stroke="var(--border-line)" points="558.81,-195.27 565.97,-193.32 559.15,-190.39 558.81,-195.27"/>
+</g>
+<g id="node6" class="node">
+<title>N</title>
+<polygon fill="var(--surface-subtle)" stroke="var(--border-line)" points="818,-152 502,-152 502,-78 824,-78 824,-146 818,-152"/>
+<polyline fill="none" stroke="var(--border-line)" points="818,-152 818,-146 "/>
+<polyline fill="none" stroke="var(--border-line)" points="824,-146 818,-146 "/>
+<text text-anchor="middle" x="663" y="-132.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">边界</text>
+<text text-anchor="middle" x="663" y="-118.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">无轨迹 ⇒ 反思失去依据</text>
+<text text-anchor="middle" x="663" y="-104.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">无评分函数 ⇒ 无法判断改进方向、优化不可收敛</text>
+<text text-anchor="middle" x="663" y="-90.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">部分实现的收益还依赖底座模型规模与任务可分解性</text>
+</g>
+<g id="edge5" class="edge">
+<title>A2&#45;&gt;N</title>
+<path fill="none" stroke="var(--border-line)" stroke-dasharray="1,5" d="M663,-169.74C663,-163.89 663,-158.04 663,-152.19"/>
+</g>
+<g id="node5" class="node">
+<title>B2</title>
+<path fill="var(--surface-raised)" stroke="var(--warning)" d="M767.5,-60C767.5,-60 558.5,-60 558.5,-60 552.5,-60 546.5,-54 546.5,-48 546.5,-48 546.5,-12 546.5,-12 546.5,-6 552.5,0 558.5,0 558.5,0 767.5,0 767.5,0 773.5,0 779.5,-6 779.5,-12 779.5,-12 779.5,-48 779.5,-48 779.5,-54 773.5,-60 767.5,-60"/>
+<text text-anchor="middle" x="663" y="-40.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">模型生成改进规则并更新提示</text>
+<text text-anchor="middle" x="663" y="-26.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">报告称在多任务上优于强化学习基线</text>
+<text text-anchor="middle" x="663" y="-12.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">且所需采样次数大幅减少</text>
+</g>
+<g id="edge4" class="edge">
+<title>B1&#45;&gt;B2</title>
+<path fill="none" stroke="var(--border-line)" stroke-dasharray="5,2" d="M421.81,-63.43C457.98,-58.4 500.22,-52.52 539.1,-47.11"/>
+<polygon fill="var(--border-line)" stroke="var(--border-line)" points="539.72,-49.49 546.32,-46.1 539.05,-44.64 539.72,-49.49"/>
+</g>
+<g id="edge6" class="edge">
+<title>B2&#45;&gt;N</title>
+<path fill="none" stroke="var(--border-line)" stroke-dasharray="1,5" d="M663,-60.21C663,-66.06 663,-71.91 663,-77.76"/>
+</g>
+</g>
+</svg>

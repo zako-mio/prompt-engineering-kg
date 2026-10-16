@@ -1,0 +1,118 @@
+<svg class="fig__svg" role="img"
+ viewBox="0.00 0.00 576.64 310.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 306)">
+<title>grp</title>
+<g id="node1" class="node">
+<title>n0</title>
+<path fill="var(--brand-soft)" stroke="var(--brand-primary)" d="M165.64,-302C165.64,-302 39.64,-302 39.64,-302 33.64,-302 27.64,-296 27.64,-290 27.64,-290 27.64,-268 27.64,-268 27.64,-262 33.64,-256 39.64,-256 39.64,-256 165.64,-256 165.64,-256 171.64,-256 177.64,-262 177.64,-268 177.64,-268 177.64,-290 177.64,-290 177.64,-296 171.64,-302 165.64,-302"/>
+<text text-anchor="middle" x="102.64" y="-282.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">我的 agent 的提示…</text>
+<text text-anchor="middle" x="102.64" y="-268.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">(PE&#45;P&#45;01 · 第 16 层)</text>
+</g>
+<g id="node2" class="node">
+<title>n1</title>
+<path fill="var(--brand-soft)" stroke="var(--brand-primary)" d="M165.64,-110C165.64,-110 39.64,-110 39.64,-110 33.64,-110 27.64,-104 27.64,-98 27.64,-98 27.64,-76 27.64,-76 27.64,-70 33.64,-64 39.64,-64 39.64,-64 165.64,-64 165.64,-64 171.64,-64 177.64,-70 177.64,-76 177.64,-76 177.64,-98 177.64,-98 177.64,-104 171.64,-110 165.64,-110"/>
+<text text-anchor="middle" x="102.64" y="-90.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">技能文件编写</text>
+<text text-anchor="middle" x="102.64" y="-76.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">(PE&#45;P&#45;02 · 第 17 层)</text>
+</g>
+<g id="edge3" class="edge">
+<title>n0&#45;&gt;n1</title>
+<path fill="none" stroke="var(--border-line)" d="M27.47,-256.36C20.4,-251.4 14.18,-245.35 9.64,-238 -3.21,-217.21 -3.21,-148.79 9.64,-128 12.91,-122.71 17.03,-118.11 21.72,-114.09"/>
+<polygon fill="var(--border-line)" stroke="var(--border-line)" points="23.44,-115.86 27.47,-109.64 20.44,-111.99 23.44,-115.86"/>
+</g>
+<g id="node9" class="node">
+<title>stub_out</title>
+<polygon fill="var(--surface-subtle)" stroke="var(--warning)" points="527.64,-167 453.64,-167 453.64,-121 533.64,-121 533.64,-161 527.64,-167"/>
+<polyline fill="none" stroke="var(--warning)" points="527.64,-167 527.64,-161 "/>
+<polyline fill="none" stroke="var(--warning)" points="533.64,-161 527.64,-161 "/>
+<text text-anchor="middle" x="493.64" y="-147.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">组外接口</text>
+<text text-anchor="middle" x="493.64" y="-133.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">出 2 条</text>
+</g>
+<g id="edge13" class="edge">
+<title>n0&#45;&gt;stub_out</title>
+<path fill="none" stroke="var(--border-line)" stroke-dasharray="5,2" d="M171.07,-255.99C227.61,-236.66 310.46,-208.21 382.64,-183 406.17,-174.78 432.48,-165.46 453.47,-157.99"/>
+</g>
+<g id="node3" class="node">
+<title>n2</title>
+<path fill="var(--brand-soft)" stroke="var(--brand-primary)" d="M165.64,-174C165.64,-174 39.64,-174 39.64,-174 33.64,-174 27.64,-168 27.64,-162 27.64,-162 27.64,-140 27.64,-140 27.64,-134 33.64,-128 39.64,-128 39.64,-128 165.64,-128 165.64,-128 171.64,-128 177.64,-134 177.64,-140 177.64,-140 177.64,-162 177.64,-162 177.64,-168 171.64,-174 165.64,-174"/>
+<text text-anchor="middle" x="102.64" y="-154.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">子 Agent 委派与返…</text>
+<text text-anchor="middle" x="102.64" y="-140.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">(PE&#45;P&#45;03 · 第 18 层)</text>
+</g>
+<g id="edge4" class="edge">
+<title>n1&#45;&gt;n2</title>
+<path fill="none" stroke="var(--border-line)" d="M102.64,-110.5C102.64,-113.94 102.64,-117.39 102.64,-120.83"/>
+<polygon fill="var(--border-line)" stroke="var(--border-line)" points="100.19,-120.9 102.64,-127.9 105.09,-120.9 100.19,-120.9"/>
+</g>
+<g id="node4" class="node">
+<title>n3</title>
+<path fill="var(--brand-soft)" stroke="var(--brand-primary)" d="M361.14,-174C361.14,-174 235.14,-174 235.14,-174 229.14,-174 223.14,-168 223.14,-162 223.14,-162 223.14,-140 223.14,-140 223.14,-134 229.14,-128 235.14,-128 235.14,-128 361.14,-128 361.14,-128 367.14,-128 373.14,-134 373.14,-140 373.14,-140 373.14,-162 373.14,-162 373.14,-168 367.14,-174 361.14,-174"/>
+<text text-anchor="middle" x="298.14" y="-154.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">门控即判据</text>
+<text text-anchor="middle" x="298.14" y="-140.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">(PE&#45;P&#45;04 · 第 22 层)</text>
+</g>
+<g id="edge5" class="edge">
+<title>n2&#45;&gt;n3</title>
+<path fill="none" stroke="var(--border-line)" d="M177.9,-157.59C190.28,-157.77 203.19,-157.8 215.74,-157.67"/>
+<polygon fill="var(--border-line)" stroke="var(--border-line)" points="216.11,-160.12 223.08,-157.58 216.05,-155.22 216.11,-160.12"/>
+</g>
+<g id="node5" class="node">
+<title>n4</title>
+<path fill="var(--brand-soft)" stroke="var(--brand-primary)" d="M361.14,-110C361.14,-110 235.14,-110 235.14,-110 229.14,-110 223.14,-104 223.14,-98 223.14,-98 223.14,-76 223.14,-76 223.14,-70 229.14,-64 235.14,-64 235.14,-64 361.14,-64 361.14,-64 367.14,-64 373.14,-70 373.14,-76 373.14,-76 373.14,-98 373.14,-98 373.14,-104 367.14,-110 361.14,-110"/>
+<text text-anchor="middle" x="298.14" y="-90.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">记忆与反思</text>
+<text text-anchor="middle" x="298.14" y="-76.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">(PE&#45;P&#45;05 · 第 23 层)</text>
+</g>
+<g id="edge6" class="edge">
+<title>n3&#45;&gt;n4</title>
+<path fill="none" stroke="var(--border-line)" d="M298.14,-127.9C298.14,-124.46 298.14,-121.01 298.14,-117.57"/>
+<polygon fill="var(--border-line)" stroke="var(--border-line)" points="300.59,-117.5 298.14,-110.5 295.69,-117.5 300.59,-117.5"/>
+</g>
+<g id="node6" class="node">
+<title>n5</title>
+<path fill="var(--brand-soft)" stroke="var(--brand-primary)" d="M370.64,-46C370.64,-46 225.64,-46 225.64,-46 219.64,-46 213.64,-40 213.64,-34 213.64,-34 213.64,-12 213.64,-12 213.64,-6 219.64,0 225.64,0 225.64,0 370.64,0 370.64,0 376.64,0 382.64,-6 382.64,-12 382.64,-12 382.64,-34 382.64,-34 382.64,-40 376.64,-46 370.64,-46"/>
+<text text-anchor="middle" x="298.14" y="-26.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">模型上下文协议接入实况</text>
+<text text-anchor="middle" x="298.14" y="-12.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">(PE&#45;P&#45;06 · 第 24 层)</text>
+</g>
+<g id="edge7" class="edge">
+<title>n4&#45;&gt;n5</title>
+<path fill="none" stroke="var(--border-line)" d="M298.14,-63.94C298.14,-60.29 298.14,-56.65 298.14,-53.01"/>
+<polygon fill="var(--border-line)" stroke="var(--border-line)" points="300.59,-53 298.14,-46 295.69,-53 300.59,-53"/>
+</g>
+<g id="node7" class="node">
+<title>n6</title>
+<path fill="var(--brand-soft)" stroke="var(--brand-primary)" d="M556.64,-46C556.64,-46 430.64,-46 430.64,-46 424.64,-46 418.64,-40 418.64,-34 418.64,-34 418.64,-12 418.64,-12 418.64,-6 424.64,0 430.64,0 430.64,0 556.64,0 556.64,0 562.64,0 568.64,-6 568.64,-12 568.64,-12 568.64,-34 568.64,-34 568.64,-40 562.64,-46 556.64,-46"/>
+<text text-anchor="middle" x="493.64" y="-26.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">跨运行时迁移教训</text>
+<text text-anchor="middle" x="493.64" y="-12.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">(PE&#45;P&#45;07 · 第 25 层)</text>
+</g>
+<g id="edge8" class="edge">
+<title>n5&#45;&gt;n6</title>
+<path fill="none" stroke="var(--border-line)" d="M382.88,-29.7C392.33,-29.78 401.94,-29.77 411.35,-29.67"/>
+<polygon fill="var(--border-line)" stroke="var(--border-line)" points="411.53,-32.12 418.5,-29.58 411.47,-27.22 411.53,-32.12"/>
+</g>
+<g id="edge14" class="edge">
+<title>n6&#45;&gt;stub_out</title>
+<path fill="none" stroke="var(--border-line)" stroke-dasharray="5,2" d="M493.64,-46.16C493.64,-71 493.64,-95.84 493.64,-120.69"/>
+</g>
+<g id="node8" class="node">
+<title>stub_in</title>
+<polygon fill="var(--surface-subtle)" stroke="var(--warning)" points="136.64,-238 62.64,-238 62.64,-192 142.64,-192 142.64,-232 136.64,-238"/>
+<polyline fill="none" stroke="var(--warning)" points="136.64,-238 136.64,-232 "/>
+<polyline fill="none" stroke="var(--warning)" points="142.64,-232 136.64,-232 "/>
+<text text-anchor="middle" x="102.64" y="-218.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">组外接口</text>
+<text text-anchor="middle" x="102.64" y="-204.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">入 8 条</text>
+</g>
+<g id="edge9" class="edge">
+<title>stub_in&#45;&gt;n0</title>
+<path fill="none" stroke="var(--border-line)" stroke-dasharray="5,2" d="M102.64,-238.5C102.64,-244.3 102.64,-250.1 102.64,-255.9"/>
+</g>
+<g id="edge10" class="edge">
+<title>stub_in&#45;&gt;n3</title>
+<path fill="none" stroke="var(--border-line)" stroke-dasharray="5,2" d="M142.8,-202.05C167.09,-194.01 199,-183.46 227.5,-174.03"/>
+</g>
+<g id="edge11" class="edge">
+<title>stub_in&#45;&gt;n4</title>
+<path fill="none" stroke="var(--border-line)" stroke-dasharray="5,2" d="M142.91,-203.51C155.02,-198.6 167.76,-191.9 177.64,-183 201.89,-161.16 188.94,-140.33 213.64,-119 217.4,-115.75 221.52,-112.82 225.86,-110.17"/>
+</g>
+<g id="edge12" class="edge">
+<title>stub_in&#45;&gt;n5</title>
+<path fill="none" stroke="var(--border-line)" stroke-dasharray="5,2" d="M142.71,-205.43C155.38,-200.58 168.52,-193.43 177.64,-183 216.53,-138.51 173.81,-98.66 213.64,-55 216.67,-51.67 220.09,-48.69 223.77,-46.02"/>
+</g>
+</g>
+</svg>

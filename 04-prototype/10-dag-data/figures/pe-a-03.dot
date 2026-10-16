@@ -1,0 +1,31 @@
+digraph fig {
+  rankdir=LR; bgcolor="transparent";
+  node[shape=box, style="rounded,filled", fillcolor="#ffffff", color="#7c8aa5", fontcolor="#0e1729", fontname="Noto Sans CJK SC", fontsize=13, margin="0.20,0.12"]; edge[color="#7c8aa5", fontcolor="#46536b", fontname="Noto Sans CJK SC", fontsize=11, arrowsize=0.7];
+  S1 [label="设计阶段
+检查能力边界与权限
+提示注入 · 过度自主权 · 敏感信息泄露", fillcolor="#dfe6fb", color="#2f4bd8"];
+  S2 [label="接入阶段
+检查供应链与数据面
+供应链 · 数据与模型投毒 · 向量与嵌入弱点", fillcolor="#dfe6fb", color="#2f4bd8"];
+  S3 [label="上线阶段
+检查消耗与输出
+无界消耗 · 输出处理不当", fillcolor="#dfe6fb", color="#2f4bd8"];
+  S4 [label="运行阶段
+检查注入与信息面
+提示注入 · 敏感信息泄露 · 错误信息 · 隐藏上下文暴露", fillcolor="#dfe6fb", color="#2f4bd8"];
+  {rank=same; S1; S2; S3; S4;}
+  S1 -> S2 [style=invis];
+  S2 -> S3 [style=invis];
+  S3 -> S4 [style=invis];
+  D [label="相对上一版的实质调整
+权限类风险位次前移
+隐藏上下文暴露取代系统提示泄露
+新增与多模态相关的注入形态
+⇒ 条目变动信息部分来自二手来源，须标注", color="#9a5310"];
+  S2 -> D [style=dashed, label="版本差"];
+  {rank=same; D; N;}
+  N [label="边界
+清单是覆盖检查表，不是风险排序或合规认证
+引用必须注明版本；官网索引页与官方仓库正文同步状态存在落差", shape=note, fillcolor="#e9eef8"];
+  S4 -> N [style=dotted, arrowhead=none];
+}

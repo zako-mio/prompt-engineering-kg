@@ -1,0 +1,26 @@
+digraph fig {
+  rankdir=TB; bgcolor="transparent";
+  node[shape=box, style="rounded,filled", fillcolor="#ffffff", color="#7c8aa5", fontcolor="#0e1729", fontname="Noto Sans CJK SC", fontsize=13, margin="0.20,0.12"]; edge[color="#7c8aa5", fontcolor="#46536b", fontname="Noto Sans CJK SC", fontsize=11, arrowsize=0.7];
+  subgraph cluster_win {
+    label="同一段上下文的三个位置（窗口条）"; fontname="Noto Sans CJK SC"; fontsize=12;
+    color="#7c8aa5"; style="rounded,dashed"; fontcolor="#46536b";
+    H [label="首部\n最易被用到", color="#136f3a", width=1.5];
+    M [label="中部\n显著下降", color="#b3181f", width=1.5];
+    T [label="尾部\n最易被用到", color="#136f3a", width=1.5];
+    H -> M [style=solid, arrowhead=none];
+    M -> T [style=solid, arrowhead=none];
+    {rank=same; H; M; T;}
+  }
+  W [label="上下文窗口：容量 ≠ 有效注意力\ntoken 越多，注意力越稀释", fillcolor="#dfe6fb", color="#2f4bd8"];
+  A1 [label="动作一 位置安排\n重要内容置首尾", shape=note, fillcolor="#e9eef8"];
+  A2 [label="动作二 压缩与摘要\n不是省成本的附属品", shape=note, fillcolor="#e9eef8"];
+  A3 [label="动作三 检索精度\n优先于检索数量", shape=note, fillcolor="#e9eef8"];
+  W -> H [label="作用于"];
+  W -> M [style=dotted, arrowhead=none, constraint=false];
+  W -> T [style=dotted, arrowhead=none, constraint=false];
+  M -> A1 [style=solid, arrowhead=none, constraint=false];
+  M -> A2 [style=solid, arrowhead=none, constraint=false];
+  M -> A3 [style=solid, arrowhead=none, constraint=false];
+  H -> A1 [style=invis];
+  {rank=same; A1; A2; A3;}
+}

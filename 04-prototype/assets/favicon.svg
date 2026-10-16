@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="提示词工程知识图谱">
+  <rect width="64" height="64" rx="14" fill="#2F4BD8"/>
+  <g stroke="#FFFFFF" stroke-width="3.2" stroke-linecap="round" opacity="0.85">
+    <path d="M18 20 L44 20"/>
+    <path d="M18 20 L31 44"/>
+    <path d="M44 20 L31 44"/>
+  </g>
+  <g fill="#FFFFFF">
+    <circle cx="18" cy="20" r="6.4"/>
+    <circle cx="44" cy="20" r="6.4"/>
+    <circle cx="31" cy="44" r="7.6"/>
+  </g>
+</svg>

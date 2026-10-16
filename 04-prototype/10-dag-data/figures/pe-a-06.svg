@@ -1,0 +1,77 @@
+<svg class="fig__svg" role="img"
+ viewBox="0.00 0.00 609.00 363.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 359)">
+<title>fig</title>
+<g id="node1" class="node">
+<title>T</title>
+<path fill="var(--brand-soft)" stroke="var(--brand-primary)" d="M157,-355C157,-355 12,-355 12,-355 6,-355 0,-349 0,-343 0,-343 0,-307 0,-307 0,-301 6,-295 12,-295 12,-295 157,-295 157,-295 163,-295 169,-301 169,-307 169,-307 169,-343 169,-343 169,-349 163,-355 157,-355"/>
+<text text-anchor="middle" x="84.5" y="-335.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">标注</text>
+<text text-anchor="middle" x="84.5" y="-321.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">用固定标记包裹外部内容</text>
+<text text-anchor="middle" x="84.5" y="-307.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">并声明来源与不可信属性</text>
+</g>
+<g id="node2" class="node">
+<title>D</title>
+<path fill="var(--brand-soft)" stroke="var(--brand-primary)" d="M150.5,-259C150.5,-259 18.5,-259 18.5,-259 12.5,-259 6.5,-253 6.5,-247 6.5,-247 6.5,-211 6.5,-211 6.5,-205 12.5,-199 18.5,-199 18.5,-199 150.5,-199 150.5,-199 156.5,-199 162.5,-205 162.5,-211 162.5,-211 162.5,-247 162.5,-247 162.5,-253 156.5,-259 150.5,-259"/>
+<text text-anchor="middle" x="84.5" y="-239.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">声明</text>
+<text text-anchor="middle" x="84.5" y="-225.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">在系统层说明处理规则</text>
+<text text-anchor="middle" x="84.5" y="-211.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">如仅可引用不可执行</text>
+</g>
+<g id="edge1" class="edge">
+<title>T&#45;&gt;D</title>
+<path fill="none" stroke="var(--border-line)" d="M84.5,-294.84C84.5,-285.32 84.5,-275.8 84.5,-266.28"/>
+<polygon fill="var(--border-line)" stroke="var(--border-line)" points="86.95,-266 84.5,-259 82.05,-266 86.95,-266"/>
+</g>
+<g id="node3" class="node">
+<title>N</title>
+<path fill="var(--surface-raised)" stroke="var(--success)" d="M157,-163C157,-163 12,-163 12,-163 6,-163 0,-157 0,-151 0,-151 0,-115 0,-115 0,-109 6,-103 12,-103 12,-103 157,-103 157,-103 163,-103 169,-109 169,-115 169,-115 169,-151 169,-151 169,-157 163,-163 157,-163"/>
+<text text-anchor="middle" x="84.5" y="-143.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">收窄</text>
+<text text-anchor="middle" x="84.5" y="-129.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">把处理外部内容的步骤</text>
+<text text-anchor="middle" x="84.5" y="-115.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">放在权限受控的子流程中</text>
+</g>
+<g id="edge2" class="edge">
+<title>D&#45;&gt;N</title>
+<path fill="none" stroke="var(--border-line)" d="M84.5,-198.84C84.5,-189.32 84.5,-179.8 84.5,-170.28"/>
+<polygon fill="var(--border-line)" stroke="var(--border-line)" points="86.95,-170 84.5,-163 82.05,-170 86.95,-170"/>
+</g>
+<g id="node4" class="node">
+<title>V</title>
+<path fill="var(--brand-soft)" stroke="var(--brand-primary)" d="M157,-67C157,-67 12,-67 12,-67 6,-67 0,-61 0,-55 0,-55 0,-19 0,-19 0,-13 6,-7 12,-7 12,-7 157,-7 157,-7 163,-7 169,-13 169,-19 169,-19 169,-55 169,-55 169,-61 163,-67 157,-67"/>
+<text text-anchor="middle" x="84.5" y="-47.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">校验</text>
+<text text-anchor="middle" x="84.5" y="-33.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">对输出做结构或规则校验</text>
+<text text-anchor="middle" x="84.5" y="-19.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">拦截被劫持后的越界行为</text>
+</g>
+<g id="edge3" class="edge">
+<title>N&#45;&gt;V</title>
+<path fill="none" stroke="var(--border-line)" d="M84.5,-102.84C84.5,-93.32 84.5,-83.8 84.5,-74.28"/>
+<polygon fill="var(--border-line)" stroke="var(--border-line)" points="86.95,-74 84.5,-67 82.05,-74 86.95,-74"/>
+</g>
+<g id="node6" class="node">
+<title>G</title>
+<polygon fill="var(--surface-subtle)" stroke="var(--border-line)" points="595,-170 228,-170 228,-96 601,-96 601,-164 595,-170"/>
+<polyline fill="none" stroke="var(--border-line)" points="595,-170 595,-164 "/>
+<polyline fill="none" stroke="var(--border-line)" points="601,-164 595,-164 "/>
+<text text-anchor="middle" x="414.5" y="-150.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">配套实践</text>
+<text text-anchor="middle" x="414.5" y="-136.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">把标注体系写进提示词模板并版本化，新增外部来源时不漏标</text>
+<text text-anchor="middle" x="414.5" y="-122.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">剥离不可见字符（零宽字符可绕过标注与检测）</text>
+<text text-anchor="middle" x="414.5" y="-108.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">最小权限与标注必须配套，否则模型仍可能造成损害</text>
+</g>
+<g id="edge5" class="edge">
+<title>N&#45;&gt;G</title>
+<path fill="none" stroke="var(--border-line)" stroke-dasharray="1,5" d="M169.12,-133C187.34,-133 207.32,-133 227.76,-133"/>
+</g>
+<g id="node5" class="node">
+<title>L</title>
+<path fill="var(--surface-raised)" stroke="var(--warning)" d="M525,-74C525,-74 304,-74 304,-74 298,-74 292,-68 292,-62 292,-62 292,-12 292,-12 292,-6 298,0 304,0 304,0 525,0 525,0 531,0 537,-6 537,-12 537,-12 537,-62 537,-62 537,-68 531,-74 525,-74"/>
+<text text-anchor="middle" x="414.5" y="-54.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">位置对照</text>
+<text text-anchor="middle" x="414.5" y="-40.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">标注与声明在提示层</text>
+<text text-anchor="middle" x="414.5" y="-26.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">⇒ 提示层不构成安全边界</text>
+<text text-anchor="middle" x="414.5" y="-12.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">收窄与校验在架构层，才是防线的落点</text>
+</g>
+<g id="edge4" class="edge">
+<title>V&#45;&gt;L</title>
+<path fill="none" stroke="var(--border-line)" stroke-dasharray="5,2" d="M169.12,-37C204.23,-37 245.87,-37 284.74,-37"/>
+<polygon fill="var(--border-line)" stroke="var(--border-line)" points="284.96,-39.45 291.96,-37 284.96,-34.55 284.96,-39.45"/>
+<text text-anchor="middle" x="198.5" y="-40.2" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="11.00" fill="var(--text-secondary)">分界</text>
+</g>
+</g>
+</svg>

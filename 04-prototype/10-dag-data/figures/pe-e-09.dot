@@ -1,0 +1,23 @@
+digraph fig {
+  rankdir=TB; bgcolor="transparent";
+  node[shape=box, style="rounded,filled", fillcolor="#ffffff", color="#7c8aa5", fontcolor="#0e1729", fontname="Noto Sans CJK SC", fontsize=13, margin="0.20,0.12"]; edge[color="#7c8aa5", fontcolor="#46536b", fontname="Noto Sans CJK SC", fontsize=11, arrowsize=0.7];
+  P1 [label="提示词 v1", fillcolor="#dfe6fb", color="#2f4bd8", width=1.7];
+  P2 [label="改动后的提示词 v2", fillcolor="#dfe6fb", color="#2f4bd8", width=2.1];
+  E [label="评测集
+（自身也要版本化）", color="#136f3a", width=2.5];
+  {rank=same; P1; P2; E;}
+  B [label="基线：提示词版本 × 评测集版本 之间的对应关系", shape=note, fillcolor="#e9eef8", width=5.2];
+  E -> B [style=dashed, label="固定"];
+  V [label="回归判定：与基线比较 ⇒ 接受或回退，结论与版本一并留档", color="#136f3a", width=5.2];
+  B -> V;
+  S [label="另一条边界
+只跑改动点相关的用例会漏掉交叉影响
+⇒ 须定期跑全量", shape=note, fillcolor="#e9eef8", width=2.6];
+  V -> S [style=dotted, arrowhead=none];
+  N [label="三条纪律
+① 评测集不版本化 ⇒ 基线不可比
+② 除准确率外同时跟踪成本与延迟（改动常以成本换质量）
+③ 换模型必须重建基线，否则把模型差异误判为提示词差异", shape=note, fillcolor="#e9eef8", width=4.0];
+  {rank=same; S; N;}
+  E -> N [style=dotted, arrowhead=none];
+}

@@ -1,0 +1,31 @@
+digraph fig {
+  rankdir=LR; bgcolor="transparent";
+  node[shape=box, style="rounded,filled", fillcolor="#ffffff", color="#7c8aa5", fontcolor="#0e1729", fontname="Noto Sans CJK SC", fontsize=13, margin="0.20,0.12"]; edge[color="#7c8aa5", fontcolor="#46536b", fontname="Noto Sans CJK SC", fontsize=11, arrowsize=0.7];
+  D1 [label="直接注入
+恶意指令由用户直接输入
+⇒ 攻击面较窄", color="#9a5310"];
+  D2 [label="间接注入
+恶意指令藏在外部内容中
+（网页、邮件、文档、工具返回、记忆）
+⇒ 攻击面很宽", color="#b3181f"];
+  {rank=same; D1; D2;}
+  H [label="三条放大危害的属性
+① 上下文池化：不同来源混在同一窗口
+② 记忆持久化：注入可跨会话留存
+③ agentic 执行：被劫持指令触发真实副作用", color="#b3181f"];
+  D1 -> H [style=invis];
+  D2 -> H;
+  {rank=same; H; R;}
+  R [label="根本原因
+模型在架构上不区分「指令」与「数据」
+⇒ 不存在可靠的拦截式预防
+⇒ 防御落在架构与权限上", color="#2f4bd8", fillcolor="#dfe6fb"];
+  H -> R;
+  N [label="边界
+注入是当前生成式 AI 的固有属性
+把某条缓解措施说成「已解决注入」
+即为越界表述
+输入过滤可被编码与多模态绕过", shape=note, fillcolor="#e9eef8"];
+  {rank=same; N;}
+  R -> N [style=dotted, arrowhead=none];
+}

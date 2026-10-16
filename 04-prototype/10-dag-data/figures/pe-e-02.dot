@@ -1,0 +1,31 @@
+digraph fig {
+  rankdir=LR; bgcolor="transparent";
+  node[shape=box, style="rounded,filled", fillcolor="#ffffff", color="#7c8aa5", fontcolor="#0e1729", fontname="Noto Sans CJK SC", fontsize=13, margin="0.20,0.12"]; edge[color="#7c8aa5", fontcolor="#46536b", fontname="Noto Sans CJK SC", fontsize=11, arrowsize=0.7];
+  A1 [label="① 采样
+从真实流量与故障记录
+保证分布真实", fillcolor="#dfe6fb", color="#2f4bd8"];
+  A2 [label="② 分层
+按失败模式组织
+保证覆盖", fillcolor="#dfe6fb", color="#2f4bd8"];
+  A3 [label="③ 负例与边界例
+保证区分度
+能发现误拒与过度保守", fillcolor="#dfe6fb", color="#2f4bd8"];
+  A4 [label="④ 判据与容差
+保证可判定", fillcolor="#dfe6fb", color="#2f4bd8"];
+  {rank=same; A1; A2; A3; A4;}
+  S [label="每层设定负例与边界例；每个样本记录来源
+（真实流量 / 构造 / 对抗生成）与稳定性", color="#136f3a"];
+  A1 -> S [style=invis];
+  A2 -> S; A3 -> S; A4 -> S;
+  H [label="留出集
+一份不参与优化的
+固定留出集
+用于判断是否过拟合", color="#136f3a"];
+  {rank=same; S; H;}
+  S -> H [style=dashed, label="单列"];
+  X [label="对照：只收典型样本
+⇒ 系统性漏掉边界与对抗场景
+而线上故障恰恰集中在这些地方", shape=note, fillcolor="#e9eef8"];
+  {rank=same; X;}
+  H -> X [style=dotted, arrowhead=none];
+}

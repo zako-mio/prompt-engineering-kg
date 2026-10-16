@@ -1,0 +1,71 @@
+<svg class="fig__svg" role="img"
+ viewBox="0.00 0.00 718.00 188.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 184)">
+<title>fig</title>
+<g id="node1" class="node">
+<title>T</title>
+<path fill="var(--brand-soft)" stroke="var(--brand-primary)" d="M93,-108C93,-108 12,-108 12,-108 6,-108 0,-102 0,-96 0,-96 0,-60 0,-60 0,-54 6,-48 12,-48 12,-48 93,-48 93,-48 99,-48 105,-54 105,-60 105,-60 105,-96 105,-96 105,-102 99,-108 93,-108"/>
+<text text-anchor="middle" x="52.5" y="-88.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">思考</text>
+<text text-anchor="middle" x="52.5" y="-74.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">分析当前状态</text>
+<text text-anchor="middle" x="52.5" y="-60.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">与所需工具</text>
+</g>
+<g id="node2" class="node">
+<title>A</title>
+<path fill="var(--brand-soft)" stroke="var(--brand-primary)" d="M235,-142C235,-142 154,-142 154,-142 148,-142 142,-136 142,-130 142,-130 142,-108 142,-108 142,-102 148,-96 154,-96 154,-96 235,-96 235,-96 241,-96 247,-102 247,-108 247,-108 247,-130 247,-130 247,-136 241,-142 235,-142"/>
+<text text-anchor="middle" x="194.5" y="-122.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">行动</text>
+<text text-anchor="middle" x="194.5" y="-108.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">发起工具调用</text>
+</g>
+<g id="edge1" class="edge">
+<title>T&#45;&gt;A</title>
+<path fill="none" stroke="var(--border-line)" d="M105.23,-93.15C114.98,-96 125.23,-99.01 135.17,-101.92"/>
+<polygon fill="var(--border-line)" stroke="var(--border-line)" points="134.57,-104.3 141.98,-103.91 135.95,-99.59 134.57,-104.3"/>
+</g>
+<g id="node3" class="node">
+<title>O</title>
+<path fill="var(--brand-soft)" stroke="var(--brand-primary)" d="M390,-96C390,-96 296,-96 296,-96 290,-96 284,-90 284,-84 284,-84 284,-48 284,-48 284,-42 290,-36 296,-36 296,-36 390,-36 390,-36 396,-36 402,-42 402,-48 402,-48 402,-84 402,-84 402,-90 396,-96 390,-96"/>
+<text text-anchor="middle" x="343" y="-76.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">观察</text>
+<text text-anchor="middle" x="343" y="-62.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">读取工具返回的</text>
+<text text-anchor="middle" x="343" y="-48.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">真实反馈</text>
+</g>
+<g id="edge2" class="edge">
+<title>A&#45;&gt;O</title>
+<path fill="none" stroke="var(--border-line)" d="M247.15,-100.31C256.79,-96.83 266.98,-93.14 276.96,-89.53"/>
+<polygon fill="var(--border-line)" stroke="var(--border-line)" points="278.07,-91.73 283.82,-87.05 276.41,-87.12 278.07,-91.73"/>
+</g>
+<g id="node5" class="node">
+<title>N</title>
+<polygon fill="var(--surface-subtle)" stroke="var(--border-line)" points="704,-180 484,-180 484,-92 710,-92 710,-174 704,-180"/>
+<polyline fill="none" stroke="var(--border-line)" points="704,-180 704,-174 "/>
+<polyline fill="none" stroke="var(--border-line)" points="710,-174 704,-174 "/>
+<text text-anchor="middle" x="597" y="-160.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">四类失效模式</text>
+<text text-anchor="middle" x="597" y="-146.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">格式塌陷 ⇒ 调用不被解析</text>
+<text text-anchor="middle" x="597" y="-132.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">工具滥用 ⇒ 成本失控</text>
+<text text-anchor="middle" x="597" y="-118.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">死循环 ⇒ 轮数耗尽</text>
+<text text-anchor="middle" x="597" y="-104.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">被观察结果带偏 ⇒ 污染回到上下文</text>
+</g>
+<g id="edge5" class="edge">
+<title>A&#45;&gt;N</title>
+<path fill="none" stroke="var(--border-line)" stroke-dasharray="1,5" d="M247.04,-121.19C306.51,-123.71 406.07,-127.94 483.66,-131.23"/>
+</g>
+<g id="edge3" class="edge">
+<title>O&#45;&gt;T</title>
+<path fill="none" stroke="var(--border-line)" stroke-dasharray="5,2" d="M283.93,-68.42C234.03,-70.49 162.42,-73.47 112.31,-75.55"/>
+<polygon fill="var(--border-line)" stroke="var(--border-line)" points="111.97,-73.12 105.08,-75.85 112.17,-78.01 111.97,-73.12"/>
+<text text-anchor="middle" x="194.5" y="-78.2" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="11.00" fill="var(--text-secondary)">未得结论则继续</text>
+</g>
+<g id="node4" class="node">
+<title>P</title>
+<path fill="var(--surface-raised)" stroke="var(--success)" d="M683.5,-74C683.5,-74 510.5,-74 510.5,-74 504.5,-74 498.5,-68 498.5,-62 498.5,-62 498.5,-12 498.5,-12 498.5,-6 504.5,0 510.5,0 510.5,0 683.5,0 683.5,0 689.5,0 695.5,-6 695.5,-12 695.5,-12 695.5,-62 695.5,-62 695.5,-68 689.5,-74 683.5,-74"/>
+<text text-anchor="middle" x="597" y="-54.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">三条现行实现路径</text>
+<text text-anchor="middle" x="597" y="-40.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">① 模型原生工具调用</text>
+<text text-anchor="middle" x="597" y="-26.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">② 框架封装的循环</text>
+<text text-anchor="middle" x="597" y="-12.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">③ 手写格式约束（受限环境）</text>
+</g>
+<g id="edge4" class="edge">
+<title>O&#45;&gt;P</title>
+<path fill="none" stroke="var(--border-line)" d="M402.13,-59.31C428.51,-56.28 460.54,-52.59 490.9,-49.09"/>
+<polygon fill="var(--border-line)" stroke="var(--border-line)" points="491.49,-51.49 498.17,-48.26 490.93,-46.62 491.49,-51.49"/>
+<text text-anchor="middle" x="443" y="-60.2" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="11.00" fill="var(--text-secondary)">停止条件</text>
+</g>
+</g>
+</svg>

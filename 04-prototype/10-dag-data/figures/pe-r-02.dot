@@ -1,0 +1,13 @@
+digraph fig {
+  rankdir=TB; bgcolor="transparent";
+  node[shape=box, style="rounded,filled", fillcolor="#ffffff", color="#7c8aa5", fontcolor="#0e1729", fontname="Noto Sans CJK SC", fontsize=13, margin="0.20,0.12"]; edge[color="#7c8aa5", fontcolor="#46536b", fontname="Noto Sans CJK SC", fontsize=11, arrowsize=0.7];
+  q [label="显式思维链（CoT）与示例堆砌\n同一技巧，符号随条件反转", fillcolor="#dfe6fb", color="#2f4bd8"];
+  a [label="条件 A：非推理模型\n或 高串行深度任务（GSM8K / MATH）\n⇒ CoT 仍有大幅增益", color="#136f3a"];
+  b [label="条件 B：推理模型 · 且高串行深度已被底座内化\n⇒ 增益仅 2.9%–3.1%，Gemini Flash 2.5 为 −3.3%\n耗时 +20%–80%，指令遵循下降", color="#b3181f"];
+  q -> a [label="成立"];
+  q -> b [label="反转"];
+  {rank=same; a; b;}
+  node[shape=note, style="filled", fillcolor="#e9eef8", color="#9a5310", fontcolor="#0e1729", fontname="Noto Sans CJK SC", fontsize=12];
+  n [label="判定纪律\n缺席证据 ≠ 反证（未被文档收录 ≠ 已被证伪）\n不得把单一任务域的结论外推为普遍规律"];
+  b -> n [style=dotted, arrowhead=none];
+}

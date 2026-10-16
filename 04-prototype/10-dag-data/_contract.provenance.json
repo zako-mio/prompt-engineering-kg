@@ -1,0 +1,10 @@
+{
+  "snapshot_of": "/home/zako-mio/opencode/projects/fe-starter-kit/tokens/contract.json",
+  "source_sha256": "f99621718ee1d879295da42ab05f9e0ac1cae77e878c32e2efcb3a296fc12020",
+  "contract_version": "1.1.1",
+  "frozen_at": "2026-09-27",
+  "copied_at": "2026-10-14",
+  "purpose": "prompt-engineering-kg 令牌派生的固定快照（带 provenance）；⛔ 不得手改，改契约须重新快照",
+  "derivation_rule": "content 族 7 个角色 → --bg/--bg-soft/--bg-stripe/--fg/--fg-muted/--link/--rule",
+  "rule_note": "本站消费的是「契约」而非「派生结果」；派生由 16-checkpoint/gen-tokens.py 执行"
+}

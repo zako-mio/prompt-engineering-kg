@@ -1,0 +1,84 @@
+<svg class="fig__svg" role="img"
+ viewBox="0.00 0.00 844.00 288.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 284)">
+<title>fig</title>
+<g id="node1" class="node">
+<title>M</title>
+<path fill="var(--brand-soft)" stroke="var(--brand-primary)" d="M182,-184C182,-184 12,-184 12,-184 6,-184 0,-178 0,-172 0,-172 0,-150 0,-150 0,-144 6,-138 12,-138 12,-138 182,-138 182,-138 188,-138 194,-144 194,-150 194,-150 194,-172 194,-172 194,-178 188,-184 182,-184"/>
+<text text-anchor="middle" x="97" y="-164.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">元提示层</text>
+<text text-anchor="middle" x="97" y="-150.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">让模型生成或改进提示词本身</text>
+</g>
+<g id="node2" class="node">
+<title>U1</title>
+<path fill="var(--surface-raised)" stroke="var(--success)" d="M423,-280C423,-280 298,-280 298,-280 292,-280 286,-274 286,-268 286,-268 286,-246 286,-246 286,-240 292,-234 298,-234 298,-234 423,-234 423,-234 429,-234 435,-240 435,-246 435,-246 435,-268 435,-268 435,-274 429,-280 423,-280"/>
+<text text-anchor="middle" x="360.5" y="-260.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">用法一 扩写</text>
+<text text-anchor="middle" x="360.5" y="-246.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">粗糙指令 ⇒ 完整提示</text>
+</g>
+<g id="edge1" class="edge">
+<title>M&#45;&gt;U1</title>
+<path fill="none" stroke="var(--border-line)" d="M139.82,-184.07C165.31,-197.42 198.86,-213.75 230,-225 245.53,-230.61 262.46,-235.58 278.8,-239.83"/>
+<polygon fill="var(--border-line)" stroke="var(--border-line)" points="278.37,-242.25 285.76,-241.61 279.58,-237.5 278.37,-242.25"/>
+</g>
+<g id="node3" class="node">
+<title>U2</title>
+<path fill="var(--surface-raised)" stroke="var(--success)" d="M404,-216C404,-216 317,-216 317,-216 311,-216 305,-210 305,-204 305,-204 305,-182 305,-182 305,-176 311,-170 317,-170 317,-170 404,-170 404,-170 410,-170 416,-176 416,-182 416,-182 416,-204 416,-204 416,-210 410,-216 404,-216"/>
+<text text-anchor="middle" x="360.5" y="-196.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">用法二 压缩</text>
+<text text-anchor="middle" x="360.5" y="-182.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">长提示 ⇒ 要点</text>
+</g>
+<g id="edge2" class="edge">
+<title>M&#45;&gt;U2</title>
+<path fill="none" stroke="var(--border-line)" d="M194.26,-172.78C228.77,-177 266.74,-181.65 297.57,-185.42"/>
+<polygon fill="var(--border-line)" stroke="var(--border-line)" points="297.59,-187.89 304.84,-186.31 298.19,-183.03 297.59,-187.89"/>
+</g>
+<g id="node4" class="node">
+<title>U3</title>
+<path fill="var(--surface-raised)" stroke="var(--success)" d="M414,-152C414,-152 307,-152 307,-152 301,-152 295,-146 295,-140 295,-140 295,-118 295,-118 295,-112 301,-106 307,-106 307,-106 414,-106 414,-106 420,-106 426,-112 426,-118 426,-118 426,-140 426,-140 426,-146 420,-152 414,-152"/>
+<text text-anchor="middle" x="360.5" y="-132.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">用法三 归一</text>
+<text text-anchor="middle" x="360.5" y="-118.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">一组提示统一结构</text>
+</g>
+<g id="edge3" class="edge">
+<title>M&#45;&gt;U3</title>
+<path fill="none" stroke="var(--border-line)" d="M194.26,-149.22C225.14,-145.44 258.78,-141.33 287.6,-137.8"/>
+<polygon fill="var(--border-line)" stroke="var(--border-line)" points="288.17,-140.2 294.82,-136.92 287.57,-135.33 288.17,-140.2"/>
+</g>
+<g id="node5" class="node">
+<title>N</title>
+<polygon fill="var(--surface-subtle)" stroke="var(--border-line)" points="485,-88 230,-88 230,0 491,0 491,-82 485,-88"/>
+<polyline fill="none" stroke="var(--border-line)" points="485,-88 485,-82 "/>
+<polyline fill="none" stroke="var(--border-line)" points="491,-82 485,-82 "/>
+<text text-anchor="middle" x="360.5" y="-68.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">三条工程要点</text>
+<text text-anchor="middle" x="360.5" y="-54.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">① 必须附带明确目标与约束</text>
+<text text-anchor="middle" x="360.5" y="-40.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">（目标模型、输出契约、风格要求）</text>
+<text text-anchor="middle" x="360.5" y="-26.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">② 候选必须经评测集筛选，不能直接采用</text>
+<text text-anchor="middle" x="360.5" y="-12.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">③ 保留改写前后的对照记录</text>
+</g>
+<g id="edge4" class="edge">
+<title>M&#45;&gt;N</title>
+<path fill="none" stroke="var(--border-line)" stroke-dasharray="1,5" d="M143.79,-137.92C169.04,-125.42 201.05,-109.93 230,-97 236.65,-94.03 243.53,-91.03 250.48,-88.04"/>
+</g>
+<g id="node6" class="node">
+<title>C</title>
+<path fill="var(--brand-soft)" stroke="var(--brand-primary)" d="M728.5,-211C728.5,-211 634.5,-211 634.5,-211 628.5,-211 622.5,-205 622.5,-199 622.5,-199 622.5,-187 622.5,-187 622.5,-181 628.5,-175 634.5,-175 634.5,-175 728.5,-175 728.5,-175 734.5,-175 740.5,-181 740.5,-187 740.5,-187 740.5,-199 740.5,-199 740.5,-205 734.5,-211 728.5,-211"/>
+<text text-anchor="middle" x="681.5" y="-189.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">批量产出的候选</text>
+</g>
+<g id="edge5" class="edge">
+<title>U2&#45;&gt;C</title>
+<path fill="none" stroke="var(--border-line)" d="M416.34,-193C471.54,-193 556.7,-193 615.32,-193"/>
+<polygon fill="var(--border-line)" stroke="var(--border-line)" points="615.34,-195.45 622.34,-193 615.34,-190.55 615.34,-195.45"/>
+</g>
+<g id="node7" class="node">
+<title>D</title>
+<polygon fill="var(--surface-subtle)" stroke="var(--border-line)" points="830,-157 527,-157 527,-83 836,-83 836,-151 830,-157"/>
+<polyline fill="none" stroke="var(--border-line)" points="830,-157 830,-151 "/>
+<polyline fill="none" stroke="var(--border-line)" points="836,-151 830,-151 "/>
+<text text-anchor="middle" x="681.5" y="-137.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">价值与边界</text>
+<text text-anchor="middle" x="681.5" y="-123.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">价值在规模：大量同类提示逐条人工改写不现实</text>
+<text text-anchor="middle" x="681.5" y="-109.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">边界：提高的是候选生成速度，判定权仍在评测集</text>
+<text text-anchor="middle" x="681.5" y="-95.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">无基线与判据时不能替代人工判断</text>
+</g>
+<g id="edge6" class="edge">
+<title>C&#45;&gt;D</title>
+<path fill="none" stroke="var(--border-line)" stroke-dasharray="1,5" d="M681.5,-174.75C681.5,-168.86 681.5,-162.97 681.5,-157.07"/>
+</g>
+</g>
+</svg>

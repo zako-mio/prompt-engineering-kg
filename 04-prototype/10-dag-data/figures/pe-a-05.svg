@@ -1,0 +1,62 @@
+<svg class="fig__svg" role="img"
+ viewBox="0.00 0.00 693.00 352.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 348)">
+<title>fig</title>
+<g id="node1" class="node">
+<title>A</title>
+<path fill="var(--surface-raised)" stroke="var(--danger)" d="M142,-332C142,-332 12,-332 12,-332 6,-332 0,-326 0,-320 0,-320 0,-308 0,-308 0,-302 6,-296 12,-296 12,-296 142,-296 142,-296 148,-296 154,-302 154,-308 154,-308 154,-320 154,-320 154,-326 148,-332 142,-332"/>
+<text text-anchor="middle" x="77" y="-310.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">原提示「不要提到 X」</text>
+</g>
+<g id="node2" class="node">
+<title>B</title>
+<path fill="var(--surface-raised)" stroke="var(--danger)" d="M673,-344C673,-344 203,-344 203,-344 197,-344 191,-338 191,-332 191,-332 191,-296 191,-296 191,-290 197,-284 203,-284 203,-284 673,-284 673,-284 679,-284 685,-290 685,-296 685,-296 685,-332 685,-332 685,-338 679,-344 673,-344"/>
+<text text-anchor="middle" x="438" y="-324.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">机制：提示中的词本身激活相关表征</text>
+<text text-anchor="middle" x="438" y="-310.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">⇒ X 被放进上下文，可及性反而提高</text>
+<text text-anchor="middle" x="438" y="-296.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">⇒ 否定词在后续 token 预测中提高而非降低相关内容概率（模型规模越小越明显）</text>
+</g>
+<g id="edge1" class="edge">
+<title>A&#45;&gt;B</title>
+<path fill="none" stroke="var(--border-line)" d="M154.13,-314C163.5,-314 173.43,-314 183.76,-314"/>
+<polygon fill="var(--border-line)" stroke="var(--border-line)" points="183.97,-316.45 190.97,-314 183.97,-311.55 183.97,-316.45"/>
+</g>
+<g id="node3" class="node">
+<title>C</title>
+<path fill="var(--surface-raised)" stroke="var(--success)" d="M542.5,-248C542.5,-248 333.5,-248 333.5,-248 327.5,-248 321.5,-242 321.5,-236 321.5,-236 321.5,-200 321.5,-200 321.5,-194 327.5,-188 333.5,-188 333.5,-188 542.5,-188 542.5,-188 548.5,-188 554.5,-194 554.5,-200 554.5,-200 554.5,-236 554.5,-236 554.5,-242 548.5,-248 542.5,-248"/>
+<text text-anchor="middle" x="438" y="-228.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">改法：描述期望行为而不是禁止行为</text>
+<text text-anchor="middle" x="438" y="-214.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">与其说「不要用某类格式」</text>
+<text text-anchor="middle" x="438" y="-200.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">不如说「回答应由怎样的结构组成」</text>
+</g>
+<g id="edge2" class="edge">
+<title>B&#45;&gt;C</title>
+<path fill="none" stroke="var(--border-line)" d="M438,-284C438,-274.89 438,-264.77 438,-255.25"/>
+<polygon fill="var(--border-line)" stroke="var(--border-line)" points="440.45,-255.11 438,-248.11 435.55,-255.11 440.45,-255.11"/>
+<text text-anchor="middle" x="429" y="-263.2" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="11.00" fill="var(--text-secondary)">改写</text>
+</g>
+<g id="node4" class="node">
+<title>D</title>
+<path fill="var(--surface-raised)" stroke="var(--warning)" d="M556.5,-60C556.5,-60 319.5,-60 319.5,-60 313.5,-60 307.5,-54 307.5,-48 307.5,-48 307.5,-12 307.5,-12 307.5,-6 313.5,0 319.5,0 319.5,0 556.5,0 556.5,0 562.5,0 568.5,-6 568.5,-12 568.5,-12 568.5,-48 568.5,-48 568.5,-54 562.5,-60 556.5,-60"/>
+<text text-anchor="middle" x="438" y="-40.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">无法正向化的约束</text>
+<text text-anchor="middle" x="438" y="-26.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">（例如必须拒绝某类请求）</text>
+<text text-anchor="middle" x="438" y="-12.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">⇒ 改为可判定的处置规则并配合输出校验</text>
+</g>
+<g id="edge3" class="edge">
+<title>C&#45;&gt;D</title>
+<path fill="none" stroke="var(--border-line)" stroke-dasharray="5,2" d="M321.18,-223.06C264.97,-218.42 203.23,-201.13 172.5,-152 155.06,-124.12 155.06,-105.88 172.5,-78 199.13,-35.43 250.02,-20.09 300.18,-16.65"/>
+<polygon fill="var(--border-line)" stroke="var(--border-line)" points="300.4,-19.09 307.25,-16.24 300.12,-14.2 300.4,-19.09"/>
+</g>
+<g id="node5" class="node">
+<title>N</title>
+<polygon fill="var(--surface-subtle)" stroke="var(--border-line)" points="574,-152 296,-152 296,-78 580,-78 580,-146 574,-152"/>
+<polyline fill="none" stroke="var(--border-line)" points="574,-152 574,-146 "/>
+<polyline fill="none" stroke="var(--border-line)" points="580,-146 574,-146 "/>
+<text text-anchor="middle" x="438" y="-132.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">清查纪律</text>
+<text text-anchor="middle" x="438" y="-118.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">把每条「不要」改写为对应的正向描述</text>
+<text text-anchor="middle" x="438" y="-104.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">并检查改写后是否仍覆盖原意</text>
+<text text-anchor="middle" x="438" y="-90.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">负向清单只作兜底，不承担主要行为控制职责</text>
+</g>
+<g id="edge4" class="edge">
+<title>C&#45;&gt;N</title>
+<path fill="none" stroke="var(--border-line)" stroke-dasharray="1,5" d="M438,-187.84C438,-175.9 438,-163.96 438,-152.02"/>
+</g>
+</g>
+</svg>

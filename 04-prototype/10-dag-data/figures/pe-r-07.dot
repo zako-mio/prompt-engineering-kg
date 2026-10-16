@@ -1,0 +1,25 @@
+digraph fig {
+  rankdir=LR; bgcolor="transparent";
+  node[shape=box, style="rounded,filled", fillcolor="#ffffff", color="#7c8aa5", fontcolor="#0e1729", fontname="Noto Sans CJK SC", fontsize=13, margin="0.20,0.12"]; edge[color="#7c8aa5", fontcolor="#46536b", fontname="Noto Sans CJK SC", fontsize=11, arrowsize=0.7];
+  T [label="思考
+分析当前状态
+与所需工具", fillcolor="#dfe6fb", color="#2f4bd8"];
+  A [label="行动
+发起工具调用", fillcolor="#dfe6fb", color="#2f4bd8"];
+  O [label="观察
+读取工具返回的
+真实反馈", fillcolor="#dfe6fb", color="#2f4bd8"];
+  T -> A; A -> O; O -> T [style=dashed, label="未得结论则继续"];
+  P [label="三条现行实现路径
+① 模型原生工具调用
+② 框架封装的循环
+③ 手写格式约束（受限环境）", color="#136f3a"];
+  O -> P [label="停止条件"];
+  {rank=same; P; N;}
+  N [label="四类失效模式
+格式塌陷 ⇒ 调用不被解析
+工具滥用 ⇒ 成本失控
+死循环 ⇒ 轮数耗尽
+被观察结果带偏 ⇒ 污染回到上下文", shape=note, fillcolor="#e9eef8"];
+  A -> N [style=dotted, arrowhead=none];
+}

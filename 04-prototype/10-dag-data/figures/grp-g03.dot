@@ -1,0 +1,33 @@
+digraph grp {
+  rankdir=LR; bgcolor="transparent";
+  node[shape=box, style="rounded,filled", fillcolor="#ffffff", color="#7c8aa5", fontcolor="#0e1729", fontname="Noto Sans CJK SC", fontsize=13, margin="0.20,0.12"]; edge[color="#7c8aa5", fontcolor="#46536b", fontname="Noto Sans CJK SC", fontsize=11, arrowsize=0.7];
+  n0 [label="上下文即工作内存与四策略\n(PE-C-01 · 第 6 层)", fillcolor="#dfe6fb", color="#2f4bd8"];
+  n1 [label="RAG 提示模式\n(PE-C-02 · 第 7 层)", fillcolor="#dfe6fb", color="#2f4bd8"];
+  n2 [label="图检索与全局观\n(PE-C-03 · 第 8 层)", fillcolor="#dfe6fb", color="#2f4bd8"];
+  n3 [label="检索质量与垃圾进垃圾出\n(PE-C-04 · 第 9 层)", fillcolor="#dfe6fb", color="#2f4bd8"];
+  n4 [label="长上下文位置偏差\n(PE-C-05 · 第 10 层)", fillcolor="#dfe6fb", color="#2f4bd8"];
+  n5 [label="提示缓存\n(PE-C-06 · 第 11 层)", fillcolor="#dfe6fb", color="#2f4bd8"];
+  n6 [label="模型上下文协议\n(PE-C-07 · 第 12 层)", fillcolor="#dfe6fb", color="#2f4bd8"];
+  {rank=same; n0; n1; n2;}
+  {rank=same; n3; n4; n5;}
+  {rank=same; n6;}
+  n2 -> n3 [style=invis, weight=100];
+  n5 -> n6 [style=invis, weight=100];
+  n0 -> n1 [constraint=false];
+  n1 -> n2 [constraint=false];
+  n2 -> n3 [color="#7c8aa5"];
+  n3 -> n4 [constraint=false];
+  n4 -> n5 [constraint=false];
+  n5 -> n6 [color="#7c8aa5"];
+  stub_in [label="组外接口\n入 3 条", shape=note, style="filled", fillcolor="#e9eef8", color="#9a5310"];
+  {rank=same; stub_in; n0; n1; n2;}
+  stub_in -> n0 [style=dashed, constraint=false, arrowhead=none];
+  stub_in -> n6 [style=dashed, constraint=false, arrowhead=none];
+  stub_out [label="组外接口\n出 6 条", shape=note, style="filled", fillcolor="#e9eef8", color="#9a5310"];
+  {rank=same; stub_out; n6;}
+  n0 -> stub_out [style=dashed, constraint=false, arrowhead=none];
+  n1 -> stub_out [style=dashed, constraint=false, arrowhead=none];
+  n3 -> stub_out [style=dashed, constraint=false, arrowhead=none];
+  n4 -> stub_out [style=dashed, constraint=false, arrowhead=none];
+  n6 -> stub_out [style=dashed, constraint=false, arrowhead=none];
+}

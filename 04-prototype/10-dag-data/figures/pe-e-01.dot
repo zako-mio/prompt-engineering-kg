@@ -1,0 +1,30 @@
+digraph fig {
+  rankdir=LR; bgcolor="transparent";
+  node[shape=box, style="rounded,filled", fillcolor="#ffffff", color="#7c8aa5", fontcolor="#0e1729", fontname="Noto Sans CJK SC", fontsize=13, margin="0.20,0.12"]; edge[color="#7c8aa5", fontcolor="#46536b", fontname="Noto Sans CJK SC", fontsize=11, arrowsize=0.7];
+  I [label="输入", fillcolor="#dfe6fb", color="#2f4bd8", width=1.2];
+  O [label="期望输出", fillcolor="#dfe6fb", color="#2f4bd8", width=1.2];
+  C [label="判据
+决定评测集的
+价值上限", fillcolor="#dfe6fb", color="#2f4bd8"];
+  {rank=same; I; O; C;}
+  D [label="确定性判据
+字段是否合法 / 是否含指定内容
+是否命中正则
+⇒ 可复现、成本低，应优先", color="#136f3a"];
+  M [label="模型辅助判据
+相似度 / 评分准则 / 事实一致性
+⇒ 覆盖无法机械判定的质量标准
+但自身有偏差", color="#9a5310"];
+  L [label="两条组织要求
+① 按失败模式分层而非随机抽样
+② 与提示词一起版本化", shape=note, fillcolor="#e9eef8"];
+  {rank=same; D; M; L;}
+  C -> D [label="优先"];
+  D -> M [style=dashed, label="补充"];
+  M -> L [style=dotted, arrowhead=none, label="组织"];
+  N [label="边界
+只覆盖被采样到的失败模式
+⇒ 须随真实故障持续增补", shape=note, fillcolor="#e9eef8"];
+  {rank=same; N;}
+  D -> N [style=dotted, arrowhead=none];
+}

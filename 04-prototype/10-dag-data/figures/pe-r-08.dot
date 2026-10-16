@@ -1,0 +1,28 @@
+digraph fig {
+  rankdir=LR; bgcolor="transparent";
+  node[shape=box, style="rounded,filled", fillcolor="#ffffff", color="#7c8aa5", fontcolor="#0e1729", fontname="Noto Sans CJK SC", fontsize=13, margin="0.20,0.12"]; edge[color="#7c8aa5", fontcolor="#46536b", fontname="Noto Sans CJK SC", fontsize=11, arrowsize=0.7];
+  S1 [label="强度一 模型自评
+自己检查自己的输出
+可靠性最低 · 成本最低", color="#b3181f"];
+  S2 [label="强度二 独立评估
+另一个模型或另一段提示
+按判据评估", color="#9a5310"];
+  S3 [label="强度三 外部信号驱动
+测试通过 / 校验器报错
+工具返回预期结果", color="#136f3a"];
+  S1 -> S2 [label="可靠性递增"];
+  S2 -> S3 [label="可靠性递增"];
+  {rank=same; S3; N;}
+  N [label="为什么自评会失灵
+它依赖与生成同一套内部表征
+能纠正遗漏与格式问题
+对事实性与逻辑错误几乎无效
+⇒ 无外部信号时反思沿同一个错误走得更远
+并给错误结论更高的置信度", shape=note, fillcolor="#e9eef8"];
+  S3 -> N [style=dotted, arrowhead=none];
+  {rank=same; S1; L;}
+  L [label="无外部信号时的纪律
+限制反思轮数
+或改为引入独立评估者", shape=note, fillcolor="#e9eef8"];
+  S1 -> L [style=dotted, arrowhead=none];
+}

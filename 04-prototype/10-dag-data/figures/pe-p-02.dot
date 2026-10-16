@@ -1,0 +1,17 @@
+digraph fig {
+  rankdir=LR; bgcolor="transparent";
+  node[shape=box, style="rounded,filled", fillcolor="#ffffff", color="#7c8aa5", fontcolor="#0e1729", fontname="Noto Sans CJK SC", fontsize=13, margin="0.20,0.12"]; edge[color="#7c8aa5", fontcolor="#46536b", fontname="Noto Sans CJK SC", fontsize=11, arrowsize=0.7];
+  subgraph cluster_new {
+    label="现行写法：短触发 + 渐进式披露"; fontname="Noto Sans CJK SC"; fontsize=12; color="#7c8aa5";
+    style="rounded,dashed"; fontcolor="#46536b";
+    main [label="主文件（常驻成本）\n① 触发描述：尽可能短、可判定\n② 要点：做什么 / 不做什么 / 判据\n③ 边界声明：适用范围与不适用场景\n④ 索引：指向按需加载的引用文件", fillcolor="#dfe6fb", color="#2f4bd8"];
+    r1 [label="引用文件 1\n细节", fillcolor="#ffffff"];
+    r2 [label="引用文件 2\n细节", fillcolor="#ffffff"];
+    r3 [label="引用文件 n\n细节", fillcolor="#ffffff"];
+    main -> r1 [style=dashed, label="按需"];
+    main -> r2 [style=dashed, label="按需"];
+    main -> r3 [style=dashed, label="按需"];
+  }
+  old [label="旧写法：详尽操作手册式\n⇒ 在新一代模型上反而降低效果\n并把常驻 token 推高", color="#b3181f", shape=note, fillcolor="#e9eef8"];
+  main -> old [style=dotted, arrowhead=none, label="对照"];
+}

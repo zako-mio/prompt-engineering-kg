@@ -1,0 +1,61 @@
+{
+  "_meta": {
+    "artifact": "背景摄影素材许可台账（架构决策 ADR-002 决策点 2 与数据契约的许可纪律条要求）",
+    "as_of": "2026-10-15",
+    "rule": "⛔ 仅允许 CC0 / CC BY；CC BY 类**必须**在页脚署名；每件素材须可回溯到原始来源与许可。",
+    "derivation_note": "★ 本目录下的 WebP 是**派生件**（分辨率阶梯与 tonal 重映射），派生脚本来自 hub 的 build_backdrop_assets.py（幂等纯函数、无时钟）。原始素材**不入仓**（体积），需按 source_url 自行下载后重跑派生。",
+    "provenance_of_derivation": {
+      "script": "沿用同一套素材派生脚本（只读参考，未改；脚本随该素材集的既有工程一同维护）",
+      "why_reused": "本会话 shell 无出网（SSL_ERROR_SYSCALL）⇒ 无法下载原始素材；参照工程仓内已有**同一批素材的派生件**，直接取用既满足「背景用真实素材」，又与参照站视觉同源（用户要求『风格差距不要太大好过渡』）。"
+    }
+  },
+  "assets": [
+    {
+      "files": ["night-portrait-1080.webp", "night-1280.webp", "night-1920.webp", "night-2560.webp"],
+      "title": "A 340-million pixel starscape from Paranal",
+      "author": "S. Guisard (ESO)",
+      "source_url": "https://cdn.eso.org/images/large/eso0934a.jpg",
+      "source_page": "https://www.eso.org/public/images/eso0934a/",
+      "license": "CC BY 4.0",
+      "license_url": "https://creativecommons.org/licenses/by/4.0/",
+      "attribution_required": true,
+      "attribution_text": "背景星空：S. Guisard / ESO（CC BY 4.0）",
+      "modifications": "按分辨率阶梯缩放；一档 9:16 竖版裁切（裁切起点选在银河亮部与暗尘埃交界处）；夜间帧施加 contrast(1.5) brightness(0.62) 与 opacity 0.62；另派生一档日间纱幕（见下）",
+      "bytes": { "night-portrait-1080.webp": 592408, "night-1280.webp": 172412, "night-1920.webp": 486150, "night-2560.webp": 986164 }
+    },
+    {
+      "files": ["day-1280.webp", "day-1920.webp", "day-2560.webp"],
+      "title": "Lofoten, Norway（极光天幕；已裁掉地面景物）",
+      "author": "Unsplash 贡献者（原始上传见 Wikimedia Commons）",
+      "source_url": "https://upload.wikimedia.org/wikipedia/commons/8/86/Lofoten%2C_Norway_%28Unsplash%29.jpg",
+      "license": "CC0 1.0",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "attribution_required": false,
+      "attribution_text": "背景天幕：Lofoten, Norway（Unsplash，CC0）",
+      "modifications": "按**亮度做逐像素 alpha** 派生浅色纱幕（公式：mask = smoothstep(lum, 0.16, 0.62) ** 1.15；alpha = 0.62 * mask；out = src * alpha + white * (1 - alpha)）。★ 为什么不做「原图低透明度」：浅色页底近白，直接把夜景照片低不透明度合成会把整页压成灰幕（原图暗天空占大半）。",
+      "bytes": { "day-1280.webp": 8178, "day-1920.webp": 15672, "day-2560.webp": 29494 }
+    },
+    {
+      "files": ["../favicon.svg"],
+      "title": "站点图标（站点自有）",
+      "author": "本站自研",
+      "source_url": null,
+      "license": "本站自有",
+      "license_url": null,
+      "attribution_required": false,
+      "attribution_text": null,
+      "modifications": "无",
+      "note": "★ 数据图解类图件（图表/关系图/示意图）一律**自制**，属数据契约许可纪律条的另一条纪律，不在本台账的「摄影素材」范围内。"
+    }
+  ],
+  "totals": {
+    "files": 8,
+    "bytes": 2290763,
+    "bytes_note": "7 个 WebP（2,290,478 B，逐文件实测）+ 1 个 favicon.svg（285 B，实测）",
+    "cc_by_files": 4,
+    "cc0_files": 3,
+    "own_files": 1,
+    "verification": "★ 本台账的逐文件字节数已用 `stat -c%s` 现场实测并逐条比对通过（7/7 吻合）；初稿曾把 favicon.svg 误写为 25,075 B，已按实测改正为 285 B。"
+  },
+  "footer_requirement": "页脚须有**独占一行**的署名区，含上表 `attribution_text`；CC BY 类为**义务**，CC0 类本站仍登记。"
+}

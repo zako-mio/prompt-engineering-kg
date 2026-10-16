@@ -1,0 +1,62 @@
+<svg class="fig__svg" role="img"
+ viewBox="0.00 0.00 856.00 216.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 212)">
+<title>fig</title>
+<g id="node1" class="node">
+<title>D1</title>
+<path fill="var(--surface-raised)" stroke="var(--warning)" d="M201.5,-208C201.5,-208 56.5,-208 56.5,-208 50.5,-208 44.5,-202 44.5,-196 44.5,-196 44.5,-160 44.5,-160 44.5,-154 50.5,-148 56.5,-148 56.5,-148 201.5,-148 201.5,-148 207.5,-148 213.5,-154 213.5,-160 213.5,-160 213.5,-196 213.5,-196 213.5,-202 207.5,-208 201.5,-208"/>
+<text text-anchor="middle" x="129" y="-188.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">直接注入</text>
+<text text-anchor="middle" x="129" y="-174.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">恶意指令由用户直接输入</text>
+<text text-anchor="middle" x="129" y="-160.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">⇒ 攻击面较窄</text>
+</g>
+<g id="node3" class="node">
+<title>H</title>
+<path fill="var(--surface-raised)" stroke="var(--danger)" d="M567,-173C567,-173 306,-173 306,-173 300,-173 294,-167 294,-161 294,-161 294,-111 294,-111 294,-105 300,-99 306,-99 306,-99 567,-99 567,-99 573,-99 579,-105 579,-111 579,-111 579,-161 579,-161 579,-167 573,-173 567,-173"/>
+<text text-anchor="middle" x="436.5" y="-153.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">三条放大危害的属性</text>
+<text text-anchor="middle" x="436.5" y="-139.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">① 上下文池化：不同来源混在同一窗口</text>
+<text text-anchor="middle" x="436.5" y="-125.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">② 记忆持久化：注入可跨会话留存</text>
+<text text-anchor="middle" x="436.5" y="-111.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">③ agentic 执行：被劫持指令触发真实副作用</text>
+</g>
+<g id="node2" class="node">
+<title>D2</title>
+<path fill="var(--surface-raised)" stroke="var(--danger)" d="M246,-130C246,-130 12,-130 12,-130 6,-130 0,-124 0,-118 0,-118 0,-68 0,-68 0,-62 6,-56 12,-56 12,-56 246,-56 246,-56 252,-56 258,-62 258,-68 258,-68 258,-118 258,-118 258,-124 252,-130 246,-130"/>
+<text text-anchor="middle" x="129" y="-110.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">间接注入</text>
+<text text-anchor="middle" x="129" y="-96.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">恶意指令藏在外部内容中</text>
+<text text-anchor="middle" x="129" y="-82.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">（网页、邮件、文档、工具返回、记忆）</text>
+<text text-anchor="middle" x="129" y="-68.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">⇒ 攻击面很宽</text>
+</g>
+<g id="edge2" class="edge">
+<title>D2&#45;&gt;H</title>
+<path fill="none" stroke="var(--border-line)" d="M258.23,-111.05C267.69,-112.38 277.28,-113.73 286.85,-115.08"/>
+<polygon fill="var(--border-line)" stroke="var(--border-line)" points="286.54,-117.51 293.81,-116.06 287.22,-112.65 286.54,-117.51"/>
+</g>
+<g id="node4" class="node">
+<title>R</title>
+<path fill="var(--brand-soft)" stroke="var(--brand-primary)" d="M553.5,-81C553.5,-81 319.5,-81 319.5,-81 313.5,-81 307.5,-75 307.5,-69 307.5,-69 307.5,-19 307.5,-19 307.5,-13 313.5,-7 319.5,-7 319.5,-7 553.5,-7 553.5,-7 559.5,-7 565.5,-13 565.5,-19 565.5,-19 565.5,-69 565.5,-69 565.5,-75 559.5,-81 553.5,-81"/>
+<text text-anchor="middle" x="436.5" y="-61.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">根本原因</text>
+<text text-anchor="middle" x="436.5" y="-47.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">模型在架构上不区分「指令」与「数据」</text>
+<text text-anchor="middle" x="436.5" y="-33.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">⇒ 不存在可靠的拦截式预防</text>
+<text text-anchor="middle" x="436.5" y="-19.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">⇒ 防御落在架构与权限上</text>
+</g>
+<g id="edge3" class="edge">
+<title>H&#45;&gt;R</title>
+<path fill="none" stroke="var(--border-line)" d="M436.5,-98.63C436.5,-95.14 436.5,-91.66 436.5,-88.17"/>
+<polygon fill="var(--border-line)" stroke="var(--border-line)" points="438.95,-88.02 436.5,-81.02 434.05,-88.02 438.95,-88.02"/>
+</g>
+<g id="node5" class="node">
+<title>N</title>
+<polygon fill="var(--surface-subtle)" stroke="var(--border-line)" points="842,-88 615,-88 615,0 848,0 848,-82 842,-88"/>
+<polyline fill="none" stroke="var(--border-line)" points="842,-88 842,-82 "/>
+<polyline fill="none" stroke="var(--border-line)" points="848,-82 842,-82 "/>
+<text text-anchor="middle" x="731.5" y="-68.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">边界</text>
+<text text-anchor="middle" x="731.5" y="-54.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">注入是当前生成式 AI 的固有属性</text>
+<text text-anchor="middle" x="731.5" y="-40.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">把某条缓解措施说成「已解决注入」</text>
+<text text-anchor="middle" x="731.5" y="-26.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">即为越界表述</text>
+<text text-anchor="middle" x="731.5" y="-12.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">输入过滤可被编码与多模态绕过</text>
+</g>
+<g id="edge4" class="edge">
+<title>R&#45;&gt;N</title>
+<path fill="none" stroke="var(--border-line)" stroke-dasharray="1,5" d="M565.59,-44C581.91,-44 598.54,-44 614.66,-44"/>
+</g>
+</g>
+</svg>

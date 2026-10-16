@@ -1,0 +1,76 @@
+<svg class="fig__svg" role="img"
+ viewBox="0.00 0.00 634.00 232.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 228)">
+<title>fig</title>
+<g id="node1" class="node">
+<title>A</title>
+<path fill="var(--brand-soft)" stroke="var(--brand-primary)" d="M144,-161C144,-161 12,-161 12,-161 6,-161 0,-155 0,-149 0,-149 0,-127 0,-127 0,-121 6,-115 12,-115 12,-115 144,-115 144,-115 150,-115 156,-121 156,-127 156,-127 156,-149 156,-149 156,-155 150,-161 144,-161"/>
+<text text-anchor="middle" x="78" y="-141.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">每一步：下一个 token</text>
+<text text-anchor="middle" x="78" y="-127.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">的概率分布</text>
+</g>
+<g id="node2" class="node">
+<title>B</title>
+<path fill="var(--surface-raised)" stroke="var(--success)" d="M371.5,-217C371.5,-217 249.5,-217 249.5,-217 243.5,-217 237.5,-211 237.5,-205 237.5,-205 237.5,-169 237.5,-169 237.5,-163 243.5,-157 249.5,-157 249.5,-157 371.5,-157 371.5,-157 377.5,-157 383.5,-163 383.5,-169 383.5,-169 383.5,-205 383.5,-205 383.5,-211 377.5,-217 371.5,-217"/>
+<text text-anchor="middle" x="310.5" y="-197.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">约束解码</text>
+<text text-anchor="middle" x="310.5" y="-183.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">按 schema 过滤候选</text>
+<text text-anchor="middle" x="310.5" y="-169.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">非法路径概率置零</text>
+</g>
+<g id="edge1" class="edge">
+<title>A&#45;&gt;B</title>
+<path fill="none" stroke="var(--border-line)" d="M156.07,-154.38C179.9,-159.45 206.17,-165.03 230.15,-170.13"/>
+<polygon fill="var(--border-line)" stroke="var(--border-line)" points="229.82,-172.57 237.18,-171.63 230.84,-167.77 229.82,-172.57"/>
+<text text-anchor="middle" x="191" y="-166.2" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="11.00" fill="var(--text-secondary)">生成期</text>
+</g>
+<g id="node4" class="node">
+<title>D</title>
+<path fill="var(--surface-raised)" stroke="var(--warning)" d="M383,-126C383,-126 238,-126 238,-126 232,-126 226,-120 226,-114 226,-114 226,-92 226,-92 226,-86 232,-80 238,-80 238,-80 383,-80 383,-80 389,-80 395,-86 395,-92 395,-92 395,-114 395,-114 395,-120 389,-126 383,-126"/>
+<text text-anchor="middle" x="310.5" y="-106.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">生成后校验</text>
+<text text-anchor="middle" x="310.5" y="-92.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">先自由生成，再逐条校验</text>
+</g>
+<g id="edge3" class="edge">
+<title>A&#45;&gt;D</title>
+<path fill="none" stroke="var(--border-line)" stroke-dasharray="5,2" d="M156.07,-126.3C176.18,-123.24 198.03,-119.93 218.78,-116.78"/>
+<polygon fill="var(--border-line)" stroke="var(--border-line)" points="219.21,-119.19 225.77,-115.71 218.48,-114.34 219.21,-119.19"/>
+<text text-anchor="middle" x="191" y="-126.2" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="11.00" fill="var(--text-secondary)">生成后</text>
+</g>
+<g id="node3" class="node">
+<title>C</title>
+<path fill="var(--brand-soft)" stroke="var(--brand-primary)" d="M582.5,-224C582.5,-224 475.5,-224 475.5,-224 469.5,-224 463.5,-218 463.5,-212 463.5,-212 463.5,-190 463.5,-190 463.5,-184 469.5,-178 475.5,-178 475.5,-178 582.5,-178 582.5,-178 588.5,-178 594.5,-184 594.5,-190 594.5,-190 594.5,-212 594.5,-212 594.5,-218 588.5,-224 582.5,-224"/>
+<text text-anchor="middle" x="529" y="-204.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">在剩余候选上取样</text>
+<text text-anchor="middle" x="529" y="-190.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">输出结构必然合法</text>
+</g>
+<g id="edge2" class="edge">
+<title>B&#45;&gt;C</title>
+<path fill="none" stroke="var(--border-line)" d="M383.59,-191.66C406.89,-193.17 432.71,-194.84 456,-196.34"/>
+<polygon fill="var(--border-line)" stroke="var(--border-line)" points="456,-198.8 463.15,-196.81 456.32,-193.91 456,-198.8"/>
+</g>
+<g id="node6" class="node">
+<title>N</title>
+<polygon fill="var(--surface-subtle)" stroke="var(--border-line)" points="620,-142 432,-142 432,-82 626,-82 626,-136 620,-142"/>
+<polyline fill="none" stroke="var(--border-line)" points="620,-142 620,-136 "/>
+<polyline fill="none" stroke="var(--border-line)" points="626,-136 620,-136 "/>
+<text text-anchor="middle" x="529" y="-122.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">关键差别</text>
+<text text-anchor="middle" x="529" y="-108.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">前者：非法路径根本没被采到</text>
+<text text-anchor="middle" x="529" y="-94.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">后者：非法已发生，只能补救</text>
+</g>
+<g id="edge5" class="edge">
+<title>C&#45;&gt;N</title>
+<path fill="none" stroke="var(--border-line)" stroke-dasharray="1,5" d="M529,-177.59C529,-165.81 529,-154.03 529,-142.25"/>
+</g>
+<g id="node5" class="node">
+<title>E</title>
+<path fill="var(--surface-raised)" stroke="var(--danger)" d="M588.5,-46C588.5,-46 469.5,-46 469.5,-46 463.5,-46 457.5,-40 457.5,-34 457.5,-34 457.5,-12 457.5,-12 457.5,-6 463.5,0 469.5,0 469.5,0 588.5,0 588.5,0 594.5,0 600.5,-6 600.5,-12 600.5,-12 600.5,-34 600.5,-34 600.5,-40 594.5,-46 588.5,-46"/>
+<text text-anchor="middle" x="529" y="-26.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">非法已经发生</text>
+<text text-anchor="middle" x="529" y="-12.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">只能事后发现并重试</text>
+</g>
+<g id="edge4" class="edge">
+<title>D&#45;&gt;E</title>
+<path fill="none" stroke="var(--border-line)" stroke-dasharray="5,2" d="M373.83,-79.97C400.43,-70.14 431.58,-58.63 458.88,-48.54"/>
+<polygon fill="var(--border-line)" stroke="var(--border-line)" points="460.02,-50.73 465.73,-46.01 458.32,-46.14 460.02,-50.73"/>
+</g>
+<g id="edge6" class="edge">
+<title>E&#45;&gt;N</title>
+<path fill="none" stroke="var(--border-line)" stroke-dasharray="1,5" d="M529,-46.29C529,-58.19 529,-70.08 529,-81.97"/>
+</g>
+</g>
+</svg>

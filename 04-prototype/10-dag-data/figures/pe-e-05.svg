@@ -1,0 +1,65 @@
+<svg class="fig__svg" role="img"
+ viewBox="0.00 0.00 834.00 184.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 180)">
+<title>fig</title>
+<g id="node1" class="node">
+<title>G</title>
+<path fill="var(--brand-soft)" stroke="var(--brand-primary)" d="M203,-146C203,-146 122,-146 122,-146 116,-146 110,-140 110,-134 110,-134 110,-122 110,-122 110,-116 116,-110 122,-110 122,-110 203,-110 203,-110 209,-110 215,-116 215,-122 215,-122 215,-134 215,-134 215,-140 209,-146 203,-146"/>
+<text text-anchor="middle" x="162.5" y="-124.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">生成候选指令</text>
+</g>
+<g id="node2" class="node">
+<title>V</title>
+<path fill="var(--brand-soft)" stroke="var(--brand-primary)" d="M468,-176C468,-176 374,-176 374,-176 368,-176 362,-170 362,-164 362,-164 362,-152 362,-152 362,-146 368,-140 374,-140 374,-140 468,-140 468,-140 474,-140 480,-146 480,-152 480,-152 480,-164 480,-164 480,-170 474,-176 468,-176"/>
+<text text-anchor="middle" x="421" y="-154.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">在评测集上评估</text>
+</g>
+<g id="edge1" class="edge">
+<title>G&#45;&gt;V</title>
+<path fill="none" stroke="var(--border-line)" d="M215.1,-134.03C255.29,-138.74 311.33,-145.29 354.66,-150.36"/>
+<polygon fill="var(--border-line)" stroke="var(--border-line)" points="354.53,-152.81 361.77,-151.19 355.1,-147.94 354.53,-152.81"/>
+</g>
+<g id="node4" class="node">
+<title>N</title>
+<polygon fill="var(--surface-subtle)" stroke="var(--border-line)" points="319,-74 0,-74 0,0 325,0 325,-68 319,-74"/>
+<polyline fill="none" stroke="var(--border-line)" points="319,-74 319,-68 "/>
+<polyline fill="none" stroke="var(--border-line)" points="325,-68 319,-68 "/>
+<text text-anchor="middle" x="162.5" y="-54.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">三条工程要点</text>
+<text text-anchor="middle" x="162.5" y="-40.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">① 评测集必须含留出部分，防搜索过拟合</text>
+<text text-anchor="middle" x="162.5" y="-26.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">② 判据必须可自动计算：人工判断先固化为代理指标</text>
+<text text-anchor="middle" x="162.5" y="-12.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">③ 限制搜索预算并记录最优候选</text>
+</g>
+<g id="edge4" class="edge">
+<title>G&#45;&gt;N</title>
+<path fill="none" stroke="var(--border-line)" stroke-dasharray="1,5" d="M162.5,-109.97C162.5,-98.09 162.5,-86.21 162.5,-74.32"/>
+</g>
+<g id="node3" class="node">
+<title>S</title>
+<path fill="var(--brand-soft)" stroke="var(--brand-primary)" d="M705.5,-151C705.5,-151 637.5,-151 637.5,-151 631.5,-151 625.5,-145 625.5,-139 625.5,-139 625.5,-117 625.5,-117 625.5,-111 631.5,-105 637.5,-105 637.5,-105 705.5,-105 705.5,-105 711.5,-105 717.5,-111 717.5,-117 717.5,-117 717.5,-139 717.5,-139 717.5,-145 711.5,-151 705.5,-151"/>
+<text text-anchor="middle" x="671.5" y="-131.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">按指标选择</text>
+<text text-anchor="middle" x="671.5" y="-117.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">或组合</text>
+</g>
+<g id="edge2" class="edge">
+<title>V&#45;&gt;S</title>
+<path fill="none" stroke="var(--border-line)" d="M480.26,-150.97C522.08,-145.92 577.94,-139.17 618.31,-134.3"/>
+<polygon fill="var(--border-line)" stroke="var(--border-line)" points="618.75,-136.72 625.4,-133.44 618.16,-131.85 618.75,-136.72"/>
+</g>
+<g id="edge3" class="edge">
+<title>S&#45;&gt;G</title>
+<path fill="none" stroke="var(--border-line)" stroke-dasharray="5,2" d="M625.49,-125.27C586.9,-123.08 529.82,-120.18 480,-119 427.57,-117.76 414.43,-117.81 362,-119 315.08,-120.06 261.98,-122.54 222.51,-124.62"/>
+<polygon fill="var(--border-line)" stroke="var(--border-line)" points="222.16,-122.19 215.3,-125.01 222.42,-127.08 222.16,-122.19"/>
+<text text-anchor="middle" x="421" y="-122.2" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="11.00" fill="var(--text-secondary)">必要时迭代</text>
+</g>
+<g id="node5" class="node">
+<title>F</title>
+<polygon fill="var(--surface-subtle)" stroke="var(--border-line)" points="820,-69 517,-69 517,-9 826,-9 826,-63 820,-69"/>
+<polyline fill="none" stroke="var(--border-line)" points="820,-69 820,-63 "/>
+<polyline fill="none" stroke="var(--border-line)" points="826,-63 820,-63 "/>
+<text text-anchor="middle" x="671.5" y="-49.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">前提与边界</text>
+<text text-anchor="middle" x="671.5" y="-35.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">无评测集与判据时，搜索没有目标函数</text>
+<text text-anchor="middle" x="671.5" y="-21.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">推理模型上自动优化的空间与人工优化一样被压缩</text>
+</g>
+<g id="edge5" class="edge">
+<title>S&#45;&gt;F</title>
+<path fill="none" stroke="var(--border-line)" stroke-dasharray="1,5" d="M671.5,-104.59C671.5,-92.81 671.5,-81.03 671.5,-69.25"/>
+</g>
+</g>
+</svg>

@@ -1,0 +1,12 @@
+digraph fig {
+  rankdir=LR; bgcolor="transparent";
+  node[shape=box, style="rounded,filled", fillcolor="#ffffff", color="#7c8aa5", fontcolor="#0e1729", fontname="Noto Sans CJK SC", fontsize=13, margin="0.20,0.12"]; edge[color="#7c8aa5", fontcolor="#46536b", fontname="Noto Sans CJK SC", fontsize=11, arrowsize=0.7];
+  T [label="<instructions>\n指令", fillcolor="#dfe6fb", color="#2f4bd8"];
+  E [label="<examples>\n示例", fillcolor="#dfe6fb", color="#2f4bd8"];
+  D [label="<documents>\n资料", fillcolor="#dfe6fb", color="#2f4bd8"];
+  U [label="<user_input>\n用户输入\n不可信", color="#b3181f"];
+  M [label="模型\n按标签无歧义解析结构", fillcolor="#dfe6fb", color="#2f4bd8", width=2.6];
+  T -> M; E -> M; D -> M; U -> M;
+  B [label="裸文本连成一段\n⇒ 指令与数据没有边界\n标签只消歧 · 不保安全", shape=note, fillcolor="#e9eef8"];
+  M -> B [style=dotted, arrowhead=none, label="对照"];
+}

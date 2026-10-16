@@ -1,0 +1,16 @@
+digraph fig {
+  rankdir=LR; bgcolor="transparent";
+  node[shape=box, style="rounded,filled", fillcolor="#ffffff", color="#7c8aa5", fontcolor="#0e1729", fontname="Noto Sans CJK SC", fontsize=13, margin="0.20,0.12"]; edge[color="#7c8aa5", fontcolor="#46536b", fontname="Noto Sans CJK SC", fontsize=11, arrowsize=0.7];
+  Q [label="同一个任务\n要推理 + 要结构化输出", fillcolor="#dfe6fb", color="#2f4bd8"];
+  A1 [label="形态 A：先自由推理\n输出契约不参与解码", color="#136f3a"];
+  A2 [label="再一次调用格式化\n按 schema 整理结论\n推理质量完整保留", color="#136f3a"];
+  B1 [label="形态 B：边推理边守 schema\n每一步都屏蔽大部分候选", color="#b3181f"];
+  B2 [label="中间状态无法自由试探\n格式约束挤占推理预算\n⇒ 质量可差一截", color="#b3181f"];
+  Q -> A1; A1 -> A2;
+  Q -> B1 [style=dashed]; B1 -> B2 [style=dashed];
+  {rank=same; A1; B1;}
+  {rank=same; A2; B2; N;}
+  N [label="代价与收益\nA：调用次数与延迟上升\nB：一次调用，但推理表现下降", shape=note, fillcolor="#e9eef8"];
+  A2 -> N [style=dotted, arrowhead=none];
+  B2 -> N [style=dotted, arrowhead=none, constraint=false];
+}

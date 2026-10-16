@@ -1,0 +1,18 @@
+digraph fig {
+  rankdir=LR; bgcolor="transparent";
+  node[shape=box, style="rounded,filled", fillcolor="#ffffff", color="#7c8aa5", fontcolor="#0e1729", fontname="Noto Sans CJK SC", fontsize=13, margin="0.20,0.12"]; edge[color="#7c8aa5", fontcolor="#46536b", fontname="Noto Sans CJK SC", fontsize=11, arrowsize=0.7];
+  A [label="每一步：下一个 token\n的概率分布", fillcolor="#dfe6fb", color="#2f4bd8"];
+  B [label="约束解码\n按 schema 过滤候选\n非法路径概率置零", color="#136f3a"];
+  C [label="在剩余候选上取样\n输出结构必然合法", fillcolor="#dfe6fb", color="#2f4bd8"];
+  D [label="生成后校验\n先自由生成，再逐条校验", color="#9a5310"];
+  E [label="非法已经发生\n只能事后发现并重试", color="#b3181f"];
+  A -> B [label="生成期"];
+  B -> C;
+  A -> D [style=dashed, label="生成后"];
+  D -> E [style=dashed];
+  {rank=same; B; D;}
+  {rank=same; C; E; N;}
+  N [label="关键差别\n前者：非法路径根本没被采到\n后者：非法已发生，只能补救", shape=note, fillcolor="#e9eef8"];
+  C -> N [style=dotted, arrowhead=none];
+  E -> N [style=dotted, arrowhead=none, constraint=false];
+}

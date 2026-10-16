@@ -1,0 +1,29 @@
+digraph fig {
+  rankdir=LR; bgcolor="transparent";
+  node[shape=box, style="rounded,filled", fillcolor="#ffffff", color="#7c8aa5", fontcolor="#0e1729", fontname="Noto Sans CJK SC", fontsize=13, margin="0.20,0.12"]; edge[color="#7c8aa5", fontcolor="#46536b", fontname="Noto Sans CJK SC", fontsize=11, arrowsize=0.7];
+  T [label="标注
+用固定标记包裹外部内容
+并声明来源与不可信属性", fillcolor="#dfe6fb", color="#2f4bd8"];
+  D [label="声明
+在系统层说明处理规则
+如仅可引用不可执行", fillcolor="#dfe6fb", color="#2f4bd8"];
+  N [label="收窄
+把处理外部内容的步骤
+放在权限受控的子流程中", color="#136f3a"];
+  V [label="校验
+对输出做结构或规则校验
+拦截被劫持后的越界行为", fillcolor="#dfe6fb", color="#2f4bd8"];
+  T -> D -> N -> V;
+  {rank=same; T; D; N; V;}
+  L [label="位置对照
+标注与声明在提示层
+⇒ 提示层不构成安全边界
+收窄与校验在架构层，才是防线的落点", color="#9a5310"];
+  V -> L [style=dashed, label="分界"];
+  {rank=same; L; G;}
+  G [label="配套实践
+把标注体系写进提示词模板并版本化，新增外部来源时不漏标
+剥离不可见字符（零宽字符可绕过标注与检测）
+最小权限与标注必须配套，否则模型仍可能造成损害", shape=note, fillcolor="#e9eef8"];
+  N -> G [style=dotted, arrowhead=none];
+}

@@ -1,0 +1,22 @@
+digraph fig {
+  rankdir=TB; bgcolor="transparent";
+  node[shape=box, style="rounded,filled", fillcolor="#ffffff", color="#7c8aa5", fontcolor="#0e1729", fontname="Noto Sans CJK SC", fontsize=13, margin="0.20,0.12"]; edge[color="#7c8aa5", fontcolor="#46536b", fontname="Noto Sans CJK SC", fontsize=11, arrowsize=0.7];
+  A [label="完整思维链
+token 基线 100%", fillcolor="#dfe6fb", color="#2f4bd8", width=4.0];
+  B [label="原报告的最优情形：token 最少降到 7.6%
+准确率持平或超越完整思维链", color="#136f3a", width=4.0];
+  C [label="代码任务全量样本实测：最省时变体仍用 55.4%
+且仅保持原有代码质量的九成以上（存在质量损失）", color="#b3181f", width=4.0];
+  A -> B [label="原报告"];
+  A -> C [label="跨域外推"];
+  {rank=same; B; C;}
+  D [label="另一条路线：在提示中声明 token 预算
+预算取值本身决定压缩成效
+⇒ 预算也是需要调参的对象", shape=note, fillcolor="#e9eef8", width=4.0];
+  C -> D [style=dotted, arrowhead=none];
+  {rank=same; D; E;}
+  E [label="结论口径
+7.6% 是各任务中的最优情形，不是目标值
+极简草稿应当作待测变体", shape=note, fillcolor="#e9eef8", width=4.0];
+  B -> E [style=dotted, arrowhead=none];
+}

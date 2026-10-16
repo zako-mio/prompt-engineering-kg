@@ -1,0 +1,10 @@
+digraph fig {
+  rankdir=TB; bgcolor="transparent";
+  node[shape=box, style="rounded,filled", fillcolor="#ffffff", color="#7c8aa5", fontcolor="#0e1729", fontname="Noto Sans CJK SC", fontsize=13, margin="0.20,0.12"]; edge[color="#7c8aa5", fontcolor="#46536b", fontname="Noto Sans CJK SC", fontsize=11, arrowsize=0.7];
+  A [label="具体性：说了多少细节\n现行口径向「更一般」移动\n（推理路径不写死）", fillcolor="#dfe6fb", color="#2f4bd8", width=3.0];
+  B [label="可验证性：结果能否被判定\n现行口径向「更严格」移动\n（交付契约必须可判定）", fillcolor="#dfe6fb", color="#2f4bd8", width=3.0];
+  A -> B [dir=both, label="不矛盾：一个管推理路径，一个管交付契约"];
+  N [label="混为一谈的两种后果\n把「具体」当「长」 ⇒ 重复指令只烧 token\n把「一般」当「模糊」 ⇒ 契约不可判定", shape=note, fillcolor="#e9eef8", width=3.0];
+  B -> N [style=dotted, arrowhead=none];
+  {rank=same; B; N;}
+}

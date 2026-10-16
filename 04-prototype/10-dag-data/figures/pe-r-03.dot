@@ -1,0 +1,26 @@
+digraph fig {
+  rankdir=TB; bgcolor="transparent";
+  node[shape=box, style="rounded,filled", fillcolor="#ffffff", color="#7c8aa5", fontcolor="#0e1729", fontname="Noto Sans CJK SC", fontsize=13, margin="0.20,0.12"]; edge[color="#7c8aa5", fontcolor="#46536b", fontname="Noto Sans CJK SC", fontsize=11, arrowsize=0.7];
+  P [label="自一致性的两个前提
+① 答案唯一 ② 错误路径彼此发散", fillcolor="#dfe6fb", color="#2f4bd8", width=3.2];
+  A [label="前提成立
+正确路径收敛、错误路径分散
+⇒ 多数投票有效", color="#136f3a"];
+  B [label="前提不成立：模型存在系统性偏见
+所有路径犯同一个错
+⇒ 投票高置信度地输出错答案", color="#b3181f"];
+  P -> A [label="成立"];
+  P -> B [label="不成立"];
+  {rank=same; A; B;}
+  S [label="样本数与收益（现行证据）
+20 个样本：HotpotQA +0.4 个百分点
+MATH-500 +1.6 个百分点
+token 成本近线性增长 ⇒ 收益早期饱和", color="#9a5310", width=3.2];
+  A -> S [label="实测"];
+  {rank=same; S; T;}
+  T [label="另一种收益口径
+需要推理忠实度而非仅准确率时
+投票可能提高忠实度
+但方向须实测确认", shape=note, fillcolor="#e9eef8", width=3.2];
+  B -> T [style=dotted, arrowhead=none];
+}

@@ -1,0 +1,933 @@
+{
+  "meta": {
+    "as_of": "2026-10",
+    "edition": "v1",
+    "count": 115,
+    "provenance": "全部条目取自 01-research/evidence/A1-official-specs.json、A2-academic-frontier.json、A3-toolchain.json、A4-tutorial-ecosystem.json、A5-report-audit.json 中已回源的真实 URL；未新增任何未经回源的条目。",
+    "license_discipline": "只登记题录（标题/URL/分级/日期/说明）与不超过 200 字的原文关键句；书籍、标准、论文正文不入库。",
+    "tier_enum": ["official", "paper", "vendor", "community"],
+    "tier_note": "official = 厂商/标准组织/项目官方文档与官方工程博客、官方仓库与包注册表元数据、顶会 proceedings 与期刊 DOI 页面；paper = arXiv 预印本或未取得正式 proceedings 收录的论文；vendor = 厂商自述营销/新闻稿类页面（立场偏差，不作中立证据）；community = 社区清单、二手转载、卖课引流等最低级信源。"
+  },
+  "sources": [
+    {
+      "id": "S-0001",
+      "title": "Anthropic — Claude prompting best practices（现行主参考页）",
+      "url": "https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices",
+      "tier": "official",
+      "date": "2026-10-14",
+      "note": "XML 标签与 few-shot 三要求；长上下文三技巧；thinking/reasoning 节（偏好一般性指令、手写 CoT 降为 fallback）；prefill 在 4.6+ 返回 400；budget_tokens 在 4.7+ 返回 400；负向提示改写为正向指令；aggressive language 应回调。页面无日期戳，覆盖至 2026 年模型代。"
+    },
+    {
+      "id": "S-0002",
+      "title": "Anthropic — Prompt engineering overview",
+      "url": "https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/overview",
+      "tier": "official",
+      "date": "2026-10-14",
+      "note": "官方对「何时该做提示工程」的边界：并非所有失败标准都靠提示工程解决，换模型有时更能改善延迟与成本；并指认现行 living reference。"
+    },
+    {
+      "id": "S-0003",
+      "title": "Anthropic — Extended thinking（含向 adaptive thinking 迁移）",
+      "url": "https://platform.claude.com/docs/en/build-with-claude/extended-thinking",
+      "tier": "official",
+      "date": "2026-10-14",
+      "note": "手动 budget_tokens 退场；4.7+ 设 type:\"enabled\" 直接 400；现行口径为 adaptive thinking + output_config.effort。"
+    },
+    {
+      "id": "S-0004",
+      "title": "Anthropic Engineering — Effective context engineering for AI agents",
+      "url": "https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents",
+      "tier": "official",
+      "date": "2025-09-29",
+      "note": "上下文工程的定义与「提示工程的自然演进」定位；few-shot 仍强烈建议但反对穷举边界案例；attention budget 与 context rot；长时程三技术（compaction / 结构化笔记 / 多 Agent）。"
+    },
+    {
+      "id": "S-0005",
+      "title": "Anthropic Engineering — Building effective agents",
+      "url": "https://www.anthropic.com/engineering/building-effective-agents",
+      "tier": "official",
+      "date": "2024-12-19",
+      "note": "五工作流模式（prompt chaining / routing / parallelization / orchestrator-workers / evaluator-optimizer）的原始定义与「何时用」判据；页面顶部官方已加时效提示。"
+    },
+    {
+      "id": "S-0006",
+      "title": "Anthropic Engineering — How we built our multi-agent research system",
+      "url": "https://www.anthropic.com/engineering/multi-agent-research-system",
+      "tier": "official",
+      "date": "2025-06-13",
+      "note": "多 Agent 架构与量化取舍（+90.2% 为厂商自述内部评测；约 4×/15× token 成本）；含 8 条 agent prompting 原则。"
+    },
+    {
+      "id": "S-0007",
+      "title": "Anthropic — Resources article: prompt improver",
+      "url": "https://claude.com/resources/articles/prompt-improver",
+      "tier": "official",
+      "date": "2024-10-14",
+      "note": "提示改进器五法清单与厂商自述量化效果；其 prefill 手法在 Claude 4.6+ 已失效，引用须逐项做时效过滤。"
+    },
+    {
+      "id": "S-0008",
+      "title": "Anthropic — Introducing the Model Context Protocol",
+      "url": "https://www.anthropic.com/news/model-context-protocol",
+      "tier": "official",
+      "date": "2024-11-25",
+      "note": "MCP 首发公告与创始作者（David Soria Parra / Justin Spahr-Summers）。"
+    },
+    {
+      "id": "S-0009",
+      "title": "Anthropic — Donating the Model Context Protocol and establishing the Agentic AI Foundation",
+      "url": "https://www.anthropic.com/news/donating-the-model-context-protocol-and-establishing-of-the-agentic-ai-foundation",
+      "tier": "official",
+      "date": "2025-12-09",
+      "note": "MCP 捐赠给 Linux Foundation 下的 AAIF，与 Block 的 goose、OpenAI 的 AGENTS.md 并列创始项目；生态规模数字为厂商自述。"
+    },
+    {
+      "id": "S-0010",
+      "title": "OpenAI — Reasoning best practices",
+      "url": "https://developers.openai.com/api/docs/guides/reasoning-best-practices",
+      "tier": "official",
+      "date": null,
+      "note": "推理模型上避免 CoT 提示、zero-shot 优先的官方反向建议；页面正文仍停留 o3/o4-mini 世代且无可见发布日期，引用须标注时效不确定。"
+    },
+    {
+      "id": "S-0011",
+      "title": "OpenAI — Prompt engineering（现行指南）",
+      "url": "https://developers.openai.com/api/docs/guides/prompt-engineering",
+      "tier": "official",
+      "date": "2026-10-14",
+      "note": "推理模型只需高层指引（senior coworker 比喻）；可复用提示对象（v1/prompts）弃用时间线，2026-11-30 关停。"
+    },
+    {
+    "id": "S-0012",
+      "title": "OpenAI — Using GPT-6（现行最新一代 prompting 指南）",
+      "url": "https://developers.openai.com/api/docs/guides/latest-model",
+      "tier": "official",
+      "date": "2026-10-14",
+      "note": "精简系统提示的量化口径（厂商自述内部评测，官方自称 directional）；reasoning.effort 合法档位；非 none 时须移除 temperature/top_p。"
+    },
+    {
+      "id": "S-0013",
+      "title": "OpenAI Developers blog — Rethinking skills and prompts for GPT-6 Astra",
+      "url": "https://developers.openai.com/blog/rethinking-skills-and-prompts-for-gpt-6-astra",
+      "tier": "official",
+      "date": "2026-09-11",
+      "note": "过度具体的手写配方会 hinders results；skill 走 progressive disclosure 与最短触发描述。"
+    },
+    {
+      "id": "S-0014",
+      "title": "OpenAI — Structured model outputs（strict: true 约束解码）",
+      "url": "https://developers.openai.com/api/docs/guides/structured-outputs",
+      "tier": "official",
+      "date": "2026-10-14",
+      "note": "json_schema + strict:true + additionalProperties:false + required 全列的现行契约；Responses API 侧为 text.format。"
+    },
+    {
+      "id": "S-0015",
+      "title": "OpenAI Cookbook — GPT-5 prompting guide（含 Cursor 生产调优案例）",
+      "url": "https://raw.githubusercontent.com/openai/openai-cookbook/main/examples/gpt-5/gpt-5_prompting_guide.ipynb",
+      "tier": "official",
+      "date": null,
+      "note": "大写/强调式强化与过度 thorough 提示在新模型上反效果的生产案例；矛盾或含糊指令对 GPT-5 的危害更大。"
+    },
+    {
+      "id": "S-0016",
+      "title": "OpenAI — Model Spec（官方正文，chain of command 节）",
+      "url": "https://raw.githubusercontent.com/openai/model_spec/refs/heads/main/model_spec.md",
+      "tier": "official",
+      "date": "2025-12-18",
+      "note": "指令层级的权威层级定义；并自述生产模型尚未完全实现该规范——此句是「原生集成」主张的反向证据。"
+    },
+    {
+      "id": "S-0017",
+      "title": "OpenAI — Improving instruction hierarchy in frontier LLMs（IH-Challenge）",
+      "url": "https://openai.com/index/instruction-hierarchy-challenge/",
+      "tier": "vendor",
+      "date": null,
+      "note": "厂商自述：System > developer > user > tool；内部模型 GPT-5 Mini-R 在 TensorTrust 与 System<>User 冲突上的提升，同时列出 Chat WinRate / Preference Score 回退。不作中立证据；无明确发布日期。"
+    },
+    {
+      "id": "S-0018",
+      "title": "Google — Gemini API prompt design strategies",
+      "url": "https://ai.google.dev/gemini-api/docs/prompting-strategies",
+      "tier": "official",
+      "date": null,
+      "note": "第三家厂商对 CoT 降级的交叉验证；避免不必要的说服性语言；few-shot 过量会导致过拟合。"
+    },
+    {
+      "id": "S-0019",
+      "title": "Google Cloud — Choose a design pattern for your agentic AI system",
+      "url": "https://docs.cloud.google.com/architecture/choose-design-pattern-agentic-ai-system",
+      "tier": "official",
+      "date": "2026-05-28",
+      "note": "上下文工程的工程内容定义（隔离 / 持久化 / 压缩）；可预测或高度结构化的工作负载应优先考虑非 agentic 方案。"
+    },
+    {
+      "id": "S-0020",
+      "title": "MCP — Specification 2026-07-28: Server Features（三大原语）",
+      "url": "https://modelcontextprotocol.io/specification/2026-07-28/server",
+      "tier": "official",
+      "date": "2026-07-28",
+      "note": "Prompts / Resources / Tools 的现行定义与控制权归属（user- / application- / model-controlled）。"
+    },
+    {
+      "id": "S-0021",
+      "title": "MCP — Specification 2026-07-28: Transports",
+      "url": "https://modelcontextprotocol.io/specification/2026-07-28/basic/transports",
+      "tier": "official",
+      "date": "2026-07-28",
+      "note": "stdio 与 Streamable HTTP 为现行传输；旧 HTTP+SSE 传输已列为 Deprecated。"
+    },
+    {
+      "id": "S-0022",
+      "title": "MCP — Specification 2026-07-28: Key Changes",
+      "url": "https://modelcontextprotocol.io/specification/2026-07-28/changelog",
+      "tier": "official",
+      "date": "2026-07-28",
+      "note": "破坏性变更：转无状态、移除 initialize 握手与会话、Roots/Sampling/Logging 进入 Deprecated（SEP-2577）。"
+    },
+    {
+      "id": "S-0023",
+      "title": "MCP — Versioning（现行版本声明）",
+      "url": "https://modelcontextprotocol.io/docs/2026-07-28/learn/versioning",
+      "tier": "official",
+      "date": "2026-07-28",
+      "note": "现行协议版本 = 2026-07-28；修订状态标记为 Draft / Current / Final。"
+    },
+    {
+      "id": "S-0024",
+      "title": "MCP — Governance and Stewardship",
+      "url": "https://modelcontextprotocol.io/community/governance",
+      "tier": "official",
+      "date": "2026-10-14",
+      "note": "治理归属一手声明：LF Projects, LLC 系列项目；BDFL → Core Maintainers → Maintainers → Contributors；规范 Apache-2.0。"
+    },
+    {
+      "id": "S-0025",
+      "title": "MCP — Security Policy（stdio 信任边界）",
+      "url": "https://modelcontextprotocol.io/community/security",
+      "tier": "official",
+      "date": "2026-10-14",
+      "note": "stdio 传输不是沙箱；SDK 不防御对端恶意行为。"
+    },
+    {
+      "id": "S-0026",
+      "title": "MCP — The MCP Registry（官方注册中心）",
+      "url": "https://modelcontextprotocol.io/registry/about",
+      "tier": "official",
+      "date": "2026-10-14",
+      "note": "官方中心化元数据仓库；不支持私有 server；server.json + 反向 DNS 命名空间认证。"
+    },
+    {
+      "id": "S-0027",
+      "title": "MCP — What is MCP?（现行版本文档入口）",
+      "url": "https://modelcontextprotocol.io/docs/2026-07-28/getting-started/intro",
+      "tier": "official",
+      "date": "2026-10-14",
+      "note": "Version 2026-07-28 (latest)；主流客户端支持面（Claude / ChatGPT / VS Code / Cursor 等）。"
+    },
+    {
+      "id": "S-0028",
+      "title": "MCP Registry API — servers 端点",
+      "url": "https://registry.modelcontextprotocol.io/v0/servers?limit=1",
+      "tier": "official",
+      "date": "2026-10-14",
+      "note": "官方 Registry 端点可用性实测。"
+    },
+    {
+      "id": "S-0029",
+      "title": "The Linux Foundation — Formation of the Agentic AI Foundation (AAIF)",
+      "url": "https://www.linuxfoundation.org/press/linux-foundation-announces-the-formation-of-the-agentic-ai-foundation",
+      "tier": "official",
+      "date": "2025-12-09",
+      "note": "AAIF 成立公告与创始项目（MCP / goose / AGENTS.md）；服务器数量与采纳名单属主办方自述。"
+    },
+    {
+      "id": "S-0030",
+      "title": "OWASP GenAI Security Project — LLM Top 10 2026 资源页",
+      "url": "https://genai.owasp.org/resource/owasp-genai-llm-top-10-2026/",
+      "tier": "official",
+      "date": "2026-08-04",
+      "note": "现行版本 = 2026 版；资源页可达（HTTP 200）。"
+    },
+    {
+      "id": "S-0031",
+      "title": "OWASP — GenAI-LLM-Top10 官方仓库 2026/README.md",
+      "url": "https://raw.githubusercontent.com/GenAI-Security-Project/GenAI-LLM-Top10/main/2026/README.md",
+      "tier": "official",
+      "date": "2026-08-04",
+      "note": "2026 版十条清单与重排（Excessive Agency 升至 LLM03；LLM08 为 Hidden Context Exposure）；沿用 2025 版编号即为过时。"
+    },
+    {
+      "id": "S-0032",
+      "title": "OWASP — LLM01:2026 Prompt Injection 正文（canonical Markdown 源）",
+      "url": "https://raw.githubusercontent.com/GenAI-Security-Project/GenAI-LLM-Top10/main/2026/final/LLM01_PromptInjection.md",
+      "tier": "official",
+      "date": "2026-08-04",
+      "note": "注入定义扩至 tool output / 多模态 / 中间推理 / 持久记忆；官方明确「无可靠预防机制」，防御须是架构性；Rule of Two 等 11 条缓解措施。"
+    },
+    {
+      "id": "S-0033",
+      "title": "OWASP — Top 10 for Large Language Model Applications（官方项目页，2025 版口径）",
+      "url": "https://owasp.org/www-project-top-10-for-large-language-model-applications/",
+      "tier": "official",
+      "date": "2026-10-14",
+      "note": "该页仍以 2025 版十条为展示主体（LLM07 System Prompt Leakage 为 2025 版新增项）⇒ 与 2026 版并存，引用须注明版本来源。"
+    },
+    {
+      "id": "S-0034",
+      "title": "OWASP — LLM Top 10 索引页（归档入口）",
+      "url": "https://genai.owasp.org/llm-top-10/",
+      "tier": "official",
+      "date": "2026-10-14",
+      "note": "官网索引页在 2026-10-14 抓取时仍以 2025 版为展示主体，与官方仓库 2026/README.md 标注的 2026 版存在同步落差。"
+    },
+    {
+      "id": "S-0035",
+      "title": "Meincke, Mollick, Mollick, Shapiro — The Decreasing Value of Chain of Thought in Prompting",
+      "url": "https://arxiv.org/abs/2506.07142",
+      "tier": "paper",
+      "date": "2025-06-08",
+      "note": "arXiv 2506.07142（Wharton GAIL Technical Report 2）。推理模型上 CoT 增益仅边际（o3-mini +2.9%、o4-mini +3.1%、Gemini Flash 2.5 -3.3%），耗时增加 20-80%。边界：GPQA Diamond 198 题、每条件 25 次重复；非推理模型上 CoT 仍有小增益。"
+    },
+    {
+      "id": "S-0036",
+      "title": "Stechly, Valmeekam, Kambhampati — Chain of Thoughtlessness? An Analysis of CoT in Planning",
+      "url": "https://proceedings.neurips.cc/paper_files/paper/2024/hash/3365d974ce309623bd8151082d78206c-Abstract-Conference.html",
+      "tier": "official",
+      "date": "2024-12-01",
+      "note": "NeurIPS 2024 主会（DOI 10.52202/079017-0917）。CoT 增益只在提示极度特化于问题类时出现，且随栈规模超出示例规模而迅速衰减。边界：Blocksworld 经典规划域，作者自陈问题非常简单。"
+    },
+    {
+      "id": "S-0037",
+      "title": "Kusano, Akimoto, Takeoka — Revisiting Prompt Engineering: A Comprehensive Evaluation for LLM-based Personalized Recommendation",
+      "url": "https://arxiv.org/abs/2507.13525",
+      "tier": "paper",
+      "date": "2025-07-17",
+      "note": "ACM RecSys 2025 可复现性 track；arXiv 2507.13525。23 种 prompt × 12 LLM × 8 数据集：高性能 LLM 上简单 prompt 常优于复杂 prompt，step-by-step 与 reasoning model 常导致更低准确率。边界：推荐排序任务、单用户设定，不可外推到数学推理。"
+    },
+    {
+      "id": "S-0038",
+      "title": "Wang 等 — From Harm to Help: Turning Reasoning In-Context Demos into Assets for Reasoning LMs",
+      "url": "https://arxiv.org/abs/2509.23196",
+      "tier": "paper",
+      "date": "2025-09-27",
+      "note": "arXiv 2509.23196 (v1)。经 verifier-based RL 训练的推理模型上 few-shot CoT 常劣于直接作答，增加示例持续降准；同时给出反例：I2S/I2S+ 把 demos 转成显式 insight 后可重新获益（AIME'25 GPT-4.1 +14.0%）。未检索到 2026 年独立复现。"
+    },
+    {
+      "id": "S-0039",
+      "title": "Kurtulush — When Chain-of-Thought Helps and When It Hurts: Serial-Depth Bottleneck",
+      "url": "https://arxiv.org/abs/2608.09942",
+      "tier": "paper",
+      "date": "2026-06-23",
+      "note": "arXiv 2608.09942 (v1)，预注册 OSF。高串行深度任务（GSM8K/MATH）CoT 恢复差 +54~+68pp；浅层 TC^0 任务（MMLU/ARC）结构性冗余；HumanEval 随规模符号翻转（7B -28.7pp、32B +23.2pp）。单作者预印本，作者自陈 MMLU/ARC 高基线可能有数据污染。"
+    },
+    {
+      "id": "S-0040",
+      "title": "Wallace, Xiao, Leike, Weng, Heidecke, Beutel — The Instruction Hierarchy: Training LLMs to Prioritize Privileged Instructions",
+      "url": "https://arxiv.org/abs/2404.13208",
+      "tier": "paper",
+      "date": "2024-04-19",
+      "note": "arXiv 2404.13208（cs.CR）。作者全部为 OpenAI；实验对象为 GPT-3.5；未见顶会 proceedings 收录。"
+    },
+    {
+      "id": "S-0041",
+      "title": "Bolliger, Jäger — Training LLMs to Enforce Multi-Level Instruction Hierarchies via Gravity-Weighted DPO",
+      "url": "https://arxiv.org/abs/2606.10860",
+      "tier": "paper",
+      "date": "2026-06-09",
+      "note": "arXiv 2606.10860 (v1)，cs.CR，作者 2 人。k=5 层级、十条成对优先关系；GW-DPO 在 Llama-3.1-8B-Instruct 上 Pareto 优于标准 DPO，过拒率降至标准 DPO 的一半。摘要未给绝对 adherence 数值。"
+    },
+    {
+      "id": "S-0042",
+      "title": "Kariyappa, Suh — Stronger Enforcement of Instruction Hierarchy via Augmented Intermediate Representations",
+      "url": "https://arxiv.org/abs/2505.18907",
+      "tier": "paper",
+      "date": "2026-03-09",
+      "note": "arXiv 2505.18907 (v2)。梯度类注入攻击 ASR 降低 1.6×–9.2× 且不明显损害效用。边界：方法需在中间层注入可训练嵌入 ⇒ 需训练/微调，不是纯提示词手段。"
+    },
+    {
+      "id": "S-0043",
+      "title": "Sansoterra, Zheng, Kumar — Seeing Through Conflicts: Instruction Hierarchy Alignment in Vision-Language Models",
+      "url": "https://arxiv.org/abs/2609.22234",
+      "tier": "paper",
+      "date": "2026-09-03",
+      "note": "arXiv 2609.22234 (v1)。文本侧 IH 训练只部分迁移到多模态攻击，在需跨模态解码/重建指令时失败。"
+    },
+    {
+      "id": "S-0044",
+      "title": "Dehghantanha, Homayoun — SoK: The Attack Surface of Agentic AI — Tools and Autonomy",
+      "url": "https://arxiv.org/abs/2603.22928",
+      "tier": "paper",
+      "date": "2026-08-11",
+      "note": "arXiv 2603.22928 (v2)，系统性综述。间接注入、代码执行、RAG 索引投毒、跨 Agent 操纵构成新攻击面；防御纵深为必需。"
+    },
+    {
+      "id": "S-0045",
+      "title": "Khattab 等 — DSPy: Compiling Declarative Language Model Calls into Self-Improving Pipelines",
+      "url": "https://arxiv.org/abs/2310.03714",
+      "tier": "paper",
+      "date": "2023-10-05",
+      "note": "ICLR 2024；arXiv 2310.03714。编译数分钟内使 GPT-3.5 与 llama2-13b-chat 自举出超越标准 few-shot 与专家手写 demonstrations 的流水线。增益相对对象是 few-shot 与手写示例，不是相对微调。"
+    },
+    {
+      "id": "S-0046",
+      "title": "Opsahl-Ong 等 — Optimizing Instructions and Demonstrations for Multi-Stage Language Model Programs (MIPRO/MIPROv2)",
+      "url": "https://arxiv.org/abs/2406.11695",
+      "tier": "paper",
+      "date": "2024-10-06",
+      "note": "EMNLP 2024；arXiv 2406.11695 (v2)。Llama-3-8B 上在 7 个多阶段程序中 5 个优于基线优化器，最高 +13% 准确率。"
+    },
+    {
+      "id": "S-0047",
+      "title": "Agrawal 等 — GEPA: Reflective Prompt Evolution Can Outperform Reinforcement Learning",
+      "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/0e9e708b6f48e14fd0ac29e167413f76-Abstract-Conference.html",
+      "tier": "official",
+      "date": "2026-02-14",
+      "note": "ICLR 2026 (Oral)；arXiv 2507.19457 (v2)。六个任务上平均优于 GRPO 6pp、最高 19pp，rollout 少至 1/35；优于 MIPROv2 超 10pp。⚠ 版本差异：proceedings 页写 up to 19pp，arXiv v2 摘要写 up to 20%。"
+    },
+    {
+      "id": "S-0048",
+      "title": "Soylu, Potts, Khattab — Fine-Tuning and Prompt Optimization: Two Great Steps that Work Better Together",
+      "url": "https://arxiv.org/abs/2407.10930",
+      "tier": "paper",
+      "date": "2024-10-07",
+      "note": "EMNLP 2024；arXiv 2407.10930 (v2)。交替优化权重与提示优于仅权重最多 60%、优于仅提示最多 6%。边界：三个 7-8B 开源模型；未给出成本临界点。"
+    },
+    {
+      "id": "S-0049",
+      "title": "Yuksekgonul 等 — Optimizing generative AI by backpropagating language model feedback（TextGrad 的 Nature 正式版）",
+      "url": "https://api.crossref.org/works/10.1038/s41586-025-08661-4",
+      "tier": "official",
+      "date": "2025-03-19",
+      "note": "Nature 639, 609-616 (2025)，DOI 10.1038/s41586-025-08661-4（经 Crossref 核验）。GPQA 零样本 51%→55%；LeetCode-Hard 相对提升 20%。⚠ 作者列表与 arXiv 版不同（Nature 版增列 Pan Lu），引用以 Nature 版为准。"
+    },
+    {
+      "id": "S-0050",
+      "title": "Zhou 等 — Large Language Models Are Human-Level Prompt Engineers (APE)",
+      "url": "https://arxiv.org/abs/2211.01910",
+      "tier": "paper",
+      "date": "2023-03-10",
+      "note": "ICLR 2024；arXiv 2211.01910 (v2)。24 个 NLP 任务上自动生成指令在 19/24 任务上与人工标注者持平或更好。2022-2023 模型量级，未在推理模型上验证。"
+    },
+    {
+      "id": "S-0051",
+      "title": "Yang 等 — Large Language Models as Optimizers (OPRO)",
+      "url": "https://arxiv.org/abs/2309.03409",
+      "tier": "paper",
+      "date": "2024-04-15",
+      "note": "ICLR 2024；arXiv 2309.03409 (v3)。GSM8K 上较人工提示最高 +8%，Big-Bench Hard 最高 +50%。把优化历史放入 prompt ⇒ 受上下文长度约束。"
+    },
+    {
+      "id": "S-0052",
+      "title": "Du 等 — Analyzing LLM Instruction Optimization for Tabular Fact Verification",
+      "url": "https://aclanthology.org/2026.findings-eacl.161/",
+      "tier": "official",
+      "date": "2026-02-20",
+      "note": "Findings of EACL 2026；arXiv 2602.17937。COPRO / MIPROv2 / SIMBA 的独立对比：MIPROv2 对 CoT 最稳，SIMBA 对 ReAct agent 收益最大；CoT 在表格事实核查上仍对小模型有效——与 Kusano 的推荐排序结论形成任务域冲突。"
+    },
+    {
+      "id": "S-0053",
+      "title": "Tam 等 — Let Me Speak Freely? Format Restrictions and LLM Performance",
+      "url": "https://arxiv.org/abs/2408.02442",
+      "tier": "paper",
+      "date": "2024-10-14",
+      "note": "EMNLP 2024 Industry Track；arXiv 2408.02442 (v3)。格式限制下推理能力显著下降，格式越严格退化越大。边界：限于生成空间受限的约束解码/强格式指令，不适用于「先自由推理再格式化」的两阶段模式。"
+    },
+    {
+      "id": "S-0054",
+      "title": "Xu, Xie, Zhao, He — Chain of Draft: Thinking Faster by Writing Less",
+      "url": "https://arxiv.org/abs/2502.18600",
+      "tier": "paper",
+      "date": "2025-03-03",
+      "note": "arXiv 2502.18600 (v2)。CoD 在准确率持平或超越 CoT 的同时最少只用 7.6% token。7.6% 是各任务中的最优情形，非普遍值。"
+    },
+    {
+      "id": "S-0055",
+      "title": "Yang — Chain of Draft for Software Engineering: Challenges in Applying Concise Reasoning to Code Tasks",
+      "url": "https://arxiv.org/abs/2506.10987",
+      "tier": "paper",
+      "date": "2025-03-12",
+      "note": "arXiv 2506.10987 (v1)。SWE-bench 全 300 样本上 CoD 基线最省时为 CoT 的 55.4%，与原文 7.6% 差距显著；变体仅保持 CoT 代码质量的 >90%。单作者预印本。"
+    },
+    {
+      "id": "S-0056",
+      "title": "Han 等 — Token-Budget-Aware LLM Reasoning (TALE / TALE-EP)",
+      "url": "https://arxiv.org/abs/2412.18547",
+      "tier": "paper",
+      "date": "2025-06-02",
+      "note": "arXiv 2412.18547 (v5)。在 prompt 中声明合理 token 预算可压缩冗长推理，但预算取值决定压缩成效。作者自述对应 ACL 2025，未在 ACL Anthology 检索到正式条目 ⇒ venue 以 arXiv 为准。"
+    },
+    {
+      "id": "S-0057",
+      "title": "Wang 等 — Self-Consistency Improves Chain of Thought Reasoning in Language Models",
+      "url": "https://arxiv.org/abs/2203.11171",
+      "tier": "paper",
+      "date": "2023-03-07",
+      "note": "ICLR 2023；arXiv 2203.11171 (v4)。GSM8K +17.9%、SVAMP +11.0%、AQuA +12.2%、StrategyQA +6.4%、ARC-challenge +3.9%。2022-2023 模型（PaLM/UL2 世代）基线。"
+    },
+    {
+      "id": "S-0058",
+      "title": "Loo — Self-Consistency Is Losing Its Edge: Diminishing Returns and Rising Costs in Modern LLMs",
+      "url": "https://arxiv.org/abs/2511.00751",
+      "tier": "paper",
+      "date": "2026-05-07",
+      "note": "arXiv 2511.00751 (v2)。HotpotQA 20 样本仅 +0.4%、MATH-500 +1.6%，token 成本近线性增长，且高样本数下部分配置反而下降。边界：Gemini 2.5 系列、最多 20 样本；单作者短文预印本。"
+    },
+    {
+      "id": "S-0059",
+      "title": "Mehta — Does Inference Scaling Improve Reasoning Faithfulness? A Multi-Model Analysis of Self-Consistency Tradeoffs",
+      "url": "https://arxiv.org/abs/2601.06423",
+      "tier": "paper",
+      "date": "2026-01-10",
+      "note": "arXiv 2601.06423 (v1)。四个前沿模型 × 100 道 GSM8K、N=5：GPT-5.2 准确率 78%→90%，Claude Opus 4.5 反而 78%→74.3%（faithfulness 0.270→0.891）。核心可证伪点：自一致性的符号随模型而变。⚠ 样本量小、单作者、未复现。"
+    },
+    {
+      "id": "S-0060",
+      "title": "Yao 等 — Tree of Thoughts: Deliberate Problem Solving with Large Language Models",
+      "url": "https://arxiv.org/abs/2305.10601",
+      "tier": "paper",
+      "date": "2023-12-03",
+      "note": "NeurIPS 2023；arXiv 2305.10601 (v2)。Game of 24 上 GPT-4 + CoT 仅 4%，ToT 达 74%。边界：三个作者自设任务、2023 年 GPT-4；成本-收益比原文未量化。"
+    },
+    {
+      "id": "S-0061",
+      "title": "Besta 等 — Graph of Thoughts: Solving Elaborate Problems with Large Language Models",
+      "url": "https://arxiv.org/abs/2308.09687",
+      "tier": "paper",
+      "date": "2024-02-06",
+      "note": "AAAI 2024，DOI 10.1609/aaai.v38i16.29720；arXiv 2308.09687 (v4)。排序任务质量较 ToT 提升 62% 同时成本降低 >31%。任务集为作者自选，非通用推理基准。"
+    },
+    {
+      "id": "S-0062",
+      "title": "Mahila, Maurya, Rafique, Nicolae — Beyond Fixed Budgets: Inelasticity and Limitations of Tree-of-Thought Reasoning Strategies",
+      "url": "https://arxiv.org/abs/2606.20599",
+      "tier": "paper",
+      "date": "2026-05-19",
+      "note": "Flexscience'26（ACM HPDC workshop），DOI 10.1145/3806645.3816237；arXiv 2606.20599。DPTS 低预算冷启动瓶颈；SSDP 前沿枯竭、激进合并永久丢弃未探索路径。结论：不存在跨计算连续统都适用的固定探索/剪枝策略。"
+    },
+    {
+      "id": "S-0063",
+      "title": "Liu 等 — Lost in the Middle: How Language Models Use Long Contexts",
+      "url": "https://aclanthology.org/2024.tacl-1.9/",
+      "tier": "official",
+      "date": "2024-01-01",
+      "note": "TACL Vol. 12, pp. 157-173；DOI 10.1162/tacl_a_00638。相关信息位于输入首尾时表现最好，位于中间时显著退化，显式长上下文模型亦然。摘要未给具体退化百分点；属稳定知识。"
+    },
+    {
+      "id": "S-0064",
+      "title": "Veseli, Chibane, Toneva, Koller — Positional Biases Shift as Inputs Approach Context Window Limits",
+      "url": "https://arxiv.org/abs/2508.07479",
+      "tier": "paper",
+      "date": "2025-08-10",
+      "note": "COLM 2025；arXiv 2508.07479。LiM 效应在输入占上下文窗口 50% 以内最强，超过后首因偏差减弱、近因偏差稳定，LiM 被距离型偏差取代。前提：需先成功检索。"
+    },
+    {
+      "id": "S-0065",
+      "title": "Gabín, Perez, Parapar — Lost in the Evidence? Reproducing Document Position and Context Size Effects in RAG",
+      "url": "https://arxiv.org/abs/2605.27105",
+      "tier": "paper",
+      "date": "2026-05-27",
+      "note": "SIGIR 2026 (accepted)；arXiv 2605.27105 (v2)。主题抽样是方差主源：小主题集会掩盖或放大排序效应；理想化设定的结论不总迁移到真实 RAG 流水线。对 LiM 类结论构成元层挑战。"
+    },
+    {
+      "id": "S-0066",
+      "title": "DAIR.AI — Prompt Engineering Guide（首页目录与技术清单）",
+      "url": "https://www.promptingguide.ai/",
+      "tier": "community",
+      "date": "2026-03-11",
+      "note": "18 技术 / 7 agents / 5 guides 的目录结构；仓库最后提交 2026-03-11 且为营销 CTA 与模型页更新。"
+    },
+    {
+      "id": "S-0067",
+      "title": "DAIR.AI — Chain-of-Thought Prompting 技术页",
+      "url": "https://www.promptingguide.ai/techniques/cot",
+      "tier": "community",
+      "date": "2026-02-01",
+      "note": "Last updated 2026-02-01 却仍以 2023 论文口径正面呈现 zero-shot CoT，无推理模型注意事项、无交叉提示 ⇒ stale-content-with-fresh-timestamp 实例。"
+    },
+    {
+      "id": "S-0068",
+      "title": "DAIR.AI — Reasoning LLMs 指南",
+      "url": "https://www.promptingguide.ai/guides/reasoning-llms",
+      "tier": "community",
+      "date": "2026-02-01",
+      "note": "纠偏内容存在（Avoid manual CoT）但被隔离在 guides 页；同页仍自述可先试 manual CoT，口径不干净。"
+    },
+    {
+      "id": "S-0069",
+      "title": "Learn Prompting — Is Role Prompting Effective?",
+      "url": "https://learnprompting.org/blog/role_prompting",
+      "tier": "community",
+      "date": "2024-09-16",
+      "note": "提出方自研立场：角色提示在推理/事实类任务上不能可靠提升准确率，但可控制语气与风格；2-shot CoT 一致优于角色提示；「Idiot」提示比「Genius」高 2.2pp。"
+    },
+    {
+      "id": "S-0070",
+      "title": "Learn Prompting — Technique #2: Roles in Prompts（教程正文页）",
+      "url": "https://learnprompting.org/docs/basics/roles",
+      "tier": "community",
+      "date": "2025-02-18",
+      "note": "更新于 2025-02-18（晚于其自家纠偏博客）却仍写 control the style, tone, and even the accuracy ⇒ 站内时间线倒挂的实例。"
+    },
+    {
+      "id": "S-0071",
+      "title": "Zheng 等 — When \"A Helpful Assistant\" Is Not Really Helpful: Personas in System Prompts Do Not Improve Performances of LLMs",
+      "url": "https://arxiv.org/abs/2311.10054",
+      "tier": "paper",
+      "date": "2024-10-09",
+      "note": "Findings of EMNLP 2024；arXiv 2311.10054 (v3)。162 个角色 × 4 个模型家族 × 2410 个事实问题：加入 persona 相较无 persona 对照不提升表现，各角色效果近似随机。"
+    },
+    {
+      "id": "S-0072",
+      "title": "Lilian Weng (Lil'Log) — Prompt Engineering（综述）",
+      "url": "https://lilianweng.github.io/posts/2023-03-15-prompt-engineering/",
+      "tier": "community",
+      "date": "2023-03-15",
+      "note": "CoT 收益在复杂推理任务与大模型（>50B）上更明显，简单任务收益有限。页面无修订标记，覆盖面止于 CoT/ToT/APE/RAG/Toolformer ⇒ 稳定知识，不可视为 2026 现状描述。"
+    },
+    {
+      "id": "S-0073",
+      "title": "Wei 等 — Chain-of-Thought Prompting Elicits Reasoning in Large Language Models",
+      "url": "https://arxiv.org/abs/2201.11903",
+      "tier": "paper",
+      "date": "2022-01-28",
+      "note": "NeurIPS 2022（归属为高共识，arXiv 页无 journal-ref）；arXiv 2201.11903。CoT 原始论文，2022 年模型量级。"
+    },
+    {
+      "id": "S-0074",
+      "title": "Yao 等 — ReAct: Synergizing Reasoning and Acting in Language Models",
+      "url": "https://arxiv.org/abs/2210.03629",
+      "tier": "paper",
+      "date": "2022-10-06",
+      "note": "ICLR 2023；arXiv 2210.03629 (v3 为 ICLR camera ready)。Thought→Action→Observation 交织范式原始论文。"
+    },
+    {
+      "id": "S-0075",
+      "title": "Lewis 等 — Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks",
+      "url": "https://dl.acm.org/doi/10.5555/3495724.3496517",
+      "tier": "official",
+      "date": "2020-12-06",
+      "note": "NeurIPS 2020（ACM DL 论文集条目）。RAG 原始论文，参数化与非参数化记忆的组合。"
+    },
+    {
+      "id": "S-0076",
+      "title": "The Prompt Report: A Systematic Survey of Prompt Engineering Techniques",
+      "url": "https://arxiv.org/abs/2406.06608",
+      "tier": "paper",
+      "date": "2025-02-26",
+      "note": "arXiv 2406.06608 (v6)。33 个词汇术语、58 种 LLM 提示技术、40 种其他模态技术的分类学 ⇒ 百科型教程的技术清单远小于学术全景。"
+    },
+    {
+      "id": "S-0077",
+      "title": "Promptfoo 官方文档 — Assertions & metrics",
+      "url": "https://www.promptfoo.dev/docs/configuration/expected-outputs/",
+      "tier": "official",
+      "date": "2026-10-14",
+      "note": "确定性断言与模型辅助断言全清单；任意测试类型可用 not- 前缀取反。"
+    },
+    {
+      "id": "S-0078",
+      "title": "PyPI JSON API — dspy",
+      "url": "https://pypi.org/pypi/dspy/json",
+      "tier": "official",
+      "date": "2026-10-12",
+      "note": "现行包名 dspy，版本 3.4.1，MIT，requires_python <3.16,>=3.10。"
+    },
+    {
+      "id": "S-0079",
+      "title": "PyPI JSON API — dspy-ai（兼容别名）",
+      "url": "https://pypi.org/pypi/dspy-ai/json",
+      "tier": "official",
+      "date": "2026-10-12",
+      "note": "官方降级为兼容别名，description 直接指示 pip install dspy；requires_dist 为 dspy>=3.4.1（纯转发）。"
+    },
+    {
+      "id": "S-0080",
+      "title": "DSPy 官方文档 — Optimizers: choosing one",
+      "url": "https://dspy.ai/current/diving-deeper/choosing-an-optimizer/",
+      "tier": "official",
+      "date": "2026-10-14",
+      "note": "官方明确否认存在单一最优 optimizer，且不提供自动选择；auto 旋钮只控制预算不控制选型。含各 optimizer 的现行签名与定位。"
+    },
+    {
+      "id": "S-0081",
+      "title": "DSPy 官方文档 — GEPA optimization（Getting Started 主推路径）",
+      "url": "https://dspy.ai/current/getting-started/gepa-optimization/",
+      "tier": "official",
+      "date": "2026-10-14",
+      "note": "Getting Started 中唯一独立成章的优化器教程；官方示例含量化收益（78.1%→90.1%）。"
+    },
+    {
+      "id": "S-0082",
+      "title": "DSPy 官方文档 — dspy.SIMBA（Stochastic Introspective Mini-Batch Ascent）",
+      "url": "https://raw.githubusercontent.com/stanfordnlp/dspy/refs/heads/main/docs/docs/api/optimizers/SIMBA.md",
+      "tier": "official",
+      "date": "2026-10-14",
+      "note": "SIMBA 的权威出处与机制说明；⚠ 无独立学术论文，官方文档仅指向第三方博客作为机制说明。"
+    },
+    {
+      "id": "S-0083",
+      "title": "GitHub API — stanfordnlp/dspy latest release",
+      "url": "https://api.github.com/repos/stanfordnlp/dspy/releases/latest",
+      "tier": "official",
+      "date": "2026-10-12",
+      "note": "tag 3.4.1，published 2026-10-12T23:12:32Z；release 说明称 DSPy 3.4.1 将 GEPA 的结构化 InstructionProposer 设为默认。"
+    },
+    {
+      "id": "S-0084",
+      "title": "PyPI 项目页 — textgrad README（Nature 论文引用块）",
+      "url": "https://pypi.org/project/textgrad/",
+      "tier": "official",
+      "date": "2025-03-19",
+      "note": "2025-03-19 TextGrad 发表于 Nature；BibTeX 给出卷 639、页 609-616。"
+    },
+    {
+      "id": "S-0085",
+      "title": "GitHub API — zou-group/textgrad 仓库元数据",
+      "url": "https://api.github.com/repos/zou-group/textgrad",
+      "tier": "official",
+      "date": "2026-10-14",
+      "note": "stars 3761、MIT、pushed_at 2025-07-25（距 as_of 约 15 个月无 push，但仓库未 archived）⇒ 只登记活跃度事实，不下维护终止结论。"
+    },
+    {
+      "id": "S-0086",
+      "title": "npm registry — promptfoo/latest",
+      "url": "https://registry.npmjs.org/promptfoo/latest",
+      "tier": "official",
+      "date": "2026-10-14",
+      "note": "现行版本 0.124.1、MIT、Node 引擎要求 >=22.22.0。"
+    },
+    {
+      "id": "S-0087",
+      "title": "GitHub API — promptfoo/promptfoo 仓库元数据",
+      "url": "https://api.github.com/repos/promptfoo/promptfoo",
+      "tier": "official",
+      "date": "2026-10-14",
+      "note": "stars 25996、MIT；自述红队/漏洞扫描与「Used by OpenAI and Anthropic」（工具方自述，非中立证据）。"
+    },
+    {
+      "id": "S-0088",
+      "title": "PyPI JSON API — mcp（MCP Python SDK）",
+      "url": "https://pypi.org/pypi/mcp/json",
+      "tier": "official",
+      "date": "2026-10-02",
+      "note": "版本 2.3.0、MIT；author 字段为 'Model Context Protocol a Series of LF Projects, LLC.' ⇒ 佐证治理中立化。"
+    },
+    {
+      "id": "S-0089",
+      "title": "npm registry — @modelcontextprotocol/sdk/latest",
+      "url": "https://registry.npmjs.org/@modelcontextprotocol/sdk/latest",
+      "tier": "official",
+      "date": "2026-10-14",
+      "note": "现行版本 1.32.1、MIT、author 为 Anthropic, PBC。"
+    },
+    {
+      "id": "S-0090",
+      "title": "npm registry — 包名 mcp（消歧反例）",
+      "url": "https://registry.npmjs.org/mcp/latest",
+      "tier": "official",
+      "date": "2026-10-14",
+      "note": "npm 上的 mcp 由 Mintlify 发布（1.4.2）且已 deprecated，不是官方 TypeScript SDK。"
+    },
+    {
+      "id": "S-0091",
+      "title": "PyPI JSON API — langgraph",
+      "url": "https://pypi.org/pypi/langgraph/json",
+      "tier": "official",
+      "date": "2026-10-14",
+      "note": "版本 1.2.15、MIT、Production/Stable；自述为构建长时程有状态 agent 的低层编排框架。"
+    },
+    {
+      "id": "S-0092",
+      "title": "PyPI JSON API — outlines",
+      "url": "https://pypi.org/pypi/outlines/1.2.13/json",
+      "tier": "official",
+      "date": "2026-05-04",
+      "note": "版本 1.2.13、Apache-2.0；库级约束解码（多选、函数调用、JSON-Pydantic、正则、文法）。"
+    },
+    {
+      "id": "S-0093",
+      "title": "PyPI JSON API — xgrammar",
+      "url": "https://pypi.org/pypi/xgrammar/0.1.33/json",
+      "tier": "official",
+      "date": "2026-03-27",
+      "note": "版本 0.1.33、Apache-2.0；vLLM / SGLang / TensorRT-LLM / MLC-LLM 的默认结构化生成后端。"
+    },
+    {
+      "id": "S-0094",
+      "title": "PyPI simple 索引 — instructor",
+      "url": "https://pypi.org/simple/instructor/",
+      "tier": "official",
+      "date": "2026-10-14",
+      "note": "版本 1.17.0；API 侧 JSON schema 校验重试层。"
+    },
+    {
+      "id": "S-0095",
+      "title": "PyPI JSON API — ragas",
+      "url": "https://pypi.org/pypi/ragas/json",
+      "tier": "official",
+      "date": "2026-10-14",
+      "note": "版本 0.4.3；RAG 与 LLM 应用评测框架，维护方 vibrantlabsai。"
+    },
+    {
+      "id": "S-0096",
+      "title": "PyPI JSON API — deepeval 4.0.0",
+      "url": "https://pypi.org/pypi/deepeval/4.0.0/json",
+      "tier": "official",
+      "date": "2026-05-08",
+      "note": "版本 4.0.0、Apache-2.0；自述为面向 LLM 应用的 pytest 式单元测试框架，含 MCP 指标。"
+    },
+    {
+      "id": "S-0097",
+      "title": "PyPI JSON API — traceloop-sdk（OpenLLMetry）",
+      "url": "https://pypi.org/pypi/traceloop-sdk/json",
+      "tier": "official",
+      "date": "2026-10-14",
+      "note": "版本 0.62.4、Apache-2.0；基于 OpenTelemetry 的非侵入式追踪。"
+    },
+    {
+      "id": "S-0098",
+      "title": "LangChain 官方定价页 — LangSmith",
+      "url": "https://www.langchain.com/pricing",
+      "tier": "official",
+      "date": "2026-10-14",
+      "note": "公开档位：Developer $0/seat + 按量、Plus $39/seat、Enterprise 定制且支持自托管。"
+    },
+    {
+      "id": "S-0099",
+      "title": "Braintrust 官方定价页",
+      "url": "https://www.braintrust.dev/pricing",
+      "tier": "official",
+      "date": "2026-10-14",
+      "note": "公开档位：Starter $0/月 + $10 credits、14 天留存；Pro $249/月 + $100 credits、30 天留存。"
+    },
+    {
+      "id": "S-0100",
+      "title": "GitHub API — anthropics/prompt-eng-interactive-tutorial",
+      "url": "https://api.github.com/repos/anthropics/prompt-eng-interactive-tutorial",
+      "tier": "official",
+      "date": "2026-08-28",
+      "note": "仓库未归档、stars 38568、最后推送 2026-08-28；现行文档重心已迁移到 platform.claude.com。"
+    },
+    {
+      "id": "S-0101",
+      "title": "ICLR — 2026 Conference Dates",
+      "url": "https://iclr.cc/Conferences/2026/Dates",
+      "tier": "official",
+      "date": "2026-04-23",
+      "note": "ICLR 2026 主会 2026-04-23 至 04-25、Workshops 04-26 至 04-27 ⇒ ICLR 为每年 4 月而非 5 月。"
+    },
+    {
+      "id": "S-0102",
+      "title": "NeurIPS — 2026 Conference Dates",
+      "url": "https://neurips.cc/Conferences/2026/Dates",
+      "tier": "official",
+      "date": "2026-12-08",
+      "note": "NeurIPS 2026 首次三城并行：Sydney 12-08 至 12-10、Atlanta 12-09 至 12-11、Paris 12-09 至 12-11。"
+    },
+    {
+      "id": "S-0103",
+      "title": "DeepSeek — API Docs 新闻页（V4 系列与 V3.2）",
+      "url": "https://api-docs.deepseek.com/news/news251201/",
+      "tier": "official",
+      "date": "2025-12-01",
+      "note": "推理线现行命名为 DeepSeek-V4 系列（V4.1-Flash 2026-09-10 等）；历史推理型号 R1 系列；V3.2 定位 'Reasoning-first models built for agents'。"
+    },
+    {
+      "id": "S-0104",
+      "title": "DeepSeek — V4.1-Flash 发布页",
+      "url": "https://api-docs.deepseek.com/news/news260910",
+      "tier": "official",
+      "date": "2026-09-10",
+      "note": "开源权重推理模型线的现行发布记录。"
+    },
+    {
+      "id": "S-0105",
+      "title": "OpenAI — API Deprecations（退役时间线）",
+      "url": "https://developers.openai.com/api/docs/deprecations",
+      "tier": "official",
+      "date": "2026-10-14",
+      "note": "o-series 处于退役过程、现行旗舰为 GPT-5.2 的官方退役页入口。⚠ 该域直连曾返回 403（WAF），精确退役日期未取得一手页面 ⇒ 不得据此断言具体日期。"
+    },
+    {
+      "id": "S-0106",
+      "title": "绿叶网 — 万能提示词与超级提示词（中文原创）",
+      "url": "https://www.lvyenet.com/prompt/mega-prompt",
+      "tier": "community",
+      "date": null,
+      "note": "中文生态内部对万能模板/叠甲的成体系纠偏：Mega-Prompt 的价值来自信息密度而非字数与气势；更换模型后仍需重新测试。页面版权标注 ©2015-2026，无明确发布日期。"
+    },
+    {
+      "id": "S-0107",
+      "title": "yeasy/prompt_engineering_guide — 6.5 Reasoning 模型专题（开源中文教程）",
+      "url": "https://raw.githubusercontent.com/yeasy/prompt_engineering_guide/main/06_chain_of_thought/6.5_reasoning_models.md",
+      "tier": "community",
+      "date": null,
+      "note": "中文生态中与厂商文档同步的分流式教程：不要在提示词中要求模型思考或展示中间步骤，此建议仅适用于 Reasoning 模型，普通模型上 CoT 仍有效且推荐。正文含 2026-07-01 事件。"
+    },
+    {
+      "id": "S-0108",
+      "title": "CSDN —「一文搞懂：提示词和提示词工程」（卖课引流）",
+      "url": "https://blog.csdn.net/2301_76168381/article/details/149538034",
+      "tier": "community",
+      "date": "2026-02-24",
+      "note": "中文高流量教程共性错误的样本：CoT 大幅提准断言、CO-STAR/BROKE 被列为结构化框架实践、显式否定指令被列为设计要点、结尾卖课引流 ⇒ 最低级信源，量化断言不得当证据。"
+    },
+    {
+      "id": "S-0109",
+      "title": "知乎专栏 — 弹性提示词的设计方法",
+      "url": "https://zhuanlan.zhihu.com/p/2013192728188581269",
+      "tier": "community",
+      "date": null,
+      "note": "中文生态反证：CO-STAR 本意是按场景灵活配置的思考框架，不是把六维写死一劳永逸；好的个性化提示词 = 稳定的底层规则 + 灵活的场景适配。无发布日期。"
+    },
+    {
+      "id": "S-0110",
+      "title": "腾讯云开发者社区 — GPT-4 提示工程大赛冠军（机器之心编译）",
+      "url": "https://cloud.tencent.com/developer/article/2417391",
+      "tier": "community",
+      "date": "2024-05-01",
+      "note": "CO-STAR 出处溯源：新加坡政府科技局（GovTech）数据科学与 AI 团队在一次竞赛中的模板创作，非任何模型厂商的官方标准。译文发布 2024-05，原文 2023-11。"
+    },
+    {
+      "id": "S-0111",
+      "title": "钛媒体 — prompt 工程师，一个新兴职业的崛起与消失",
+      "url": "https://www.tmtpost.com/8152516.html",
+      "tier": "community",
+      "date": "2026-09-01",
+      "note": "领域降温的行业侧二手证据：微软 31 国 3.1 万人调查中该岗位在企业未来 12-18 个月计划新增职位里排倒数第二；2025 年一项研究分析 LinkedIn 20662 条招聘信息仅 72 个提示词工程师岗位。未回源原始调研。"
+    },
+    {
+      "id": "S-0112",
+      "title": "cc-foundry — superseded-techniques.md（社区级技术状态清单）",
+      "url": "https://raw.githubusercontent.com/xobotyi/cc-foundry/633188bb7286246bfc7cba3ec2eb2fbf153d4409/plugins/ai-helpers/skills/prompt-engineering/references/superseded-techniques.md",
+      "tier": "community",
+      "date": null,
+      "note": "提供 dead / downgraded / unevidenced 三分法与各技术状态；但为社区级、无日期、疑 AI 生成 ⇒ 仅作参照。其『Nothing measured is a real answer and it is not the same as dead』一句与本任务的内容纪律同向。"
+    },
+    {
+      "id": "S-0113",
+      "title": "Wiktor-Potapczyk/agent-governance-research — prompt-engineering-findings.md（AI 生成汇总）",
+      "url": "https://raw.githubusercontent.com/Wiktor-Potapczyk/agent-governance-research/main/patterns/prompt-engineering-findings.md",
+      "tier": "community",
+      "date": null,
+      "note": "仅作线索：把 Anthropic 原话压缩成「Do NOT use all-caps」属二手推断；其引用的 arXiv:2512.14754（persona-heavy 系统提示降低指令遵循 8.2%）未回源，不得作为证据。"
+    },
+    {
+      "id": "S-0114",
+      "title": "新浪财经转载 — 知乎热榜第一提示词技巧汇总",
+      "url": "https://finance.sina.cn/2026-03-15/detail-inhrcath3062986.d.html",
+      "tier": "community",
+      "date": "2026-03-15",
+      "note": "中文生态当下实操话题已转向长上下文工程问题（如每约 1000 字重复核心要求以避免注意力漂移）；原始研究出处未回源 ⇒ 只作生态观察。"
+    },
+    {
+      "id": "S-0115",
+      "title": "general-intelligence-systems/brute — Prompt Architecture 文档",
+      "url": "https://general-intelligence-systems.github.io/brute/docs/prompt-architecture/",
+      "tier": "community",
+      "date": "2026-10-09",
+      "note": "否定一个常见前提：检索到的 brute 是 Ruby agent 框架的 prompt 模块化架构（按 provider 选择模块、回合时渲染），不是与 CO-STAR 并列的万能模板框架 ⇒ 「BRUTE 万能模板」应视为未证实。"
+    }
+  ]
+}

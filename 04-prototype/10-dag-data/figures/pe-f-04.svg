@@ -1,0 +1,55 @@
+<svg class="fig__svg" role="img"
+ viewBox="0.00 0.00 490.00 212.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 208)">
+<title>fig</title>
+<g id="node1" class="node">
+<title>Z</title>
+<path fill="var(--brand-soft)" stroke="var(--brand-primary)" d="M197,-204C197,-204 12,-204 12,-204 6,-204 0,-198 0,-192 0,-192 0,-180 0,-180 0,-174 6,-168 12,-168 12,-168 197,-168 197,-168 203,-168 209,-174 209,-180 209,-180 209,-192 209,-192 209,-198 203,-204 197,-204"/>
+<text text-anchor="middle" x="104.5" y="-182.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">零样本：先量基线</text>
+</g>
+<g id="node2" class="node">
+<title>F</title>
+<path fill="var(--brand-soft)" stroke="var(--brand-primary)" d="M197,-120C197,-120 12,-120 12,-120 6,-120 0,-114 0,-108 0,-108 0,-96 0,-96 0,-90 6,-84 12,-84 12,-84 197,-84 197,-84 203,-84 209,-90 209,-96 209,-96 209,-108 209,-108 209,-114 203,-120 197,-120"/>
+<text text-anchor="middle" x="104.5" y="-98.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">3 个示例：消歧 + 格式对齐</text>
+</g>
+<g id="edge1" class="edge">
+<title>Z&#45;&gt;F</title>
+<path fill="none" stroke="var(--border-line)" d="M104.5,-167.61C104.5,-155.9 104.5,-140.29 104.5,-127.35"/>
+<polygon fill="var(--border-line)" stroke="var(--border-line)" points="106.95,-127.08 104.5,-120.08 102.05,-127.08 106.95,-127.08"/>
+<text text-anchor="middle" x="138.5" y="-141.2" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="11.00" fill="var(--text-secondary)">格式违规下降</text>
+</g>
+<g id="node3" class="node">
+<title>T</title>
+<path fill="var(--surface-raised)" stroke="var(--border-line)" d="M197,-36C197,-36 12,-36 12,-36 6,-36 0,-30 0,-24 0,-24 0,-12 0,-12 0,-6 6,0 12,0 12,0 197,0 197,0 203,0 209,-6 209,-12 209,-12 209,-24 209,-24 209,-30 203,-36 197,-36"/>
+<text text-anchor="middle" x="104.5" y="-14.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">10 个示例：边际收益趋零</text>
+</g>
+<g id="edge2" class="edge">
+<title>F&#45;&gt;T</title>
+<path fill="none" stroke="var(--border-line)" d="M104.5,-83.61C104.5,-71.9 104.5,-56.29 104.5,-43.35"/>
+<polygon fill="var(--border-line)" stroke="var(--border-line)" points="106.95,-43.08 104.5,-36.08 102.05,-43.08 106.95,-43.08"/>
+<text text-anchor="middle" x="127.5" y="-57.2" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="11.00" fill="var(--text-secondary)">收益饱和</text>
+</g>
+<g id="node4" class="node">
+<title>R</title>
+<path fill="var(--surface-raised)" stroke="var(--danger)" d="M470,-120C470,-120 285,-120 285,-120 279,-120 273,-114 273,-108 273,-108 273,-96 273,-96 273,-90 279,-84 285,-84 285,-84 470,-84 470,-84 476,-84 482,-90 482,-96 482,-96 482,-108 482,-108 482,-114 476,-120 470,-120"/>
+<text text-anchor="middle" x="377.5" y="-98.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">推理模型：示例可持续降准</text>
+</g>
+<g id="edge3" class="edge">
+<title>F&#45;&gt;R</title>
+<path fill="none" stroke="var(--border-line)" d="M209.27,-102C227.59,-102 246.71,-102 265.22,-102"/>
+<polygon fill="var(--border-line)" stroke="var(--border-line)" points="265.56,-104.45 272.56,-102 265.56,-99.55 265.56,-104.45"/>
+<text text-anchor="middle" x="241" y="-108.2" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="11.00" fill="var(--text-secondary)">条件反转</text>
+</g>
+<g id="node5" class="node">
+<title>R2</title>
+<path fill="var(--surface-raised)" stroke="var(--success)" d="M470,-36C470,-36 285,-36 285,-36 279,-36 273,-30 273,-24 273,-24 273,-12 273,-12 273,-6 279,0 285,0 285,0 470,0 470,0 476,0 482,-6 482,-12 482,-12 482,-24 482,-24 482,-30 476,-36 470,-36"/>
+<text text-anchor="middle" x="377.5" y="-14.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">改写为显式要点：可重新获益</text>
+</g>
+<g id="edge4" class="edge">
+<title>R&#45;&gt;R2</title>
+<path fill="none" stroke="var(--border-line)" stroke-dasharray="5,2" d="M377.5,-83.61C377.5,-71.9 377.5,-56.29 377.5,-43.35"/>
+<polygon fill="var(--border-line)" stroke="var(--border-line)" points="379.95,-43.08 377.5,-36.08 375.05,-43.08 379.95,-43.08"/>
+<text text-anchor="middle" x="400.5" y="-57.2" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="11.00" fill="var(--text-secondary)">形态变了</text>
+</g>
+</g>
+</svg>

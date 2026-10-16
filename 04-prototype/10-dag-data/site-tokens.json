@@ -1,0 +1,480 @@
+{
+  "meta": {
+    "as_of": "2026-10",
+    "edition": "v1",
+    "purpose": "站点局部令牌登记：--warn / --danger / 11 组配色（--group-*）。⛔ 本文件不是共享令牌契约的替代品——契约角色（--bg / --bg-soft / --bg-stripe / --fg / --fg-muted / --link / --rule）由 16-checkpoint 从固定快照 _contract.snapshot.json 派生，本文件只登记契约之外的站点局部令牌。",
+    "contrast_formula": "WCAG 2.x 相对亮度：c/12.92（c ≤ 0.04045）否则 ((c+0.055)/1.055)^2.4；通道权重 0.2126 / 0.7152 / 0.0722；对比度 = (L1+0.05)/(L2+0.05)，取较亮者为 L1。",
+    "body_min_contrast": 4.5,
+    "measured_by": "04-prototype/10-dag-data/_selfcheck.py 现场复算；登记值须与复算值一致（偏差 > 0.02 即 FAIL）。",
+    "label_rule": "组配色上的标签前景色不人工指定，由该底色的相对亮度在 #000000 与 #ffffff 之间择优（取对比度更高者），并由门控对全部组配色逐一断言 ≥4.5:1。",
+    "quota_note": "契约要求本轮：complete 节点 3 个、registered 节点 64 个；令牌侧本轮新增 13 个站点局部令牌（--warn、--danger 与 11 个组配色）。"
+  },
+  "reference_backgrounds": {
+    "light": "#ffffff",
+    "dark": "#14171a",
+    "note": "取自共享令牌契约 content 族的 surface.page 浅色与深色值；正文类令牌的对比度以该底色为基准计算。"
+  },
+  "tokens": [
+    {
+      "name": "--warn",
+      "light": "#a16207",
+      "dark": "#fbbf24",
+      "usage_tier": "body",
+      "usage": "警示文本与警示态标签文字（正文类）；同时可作警示面板的描边与图标色。",
+      "contrast_checked": {
+        "measured": {
+          "light": 4.92,
+          "dark": 10.78
+        },
+        "against": {
+          "light": "#ffffff",
+          "dark": "#14171a"
+        },
+        "threshold": 4.5,
+        "pass": {
+          "light": true,
+          "dark": true
+        },
+        "method": "WCAG 2.x"
+      },
+      "alternate_backgrounds": [
+        {
+          "bg": "#f6f8fa",
+          "mode": "light",
+          "measured": 4.62,
+          "pass": true
+        },
+        {
+          "bg": "#1b2026",
+          "mode": "dark",
+          "measured": 9.82,
+          "pass": true
+        }
+      ]
+    },
+    {
+      "name": "--danger",
+      "light": "#dc2626",
+      "dark": "#f87171",
+      "usage_tier": "body",
+      "usage": "危险与错误态文本（正文类）；同时可作错误面板的描边与图标色。",
+      "contrast_checked": {
+        "measured": {
+          "light": 4.83,
+          "dark": 6.5
+        },
+        "against": {
+          "light": "#ffffff",
+          "dark": "#14171a"
+        },
+        "threshold": 4.5,
+        "pass": {
+          "light": true,
+          "dark": true
+        },
+        "method": "WCAG 2.x"
+      },
+      "alternate_backgrounds": [
+        {
+          "bg": "#f6f8fa",
+          "mode": "light",
+          "measured": 4.54,
+          "pass": true
+        },
+        {
+          "bg": "#1b2026",
+          "mode": "dark",
+          "measured": 5.93,
+          "pass": true
+        }
+      ]
+    },
+    {
+      "name": "--group-00",
+      "light": "#0f766e",
+      "dark": "#2dd4bf",
+      "usage_tier": "non-text",
+      "usage": "G00 地基：模型是概率采样器的组标识色（节点底色 / 组页页眉底色 / 图节点填充）。",
+      "contrast_checked": {
+        "measured": {
+          "light": 5.47,
+          "dark": 9.67
+        },
+        "against": {
+          "light": "#ffffff",
+          "dark": "#14171a"
+        },
+        "threshold": null,
+        "pass": {
+          "light": true,
+          "dark": true
+        },
+        "method": "WCAG 2.x",
+        "note": "非文本档，report-only；登记值用于说明该底色上由亮度择优的标签色为何取黑或白。"
+      }
+    },
+    {
+      "name": "--group-01",
+      "light": "#1d4ed8",
+      "dark": "#60a5fa",
+      "usage_tier": "non-text",
+      "usage": "G01 确定性输出的组标识色。",
+      "contrast_checked": {
+        "measured": {
+          "light": 6.7,
+          "dark": 7.08
+        },
+        "against": {
+          "light": "#ffffff",
+          "dark": "#14171a"
+        },
+        "threshold": null,
+        "pass": {
+          "light": true,
+          "dark": true
+        },
+        "method": "WCAG 2.x",
+        "note": "非文本档，report-only。"
+      }
+    },
+    {
+      "name": "--group-02",
+      "light": "#7e22ce",
+      "dark": "#c084fc",
+      "usage_tier": "non-text",
+      "usage": "G02 推理增强的组标识色。",
+      "contrast_checked": {
+        "measured": {
+          "light": 6.98,
+          "dark": 6.81
+        },
+        "against": {
+          "light": "#ffffff",
+          "dark": "#14171a"
+        },
+        "threshold": null,
+        "pass": {
+          "light": true,
+          "dark": true
+        },
+        "method": "WCAG 2.x",
+        "note": "非文本档，report-only。"
+      }
+    },
+    {
+      "name": "--group-03",
+      "light": "#0e7490",
+      "dark": "#22d3ee",
+      "usage_tier": "non-text",
+      "usage": "G03 上下文工程的组标识色。",
+      "contrast_checked": {
+        "measured": {
+          "light": 5.36,
+          "dark": 9.96
+        },
+        "against": {
+          "light": "#ffffff",
+          "dark": "#14171a"
+        },
+        "threshold": null,
+        "pass": {
+          "light": true,
+          "dark": true
+        },
+        "method": "WCAG 2.x",
+        "note": "非文本档，report-only。"
+      }
+    },
+    {
+      "name": "--group-04",
+      "light": "#b45309",
+      "dark": "#fbbf24",
+      "usage_tier": "non-text",
+      "usage": "G04 编排的组标识色。",
+      "contrast_checked": {
+        "measured": {
+          "light": 5.02,
+          "dark": 10.78
+        },
+        "against": {
+          "light": "#ffffff",
+          "dark": "#14171a"
+        },
+        "threshold": null,
+        "pass": {
+          "light": true,
+          "dark": true
+        },
+        "method": "WCAG 2.x",
+        "note": "非文本档，report-only。"
+      }
+    },
+    {
+      "name": "--group-05",
+      "light": "#15803d",
+      "dark": "#4ade80",
+      "usage_tier": "non-text",
+      "usage": "G05 评测与自动优化的组标识色。",
+      "contrast_checked": {
+        "measured": {
+          "light": 5.02,
+          "dark": 10.32
+        },
+        "against": {
+          "light": "#ffffff",
+          "dark": "#14171a"
+        },
+        "threshold": null,
+        "pass": {
+          "light": true,
+          "dark": true
+        },
+        "method": "WCAG 2.x",
+        "note": "非文本档，report-only。"
+      }
+    },
+    {
+      "name": "--group-06",
+      "light": "#be123c",
+      "dark": "#fb7185",
+      "usage_tier": "non-text",
+      "usage": "G06 安全与鲁棒性的组标识色。",
+      "contrast_checked": {
+        "measured": {
+          "light": 6.29,
+          "dark": 6.68
+        },
+        "against": {
+          "light": "#ffffff",
+          "dark": "#14171a"
+        },
+        "threshold": null,
+        "pass": {
+          "light": true,
+          "dark": true
+        },
+        "method": "WCAG 2.x",
+        "note": "非文本档，report-only。"
+      }
+    },
+    {
+      "name": "--group-07",
+      "light": "#4338ca",
+      "dark": "#818cf8",
+      "usage_tier": "non-text",
+      "usage": "G07 模型差异与迁移的组标识色。",
+      "contrast_checked": {
+        "measured": {
+          "light": 7.9,
+          "dark": 6.03
+        },
+        "against": {
+          "light": "#ffffff",
+          "dark": "#14171a"
+        },
+        "threshold": null,
+        "pass": {
+          "light": true,
+          "dark": true
+        },
+        "method": "WCAG 2.x",
+        "note": "非文本档，report-only。"
+      }
+    },
+    {
+      "name": "--group-08",
+      "light": "#a21caf",
+      "dark": "#e879f9",
+      "usage_tier": "non-text",
+      "usage": "G08 多模态的组标识色。",
+      "contrast_checked": {
+        "measured": {
+          "light": 6.32,
+          "dark": 7.31
+        },
+        "against": {
+          "light": "#ffffff",
+          "dark": "#14171a"
+        },
+        "threshold": null,
+        "pass": {
+          "light": true,
+          "dark": true
+        },
+        "method": "WCAG 2.x",
+        "note": "非文本档，report-only。"
+      }
+    },
+    {
+      "name": "--group-09",
+      "light": "#475569",
+      "dark": "#94a3b8",
+      "usage_tier": "non-text",
+      "usage": "G09 落地实践的组标识色。",
+      "contrast_checked": {
+        "measured": {
+          "light": 7.58,
+          "dark": 7.02
+        },
+        "against": {
+          "light": "#ffffff",
+          "dark": "#14171a"
+        },
+        "threshold": null,
+        "pass": {
+          "light": true,
+          "dark": true
+        },
+        "method": "WCAG 2.x",
+        "note": "非文本档，report-only。"
+      }
+    },
+    {
+      "name": "--group-dn",
+      "light": "#0d9488",
+      "dark": "#5eead4",
+      "usage_tier": "non-text",
+      "usage": "GD-N 新一代模块的组标识色（与 G00 同色系但更深，用于区分地基与前沿两个分区）。",
+      "contrast_checked": {
+        "measured": {
+          "light": 3.74,
+          "dark": 12.16
+        },
+        "against": {
+          "light": "#ffffff",
+          "dark": "#14171a"
+        },
+        "threshold": null,
+        "pass": {
+          "light": true,
+          "dark": true
+        },
+        "method": "WCAG 2.x",
+        "note": "非文本档，report-only；浅色实测 3.74:1 低于 4.5，但该档仅用于非文本元素（底色 / 描边 / 图节点填充），其上的标签文字由亮度择优的 #000000 承载（对比度见 label_on_group）。"
+      }
+    }
+  ],
+  "label_on_group": [
+    {
+      "token": "--group-00",
+      "light": {
+        "fg": "#ffffff",
+        "measured": 5.47
+      },
+      "dark": {
+        "fg": "#000000",
+        "measured": 11.28
+      }
+    },
+    {
+      "token": "--group-01",
+      "light": {
+        "fg": "#ffffff",
+        "measured": 6.7
+      },
+      "dark": {
+        "fg": "#000000",
+        "measured": 8.26
+      }
+    },
+    {
+      "token": "--group-02",
+      "light": {
+        "fg": "#ffffff",
+        "measured": 6.98
+      },
+      "dark": {
+        "fg": "#000000",
+        "measured": 7.95
+      }
+    },
+    {
+      "token": "--group-03",
+      "light": {
+        "fg": "#ffffff",
+        "measured": 5.36
+      },
+      "dark": {
+        "fg": "#000000",
+        "measured": 11.62
+      }
+    },
+    {
+      "token": "--group-04",
+      "light": {
+        "fg": "#ffffff",
+        "measured": 5.02
+      },
+      "dark": {
+        "fg": "#000000",
+        "measured": 12.58
+      }
+    },
+    {
+      "token": "--group-05",
+      "light": {
+        "fg": "#ffffff",
+        "measured": 5.02
+      },
+      "dark": {
+        "fg": "#000000",
+        "measured": 12.05
+      }
+    },
+    {
+      "token": "--group-06",
+      "light": {
+        "fg": "#ffffff",
+        "measured": 6.29
+      },
+      "dark": {
+        "fg": "#000000",
+        "measured": 7.8
+      }
+    },
+    {
+      "token": "--group-07",
+      "light": {
+        "fg": "#ffffff",
+        "measured": 7.9
+      },
+      "dark": {
+        "fg": "#000000",
+        "measured": 7.04
+      }
+    },
+    {
+      "token": "--group-08",
+      "light": {
+        "fg": "#ffffff",
+        "measured": 6.32
+      },
+      "dark": {
+        "fg": "#000000",
+        "measured": 8.53
+      }
+    },
+    {
+      "token": "--group-09",
+      "light": {
+        "fg": "#ffffff",
+        "measured": 7.58
+      },
+      "dark": {
+        "fg": "#000000",
+        "measured": 8.19
+      }
+    },
+    {
+      "token": "--group-dn",
+      "light": {
+        "fg": "#000000",
+        "measured": 5.61
+      },
+      "dark": {
+        "fg": "#000000",
+        "measured": 14.2
+      }
+    }
+  ]
+}

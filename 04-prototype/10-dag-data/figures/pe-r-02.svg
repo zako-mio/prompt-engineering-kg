@@ -1,0 +1,51 @@
+<svg class="fig__svg" role="img"
+ viewBox="0.00 0.00 600.00 256.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 252)">
+<title>fig</title>
+<g id="node1" class="node">
+<title>q</title>
+<path fill="var(--brand-soft)" stroke="var(--brand-primary)" d="M301,-248C301,-248 121,-248 121,-248 115,-248 109,-242 109,-236 109,-236 109,-214 109,-214 109,-208 115,-202 121,-202 121,-202 301,-202 301,-202 307,-202 313,-208 313,-214 313,-214 313,-236 313,-236 313,-242 307,-248 301,-248"/>
+<text text-anchor="middle" x="211" y="-228.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">显式思维链（CoT）与示例堆砌</text>
+<text text-anchor="middle" x="211" y="-214.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">同一技巧，符号随条件反转</text>
+</g>
+<g id="node2" class="node">
+<title>a</title>
+<path fill="var(--surface-raised)" stroke="var(--success)" d="M236,-154C236,-154 12,-154 12,-154 6,-154 0,-148 0,-142 0,-142 0,-106 0,-106 0,-100 6,-94 12,-94 12,-94 236,-94 236,-94 242,-94 248,-100 248,-106 248,-106 248,-142 248,-142 248,-148 242,-154 236,-154"/>
+<text text-anchor="middle" x="124" y="-134.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">条件 A：非推理模型</text>
+<text text-anchor="middle" x="124" y="-120.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">或 高串行深度任务（GSM8K / MATH）</text>
+<text text-anchor="middle" x="124" y="-106.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">⇒ CoT 仍有大幅增益</text>
+</g>
+<g id="edge1" class="edge">
+<title>q&#45;&gt;a</title>
+<path fill="none" stroke="var(--border-line)" d="M191.26,-201.54C180.37,-189.15 166.62,-173.5 154.39,-159.58"/>
+<polygon fill="var(--border-line)" stroke="var(--border-line)" points="156.07,-157.79 149.61,-154.14 152.39,-161.02 156.07,-157.79"/>
+<text text-anchor="middle" x="186.5" y="-175.2" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="11.00" fill="var(--text-secondary)">成立</text>
+</g>
+<g id="node3" class="node">
+<title>b</title>
+<path fill="var(--surface-raised)" stroke="var(--danger)" d="M580,-154C580,-154 278,-154 278,-154 272,-154 266,-148 266,-142 266,-142 266,-106 266,-106 266,-100 272,-94 278,-94 278,-94 580,-94 580,-94 586,-94 592,-100 592,-106 592,-106 592,-142 592,-142 592,-148 586,-154 580,-154"/>
+<text text-anchor="middle" x="429" y="-134.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">条件 B：推理模型 · 且高串行深度已被底座内化</text>
+<text text-anchor="middle" x="429" y="-120.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">⇒ 增益仅 2.9%–3.1%，Gemini Flash 2.5 为 −3.3%</text>
+<text text-anchor="middle" x="429" y="-106.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">耗时 +20%–80%，指令遵循下降</text>
+</g>
+<g id="edge2" class="edge">
+<title>q&#45;&gt;b</title>
+<path fill="none" stroke="var(--border-line)" d="M259.65,-201.91C288.71,-188.71 326.12,-171.72 358.39,-157.07"/>
+<polygon fill="var(--border-line)" stroke="var(--border-line)" points="359.41,-159.29 364.77,-154.17 357.39,-154.83 359.41,-159.29"/>
+<text text-anchor="middle" x="331.5" y="-175.2" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="11.00" fill="var(--text-secondary)">反转</text>
+</g>
+<g id="node4" class="node">
+<title>n</title>
+<polygon fill="var(--surface-subtle)" stroke="var(--warning)" points="563.5,-57 288.5,-57 288.5,0 569.5,0 569.5,-51 563.5,-57"/>
+<polyline fill="none" stroke="var(--warning)" points="563.5,-57 563.5,-51 "/>
+<polyline fill="none" stroke="var(--warning)" points="569.5,-51 563.5,-51 "/>
+<text text-anchor="middle" x="429" y="-38.4" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="12.00" fill="var(--text-primary)">判定纪律</text>
+<text text-anchor="middle" x="429" y="-25.4" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="12.00" fill="var(--text-primary)">缺席证据 ≠ 反证（未被文档收录 ≠ 已被证伪）</text>
+<text text-anchor="middle" x="429" y="-12.4" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="12.00" fill="var(--text-primary)">不得把单一任务域的结论外推为普遍规律</text>
+</g>
+<g id="edge3" class="edge">
+<title>b&#45;&gt;n</title>
+<path fill="none" stroke="var(--border-line)" stroke-dasharray="1,5" d="M429,-93.93C429,-82.24 429,-68.83 429,-57.27"/>
+</g>
+</g>
+</svg>

@@ -1,0 +1,424 @@
+{
+  "meta": {
+    "as_of": "2026-10",
+    "edition": "v1",
+    "count": 69,
+    "rule": "术语单一真相源：全站同一术语只允许本文件给出的这一种表述。规范表述为「中文（English）」，其中英文部分可省略（仅当该术语本身以英文为主体时）。节点页 terms 区块的条目必须以上述规范表述开头，后接全角冒号与一句话界定；门控逐条复核。"
+  },
+  "terms": [
+    {
+      "term": "提示词工程（Prompt Engineering）",
+      "en": "Prompt Engineering",
+      "definition": "编写与组织指令（尤其 system / developer 指令）以取得最优单次结果的方法集合；关注「如何对模型说话」。",
+      "node_refs": ["PE-F-01", "PE-C-01", "PE-N-01"]
+    },
+    {
+      "term": "上下文工程（Context Engineering）",
+      "en": "Context Engineering",
+      "definition": "在推理时点管理与筛选进入上下文窗口的全部 token（含工具定义、MCP、外部数据、消息历史、记忆），目标是维持一组最小的、高信噪比的 token 集。",
+      "node_refs": ["PE-C-01", "PE-N-01", "PE-N-02"]
+    },
+    {
+      "term": "注意力预算（Attention Budget）",
+      "en": "Attention Budget",
+      "definition": "模型在单个上下文窗口内可分配的有效注意力总量有限；token 越多，单位 token 可分得的注意力越少，这一约束构成上下文衰减的机制基础。",
+      "node_refs": ["PE-F-06", "PE-C-05", "PE-V-03"]
+    },
+    {
+      "term": "上下文衰减（Context Rot）",
+      "en": "Context Rot",
+      "definition": "随上下文长度增长，模型对其中信息的实际可用性下降的现象；表现为长上下文中关键信息被忽略或利用不充分。",
+      "node_refs": ["PE-F-06", "PE-C-05", "PE-C-04"]
+    },
+    {
+      "term": "概率采样与确定性边界（Probabilistic Sampling and the Determinism Boundary）",
+      "en": "Probabilistic Sampling and the Determinism Boundary",
+      "definition": "模型逐 token 从概率分布中采样，因此同一输入不保证同一输出；确定性只能在约束解码、结构校验与固定参数等工程手段划出的边界内近似获得。",
+      "node_refs": ["PE-F-01", "PE-S-01", "PE-S-02"]
+    },
+    {
+      "term": "提示词分层（系统 / 开发者 / 用户）（Prompt Layering）",
+      "en": "Prompt Layering (System / Developer / User)",
+      "definition": "把提示词按特权与生命周期拆为系统、开发者、用户三层，各层承担不同的稳定性与权威性职责。",
+      "node_refs": ["PE-F-02", "PE-A-01"]
+    },
+    {
+      "term": "分隔符与上下文隔离（Delimiters and Context Isolation）",
+      "en": "Delimiters and Context Isolation",
+      "definition": "用 XML 标签、专用分节标记等把指令、示例、资料与用户输入在文本上划出边界，使模型能无歧义解析多部分提示。",
+      "node_refs": ["PE-F-03", "PE-A-06", "PE-M-02"]
+    },
+    {
+      "term": "零样本提示（Zero-shot Prompting）",
+      "en": "Zero-shot Prompting",
+      "definition": "不提供示例、仅以指令完成任务的方式；现行厂商口径主张先试零样本，必要时再引入示例。",
+      "node_refs": ["PE-F-04"]
+    },
+    {
+      "term": "少样本提示（Few-shot Prompting）",
+      "en": "Few-shot Prompting",
+      "definition": "在提示中给出若干输入输出示例以约束格式、语气与歧义消解；现行口径为少量、多样、结构化，并反对穷举边界案例。",
+      "node_refs": ["PE-F-04", "PE-R-02"]
+    },
+    {
+      "term": "指令的具体性与可验证性（Instruction Specificity and Verifiability）",
+      "en": "Instruction Specificity and Verifiability",
+      "definition": "指令应写到可被判定的程度：明确输出形态、判定标准与失败条件，使结果可被自动化校验而非靠人工观感。",
+      "node_refs": ["PE-F-05", "PE-E-01", "PE-P-02"]
+    },
+    {
+      "term": "约束解码（Constrained Decoding）",
+      "en": "Constrained Decoding",
+      "definition": "在采样阶段按文法或 schema 屏蔽不合法的 token 路径，使输出在结构上必然合法；可由推理引擎或库实现，也可由 API 侧保证。",
+      "node_refs": ["PE-S-01", "PE-S-02", "PE-F-01"]
+    },
+    {
+      "term": "结构化输出（Structured Output）",
+      "en": "Structured Output",
+      "definition": "以 JSON Schema 等模式约束模型输出结构的机制；API 侧的严格模式通常要求全部字段必填且禁止额外属性。",
+      "node_refs": ["PE-S-01", "PE-S-04", "PE-F-01"]
+    },
+    {
+      "term": "三档严格度（Three Tiers of Strictness）",
+      "en": "Three Tiers of Strictness",
+      "definition": "按约束强度区分的三档做法：自然语言格式要求、模式提示（仅提示结构）、约束解码或 API 级 schema 保证。",
+      "node_refs": ["PE-S-02", "PE-S-04"]
+    },
+    {
+      "term": "推理与格式的冲突（Reasoning–Format Conflict）",
+      "en": "Reasoning–Format Conflict",
+      "definition": "在生成空间受限的格式约束下，模型的推理表现会下降，且约束越严退化越大；两阶段（先自由推理再格式化）可规避该冲突。",
+      "node_refs": ["PE-S-03", "PE-S-04"]
+    },
+    {
+      "term": "校验与修复回路（Validation and Repair Loop）",
+      "en": "Validation and Repair Loop",
+      "definition": "对模型输出做结构或语义校验，失败则把校验错误回灌给模型重试，直至通过或达到重试上限。",
+      "node_refs": ["PE-S-05", "PE-O-06"]
+    },
+    {
+      "term": "思维链（Chain-of-Thought, CoT）",
+      "en": "Chain-of-Thought (CoT)",
+      "definition": "引导模型先写出中间推理步骤再给答案的技巧；在具备原生思考的推理模型上其边际收益趋零甚至为负，在非推理模型与高串行深度任务上仍有效。",
+      "node_refs": ["PE-R-01", "PE-R-02", "PE-N-02"]
+    },
+    {
+      "term": "零样本思维链（Zero-shot CoT）",
+      "en": "Zero-shot Chain-of-Thought",
+      "definition": "仅以一句触发语（如「一步一步思考」）诱发推理步骤的 CoT 变体，不需要示例。",
+      "node_refs": ["PE-R-01"]
+    },
+    {
+      "term": "范式反转（Paradigm Reversal）",
+      "en": "Paradigm Reversal",
+      "definition": "同一技巧在新一代模型上由增益转为无增益或负增益的现象；判定须限定任务域与模型类别，不可外推为普遍规律。",
+      "node_refs": ["PE-R-02", "PE-N-02", "PE-M-02"]
+    },
+    {
+      "term": "串行深度（Serial Depth）",
+      "en": "Serial Depth",
+      "definition": "任务解题所需的串行推理步数；它是判断 CoT 是否有用的可证伪变量——高串行深度任务上 CoT 仍有大幅增益，浅层任务上则结构性冗余。",
+      "node_refs": ["PE-R-02", "PE-N-02"]
+    },
+    {
+      "term": "自一致性（Self-Consistency）",
+      "en": "Self-Consistency",
+      "definition": "以高温并行采样多条推理路径并对最终答案做多数投票的集成方法；其收益在现代模型上趋于饱和，且在部分模型上符号可能翻转。",
+      "node_refs": ["PE-R-03", "PE-O-03"]
+    },
+    {
+      "term": "思维树（Tree of Thoughts, ToT）",
+      "en": "Tree of Thoughts (ToT)",
+      "definition": "把推理展开为树状搜索，允许在中间节点生成候选、评估与回溯剪枝的推理结构。",
+      "node_refs": ["PE-R-04", "PE-R-05"]
+    },
+    {
+      "term": "思维图（Graph of Thoughts, GoT）",
+      "en": "Graph of Thoughts (GoT)",
+      "definition": "把推理中间结果表示为可任意合并与聚合的图结构，相较树状结构允许节点复用与结果合并。",
+      "node_refs": ["PE-R-04"]
+    },
+    {
+      "term": "极简推理草稿（Chain of Draft, CoD）",
+      "en": "Chain of Draft (CoD)",
+      "definition": "以极短草稿替代完整推理步骤的低成本推理形态；其 token 节省幅度强烈依赖任务域，代码任务上远不及原论文报告值。",
+      "node_refs": ["PE-R-06"]
+    },
+    {
+      "term": "ReAct（推理—行动交织）",
+      "en": "ReAct (Reason + Act)",
+      "definition": "交替生成思考、动作与观察，使模型在外部工具反馈驱动下推进任务的单 Agent 控制流范式。",
+      "node_refs": ["PE-R-07", "PE-O-08"]
+    },
+    {
+      "term": "反思与自评回路（Reflection and Self-Critique Loop）",
+      "en": "Reflection and Self-Critique Loop",
+      "definition": "让模型对自己的输出给出评价并据此改写，形成闭环改进；与生成者—评估者模式同源，但可在单 Agent 内实现。",
+      "node_refs": ["PE-R-08", "PE-O-05", "PE-P-05"]
+    },
+    {
+      "term": "检索增强生成（RAG）",
+      "en": "Retrieval-Augmented Generation (RAG)",
+      "definition": "生成前从外部知识库检索相关文档并拼入上下文的范式，用于补足时效性与私有领域知识。",
+      "node_refs": ["PE-C-02", "PE-C-04"]
+    },
+    {
+      "term": "图检索（GraphRAG）",
+      "en": "Graph Retrieval / GraphRAG",
+      "definition": "结合知识图谱的实体关系索引与传统向量检索，用于回答需要全局脉络或跨文档聚合的问题。",
+      "node_refs": ["PE-C-03"]
+    },
+    {
+      "term": "垃圾进垃圾出（GIGO）",
+      "en": "Garbage In, Garbage Out (GIGO)",
+      "definition": "检索阶段召回的内容质量直接决定生成质量：不相关或互相矛盾的资料会误导生成层，提示词层面的技巧无法补偿。",
+      "node_refs": ["PE-C-04", "PE-E-01"]
+    },
+    {
+      "term": "迷失在中间（Lost in the Middle）",
+      "en": "Lost in the Middle (LiM)",
+      "definition": "相关信息位于长上下文首尾时表现最好、位于中间时显著退化的位置偏差；该效应在输入接近上下文窗口上限时会被距离型偏差取代。",
+      "node_refs": ["PE-C-05", "PE-F-06"]
+    },
+    {
+      "term": "提示缓存（Prompt Caching）",
+      "en": "Prompt Caching",
+      "definition": "把稳定的提示前缀在服务端缓存复用，以降低重复前缀的延迟与计费成本；要求前缀稳定且顺序固定。",
+      "node_refs": ["PE-C-06", "PE-M-04", "PE-F-02"]
+    },
+    {
+      "term": "模型上下文协议（MCP）",
+      "en": "Model Context Protocol (MCP)",
+      "definition": "以 JSON-RPC 为底层、标准化 AI 客户端与外部数据/工具源之间双向通信的开放协议；现行规范为 2026-07-28 版，治理归属 Linux Foundation 下的 AAIF。",
+      "node_refs": ["PE-C-07", "PE-P-06", "PE-N-01"]
+    },
+    {
+      "term": "MCP 三大原语（Prompts / Resources / Tools）",
+      "en": "MCP Primitives (Prompts / Resources / Tools)",
+      "definition": "MCP 服务端暴露的三类能力：提示模板（用户控制）、资源（应用控制）、工具（模型控制）。",
+      "node_refs": ["PE-C-07", "PE-O-08", "PE-P-06"]
+    },
+    {
+      "term": "提示词链（Prompt Chaining）",
+      "en": "Prompt Chaining",
+      "definition": "把任务拆为若干步骤、前一步输出作为后一步输入的固定流程编排；现行定位收窄为「需要检查或固化中间产物时」的选项。",
+      "node_refs": ["PE-O-01", "PE-N-02"]
+    },
+    {
+      "term": "路由（Routing）",
+      "en": "Routing",
+      "definition": "先对输入分类再分派给不同处理路径或不同模型的编排模式，用于在成本与质量之间做按需分配。",
+      "node_refs": ["PE-O-02", "PE-M-01"]
+    },
+    {
+      "term": "编排者—工作者（Orchestrator–Workers）",
+      "en": "Orchestrator–Workers",
+      "definition": "由编排者拆解任务并把子任务分派给多个工作者，最后汇总结果的编排模式。",
+      "node_refs": ["PE-O-04", "PE-P-03"]
+    },
+    {
+      "term": "生成者—评估者（Generator–Evaluator）",
+      "en": "Generator–Evaluator",
+      "definition": "由生成者产出、评估者按明确判据给出反馈并驱动迭代的编排模式，适用于有清晰评价标准的任务。",
+      "node_refs": ["PE-O-05", "PE-E-03", "PE-R-08"]
+    },
+    {
+      "term": "状态机与持久化（State Machine and Persistence）",
+      "en": "State Machine and Persistence",
+      "definition": "把长时程任务的进度显式建模为状态并落盘保存，使流程可中断、可恢复、可审计。",
+      "node_refs": ["PE-O-06", "PE-P-05"]
+    },
+    {
+      "term": "子 Agent 上下文隔离（Sub-agent Context Isolation）",
+      "en": "Sub-agent Context Isolation",
+      "definition": "让子 Agent 在独立上下文中完成子任务、只把结论回传主 Agent，以避免主上下文被过程细节污染。",
+      "node_refs": ["PE-O-07", "PE-P-03", "PE-O-04"]
+    },
+    {
+      "term": "工具定义与滥用治理（Tool Definition and Abuse Governance）",
+      "en": "Tool Definition and Abuse Governance",
+      "definition": "工具的名称、描述与参数模式构成提示词面的一部分；描述含糊会诱发误用，工具过多会诱发滥用与误选。",
+      "node_refs": ["PE-O-08", "PE-P-01", "PE-R-07"]
+    },
+    {
+      "term": "评测集（Eval Set）",
+      "en": "Eval Set",
+      "definition": "带判据的一组代表性输入输出样本，是判断提示词改动是否真的变好的唯一依据；先建评测集再做优化。",
+      "node_refs": ["PE-E-01", "PE-E-02", "PE-C-04", "PE-P-04"]
+    },
+    {
+      "term": "模型即裁判（LLM-as-a-Judge）",
+      "en": "LLM-as-a-Judge",
+      "definition": "用模型按评分准则对输出打分或排序的评测手段；存在位置偏差、冗长偏好与自我偏好等系统性偏差，须与确定性断言并用。",
+      "node_refs": ["PE-E-03", "PE-E-04", "PE-O-05"]
+    },
+    {
+      "term": "红蓝对抗（Red Teaming）",
+      "en": "Red Teaming",
+      "definition": "由攻击方构造注入、越狱等恶意输入，检验防御方实际拦截率与过拒率的对抗式评测。",
+      "node_refs": ["PE-E-04", "PE-A-04"]
+    },
+    {
+      "term": "自动提示词工程（APE）",
+      "en": "Automatic Prompt Engineering (APE)",
+      "definition": "由模型自动生成候选指令并按评测指标筛选的优化路线；其候选生成与筛选都需要评测集支撑。",
+      "node_refs": ["PE-E-05"]
+    },
+    {
+      "term": "声明式编译与签名（Declarative Compilation and Signatures）",
+      "en": "Declarative Compilation and Signatures",
+      "definition": "把 LLM 调用声明为带输入输出字段的签名，再由编译器在指令与示例空间中搜索最优配置；代表实现为 DSPy。",
+      "node_refs": ["PE-E-06", "PE-M-03"]
+    },
+    {
+      "term": "文本梯度与反思式进化（Textual Gradient and Reflective Evolution）",
+      "en": "Textual Gradient and Reflective Evolution",
+      "definition": "以自然语言反馈作为「梯度」逐层改进系统组件（TextGrad），或让模型基于自身执行轨迹反思并生成改进规则（GEPA）。",
+      "node_refs": ["PE-E-07", "PE-P-05"]
+    },
+    {
+      "term": "元提示（Meta-prompting）",
+      "en": "Meta-prompting",
+      "definition": "让模型生成或改进提示词本身的提示方式，处于提示词与被优化对象之间的上一层。",
+      "node_refs": ["PE-E-08"]
+    },
+    {
+      "term": "提示词版本化与回归（Prompt Versioning and Regression）",
+      "en": "Prompt Versioning and Regression",
+      "definition": "把提示词当作代码资产纳入版本控制，并在每次改动后跑同一评测集对比基线，防止无声退化。",
+      "node_refs": ["PE-E-09", "PE-M-03", "PE-N-04"]
+    },
+    {
+      "term": "指令层级（Instruction Hierarchy）",
+      "en": "Instruction Hierarchy",
+      "definition": "按特权等级排列指令来源（系统 > 开发者 > 用户 > 工具），使低特权来源的指令无法覆盖高特权来源。",
+      "node_refs": ["PE-A-01", "PE-A-02", "PE-N-02"]
+    },
+    {
+      "term": "提示词注入（Prompt Injection）",
+      "en": "Prompt Injection",
+      "definition": "输入内容改变了应用开发者未预期的模型行为；模型在架构上不区分「指令」与「数据」，因此不存在可靠的拦截式预防，防御须是架构性的。",
+      "node_refs": ["PE-A-02", "PE-A-06", "PE-A-03"]
+    },
+    {
+      "term": "间接提示词注入（Indirect Prompt Injection）",
+      "en": "Indirect Prompt Injection",
+      "definition": "恶意指令藏在模型会读取的外部内容（网页、邮件、文档、工具返回、记忆）中，而非由用户直接输入。",
+      "node_refs": ["PE-A-02", "PE-A-06", "PE-C-07"]
+    },
+    {
+      "term": "过拒（Over-refusal）",
+      "en": "Over-refusal",
+      "definition": "安全策略过严导致正常请求被拒绝的现象；它与拦截率构成安全—可用性权衡，须双向度量而非只优化一侧。",
+      "node_refs": ["PE-A-04", "PE-E-04"]
+    },
+    {
+      "term": "负向提示的失效（Failure of Negative Prompting）",
+      "en": "Failure of Negative Prompting",
+      "definition": "「不要做 X」形式的指令在行为控制上不可靠，因为否定词在后续 token 预测中会提高而非降低相关内容的出现概率；应改写为正向指令。",
+      "node_refs": ["PE-A-05"]
+    },
+    {
+      "term": "不可信内容的标注与隔离（Untrusted Content Tagging and Isolation）",
+      "en": "Untrusted Content Tagging and Isolation",
+      "definition": "把来自外部的不可信内容用显式标记包裹并声明其非指令身份，配合权限收窄与输出校验，降低被当作指令执行的概率。",
+      "node_refs": ["PE-A-06", "PE-F-03", "PE-V-02"]
+    },
+    {
+      "term": "模型分层选型（Model Tiering）",
+      "en": "Model Tiering",
+      "definition": "按任务难度把请求分派给不同能力档与价位的模型，用路由在成本与质量之间取得平衡。",
+      "node_refs": ["PE-M-01", "PE-O-02", "PE-M-04"]
+    },
+    {
+      "term": "标记敏感度的迁移性（Transferability of Markup Sensitivity）",
+      "en": "Transferability of Markup Sensitivity",
+      "definition": "对某种标记（如 XML 标签）的响应强度取决于该模型是否针对此类标记做过指令对齐训练，因此同一标记在不同模型上的效果不可假定一致。",
+      "node_refs": ["PE-M-02", "PE-F-03"]
+    },
+    {
+      "term": "换模型即失效与重编译（Model Swap Invalidates and Requires Recompilation）",
+      "en": "Model Swap Invalidates and Requires Recompilation",
+      "definition": "提示词中的多数经验与具体模型绑定；更换模型后必须重跑评测并重做优化，而不是沿用旧结论。",
+      "node_refs": ["PE-M-03", "PE-E-09"]
+    },
+    {
+      "term": "成本—质量—延迟三角（Cost–Quality–Latency Triangle）",
+      "en": "Cost–Quality–Latency Triangle",
+      "definition": "三项工程指标互相牵制：提升质量常以 token 成本与延迟为代价，故三者须共同设定目标而非单独优化其一。",
+      "node_refs": ["PE-M-04", "PE-R-03"]
+    },
+    {
+      "term": "交错输入（Interleaved Input）",
+      "en": "Interleaved Input",
+      "definition": "把文本、图像等不同模态按原始顺序混排进同一上下文的多模态输入形态。",
+      "node_refs": ["PE-V-01"]
+    },
+    {
+      "term": "视觉推理链（Visual Reasoning Chain）",
+      "en": "Visual Reasoning Chain",
+      "definition": "在多模态任务中显式引导模型先定位再推断的推理链；指令层级训练在跨模态指令冲突下只部分迁移。",
+      "node_refs": ["PE-V-02", "PE-A-01"]
+    },
+    {
+      "term": "位置敏感与注意力耗散（Positional Sensitivity and Attention Dissipation）",
+      "en": "Positional Sensitivity and Attention Dissipation",
+      "definition": "多模态长序列中，图像与文本的相对位置显著影响结果，且模态间注意力随序列增长而耗散。",
+      "node_refs": ["PE-V-03", "PE-F-06", "PE-V-01"]
+    },
+    {
+      "term": "技能文件（Skill File）",
+      "en": "Skill File",
+      "definition": "以文件形式固化某类任务的触发条件与操作要点的提示资产；现行口径要求触发描述尽可能短并按需展开细节。",
+      "node_refs": ["PE-P-02"]
+    },
+    {
+      "term": "渐进式披露（Progressive Disclosure）",
+      "en": "Progressive Disclosure",
+      "definition": "提示资产只在前端暴露最短的触发描述与索引，把细节留到确实需要时再加载，以压低常驻上下文占用。",
+      "node_refs": ["PE-P-02", "PE-P-01", "PE-P-07"]
+    },
+    {
+      "term": "子 Agent 委派与返回契约（Sub-agent Delegation and Return Contract）",
+      "en": "Sub-agent Delegation and Return Contract",
+      "definition": "主 Agent 向子 Agent 交付的自包含任务描述与其必须回传的结构化结果约定，二者共同决定委派是否可被验证。",
+      "node_refs": ["PE-P-03", "PE-O-07"]
+    },
+    {
+      "term": "门控即判据（Gate as Executable Criterion）",
+      "en": "Gate as Executable Criterion",
+      "definition": "把「这次改动是否可接受」写成可执行的检查脚本并以其退出码作结论，使质量判断可复现、可回归。",
+      "node_refs": ["PE-P-04", "PE-E-01", "PE-N-03"]
+    },
+    {
+      "term": "记忆与反思（Memory and Reflection）",
+      "en": "Memory and Reflection",
+      "definition": "把跨会话的结论沉淀为可复用的记忆条目，并在使用后按实际效果复核与退役，避免记忆成为过期经验的放大器。",
+      "node_refs": ["PE-P-05", "PE-R-08", "PE-E-07"]
+    },
+    {
+      "term": "三代范式脉络（Three-Generation Paradigm Arc）",
+      "en": "Three-Generation Paradigm Arc",
+      "definition": "2020-2023 提示词工程、2023-2025 上下文工程、2025-2026 编排与编译三个相继阶段；三者是叠加而非替代关系。",
+      "node_refs": ["PE-N-01", "PE-N-02", "PE-N-03"]
+    },
+    {
+      "term": "未证实与已证伪之别（Unevidenced vs. Falsified）",
+      "en": "Unevidenced vs. Falsified",
+      "definition": "「未被现行厂商实践或权威来源收录」只是证据缺席，「已被反证推翻」才有反证；两者判定不同，混用会让读者把未证实当成已证伪。",
+      "node_refs": ["PE-N-02", "PE-R-02"]
+    },
+    {
+      "term": "推理努力档（Reasoning Effort）",
+      "en": "Reasoning Effort",
+      "definition": "推理模型上控制思考深度的参数档位；启用非 none 档位时通常须移除温度与 top-p 等采样参数。",
+      "node_refs": ["PE-M-04", "PE-R-06"]
+    },
+    {
+      "term": "自适应思考（Adaptive Thinking）",
+      "en": "Adaptive Thinking",
+      "definition": "由模型自行决定思考深度的现行机制，取代手动指定思考 token 预算的旧做法；后者在新一代模型上已返回错误。",
+      "node_refs": ["PE-R-01", "PE-M-03"]
+    }
+  ]
+}

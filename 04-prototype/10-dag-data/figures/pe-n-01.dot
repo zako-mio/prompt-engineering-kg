@@ -1,0 +1,15 @@
+digraph fig {
+  rankdir=LR; bgcolor="transparent";
+  node[shape=box, style="rounded,filled", fillcolor="#ffffff", color="#7c8aa5", fontcolor="#0e1729", fontname="Noto Sans CJK SC", fontsize=13, margin="0.20,0.12"]; edge[color="#7c8aa5", fontcolor="#46536b", fontname="Noto Sans CJK SC", fontsize=11, arrowsize=0.7];
+  g1 [label="2020–2023
+提示词工程
+单次调用 · 手工技巧", width=2.4];
+  g2 [label="2023–2025
+上下文工程
+检索 · 压缩 · 位置", fillcolor="#dfe6fb", color="#2f4bd8", width=2.4];
+  g3 [label="2025–2026
+编排与编译
+协议 · 编译", width=2.2];
+  g1 -> g2 [label="重心迁移"];
+  g2 -> g3 [label="重心迁移"];
+}

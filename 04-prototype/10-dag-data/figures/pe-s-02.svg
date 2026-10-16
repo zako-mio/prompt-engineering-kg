@@ -1,0 +1,65 @@
+<svg class="fig__svg" role="img"
+ viewBox="0.00 0.00 856.00 164.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 160)">
+<title>fig</title>
+<g id="node1" class="node">
+<title>T1</title>
+<path fill="var(--surface-raised)" stroke="var(--warning)" d="M175.5,-156C175.5,-156 37.5,-156 37.5,-156 31.5,-156 25.5,-150 25.5,-144 25.5,-144 25.5,-108 25.5,-108 25.5,-102 31.5,-96 37.5,-96 37.5,-96 175.5,-96 175.5,-96 181.5,-96 187.5,-102 187.5,-108 187.5,-108 187.5,-144 187.5,-144 187.5,-150 181.5,-156 175.5,-156"/>
+<text text-anchor="middle" x="106.5" y="-136.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">第一档：自然语言要求</text>
+<text text-anchor="middle" x="106.5" y="-122.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">「只输出 JSON」</text>
+<text text-anchor="middle" x="106.5" y="-108.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">可靠性最差 · 成本最低</text>
+</g>
+<g id="node2" class="node">
+<title>T2</title>
+<path fill="var(--brand-soft)" stroke="var(--brand-primary)" d="M483,-156C483,-156 307,-156 307,-156 301,-156 295,-150 295,-144 295,-144 295,-108 295,-108 295,-102 301,-96 307,-96 307,-96 483,-96 483,-96 489,-96 495,-102 495,-108 495,-108 495,-144 495,-144 495,-150 489,-156 483,-156"/>
+<text text-anchor="middle" x="395" y="-136.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">第二档：结构契约</text>
+<text text-anchor="middle" x="395" y="-122.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">把 schema 放进提示</text>
+<text text-anchor="middle" x="395" y="-108.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">可靠性中等 · 必须有重试兜底</text>
+</g>
+<g id="edge1" class="edge">
+<title>T1&#45;&gt;T2</title>
+<path fill="none" stroke="var(--border-line)" d="M187.69,-126C218.75,-126 254.76,-126 287.91,-126"/>
+<polygon fill="var(--border-line)" stroke="var(--border-line)" points="287.94,-128.45 294.94,-126 287.94,-123.55 287.94,-128.45"/>
+<text text-anchor="middle" x="254" y="-129.2" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="11.00" fill="var(--text-secondary)">强度递增</text>
+</g>
+<g id="node5" class="node">
+<title>L</title>
+<polygon fill="var(--surface-subtle)" stroke="var(--border-line)" points="207,-60 0,-60 0,0 213,0 213,-54 207,-60"/>
+<polyline fill="none" stroke="var(--border-line)" points="207,-60 207,-54 "/>
+<polyline fill="none" stroke="var(--border-line)" points="213,-54 207,-54 "/>
+<text text-anchor="middle" x="106.5" y="-40.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">松 ⇒ 必须配人工或后置校验</text>
+<text text-anchor="middle" x="106.5" y="-26.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">中 ⇒ 必须配重试</text>
+<text text-anchor="middle" x="106.5" y="-12.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">紧 ⇒ 才可把结构失败视为已消除</text>
+</g>
+<g id="edge4" class="edge">
+<title>T1&#45;&gt;L</title>
+<path fill="none" stroke="var(--border-line)" stroke-dasharray="1,5" d="M106.5,-95.84C106.5,-83.89 106.5,-71.95 106.5,-60"/>
+</g>
+<g id="node3" class="node">
+<title>T3</title>
+<path fill="var(--surface-raised)" stroke="var(--success)" d="M793,-156C793,-156 632,-156 632,-156 626,-156 620,-150 620,-144 620,-144 620,-108 620,-108 620,-102 626,-96 632,-96 632,-96 793,-96 793,-96 799,-96 805,-102 805,-108 805,-108 805,-144 805,-144 805,-150 799,-156 793,-156"/>
+<text text-anchor="middle" x="712.5" y="-136.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">第三档：约束解码</text>
+<text text-anchor="middle" x="712.5" y="-122.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">解码期按 schema 屏蔽候选</text>
+<text text-anchor="middle" x="712.5" y="-108.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">结构必然合法</text>
+</g>
+<g id="edge2" class="edge">
+<title>T2&#45;&gt;T3</title>
+<path fill="none" stroke="var(--border-line)" d="M495.39,-126C532.73,-126 575.15,-126 612.45,-126"/>
+<polygon fill="var(--border-line)" stroke="var(--border-line)" points="612.84,-128.45 619.84,-126 612.84,-123.55 612.84,-128.45"/>
+<text text-anchor="middle" x="536" y="-129.2" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="11.00" fill="var(--text-secondary)">强度递增</text>
+</g>
+<g id="node4" class="node">
+<title>X</title>
+<polygon fill="var(--surface-subtle)" stroke="var(--border-line)" points="842,-60 577,-60 577,0 848,0 848,-54 842,-60"/>
+<polyline fill="none" stroke="var(--border-line)" points="842,-60 842,-54 "/>
+<polyline fill="none" stroke="var(--border-line)" points="848,-54 842,-54 "/>
+<text text-anchor="middle" x="712.5" y="-40.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">同一轴上的另一档位差</text>
+<text text-anchor="middle" x="712.5" y="-26.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">强度递增 ⇒ 成本与可移植性同向递减</text>
+<text text-anchor="middle" x="712.5" y="-12.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">（可移植性：换模型换供应商是否还成立）</text>
+</g>
+<g id="edge3" class="edge">
+<title>T3&#45;&gt;X</title>
+<path fill="none" stroke="var(--border-line)" stroke-dasharray="1,5" d="M712.5,-95.84C712.5,-83.89 712.5,-71.95 712.5,-60"/>
+</g>
+</g>
+</svg>

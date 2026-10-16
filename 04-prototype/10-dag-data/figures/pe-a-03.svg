@@ -1,0 +1,62 @@
+<svg class="fig__svg" role="img"
+ viewBox="0.00 0.00 829.00 356.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 352)">
+<title>fig</title>
+<g id="node1" class="node">
+<title>S1</title>
+<path fill="var(--brand-soft)" stroke="var(--brand-primary)" d="M293,-348C293,-348 60,-348 60,-348 54,-348 48,-342 48,-336 48,-336 48,-300 48,-300 48,-294 54,-288 60,-288 60,-288 293,-288 293,-288 299,-288 305,-294 305,-300 305,-300 305,-336 305,-336 305,-342 299,-348 293,-348"/>
+<text text-anchor="middle" x="176.5" y="-328.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">设计阶段</text>
+<text text-anchor="middle" x="176.5" y="-314.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">检查能力边界与权限</text>
+<text text-anchor="middle" x="176.5" y="-300.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">提示注入 · 过度自主权 · 敏感信息泄露</text>
+</g>
+<g id="node2" class="node">
+<title>S2</title>
+<path fill="var(--brand-soft)" stroke="var(--brand-primary)" d="M306,-252C306,-252 47,-252 47,-252 41,-252 35,-246 35,-240 35,-240 35,-204 35,-204 35,-198 41,-192 47,-192 47,-192 306,-192 306,-192 312,-192 318,-198 318,-204 318,-204 318,-240 318,-240 318,-246 312,-252 306,-252"/>
+<text text-anchor="middle" x="176.5" y="-232.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">接入阶段</text>
+<text text-anchor="middle" x="176.5" y="-218.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">检查供应链与数据面</text>
+<text text-anchor="middle" x="176.5" y="-204.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">供应链 · 数据与模型投毒 · 向量与嵌入弱点</text>
+</g>
+<g id="node3" class="node">
+<title>S3</title>
+<path fill="var(--brand-soft)" stroke="var(--brand-primary)" d="M252,-156C252,-156 101,-156 101,-156 95,-156 89,-150 89,-144 89,-144 89,-108 89,-108 89,-102 95,-96 101,-96 101,-96 252,-96 252,-96 258,-96 264,-102 264,-108 264,-108 264,-144 264,-144 264,-150 258,-156 252,-156"/>
+<text text-anchor="middle" x="176.5" y="-136.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">上线阶段</text>
+<text text-anchor="middle" x="176.5" y="-122.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">检查消耗与输出</text>
+<text text-anchor="middle" x="176.5" y="-108.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">无界消耗 · 输出处理不当</text>
+</g>
+<g id="node5" class="node">
+<title>D</title>
+<path fill="var(--surface-raised)" stroke="var(--warning)" d="M747,-266C747,-266 497,-266 497,-266 491,-266 485,-260 485,-254 485,-254 485,-190 485,-190 485,-184 491,-178 497,-178 497,-178 747,-178 747,-178 753,-178 759,-184 759,-190 759,-190 759,-254 759,-254 759,-260 753,-266 747,-266"/>
+<text text-anchor="middle" x="622" y="-246.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">相对上一版的实质调整</text>
+<text text-anchor="middle" x="622" y="-232.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">权限类风险位次前移</text>
+<text text-anchor="middle" x="622" y="-218.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">隐藏上下文暴露取代系统提示泄露</text>
+<text text-anchor="middle" x="622" y="-204.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">新增与多模态相关的注入形态</text>
+<text text-anchor="middle" x="622" y="-190.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">⇒ 条目变动信息部分来自二手来源，须标注</text>
+</g>
+<g id="edge4" class="edge">
+<title>S2&#45;&gt;D</title>
+<path fill="none" stroke="var(--border-line)" stroke-dasharray="5,2" d="M318.13,-222C369.02,-222 426.51,-222 477.63,-222"/>
+<polygon fill="var(--border-line)" stroke="var(--border-line)" points="477.8,-224.45 484.8,-222 477.8,-219.55 477.8,-224.45"/>
+<text text-anchor="middle" x="388" y="-225.2" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="11.00" fill="var(--text-secondary)">版本差</text>
+</g>
+<g id="node4" class="node">
+<title>S4</title>
+<path fill="var(--brand-soft)" stroke="var(--brand-primary)" d="M341,-60C341,-60 12,-60 12,-60 6,-60 0,-54 0,-48 0,-48 0,-12 0,-12 0,-6 6,0 12,0 12,0 341,0 341,0 347,0 353,-6 353,-12 353,-12 353,-48 353,-48 353,-54 347,-60 341,-60"/>
+<text text-anchor="middle" x="176.5" y="-40.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">运行阶段</text>
+<text text-anchor="middle" x="176.5" y="-26.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">检查注入与信息面</text>
+<text text-anchor="middle" x="176.5" y="-12.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">提示注入 · 敏感信息泄露 · 错误信息 · 隐藏上下文暴露</text>
+</g>
+<g id="node6" class="node">
+<title>N</title>
+<polygon fill="var(--surface-subtle)" stroke="var(--border-line)" points="815,-60 423,-60 423,0 821,0 821,-54 815,-60"/>
+<polyline fill="none" stroke="var(--border-line)" points="815,-60 815,-54 "/>
+<polyline fill="none" stroke="var(--border-line)" points="821,-54 815,-54 "/>
+<text text-anchor="middle" x="622" y="-40.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">边界</text>
+<text text-anchor="middle" x="622" y="-26.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">清单是覆盖检查表，不是风险排序或合规认证</text>
+<text text-anchor="middle" x="622" y="-12.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">引用必须注明版本；官网索引页与官方仓库正文同步状态存在落差</text>
+</g>
+<g id="edge5" class="edge">
+<title>S4&#45;&gt;N</title>
+<path fill="none" stroke="var(--border-line)" stroke-dasharray="1,5" d="M353.1,-30C375.97,-30 399.52,-30 422.73,-30"/>
+</g>
+</g>
+</svg>

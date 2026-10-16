@@ -1,0 +1,32 @@
+digraph grp {
+  rankdir=LR; bgcolor="transparent";
+  node[shape=box, style="rounded,filled", fillcolor="#ffffff", color="#7c8aa5", fontcolor="#0e1729", fontname="Noto Sans CJK SC", fontsize=13, margin="0.20,0.12"]; edge[color="#7c8aa5", fontcolor="#46536b", fontname="Noto Sans CJK SC", fontsize=11, arrowsize=0.7];
+  n0 [label="我的 agent 的提示…\n(PE-P-01 · 第 16 层)", fillcolor="#dfe6fb", color="#2f4bd8"];
+  n1 [label="技能文件编写\n(PE-P-02 · 第 17 层)", fillcolor="#dfe6fb", color="#2f4bd8"];
+  n2 [label="子 Agent 委派与返…\n(PE-P-03 · 第 18 层)", fillcolor="#dfe6fb", color="#2f4bd8"];
+  n3 [label="门控即判据\n(PE-P-04 · 第 22 层)", fillcolor="#dfe6fb", color="#2f4bd8"];
+  n4 [label="记忆与反思\n(PE-P-05 · 第 23 层)", fillcolor="#dfe6fb", color="#2f4bd8"];
+  n5 [label="模型上下文协议接入实况\n(PE-P-06 · 第 24 层)", fillcolor="#dfe6fb", color="#2f4bd8"];
+  n6 [label="跨运行时迁移教训\n(PE-P-07 · 第 25 层)", fillcolor="#dfe6fb", color="#2f4bd8"];
+  {rank=same; n0; n1; n2;}
+  {rank=same; n3; n4; n5;}
+  {rank=same; n6;}
+  n2 -> n3 [style=invis, weight=100];
+  n5 -> n6 [style=invis, weight=100];
+  n0 -> n1 [constraint=false];
+  n1 -> n2 [constraint=false];
+  n2 -> n3 [color="#7c8aa5"];
+  n3 -> n4 [constraint=false];
+  n4 -> n5 [constraint=false];
+  n5 -> n6 [color="#7c8aa5"];
+  stub_in [label="组外接口\n入 8 条", shape=note, style="filled", fillcolor="#e9eef8", color="#9a5310"];
+  {rank=same; stub_in; n0; n1; n2;}
+  stub_in -> n0 [style=dashed, constraint=false, arrowhead=none];
+  stub_in -> n3 [style=dashed, constraint=false, arrowhead=none];
+  stub_in -> n4 [style=dashed, constraint=false, arrowhead=none];
+  stub_in -> n5 [style=dashed, constraint=false, arrowhead=none];
+  stub_out [label="组外接口\n出 2 条", shape=note, style="filled", fillcolor="#e9eef8", color="#9a5310"];
+  {rank=same; stub_out; n6;}
+  n0 -> stub_out [style=dashed, constraint=false, arrowhead=none];
+  n6 -> stub_out [style=dashed, constraint=false, arrowhead=none];
+}

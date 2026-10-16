@@ -1,0 +1,23 @@
+digraph grp {
+  rankdir=LR; bgcolor="transparent";
+  node[shape=box, style="rounded,filled", fillcolor="#ffffff", color="#7c8aa5", fontcolor="#0e1729", fontname="Noto Sans CJK SC", fontsize=13, margin="0.20,0.12"]; edge[color="#7c8aa5", fontcolor="#46536b", fontname="Noto Sans CJK SC", fontsize=11, arrowsize=0.7];
+  n0 [label="模型分层选型\n(PE-M-01 · 第 7 层)", fillcolor="#dfe6fb", color="#2f4bd8"];
+  n1 [label="标记敏感度的迁移性\n(PE-M-02 · 第 8 层)", fillcolor="#dfe6fb", color="#2f4bd8"];
+  n2 [label="换模型即失效与重编译\n(PE-M-03 · 第 19 层)", fillcolor="#dfe6fb", color="#2f4bd8"];
+  n3 [label="成本—质量—延迟三角\n(PE-M-04 · 第 20 层)", fillcolor="#dfe6fb", color="#2f4bd8"];
+  {rank=same; n0; n1;}
+  {rank=same; n2; n3;}
+  n1 -> n2 [style=invis, weight=100];
+  n0 -> n1 [constraint=false];
+  n1 -> n2 [color="#7c8aa5"];
+  n2 -> n3 [constraint=false];
+  stub_in [label="组外接口\n入 4 条", shape=note, style="filled", fillcolor="#e9eef8", color="#9a5310"];
+  {rank=same; stub_in; n0; n1;}
+  stub_in -> n0 [style=dashed, constraint=false, arrowhead=none];
+  stub_in -> n2 [style=dashed, constraint=false, arrowhead=none];
+  stub_in -> n3 [style=dashed, constraint=false, arrowhead=none];
+  stub_out [label="组外接口\n出 2 条", shape=note, style="filled", fillcolor="#e9eef8", color="#9a5310"];
+  {rank=same; stub_out; n2; n3;}
+  n1 -> stub_out [style=dashed, constraint=false, arrowhead=none];
+  n3 -> stub_out [style=dashed, constraint=false, arrowhead=none];
+}

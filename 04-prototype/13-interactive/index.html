@@ -1,0 +1,991 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="auto">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>交互全景图 · 新一代提示词工程 · 知识全景图</title>
+<!-- base: ../ (相对本站根) -->
+<!-- template: shell-v2 -->
+<meta name="theme-color" content="#f4f7fc" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#060a14" media="(prefers-color-scheme: dark)">
+<link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+<script>/* ui-bootstrap v2 */
+(function(){var K="ui-theme",M="ui-motion",B="ui-backdrop",F="ui-fontsize",R=document.documentElement;function ap(t){if(t==="light"||t==="dark"){R.setAttribute("data-theme",t);}else{R.removeAttribute("data-theme");}var bs=document.querySelectorAll("[data-theme-set]");for(var i=0;i<bs.length;i++){bs[i].setAttribute("aria-pressed",String(bs[i].getAttribute("data-theme-set")===t));}}function am(v){if(v==="on"||v==="off"){R.setAttribute("data-motion",v);}else{R.removeAttribute("data-motion");}var bs=document.querySelectorAll("[data-motion-set]");for(var i=0;i<bs.length;i++){bs[i].setAttribute("aria-pressed",String(bs[i].getAttribute("data-motion-set")===v));}}function ab(v){if(v==="off"){R.setAttribute("data-backdrop","off");}else{R.removeAttribute("data-backdrop");}var bs=document.querySelectorAll("[data-backdrop-set]");for(var i=0;i<bs.length;i++){bs[i].setAttribute("aria-pressed",String(bs[i].getAttribute("data-backdrop-set")===v));}}function af(v){if(v==="large"){R.setAttribute("data-fontsize","large");}else{R.removeAttribute("data-fontsize");}var bs=document.querySelectorAll("[data-fontsize-set]");for(var i=0;i<bs.length;i++){bs[i].setAttribute("aria-pressed",String(bs[i].getAttribute("data-fontsize-set")===v));}}var t="system",v="system",bk="on",fz="standard";try{t=localStorage.getItem(K)||"system";v=localStorage.getItem(M)||"system";bk=localStorage.getItem(B)||"on";fz=localStorage.getItem(F)||"standard";}catch(e){}if(t!=="light"&&t!=="dark"){t="system";}if(v!=="on"&&v!=="off"){v="system";}if(bk!=="on"&&bk!=="off"){bk="on";}if(fz!=="standard"&&fz!=="large"){fz="standard";}ap(t);am(v);ab(bk);af(fz);R.className+=(R.className?" ":"")+"js-motion";function fin(){var els=document.querySelectorAll("[data-reveal]");for(var i=0;i<els.length;i++){els[i].className+=" is-in";}}function ready(){R.setAttribute("data-motion-ready","1");if(!("IntersectionObserver" in window)){fin();return;}var io=new IntersectionObserver(function(es){for(var i=0;i<es.length;i++){if(es[i].isIntersecting){es[i].target.className+=" is-in";io.unobserve(es[i].target);}}},{rootMargin:"0px 0px -8% 0px"});var els=document.querySelectorAll("[data-reveal]");for(var i=0;i<els.length;i++){io.observe(els[i]);}}function boot(){var els=document.querySelectorAll("[data-reveal]");for(var i=0;i<els.length;i++){els[i].style.setProperty("--i",String(i));}if(v==="off"){R.setAttribute("data-motion-ready","1");return;}try{ready();}catch(e){fin();}}if(document.readyState==="loading"){document.addEventListener("DOMContentLoaded",boot);}else{boot();}setTimeout(function(){if(!R.getAttribute("data-motion-ready")){fin();}},1800);document.addEventListener("click",function(e){var n=e.target;while(n&&n!==document.body&&!n.getAttribute){n=n.parentNode;}if(!n||!n.getAttribute){return;}var ts=n.getAttribute("data-theme-set"),ms=n.getAttribute("data-motion-set"),bs=n.getAttribute("data-backdrop-set"),fs=n.getAttribute("data-fontsize-set");if(!ts&&!ms&&!bs&&!fs){return;}e.preventDefault();if(ts){try{if(ts==="system"){localStorage.removeItem(K);}else{localStorage.setItem(K,ts);}}catch(err){}ap(ts);}if(ms){try{if(ms==="system"){localStorage.removeItem(M);}else{localStorage.setItem(M,ms);}}catch(err2){}am(ms);}if(bs){try{if(bs==="on"){localStorage.removeItem(B);}else{localStorage.setItem(B,bs);}}catch(err3){}ab(bs);}if(fs){try{if(fs==="standard"){localStorage.removeItem(F);}else{localStorage.setItem(F,fs);}}catch(err4){}af(fs);}});})();</script>
+<style>
+/* >>> GENERATED:tokens (由 16-checkpoint/gen-tokens.py 从 site-palette.json 派生；⛔ 勿手改) */
+
+/* 默认档（浅色值在此；强制浅色 = 不覆盖 + 守卫，⛔ 无 :root[data-theme='light'] 块） */
+:root {
+  color-scheme: light;
+  --text-primary: #0e1729;
+  --text-secondary: #46536b;
+  --text-tertiary: #5f6d84;
+  --link: #2a46cf;
+  --brand-primary: #2f4bd8;
+  --border-line: #7c8aa5;
+  --border-subtle: #dde4f0;
+  --surface-page: #f4f7fc;
+  --surface-raised: #ffffff;
+  --surface-subtle: #e9eef8;
+  --surface-stripe: #f0f4fa;
+  --surface-sunken: #eaeff8;
+  --border-card: #cfd8e8;
+  --edge-highlight: rgba(255, 255, 255, 0.92);
+  --brand-bright: #5470ff;
+  --brand-deep: #1d33a6;
+  --brand-soft: rgba(47, 75, 216, 0.1);
+  --brand-tint: rgba(47, 75, 216, 0.16);
+  --on-brand: #ffffff;
+  --success: #136f3a;
+  --warning: #9a5310;
+  --danger: #b3181f;
+  --focus-ring: #2f4bd8;
+  --shadow-1: 0 1px 2px rgba(19, 32, 64, 0.06), 0 2px 6px -1px rgba(19, 32, 64, 0.07);
+  --shadow-2: 0 2px 4px rgba(19, 32, 64, 0.05), 0 8px 20px -6px rgba(19, 32, 64, 0.12), 0 18px 40px -18px rgba(19, 32, 64, 0.16);
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+  --dur-1: 0.16s;
+  --dur-2: 0.28s;
+  --dur-3: 0.5s;
+  --dur-4: 0.85s;
+  --reveal-shift: 16px;
+  --font-sans: system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', 'Source Han Sans SC', sans-serif;
+  --font-mono: ui-monospace, 'SF Mono', SFMono-Regular, Menlo, Consolas, 'Liberation Mono', 'Noto Sans Mono CJK SC', 'Courier New', monospace;
+  --fs-hero: clamp(1.5rem, 0.6rem + 2.2vw, 3rem);
+  --fs-section: clamp(1.375rem, 1rem + 1.5vw, 2rem);
+  --fs-card-title: 1.25rem;
+  --fs-body: 1rem;
+  --fs-label: 0.8125rem;
+  --fs-nav: 0.9375rem;
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 1rem;
+  --space-4: 1.5rem;
+  --space-5: 2rem;
+  --space-6: 3rem;
+  --space-7: 4rem;
+  --container: 70rem;
+  --measure: 66ch;
+  --radius: 12px;
+  --radius-lg: 18px;
+  --radius-pill: 999px;
+  --nav-h: 4rem;
+  --rail-w: 15.75rem;
+  --scrim-1: 12%;
+  --scrim-2: 28%;
+  --scrim-3: 62%;
+  --fs-root-lg: 1.125rem;
+}
+
+/* 跟随系统档 */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) {
+    color-scheme: dark;
+    --text-primary: #e8edf7;
+    --text-secondary: #a7b3c8;
+    --text-tertiary: #8e9cb3;
+    --link: #8fb4ff;
+    --brand-primary: #8fb4ff;
+    --border-line: #8798b5;
+    --border-subtle: #1e2740;
+    --surface-page: #060a14;
+    --surface-raised: #0d1424;
+    --surface-subtle: #151d31;
+    --surface-stripe: #0a1120;
+    --surface-sunken: #04070e;
+    --border-card: #232e48;
+    --edge-highlight: rgba(255, 255, 255, 0.06);
+    --brand-bright: #b0caff;
+    --brand-deep: #5c86e8;
+    --brand-soft: rgba(143, 180, 255, 0.14);
+    --brand-tint: rgba(143, 180, 255, 0.24);
+    --on-brand: #060a14;
+    --success: #4ade80;
+    --warning: #fbbf24;
+    --danger: #f87171;
+    --focus-ring: #8fb4ff;
+    --shadow-1: 0 1px 2px rgba(0, 0, 0, 0.5);
+    --shadow-2: 0 2px 6px rgba(0, 0, 0, 0.5), 0 16px 36px -14px rgba(0, 0, 0, 0.6);
+    --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+    --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+    --dur-1: 0.16s;
+    --dur-2: 0.28s;
+    --dur-3: 0.5s;
+    --dur-4: 0.85s;
+    --reveal-shift: 16px;
+    --font-sans: system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', 'Source Han Sans SC', sans-serif;
+    --font-mono: ui-monospace, 'SF Mono', SFMono-Regular, Menlo, Consolas, 'Liberation Mono', 'Noto Sans Mono CJK SC', 'Courier New', monospace;
+    --fs-hero: clamp(1.5rem, 0.6rem + 2.2vw, 3rem);
+    --fs-section: clamp(1.375rem, 1rem + 1.5vw, 2rem);
+    --fs-card-title: 1.25rem;
+    --fs-body: 1rem;
+    --fs-label: 0.8125rem;
+    --fs-nav: 0.9375rem;
+    --space-1: 0.25rem;
+    --space-2: 0.5rem;
+    --space-3: 1rem;
+    --space-4: 1.5rem;
+    --space-5: 2rem;
+    --space-6: 3rem;
+    --space-7: 4rem;
+    --container: 70rem;
+    --measure: 66ch;
+    --radius: 12px;
+    --radius-lg: 18px;
+    --radius-pill: 999px;
+    --nav-h: 4rem;
+    --rail-w: 15.75rem;
+    --scrim-1: 26%;
+    --scrim-2: 44%;
+    --scrim-3: 70%;
+    --fs-root-lg: 1.125rem;
+  }
+}
+
+/* 强制深色档 */
+:root[data-theme='dark'] {
+  color-scheme: dark;
+  --text-primary: #e8edf7;
+  --text-secondary: #a7b3c8;
+  --text-tertiary: #8e9cb3;
+  --link: #8fb4ff;
+  --brand-primary: #8fb4ff;
+  --border-line: #8798b5;
+  --border-subtle: #1e2740;
+  --surface-page: #060a14;
+  --surface-raised: #0d1424;
+  --surface-subtle: #151d31;
+  --surface-stripe: #0a1120;
+  --surface-sunken: #04070e;
+  --border-card: #232e48;
+  --edge-highlight: rgba(255, 255, 255, 0.06);
+  --brand-bright: #b0caff;
+  --brand-deep: #5c86e8;
+  --brand-soft: rgba(143, 180, 255, 0.14);
+  --brand-tint: rgba(143, 180, 255, 0.24);
+  --on-brand: #060a14;
+  --success: #4ade80;
+  --warning: #fbbf24;
+  --danger: #f87171;
+  --focus-ring: #8fb4ff;
+  --shadow-1: 0 1px 2px rgba(0, 0, 0, 0.5);
+  --shadow-2: 0 2px 6px rgba(0, 0, 0, 0.5), 0 16px 36px -14px rgba(0, 0, 0, 0.6);
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+  --dur-1: 0.16s;
+  --dur-2: 0.28s;
+  --dur-3: 0.5s;
+  --dur-4: 0.85s;
+  --reveal-shift: 16px;
+  --font-sans: system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', 'Source Han Sans SC', sans-serif;
+  --font-mono: ui-monospace, 'SF Mono', SFMono-Regular, Menlo, Consolas, 'Liberation Mono', 'Noto Sans Mono CJK SC', 'Courier New', monospace;
+  --fs-hero: clamp(1.5rem, 0.6rem + 2.2vw, 3rem);
+  --fs-section: clamp(1.375rem, 1rem + 1.5vw, 2rem);
+  --fs-card-title: 1.25rem;
+  --fs-body: 1rem;
+  --fs-label: 0.8125rem;
+  --fs-nav: 0.9375rem;
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 1rem;
+  --space-4: 1.5rem;
+  --space-5: 2rem;
+  --space-6: 3rem;
+  --space-7: 4rem;
+  --container: 70rem;
+  --measure: 66ch;
+  --radius: 12px;
+  --radius-lg: 18px;
+  --radius-pill: 999px;
+  --nav-h: 4rem;
+  --rail-w: 15.75rem;
+  --scrim-1: 26%;
+  --scrim-2: 44%;
+  --scrim-3: 70%;
+  --fs-root-lg: 1.125rem;
+}
+
+/* <<< GENERATED:tokens */
+
+
+/* ============================================================
+   唯一外壳样式（shell-v2）· 令牌全部来自上方生成块
+   ============================================================ */
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+html[data-theme="light"]{color-scheme:light}
+html[data-theme="dark"]{color-scheme:dark}
+body{margin:0;background:var(--surface-page);color:var(--text-primary);
+ line-height:1.75;font-family:var(--font-sans);font-size:var(--fs-body)}
+
+/* --- 显示偏好（由侧栏/顶部导航的开关驱动）---
+   ⛔ 本节不得声明任何自定义属性：令牌声明点全站唯一（P23）；值只能取令牌（P24）。 */
+/* ① 背景素材：off ⇒ 背景层整块不渲染（纯装饰层，关闭后正文坐在 --surface-page 上）。
+   与 P27 的「非当前主题帧 display:none」同规：都用 display:none，⛔ 不用 opacity/visibility。 */
+:root[data-backdrop="off"] .backdrop{display:none}
+/* ② 字号：large ⇒ **改根字号**（16→18px）。★ 2026-10-15 用户反馈轮修正：此前只改 body 的
+   font-size，于是标题/导航/标签/表格各自走自己的 --fs-* 令牌、**不随动** ⇒ 用户实测「部分生效」
+   且层次比例失真（正文变大而标题不变）。改为根字号后，配合**布局令牌 rem 化**
+   （--container / --rail-w / --nav-h / --space-* 全为 rem），全站字号、间距、栏宽、内容列宽
+   **等比放大**，层次比例逐字不变；根入口 h1 的行宽与内容列宽同比缩放 ⇒ P34 的余量比例不变。
+   ⛔ 不得退回「只改 body」的写法：那不是作用域选择，是**半生效**。 */
+:root[data-fontsize="large"]{font-size:var(--fs-root-lg)}
+code,kbd,samp,pre{font-family:var(--font-mono)}
+a{color:var(--link);text-decoration:none}
+a:focus-visible,button:focus-visible,summary:focus-visible,input:focus-visible,
+select:focus-visible,textarea:focus-visible,[tabindex]:focus-visible{
+ outline:2px solid var(--focus-ring);outline-offset:2px}
+h1,h2,h3,h4{line-height:1.3;margin:var(--space-4) 0 var(--space-2)}
+h1{font-size:var(--fs-hero);line-height:1.06;letter-spacing:-0.035em;margin-top:var(--space-3)}
+h2{font-size:var(--fs-section);line-height:1.25;letter-spacing:-0.02em;
+ padding-bottom:var(--space-1);border-bottom:1px solid var(--border-subtle)}
+h3{font-size:var(--fs-card-title);letter-spacing:-0.01em}
+p,li,dd,dt,blockquote{max-width:var(--measure)}
+ul.tight li,ol.tight li{margin:var(--space-1) 0}
+
+/* --- 布局骨架：<1180 顶部导航 / ≥1180 左栏 rail（二选一，⛔ 不叠加） --- */
+.layout{max-width:var(--container);margin:0 auto;padding:0 var(--space-3)}
+.rail{display:none}
+main{padding-bottom:var(--space-6)}
+.wrap{max-width:var(--container);margin:0 auto;padding:0 var(--space-3)}
+
+/* --- 顶部导航（<1180px 形态） --- */
+.site-head{position:sticky;top:0;z-index:20;background:var(--surface-raised);
+ border-bottom:1px solid var(--border-subtle)}
+.head-in{display:flex;flex-wrap:wrap;gap:var(--space-2) var(--space-3);
+ align-items:center;justify-content:space-between;min-height:var(--nav-h)}
+.brand{font-weight:700;color:var(--text-primary);font-size:var(--fs-nav)}
+.brand span{font-weight:400;color:var(--text-secondary);font-size:var(--fs-label);
+ margin-left:var(--space-1)}
+.nav{display:flex;flex-wrap:wrap;gap:var(--space-1) var(--space-3);align-items:center}
+.nav__link{font-size:var(--fs-nav);color:var(--text-secondary);min-height:44px;
+ display:inline-flex;align-items:center}
+.switches{display:flex;flex-wrap:wrap;gap:var(--space-2);align-items:center}
+.switch{display:flex;gap:var(--space-1);align-items:center;margin:0;padding:0}
+.switch__legend{font-size:var(--fs-label);color:var(--text-secondary);
+ margin-right:var(--space-1)}
+/* ★ 开关按钮与「显示设置」折叠钮共用同一套外观（同一枚控件的两种形态） */
+.switch__btn,.settings__summary{font:inherit;font-size:var(--fs-label);cursor:pointer;min-height:44px;
+ background:var(--surface-subtle);color:var(--text-secondary);
+ border:1px solid var(--border-line);border-radius:var(--radius-pill);
+ padding:0 var(--space-2)}
+.switch__btn[aria-pressed="true"]{background:var(--brand-soft);color:var(--text-primary);
+ border-color:var(--brand-primary)}
+/* ★ 窄屏档（<1180）四组开关共 10 枚，横排会把 sticky 头部撑成三四行 ⇒ 收进原生折叠件。
+   `summary` 在交互作用面登记表内（`summary:hover` 已登记），故 ⛔ 不新增任何 :hover 选择器。 */
+.settings{display:block}
+.settings__summary{display:inline-flex;align-items:center;list-style:none}
+.settings__summary::-webkit-details-marker{display:none}
+.settings>.switches{margin-top:var(--space-2)}
+
+/* --- 左栏 rail（≥1180px 形态；与顶部导航二选一） ---
+   ★ 形态调整（2026-10-15，用户反馈 #2）：rail **撑满整页竖向**（grid 行高 = 正文高度，
+   见下方 ≥1180 档的 align-self:stretch），内层 100dvh sticky ⇒ 视口内常驻；
+   导航在上、显示开关锚在底端（`.rail__foot` 的 margin-top 取 auto，见规则本体）。
+   ⛔ align-self 只在 ≥1180 档给：基础档 rail 是 display:none，无需参与布局。
+   ⚠ 本注释里 ⛔ 不得写出「margin-top 冒号 auto」那种**声明形态**的串：门控 P24 的扫描面
+   包含 CSS 注释（只剥令牌块、不剥注释），注释里出现 margin/padding 的声明形态会被判
+   令牌外硬编码（本轮实测：19 页 × 11 处假阳，全来自上一版注释里的那一串）。 */
+.rail{background:var(--surface-raised);border-right:1px solid var(--border-subtle)}
+.rail__in{position:sticky;top:0;height:100dvh;overflow:auto;
+ display:flex;flex-direction:column;gap:var(--space-2);
+ padding:var(--space-4) var(--space-3)}
+.rail__title{font-size:var(--fs-label);letter-spacing:0.08em;color:var(--text-tertiary);
+ text-transform:uppercase;margin:0 0 var(--space-2)}
+.rail__list{list-style:none;margin:0;padding:0}
+.rail__link{display:flex;align-items:center;min-height:44px;padding:0 var(--space-2);
+ border-radius:var(--radius);color:var(--text-secondary);font-size:var(--fs-nav)}
+.rail__link[aria-current="page"]{color:var(--text-primary);background:var(--surface-subtle)}
+/* 侧栏底部「显示设置」区：锚在 rail 底端，与导航之间用弱分隔线分开 */
+.rail__foot{margin-top:auto;padding-top:var(--space-3);
+ border-top:1px solid var(--border-subtle)}
+/* 同一份开关标记，两种排布：顶部导航横向、侧栏**两列栅格**（四组共 10 枚，纵向堆叠会
+   把侧栏撑到 ~930px 高、在 900px 视口里被截断 ⇒ 两列后约 400px）。legend 独占整行。 */
+.rail .switches{flex-direction:column;align-items:stretch;gap:var(--space-3)}
+.rail .switch{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--space-1)}
+.rail .switch__legend{grid-column:1 / -1;margin-right:0}
+.rail .switch__btn{padding:0 var(--space-1)}
+
+/* ============================================================
+   内容阅读单元 v2（2026-10-15 用户走查第 2 轮反馈后新增；见 CONTENT-V2.md）
+   ★ 总则「一行只干一件事」：身份 / 标签 / 元信息 / 结论 / 地图 各自独占一行容器。
+   ★ 全部值取令牌（P24）；⛔ 本节不声明任何自定义属性（P23）。
+   ============================================================ */
+/* --- 标题区：h1 纯中文一行；英文名独立成行、去括号 --- */
+.page-en{color:var(--text-secondary);font-size:var(--fs-nav);letter-spacing:0.01em;
+ margin:0 0 var(--space-1);max-width:var(--measure)}
+/* --- 身份行（节点号 · 状态 · 分组 · 层）与标签行（tags）分离 --- */
+.tag-row{display:flex;flex-wrap:wrap;gap:var(--space-1);align-items:center;
+ margin:0 0 var(--space-3)}
+/* --- 页首导读：先给结论（一句话），再给结构地图（可跳转） --- */
+.read-map{background:var(--surface-subtle);border:1px solid var(--border-subtle);
+ border-radius:var(--radius-lg);padding:var(--space-3);margin:var(--space-3) 0}
+.read-map__label{font-size:var(--fs-label);letter-spacing:0.08em;color:var(--text-tertiary);
+ text-transform:uppercase;margin:0 0 var(--space-1)}
+.read-map__claim{font-size:var(--fs-card-title);line-height:1.6;color:var(--text-primary);
+ font-weight:600;margin:0;max-width:var(--measure)}
+.read-map__nav{display:flex;flex-wrap:wrap;gap:var(--space-1);margin:var(--space-2) 0 0;
+ padding:0;list-style:none}
+.read-map__nav a{display:inline-flex;align-items:center;min-height:44px;
+ font-size:var(--fs-label);color:var(--text-secondary);
+ border:1px solid var(--border-subtle);border-radius:var(--radius-pill);
+ padding:0 var(--space-2)}
+/* --- 区块序号（显式递进：先讲什么、再讲什么） --- */
+.sec-no{font-family:var(--font-mono);font-size:var(--fs-label);letter-spacing:0.08em;
+ color:var(--text-tertiary);margin-right:var(--space-2)}
+/* --- 阅读单元：主张句（加重 + 强调条）与展开点（每句一行） --- */
+.claim{margin:var(--space-2) 0;padding-left:var(--space-3);
+ border-left:2px solid var(--brand-primary);font-size:var(--fs-card-title);
+ line-height:1.6;color:var(--text-primary);max-width:var(--measure)}
+.points{list-style:none;margin:var(--space-2) 0 0;padding:0}
+.points li{position:relative;padding-left:var(--space-4);margin:var(--space-1) 0;
+ max-width:var(--measure)}
+.points li::before{content:"";position:absolute;left:var(--space-2);top:0.8em;
+ width:4px;height:4px;border-radius:var(--radius-pill);background:var(--border-line)}
+/* --- 适用边界：独立块（⛔ 不混在主张句里） --- */
+.boundary{margin:var(--space-3) 0;padding:var(--space-2) var(--space-3);
+ border-left:2px solid var(--warning);background:var(--surface-subtle);
+ border-radius:0 var(--radius) var(--radius) 0}
+.boundary__label{font-size:var(--fs-label);letter-spacing:0.08em;color:var(--text-secondary);
+ text-transform:uppercase;margin:0 0 var(--space-1)}
+.boundary p{margin:0;max-width:var(--measure)}
+/* --- 对照表：一行一件事（类别 ｜ 场景 ｜ 做法） --- */
+.cmp-table caption{font-size:var(--fs-label)}
+.cmp-table td:first-child,.cmp-table th:first-child{white-space:nowrap;color:var(--text-secondary)}
+/* --- 图件（内联 SVG：随主题；⛔ 不外包固定尺寸容器） --- */
+.fig{margin:var(--space-4) 0;padding:var(--space-3);background:var(--surface-raised);
+ border:1px solid var(--border-card);border-radius:var(--radius-lg);
+ box-shadow:var(--shadow-1),inset 0 1px 0 var(--edge-highlight)}
+.fig__svg{display:block;width:100%;height:auto}
+.fig figcaption{font-size:var(--fs-label);color:var(--text-secondary);
+ margin-top:var(--space-2);max-width:var(--measure)}
+.fig__src{color:var(--text-tertiary)}
+/* --- 依赖链（前置 → 本节点 → 后继；一行） --- */
+.relchain{display:flex;flex-wrap:wrap;gap:var(--space-1);align-items:center;
+ margin:var(--space-2) 0}
+.relchain__arrow{color:var(--text-tertiary);font-size:var(--fs-label)}
+/* --- 渐进披露（原文 / 代码按需展开；CSS-only，⛔ 无 JS） --- */
+.acc{border:1px solid var(--border-subtle);border-radius:var(--radius);
+ background:var(--surface-stripe);padding:var(--space-1) var(--space-3);
+ margin:var(--space-2) 0}
+.acc>summary{font-size:var(--fs-label);color:var(--text-secondary);cursor:pointer;
+ min-height:44px;display:inline-flex;align-items:center}
+.acc[open]>summary{color:var(--text-primary)}
+/* --- 实验步骤（编号 + 代码 + 预期观察） --- */
+.steps{counter-reset:step;list-style:none;margin:var(--space-2) 0;padding:0}
+.steps>li{position:relative;padding-left:var(--space-5);margin:var(--space-3) 0}
+.steps>li::before{counter-increment:step;content:counter(step);
+ position:absolute;left:0;top:0;width:var(--space-4);height:var(--space-4);
+ display:flex;align-items:center;justify-content:center;border-radius:var(--radius-pill);
+ background:var(--brand-soft);color:var(--text-primary);
+ font-size:var(--fs-label);font-family:var(--font-mono)}
+/* --- 竖表：长文字段一律纵向排列（⛔ 不横向滚动；反馈 #1） --- */
+.kv-blocks{display:grid;gap:var(--space-2);margin:var(--space-2) 0}
+.kv-block{border:1px solid var(--border-subtle);border-radius:var(--radius);
+ background:var(--surface-stripe);padding:var(--space-2) var(--space-3)}
+.kv-block__row{margin:var(--space-1) 0;max-width:var(--measure)}
+.kv-block__k{display:block;font-size:var(--fs-label);color:var(--text-tertiary);
+ letter-spacing:0.08em;text-transform:uppercase}
+.kv-block__v{display:block;color:var(--text-primary)}
+/* --- 枚举分点：位置化的有序结构（⛔ 不靠「其一其二」这几个字承担层次；反馈 #3） --- */
+.enum-list{counter-reset:enum;list-style:none;margin:var(--space-1) 0 var(--space-1);
+ padding:0}
+.enum-list li{counter-increment:enum;position:relative;padding-left:var(--space-4);
+ margin:var(--space-1) 0;max-width:var(--measure)}
+.enum-list li::before{content:counter(enum);position:absolute;left:0;top:0;
+ font-family:var(--font-mono);font-size:var(--fs-label);color:var(--text-tertiary)}
+.point{margin:var(--space-2) 0 0;max-width:var(--measure);color:var(--text-primary)}
+.points__block{list-style:none}
+.points__block::before{display:none}
+/* --- 总结 + 细节 清单（失效模式用） --- */
+.pair-list li{margin:var(--space-2) 0;max-width:var(--measure)}
+.pair__sum{display:block;font-weight:600;color:var(--text-primary)}
+.pair__detail{display:block;color:var(--text-secondary)}
+.relchain__label{font-size:var(--fs-label);color:var(--text-tertiary)}
+/* --- 术语表 / 证据表：多维对照一律用表 --- */
+.terms-table td:first-child,.ev-table td:first-child{white-space:nowrap}
+/* --- 锚点目标：跳转落点留白 + 高亮（页首导读的落点） --- */
+:target{scroll-margin-top:var(--space-5)}
+h2:target,h3:target{background:var(--brand-soft);border-radius:var(--radius)}
+
+/* --- 页脚 --- */
+.site-foot{margin-top:var(--space-6);padding-top:var(--space-3);
+ padding-bottom:var(--space-5);border-top:1px solid var(--border-subtle);
+ color:var(--text-secondary);font-size:var(--fs-label)}
+/* ★ 页脚在 .layout 之内（2026-10-15）：窄屏档横向内边距由 .layout 提供 ⇒ 收回 .wrap 的内边距，
+   否则会叠成两倍（16→24→32 各加一次）。≥1180 档 .layout 横向内边距为 0，故改由 .site-foot 自带。 */
+.layout>.site-foot .wrap{padding-left:0;padding-right:0}
+.footer__credits{border-top:1px solid var(--border-subtle);margin-top:var(--space-3);
+ padding-top:var(--space-2)}
+.footer__credits h2{font-size:var(--fs-label);border:0;padding:0;margin:0 0 var(--space-1);
+ color:var(--text-secondary);letter-spacing:0.08em;text-transform:uppercase}
+.credits{list-style:none;margin:0;padding:0}
+.credits li{margin:var(--space-1) 0;color:var(--text-secondary)}
+
+/* --- 面包屑与元信息 --- */
+.crumbs{font-size:var(--fs-label);color:var(--text-secondary);margin:var(--space-2) 0}
+.crumbs ol{list-style:none;display:flex;flex-wrap:wrap;gap:var(--space-1);margin:0;padding:0}
+.crumbs li+li::before{content:"›";margin-right:var(--space-1);color:var(--text-tertiary)}
+.lede{color:var(--text-secondary);max-width:var(--measure)}
+.meta-line{display:flex;flex-wrap:wrap;gap:var(--space-1) var(--space-2);align-items:center;
+ color:var(--text-secondary);font-size:var(--fs-label);margin:var(--space-1) 0 var(--space-3)}
+
+/* --- 卡片四件套（渐变底 + border-card + shadow-1 + 顶 1px 高光） ---
+   ★ 两类卡片：`.card` 是**可点卡片**（含 .card__title-link 拉伸层，有悬停反馈）；
+   `.card--flat` 是**纯内容块**（无链接 ⇒ 无悬停反馈、无 pointer 光标，
+   ⛔ 不得有「看起来能点」的假可供性——H2 硬规则 2）。 */
+.card{position:relative;isolation:isolate;margin:var(--space-3) 0;
+ padding:var(--space-3);
+ background:linear-gradient(180deg,var(--surface-raised) 0%,
+  color-mix(in srgb,var(--brand-primary) 4%,var(--surface-raised)) 100%);
+ border:1px solid var(--border-card);border-radius:var(--radius-lg);
+ box-shadow:var(--shadow-1),inset 0 1px 0 var(--edge-highlight);
+ transition:transform var(--dur-2) var(--ease-out),
+  box-shadow var(--dur-2) var(--ease-out),border-color var(--dur-2) var(--ease-out)}
+.card--flat{position:relative;margin:var(--space-3) 0;padding:var(--space-3);
+ background:var(--surface-subtle);border:1px solid var(--border-subtle);
+ border-radius:var(--radius-lg);cursor:auto}
+.card>:first-child,.card--flat>:first-child{margin-top:0}
+.card>:last-child,.card--flat>:last-child{margin-bottom:0}
+/* ★ 拉伸层：反馈面 ≡ 热区。containing block 必须是卡片本体（.card 无 transform/filter/
+   will-change，故定位基准即卡片自身）。⛔ 成对：卡内其它真链接必须抬升到 z-index:2。 */
+.card__title-link{color:var(--text-primary);font-weight:600}
+.card__title-link::after{content:"";position:absolute;inset:0;z-index:1}
+.card__links{position:relative;z-index:2}
+
+.grid{display:grid;gap:var(--space-3);grid-template-columns:repeat(auto-fit,minmax(15rem,1fr))}
+.two-col{display:grid;gap:var(--space-3);grid-template-columns:repeat(auto-fit,minmax(17rem,1fr))}
+
+/* --- 表格 --- */
+table{border-collapse:collapse;width:100%;margin:var(--space-3) 0;font-size:var(--fs-nav)}
+caption{text-align:left;color:var(--text-secondary);font-size:var(--fs-label);
+ padding-bottom:var(--space-1)}
+th,td{border:1px solid var(--border-subtle);padding:var(--space-1) var(--space-2);
+ text-align:left;vertical-align:top}
+thead th{background:var(--surface-subtle)}
+tbody tr:nth-child(even){background:var(--surface-stripe)}
+.table-scroll{overflow-x:auto;max-width:100%}
+
+/* --- 术语 / 列表 / 代码 --- */
+dl.terms{margin:0}
+dl.terms dt{font-weight:600;margin-top:var(--space-2)}
+dl.terms dd{margin:var(--space-1) 0 0 var(--space-3);color:var(--text-secondary)}
+code{background:var(--surface-subtle);border:1px solid var(--border-subtle);
+ border-radius:var(--radius);padding:0 var(--space-1);font-size:var(--fs-label)}
+pre{background:var(--surface-subtle);border:1px solid var(--border-subtle);
+ border-radius:var(--radius);padding:var(--space-2) var(--space-3);overflow:auto;max-width:100%;
+ /* ★ 代码块折行（2026-10-15）：用户反馈 #1「尽可能不要有左右翻动的需求」——长命令行不折行
+    会把代码块变成横向滚动区（P38 D 段实测 pe-f-01 溢出 637px / pe-r-02 208px）。
+    ⛔ 不为变绿而放宽 P38：修的是产物，不是阈值。 */
+ white-space:pre-wrap;word-break:break-word}
+pre code{background:none;border:0;padding:0;font-size:var(--fs-label)}
+blockquote{margin:var(--space-3) 0;padding:var(--space-2) var(--space-3);
+ border-left:1px solid var(--border-line);background:var(--surface-subtle);
+ color:var(--text-secondary)}
+hr{border:0;border-top:1px solid var(--border-subtle);margin:var(--space-4) 0}
+
+/* --- 徽标 / 标签（★ 胶囊圆角走令牌；⛔ 无组色相） --- */
+.badge{display:inline-block;border:1px solid var(--border-line);
+ border-radius:var(--radius-pill);padding:0 var(--space-2);font-size:var(--fs-label);
+ line-height:1.7;color:var(--text-secondary)}
+.badge--ok{border-color:var(--brand-primary);color:var(--text-primary)}
+.badge--pending{color:var(--text-secondary)}
+.badge--warn{border-color:var(--warning);color:var(--warning)}
+.badge--danger{border-color:var(--danger);color:var(--danger)}
+.tier{font-size:var(--fs-label);color:var(--text-secondary);
+ border:1px solid var(--border-subtle);border-radius:var(--radius);padding:0 var(--space-1)}
+.gseq{font-family:var(--font-mono);font-weight:700;font-size:var(--fs-label);
+ color:var(--text-secondary);letter-spacing:0.04em}
+.gchip{display:inline-flex;align-items:center;gap:var(--space-1);min-height:44px;
+ background:var(--surface-subtle);border:1px solid var(--border-subtle);
+ border-radius:var(--radius-pill);padding:0 var(--space-2);
+ font-size:var(--fs-label);font-weight:500;color:var(--text-primary)}
+.gchip__name{font-weight:400}
+.legend{display:flex;flex-wrap:wrap;gap:var(--space-2) var(--space-3);align-items:center;
+ font-size:var(--fs-label);color:var(--text-secondary);margin:var(--space-2) 0 var(--space-3)}
+.layer-block{border:1px solid var(--border-subtle);border-radius:var(--radius-lg);
+ padding:var(--space-2) var(--space-3);margin:var(--space-2) 0;
+ background:var(--surface-stripe)}
+.layer-block h3{margin-top:0}
+.why-layer{color:var(--text-secondary);font-size:var(--fs-label);margin:var(--space-1) 0 0}
+.node-list{list-style:none;padding:0;margin:var(--space-1) 0 0}
+.node-list li{margin:var(--space-1) 0}
+.nid{font-family:var(--font-mono);font-size:var(--fs-label);color:var(--text-secondary)}
+.kv{display:grid;grid-template-columns:auto 1fr;gap:var(--space-1) var(--space-2);
+ margin:var(--space-2) 0;font-size:var(--fs-nav)}
+.kv dt{color:var(--text-secondary)}
+.kv dd{margin:0}
+.summary-box{border-left:1px solid var(--brand-primary);background:var(--surface-subtle);
+ padding:var(--space-2) var(--space-3);border-radius:0 var(--radius) var(--radius) 0;
+ margin:var(--space-3) 0}
+.pitfall-list li{margin:var(--space-1) 0}
+.pitfall-list li::marker{color:var(--danger)}
+.use-list li::marker{color:var(--brand-primary)}
+.avoid-list li::marker{color:var(--warning)}
+.notice{border:1px solid var(--border-line);border-left-width:2px;
+ border-radius:0 var(--radius) var(--radius) 0;background:var(--surface-subtle);
+ padding:var(--space-2) var(--space-3);margin:var(--space-3) 0}
+.notice strong{color:var(--warning)}
+.danger-note{border:1px solid var(--border-line);border-left-width:2px;
+ border-radius:0 var(--radius) var(--radius) 0;background:var(--surface-subtle);
+ padding:var(--space-2) var(--space-3);margin:var(--space-3) 0}
+.danger-note strong{color:var(--danger)}
+.ev{border:1px solid var(--border-subtle);border-radius:var(--radius);
+ padding:var(--space-2) var(--space-3);margin:var(--space-2) 0;
+ background:var(--surface-stripe)}
+.ev .claim{font-weight:600;margin:0 0 var(--space-1)}
+.ev .quote{margin:var(--space-1) 0 0;color:var(--text-secondary);
+ border-left:1px solid var(--border-subtle);padding-left:var(--space-2);
+ font-size:var(--fs-nav)}
+.ev .src{font-size:var(--fs-label);color:var(--text-secondary);margin:var(--space-1) 0 0;
+ word-break:break-all}
+
+/* --- skip link（body 第一个子元素）--- */
+.skip{position:absolute;left:-100vw;top:0;background:var(--brand-primary);
+ color:var(--on-brand);padding:var(--space-1) var(--space-2);border-radius:var(--radius);
+ z-index:99}
+.skip:focus{left:var(--space-2);top:var(--space-2);position:fixed}
+
+/* --- 背景层（真实摄影素材；DOM 顺序即堆叠顺序）--- */
+.backdrop{position:fixed;inset:0;z-index:-1;pointer-events:none;overflow:hidden}
+.backdrop__photo,.backdrop__veil,.backdrop__scrim{position:absolute;inset:0}
+.backdrop__photo{background-size:cover;background-position:center;
+ transform:scale(1.07);opacity:0.62}
+.backdrop__photo--day{background-image:url("../assets/backdrop/day-1920.webp");
+ filter:hue-rotate(-18deg) saturate(0.9)}
+.backdrop__photo--night{background-image:url("../assets/backdrop/night-portrait-1080.webp");
+ filter:contrast(1.5) brightness(0.62);display:none}
+.backdrop__veil--day{background:linear-gradient(180deg,
+ color-mix(in srgb,var(--surface-page) 88%,transparent) 0%,
+ color-mix(in srgb,var(--surface-page) 94%,transparent) 100%)}
+.backdrop__veil--night{background:linear-gradient(180deg,
+ color-mix(in srgb,var(--surface-page) 72%,transparent) 0%,
+ color-mix(in srgb,var(--surface-page) 86%,transparent) 100%);display:none}
+.backdrop__scrim{background:linear-gradient(180deg,transparent 0%,
+ color-mix(in srgb,var(--surface-page) var(--scrim-3),transparent) 100%)}
+html[data-theme="dark"] .backdrop__photo--day,
+html[data-theme="dark"] .backdrop__veil--day{display:none}
+html[data-theme="dark"] .backdrop__photo--night,
+html[data-theme="dark"] .backdrop__veil--night{display:block}
+@media (prefers-color-scheme: dark){
+ html:not([data-theme="light"]) .backdrop__photo--day,
+ html:not([data-theme="light"]) .backdrop__veil--day{display:none}
+ html:not([data-theme="light"]) .backdrop__photo--night,
+ html:not([data-theme="light"]) .backdrop__veil--night{display:block}
+}
+
+/* --- 分辨率阶梯（显式媒体查询；⛔ 不用 image-set）--- */
+@media (min-width: 760px){
+ .backdrop__photo--night{background-image:url("../assets/backdrop/night-1280.webp")}
+ .backdrop__photo--day{background-image:url("../assets/backdrop/day-1920.webp")}
+}
+@media (min-width: 1100px){
+ .backdrop__photo--night{background-image:url("../assets/backdrop/night-1920.webp")}
+ .backdrop__photo--day{background-image:url("../assets/backdrop/day-2560.webp")}
+}
+@media (min-width: 1100px) and (min-resolution: 2dppx){
+ .backdrop__photo--night{background-image:url("../assets/backdrop/night-2560.webp")}
+ .backdrop__photo--day{background-image:url("../assets/backdrop/day-2560.webp")}
+}
+@media (min-width: 1900px){
+ .backdrop__photo--night{background-image:url("../assets/backdrop/night-2560.webp")}
+ .backdrop__photo--day{background-image:url("../assets/backdrop/day-2560.webp")}
+}
+
+/* --- 交互图容器 --- */
+.cy-wrap{border:1px solid var(--border-subtle);border-radius:var(--radius-lg);
+ background:var(--surface-raised);overflow:hidden}
+#cy{width:100%;height:min(72vh,40rem);display:block}
+.cy-bar{display:flex;flex-wrap:wrap;gap:var(--space-2);align-items:center;
+ justify-content:space-between;padding:var(--space-1) var(--space-2);
+ border-bottom:1px solid var(--border-subtle)}
+.cy-bar .hint{color:var(--text-secondary);font-size:var(--fs-label)}
+.cy-bar__btn{font:inherit;font-size:var(--fs-label);cursor:pointer;min-height:44px;
+ background:var(--surface-subtle);color:var(--text-primary);
+ border:1px solid var(--border-line);border-radius:var(--radius);padding:0 var(--space-2)}
+.cy-bar__btn[disabled]{cursor:not-allowed;opacity:0.6}
+
+/* --- 动效层：[data-reveal] ★ 用独立 translate 属性，⛔ 不用 transform ---
+   ★ 错峰步长 60ms：进场完成时间上界 1800ms 的预算反解。
+   ★ **阈值的唯一来源是 `gate_prototype.MOTION_REVEAL_MAX`（当前 32）与 P28 的实读** ——
+     本注释**⛔ 不写第二份阈值**（原文写「单页最大 16 个」，与门控常量 32 不符，属「同一名词两个口径」；
+     2026-10-16 第 6 轮按 T-4 改为**只引来源、不抄数字**）。
+   ★ 另修同族缺陷：本条注释此前**逐字重复了两遍**（第 785/786 行）⇒ 已去重。
+   实测：第 6 轮收口时单页最大 [data-reveal] = 10 ⇒ 进场 = 60ms×(10−1) + --dur-4(850ms) = 1390ms ≤ 1800ms。
+   该推导同时写进门控 P28 的说明，⛔ 不得只写在这里。 */
+html.js-motion [data-reveal]{opacity:0;translate:0 var(--reveal-shift)}
+html.js-motion [data-reveal].is-in{
+ opacity:1;translate:0 0;
+ animation:reveal-in var(--dur-4) var(--ease-out) both;
+ animation-delay:calc(var(--i,0) * 60ms)}
+@keyframes reveal-in{
+ from{opacity:0;translate:0 var(--reveal-shift)}
+ to{opacity:1;translate:0 0}
+}
+/* 熔断一：系统「减少动态效果」 */
+@media (prefers-reduced-motion: reduce){
+ :root:not([data-motion="on"]) *,
+ :root:not([data-motion="on"]) *::before,
+ :root:not([data-motion="on"]) *::after{
+  animation-duration:0.001s;animation-iteration-count:1;transition-duration:0.001s}
+ :root:not([data-motion="on"]) [data-reveal]{opacity:1;translate:0 0}
+}
+/* 熔断二：显式关闭（三态开关的 off 档） */
+:root[data-motion="off"] *,
+:root[data-motion="off"] *::before,
+:root[data-motion="off"] *::after{
+ animation-duration:0.001s;animation-iteration-count:1;transition-duration:0.001s}
+:root[data-motion="off"] [data-reveal]{opacity:1;translate:0 0}
+
+/* --- 容器内边距 16 → 24(≥640) → 32(≥1024) --- */
+@media (min-width: 640px){
+ .layout,.wrap{padding-left:var(--space-4);padding-right:var(--space-4)}
+}
+@media (min-width: 768px){
+ .grid{grid-template-columns:repeat(auto-fit,minmax(17rem,1fr))}
+}
+@media (min-width: 1024px){
+ .layout,.wrap{padding-left:var(--space-5);padding-right:var(--space-5)}
+}
+/* ★ 导航二选一：≥1180 顶部导航 display:none ＋ 左栏 rail 可见；⛔ 不叠加。
+   ★ 显示开关随导航同档切换：<1180 在顶部导航内、≥1180 在 rail 底部（`.rail__foot`）
+   ⇒ 任一宽度档下**可见的开关实例恰 1 组**（另一组由 display:none 关闭，不参与交互与
+   无障碍树）。rail 自身 align-self:stretch ⇒ 撑满 grid 行高（＝正文 ＋ 页脚，故左栏铺满整页
+   竖向）而非止于 100dvh。 */
+@media (min-width: 1180px){
+ .site-head{display:none}
+ .rail{display:block;align-self:stretch;grid-row:1 / span 2}
+ .layout{display:grid;grid-template-columns:var(--rail-w) minmax(0,1fr);
+  align-items:start;padding-left:0;padding-right:0}
+ .layout>main{padding:0 var(--space-5)}
+ /* 页脚独占第 2 行、跨两列 ⇒ rail（跨 1–2 行）连同页脚区一并铺满竖向。
+    ⛔ 页脚不得留在 .layout 之外：那样左栏只到正文底，页脚旁仍是空档。 */
+ .layout>.site-foot{grid-column:1 / -1;padding-left:var(--space-5);padding-right:var(--space-5)}
+}
+@media (min-width: 1900px){
+ .layout{max-width:var(--container)}
+}
+
+/* --- 悬停态：★ 全站 :hover 一律包在 @media (hover: hover) 内 --- */
+@media (hover: hover){
+ a:hover{color:var(--brand-primary);text-decoration:underline}
+ .nav__link:hover{color:var(--text-primary)}
+ .rail__link:hover{color:var(--text-primary);background:var(--surface-subtle)}
+ .switch__btn:hover{border-color:var(--brand-primary);color:var(--text-primary)}
+ .cy-bar__btn:hover{border-color:var(--brand-primary);color:var(--text-primary)}
+ .card:hover{transform:translateY(-3px);border-color:var(--brand-tint);
+  box-shadow:var(--shadow-2),inset 0 1px 0 var(--edge-highlight)}
+ .card__title-link:hover{color:var(--brand-primary)}
+ .gchip:hover{border-color:var(--border-line);color:var(--text-primary)}
+ summary:hover{color:var(--text-primary)}
+ .skip:hover{background:var(--brand-primary);color:var(--on-brand)}
+}
+
+/* --- 打印 --- */
+@media print{
+ .site-head,.rail,.switch,.switches,.cy-bar__btn,.backdrop{display:none}
+ body{background:var(--surface-raised)}
+}
+</style>
+<script src="vendor/cytoscape.min.js"></script>
+</head>
+<body class="page-interactive" data-page-kind="interactive" data-page-id="INTERACTIVE">
+<a class="skip" href="#main">跳到正文</a>
+<div class="backdrop" aria-hidden="true"><div class="backdrop__photo backdrop__photo--day"></div><div class="backdrop__photo backdrop__photo--night"></div><div class="backdrop__veil backdrop__veil--day"></div><div class="backdrop__veil backdrop__veil--night"></div><div class="backdrop__scrim"></div></div>
+<header class="site-head"><div class="wrap head-in">
+<a class="brand" href="../index.html">新一代提示词工程 · 知识全景图<span>面向有工程基础、提示词工程尚未系统化的工程师</span></a>
+<nav class="nav" aria-label="站内导航"><a class="nav__link" href="../13-interactive/index.html">全景图</a><a class="nav__link" href="../14-views/01-learning-path.html">学习路径</a><a class="nav__link" href="../14-views/02-frontier.html">新一代模块</a><a class="nav__link" href="../12-groups/index.html">知识分组</a></nav>
+<details class="settings"><summary class="settings__summary">显示设置</summary><div class="switches"><div class="switch" role="group" aria-label="配色主题"><span class="switch__legend" aria-hidden="true">主题</span><button type="button" class="switch__btn" data-theme-set="system" aria-pressed="true">主题：跟随系统</button><button type="button" class="switch__btn" data-theme-set="light" aria-pressed="false">主题：浅色</button><button type="button" class="switch__btn" data-theme-set="dark" aria-pressed="false">主题：深色</button></div><div class="switch" role="group" aria-label="动效偏好"><span class="switch__legend" aria-hidden="true">动效</span><button type="button" class="switch__btn" data-motion-set="system" aria-pressed="true">动效：跟随系统</button><button type="button" class="switch__btn" data-motion-set="on" aria-pressed="false">动效：开</button><button type="button" class="switch__btn" data-motion-set="off" aria-pressed="false">动效：关</button></div><div class="switch" role="group" aria-label="背景素材"><span class="switch__legend" aria-hidden="true">背景</span><button type="button" class="switch__btn" data-backdrop-set="on" aria-pressed="true">背景：开</button><button type="button" class="switch__btn" data-backdrop-set="off" aria-pressed="false">背景：关</button></div><div class="switch" role="group" aria-label="正文字号"><span class="switch__legend" aria-hidden="true">字号</span><button type="button" class="switch__btn" data-fontsize-set="standard" aria-pressed="true">字号：标准</button><button type="button" class="switch__btn" data-fontsize-set="large" aria-pressed="false">字号：大</button></div></div></details>
+</div></header>
+<div class="layout">
+<aside class="rail" aria-label="站点侧栏：站内导航与显示设置（宽屏形态）"><div class="rail__in"><p class="rail__title">站内导航</p><ul class="rail__list"><li><a class="rail__link" href="../index.html">首页</a></li><li><a class="rail__link" href="../13-interactive/index.html" aria-current="page">全景图</a></li><li><a class="rail__link" href="../14-views/01-learning-path.html">学习路径</a></li><li><a class="rail__link" href="../14-views/02-frontier.html">新一代模块</a></li><li><a class="rail__link" href="../12-groups/index.html">知识分组</a></li></ul><div class="rail__foot"><p class="rail__title">显示设置</p><div class="switches"><div class="switch" role="group" aria-label="配色主题"><span class="switch__legend" aria-hidden="true">主题</span><button type="button" class="switch__btn" data-theme-set="system" aria-pressed="true">主题：跟随系统</button><button type="button" class="switch__btn" data-theme-set="light" aria-pressed="false">主题：浅色</button><button type="button" class="switch__btn" data-theme-set="dark" aria-pressed="false">主题：深色</button></div><div class="switch" role="group" aria-label="动效偏好"><span class="switch__legend" aria-hidden="true">动效</span><button type="button" class="switch__btn" data-motion-set="system" aria-pressed="true">动效：跟随系统</button><button type="button" class="switch__btn" data-motion-set="on" aria-pressed="false">动效：开</button><button type="button" class="switch__btn" data-motion-set="off" aria-pressed="false">动效：关</button></div><div class="switch" role="group" aria-label="背景素材"><span class="switch__legend" aria-hidden="true">背景</span><button type="button" class="switch__btn" data-backdrop-set="on" aria-pressed="true">背景：开</button><button type="button" class="switch__btn" data-backdrop-set="off" aria-pressed="false">背景：关</button></div><div class="switch" role="group" aria-label="正文字号"><span class="switch__legend" aria-hidden="true">字号</span><button type="button" class="switch__btn" data-fontsize-set="standard" aria-pressed="true">字号：标准</button><button type="button" class="switch__btn" data-fontsize-set="large" aria-pressed="false">字号：大</button></div></div></div></div></aside>
+<main id="main">
+<nav class="crumbs" aria-label="面包屑"><ol><li><a href="../index.html">首页</a></li><li aria-current="page">交互全景图</li></ol></nav>
+<h1>交互全景图</h1>
+<p class="lede">有工程基础、提示词工程未系统化的工程师。本页先给出 <strong>组级总览</strong>（11 个分组节点与它们之间的依赖），分组节点按<strong>依赖层分行</strong>摆放：行自上而下依赖逐层加深，行内自左向右是课程顺序，因此无需缩放或拖拽即可一眼看全。点击任一分组即下钻到该组的全部节点；虚线边框表示内容待填充的节点，实线边框表示内容已写满。依赖方向约定：A→B 表示先学 A 再学 B；双向箭头表示两个方向都有依赖（互为正反的两条依赖合成一条连线，避免两条边完全重合）。组身份由序号与名称承载，画布统一使用品牌色，不按分组分配色相。</p>
+<p class="meta-line"><span>节点 67</span><span>边 96</span><span>分组 11</span><span>依赖深度层 30</span><span>数据时点 2026-10</span><span>版次 v1</span></p>
+<div class="cy-wrap"><div class="cy-bar"><div><button type="button" class="cy-bar__btn" id="cy-back" disabled>返回总览</button> <span class="hint" id="cy-view-label">正在装配交互图…</span></div><span class="hint" id="cy-hint">滚轮缩放、拖拽平移；点击分组下钻。</span></div><div id="cy" data-placeholder="1" role="img" aria-label="知识分组依赖交互图"><p class="lede" style="padding:var(--space-3)">正在装配交互图…若长时间未出现，请查看下方「分组与节点清单」。</p></div></div>
+<div class="card--flat" id="cy-detail"><h3>分组详情</h3><p class="lede">点击图中任一分组节点，或从下方清单选择一个分组。</p></div>
+<h2>图例</h2>
+<div class="legend" data-reveal="1" style="--i:0"><span class="gchip"><span class="gseq">G00</span><span class="gchip__name">地基：模型是概率采样器</span></span><span class="gchip"><span class="gseq">G01</span><span class="gchip__name">确定性输出</span></span><span class="gchip"><span class="gseq">G02</span><span class="gchip__name">推理增强</span></span><span class="gchip"><span class="gseq">G03</span><span class="gchip__name">上下文工程</span></span><span class="gchip"><span class="gseq">G04</span><span class="gchip__name">编排</span></span><span class="gchip"><span class="gseq">G05</span><span class="gchip__name">评测与自动优化</span></span><span class="gchip"><span class="gseq">G06</span><span class="gchip__name">安全与鲁棒性</span></span><span class="gchip"><span class="gseq">G07</span><span class="gchip__name">模型差异与迁移</span></span><span class="gchip"><span class="gseq">G08</span><span class="gchip__name">多模态</span></span><span class="gchip"><span class="gseq">G09</span><span class="gchip__name">落地实践</span></span><span class="gchip"><span class="gseq">GD-N</span><span class="gchip__name">新一代模块</span></span></div>
+<div class="legend" data-reveal="1" style="--i:1"><span class="badge badge--ok">内容已写满</span><span class="badge badge--pending">架构在册 · 内容待填充</span><span class="tier">虚线边 = 概念升级</span><span class="tier">双向箭头 = 两个方向都有依赖</span><span class="tier">数字 = 该连线上的依赖条数（≥2 才标注，未标注 = 1 条）</span><span class="tier">行 = 依赖层（自上而下加深）</span><span class="tier">行内自左向右 = 课程顺序</span></div>
+<h2>分组与节点清单（无脚本时的等价导航）</h2>
+<details class="card--flat" id="group-G00"><summary><span class="gseq">G00</span> 地基：模型是概率采样器（6 个节点）</summary><ul class="tight node-list"><li id="node-PE-F-01"><span class="nid">PE-F-01</span> 概率采样与确定性边界（Probabilistic Sampling and the Determinism Boundary） </li><li id="node-PE-F-02"><span class="nid">PE-F-02</span> 系统 / 开发者 / 用户提示词分层（System, Developer, and User Prompt Layering） </li><li id="node-PE-F-03"><span class="nid">PE-F-03</span> 分隔符与上下文隔离（Delimiters and Context Isolation） </li><li id="node-PE-F-04"><span class="nid">PE-F-04</span> 零样本与少样本（Zero-shot and Few-shot Prompting） </li><li id="node-PE-F-05"><span class="nid">PE-F-05</span> 指令的具体性与可验证性（Instruction Specificity and Verifiability） </li><li id="node-PE-F-06"><span class="nid">PE-F-06</span> 注意力预算与上下文衰减（Attention Budget and Context Rot） </li></ul><p><a href="../12-groups/g00.html">打开该分组的完整组页</a></p></details>
+<details class="card--flat" id="group-G01"><summary><span class="gseq">G01</span> 确定性输出（5 个节点）</summary><ul class="tight node-list"><li id="node-PE-S-01"><span class="nid">PE-S-01</span> 结构模式与约束解码（JSON Schema and Constrained Decoding） </li><li id="node-PE-S-02"><span class="nid">PE-S-02</span> 三档严格度（Three Tiers of Strictness） </li><li id="node-PE-S-03"><span class="nid">PE-S-03</span> 推理与格式的冲突（Reasoning–Format Conflict） </li><li id="node-PE-S-04"><span class="nid">PE-S-04</span> 格式选型与词元效率（Format Choice and Token Efficiency） </li><li id="node-PE-S-05"><span class="nid">PE-S-05</span> 校验与修复回路（Validation and Repair Loop） </li></ul><p><a href="../12-groups/g01.html">打开该分组的完整组页</a></p></details>
+<details class="card--flat" id="group-G02"><summary><span class="gseq">G02</span> 推理增强（8 个节点）</summary><ul class="tight node-list"><li id="node-PE-R-01"><span class="nid">PE-R-01</span> 思维链与零样本思维链（Chain-of-Thought and Zero-shot CoT） </li><li id="node-PE-R-02"><span class="nid">PE-R-02</span> 范式反转：推理模型上经典技巧掉分（Paradigm Reversal: Classic Techniques Lose Ground on Reasoning Models） </li><li id="node-PE-R-03"><span class="nid">PE-R-03</span> 自一致性与多数投票（Self-Consistency and Majority Voting） </li><li id="node-PE-R-04"><span class="nid">PE-R-04</span> 思维树与思维图（Tree of Thoughts and Graph of Thoughts） </li><li id="node-PE-R-05"><span class="nid">PE-R-05</span> 步骤回溯与改写变体（Step Backtracking and Rewrite Variants） </li><li id="node-PE-R-06"><span class="nid">PE-R-06</span> 极简推理草稿（Chain of Draft） </li><li id="node-PE-R-07"><span class="nid">PE-R-07</span> ReAct 推理—行动交织（ReAct: Interleaved Reasoning and Acting） </li><li id="node-PE-R-08"><span class="nid">PE-R-08</span> 反思与自评回路（Reflection and Self-Critique Loop） </li></ul><p><a href="../12-groups/g02.html">打开该分组的完整组页</a></p></details>
+<details class="card--flat" id="group-G03"><summary><span class="gseq">G03</span> 上下文工程（7 个节点）</summary><ul class="tight node-list"><li id="node-PE-C-01"><span class="nid">PE-C-01</span> 上下文即工作内存与四策略（Context as Working Memory and Four Strategies） <span class="badge badge--pending">架构在册</span></li><li id="node-PE-C-02"><span class="nid">PE-C-02</span> RAG 提示模式（RAG Prompting Patterns） <span class="badge badge--pending">架构在册</span></li><li id="node-PE-C-03"><span class="nid">PE-C-03</span> 图检索与全局观（Graph Retrieval and Global View） <span class="badge badge--pending">架构在册</span></li><li id="node-PE-C-04"><span class="nid">PE-C-04</span> 检索质量与垃圾进垃圾出（Retrieval Quality and GIGO） <span class="badge badge--pending">架构在册</span></li><li id="node-PE-C-05"><span class="nid">PE-C-05</span> 长上下文位置偏差（Long-context Positional Bias） <span class="badge badge--pending">架构在册</span></li><li id="node-PE-C-06"><span class="nid">PE-C-06</span> 提示缓存（Prompt Caching） <span class="badge badge--pending">架构在册</span></li><li id="node-PE-C-07"><span class="nid">PE-C-07</span> 模型上下文协议（Model Context Protocol） <span class="badge badge--pending">架构在册</span></li></ul><p><a href="../12-groups/g03.html">打开该分组的完整组页</a></p></details>
+<details class="card--flat" id="group-G04"><summary><span class="gseq">G04</span> 编排（8 个节点）</summary><ul class="tight node-list"><li id="node-PE-O-01"><span class="nid">PE-O-01</span> 提示词链（Prompt Chaining） <span class="badge badge--pending">架构在册</span></li><li id="node-PE-O-02"><span class="nid">PE-O-02</span> 路由（Routing） <span class="badge badge--pending">架构在册</span></li><li id="node-PE-O-03"><span class="nid">PE-O-03</span> 并行化与投票（Parallelization and Voting） <span class="badge badge--pending">架构在册</span></li><li id="node-PE-O-04"><span class="nid">PE-O-04</span> 编排者—工作者（Orchestrator–Workers） <span class="badge badge--pending">架构在册</span></li><li id="node-PE-O-05"><span class="nid">PE-O-05</span> 生成者—评估者（Generator–Evaluator） <span class="badge badge--pending">架构在册</span></li><li id="node-PE-O-06"><span class="nid">PE-O-06</span> 状态机与持久化（State Machine and Persistence） <span class="badge badge--pending">架构在册</span></li><li id="node-PE-O-07"><span class="nid">PE-O-07</span> 子 Agent 上下文隔离（Sub-agent Context Isolation） <span class="badge badge--pending">架构在册</span></li><li id="node-PE-O-08"><span class="nid">PE-O-08</span> 工具定义与滥用治理（Tool Definition and Abuse Governance） <span class="badge badge--pending">架构在册</span></li></ul><p><a href="../12-groups/g04.html">打开该分组的完整组页</a></p></details>
+<details class="card--flat" id="group-G05"><summary><span class="gseq">G05</span> 评测与自动优化（9 个节点）</summary><ul class="tight node-list"><li id="node-PE-E-01"><span class="nid">PE-E-01</span> 为什么必须先建评测集（Why Build an Eval Set First） </li><li id="node-PE-E-02"><span class="nid">PE-E-02</span> 测试集构造（Test Set Construction） </li><li id="node-PE-E-03"><span class="nid">PE-E-03</span> 模型即裁判及其偏差（LLM-as-a-Judge and Its Biases） </li><li id="node-PE-E-05"><span class="nid">PE-E-05</span> 自动提示词工程（Automatic Prompt Engineering） </li><li id="node-PE-E-06"><span class="nid">PE-E-06</span> 声明式编译与签名（Declarative Compilation and Signatures） </li><li id="node-PE-E-04"><span class="nid">PE-E-04</span> 评测工具链与红蓝对抗（Evaluation Toolchain and Red Teaming） </li><li id="node-PE-E-07"><span class="nid">PE-E-07</span> 文本梯度与反思式进化（Textual Gradient and Reflective Evolution） </li><li id="node-PE-E-08"><span class="nid">PE-E-08</span> 元提示（Meta-prompting） </li><li id="node-PE-E-09"><span class="nid">PE-E-09</span> 提示词版本化与回归（Prompt Versioning and Regression） </li></ul><p><a href="../12-groups/g05.html">打开该分组的完整组页</a></p></details>
+<details class="card--flat" id="group-G06"><summary><span class="gseq">G06</span> 安全与鲁棒性（6 个节点）</summary><ul class="tight node-list"><li id="node-PE-A-01"><span class="nid">PE-A-01</span> 指令层级（Instruction Hierarchy） </li><li id="node-PE-A-02"><span class="nid">PE-A-02</span> 直接与间接提示词注入（Direct and Indirect Prompt Injection） </li><li id="node-PE-A-03"><span class="nid">PE-A-03</span> 大模型应用十大风险（Top 10 Risks for LLM Applications） </li><li id="node-PE-A-04"><span class="nid">PE-A-04</span> 过拒与安全—可用性权衡（Over-refusal and the Safety–Usability Tradeoff） </li><li id="node-PE-A-05"><span class="nid">PE-A-05</span> 负向提示的失效（Failure of Negative Prompting） </li><li id="node-PE-A-06"><span class="nid">PE-A-06</span> 不可信内容的标注与隔离（Tagging and Isolating Untrusted Content） </li></ul><p><a href="../12-groups/g06.html">打开该分组的完整组页</a></p></details>
+<details class="card--flat" id="group-G07"><summary><span class="gseq">G07</span> 模型差异与迁移（4 个节点）</summary><ul class="tight node-list"><li id="node-PE-M-01"><span class="nid">PE-M-01</span> 模型分层选型（Model Tiering） <span class="badge badge--pending">架构在册</span></li><li id="node-PE-M-02"><span class="nid">PE-M-02</span> 标记敏感度的迁移性（Transferability of Markup Sensitivity） <span class="badge badge--pending">架构在册</span></li><li id="node-PE-M-03"><span class="nid">PE-M-03</span> 换模型即失效与重编译（Model Swap Invalidates and Requires Recompilation） <span class="badge badge--pending">架构在册</span></li><li id="node-PE-M-04"><span class="nid">PE-M-04</span> 成本—质量—延迟三角（Cost–Quality–Latency Triangle） <span class="badge badge--pending">架构在册</span></li></ul><p><a href="../12-groups/g07.html">打开该分组的完整组页</a></p></details>
+<details class="card--flat" id="group-G08"><summary><span class="gseq">G08</span> 多模态（3 个节点）</summary><ul class="tight node-list"><li id="node-PE-V-01"><span class="nid">PE-V-01</span> 交错输入（Interleaved Input） <span class="badge badge--pending">架构在册</span></li><li id="node-PE-V-02"><span class="nid">PE-V-02</span> 视觉推理链（Visual Reasoning Chain） <span class="badge badge--pending">架构在册</span></li><li id="node-PE-V-03"><span class="nid">PE-V-03</span> 位置敏感与注意力耗散（Positional Sensitivity and Attention Dissipation） <span class="badge badge--pending">架构在册</span></li></ul><p><a href="../12-groups/g08.html">打开该分组的完整组页</a></p></details>
+<details class="card--flat" id="group-G09"><summary><span class="gseq">G09</span> 落地实践（7 个节点）</summary><ul class="tight node-list"><li id="node-PE-P-01"><span class="nid">PE-P-01</span> 我的 agent 的提示词面（My Agent&#x27;s Prompt Surface） <span class="badge badge--pending">架构在册</span></li><li id="node-PE-P-02"><span class="nid">PE-P-02</span> 技能文件编写（Authoring Skill Files） </li><li id="node-PE-P-03"><span class="nid">PE-P-03</span> 子 Agent 委派与返回契约（Sub-agent Delegation and Return Contract） <span class="badge badge--pending">架构在册</span></li><li id="node-PE-P-04"><span class="nid">PE-P-04</span> 门控即判据（Gate as Executable Criterion） <span class="badge badge--pending">架构在册</span></li><li id="node-PE-P-05"><span class="nid">PE-P-05</span> 记忆与反思（Memory and Reflection） <span class="badge badge--pending">架构在册</span></li><li id="node-PE-P-06"><span class="nid">PE-P-06</span> 模型上下文协议接入实况（MCP in Practice） <span class="badge badge--pending">架构在册</span></li><li id="node-PE-P-07"><span class="nid">PE-P-07</span> 跨运行时迁移教训（Lessons from Cross-runtime Migration） <span class="badge badge--pending">架构在册</span></li></ul><p><a href="../12-groups/g09.html">打开该分组的完整组页</a></p></details>
+<details class="card--flat" id="group-GD-N"><summary><span class="gseq">GD-N</span> 新一代模块（4 个节点）</summary><ul class="tight node-list"><li id="node-PE-N-01"><span class="nid">PE-N-01</span> 三代范式脉络（Three-Generation Paradigm Arc） <span class="badge badge--pending">架构在册</span></li><li id="node-PE-N-02"><span class="nid">PE-N-02</span> 当前共识与争议（Current Consensus and Disputes） <span class="badge badge--pending">架构在册</span></li><li id="node-PE-N-03"><span class="nid">PE-N-03</span> 模块维护机制（Module Maintenance Mechanism） <span class="badge badge--pending">架构在册</span></li><li id="node-PE-N-04"><span class="nid">PE-N-04</span> 跟踪渠道（Tracking Channels） <span class="badge badge--pending">架构在册</span></li></ul><p><a href="../12-groups/gd-n.html">打开该分组的完整组页</a></p></details>
+<script type="application/json" id="cy-data">{"drillStats": [{"cols": 3, "group": "G00", "nodeH": 58.0, "nodes": 6, "rows": 2}, {"cols": 3, "group": "G01", "nodeH": 58.0, "nodes": 5, "rows": 2}, {"cols": 3, "group": "G02", "nodeH": 58.0, "nodes": 8, "rows": 3}, {"cols": 3, "group": "G03", "nodeH": 58.0, "nodes": 7, "rows": 3}, {"cols": 3, "group": "G04", "nodeH": 58.0, "nodes": 8, "rows": 3}, {"cols": 3, "group": "G05", "nodeH": 58.0, "nodes": 9, "rows": 3}, {"cols": 3, "group": "G06", "nodeH": 58.0, "nodes": 6, "rows": 2}, {"cols": 3, "group": "G07", "nodeH": 58.0, "nodes": 4, "rows": 2}, {"cols": 3, "group": "G08", "nodeH": 58.0, "nodes": 3, "rows": 1}, {"cols": 3, "group": "G09", "nodeH": 58.0, "nodes": 7, "rows": 3}, {"cols": 3, "group": "GD-N", "nodeH": 58.0, "nodes": 4, "rows": 2}], "drills": {"G00": {"cols": 3, "count": 6, "fs": 12.0, "h": 58.0, "mw": 148.0, "nodes": [{"fs": 12.0, "h": 58.0, "id": "PE-F-01", "label": "概率采样与确定性边界\nPE-F-01 · 第 0 层", "mw": 148.0, "w": 168.0, "x": -196.0, "y": -41.0}, {"fs": 12.0, "h": 58.0, "id": "PE-F-02", "label": "系统 / 开发者 / 用户提\n示词分层\nPE-F-02 · 第 1 层", "mw": 148.0, "w": 168.0, "x": 0.0, "y": -41.0}, {"fs": 12.0, "h": 58.0, "id": "PE-F-03", "label": "分隔符与上下文隔离\nPE-F-03 · 第 2 层", "mw": 148.0, "w": 168.0, "x": 196.0, "y": -41.0}, {"fs": 12.0, "h": 58.0, "id": "PE-F-04", "label": "零样本与少样本\nPE-F-04 · 第 3 层", "mw": 148.0, "w": 168.0, "x": -196.0, "y": 41.0}, {"fs": 12.0, "h": 58.0, "id": "PE-F-05", "label": "指令的具体性与可验证性\nPE-F-05 · 第 4 层", "mw": 148.0, "w": 168.0, "x": 0.0, "y": 41.0}, {"fs": 12.0, "h": 58.0, "id": "PE-F-06", "label": "注意力预算与上下文衰减\nPE-F-06 · 第 5 层", "mw": 148.0, "w": 168.0, "x": 196.0, "y": 41.0}], "pos": {"PE-F-01": [-196.0, -41.0], "PE-F-02": [0.0, -41.0], "PE-F-03": [196.0, -41.0], "PE-F-04": [-196.0, 41.0], "PE-F-05": [0.0, 41.0], "PE-F-06": [196.0, 41.0]}, "rows": 2, "viewH": 140.0, "viewW": 560.0, "w": 168.0}, "G01": {"cols": 3, "count": 5, "fs": 12.0, "h": 58.0, "mw": 148.0, "nodes": [{"fs": 12.0, "h": 58.0, "id": "PE-S-01", "label": "结构模式与约束解码\nPE-S-01 · 第 6 层", "mw": 148.0, "w": 168.0, "x": -196.0, "y": -41.0}, {"fs": 12.0, "h": 58.0, "id": "PE-S-02", "label": "三档严格度\nPE-S-02 · 第 7 层", "mw": 148.0, "w": 168.0, "x": 0.0, "y": -41.0}, {"fs": 12.0, "h": 58.0, "id": "PE-S-03", "label": "推理与格式的冲突\nPE-S-03 · 第 8 层", "mw": 148.0, "w": 168.0, "x": 196.0, "y": -41.0}, {"fs": 12.0, "h": 58.0, "id": "PE-S-04", "label": "格式选型与词元效率\nPE-S-04 · 第 9 层", "mw": 148.0, "w": 168.0, "x": -196.0, "y": 41.0}, {"fs": 12.0, "h": 58.0, "id": "PE-S-05", "label": "校验与修复回路\nPE-S-05 · 第 10 层", "mw": 148.0, "w": 168.0, "x": 0.0, "y": 41.0}], "pos": {"PE-S-01": [-196.0, -41.0], "PE-S-02": [0.0, -41.0], "PE-S-03": [196.0, -41.0], "PE-S-04": [-196.0, 41.0], "PE-S-05": [0.0, 41.0]}, "rows": 2, "viewH": 140.0, "viewW": 560.0, "w": 168.0}, "G02": {"cols": 3, "count": 8, "fs": 12.0, "h": 58.0, "mw": 148.0, "nodes": [{"fs": 12.0, "h": 58.0, "id": "PE-R-01", "label": "思维链与零样本思维链\nPE-R-01 · 第 6 层", "mw": 148.0, "w": 168.0, "x": -196.0, "y": -82.0}, {"fs": 12.0, "h": 58.0, "id": "PE-R-02", "label": "范式反转：推理模型上经\n典技巧掉分\nPE-R-02 · 第 7 层", "mw": 148.0, "w": 168.0, "x": 0.0, "y": -82.0}, {"fs": 12.0, "h": 58.0, "id": "PE-R-03", "label": "自一致性与多数投票\nPE-R-03 · 第 11 层", "mw": 148.0, "w": 168.0, "x": 196.0, "y": -82.0}, {"fs": 12.0, "h": 58.0, "id": "PE-R-04", "label": "思维树与思维图\nPE-R-04 · 第 12 层", "mw": 148.0, "w": 168.0, "x": -196.0, "y": 0.0}, {"fs": 12.0, "h": 58.0, "id": "PE-R-05", "label": "步骤回溯与改写变体\nPE-R-05 · 第 13 层", "mw": 148.0, "w": 168.0, "x": 0.0, "y": 0.0}, {"fs": 12.0, "h": 58.0, "id": "PE-R-06", "label": "极简推理草稿\nPE-R-06 · 第 14 层", "mw": 148.0, "w": 168.0, "x": 196.0, "y": 0.0}, {"fs": 12.0, "h": 58.0, "id": "PE-R-07", "label": "ReAct 推理—行动交\n织\nPE-R-07 · 第 15 层", "mw": 148.0, "w": 168.0, "x": -196.0, "y": 82.0}, {"fs": 12.0, "h": 58.0, "id": "PE-R-08", "label": "反思与自评回路\nPE-R-08 · 第 16 层", "mw": 148.0, "w": 168.0, "x": 0.0, "y": 82.0}], "pos": {"PE-R-01": [-196.0, -82.0], "PE-R-02": [0.0, -82.0], "PE-R-03": [196.0, -82.0], "PE-R-04": [-196.0, 0.0], "PE-R-05": [0.0, 0.0], "PE-R-06": [196.0, 0.0], "PE-R-07": [-196.0, 82.0], "PE-R-08": [0.0, 82.0]}, "rows": 3, "viewH": 222.0, "viewW": 560.0, "w": 168.0}, "G03": {"cols": 3, "count": 7, "fs": 12.0, "h": 58.0, "mw": 148.0, "nodes": [{"fs": 12.0, "h": 58.0, "id": "PE-C-01", "label": "上下文即工作内存与四策\n略\nPE-C-01 · 第 6 层", "mw": 148.0, "w": 168.0, "x": -196.0, "y": -82.0}, {"fs": 12.0, "h": 58.0, "id": "PE-C-02", "label": "RAG 提示模式\nPE-C-02 · 第 7 层", "mw": 148.0, "w": 168.0, "x": 0.0, "y": -82.0}, {"fs": 12.0, "h": 58.0, "id": "PE-C-03", "label": "图检索与全局观\nPE-C-03 · 第 8 层", "mw": 148.0, "w": 168.0, "x": 196.0, "y": -82.0}, {"fs": 12.0, "h": 58.0, "id": "PE-C-04", "label": "检索质量与垃圾进垃圾出\nPE-C-04 · 第 9 层", "mw": 148.0, "w": 168.0, "x": -196.0, "y": 0.0}, {"fs": 12.0, "h": 58.0, "id": "PE-C-05", "label": "长上下文位置偏差\nPE-C-05 · 第 10 层", "mw": 148.0, "w": 168.0, "x": 0.0, "y": 0.0}, {"fs": 12.0, "h": 58.0, "id": "PE-C-06", "label": "提示缓存\nPE-C-06 · 第 11 层", "mw": 148.0, "w": 168.0, "x": 196.0, "y": 0.0}, {"fs": 12.0, "h": 58.0, "id": "PE-C-07", "label": "模型上下文协议\nPE-C-07 · 第 12 层", "mw": 148.0, "w": 168.0, "x": -196.0, "y": 82.0}], "pos": {"PE-C-01": [-196.0, -82.0], "PE-C-02": [0.0, -82.0], "PE-C-03": [196.0, -82.0], "PE-C-04": [-196.0, 0.0], "PE-C-05": [0.0, 0.0], "PE-C-06": [196.0, 0.0], "PE-C-07": [-196.0, 82.0]}, "rows": 3, "viewH": 222.0, "viewW": 560.0, "w": 168.0}, "G04": {"cols": 3, "count": 8, "fs": 12.0, "h": 58.0, "mw": 148.0, "nodes": [{"fs": 12.0, "h": 58.0, "id": "PE-O-01", "label": "提示词链\nPE-O-01 · 第 8 层", "mw": 148.0, "w": 168.0, "x": -196.0, "y": -82.0}, {"fs": 12.0, "h": 58.0, "id": "PE-O-02", "label": "路由\nPE-O-02 · 第 9 层", "mw": 148.0, "w": 168.0, "x": 0.0, "y": -82.0}, {"fs": 12.0, "h": 58.0, "id": "PE-O-03", "label": "并行化与投票\nPE-O-03 · 第 10 层", "mw": 148.0, "w": 168.0, "x": 196.0, "y": -82.0}, {"fs": 12.0, "h": 58.0, "id": "PE-O-04", "label": "编排者—工作者\nPE-O-04 · 第 11 层", "mw": 148.0, "w": 168.0, "x": -196.0, "y": 0.0}, {"fs": 12.0, "h": 58.0, "id": "PE-O-05", "label": "生成者—评估者\nPE-O-05 · 第 12 层", "mw": 148.0, "w": 168.0, "x": 0.0, "y": 0.0}, {"fs": 12.0, "h": 58.0, "id": "PE-O-06", "label": "状态机与持久化\nPE-O-06 · 第 13 层", "mw": 148.0, "w": 168.0, "x": 196.0, "y": 0.0}, {"fs": 12.0, "h": 58.0, "id": "PE-O-07", "label": "子 Agent 上下文隔\n离\nPE-O-07 · 第 14 层", "mw": 148.0, "w": 168.0, "x": -196.0, "y": 82.0}, {"fs": 12.0, "h": 58.0, "id": "PE-O-08", "label": "工具定义与滥用治理\nPE-O-08 · 第 15 层", "mw": 148.0, "w": 168.0, "x": 0.0, "y": 82.0}], "pos": {"PE-O-01": [-196.0, -82.0], "PE-O-02": [0.0, -82.0], "PE-O-03": [196.0, -82.0], "PE-O-04": [-196.0, 0.0], "PE-O-05": [0.0, 0.0], "PE-O-06": [196.0, 0.0], "PE-O-07": [-196.0, 82.0], "PE-O-08": [0.0, 82.0]}, "rows": 3, "viewH": 222.0, "viewW": 560.0, "w": 168.0}, "G05": {"cols": 3, "count": 9, "fs": 12.0, "h": 58.0, "mw": 148.0, "nodes": [{"fs": 12.0, "h": 58.0, "id": "PE-E-01", "label": "为什么必须先建评测集\nPE-E-01 · 第 10 层", "mw": 148.0, "w": 168.0, "x": -196.0, "y": -82.0}, {"fs": 12.0, "h": 58.0, "id": "PE-E-02", "label": "测试集构造\nPE-E-02 · 第 11 层", "mw": 148.0, "w": 168.0, "x": 0.0, "y": -82.0}, {"fs": 12.0, "h": 58.0, "id": "PE-E-03", "label": "模型即裁判及其偏差\nPE-E-03 · 第 13 层", "mw": 148.0, "w": 168.0, "x": 196.0, "y": -82.0}, {"fs": 12.0, "h": 58.0, "id": "PE-E-05", "label": "自动提示词工程\nPE-E-05 · 第 17 层", "mw": 148.0, "w": 168.0, "x": -196.0, "y": 0.0}, {"fs": 12.0, "h": 58.0, "id": "PE-E-06", "label": "声明式编译与签名\nPE-E-06 · 第 18 层", "mw": 148.0, "w": 168.0, "x": 0.0, "y": 0.0}, {"fs": 12.0, "h": 58.0, "id": "PE-E-04", "label": "评测工具链与红蓝对抗\nPE-E-04 · 第 19 层", "mw": 148.0, "w": 168.0, "x": 196.0, "y": 0.0}, {"fs": 12.0, "h": 58.0, "id": "PE-E-07", "label": "文本梯度与反思式进化\nPE-E-07 · 第 19 层", "mw": 148.0, "w": 168.0, "x": -196.0, "y": 82.0}, {"fs": 12.0, "h": 58.0, "id": "PE-E-08", "label": "元提示\nPE-E-08 · 第 20 层", "mw": 148.0, "w": 168.0, "x": 0.0, "y": 82.0}, {"fs": 12.0, "h": 58.0, "id": "PE-E-09", "label": "提示词版本化与回归\nPE-E-09 · 第 21 层", "mw": 148.0, "w": 168.0, "x": 196.0, "y": 82.0}], "pos": {"PE-E-01": [-196.0, -82.0], "PE-E-02": [0.0, -82.0], "PE-E-03": [196.0, -82.0], "PE-E-04": [196.0, 0.0], "PE-E-05": [-196.0, 0.0], "PE-E-06": [0.0, 0.0], "PE-E-07": [-196.0, 82.0], "PE-E-08": [0.0, 82.0], "PE-E-09": [196.0, 82.0]}, "rows": 3, "viewH": 222.0, "viewW": 560.0, "w": 168.0}, "G06": {"cols": 3, "count": 6, "fs": 12.0, "h": 58.0, "mw": 148.0, "nodes": [{"fs": 12.0, "h": 58.0, "id": "PE-A-01", "label": "指令层级\nPE-A-01 · 第 2 层", "mw": 148.0, "w": 168.0, "x": -196.0, "y": -41.0}, {"fs": 12.0, "h": 58.0, "id": "PE-A-02", "label": "直接与间接提示词注入\nPE-A-02 · 第 3 层", "mw": 148.0, "w": 168.0, "x": 0.0, "y": -41.0}, {"fs": 12.0, "h": 58.0, "id": "PE-A-03", "label": "大模型应用十大风险\nPE-A-03 · 第 13 层", "mw": 148.0, "w": 168.0, "x": 196.0, "y": -41.0}, {"fs": 12.0, "h": 58.0, "id": "PE-A-04", "label": "过拒与安全—可用性权衡\nPE-A-04 · 第 16 层", "mw": 148.0, "w": 168.0, "x": -196.0, "y": 41.0}, {"fs": 12.0, "h": 58.0, "id": "PE-A-05", "label": "负向提示的失效\nPE-A-05 · 第 17 层", "mw": 148.0, "w": 168.0, "x": 0.0, "y": 41.0}, {"fs": 12.0, "h": 58.0, "id": "PE-A-06", "label": "不可信内容的标注与隔离\nPE-A-06 · 第 18 层", "mw": 148.0, "w": 168.0, "x": 196.0, "y": 41.0}], "pos": {"PE-A-01": [-196.0, -41.0], "PE-A-02": [0.0, -41.0], "PE-A-03": [196.0, -41.0], "PE-A-04": [-196.0, 41.0], "PE-A-05": [0.0, 41.0], "PE-A-06": [196.0, 41.0]}, "rows": 2, "viewH": 140.0, "viewW": 560.0, "w": 168.0}, "G07": {"cols": 3, "count": 4, "fs": 12.0, "h": 58.0, "mw": 148.0, "nodes": [{"fs": 12.0, "h": 58.0, "id": "PE-M-01", "label": "模型分层选型\nPE-M-01 · 第 7 层", "mw": 148.0, "w": 168.0, "x": -196.0, "y": -41.0}, {"fs": 12.0, "h": 58.0, "id": "PE-M-02", "label": "标记敏感度的迁移性\nPE-M-02 · 第 8 层", "mw": 148.0, "w": 168.0, "x": 0.0, "y": -41.0}, {"fs": 12.0, "h": 58.0, "id": "PE-M-03", "label": "换模型即失效与重编译\nPE-M-03 · 第 19 层", "mw": 148.0, "w": 168.0, "x": 196.0, "y": -41.0}, {"fs": 12.0, "h": 58.0, "id": "PE-M-04", "label": "成本—质量—延迟三角\nPE-M-04 · 第 20 层", "mw": 148.0, "w": 168.0, "x": -196.0, "y": 41.0}], "pos": {"PE-M-01": [-196.0, -41.0], "PE-M-02": [0.0, -41.0], "PE-M-03": [196.0, -41.0], "PE-M-04": [-196.0, 41.0]}, "rows": 2, "viewH": 140.0, "viewW": 560.0, "w": 168.0}, "G08": {"cols": 3, "count": 3, "fs": 12.0, "h": 58.0, "mw": 148.0, "nodes": [{"fs": 12.0, "h": 58.0, "id": "PE-V-01", "label": "交错输入\nPE-V-01 · 第 9 层", "mw": 148.0, "w": 168.0, "x": -196.0, "y": 0.0}, {"fs": 12.0, "h": 58.0, "id": "PE-V-02", "label": "视觉推理链\nPE-V-02 · 第 10 层", "mw": 148.0, "w": 168.0, "x": 0.0, "y": 0.0}, {"fs": 12.0, "h": 58.0, "id": "PE-V-03", "label": "位置敏感与注意力耗散\nPE-V-03 · 第 11 层", "mw": 148.0, "w": 168.0, "x": 196.0, "y": 0.0}], "pos": {"PE-V-01": [-196.0, 0.0], "PE-V-02": [0.0, 0.0], "PE-V-03": [196.0, 0.0]}, "rows": 1, "viewH": 58.0, "viewW": 560.0, "w": 168.0}, "G09": {"cols": 3, "count": 7, "fs": 12.0, "h": 58.0, "mw": 148.0, "nodes": [{"fs": 12.0, "h": 58.0, "id": "PE-P-01", "label": "我的 agent 的提示\n词面\nPE-P-01 · 第 16 层", "mw": 148.0, "w": 168.0, "x": -196.0, "y": -82.0}, {"fs": 12.0, "h": 58.0, "id": "PE-P-02", "label": "技能文件编写\nPE-P-02 · 第 17 层", "mw": 148.0, "w": 168.0, "x": 0.0, "y": -82.0}, {"fs": 12.0, "h": 58.0, "id": "PE-P-03", "label": "子 Agent 委派与返\n回契约\nPE-P-03 · 第 18 层", "mw": 148.0, "w": 168.0, "x": 196.0, "y": -82.0}, {"fs": 12.0, "h": 58.0, "id": "PE-P-04", "label": "门控即判据\nPE-P-04 · 第 22 层", "mw": 148.0, "w": 168.0, "x": -196.0, "y": 0.0}, {"fs": 12.0, "h": 58.0, "id": "PE-P-05", "label": "记忆与反思\nPE-P-05 · 第 23 层", "mw": 148.0, "w": 168.0, "x": 0.0, "y": 0.0}, {"fs": 12.0, "h": 58.0, "id": "PE-P-06", "label": "模型上下文协议接入实况\nPE-P-06 · 第 24 层", "mw": 148.0, "w": 168.0, "x": 196.0, "y": 0.0}, {"fs": 12.0, "h": 58.0, "id": "PE-P-07", "label": "跨运行时迁移教训\nPE-P-07 · 第 25 层", "mw": 148.0, "w": 168.0, "x": -196.0, "y": 82.0}], "pos": {"PE-P-01": [-196.0, -82.0], "PE-P-02": [0.0, -82.0], "PE-P-03": [196.0, -82.0], "PE-P-04": [-196.0, 0.0], "PE-P-05": [0.0, 0.0], "PE-P-06": [196.0, 0.0], "PE-P-07": [-196.0, 82.0]}, "rows": 3, "viewH": 222.0, "viewW": 560.0, "w": 168.0}, "GD-N": {"cols": 3, "count": 4, "fs": 12.0, "h": 58.0, "mw": 148.0, "nodes": [{"fs": 12.0, "h": 58.0, "id": "PE-N-01", "label": "三代范式脉络\nPE-N-01 · 第 26 层", "mw": 148.0, "w": 168.0, "x": -196.0, "y": -41.0}, {"fs": 12.0, "h": 58.0, "id": "PE-N-02", "label": "当前共识与争议\nPE-N-02 · 第 27 层", "mw": 148.0, "w": 168.0, "x": 0.0, "y": -41.0}, {"fs": 12.0, "h": 58.0, "id": "PE-N-03", "label": "模块维护机制\nPE-N-03 · 第 28 层", "mw": 148.0, "w": 168.0, "x": 196.0, "y": -41.0}, {"fs": 12.0, "h": 58.0, "id": "PE-N-04", "label": "跟踪渠道\nPE-N-04 · 第 29 层", "mw": 148.0, "w": 168.0, "x": -196.0, "y": 41.0}], "pos": {"PE-N-01": [-196.0, -41.0], "PE-N-02": [0.0, -41.0], "PE-N-03": [196.0, -41.0], "PE-N-04": [-196.0, 41.0]}, "rows": 2, "viewH": 140.0, "viewW": 560.0, "w": 168.0}}, "edgeLabels": [{"fs": 10.0, "h": 16.0, "id": "EL:G00>G06", "label": "3", "source": "G00", "target": "G06", "w": 18.4, "x": -222.5, "y": -115.5}, {"fs": 10.0, "h": 16.0, "id": "EL:G03>G06", "label": "3", "source": "G03", "target": "G06", "w": 18.4, "x": 0.0, "y": -77.0}, {"fs": 10.0, "h": 16.0, "id": "EL:G00>G02", "label": "2", "source": "G00", "target": "G02", "w": 18.4, "x": -133.5, "y": -231.0}, {"fs": 10.0, "h": 16.0, "id": "EL:G00>G03", "label": "2", "source": "G00", "target": "G03", "w": 18.4, "x": 0.0, "y": -231.0}, {"fs": 10.0, "h": 16.0, "id": "EL:G02>G04", "label": "2", "source": "G02", "target": "G04", "w": 18.4, "x": -178.0, "y": -154.0}, {"fs": 10.0, "h": 16.0, "id": "EL:G02>G07", "label": "2", "source": "G02", "target": "G07", "w": 18.4, "x": 44.5, "y": -77.0}, {"fs": 10.0, "h": 16.0, "id": "EL:G04>G09", "label": "2", "source": "G04", "target": "G09", "w": 18.4, "x": -44.5, "y": 38.5}, {"fs": 10.0, "h": 16.0, "id": "EL:G05>G06", "label": "2", "source": "G05", "target": "G06", "w": 18.4, "x": 44.5, "y": 0.0}, {"fs": 10.0, "h": 16.0, "id": "EL:G05>G09", "label": "2", "source": "G05", "target": "G09", "w": 18.4, "x": 267.0, "y": 77.0}, {"fs": 10.0, "h": 16.0, "id": "EL:G08>G09", "label": "2", "source": "G08", "target": "G09", "w": 18.4, "x": 0.0, "y": 154.0}, {"fs": 10.0, "h": 16.0, "id": "EL:G09>GD-N", "label": "2", "source": "G09", "target": "GD-N", "w": 18.4, "x": -44.5, "y": 231.0}], "groupEdges": [{"backCount": 0, "bidir": false, "count": 1, "fwdCount": 1, "rels": ["PREREQ"], "source": "G00", "target": "G01"}, {"backCount": 0, "bidir": false, "count": 2, "fwdCount": 2, "rels": ["PREREQ"], "source": "G00", "target": "G02"}, {"backCount": 0, "bidir": false, "count": 2, "fwdCount": 2, "rels": ["PREREQ", "UPGRADE"], "source": "G00", "target": "G03"}, {"backCount": 0, "bidir": false, "count": 3, "fwdCount": 3, "rels": ["PREREQ"], "source": "G00", "target": "G06"}, {"backCount": 0, "bidir": false, "count": 1, "fwdCount": 1, "rels": ["FLOW"], "source": "G01", "target": "G05"}, {"backCount": 0, "bidir": false, "count": 1, "fwdCount": 1, "rels": ["PREREQ"], "source": "G01", "target": "G09"}, {"backCount": 1, "bidir": true, "count": 2, "fwdCount": 1, "rels": ["PREREQ"], "source": "G02", "target": "G04"}, {"backCount": 0, "bidir": false, "count": 1, "fwdCount": 1, "rels": ["PREREQ"], "source": "G02", "target": "G05"}, {"backCount": 0, "bidir": false, "count": 2, "fwdCount": 2, "rels": ["PREREQ"], "source": "G02", "target": "G07"}, {"backCount": 0, "bidir": false, "count": 1, "fwdCount": 1, "rels": ["PREREQ"], "source": "G03", "target": "G05"}, {"backCount": 1, "bidir": true, "count": 3, "fwdCount": 2, "rels": ["PREREQ"], "source": "G03", "target": "G06"}, {"backCount": 0, "bidir": false, "count": 1, "fwdCount": 1, "rels": ["PREREQ"], "source": "G03", "target": "G07"}, {"backCount": 0, "bidir": false, "count": 1, "fwdCount": 1, "rels": ["PREREQ"], "source": "G03", "target": "G08"}, {"backCount": 0, "bidir": false, "count": 1, "fwdCount": 1, "rels": ["FLOW"], "source": "G03", "target": "G09"}, {"backCount": 0, "bidir": false, "count": 1, "fwdCount": 1, "rels": ["PREREQ"], "source": "G04", "target": "G05"}, {"backCount": 0, "bidir": false, "count": 1, "fwdCount": 1, "rels": ["PREREQ"], "source": "G04", "target": "G06"}, {"backCount": 0, "bidir": false, "count": 2, "fwdCount": 2, "rels": ["FLOW", "PREREQ"], "source": "G04", "target": "G09"}, {"backCount": 1, "bidir": true, "count": 2, "fwdCount": 1, "rels": ["FLOW", "PREREQ"], "source": "G05", "target": "G06"}, {"backCount": 0, "bidir": false, "count": 1, "fwdCount": 1, "rels": ["PREREQ"], "source": "G05", "target": "G07"}, {"backCount": 0, "bidir": false, "count": 2, "fwdCount": 2, "rels": ["FLOW", "PREREQ"], "source": "G05", "target": "G09"}, {"backCount": 0, "bidir": false, "count": 1, "fwdCount": 1, "rels": ["PREREQ"], "source": "G06", "target": "G08"}, {"backCount": 0, "bidir": false, "count": 1, "fwdCount": 1, "rels": ["PREREQ"], "source": "G07", "target": "G08"}, {"backCount": 0, "bidir": false, "count": 1, "fwdCount": 1, "rels": ["PREREQ"], "source": "G07", "target": "GD-N"}, {"backCount": 0, "bidir": false, "count": 2, "fwdCount": 2, "rels": ["FLOW"], "source": "G08", "target": "G09"}, {"backCount": 0, "bidir": false, "count": 2, "fwdCount": 2, "rels": ["FLOW"], "source": "G09", "target": "GD-N"}], "groupEdgesBidir": 3, "groupEdgesRaw": 28, "groups": [{"completeCount": 6, "cyLabel": "地基：模型是概率采\n样器\nG00 · 6 节点", "en": "Foundations: The Model as a Probabilistic Sampler", "fs": 12.0, "h": 52.0, "id": "G00", "intro": "本组确立全站的地基心智模型：模型逐 token 从概率分布中采样，因此不存在「写法正确就一定得到同一答案」这回事，确定性只能靠约束解码、结构校验与固定参数在工程上近似获得。在此基础上讲清提示词的三层结构与上下文隔离手段、零样本与少样本的现行用法、指令具体性与可验证性的边界，以及注意力预算与上下文衰减这一贯穿全站的资源约束。读者学完本组后应能把后续任何一条技巧都归位到「它是在对抗采样随机性、还是在组织上下文、还是在划定权限」这三类问题之一。", "label": "G00 地基：模型是概率采样器", "layerMax": 5, "layerMin": 0, "mw": 120.0, "name": "地基：模型是概率采样器", "nodeCount": 6, "order": 0, "pos": {"x": -222.5, "y": -269.5}, "rank": 0, "w": 140.0}, {"completeCount": 5, "cyLabel": "确定性输出\nG01 · 5 节点", "en": "Deterministic Output", "fs": 12.0, "h": 52.0, "id": "G01", "intro": "本组处理「让输出可被程序消费」这一确定性需求：用 JSON Schema 与约束解码把结构合法性从「期望」变成「保证」，用三档严格度区分自然语言格式要求、模式提示与约束解码的不同代价，并处理推理与格式之间的真实冲突——生成空间受限时模型推理表现会下降，因此需要按任务类型决定是先自由推理再格式化，还是直接强约束。最后把校验与修复回路补齐，使失败可被自动重试而不是靠人工兜底。", "label": "G01 确定性输出", "layerMax": 10, "layerMin": 6, "mw": 120.0, "name": "确定性输出", "nodeCount": 5, "order": 1, "pos": {"x": -311.5, "y": -192.5}, "rank": 1, "w": 140.0}, {"completeCount": 8, "cyLabel": "推理增强\nG02 · 8 节点", "en": "Reasoning Enhancement", "fs": 12.0, "h": 52.0, "id": "G02", "intro": "本组是本站的核心张力所在：推理增强技巧的价值随模型换代发生反转。思维链、自一致性、思维树与思维图等手工推理结构，在具备原生思考的推理模型上边际收益趋零甚至为负，但在非推理模型与高串行深度任务上仍然有效。因此本组的组织原则不是「哪些技巧过时了」，而是「如何按任务域与模型类别判断该用哪一档」，并给出可证伪的判据（串行深度、答案是否唯一、错误是否发散），以及极简草稿、ReAct、反思回路这些低成本替代路径。", "label": "G02 推理增强", "layerMax": 16, "layerMin": 6, "mw": 120.0, "name": "推理增强", "nodeCount": 8, "order": 2, "pos": {"x": -44.5, "y": -192.5}, "rank": 1, "w": 140.0}, {"completeCount": 0, "cyLabel": "上下文工程\nG03 · 7 节点", "en": "Context Engineering", "fs": 12.0, "h": 52.0, "id": "G03", "intro": "本组把上下文当作模型的工作内存来治理，覆盖写入、选择、压缩、隔离四类策略。内容包括 RAG 提示模式与图检索的全局观、检索质量对生成质量的决定性作用、长上下文中的位置偏差及其在接近窗口上限时的形态变化、提示缓存对稳定前缀的要求，以及模型上下文协议（MCP）作为接口与治理边界的定位。读者学完本组应能回答「这条信息该常驻、该检索、还是该压缩掉」，而不是把所有资料都塞进窗口。", "label": "G03 上下文工程", "layerMax": 12, "layerMin": 6, "mw": 120.0, "name": "上下文工程", "nodeCount": 7, "order": 3, "pos": {"x": 222.5, "y": -192.5}, "rank": 1, "w": 140.0}, {"completeCount": 0, "cyLabel": "编排\nG04 · 8 节点", "en": "Orchestration", "fs": 12.0, "h": 52.0, "id": "G04", "intro": "本组讲把单次调用组织成系统：提示词链、路由、并行化与投票、编排者—工作者、生成者—评估者、状态机与持久化、子 Agent 上下文隔离，以及工具定义与滥用治理。重点是每种模式当前的定位与代价——多 Agent 系统的 token 消耗远高于普通对话，固定链式编排已收窄为「需要检查中间产物时」的选项，而工具定义本身就是提示词面的一部分。读者应能按任务是否需要固化中间产物、是否需要并行探索来选择模式。", "label": "G04 编排", "layerMax": 15, "layerMin": 8, "mw": 120.0, "name": "编排", "nodeCount": 8, "order": 4, "pos": {"x": -311.5, "y": -115.5}, "rank": 2, "w": 140.0}, {"completeCount": 9, "cyLabel": "评测与自动优化\nG05 · 9 节点", "en": "Evaluation and Automatic Optimization", "fs": 12.0, "h": 52.0, "id": "G05", "intro": "本组先立判据再谈优化：没有评测集，任何「提示词变好了」的判断都不可复现。内容包括评测集构造与判据设计、模型即裁判的偏差、评测工具链与红蓝对抗，再向上走到自动提示词工程、声明式编译与签名、文本梯度与反思式进化、元提示，最后落在提示词版本化与回归。读者学完应能先回答「怎么知道变好了」，再决定是否引入自动优化，并知道自动优化的收益前提是执行轨迹可获取、评分函数可用。", "label": "G05 评测与自动优化", "layerMax": 21, "layerMin": 10, "mw": 120.0, "name": "评测与自动优化", "nodeCount": 9, "order": 5, "pos": {"x": 311.5, "y": -38.5}, "rank": 3, "w": 140.0}, {"completeCount": 6, "cyLabel": "安全与鲁棒性\nG06 · 6 节点", "en": "Security and Robustness", "fs": 12.0, "h": 52.0, "id": "G06", "intro": "本组处理「不可信内容会改变模型行为」这一结构性问题：模型在架构上不区分指令与数据，因此提示词注入不存在可靠的拦截式预防，防御必须落在权限、隔离与校验上。内容包括指令层级及其原生集成现状、直接与间接注入的攻击面、大模型应用十大风险清单、过拒与安全—可用性权衡、负向提示的失效，以及不可信内容的标注与隔离。本组反复强调一条纪律：把「未被厂商文档收录」写成「已被证伪」是两种不同判定，不得混用。", "label": "G06 安全与鲁棒性", "layerMax": 18, "layerMin": 2, "mw": 120.0, "name": "安全与鲁棒性", "nodeCount": 6, "order": 6, "pos": {"x": -222.5, "y": 38.5}, "rank": 4, "w": 140.0}, {"completeCount": 0, "cyLabel": "模型差异与迁移\nG07 · 4 节点", "en": "Model Differences and Migration", "fs": 12.0, "h": 52.0, "id": "G07", "intro": "本组处理提示词经验的可迁移性：多数经验与具体模型绑定，标记敏感度取决于该模型是否针对此类标记做过对齐训练，换模型后必须重跑评测并重做优化。内容包括模型分层选型、标记敏感度的迁移性、换模型即失效与重编译、成本—质量—延迟三角。读者学完应能把「换模型」当作一次需要评测支撑的工程动作，而不是改一个字符串。", "label": "G07 模型差异与迁移", "layerMax": 20, "layerMin": 7, "mw": 120.0, "name": "模型差异与迁移", "nodeCount": 4, "order": 7, "pos": {"x": 133.5, "y": 38.5}, "rank": 4, "w": 140.0}, {"completeCount": 0, "cyLabel": "多模态\nG08 · 3 节点", "en": "Multimodal Prompting", "fs": 12.0, "h": 52.0, "id": "G08", "intro": "本组处理多模态输入特有的三个问题：交错输入的位置敏感性、视觉推理链与跨模态指令冲突、以及长序列中的注意力耗散。核心结论是同一组内容换一个模态顺序就可能改变结果，因此输入顺序必须固定并做对照测试；指令层级训练在跨模态冲突下只部分迁移，图像内的文字可能被当作指令执行。", "label": "G08 多模态", "layerMax": 11, "layerMin": 9, "mw": 120.0, "name": "多模态", "nodeCount": 3, "order": 8, "pos": {"x": -222.5, "y": 115.5}, "rank": 5, "w": 140.0}, {"completeCount": 1, "cyLabel": "落地实践\nG09 · 7 节点", "en": "Practice in the Field", "fs": 12.0, "h": 52.0, "id": "G09", "intro": "本组把前述知识收束到一个真实 agent 上：先盘点它的提示词面（系统提示、工具定义、技能文件、委派契约、记忆、门控），再讲技能文件编写、子 Agent 委派与返回契约、门控即判据、记忆与反思、MCP 接入实况，以及跨运行时迁移的教训。本组的取材是使用者自己的 agent 运行环境，因此结论都带环境标注，换环境需重新验证。", "label": "G09 落地实践", "layerMax": 25, "layerMin": 16, "mw": 120.0, "name": "落地实践", "nodeCount": 7, "order": 9, "pos": {"x": 222.5, "y": 192.5}, "rank": 6, "w": 140.0}, {"completeCount": 0, "cyLabel": "新一代模块\nGD-N · 4 节点", "en": "Frontier Module", "fs": 12.0, "h": 52.0, "id": "GD-N", "intro": "本模块只含数据、不含教程正文，是本站唯一被设计为「每次大更新只刷新一处」的分区：条目带时间锚、版次、状态与取代关系，刷新动作被定义为改条目集合与时间锚、重跑生成器与门控，不改任何页面模板。内容包括三代范式脉络、当前共识与争议、模块维护机制与跟踪渠道。状态取值限定为已确认、有争议、未证实三值，且每条都必须写清适用边界。", "label": "GD-N 新一代模块", "layerMax": 29, "layerMin": 26, "mw": 120.0, "name": "新一代模块", "nodeCount": 4, "order": 10, "pos": {"x": -311.5, "y": 269.5}, "rank": 7, "w": 140.0}], "layout": {"backEdges": [], "canvasH": 640.0, "canvasW": 804.0, "edgeLabelMinCount": 2, "edgeNodeCrossings": 0, "fs": 12.0, "kind": "layered-grid-preset", "nodeH": 52.0, "nodeW": 140.0, "pad": 18.0, "pitchX": 89.0, "pitchY": 77.0, "rankOf": {"G00": 0, "G01": 1, "G02": 1, "G03": 1, "G04": 2, "G05": 3, "G06": 4, "G07": 4, "G08": 5, "G09": 6, "GD-N": 7}, "rawBackEdges": [["G04", "G02"], ["G06", "G03"], ["G06", "G05"]], "rowMembers": [["G00"], ["G01", "G02", "G03"], ["G04"], ["G05"], ["G06", "G07"], ["G08"], ["G09"], ["GD-N"]], "rows": 8, "slots": 8, "usableH": 604.0, "usableW": 768.0, "viewH": 591.0, "viewW": 763.0, "viewport": "宽屏 ≥1180px、视口高 900px（内容列 804px，#cy 高 min(72vh,40rem)=640px）", "zoom": 1.0}, "meta": {"as_of": "2026-10", "audience": "有工程基础、提示词工程未系统化的工程师", "directionRule": "A→B 表示先学 A 再学 B（学习顺序）；层序由本方向推导，写反会使分层颠倒", "edgeCount": 96, "edition": "v1", "groupCount": 11, "huePolicy": "组身份由序号与名称承载；画布统一用品牌色，⛔ 不按组分配色相", "layerCount": 30, "mission": "新一代提示词工程知识全景图与教程", "nodeCount": 67}, "nodeEdges": [{"note": "先理解采样与确定性边界，才能理解为什么提示词要按稳定性与权威性分层", "rel": "PREREQ", "source": "PE-F-01", "target": "PE-F-02"}, {"note": "先有分层心智，才知道需要在文本上划出哪些边界", "rel": "PREREQ", "source": "PE-F-02", "target": "PE-F-03"}, {"note": "示例必须包在显式边界内才能与指令区分，故先学分隔符", "rel": "PREREQ", "source": "PE-F-03", "target": "PE-F-04"}, {"note": "先掌握示例的用法，才能判断哪些内容该写成指令、哪些该用示例表达", "rel": "PREREQ", "source": "PE-F-04", "target": "PE-F-05"}, {"note": "指令写到可判定之后，剩下的约束来自上下文资源本身", "rel": "PREREQ", "source": "PE-F-05", "target": "PE-F-06"}, {"note": "理解了注意力预算，才会把结构约束下沉到解码层而不是靠指令堆叠", "rel": "PREREQ", "source": "PE-F-06", "target": "PE-S-01"}, {"note": "先掌握约束解码，才能理解三档严格度的差别与代价", "rel": "PREREQ", "source": "PE-S-01", "target": "PE-S-02"}, {"note": "先有档位概念，才能讨论强约束与推理能力之间的冲突", "rel": "PREREQ", "source": "PE-S-02", "target": "PE-S-03"}, {"note": "先解决推理与格式的冲突，再在可选格式之间做成本权衡", "rel": "PREREQ", "source": "PE-S-03", "target": "PE-S-04"}, {"note": "格式选定后才谈校验与修复回路的设计", "rel": "PREREQ", "source": "PE-S-04", "target": "PE-S-05"}, {"note": "推理增强本质是花更多 token 换质量，须先理解注意力与成本约束", "rel": "PREREQ", "source": "PE-F-06", "target": "PE-R-01"}, {"note": "先掌握思维链的机制，才能理解它在推理模型上为何掉分", "rel": "PREREQ", "source": "PE-R-01", "target": "PE-R-02"}, {"note": "先接受单路径推理的边界，再看多路径采样能否补上", "rel": "PREREQ", "source": "PE-R-02", "target": "PE-R-03"}, {"note": "投票是结构最简单的聚合，思维树是它的结构化升级", "rel": "PREREQ", "source": "PE-R-03", "target": "PE-R-04"}, {"note": "先理解完整搜索的代价，再学轻量回溯与改写变体", "rel": "PREREQ", "source": "PE-R-04", "target": "PE-R-05"}, {"note": "在降低成本的方向上，极简草稿是回溯与变体之外的第三条路", "rel": "PREREQ", "source": "PE-R-05", "target": "PE-R-06"}, {"note": "先掌握把推理压短的技巧，再引入外部反馈驱动的循环", "rel": "PREREQ", "source": "PE-R-06", "target": "PE-R-07"}, {"note": "ReAct 的思考环节就是推理，须先掌握推理提示的基本形态", "rel": "PREREQ", "source": "PE-R-01", "target": "PE-R-07"}, {"note": "先有行动与观察的循环，才能理解反思回路在何处插入", "rel": "PREREQ", "source": "PE-R-07", "target": "PE-R-08"}, {"note": "反思给出候选改进，自动提示词工程把候选筛选机制化", "rel": "PREREQ", "source": "PE-R-08", "target": "PE-E-05"}, {"note": "从「提示词要精简」升级为「上下文是工作内存，需要主动治理」", "rel": "UPGRADE", "source": "PE-F-06", "target": "PE-C-01"}, {"note": "四策略中「选择」这一支的具体实现就是检索，故先学工作内存框架", "rel": "PREREQ", "source": "PE-C-01", "target": "PE-C-02"}, {"note": "先掌握片段级检索的提示模式，再引入需要全局观的图检索", "rel": "PREREQ", "source": "PE-C-02", "target": "PE-C-03"}, {"note": "无论哪种检索通道，质量都决定上限，故先建通道再谈质量", "rel": "PREREQ", "source": "PE-C-03", "target": "PE-C-04"}, {"note": "检索质量解决「取到没取到」，位置偏差解决「取到了是否用上」", "rel": "PREREQ", "source": "PE-C-04", "target": "PE-C-05"}, {"note": "位置安排决定了提示的稳定结构，正是缓存可命中的前提", "rel": "PREREQ", "source": "PE-C-05", "target": "PE-C-06"}, {"note": "先理解稳定前缀与上下文组织，再学把外部数据源标准化接入", "rel": "PREREQ", "source": "PE-C-06", "target": "PE-C-07"}, {"note": "协议原理落到自己的运行时上就是接入实况", "rel": "FLOW", "source": "PE-C-07", "target": "PE-P-06"}, {"note": "先知道模型内部已能处理多步推理，才能理解链条为何收窄", "rel": "PREREQ", "source": "PE-R-02", "target": "PE-O-01"}, {"note": "链是单一路径的流程，路由是在多条路径之间选择", "rel": "PREREQ", "source": "PE-O-01", "target": "PE-O-02"}, {"note": "路由决定走哪条路，并行化决定每条路上是否同时跑多份", "rel": "PREREQ", "source": "PE-O-02", "target": "PE-O-03"}, {"note": "先掌握并行与聚合，再引入需要拆解与汇总的多工作者结构", "rel": "PREREQ", "source": "PE-O-03", "target": "PE-O-04"}, {"note": "编排者—工作者解决拆分，生成者—评估者解决质量把关", "rel": "PREREQ", "source": "PE-O-04", "target": "PE-O-05"}, {"note": "先有评估与迭代，才需要把迭代过程固化为可恢复的状态", "rel": "PREREQ", "source": "PE-O-05", "target": "PE-O-06"}, {"note": "状态是跨调用的事实，子 Agent 隔离是跨上下文的边界，两者配套", "rel": "PREREQ", "source": "PE-O-06", "target": "PE-O-07"}, {"note": "子 Agent 能做什么由工具定义决定，故先学隔离再学工具治理", "rel": "PREREQ", "source": "PE-O-07", "target": "PE-O-08"}, {"note": "工具定义是提示词面的一部分，从编排原理直接落到自身 agent 的盘点", "rel": "FLOW", "source": "PE-O-08", "target": "PE-P-01"}, {"note": "检索质量的教训是「先度量再优化」，这正是评测集的作用", "rel": "PREREQ", "source": "PE-C-04", "target": "PE-E-01"}, {"note": "先建立评测集必要性，再谈如何构造才有区分度", "rel": "PREREQ", "source": "PE-E-01", "target": "PE-E-02"}, {"note": "确定性判据不够用时，才引入模型裁判并处理其偏差", "rel": "PREREQ", "source": "PE-E-02", "target": "PE-E-03"}, {"note": "先理解裁判偏差，才能正确使用工具链中的模型辅助断言", "rel": "PREREQ", "source": "PE-E-03", "target": "PE-E-04"}, {"note": "工具链就位后，回归才有可执行的载体", "rel": "PREREQ", "source": "PE-E-04", "target": "PE-E-09"}, {"note": "自动优化依赖评测集与可自动计算的判据", "rel": "PREREQ", "source": "PE-E-02", "target": "PE-E-05"}, {"note": "从「让模型改指令」升级为「声明签名并由编译器搜索配置」", "rel": "UPGRADE", "source": "PE-E-05", "target": "PE-E-06"}, {"note": "先有编译流程与指标，再引入以反馈为梯度的优化方式", "rel": "PREREQ", "source": "PE-E-06", "target": "PE-E-07"}, {"note": "先能改进组件，再让模型生成或改写提示词本身", "rel": "PREREQ", "source": "PE-E-07", "target": "PE-E-08"}, {"note": "批量改写产生大量候选，必须有版本化与回归来筛选", "rel": "PREREQ", "source": "PE-E-08", "target": "PE-E-09"}, {"note": "版本化与回归的判据形态，就是可执行的门控脚本", "rel": "FLOW", "source": "PE-E-09", "target": "PE-P-04"}, {"note": "先有层级概念，才能理解注入为何是「低特权覆盖高特权」", "rel": "PREREQ", "source": "PE-A-01", "target": "PE-A-02"}, {"note": "理解注入的结构后，再看它在风险清单中的位置与相关条目", "rel": "PREREQ", "source": "PE-A-02", "target": "PE-A-03"}, {"note": "清单给出风险面，过拒讨论防御强度与可用性的取舍", "rel": "PREREQ", "source": "PE-A-03", "target": "PE-A-04"}, {"note": "安全约束的具体写法决定它是否真的生效，故接着学负向提示的失效", "rel": "PREREQ", "source": "PE-A-04", "target": "PE-A-05"}, {"note": "先掌握指令该怎么写，再学不可信内容该如何标注与隔离", "rel": "PREREQ", "source": "PE-A-05", "target": "PE-A-06"}, {"note": "隔离措施是否有效只能靠对抗评测度量，故接评测工具链", "rel": "FLOW", "source": "PE-A-06", "target": "PE-E-04"}, {"note": "先有上下文与成本的全局观，才谈得上按档位分派模型", "rel": "PREREQ", "source": "PE-C-01", "target": "PE-M-01"}, {"note": "分层后必然跨模型，标记敏感度的迁移性随之成为问题", "rel": "PREREQ", "source": "PE-M-01", "target": "PE-M-02"}, {"note": "先理解标记按模型重测，再推广到整体提示词的重编译流程", "rel": "PREREQ", "source": "PE-M-02", "target": "PE-M-03"}, {"note": "重编译涉及预算，必须与成本、质量、延迟三项指标一起决策", "rel": "PREREQ", "source": "PE-M-03", "target": "PE-M-04"}, {"note": "多模态交错顺序同样受模型特性影响，先学迁移性再学多模态输入", "rel": "PREREQ", "source": "PE-M-02", "target": "PE-V-01"}, {"note": "先构造好交错输入，再引导模型先定位再推断", "rel": "PREREQ", "source": "PE-V-01", "target": "PE-V-02"}, {"note": "交错输入的另一面是位置敏感与注意力耗散，须一并掌握", "rel": "PREREQ", "source": "PE-V-01", "target": "PE-V-03"}, {"note": "长序列治理的结论落到实践层就是记忆的写入与退役", "rel": "FLOW", "source": "PE-V-03", "target": "PE-P-05"}, {"note": "先盘点提示词面，才知道技能文件在其中的位置与常驻策略", "rel": "PREREQ", "source": "PE-P-01", "target": "PE-P-02"}, {"note": "技能文件之后是委派契约，两者共同构成按需层的提示资产", "rel": "PREREQ", "source": "PE-P-02", "target": "PE-P-03"}, {"note": "委派需要可验证的返回契约，门控即判据是它的机械形态", "rel": "PREREQ", "source": "PE-P-03", "target": "PE-P-04"}, {"note": "判据就位后，才谈得上用记忆沉淀并复核跨会话结论", "rel": "PREREQ", "source": "PE-P-04", "target": "PE-P-05"}, {"note": "记忆与上下文管理就绪后，再接入外部数据源与工具", "rel": "PREREQ", "source": "PE-P-05", "target": "PE-P-06"}, {"note": "接入实况之后是跨运行时迁移，后者会重新暴露接入差异", "rel": "PREREQ", "source": "PE-P-06", "target": "PE-P-07"}, {"note": "迁移教训引出对三代范式脉络的整体回看", "rel": "FLOW", "source": "PE-P-07", "target": "PE-N-01"}, {"note": "先有三代脉络，才能把各条结论归入共识或争议", "rel": "PREREQ", "source": "PE-N-01", "target": "PE-N-02"}, {"note": "先区分共识与争议，再定义这个分区如何被维护与刷新", "rel": "PREREQ", "source": "PE-N-02", "target": "PE-N-03"}, {"note": "维护机制确定后，才谈得上用哪些渠道定期核验", "rel": "PREREQ", "source": "PE-N-03", "target": "PE-N-04"}, {"note": "刷新是有成本的动作，须先有成本与收益的取舍框架", "rel": "PREREQ", "source": "PE-M-04", "target": "PE-N-03"}, {"note": "采样器不区分指令与数据这一事实，是指令层级存在的根本原因", "rel": "PREREQ", "source": "PE-F-01", "target": "PE-A-01"}, {"note": "先理解模型如何消费 token，才能理解上下文为何是有限资源", "rel": "PREREQ", "source": "PE-F-01", "target": "PE-C-01"}, {"note": "分隔符是标注不可信内容的技术前提", "rel": "PREREQ", "source": "PE-F-03", "target": "PE-A-06"}, {"note": "校验器的判据与评测工具链的断言共用同一套表达方式", "rel": "FLOW", "source": "PE-S-05", "target": "PE-E-04"}, {"note": "评估者的可靠性问题正是模型裁判的偏差问题", "rel": "PREREQ", "source": "PE-O-05", "target": "PE-E-03"}, {"note": "投票在编排层是并行模式，在推理层是自一致性，先学编排侧的一般形态", "rel": "PREREQ", "source": "PE-O-03", "target": "PE-R-03"}, {"note": "纯文本的位置偏差是理解多模态位置敏感的基础", "rel": "PREREQ", "source": "PE-C-05", "target": "PE-V-03"}, {"note": "外部数据源接入后，间接注入成为主要攻击面", "rel": "PREREQ", "source": "PE-A-02", "target": "PE-C-07"}, {"note": "跨模态指令冲突是层级问题在多模态上的表现", "rel": "PREREQ", "source": "PE-A-01", "target": "PE-V-02"}, {"note": "声明式编译是换模型后重编译这条纪律的技术依托", "rel": "PREREQ", "source": "PE-E-06", "target": "PE-M-03"}, {"note": "工具治理与安全策略共同决定过拒率的高低", "rel": "PREREQ", "source": "PE-O-08", "target": "PE-A-04"}, {"note": "接入外部能力会扩大风险面，须回到风险清单核对", "rel": "PREREQ", "source": "PE-C-07", "target": "PE-A-03"}, {"note": "压缩推理长度的收益必须在成本—质量—延迟三角里衡量", "rel": "PREREQ", "source": "PE-R-06", "target": "PE-M-04"}, {"note": "自身 agent 的提示词面盘点，决定需要跟踪哪些渠道的变化", "rel": "FLOW", "source": "PE-P-01", "target": "PE-N-04"}, {"note": "约束解码是门控中「结构合法」类断言的实现基础", "rel": "PREREQ", "source": "PE-S-01", "target": "PE-P-04"}, {"note": "过拒率要被度量才有意义，评测集是它的载体", "rel": "PREREQ", "source": "PE-E-01", "target": "PE-A-04"}, {"note": "少样本用法的现行变化是范式反转的一部分，须先掌握其基本用法", "rel": "PREREQ", "source": "PE-F-04", "target": "PE-R-02"}, {"note": "提示词分层是层级在工程上的落点，先学分层再学层级规则", "rel": "PREREQ", "source": "PE-F-02", "target": "PE-A-01"}, {"note": "持久化状态与长期记忆是同一类「跨调用事实」的两种载体", "rel": "PREREQ", "source": "PE-O-06", "target": "PE-P-05"}, {"note": "反思式进化与记忆机制共用同一套「候选—复核—落库」流程", "rel": "PREREQ", "source": "PE-E-07", "target": "PE-P-05"}, {"note": "检索资料是不可信内容的主要来源，提示模式须与标注配套", "rel": "PREREQ", "source": "PE-C-02", "target": "PE-A-06"}, {"note": "显式搜索的成本量级决定了它只在预算充足时适用", "rel": "PREREQ", "source": "PE-R-04", "target": "PE-M-04"}, {"note": "多模态能力往往通过外部服务接入，须与接入治理一并考虑", "rel": "FLOW", "source": "PE-V-02", "target": "PE-P-06"}], "nodes": [{"en": "Instruction Hierarchy", "group": "G06", "id": "PE-A-01", "layer": 2, "name": "指令层级（Instruction Hierarchy）", "status": "complete", "tags": ["安全", "指令层级", "权限"]}, {"en": "Direct and Indirect Prompt Injection", "group": "G06", "id": "PE-A-02", "layer": 3, "name": "直接与间接提示词注入（Direct and Indirect Prompt Injection）", "status": "complete", "tags": ["安全", "提示注入", "攻击面"]}, {"en": "Top 10 Risks for LLM Applications", "group": "G06", "id": "PE-A-03", "layer": 13, "name": "大模型应用十大风险（Top 10 Risks for LLM Applications）", "status": "complete", "tags": ["安全", "风险清单", "OWASP"]}, {"en": "Over-refusal and the Safety–Usability Tradeoff", "group": "G06", "id": "PE-A-04", "layer": 16, "name": "过拒与安全—可用性权衡（Over-refusal and the Safety–Usability Tradeoff）", "status": "complete", "tags": ["安全", "过拒", "可用性"]}, {"en": "Failure of Negative Prompting", "group": "G06", "id": "PE-A-05", "layer": 17, "name": "负向提示的失效（Failure of Negative Prompting）", "status": "complete", "tags": ["负向提示", "指令遵循", "改写"]}, {"en": "Tagging and Isolating Untrusted Content", "group": "G06", "id": "PE-A-06", "layer": 18, "name": "不可信内容的标注与隔离（Tagging and Isolating Untrusted Content）", "status": "complete", "tags": ["安全", "不可信内容", "隔离"]}, {"en": "Context as Working Memory and Four Strategies", "group": "G03", "id": "PE-C-01", "layer": 6, "name": "上下文即工作内存与四策略（Context as Working Memory and Four Strategies）", "status": "registered", "tags": ["上下文工程", "工作内存", "策略"]}, {"en": "RAG Prompting Patterns", "group": "G03", "id": "PE-C-02", "layer": 7, "name": "RAG 提示模式（RAG Prompting Patterns）", "status": "registered", "tags": ["上下文工程", "RAG", "提示模式"]}, {"en": "Graph Retrieval and Global View", "group": "G03", "id": "PE-C-03", "layer": 8, "name": "图检索与全局观（Graph Retrieval and Global View）", "status": "registered", "tags": ["上下文工程", "图检索", "全局观"]}, {"en": "Retrieval Quality and GIGO", "group": "G03", "id": "PE-C-04", "layer": 9, "name": "检索质量与垃圾进垃圾出（Retrieval Quality and GIGO）", "status": "registered", "tags": ["上下文工程", "检索质量", "评测分层"]}, {"en": "Long-context Positional Bias", "group": "G03", "id": "PE-C-05", "layer": 10, "name": "长上下文位置偏差（Long-context Positional Bias）", "status": "registered", "tags": ["上下文工程", "位置偏差", "长上下文"]}, {"en": "Prompt Caching", "group": "G03", "id": "PE-C-06", "layer": 11, "name": "提示缓存（Prompt Caching）", "status": "registered", "tags": ["上下文工程", "提示缓存", "成本"]}, {"en": "Model Context Protocol (MCP)", "group": "G03", "id": "PE-C-07", "layer": 12, "name": "模型上下文协议（Model Context Protocol）", "status": "registered", "tags": ["上下文工程", "MCP", "协议"]}, {"en": "Why Build an Eval Set First", "group": "G05", "id": "PE-E-01", "layer": 10, "name": "为什么必须先建评测集（Why Build an Eval Set First）", "status": "complete", "tags": ["评测", "评测集", "判据"]}, {"en": "Test Set Construction", "group": "G05", "id": "PE-E-02", "layer": 11, "name": "测试集构造（Test Set Construction）", "status": "complete", "tags": ["评测", "测试集", "分层"]}, {"en": "LLM-as-a-Judge and Its Biases", "group": "G05", "id": "PE-E-03", "layer": 13, "name": "模型即裁判及其偏差（LLM-as-a-Judge and Its Biases）", "status": "complete", "tags": ["评测", "模型裁判", "偏差"]}, {"en": "Evaluation Toolchain and Red Teaming", "group": "G05", "id": "PE-E-04", "layer": 19, "name": "评测工具链与红蓝对抗（Evaluation Toolchain and Red Teaming）", "status": "complete", "tags": ["评测", "工具链", "红蓝对抗"]}, {"en": "Automatic Prompt Engineering", "group": "G05", "id": "PE-E-05", "layer": 17, "name": "自动提示词工程（Automatic Prompt Engineering）", "status": "complete", "tags": ["自动优化", "评测", "搜索"]}, {"en": "Declarative Compilation and Signatures", "group": "G05", "id": "PE-E-06", "layer": 18, "name": "声明式编译与签名（Declarative Compilation and Signatures）", "status": "complete", "tags": ["声明式编译", "DSPy", "评测"]}, {"en": "Textual Gradient and Reflective Evolution", "group": "G05", "id": "PE-E-07", "layer": 19, "name": "文本梯度与反思式进化（Textual Gradient and Reflective Evolution）", "status": "complete", "tags": ["文本梯度", "反思进化", "优化回路"]}, {"en": "Meta-prompting", "group": "G05", "id": "PE-E-08", "layer": 20, "name": "元提示（Meta-prompting）", "status": "complete", "tags": ["评测", "元提示", "批量改写"]}, {"en": "Prompt Versioning and Regression", "group": "G05", "id": "PE-E-09", "layer": 21, "name": "提示词版本化与回归（Prompt Versioning and Regression）", "status": "complete", "tags": ["版本化", "回归", "基线"]}, {"en": "Probabilistic Sampling and the Determinism Boundary", "group": "G00", "id": "PE-F-01", "layer": 0, "name": "概率采样与确定性边界（Probabilistic Sampling and the Determinism Boundary）", "status": "complete", "tags": ["地基", "采样", "确定性", "约束解码"]}, {"en": "System, Developer, and User Prompt Layering", "group": "G00", "id": "PE-F-02", "layer": 1, "name": "系统 / 开发者 / 用户提示词分层（System, Developer, and User Prompt Layering）", "status": "complete", "tags": ["地基", "提示词分层", "缓存"]}, {"en": "Delimiters and Context Isolation", "group": "G00", "id": "PE-F-03", "layer": 2, "name": "分隔符与上下文隔离（Delimiters and Context Isolation）", "status": "complete", "tags": ["地基", "分隔符", "上下文隔离"]}, {"en": "Zero-shot and Few-shot Prompting", "group": "G00", "id": "PE-F-04", "layer": 3, "name": "零样本与少样本（Zero-shot and Few-shot Prompting）", "status": "complete", "tags": ["地基", "零样本", "少样本"]}, {"en": "Instruction Specificity and Verifiability", "group": "G00", "id": "PE-F-05", "layer": 4, "name": "指令的具体性与可验证性（Instruction Specificity and Verifiability）", "status": "complete", "tags": ["地基", "指令设计", "可验证性"]}, {"en": "Attention Budget and Context Rot", "group": "G00", "id": "PE-F-06", "layer": 5, "name": "注意力预算与上下文衰减（Attention Budget and Context Rot）", "status": "complete", "tags": ["地基", "注意力", "上下文衰减"]}, {"en": "Model Tiering", "group": "G07", "id": "PE-M-01", "layer": 7, "name": "模型分层选型（Model Tiering）", "status": "registered", "tags": ["模型迁移", "分层", "成本"]}, {"en": "Transferability of Markup Sensitivity", "group": "G07", "id": "PE-M-02", "layer": 8, "name": "标记敏感度的迁移性（Transferability of Markup Sensitivity）", "status": "registered", "tags": ["模型迁移", "标记", "可迁移性"]}, {"en": "Model Swap Invalidates and Requires Recompilation", "group": "G07", "id": "PE-M-03", "layer": 19, "name": "换模型即失效与重编译（Model Swap Invalidates and Requires Recompilation）", "status": "registered", "tags": ["模型迁移", "重编译", "评测"]}, {"en": "Cost–Quality–Latency Triangle", "group": "G07", "id": "PE-M-04", "layer": 20, "name": "成本—质量—延迟三角（Cost–Quality–Latency Triangle）", "status": "registered", "tags": ["模型迁移", "成本", "延迟"]}, {"en": "Three-Generation Paradigm Arc", "group": "GD-N", "id": "PE-N-01", "layer": 26, "name": "三代范式脉络（Three-Generation Paradigm Arc）", "status": "registered", "tags": ["新一代模块", "范式脉络", "框架"]}, {"en": "Current Consensus and Disputes", "group": "GD-N", "id": "PE-N-02", "layer": 27, "name": "当前共识与争议（Current Consensus and Disputes）", "status": "registered", "tags": ["新一代模块", "共识", "争议"]}, {"en": "Module Maintenance Mechanism", "group": "GD-N", "id": "PE-N-03", "layer": 28, "name": "模块维护机制（Module Maintenance Mechanism）", "status": "registered", "tags": ["新一代模块", "维护机制", "刷新"]}, {"en": "Tracking Channels", "group": "GD-N", "id": "PE-N-04", "layer": 29, "name": "跟踪渠道（Tracking Channels）", "status": "registered", "tags": ["新一代模块", "跟踪渠道", "时效"]}, {"en": "Prompt Chaining", "group": "G04", "id": "PE-O-01", "layer": 8, "name": "提示词链（Prompt Chaining）", "status": "registered", "tags": ["编排", "提示词链", "流程"]}, {"en": "Routing", "group": "G04", "id": "PE-O-02", "layer": 9, "name": "路由（Routing）", "status": "registered", "tags": ["编排", "路由", "成本"]}, {"en": "Parallelization and Voting", "group": "G04", "id": "PE-O-03", "layer": 10, "name": "并行化与投票（Parallelization and Voting）", "status": "registered", "tags": ["编排", "并行化", "投票"]}, {"en": "Orchestrator–Workers", "group": "G04", "id": "PE-O-04", "layer": 11, "name": "编排者—工作者（Orchestrator–Workers）", "status": "registered", "tags": ["编排", "多 Agent", "成本"]}, {"en": "Generator–Evaluator", "group": "G04", "id": "PE-O-05", "layer": 12, "name": "生成者—评估者（Generator–Evaluator）", "status": "registered", "tags": ["编排", "评估者", "迭代"]}, {"en": "State Machine and Persistence", "group": "G04", "id": "PE-O-06", "layer": 13, "name": "状态机与持久化（State Machine and Persistence）", "status": "registered", "tags": ["编排", "状态机", "持久化"]}, {"en": "Sub-agent Context Isolation", "group": "G04", "id": "PE-O-07", "layer": 14, "name": "子 Agent 上下文隔离（Sub-agent Context Isolation）", "status": "registered", "tags": ["编排", "子 Agent", "上下文隔离"]}, {"en": "Tool Definition and Abuse Governance", "group": "G04", "id": "PE-O-08", "layer": 15, "name": "工具定义与滥用治理（Tool Definition and Abuse Governance）", "status": "registered", "tags": ["编排", "工具定义", "治理"]}, {"en": "My Agent's Prompt Surface", "group": "G09", "id": "PE-P-01", "layer": 16, "name": "我的 agent 的提示词面（My Agent's Prompt Surface）", "status": "registered", "tags": ["落地实践", "提示词面", "盘点"]}, {"en": "Authoring Skill Files", "group": "G09", "id": "PE-P-02", "layer": 17, "name": "技能文件编写（Authoring Skill Files）", "status": "complete", "tags": ["落地实践", "技能文件", "渐进式披露"]}, {"en": "Sub-agent Delegation and Return Contract", "group": "G09", "id": "PE-P-03", "layer": 18, "name": "子 Agent 委派与返回契约（Sub-agent Delegation and Return Contract）", "status": "registered", "tags": ["落地实践", "委派", "返回契约"]}, {"en": "Gate as Executable Criterion", "group": "G09", "id": "PE-P-04", "layer": 22, "name": "门控即判据（Gate as Executable Criterion）", "status": "registered", "tags": ["落地实践", "门控", "判据"]}, {"en": "Memory and Reflection", "group": "G09", "id": "PE-P-05", "layer": 23, "name": "记忆与反思（Memory and Reflection）", "status": "registered", "tags": ["落地实践", "记忆", "反思"]}, {"en": "MCP in Practice", "group": "G09", "id": "PE-P-06", "layer": 24, "name": "模型上下文协议接入实况（MCP in Practice）", "status": "registered", "tags": ["落地实践", "MCP", "接入"]}, {"en": "Lessons from Cross-runtime Migration", "group": "G09", "id": "PE-P-07", "layer": 25, "name": "跨运行时迁移教训（Lessons from Cross-runtime Migration）", "status": "registered", "tags": ["落地实践", "迁移", "运行时"]}, {"en": "Chain-of-Thought and Zero-shot CoT", "group": "G02", "id": "PE-R-01", "layer": 6, "name": "思维链与零样本思维链（Chain-of-Thought and Zero-shot CoT）", "status": "complete", "tags": ["推理增强", "思维链", "自适应思考"]}, {"en": "Paradigm Reversal: Classic Techniques Lose Ground on Reasoning Models", "group": "G02", "id": "PE-R-02", "layer": 7, "name": "范式反转：推理模型上经典技巧掉分（Paradigm Reversal: Classic Techniques Lose Ground on Reasoning Models）", "status": "complete", "tags": ["推理增强", "范式反转", "思维链", "适用边界"]}, {"en": "Self-Consistency and Majority Voting", "group": "G02", "id": "PE-R-03", "layer": 11, "name": "自一致性与多数投票（Self-Consistency and Majority Voting）", "status": "complete", "tags": ["推理增强", "自一致性", "多数投票"]}, {"en": "Tree of Thoughts and Graph of Thoughts", "group": "G02", "id": "PE-R-04", "layer": 12, "name": "思维树与思维图（Tree of Thoughts and Graph of Thoughts）", "status": "complete", "tags": ["推理增强", "思维树", "思维图"]}, {"en": "Step Backtracking and Rewrite Variants", "group": "G02", "id": "PE-R-05", "layer": 13, "name": "步骤回溯与改写变体（Step Backtracking and Rewrite Variants）", "status": "complete", "tags": ["推理增强", "回溯", "改写变体"]}, {"en": "Chain of Draft", "group": "G02", "id": "PE-R-06", "layer": 14, "name": "极简推理草稿（Chain of Draft）", "status": "complete", "tags": ["推理增强", "极简草稿", "成本"]}, {"en": "ReAct: Interleaved Reasoning and Acting", "group": "G02", "id": "PE-R-07", "layer": 15, "name": "ReAct 推理—行动交织（ReAct: Interleaved Reasoning and Acting）", "status": "complete", "tags": ["推理增强", "ReAct", "工具调用"]}, {"en": "Reflection and Self-Critique Loop", "group": "G02", "id": "PE-R-08", "layer": 16, "name": "反思与自评回路（Reflection and Self-Critique Loop）", "status": "complete", "tags": ["推理增强", "反思", "自评"]}, {"en": "JSON Schema and Constrained Decoding", "group": "G01", "id": "PE-S-01", "layer": 6, "name": "结构模式与约束解码（JSON Schema and Constrained Decoding）", "status": "complete", "tags": ["确定性输出", "JSON Schema", "约束解码"]}, {"en": "Three Tiers of Strictness", "group": "G01", "id": "PE-S-02", "layer": 7, "name": "三档严格度（Three Tiers of Strictness）", "status": "complete", "tags": ["确定性输出", "严格度", "格式约束"]}, {"en": "Reasoning–Format Conflict", "group": "G01", "id": "PE-S-03", "layer": 8, "name": "推理与格式的冲突（Reasoning–Format Conflict）", "status": "complete", "tags": ["确定性输出", "推理", "格式约束"]}, {"en": "Format Choice and Token Efficiency", "group": "G01", "id": "PE-S-04", "layer": 9, "name": "格式选型与词元效率（Format Choice and Token Efficiency）", "status": "complete", "tags": ["确定性输出", "token 效率", "格式选型"]}, {"en": "Validation and Repair Loop", "group": "G01", "id": "PE-S-05", "layer": 10, "name": "校验与修复回路（Validation and Repair Loop）", "status": "complete", "tags": ["确定性输出", "校验", "重试"]}, {"en": "Interleaved Input", "group": "G08", "id": "PE-V-01", "layer": 9, "name": "交错输入（Interleaved Input）", "status": "registered", "tags": ["多模态", "交错输入", "顺序"]}, {"en": "Visual Reasoning Chain", "group": "G08", "id": "PE-V-02", "layer": 10, "name": "视觉推理链（Visual Reasoning Chain）", "status": "registered", "tags": ["多模态", "视觉推理", "跨模态安全"]}, {"en": "Positional Sensitivity and Attention Dissipation", "group": "G08", "id": "PE-V-03", "layer": 11, "name": "位置敏感与注意力耗散（Positional Sensitivity and Attention Dissipation）", "status": "registered", "tags": ["多模态", "注意力耗散", "位置"]}], "theme": {"dark": {"border-card": "#232e48", "border-line": "#8798b5", "border-subtle": "#1e2740", "brand-bright": "#b0caff", "brand-deep": "#5c86e8", "brand-primary": "#8fb4ff", "brand-soft": "rgba(143, 180, 255, 0.14)", "brand-tint": "rgba(143, 180, 255, 0.24)", "container": "70rem", "danger": "#f87171", "dur-1": "0.16s", "dur-2": "0.28s", "dur-3": "0.5s", "dur-4": "0.85s", "ease-in-out": "cubic-bezier(0.4, 0, 0.2, 1)", "ease-out": "cubic-bezier(0.22, 1, 0.36, 1)", "edge-highlight": "rgba(255, 255, 255, 0.06)", "focus-ring": "#8fb4ff", "font-mono": "ui-monospace, 'SF Mono', SFMono-Regular, Menlo, Consolas, 'Liberation Mono', 'Noto Sans Mono CJK SC', 'Courier New', monospace", "font-sans": "system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', 'Source Han Sans SC', sans-serif", "fs-body": "1rem", "fs-card-title": "1.25rem", "fs-hero": "clamp(1.5rem, 0.6rem + 2.2vw, 3rem)", "fs-label": "0.8125rem", "fs-nav": "0.9375rem", "fs-root-lg": "1.125rem", "fs-section": "clamp(1.375rem, 1rem + 1.5vw, 2rem)", "link": "#8fb4ff", "measure": "66ch", "nav-h": "4rem", "on-brand": "#060a14", "radius": "12px", "radius-lg": "18px", "radius-pill": "999px", "rail-w": "15.75rem", "reveal-shift": "16px", "scrim-1": "26%", "scrim-2": "44%", "scrim-3": "70%", "shadow-1": "0 1px 2px rgba(0, 0, 0, 0.5)", "shadow-2": "0 2px 6px rgba(0, 0, 0, 0.5), 0 16px 36px -14px rgba(0, 0, 0, 0.6)", "space-1": "0.25rem", "space-2": "0.5rem", "space-3": "1rem", "space-4": "1.5rem", "space-5": "2rem", "space-6": "3rem", "space-7": "4rem", "success": "#4ade80", "surface-page": "#060a14", "surface-raised": "#0d1424", "surface-stripe": "#0a1120", "surface-subtle": "#151d31", "surface-sunken": "#04070e", "text-primary": "#e8edf7", "text-secondary": "#a7b3c8", "text-tertiary": "#8e9cb3", "warning": "#fbbf24"}, "light": {"border-card": "#cfd8e8", "border-line": "#7c8aa5", "border-subtle": "#dde4f0", "brand-bright": "#5470ff", "brand-deep": "#1d33a6", "brand-primary": "#2f4bd8", "brand-soft": "rgba(47, 75, 216, 0.1)", "brand-tint": "rgba(47, 75, 216, 0.16)", "container": "70rem", "danger": "#b3181f", "dur-1": "0.16s", "dur-2": "0.28s", "dur-3": "0.5s", "dur-4": "0.85s", "ease-in-out": "cubic-bezier(0.4, 0, 0.2, 1)", "ease-out": "cubic-bezier(0.22, 1, 0.36, 1)", "edge-highlight": "rgba(255, 255, 255, 0.92)", "focus-ring": "#2f4bd8", "font-mono": "ui-monospace, 'SF Mono', SFMono-Regular, Menlo, Consolas, 'Liberation Mono', 'Noto Sans Mono CJK SC', 'Courier New', monospace", "font-sans": "system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', 'Source Han Sans SC', sans-serif", "fs-body": "1rem", "fs-card-title": "1.25rem", "fs-hero": "clamp(1.5rem, 0.6rem + 2.2vw, 3rem)", "fs-label": "0.8125rem", "fs-nav": "0.9375rem", "fs-root-lg": "1.125rem", "fs-section": "clamp(1.375rem, 1rem + 1.5vw, 2rem)", "link": "#2a46cf", "measure": "66ch", "nav-h": "4rem", "on-brand": "#ffffff", "radius": "12px", "radius-lg": "18px", "radius-pill": "999px", "rail-w": "15.75rem", "reveal-shift": "16px", "scrim-1": "12%", "scrim-2": "28%", "scrim-3": "62%", "shadow-1": "0 1px 2px rgba(19, 32, 64, 0.06), 0 2px 6px -1px rgba(19, 32, 64, 0.07)", "shadow-2": "0 2px 4px rgba(19, 32, 64, 0.05), 0 8px 20px -6px rgba(19, 32, 64, 0.12), 0 18px 40px -18px rgba(19, 32, 64, 0.16)", "space-1": "0.25rem", "space-2": "0.5rem", "space-3": "1rem", "space-4": "1.5rem", "space-5": "2rem", "space-6": "3rem", "space-7": "4rem", "success": "#136f3a", "surface-page": "#f4f7fc", "surface-raised": "#ffffff", "surface-stripe": "#f0f4fa", "surface-subtle": "#e9eef8", "surface-sunken": "#eaeff8", "text-primary": "#0e1729", "text-secondary": "#46536b", "text-tertiary": "#5f6d84", "warning": "#9a5310"}}}</script>
+<script>
+(function(){
+  var DATA;
+  try { DATA = JSON.parse(document.getElementById("cy-data").textContent); }
+  catch (e) { DATA = null; }
+  var cyEl = document.getElementById("cy");
+  var detailEl = document.getElementById("cy-detail");
+  var viewEl = document.getElementById("cy-view-label");
+  var hintEl = document.getElementById("cy-hint");
+  var backBtn = document.getElementById("cy-back");
+  var FONT = "system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', 'Source Han Sans SC', sans-serif";
+  if (!DATA || typeof cytoscape === "undefined") {
+    if (cyEl) { cyEl.innerHTML = '<p class="lede" style="padding:var(--space-3)">交互图未能装配；'
+      + '下方「分组与节点清单」提供等价的文字导航。</p>'; }
+    return;
+  }
+  // ★ 结构化布局（R-16）：坐标全部由生成器在 Python 侧算好并逐条 assert，
+  //   渲染期用 cytoscape 的 preset 布局**原样取用**，⛔ 不做任何布局计算、⛔ 无随机。
+  //   ⇒ 已不再需要 cytoscape-dagre（自由布局扩展已撤除，见 gen-interactive.py 头部注释）。
+  var PAD = (DATA.layout && DATA.layout.pad) || 18;
+
+  function mode(){ var t = document.documentElement.getAttribute("data-theme");
+    if (t === "light" || t === "dark") { return t; }
+    return (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches) ? "dark" : "light"; }
+  function tok(k){ var t = DATA.theme && DATA.theme[mode()]; return (t && t[k]) || "#888888"; }
+
+  var cy = null, current = {kind:"overview", id:null};
+
+  function styleSheet(){
+    var raised = tok("surface-raised");
+    var muted = tok("text-secondary");
+    var rule = tok("border-line");
+    var brand = tok("brand-primary");
+    var label = tok("text-primary");
+    return [
+      {selector:"node", style:{
+        "shape":"round-rectangle", "background-color":"data(color)", "color":"data(labelColor)",
+        "label":"data(label)", "font-family":FONT, "font-size":"data(fs)", "font-weight":600,
+        "text-wrap":"wrap", "text-max-width":"data(mw)", "text-valign":"center", "text-halign":"center",
+        "line-height":1.15, "width":"data(w)", "height":"data(h)",
+        "border-width":1, "border-color":rule, "overlay-opacity":0}},
+      {selector:'node[kind="group"]', style:{
+        "border-width":2, "padding":"0"}},
+      {selector:'node[kind="edgeLabel"]', style:{
+        "shape":"round-rectangle", "background-color":raised, "background-opacity":0.86,
+        "color":muted, "font-weight":400, "font-size":"data(fs)", "text-wrap":"wrap",
+        "text-max-width":"data(mw)", "border-width":0, "events":"no"}},
+      {selector:'node[status="registered"]', style:{
+        "border-style":"dashed", "border-width":2, "border-color":muted, "opacity":0.92}},
+      {selector:'node[status="complete"]', style:{"border-style":"solid", "border-width":3,
+        "border-color":label}},
+      {selector:"node:selected", style:{"border-width":4, "border-color":label}},
+      // ★ 边一律 straight：直线段的几何无歧义 ⇒ Python 侧的「不穿节点框 / 不共线重叠」
+      //   断言描述的就是实际渲染的几何（⛔ 不用 bezier/segments，其控制点语义无法在本
+      //   会话实测，断言会退化为对想象中的曲线断言）。
+      {selector:"edge", style:{
+        "width":1.4, "line-color":rule, "target-arrow-color":rule, "target-arrow-shape":"triangle",
+        "curve-style":"straight", "arrow-scale":0.9, "overlay-opacity":0}},
+      {selector:'edge[kind="groupEdge"]', style:{
+        "width":"data(width)", "line-color":brand, "target-arrow-color":brand, "opacity":0.5}},
+      // ★ 双向边（互为正反的两条组间边合成）：两端都画箭头。
+      //   不这么做就得画两条完全重合的直线段 ⇒ 「边压边」（几何复算实测 3 对）。
+      {selector:'edge[bidir="1"]', style:{"source-arrow-shape":"triangle",
+        "source-arrow-color":brand, "arrow-scale":0.9}},
+      {selector:'edge[rel="UPGRADE"]', style:{"line-style":"dashed"}},
+      {selector:":active", style:{"overlay-opacity":0}}
+    ];
+  }
+
+  // ★ 默认视口下 zoom = 1.000（生成器已断言内容 763x590 ⊆ 可用 768x604）：
+  //   ① 只增不减地给画布补足内容高度（宁让页面滚动，也不把图缩小）；
+  //   ② zoom 与 pan **显式算出**（⛔ 不用 cy.fit 的 padding 语义——其「总内边距/单边」
+  //      口径无法在本会话实测，显式算才能与 Python 侧断言同源）；
+  //   ③ zoom 上限夹到 1：内容比画布小时不放大（放大只会让字更大而图更挤）。
+  function fitPreset(){
+    if (!cy) { return; }
+    var bb = cy.elements().boundingBox();
+    if (!(bb.w > 0) || !(bb.h > 0)) { return; }
+    var need = Math.round(bb.h + 2 * PAD);
+    if (need > cyEl.clientHeight) { cyEl.style.height = need + "px"; }
+    cy.resize();
+    var W = cy.width(), H = cy.height();
+    var z = Math.min(1, (W - 2 * PAD) / bb.w, (H - 2 * PAD) / bb.h);
+    if (!(z > 0)) { z = 1; }
+    cy.zoom(z);
+    cy.pan({x: W / 2 - z * (bb.x1 + bb.x2) / 2, y: H / 2 - z * (bb.y1 + bb.y2) / 2});
+    if (viewEl) { viewEl.setAttribute("data-zoom", z.toFixed(3)); }
+  }
+
+  function overview(){
+    current = {kind:"overview", id:null};
+    var els = [];
+    DATA.groups.forEach(function(g){
+      els.push({data:{id:"G:" + g.id, gid:g.id, kind:"group", label:g.cyLabel,
+        color:tok("brand-primary"), labelColor:tok("on-brand"),
+        w:g.w, h:g.h, fs:g.fs, mw:g.mw,
+        count:g.nodeCount, name:g.name, intro:g.intro, rank:g.rank,
+        layerMin:g.layerMin, layerMax:g.layerMax, completeCount:g.completeCount},
+        position:{x:g.pos.x, y:g.pos.y}});
+    });
+    DATA.groupEdges.forEach(function(e){
+      els.push({data:{id:"GE:" + e.source + ">" + e.target, source:"G:" + e.source,
+        target:"G:" + e.target, kind:"groupEdge", count:e.count, bidir:e.bidir ? 1 : 0,
+        width:Math.min(1 + e.count * 0.7, 6), rels:e.rels.join("/")}});
+    });
+    DATA.edgeLabels.forEach(function(el){
+      els.push({data:{id:el.id, kind:"edgeLabel", label:el.label, fs:el.fs,
+        mw:el.w - 6, w:el.w, h:el.h, color:tok("surface-raised"), labelColor:tok("text-secondary")},
+        position:{x:el.x, y:el.y}});
+    });
+    render(els);
+    if (viewEl) { viewEl.textContent = "组级总览 · " + DATA.groups.length + " 个分组 / "
+      + DATA.groupEdgesRaw + " 条组间依赖（画成 " + DATA.groupEdges.length + " 条连线，其中 "
+      + DATA.groupEdgesBidir + " 条双向）· 按依赖层分 " + DATA.layout.rows + " 行"; }
+    if (hintEl) { hintEl.textContent = "行 = 依赖层（自上而下加深）；行内自左向右 = 课程顺序。"
+      + "点击任一分组下钻到组内节点；滚轮缩放、拖拽平移。"; }
+    if (backBtn) { backBtn.disabled = true; }
+    showGroupDetail(null);
+  }
+
+  function drill(gid){
+    var g = DATA.groups.filter(function(x){ return x.id === gid; })[0];
+    var d = DATA.drills[gid];
+    if (!g || !d) { return; }
+    current = {kind:"group", id:gid};
+    var mem = DATA.nodes.filter(function(n){ return n.group === gid; });
+    var ids = {};
+    mem.forEach(function(n){ ids[n.id] = true; });
+    var els = [];
+    d.nodes.forEach(function(nd){
+      var src = mem.filter(function(n){ return n.id === nd.id; })[0] || {};
+      els.push({data:{id:"N:" + nd.id, nid:nd.id, group:gid, kind:"node",
+        status:src.status, label:nd.label, fullName:src.name, layer:src.layer,
+        w:nd.w, h:nd.h, fs:nd.fs, mw:nd.mw,
+        color:tok("brand-primary"), labelColor:tok("on-brand"),
+        tags:(src.tags || []).join("、")},
+        position:{x:nd.x, y:nd.y}});
+    });
+    DATA.nodeEdges.forEach(function(e){
+      if (ids[e.source] && ids[e.target]) {
+        els.push({data:{id:"E:" + e.source + ">" + e.target, source:"N:" + e.source, target:"N:" + e.target,
+          kind:"edge", rel:e.rel, note:e.note}});
+      }
+    });
+    if (!els.length) { els.push({data:{id:"N:empty", kind:"node", label:"本组暂无可下钻节点",
+      w:168, h:58, fs:12, mw:148, color:tok("brand-primary"), labelColor:tok("on-brand")},
+      position:{x:0, y:0}}); }
+    render(els);
+    if (viewEl) { viewEl.textContent = "下钻 · " + g.id + " " + g.name + " · " + mem.length + " 个节点"; }
+    if (hintEl) { hintEl.textContent = "行主序网格（第 1 行起自左向右 = 依赖层由浅到深）；"
+      + "虚线边框表示内容待填充的节点。点击空白处或「返回总览」回到组级视图。"; }
+    if (backBtn) { backBtn.disabled = false; }
+    showGroupDetail(g);
+  }
+
+  function render(els){
+    if (cy) { cy.destroy(); cy = null; }
+    if (cyEl) { cyEl.innerHTML = ""; cyEl.removeAttribute("data-placeholder"); }
+    cy = cytoscape({container:cyEl, elements:els, style:styleSheet(),
+      layout:{name:"preset"},
+      wheelSensitivity:0.25, minZoom:0.2, maxZoom:3, boxSelectionEnabled:false});
+    cy.layout({name:"preset"}).run();
+    cy.on("tap", 'node[kind="group"]', function(ev){ var d = ev.target.data(); drill(d.gid); setHash("group", d.gid); });
+    cy.on("tap", 'node[kind="node"]', function(ev){ var d = ev.target.data(); showNodeDetail(d.nid); setHash("node", d.nid); });
+    cy.on("tap", function(ev){ if (ev.target === cy) { showGroupDetail(current.kind === "group" ? byId(current.id) : null); } });
+    fitPreset();
+  }
+
+  function byId(gid){ return DATA.groups.filter(function(x){ return x.id === gid; })[0]; }
+
+  function gseq(gid){ return '<span class="gseq">' + esc(gid) + '</span>'; }
+
+  function showGroupDetail(g){
+    if (!detailEl) { return; }
+    if (!g) {
+      detailEl.innerHTML = '<h3>分组详情</h3><p class="lede">点击图中任一分组节点，或从下方清单选择一个分组。</p>';
+      return;
+    }
+    var mem = DATA.nodes.filter(function(n){ return n.group === g.id; });
+    var rows = mem.map(function(n){
+      var link = n.status === "complete"
+        ? '<a href="../11-node-pages/' + n.id.toLowerCase() + '.html">' + n.id + '</a>'
+        : '<span class="nid">' + n.id + '</span> <span class="badge badge--pending">架构在册</span>';
+      return "<tr><td>" + link + "</td><td>" + esc(n.name) + "</td><td>第 " + n.layer + " 层</td></tr>";
+    }).join("");
+    detailEl.innerHTML = '<h3>' + gseq(g.id) + ' ' + esc(g.name) + '</h3>'
+      + '<p class="lede">' + esc(g.intro) + '</p>'
+      + '<p class="meta-line"><span>节点 ' + g.nodeCount + ' 个</span><span>已写满 ' + g.completeCount
+      + '</span><span>第 ' + g.layerMin + ' – ' + g.layerMax + ' 层</span>'
+      + '<span>依赖层第 ' + (g.rank + 1) + ' 行</span></p>'
+      + '<div class="table-scroll"><table><thead><tr><th>节点</th><th>名称</th><th>依赖深度</th></tr></thead><tbody>'
+      + rows + '</tbody></table></div>'
+      + '<p><a href="../12-groups/' + g.id.toLowerCase() + '.html">打开该分组的完整组页</a></p>';
+  }
+
+  function showNodeDetail(nid){
+    var n = DATA.nodes.filter(function(x){ return x.id === nid; })[0];
+    if (!n || !detailEl) { return; }
+    var ins = DATA.nodeEdges.filter(function(e){ return e.target === nid; });
+    var outs = DATA.nodeEdges.filter(function(e){ return e.source === nid; });
+    var li = function(list, key){
+      return list.map(function(e){
+        var o = key === "source" ? e.source : e.target;
+        return "<li><span class=\"nid\">" + o + "</span> <span class=\"tier\">" + e.rel + "</span> " + esc(e.note) + "</li>";
+      }).join("") || "<li>无</li>";
+    };
+    detailEl.innerHTML = '<h3>' + esc(n.name) + '</h3>'
+      + '<p class="meta-line"><span class="nid">' + n.id + '</span>'
+      + gseq(n.group)
+      + '<span>第 ' + n.layer + ' 层</span>'
+      + (n.status === "complete" ? '<span class="badge badge--ok">内容已写满</span>'
+         : '<span class="badge badge--pending">架构在册 · 内容待填充</span>') + '</p>'
+      + '<div class="two-col"><div class="card--flat"><h3>前置</h3><ul class="tight">' + li(ins, "source") + '</ul></div>'
+      + '<div class="card--flat"><h3>后继</h3><ul class="tight">' + li(outs, "target") + '</ul></div></div>'
+      + (n.status === "complete"
+         ? '<p><a href="../11-node-pages/' + n.id.toLowerCase() + '.html">打开节点页</a></p>'
+         : '<p class="lede">该节点本轮为架构在册，节点页待后续波次填充。</p>')
+      + '<p><a href="../12-groups/' + n.group.toLowerCase() + '.html">打开所属组页</a></p>';
+  }
+
+  function esc(s){ return String(s == null ? "" : s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;"); }
+
+  function setHash(k, v){
+    var h = "#" + k + "-" + encodeURIComponent(v);
+    try { history.replaceState(null, "", h); } catch (e) { try { location.hash = h; } catch (e2) {} }
+  }
+  function clearHash(){
+    try { history.replaceState(null, "", location.pathname + location.search); }
+    catch (e) { try { location.hash = ""; } catch (e2) {} }
+  }
+  function readHash(){
+    var h = location.hash.replace(/^#/, "");
+    var m = /^group-(.+)$/.exec(h);
+    if (m) { var g = decodeURIComponent(m[1]); if (byId(g)) { drill(g); return true; } }
+    m = /^node-(.+)$/.exec(h);
+    if (m) {
+      var nid = decodeURIComponent(m[1]);
+      var n = DATA.nodes.filter(function(x){ return x.id === nid; })[0];
+      if (n) { drill(n.group); showNodeDetail(nid); return true; }
+    }
+    return false;
+  }
+
+  if (backBtn) { backBtn.addEventListener("click", function(){ overview(); clearHash(); }); }
+  window.addEventListener("hashchange", function(){ if (!readHash()) { overview(); } });
+  window.addEventListener("resize", function(){ fitPreset(); });
+
+  if (!readHash()) { overview(); }
+
+  // 主题/动效档变化时重建画布配色（画布色值取自 DATA.theme 的两套字面值）
+  var mo = new MutationObserver(function(){
+    if (!cy) { return; }
+    cy.style().fromJson(styleSheet()).update();
+    fitPreset();
+  });
+  mo.observe(document.documentElement, {attributes:true, attributeFilter:["data-theme"]});
+})();
+</script>
+</main>
+<footer class="site-foot"><div class="wrap">
+<p>本站为原型产物：结构由生成器统一产出，内容按两态登记（已写满 / 架构在册）。读者锚点：面向有工程基础、提示词工程尚未系统化的工程师。</p>
+<p class="footer__nav"><a href="../index.html">回到首页</a> · <a href="../13-interactive/index.html">交互全景图</a> · <a href="../14-views/01-learning-path.html">学习路径</a></p>
+<div class="footer__credits"><h2>背景素材与许可</h2><p>本页背景为真实摄影素材（非自绘）。夜间帧取自 ESO 公开影像，许可 CC BY 4.0，须署名；日间帧取自 Wikimedia Commons 收录的 Unsplash 作品，许可 CC0 1.0，不要求署名。素材按视口宽度与像素密度分档加载，仅当前主题的帧被渲染。许可台账随素材同目录存放：LICENSES.json（背景摄影素材许可台账（逐件素材的出处 / 许可 / 派生说明 / 逐文件字节数）。）</p><ul class="credits"><li><span class="credits__name">A 340-million pixel starscape from Paranal</span> · <span class="credits__author">S. Guisard (ESO)</span> · <span class="credits__license">CC BY 4.0</span> · <a href="https://www.eso.org/public/images/eso0934a/" rel="noopener noreferrer">https://www.eso.org/public/images/eso0934a/</a> <span class="credits__files">（本站副本：night-1280.webp、night-1920.webp、night-2560.webp、night-portrait-1080.webp）</span></li><li><span class="credits__name">Lofoten, Norway</span> · <span class="credits__author">Unsplash 贡献者（原始上传见 Wikimedia Commons）</span> · <span class="credits__license">CC0 1.0</span> · <a href="https://upload.wikimedia.org/wikipedia/commons/8/86/Lofoten%2C_Norway_%28Unsplash%29.jpg" rel="noopener noreferrer">https://upload.wikimedia.org/wikipedia/commons/8/86/Lofoten%2C_Norway_%28Unsplash%29.jpg</a> <span class="credits__files">（本站副本：day-1280.webp、day-1920.webp、day-2560.webp）</span></li></ul></div>
+</div></footer>
+</div>
+</body>
+</html>

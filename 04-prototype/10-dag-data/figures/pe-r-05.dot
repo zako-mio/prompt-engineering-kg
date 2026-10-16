@@ -1,0 +1,28 @@
+digraph fig {
+  rankdir=LR; bgcolor="transparent";
+  node[shape=box, style="rounded,filled", fillcolor="#ffffff", color="#7c8aa5", fontcolor="#0e1729", fontname="Noto Sans CJK SC", fontsize=13, margin="0.20,0.12"]; edge[color="#7c8aa5", fontcolor="#46536b", fontname="Noto Sans CJK SC", fontsize=11, arrowsize=0.7];
+  W [label="完整树搜索
+回溯点与分支全开
+⇒ 代价高", color="#9a5310"];
+  B [label="做法一 步骤回溯
+判定某步失败后回到该步之前
+重新展开，而不是从头重来", fillcolor="#dfe6fb", color="#2f4bd8"];
+  R [label="做法二 改写变体
+对同一输入生成多个表述或角度
+再按判据择优或合并", fillcolor="#dfe6fb", color="#2f4bd8"];
+  W -> B [style=dashed, label="降级"];
+  W -> R [style=dashed, label="降级"];
+  {rank=same; B; R;}
+  J [label="共同前提：一个可用的判据
+外部信号（测试通过 / 字段合法）可靠
+模型自评可靠性有限
+⇒ 无判据时退化为随机重试", color="#136f3a"];
+  B -> J [label="需要"];
+  R -> J [label="需要"];
+  {rank=same; J; L;}
+  L [label="工程闸门
+最大回溯次数与最大候选数写死
+超限即返回当前最优
+并记录未收敛样本", shape=note, fillcolor="#e9eef8"];
+  J -> L [style=dotted, arrowhead=none];
+}

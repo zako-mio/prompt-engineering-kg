@@ -1,0 +1,200 @@
+{
+  "_note": "第 5 轮内容波次 1（G00 的 5 个 registered 节点）的待写内容。★ 本件**只是内容草稿的载体**，由 _wave1_apply.py 合并进 10-dag-data/dag.json（⛔ 不是真相源、⛔ 不被构建链读取）。",
+  "_provenance": "evidence 的 quote 全部取自本仓已回源材料 01-research/evidence/A1–A6（逐字）。★ url / tier 由 _wave1_apply.py 从 10-dag-data/sources.json 按 source_id **注入**，⛔ 不在本件手抄（消除手抄 URL 与台账不一致的风险）；注入前逐条断言 source_id 可解析、quote ≤200 字。",
+  "nodes": {
+    "PE-F-02": {
+      "lab": [
+        {
+          "kind": "shell",
+          "lang": "bash",
+          "text": "# 同一段长前缀，分别用「系统层内容完全不变」与「系统层改一个字」的两种方式调用\n# 记录每档的时间与计费字段（缓存命中通常在响应里以 cached_tokens 之类的字段体现）\nfor variant in stable mutated; do\n  echo \"== variant=$variant ==\"\n  for i in 1 2 3; do\n    curl -s \"$API_ENDPOINT\" -H 'content-type: application/json' \\\n      -d @\"payload-$variant.json\" | grep -o '\"[a-z_]*cached[a-z_]*\":[0-9]*'\n  done\ndone",
+          "expect": "stable 档从第二次起出现缓存命中字段、延迟明显下降；mutated 档每次都当作全新前缀，命中归零。这一步让读者亲眼看到「系统层的稳定性 = 可缓存性 = 成本」。"
+        },
+        {
+          "kind": "file",
+          "lang": "markdown",
+          "text": "分层记录表：把现有提示逐段剪开，每段填四列\n  段内容 | 放在哪一层（系统 / 开发者 / 用户） | 变更频率（几乎不变 / 每次调用 / 完全不可信） | 若放错层的代价\n判据：凡是「几乎不变」的内容都应落在系统层且位于前缀；凡是「每次调用都变」的内容都不得进系统层。\n不得用「反正模型看得懂」替代分层判断——分层要管的是缓存与权限，不是模型理解力。",
+          "expect": "读者能把自己的提示切成三层，并说出每一段为什么在那层，而不是凭感觉排列顺序。"
+        }
+      ],
+      "evidence": [
+        {
+          "claim": "精简系统层（删掉重复指令与示例、简化工具描述）在内部编码 agent 评测中把分数提高约 10–15%，同时把 token 降 41–66%、成本降 33–67%；其一般化规则是「每条指令只写一次」。",
+          "source_id": "S-0012",
+          "quote": "Removing repeated instructions and examples and simplifying tool descriptions can improve task performance and token efficiency. ... State each instruction once.",
+          "quote_truncated": true
+        },
+        {
+          "claim": "官方口径要求用标签把示例与指令分开，理由是 XML 风格标签能让模型在多部分提示里无歧义解析——这正是「分层要有文本落点」的一手依据。",
+          "source_id": "S-0001",
+          "quote": "XML tags help Claude parse complex prompts unambiguously, especially when your prompt mixes instructions, context, examples, and variable inputs."
+        },
+        {
+          "claim": "上下文工程的目标被表述为「找到最小的高信噪比 token 集」——支持「系统层不是垃圾桶」这一工程推论。",
+          "source_id": "S-0004",
+          "quote": "good context engineering means finding the smallest possible set of high-signal tokens"
+        }
+      ],
+      "pitfalls": [
+        "把系统层当垃圾桶：每次调用都变的内容写进系统层会破坏前缀稳定性，缓存全失效，延迟与成本同时上升。",
+        "只用大写与强调表达优先级：特权关系没有工程落点，安全侧无法表达「谁说了算」，模型只看到更响的语气。",
+        "把分层当成安全机制：层级只是工程落点，防注入仍须权限收窄与输出校验，分层本身不拦任何东西。",
+        "三层之外的可信度混同：工具返回、检索资料与记忆条目与用户输入同属不可信内容，不加标注就与指令混排等于放弃边界。"
+      ]
+    },
+    "PE-F-03": {
+      "lab": [
+        {
+          "kind": "file",
+          "lang": "markdown",
+          "text": "同一任务写两版提示，只差边界标记：\n  A 版：指令、示例、资料、用户输入连成一段，靠空行分隔\n  B 版：四类内容各用固定标签包裹（标签名固定、嵌套规则固定、同一含义只用一个标签）\n两版各跑 30 次，记录：结构违规率（输出格式不合契约的次数）、以及「资料里的句子被当成指令执行」的次数。\n判据：B 版结构违规率应显著低于 A 版；若两者无差异，说明该模型对此类标记不敏感，须换标记或改用其它隔离手段。",
+          "expect": "读者能量出标记带来的消歧收益，也知道这个收益会随模型变化（同一标记在另一模型上可能无差异）。"
+        },
+        {
+          "kind": "shell",
+          "lang": "bash",
+          "text": "# 注入探测：把「资料」里放一句伪指令，看模型是否把它当指令执行\n# 分别测「裸资料」与「已标注为资料」两种形态，各 20 次，统计被执行的次数\nfor shape in bare tagged; do\n  echo \"== shape=$shape ==\"\n  for i in $(seq 1 20); do\n    curl -s \"$API_ENDPOINT\" -H 'content-type: application/json' \\\n      -d @\"inject-$shape.json\" | grep -c 'INJECTED'\n  done | sort | uniq -c\ndone",
+          "expect": "标注能降低被执行的次数，但通常不为零——这一步是让读者亲眼看到「标记只消歧、不保安全」，不要把标记当成注入防线。"
+        }
+      ],
+      "evidence": [
+        {
+          "claim": "官方一手要求把示例包在标签里，以便模型能把示例与指令区分开——这是「边界标记」的直接依据。",
+          "source_id": "S-0001",
+          "quote": "Wrap examples in `<example>` tags (multiple examples in `<examples>` tags) so Claude can distinguish them from instructions."
+        },
+        {
+          "claim": "「上下文隔离」被列为上下文工程的标准手段之一，与持久化、压缩并列——说明隔离是工程动作而非风格偏好。",
+          "source_id": "S-0019",
+          "quote": "Context engineering includes strategies such as isolating context for a specific agent, persisting information across multiple steps, or compressing large amounts of data to improve efficiency."
+        },
+        {
+          "claim": "一手安全口径指出模型在架构上不区分「指令」与「数据」，且注入是当前生成式 AI 的固有属性、不存在可靠预防机制——因此标记只能消歧，不能作安全边界。",
+          "source_id": "S-0032",
+          "quote": "LLMs make no architectural distinction between \"instructions\" and \"data\" ... Prompt injection is intrinsic to current generative AI ... so no reliable prevention mechanism exists today."
+        }
+      ],
+      "pitfalls": [
+        "把标记当通用性能杠杆：单段指令或单轮问答上加标签只增加 token 与解析噪声，收益为零。",
+        "标记体系自身失控：标签名不固定、同一含义用多个标签、嵌套规则随人而异，标记于是成为新的歧义源。",
+        "把标记当安全边界：不可信内容被标签包裹后仍可能被当作指令执行，注入在架构层面并未被挡住。",
+        "关键资料放在中部：位置偏差会让中部信息被忽略，而标记只解决「这段是什么」，不解决「读者还会不会看它」。"
+      ]
+    },
+    "PE-F-04": {
+      "lab": [
+        {
+          "kind": "shell",
+          "lang": "bash",
+          "text": "# 三档对比：零样本 / 三个示例 / 十个示例\n# 逐档记录：评测集通过率、输入 token、输出的格式违规次数\nfor shots in 0 3 10; do\n  echo \"== shots=$shots ==\"\n  for i in $(seq 1 5); do\n    curl -s \"$API_ENDPOINT\" -H 'content-type: application/json' \\\n      -d \"$(build_payload $shots)\" > \"out-$shots-$i.json\"\n    check_contract \"out-$shots-$i.json\"    # 自写的小校验器：格式是否合契约\n  done\ndone",
+          "expect": "示例从 0 到 3 通常带来格式与语气的明显改善；从 3 到 10 的收益通常趋零，在推理模型上甚至可能转为负收益。读数是「通过率 / token / 格式违规」三列，而不是「看起来更像我想要的」。"
+        },
+        {
+          "kind": "file",
+          "lang": "markdown",
+          "text": "示例筛选表：每个候选示例填三列\n  示例 | 它消除的是哪种歧义（格式 / 语气 / 边界判定） | 若删掉它，评测集上哪一类失败会回归\n判据：说不出第二列的示例一律删掉——示例的职责是消歧，不是展示知识。\n不得用示例替代检索：需要外部事实时，把资料塞成示例既不可靠又推高常驻成本。",
+          "expect": "读者能把示例从「越多越好」改造成「每个都对应一类歧义」，并敢于删掉一半。"
+        }
+      ],
+      "evidence": [
+        {
+          "claim": "在推理模型上，增加示例会持续降低准确率（即使示例本身是最优的），且少样本 CoT 常常不如直接回答——这是「先零样本、必要时才加示例」的直接依据。",
+          "source_id": "S-0038",
+          "quote": "Recent reasoning LLMs (RLMs) ... adding more exemplars consistently degrades accuracy, even when demonstrations are optimal.",
+          "quote_truncated": true
+        },
+        {
+          "claim": "一手口径仍然主张使用示例，但明确反对把一长串边界案例塞进提示——即「少而准」而非「多而全」。",
+          "source_id": "S-0004",
+          "quote": "However, teams will often stuff a laundry list of edge cases into a prompt... We do not recommend this."
+        }
+      ],
+      "pitfalls": [
+        "把示例当知识注入：需要外部事实时应走检索，堆示例既不可靠又推高常驻成本。",
+        "在推理模型上默认叠加示例：增加示例可能持续降准，是否要示例、要几个都必须以评测集读数为准。",
+        "示例不加标签、与指令混排：模型把示例读成指令，输出被示例内容带偏，返工成本高。",
+        "示例只追求数量：三到五个多样化示例的作用是格式与语气对齐，穷举边界案例只会挤占注意力。"
+      ]
+    },
+    "PE-F-05": {
+      "lab": [
+        {
+          "kind": "file",
+          "lang": "markdown",
+          "text": "把一条模糊指令改写成可验证契约，逐项填表\n  原句 | 输出形态（交付物长什么样） | 判定条件（怎样算通过） | 失败条件（出现什么就是没做到） | 是否可自动校验\n判据：三列齐全才算契约成立；只剩「输出形态」的是格式要求，不是契约。\n不得把「尽量好」「专业一点」这类词写进判定条件——它们不可判定，等于没有判据。",
+          "expect": "读者能写出能被脚本校验的交付契约，并意识到「可验证性」与「具体性」是两个独立维度。"
+        },
+        {
+          "kind": "shell",
+          "lang": "bash",
+          "text": "# 同一任务两种写法：A 规定性步骤（先做 1、2、3） / B 目标 + 约束 + 可验证契约\n# 用同一个校验脚本对两版输出打分，各跑 20 次\nfor style in prescriptive layered; do\n  echo \"== style=$style ==\"\n  for i in $(seq 1 20); do\n    run_task \"$style\" | validate_contract.py -\n  done | awk '{p+=$1} END {print \"通过率\", p/NR}'\ndone",
+          "expect": "在推理型任务上 B 版通过率不低于 A 版、token 更少；若 A 版更好，说明该任务其实需要严格流程（审计类），那就把步骤改写成可检查的产出条件而不是删掉步骤。"
+        }
+      ],
+      "evidence": [
+        {
+          "claim": "现行官方口径承认：过度具体的指导在新一代模型上会由助力转为阻力——这是「指令具体性整体向更一般移动」的一手依据。",
+          "source_id": "S-0013",
+          "quote": "Models have gotten much better at understanding nuance and ambiguity, so overly specific guidance can now hinder results where it previously helped."
+        },
+        {
+          "claim": "官方明确偏好一般性指令而非规定性步骤，理由是模型的推理常常超出人类预先规定的步骤。",
+          "source_id": "S-0001",
+          "quote": "Prefer general instructions over prescriptive steps. A prompt like \"think thoroughly\" often produces better reasoning than a hand-written step-by-step plan."
+        },
+        {
+          "claim": "官方把「可验证性」的边界摆在台面上：并非所有成功标准或失败的评测都最适合用提示工程解决，换模型有时更省力——所以先判断这个失败到底该不该由提示工程承担。",
+          "source_id": "S-0002",
+          "quote": "Not every success criteria or failing eval is best solved by prompt engineering. For example, you can sometimes improve latency and cost more easily by selecting a different model."
+        }
+      ],
+      "pitfalls": [
+        "把「具体」等同于「长」：重复同一指令只增加 token 与注意力消耗，不增加任何约束力。",
+        "把「一般性」当成「模糊」：一般性针对推理路径，交付契约仍必须可判定；写成「尽量好」就无法自动校验。",
+        "在合规与审计流水线上照搬「少写步骤」：需要流程可追溯的场景里显式步骤是必要产出，只是要写成可检查的条件。",
+        "只写成功标准、不写失败条件：出错时无法区分「没做到」与「没测到」，评测集也无法定位回归。"
+      ]
+    },
+    "PE-F-06": {
+      "lab": [
+        {
+          "kind": "shell",
+          "lang": "bash",
+          "text": "# 位置实验：同一句关键信息分别放在资料的首部 / 中部 / 尾部\n# 三档各跑 20 次，统计「答案用到了该关键信息」的比例\nfor pos in head middle tail; do\n  echo \"== pos=$pos ==\"\n  for i in $(seq 1 20); do\n    curl -s \"$API_ENDPOINT\" -H 'content-type: application/json' \\\n      -d @\"needle-$pos.json\" | grep -o 'NEEDLE[_-]OK' | wc -l\n  done | awk '{s+=$1} END {print \"命中率\", s/NR}'\ndone",
+          "expect": "首部与尾部的命中率通常高于中部，且资料越长差距越明显——这一步把「位置偏差」从说法变成自己量出来的读数。"
+        },
+        {
+          "kind": "file",
+          "lang": "markdown",
+          "text": "上下文预算表：把当前上下文逐块登记\n  块（资料 / 示例 / 历史 / 工具定义 / 记忆） | token | 标注（必要 / 可压缩 / 可删） | 删或压之后的评测读数\n判据：任何标为「可删」的块都必须真的删掉并重跑评测，用读数说话。\n不得用「窗口还没满」当作保留理由——窗口容量与有效注意力是两件事。",
+          "expect": "读者能对上下文做有依据的取舍，而不是把「检索到的东西」全部留在窗口里。"
+        }
+      ],
+      "evidence": [
+        {
+          "claim": "相关信息出现在输入的首部或尾部时表现最好，必须从长上下文中部取用时显著下降——且这一点对「显式长上下文模型」同样成立。",
+          "source_id": "S-0063",
+          "quote": "relevant information occurs at the beginning or end of the input context, and significantly degrades when models must access relevant information in the middle of long contexts",
+          "quote_truncated": true
+        },
+        {
+          "claim": "官方给出的长上下文技巧之一是「把长资料放在前部、query 与指令放在其后」——支持「位置安排是工程动作」这一推论。",
+          "source_id": "S-0001",
+          "quote": "Put longform data at the top: Place your long documents and inputs near the top of your prompt, above your query, instructions, and examples."
+        },
+        {
+          "claim": "推理过程本身冗长且可通过在提示中给定合理的 token 预算来压缩，而预算取值的选取显著影响压缩效果——支持「压缩是维持信噪比的必要动作」。",
+          "source_id": "S-0056",
+          "quote": "the reasoning process of current LLMs is unnecessarily lengthy and it can be compressed by including a reasonable token budget in the prompt",
+          "quote_truncated": true
+        }
+      ],
+      "pitfalls": [
+        "以「窗口很大」为由放弃筛选：窗口容量与有效注意力是两件事，塞满窗口只会稀释关键信息。",
+        "把注意力预算当精确公式：它提供的是方向性判据，据此反推「还剩多少注意力」是伪精确。",
+        "检索到就塞：多召回的低相关片段会稀释注意力，反而降低关键信息被真正使用的概率。",
+        "关键信息落在中部：位置偏差使中部内容最易被忽略，资料总量再小也可能踩到这一点。"
+      ]
+    }
+  }
+}

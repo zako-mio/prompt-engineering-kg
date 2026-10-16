@@ -1,0 +1,68 @@
+<svg class="fig__svg" role="img"
+ viewBox="0.00 0.00 799.00 205.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 201)">
+<title>fig</title>
+<g id="node1" class="node">
+<title>S1</title>
+<path fill="var(--surface-raised)" stroke="var(--danger)" d="M150,-197C150,-197 12,-197 12,-197 6,-197 0,-191 0,-185 0,-185 0,-149 0,-149 0,-143 6,-137 12,-137 12,-137 150,-137 150,-137 156,-137 162,-143 162,-149 162,-149 162,-185 162,-185 162,-191 156,-197 150,-197"/>
+<text text-anchor="middle" x="81" y="-177.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">强度一 模型自评</text>
+<text text-anchor="middle" x="81" y="-163.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">自己检查自己的输出</text>
+<text text-anchor="middle" x="81" y="-149.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">可靠性最低 · 成本最低</text>
+</g>
+<g id="node2" class="node">
+<title>S2</title>
+<path fill="var(--surface-raised)" stroke="var(--warning)" d="M412,-197C412,-197 267,-197 267,-197 261,-197 255,-191 255,-185 255,-185 255,-149 255,-149 255,-143 261,-137 267,-137 267,-137 412,-137 412,-137 418,-137 424,-143 424,-149 424,-149 424,-185 424,-185 424,-191 418,-197 412,-197"/>
+<text text-anchor="middle" x="339.5" y="-177.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">强度二 独立评估</text>
+<text text-anchor="middle" x="339.5" y="-163.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">另一个模型或另一段提示</text>
+<text text-anchor="middle" x="339.5" y="-149.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">按判据评估</text>
+</g>
+<g id="edge1" class="edge">
+<title>S1&#45;&gt;S2</title>
+<path fill="none" stroke="var(--border-line)" d="M162.1,-167C189.2,-167 219.66,-167 247.54,-167"/>
+<polygon fill="var(--border-line)" stroke="var(--border-line)" points="247.57,-169.45 254.57,-167 247.57,-164.55 247.57,-169.45"/>
+<text text-anchor="middle" x="208.5" y="-170.2" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="11.00" fill="var(--text-secondary)">可靠性递增</text>
+</g>
+<g id="node5" class="node">
+<title>L</title>
+<polygon fill="var(--surface-subtle)" stroke="var(--border-line)" points="153,-101 3,-101 3,-41 159,-41 159,-95 153,-101"/>
+<polyline fill="none" stroke="var(--border-line)" points="153,-101 153,-95 "/>
+<polyline fill="none" stroke="var(--border-line)" points="159,-95 153,-95 "/>
+<text text-anchor="middle" x="81" y="-81.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">无外部信号时的纪律</text>
+<text text-anchor="middle" x="81" y="-67.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">限制反思轮数</text>
+<text text-anchor="middle" x="81" y="-53.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">或改为引入独立评估者</text>
+</g>
+<g id="edge4" class="edge">
+<title>S1&#45;&gt;L</title>
+<path fill="none" stroke="var(--border-line)" stroke-dasharray="1,5" d="M81,-136.84C81,-124.89 81,-112.95 81,-101"/>
+</g>
+<g id="node3" class="node">
+<title>S3</title>
+<path fill="var(--surface-raised)" stroke="var(--success)" d="M719.5,-197C719.5,-197 588.5,-197 588.5,-197 582.5,-197 576.5,-191 576.5,-185 576.5,-185 576.5,-149 576.5,-149 576.5,-143 582.5,-137 588.5,-137 588.5,-137 719.5,-137 719.5,-137 725.5,-137 731.5,-143 731.5,-149 731.5,-149 731.5,-185 731.5,-185 731.5,-191 725.5,-197 719.5,-197"/>
+<text text-anchor="middle" x="654" y="-177.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">强度三 外部信号驱动</text>
+<text text-anchor="middle" x="654" y="-163.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">测试通过 / 校验器报错</text>
+<text text-anchor="middle" x="654" y="-149.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">工具返回预期结果</text>
+</g>
+<g id="edge2" class="edge">
+<title>S2&#45;&gt;S3</title>
+<path fill="none" stroke="var(--border-line)" d="M424.24,-167C469.12,-167 524.25,-167 569.14,-167"/>
+<polygon fill="var(--border-line)" stroke="var(--border-line)" points="569.26,-169.45 576.26,-167 569.26,-164.55 569.26,-169.45"/>
+<text text-anchor="middle" x="470.5" y="-170.2" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="11.00" fill="var(--text-secondary)">可靠性递增</text>
+</g>
+<g id="node4" class="node">
+<title>N</title>
+<polygon fill="var(--surface-subtle)" stroke="var(--border-line)" points="785,-102 517,-102 517,0 791,0 791,-96 785,-102"/>
+<polyline fill="none" stroke="var(--border-line)" points="785,-102 785,-96 "/>
+<polyline fill="none" stroke="var(--border-line)" points="791,-96 785,-96 "/>
+<text text-anchor="middle" x="654" y="-82.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">为什么自评会失灵</text>
+<text text-anchor="middle" x="654" y="-68.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">它依赖与生成同一套内部表征</text>
+<text text-anchor="middle" x="654" y="-54.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">能纠正遗漏与格式问题</text>
+<text text-anchor="middle" x="654" y="-40.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">对事实性与逻辑错误几乎无效</text>
+<text text-anchor="middle" x="654" y="-26.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">⇒ 无外部信号时反思沿同一个错误走得更远</text>
+<text text-anchor="middle" x="654" y="-12.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">并给错误结论更高的置信度</text>
+</g>
+<g id="edge3" class="edge">
+<title>S3&#45;&gt;N</title>
+<path fill="none" stroke="var(--border-line)" stroke-dasharray="1,5" d="M654,-136.88C654,-125.32 654,-113.76 654,-102.2"/>
+</g>
+</g>
+</svg>

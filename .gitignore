@@ -54,3 +54,6 @@ Thumbs.db
 *.log
 .vscode/
 .idea/
+
+# --- 渲染器临时工作区（第 9 轮补：report-renderer 的临时件不得入库）---
+.rr_tmp/

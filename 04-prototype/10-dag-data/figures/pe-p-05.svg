@@ -1,0 +1,74 @@
+<svg class="fig__svg" role="img" aria-label="生命周期图：记忆的四个动作（写入 / 检索 / 复核 / 退役）与零和预算，以及「未复核的反思结论不得入库」。"
+ viewBox="0.00 0.00 771.00 260.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 256)">
+
+<g id="node1" class="node">
+<title>W</title>
+<path fill="var(--brand-soft)" stroke="var(--brand-primary)" d="M119,-252C119,-252 12,-252 12,-252 6,-252 0,-246 0,-240 0,-240 0,-204 0,-204 0,-198 6,-192 12,-192 12,-192 119,-192 119,-192 125,-192 131,-198 131,-204 131,-204 131,-240 131,-240 131,-246 125,-252 119,-252"/>
+<text text-anchor="middle" x="65.5" y="-232.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">写入</text>
+<text text-anchor="middle" x="65.5" y="-218.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">带来源与适用边界</text>
+<text text-anchor="middle" x="65.5" y="-204.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">设预算上限</text>
+</g>
+<g id="node2" class="node">
+<title>R</title>
+<path fill="var(--brand-soft)" stroke="var(--brand-primary)" d="M217.5,-252C217.5,-252 161.5,-252 161.5,-252 155.5,-252 149.5,-246 149.5,-240 149.5,-240 149.5,-204 149.5,-204 149.5,-198 155.5,-192 161.5,-192 161.5,-192 217.5,-192 217.5,-192 223.5,-192 229.5,-198 229.5,-204 229.5,-204 229.5,-240 229.5,-240 229.5,-246 223.5,-252 217.5,-252"/>
+<text text-anchor="middle" x="189.5" y="-232.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">检索</text>
+<text text-anchor="middle" x="189.5" y="-218.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">何时注入</text>
+<text text-anchor="middle" x="189.5" y="-204.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">注入多少</text>
+</g>
+<g id="edge1" class="edge">
+<title>W&#45;&gt;R</title>
+<path fill="none" stroke="var(--border-line)" d="M131.38,-222C134.88,-222 138.39,-222 141.89,-222"/>
+<polygon fill="var(--border-line)" stroke="var(--border-line)" points="142.08,-224.45 149.08,-222 142.08,-219.55 142.08,-224.45"/>
+</g>
+<g id="node3" class="node">
+<title>V</title>
+<path fill="var(--brand-soft)" stroke="var(--brand-primary)" d="M341,-252C341,-252 260,-252 260,-252 254,-252 248,-246 248,-240 248,-240 248,-204 248,-204 248,-198 254,-192 260,-192 260,-192 341,-192 341,-192 347,-192 353,-198 353,-204 353,-204 353,-240 353,-240 353,-246 347,-252 341,-252"/>
+<text text-anchor="middle" x="300.5" y="-232.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">复核</text>
+<text text-anchor="middle" x="300.5" y="-218.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">被再次引用时</text>
+<text text-anchor="middle" x="300.5" y="-204.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">是否仍成立</text>
+</g>
+<g id="edge2" class="edge">
+<title>R&#45;&gt;V</title>
+<path fill="none" stroke="var(--border-line)" d="M229.82,-222C233.47,-222 237.11,-222 240.76,-222"/>
+<polygon fill="var(--border-line)" stroke="var(--border-line)" points="240.77,-224.45 247.77,-222 240.77,-219.55 240.77,-224.45"/>
+</g>
+<g id="node4" class="node">
+<title>X</title>
+<path fill="var(--brand-soft)" stroke="var(--brand-primary)" d="M477.5,-252C477.5,-252 383.5,-252 383.5,-252 377.5,-252 371.5,-246 371.5,-240 371.5,-240 371.5,-204 371.5,-204 371.5,-198 377.5,-192 383.5,-192 383.5,-192 477.5,-192 477.5,-192 483.5,-192 489.5,-198 489.5,-204 489.5,-204 489.5,-240 489.5,-240 489.5,-246 483.5,-252 477.5,-252"/>
+<text text-anchor="middle" x="430.5" y="-232.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">退役</text>
+<text text-anchor="middle" x="430.5" y="-218.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">标记失效并归档</text>
+<text text-anchor="middle" x="430.5" y="-204.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">不删除</text>
+</g>
+<g id="edge3" class="edge">
+<title>V&#45;&gt;X</title>
+<path fill="none" stroke="var(--border-line)" d="M353.06,-222C356.75,-222 360.43,-222 364.12,-222"/>
+<polygon fill="var(--border-line)" stroke="var(--border-line)" points="364.21,-224.45 371.21,-222 364.21,-219.55 364.21,-224.45"/>
+</g>
+<g id="node5" class="node">
+<title>N</title>
+<path fill="var(--surface-raised)" stroke="var(--success)" d="M443,-144C443,-144 158,-144 158,-144 152,-144 146,-138 146,-132 146,-132 146,-120 146,-120 146,-114 152,-108 158,-108 158,-108 443,-108 443,-108 449,-108 455,-114 455,-120 455,-120 455,-132 455,-132 455,-138 449,-144 443,-144"/>
+<text text-anchor="middle" x="300.5" y="-122.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">零和替换：新条目挤掉旧条目，避免记忆无限膨胀</text>
+</g>
+<g id="node6" class="node">
+<title>F</title>
+<path fill="var(--surface-raised)" stroke="var(--warning)" d="M706,-156C706,-156 485,-156 485,-156 479,-156 473,-150 473,-144 473,-144 473,-108 473,-108 473,-102 479,-96 485,-96 485,-96 706,-96 706,-96 712,-96 718,-102 718,-108 718,-108 718,-144 718,-144 718,-150 712,-156 706,-156"/>
+<text text-anchor="middle" x="595.5" y="-136.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">反思与记忆的衔接</text>
+<text text-anchor="middle" x="595.5" y="-122.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">反思产生候选结论</text>
+<text text-anchor="middle" x="595.5" y="-108.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">只有经过复核的候选才能进入长期记忆</text>
+</g>
+<g id="node7" class="node">
+<title>B</title>
+<polygon fill="var(--surface-subtle)" stroke="var(--border-line)" points="757,-60 428,-60 428,0 763,0 763,-54 757,-60"/>
+<polyline fill="none" stroke="var(--border-line)" points="757,-60 757,-54 "/>
+<polyline fill="none" stroke="var(--border-line)" points="763,-54 757,-54 "/>
+<text text-anchor="middle" x="595.5" y="-40.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">为什么必须配套复核与退役</text>
+<text text-anchor="middle" x="595.5" y="-26.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">记忆是过期经验的放大器：一条在旧模型上成立的结论</text>
+<text text-anchor="middle" x="595.5" y="-12.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">会持续影响新决策而不被质疑</text>
+</g>
+<g id="edge5" class="edge">
+<title>F&#45;&gt;B</title>
+<path fill="none" stroke="var(--border-line)" stroke-dasharray="1,5" d="M595.5,-95.77C595.5,-84.46 595.5,-71.52 595.5,-60.21"/>
+</g>
+</g>
+</svg>

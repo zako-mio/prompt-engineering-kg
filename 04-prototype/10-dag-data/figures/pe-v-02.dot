@@ -1,0 +1,16 @@
+digraph fig {
+  rankdir=TB; bgcolor="transparent";
+  node[shape=box, style="rounded,filled", fillcolor="#ffffff", color="#7c8aa5", fontcolor="#0e1729", fontname="Noto Sans CJK SC", fontsize=13, margin="0.20,0.12"]; edge[color="#7c8aa5", fontcolor="#46536b", fontname="Noto Sans CJK SC", fontsize=11, arrowsize=0.7];
+  Q [label="多模态任务：图表与文档截图类问题", fillcolor="#dfe6fb", color="#2f4bd8"];
+  A [label="第一步 定位\n指出与问题相关的区域或元素：坐标 · 图例 · 数值位置", color="#136f3a"];
+  B [label="第二步 推断\n基于定位结果做计算与判断", fillcolor="#dfe6fb", color="#2f4bd8"];
+  Z [label="对照写法：直接给结论\n整体判断不可验证，错了也无法定位", color="#b3181f"];
+  N [label="价值：把不可验证的整体判断，变成可部分验证的中间结论\n⇒ 中间读数可复核，错误定位能被指出来", shape=note, fillcolor="#e9eef8"];
+  S [label="跨模态安全\n仅用文本数据做指令层级训练，只部分迁移到多模态攻击\n需要跨模态解码、重建或推理指令时仍会失败\n⇒ 不可信图像与不可信文本同等设防：标注 · 限权 · 校验", color="#9a5310"];
+  Q -> A [label="拆成两段"];
+  A -> B;
+  Q -> Z [style=dashed, label="对照"];
+  {rank=same; B; Z;}
+  {rank=same; N; S;}
+  B -> N [style=invis];
+}

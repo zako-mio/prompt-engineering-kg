@@ -1,0 +1,62 @@
+<svg class="fig__svg" role="img" aria-label="两段图：把「先定位再推断」拆成可复核的中间读数，以及不可信图像与不可信文本同等设防。"
+ viewBox="0.00 0.00 748.00 332.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 328)">
+
+<g id="node1" class="node">
+<title>Q</title>
+<path fill="var(--brand-soft)" stroke="var(--brand-primary)" d="M405.5,-324C405.5,-324 196.5,-324 196.5,-324 190.5,-324 184.5,-318 184.5,-312 184.5,-312 184.5,-300 184.5,-300 184.5,-294 190.5,-288 196.5,-288 196.5,-288 405.5,-288 405.5,-288 411.5,-288 417.5,-294 417.5,-300 417.5,-300 417.5,-312 417.5,-312 417.5,-318 411.5,-324 405.5,-324"/>
+<text text-anchor="middle" x="301" y="-302.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">多模态任务：图表与文档截图类问题</text>
+</g>
+<g id="node2" class="node">
+<title>A</title>
+<path fill="var(--surface-raised)" stroke="var(--success)" d="M354.5,-240C354.5,-240 31.5,-240 31.5,-240 25.5,-240 19.5,-234 19.5,-228 19.5,-228 19.5,-206 19.5,-206 19.5,-200 25.5,-194 31.5,-194 31.5,-194 354.5,-194 354.5,-194 360.5,-194 366.5,-200 366.5,-206 366.5,-206 366.5,-228 366.5,-228 366.5,-234 360.5,-240 354.5,-240"/>
+<text text-anchor="middle" x="193" y="-220.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">第一步 定位</text>
+<text text-anchor="middle" x="193" y="-206.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">指出与问题相关的区域或元素：坐标 · 图例 · 数值位置</text>
+</g>
+<g id="edge1" class="edge">
+<title>Q&#45;&gt;A</title>
+<path fill="none" stroke="var(--border-line)" d="M279.66,-287.81C264.42,-275.53 243.61,-258.77 226.21,-244.75"/>
+<polygon fill="var(--border-line)" stroke="var(--border-line)" points="227.44,-242.6 220.45,-240.11 224.36,-246.41 227.44,-242.6"/>
+<text text-anchor="middle" x="280" y="-261.2" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="11.00" fill="var(--text-secondary)">拆成两段</text>
+</g>
+<g id="node4" class="node">
+<title>Z</title>
+<path fill="var(--surface-raised)" stroke="var(--danger)" d="M510.5,-157C510.5,-157 301.5,-157 301.5,-157 295.5,-157 289.5,-151 289.5,-145 289.5,-145 289.5,-123 289.5,-123 289.5,-117 295.5,-111 301.5,-111 301.5,-111 510.5,-111 510.5,-111 516.5,-111 522.5,-117 522.5,-123 522.5,-123 522.5,-145 522.5,-145 522.5,-151 516.5,-157 510.5,-157"/>
+<text text-anchor="middle" x="406" y="-137.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">对照写法：直接给结论</text>
+<text text-anchor="middle" x="406" y="-123.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">整体判断不可验证，错了也无法定位</text>
+</g>
+<g id="edge3" class="edge">
+<title>Q&#45;&gt;Z</title>
+<path fill="none" stroke="var(--border-line)" stroke-dasharray="5,2" d="M326.99,-287.94C342.97,-276.21 362.66,-259.31 375,-240 389.71,-216.98 397.68,-186.7 401.83,-164.58"/>
+<polygon fill="var(--border-line)" stroke="var(--border-line)" points="404.29,-164.73 403.1,-157.41 399.47,-163.88 404.29,-164.73"/>
+<text text-anchor="middle" x="406.5" y="-214.2" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="11.00" fill="var(--text-secondary)">对照</text>
+</g>
+<g id="node3" class="node">
+<title>B</title>
+<path fill="var(--brand-soft)" stroke="var(--brand-primary)" d="M259,-157C259,-157 101,-157 101,-157 95,-157 89,-151 89,-145 89,-145 89,-123 89,-123 89,-117 95,-111 101,-111 101,-111 259,-111 259,-111 265,-111 271,-117 271,-123 271,-123 271,-145 271,-145 271,-151 265,-157 259,-157"/>
+<text text-anchor="middle" x="180" y="-137.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">第二步 推断</text>
+<text text-anchor="middle" x="180" y="-123.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">基于定位结果做计算与判断</text>
+</g>
+<g id="edge2" class="edge">
+<title>A&#45;&gt;B</title>
+<path fill="none" stroke="var(--border-line)" d="M189.45,-193.87C187.97,-184.67 186.24,-173.87 184.66,-164.05"/>
+<polygon fill="var(--border-line)" stroke="var(--border-line)" points="187.08,-163.63 183.55,-157.11 182.24,-164.41 187.08,-163.63"/>
+</g>
+<g id="node5" class="node">
+<title>N</title>
+<polygon fill="var(--surface-subtle)" stroke="var(--border-line)" points="354,-60 0,-60 0,-14 360,-14 360,-54 354,-60"/>
+<polyline fill="none" stroke="var(--border-line)" points="354,-60 354,-54 "/>
+<polyline fill="none" stroke="var(--border-line)" points="360,-54 354,-54 "/>
+<text text-anchor="middle" x="180" y="-40.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">价值：把不可验证的整体判断，变成可部分验证的中间结论</text>
+<text text-anchor="middle" x="180" y="-26.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">⇒ 中间读数可复核，错误定位能被指出来</text>
+</g>
+<g id="node6" class="node">
+<title>S</title>
+<path fill="var(--surface-raised)" stroke="var(--warning)" d="M728,-74C728,-74 390,-74 390,-74 384,-74 378,-68 378,-62 378,-62 378,-12 378,-12 378,-6 384,0 390,0 390,0 728,0 728,0 734,0 740,-6 740,-12 740,-12 740,-62 740,-62 740,-68 734,-74 728,-74"/>
+<text text-anchor="middle" x="559" y="-54.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">跨模态安全</text>
+<text text-anchor="middle" x="559" y="-40.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">仅用文本数据做指令层级训练，只部分迁移到多模态攻击</text>
+<text text-anchor="middle" x="559" y="-26.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">需要跨模态解码、重建或推理指令时仍会失败</text>
+<text text-anchor="middle" x="559" y="-12.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">⇒ 不可信图像与不可信文本同等设防：标注 · 限权 · 校验</text>
+</g>
+</g>
+</svg>

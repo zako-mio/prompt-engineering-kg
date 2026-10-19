@@ -1,0 +1,854 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="auto">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>位置敏感与注意力耗散 · 新一代提示词工程 · 知识全景图</title>
+<!-- base: ../ (相对本站根) -->
+<!-- template: shell-v2 -->
+<meta name="description" content="位置规律在文本长上下文上已实测、在多模态侧仍是待验假设，工程上只当构造原则用：把最要紧的内容放在序列两头、对长输入做切分与编号引用，并在真实长度上实测，而不是靠重复来加权。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="位置敏感与注意力耗散">
+<meta property="og:description" content="位置规律在文本长上下文上已实测、在多模态侧仍是待验假设，工程上只当构造原则用：把最要紧的内容放在序列两头、对长输入做切分与编号引用，并在真实长度上实测，而不是靠重复来加权。">
+<meta property="og:url" content="https://zako-mio.github.io/prompt-engineering-kg/11-node-pages/pe-v-03.html">
+<meta property="og:image" content="https://zako-mio.github.io/prompt-engineering-kg/og.png">
+<link rel="canonical" href="https://zako-mio.github.io/prompt-engineering-kg/11-node-pages/pe-v-03.html">
+<meta name="theme-color" content="#f4f7fc" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#060a14" media="(prefers-color-scheme: dark)">
+<link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+<script>/* ui-bootstrap v2 */
+(function(){var K="ui-theme",M="ui-motion",B="ui-backdrop",F="ui-fontsize",R=document.documentElement;function ap(t){if(t==="light"||t==="dark"){R.setAttribute("data-theme",t);}else{R.removeAttribute("data-theme");}var bs=document.querySelectorAll("[data-theme-set]");for(var i=0;i<bs.length;i++){bs[i].setAttribute("aria-pressed",String(bs[i].getAttribute("data-theme-set")===t));}}function am(v){if(v==="on"||v==="off"){R.setAttribute("data-motion",v);}else{R.removeAttribute("data-motion");}var bs=document.querySelectorAll("[data-motion-set]");for(var i=0;i<bs.length;i++){bs[i].setAttribute("aria-pressed",String(bs[i].getAttribute("data-motion-set")===v));}}function ab(v){if(v==="off"){R.setAttribute("data-backdrop","off");}else{R.removeAttribute("data-backdrop");}var bs=document.querySelectorAll("[data-backdrop-set]");for(var i=0;i<bs.length;i++){bs[i].setAttribute("aria-pressed",String(bs[i].getAttribute("data-backdrop-set")===v));}}function af(v){if(v==="large"){R.setAttribute("data-fontsize","large");}else{R.removeAttribute("data-fontsize");}var bs=document.querySelectorAll("[data-fontsize-set]");for(var i=0;i<bs.length;i++){bs[i].setAttribute("aria-pressed",String(bs[i].getAttribute("data-fontsize-set")===v));}}var t="system",v="system",bk="on",fz="standard";try{t=localStorage.getItem(K)||"system";v=localStorage.getItem(M)||"system";bk=localStorage.getItem(B)||"on";fz=localStorage.getItem(F)||"standard";}catch(e){}if(t!=="light"&&t!=="dark"){t="system";}if(v!=="on"&&v!=="off"){v="system";}if(bk!=="on"&&bk!=="off"){bk="on";}if(fz!=="standard"&&fz!=="large"){fz="standard";}ap(t);am(v);ab(bk);af(fz);R.className+=(R.className?" ":"")+"js-motion";function fin(){var els=document.querySelectorAll("[data-reveal]");for(var i=0;i<els.length;i++){els[i].className+=" is-in";}}function ready(){R.setAttribute("data-motion-ready","1");if(!("IntersectionObserver" in window)){fin();return;}var io=new IntersectionObserver(function(es){for(var i=0;i<es.length;i++){if(es[i].isIntersecting){es[i].target.className+=" is-in";io.unobserve(es[i].target);}}},{rootMargin:"0px 0px -8% 0px"});var els=document.querySelectorAll("[data-reveal]");for(var i=0;i<els.length;i++){io.observe(els[i]);}}function boot(){var els=document.querySelectorAll("[data-reveal]");for(var i=0;i<els.length;i++){els[i].style.setProperty("--i",String(i));}if(v==="off"){R.setAttribute("data-motion-ready","1");return;}try{ready();}catch(e){fin();}}if(document.readyState==="loading"){document.addEventListener("DOMContentLoaded",boot);}else{boot();}setTimeout(function(){if(!R.getAttribute("data-motion-ready")){fin();}},1800);document.addEventListener("click",function(e){var n=e.target;while(n&&n!==document.body&&!n.getAttribute){n=n.parentNode;}if(!n||!n.getAttribute){return;}var ts=n.getAttribute("data-theme-set"),ms=n.getAttribute("data-motion-set"),bs=n.getAttribute("data-backdrop-set"),fs=n.getAttribute("data-fontsize-set");if(!ts&&!ms&&!bs&&!fs){return;}e.preventDefault();if(ts){try{if(ts==="system"){localStorage.removeItem(K);}else{localStorage.setItem(K,ts);}}catch(err){}ap(ts);}if(ms){try{if(ms==="system"){localStorage.removeItem(M);}else{localStorage.setItem(M,ms);}}catch(err2){}am(ms);}if(bs){try{if(bs==="on"){localStorage.removeItem(B);}else{localStorage.setItem(B,bs);}}catch(err3){}ab(bs);}if(fs){try{if(fs==="standard"){localStorage.removeItem(F);}else{localStorage.setItem(F,fs);}}catch(err4){}af(fs);}});})();</script>
+<style>
+/* >>> GENERATED:tokens (由 16-checkpoint/gen-tokens.py 从 site-palette.json 派生；⛔ 勿手改) */
+
+/* 默认档（浅色值在此；强制浅色 = 不覆盖 + 守卫，⛔ 无 :root[data-theme='light'] 块） */
+:root {
+  color-scheme: light;
+  --text-primary: #0e1729;
+  --text-secondary: #46536b;
+  --text-tertiary: #5f6d84;
+  --link: #2a46cf;
+  --brand-primary: #2f4bd8;
+  --border-line: #7c8aa5;
+  --border-subtle: #dde4f0;
+  --surface-page: #f4f7fc;
+  --surface-raised: #ffffff;
+  --surface-subtle: #e9eef8;
+  --surface-stripe: #f0f4fa;
+  --surface-sunken: #eaeff8;
+  --border-card: #cfd8e8;
+  --edge-highlight: rgba(255, 255, 255, 0.92);
+  --brand-bright: #5470ff;
+  --brand-deep: #1d33a6;
+  --brand-soft: rgba(47, 75, 216, 0.1);
+  --brand-tint: rgba(47, 75, 216, 0.16);
+  --on-brand: #ffffff;
+  --success: #136f3a;
+  --warning: #9a5310;
+  --danger: #b3181f;
+  --focus-ring: #2f4bd8;
+  --shadow-1: 0 1px 2px rgba(19, 32, 64, 0.06), 0 2px 6px -1px rgba(19, 32, 64, 0.07);
+  --shadow-2: 0 2px 4px rgba(19, 32, 64, 0.05), 0 8px 20px -6px rgba(19, 32, 64, 0.12), 0 18px 40px -18px rgba(19, 32, 64, 0.16);
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+  --dur-1: 0.16s;
+  --dur-2: 0.28s;
+  --dur-3: 0.5s;
+  --dur-4: 0.85s;
+  --reveal-shift: 16px;
+  --font-sans: system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', 'Source Han Sans SC', sans-serif;
+  --font-mono: ui-monospace, 'SF Mono', SFMono-Regular, Menlo, Consolas, 'Liberation Mono', 'Noto Sans Mono CJK SC', 'Courier New', monospace;
+  --fs-hero: clamp(1.5rem, 0.6rem + 2.2vw, 3rem);
+  --fs-section: clamp(1.375rem, 1rem + 1.5vw, 2rem);
+  --fs-card-title: 1.25rem;
+  --fs-body: 1rem;
+  --fs-label: 0.8125rem;
+  --fs-nav: 0.9375rem;
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 1rem;
+  --space-4: 1.5rem;
+  --space-5: 2rem;
+  --space-6: 3rem;
+  --space-7: 4rem;
+  --container: 70rem;
+  --measure: 66ch;
+  --radius: 12px;
+  --radius-lg: 18px;
+  --radius-pill: 999px;
+  --nav-h: 4rem;
+  --rail-w: 15.75rem;
+  --scrim-1: 12%;
+  --scrim-2: 28%;
+  --scrim-3: 62%;
+  --fs-root-lg: 1.125rem;
+}
+
+/* 跟随系统档 */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) {
+    color-scheme: dark;
+    --text-primary: #e8edf7;
+    --text-secondary: #a7b3c8;
+    --text-tertiary: #8e9cb3;
+    --link: #8fb4ff;
+    --brand-primary: #8fb4ff;
+    --border-line: #8798b5;
+    --border-subtle: #1e2740;
+    --surface-page: #060a14;
+    --surface-raised: #0d1424;
+    --surface-subtle: #151d31;
+    --surface-stripe: #0a1120;
+    --surface-sunken: #04070e;
+    --border-card: #232e48;
+    --edge-highlight: rgba(255, 255, 255, 0.06);
+    --brand-bright: #b0caff;
+    --brand-deep: #5c86e8;
+    --brand-soft: rgba(143, 180, 255, 0.14);
+    --brand-tint: rgba(143, 180, 255, 0.24);
+    --on-brand: #060a14;
+    --success: #4ade80;
+    --warning: #fbbf24;
+    --danger: #f87171;
+    --focus-ring: #8fb4ff;
+    --shadow-1: 0 1px 2px rgba(0, 0, 0, 0.5);
+    --shadow-2: 0 2px 6px rgba(0, 0, 0, 0.5), 0 16px 36px -14px rgba(0, 0, 0, 0.6);
+    --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+    --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+    --dur-1: 0.16s;
+    --dur-2: 0.28s;
+    --dur-3: 0.5s;
+    --dur-4: 0.85s;
+    --reveal-shift: 16px;
+    --font-sans: system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', 'Source Han Sans SC', sans-serif;
+    --font-mono: ui-monospace, 'SF Mono', SFMono-Regular, Menlo, Consolas, 'Liberation Mono', 'Noto Sans Mono CJK SC', 'Courier New', monospace;
+    --fs-hero: clamp(1.5rem, 0.6rem + 2.2vw, 3rem);
+    --fs-section: clamp(1.375rem, 1rem + 1.5vw, 2rem);
+    --fs-card-title: 1.25rem;
+    --fs-body: 1rem;
+    --fs-label: 0.8125rem;
+    --fs-nav: 0.9375rem;
+    --space-1: 0.25rem;
+    --space-2: 0.5rem;
+    --space-3: 1rem;
+    --space-4: 1.5rem;
+    --space-5: 2rem;
+    --space-6: 3rem;
+    --space-7: 4rem;
+    --container: 70rem;
+    --measure: 66ch;
+    --radius: 12px;
+    --radius-lg: 18px;
+    --radius-pill: 999px;
+    --nav-h: 4rem;
+    --rail-w: 15.75rem;
+    --scrim-1: 26%;
+    --scrim-2: 44%;
+    --scrim-3: 70%;
+    --fs-root-lg: 1.125rem;
+  }
+}
+
+/* 强制深色档 */
+:root[data-theme='dark'] {
+  color-scheme: dark;
+  --text-primary: #e8edf7;
+  --text-secondary: #a7b3c8;
+  --text-tertiary: #8e9cb3;
+  --link: #8fb4ff;
+  --brand-primary: #8fb4ff;
+  --border-line: #8798b5;
+  --border-subtle: #1e2740;
+  --surface-page: #060a14;
+  --surface-raised: #0d1424;
+  --surface-subtle: #151d31;
+  --surface-stripe: #0a1120;
+  --surface-sunken: #04070e;
+  --border-card: #232e48;
+  --edge-highlight: rgba(255, 255, 255, 0.06);
+  --brand-bright: #b0caff;
+  --brand-deep: #5c86e8;
+  --brand-soft: rgba(143, 180, 255, 0.14);
+  --brand-tint: rgba(143, 180, 255, 0.24);
+  --on-brand: #060a14;
+  --success: #4ade80;
+  --warning: #fbbf24;
+  --danger: #f87171;
+  --focus-ring: #8fb4ff;
+  --shadow-1: 0 1px 2px rgba(0, 0, 0, 0.5);
+  --shadow-2: 0 2px 6px rgba(0, 0, 0, 0.5), 0 16px 36px -14px rgba(0, 0, 0, 0.6);
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+  --dur-1: 0.16s;
+  --dur-2: 0.28s;
+  --dur-3: 0.5s;
+  --dur-4: 0.85s;
+  --reveal-shift: 16px;
+  --font-sans: system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', 'Source Han Sans SC', sans-serif;
+  --font-mono: ui-monospace, 'SF Mono', SFMono-Regular, Menlo, Consolas, 'Liberation Mono', 'Noto Sans Mono CJK SC', 'Courier New', monospace;
+  --fs-hero: clamp(1.5rem, 0.6rem + 2.2vw, 3rem);
+  --fs-section: clamp(1.375rem, 1rem + 1.5vw, 2rem);
+  --fs-card-title: 1.25rem;
+  --fs-body: 1rem;
+  --fs-label: 0.8125rem;
+  --fs-nav: 0.9375rem;
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 1rem;
+  --space-4: 1.5rem;
+  --space-5: 2rem;
+  --space-6: 3rem;
+  --space-7: 4rem;
+  --container: 70rem;
+  --measure: 66ch;
+  --radius: 12px;
+  --radius-lg: 18px;
+  --radius-pill: 999px;
+  --nav-h: 4rem;
+  --rail-w: 15.75rem;
+  --scrim-1: 26%;
+  --scrim-2: 44%;
+  --scrim-3: 70%;
+  --fs-root-lg: 1.125rem;
+}
+
+/* <<< GENERATED:tokens */
+
+
+/* ============================================================
+   唯一外壳样式（shell-v2）· 令牌全部来自上方生成块
+   ============================================================ */
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+html[data-theme="light"]{color-scheme:light}
+html[data-theme="dark"]{color-scheme:dark}
+body{margin:0;background:var(--surface-page);color:var(--text-primary);
+ line-height:1.75;font-family:var(--font-sans);font-size:var(--fs-body)}
+
+/* --- 显示偏好（由侧栏/顶部导航的开关驱动）---
+   ⛔ 本节不得声明任何自定义属性：令牌声明点全站唯一（P23）；值只能取令牌（P24）。 */
+/* ① 背景素材：off ⇒ 背景层整块不渲染（纯装饰层，关闭后正文坐在 --surface-page 上）。
+   与 P27 的「非当前主题帧 display:none」同规：都用 display:none，⛔ 不用 opacity/visibility。 */
+:root[data-backdrop="off"] .backdrop{display:none}
+/* ② 字号：large ⇒ **改根字号**（16→18px）。★ 2026-10-15 用户反馈轮修正：此前只改 body 的
+   font-size，于是标题/导航/标签/表格各自走自己的 --fs-* 令牌、**不随动** ⇒ 用户实测「部分生效」
+   且层次比例失真（正文变大而标题不变）。改为根字号后，配合**布局令牌 rem 化**
+   （--container / --rail-w / --nav-h / --space-* 全为 rem），全站字号、间距、栏宽、内容列宽
+   **等比放大**，层次比例逐字不变；根入口 h1 的行宽与内容列宽同比缩放 ⇒ P34 的余量比例不变。
+   ⛔ 不得退回「只改 body」的写法：那不是作用域选择，是**半生效**。 */
+:root[data-fontsize="large"]{font-size:var(--fs-root-lg)}
+code,kbd,samp,pre{font-family:var(--font-mono)}
+a{color:var(--link);text-decoration:none}
+a:focus-visible,button:focus-visible,summary:focus-visible,input:focus-visible,
+select:focus-visible,textarea:focus-visible,[tabindex]:focus-visible{
+ outline:2px solid var(--focus-ring);outline-offset:2px}
+h1,h2,h3,h4{line-height:1.3;margin:var(--space-4) 0 var(--space-2)}
+h1{font-size:var(--fs-hero);line-height:1.06;letter-spacing:-0.035em;margin-top:var(--space-3)}
+h2{font-size:var(--fs-section);line-height:1.25;letter-spacing:-0.02em;
+ padding-bottom:var(--space-1);border-bottom:1px solid var(--border-subtle)}
+h3{font-size:var(--fs-card-title);letter-spacing:-0.01em}
+p,li,dd,dt,blockquote{max-width:var(--measure)}
+ul.tight li,ol.tight li{margin:var(--space-1) 0}
+
+/* --- 布局骨架：<1180 顶部导航 / ≥1180 左栏 rail（二选一，⛔ 不叠加） --- */
+.layout{max-width:var(--container);margin:0 auto;padding:0 var(--space-3)}
+.rail{display:none}
+main{padding-bottom:var(--space-6)}
+.wrap{max-width:var(--container);margin:0 auto;padding:0 var(--space-3)}
+
+/* --- 顶部导航（<1180px 形态） --- */
+.site-head{position:sticky;top:0;z-index:20;background:var(--surface-raised);
+ border-bottom:1px solid var(--border-subtle)}
+.head-in{display:flex;flex-wrap:wrap;gap:var(--space-2) var(--space-3);
+ align-items:center;justify-content:space-between;min-height:var(--nav-h)}
+.brand{font-weight:700;color:var(--text-primary);font-size:var(--fs-nav)}
+.brand span{font-weight:400;color:var(--text-secondary);font-size:var(--fs-label);
+ margin-left:var(--space-1)}
+.nav{display:flex;flex-wrap:wrap;gap:var(--space-1) var(--space-3);align-items:center}
+.nav__link{font-size:var(--fs-nav);color:var(--text-secondary);min-height:44px;
+ display:inline-flex;align-items:center}
+.switches{display:flex;flex-wrap:wrap;gap:var(--space-2);align-items:center}
+.switch{display:flex;gap:var(--space-1);align-items:center;margin:0;padding:0}
+.switch__legend{font-size:var(--fs-label);color:var(--text-secondary);
+ margin-right:var(--space-1)}
+/* ★ 开关按钮与「显示设置」折叠钮共用同一套外观（同一枚控件的两种形态） */
+.switch__btn,.settings__summary{font:inherit;font-size:var(--fs-label);cursor:pointer;min-height:44px;
+ background:var(--surface-subtle);color:var(--text-secondary);
+ border:1px solid var(--border-line);border-radius:var(--radius-pill);
+ padding:0 var(--space-2)}
+.switch__btn[aria-pressed="true"]{background:var(--brand-soft);color:var(--text-primary);
+ border-color:var(--brand-primary)}
+/* ★ 窄屏档（<1180）四组开关共 10 枚，横排会把 sticky 头部撑成三四行 ⇒ 收进原生折叠件。
+   `summary` 在交互作用面登记表内（`summary:hover` 已登记），故 ⛔ 不新增任何 :hover 选择器。 */
+.settings{display:block}
+.settings__summary{display:inline-flex;align-items:center;list-style:none}
+.settings__summary::-webkit-details-marker{display:none}
+.settings>.switches{margin-top:var(--space-2)}
+
+/* --- 左栏 rail（≥1180px 形态；与顶部导航二选一） ---
+   ★ 形态调整（2026-10-15，用户反馈 #2）：rail **撑满整页竖向**（grid 行高 = 正文高度，
+   见下方 ≥1180 档的 align-self:stretch），内层 100dvh sticky ⇒ 视口内常驻；
+   导航在上、显示开关锚在底端（`.rail__foot` 的 margin-top 取 auto，见规则本体）。
+   ⛔ align-self 只在 ≥1180 档给：基础档 rail 是 display:none，无需参与布局。
+   ⚠ 本注释里 ⛔ 不得写出「margin-top 冒号 auto」那种**声明形态**的串：门控 P24 的扫描面
+   包含 CSS 注释（只剥令牌块、不剥注释），注释里出现 margin/padding 的声明形态会被判
+   令牌外硬编码（本轮实测：19 页 × 11 处假阳，全来自上一版注释里的那一串）。 */
+.rail{background:var(--surface-raised);border-right:1px solid var(--border-subtle)}
+.rail__in{position:sticky;top:0;height:100dvh;overflow:auto;
+ display:flex;flex-direction:column;gap:var(--space-2);
+ padding:var(--space-4) var(--space-3)}
+.rail__title{font-size:var(--fs-label);letter-spacing:0.08em;color:var(--text-tertiary);
+ text-transform:uppercase;margin:0 0 var(--space-2)}
+.rail__list{list-style:none;margin:0;padding:0}
+.rail__link{display:flex;align-items:center;min-height:44px;padding:0 var(--space-2);
+ border-radius:var(--radius);color:var(--text-secondary);font-size:var(--fs-nav)}
+.rail__link[aria-current="page"]{color:var(--text-primary);background:var(--surface-subtle)}
+/* 侧栏底部「显示设置」区：锚在 rail 底端，与导航之间用弱分隔线分开 */
+.rail__foot{margin-top:auto;padding-top:var(--space-3);
+ border-top:1px solid var(--border-subtle)}
+/* 同一份开关标记，两种排布：顶部导航横向、侧栏**两列栅格**（四组共 10 枚，纵向堆叠会
+   把侧栏撑到 ~930px 高、在 900px 视口里被截断 ⇒ 两列后约 400px）。legend 独占整行。 */
+.rail .switches{flex-direction:column;align-items:stretch;gap:var(--space-3)}
+.rail .switch{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--space-1)}
+.rail .switch__legend{grid-column:1 / -1;margin-right:0}
+.rail .switch__btn{padding:0 var(--space-1)}
+
+/* ============================================================
+   内容阅读单元 v2（2026-10-15 用户走查第 2 轮反馈后新增；见 CONTENT-V2.md）
+   ★ 总则「一行只干一件事」：身份 / 标签 / 元信息 / 结论 / 地图 各自独占一行容器。
+   ★ 全部值取令牌（P24）；⛔ 本节不声明任何自定义属性（P23）。
+   ============================================================ */
+/* --- 标题区：h1 纯中文一行；英文名独立成行、去括号 --- */
+.page-en{color:var(--text-secondary);font-size:var(--fs-nav);letter-spacing:0.01em;
+ margin:0 0 var(--space-1);max-width:var(--measure)}
+/* --- 身份行（节点号 · 状态 · 分组 · 层）与标签行（tags）分离 --- */
+.tag-row{display:flex;flex-wrap:wrap;gap:var(--space-1);align-items:center;
+ margin:0 0 var(--space-3)}
+/* --- 页首导读：先给结论（一句话），再给结构地图（可跳转） --- */
+.read-map{background:var(--surface-subtle);border:1px solid var(--border-subtle);
+ border-radius:var(--radius-lg);padding:var(--space-3);margin:var(--space-3) 0}
+.read-map__label{font-size:var(--fs-label);letter-spacing:0.08em;color:var(--text-tertiary);
+ text-transform:uppercase;margin:0 0 var(--space-1)}
+.read-map__claim{font-size:var(--fs-card-title);line-height:1.6;color:var(--text-primary);
+ font-weight:600;margin:0;max-width:var(--measure)}
+.read-map__nav{display:flex;flex-wrap:wrap;gap:var(--space-1);margin:var(--space-2) 0 0;
+ padding:0;list-style:none}
+.read-map__nav a{display:inline-flex;align-items:center;min-height:44px;
+ font-size:var(--fs-label);color:var(--text-secondary);
+ border:1px solid var(--border-subtle);border-radius:var(--radius-pill);
+ padding:0 var(--space-2)}
+/* --- 区块序号（显式递进：先讲什么、再讲什么） --- */
+.sec-no{font-family:var(--font-mono);font-size:var(--fs-label);letter-spacing:0.08em;
+ color:var(--text-tertiary);margin-right:var(--space-2)}
+/* --- 阅读单元：主张句（加重 + 强调条）与展开点（每句一行） --- */
+.claim{margin:var(--space-2) 0;padding-left:var(--space-3);
+ border-left:2px solid var(--brand-primary);font-size:var(--fs-card-title);
+ line-height:1.6;color:var(--text-primary);max-width:var(--measure)}
+.points{list-style:none;margin:var(--space-2) 0 0;padding:0}
+.points li{position:relative;padding-left:var(--space-4);margin:var(--space-1) 0;
+ max-width:var(--measure)}
+.points li::before{content:"";position:absolute;left:var(--space-2);top:0.8em;
+ width:4px;height:4px;border-radius:var(--radius-pill);background:var(--border-line)}
+/* --- 适用边界：独立块（⛔ 不混在主张句里） --- */
+.boundary{margin:var(--space-3) 0;padding:var(--space-2) var(--space-3);
+ border-left:2px solid var(--warning);background:var(--surface-subtle);
+ border-radius:0 var(--radius) var(--radius) 0}
+.boundary__label{font-size:var(--fs-label);letter-spacing:0.08em;color:var(--text-secondary);
+ text-transform:uppercase;margin:0 0 var(--space-1)}
+.boundary p{margin:0;max-width:var(--measure)}
+/* --- 对照表：一行一件事（类别 ｜ 场景 ｜ 做法） --- */
+.cmp-table caption{font-size:var(--fs-label)}
+.cmp-table td:first-child,.cmp-table th:first-child{white-space:nowrap;color:var(--text-secondary)}
+/* --- 图件（内联 SVG：随主题；⛔ 不外包固定尺寸容器） --- */
+.fig{margin:var(--space-4) 0;padding:var(--space-3);background:var(--surface-raised);
+ border:1px solid var(--border-card);border-radius:var(--radius-lg);
+ box-shadow:var(--shadow-1),inset 0 1px 0 var(--edge-highlight)}
+.fig__svg{display:block;width:100%;height:auto}
+.fig figcaption{font-size:var(--fs-label);color:var(--text-secondary);
+ margin-top:var(--space-2);max-width:var(--measure)}
+.fig__src{color:var(--text-tertiary)}
+/* --- 依赖链（前置 → 本节点 → 后继；一行） --- */
+.relchain{display:flex;flex-wrap:wrap;gap:var(--space-1);align-items:center;
+ margin:var(--space-2) 0}
+.relchain__arrow{color:var(--text-tertiary);font-size:var(--fs-label)}
+/* --- 渐进披露（原文 / 代码按需展开；CSS-only，⛔ 无 JS） --- */
+.acc{border:1px solid var(--border-subtle);border-radius:var(--radius);
+ background:var(--surface-stripe);padding:var(--space-1) var(--space-3);
+ margin:var(--space-2) 0}
+.acc>summary{font-size:var(--fs-label);color:var(--text-secondary);cursor:pointer;
+ min-height:44px;display:inline-flex;align-items:center}
+.acc[open]>summary{color:var(--text-primary)}
+/* --- 实验步骤（编号 + 代码 + 预期观察） --- */
+.steps{counter-reset:step;list-style:none;margin:var(--space-2) 0;padding:0}
+.steps>li{position:relative;padding-left:var(--space-5);margin:var(--space-3) 0}
+.steps>li::before{counter-increment:step;content:counter(step);
+ position:absolute;left:0;top:0;width:var(--space-4);height:var(--space-4);
+ display:flex;align-items:center;justify-content:center;border-radius:var(--radius-pill);
+ background:var(--brand-soft);color:var(--text-primary);
+ font-size:var(--fs-label);font-family:var(--font-mono)}
+/* --- 竖表：长文字段一律纵向排列（⛔ 不横向滚动；反馈 #1） --- */
+.kv-blocks{display:grid;gap:var(--space-2);margin:var(--space-2) 0}
+.kv-block{border:1px solid var(--border-subtle);border-radius:var(--radius);
+ background:var(--surface-stripe);padding:var(--space-2) var(--space-3)}
+.kv-block__row{margin:var(--space-1) 0;max-width:var(--measure)}
+.kv-block__k{display:block;font-size:var(--fs-label);color:var(--text-tertiary);
+ letter-spacing:0.08em;text-transform:uppercase}
+.kv-block__v{display:block;color:var(--text-primary)}
+/* --- 枚举分点：位置化的有序结构（⛔ 不靠「其一其二」这几个字承担层次；反馈 #3） --- */
+.enum-list{counter-reset:enum;list-style:none;margin:var(--space-1) 0 var(--space-1);
+ padding:0}
+.enum-list li{counter-increment:enum;position:relative;padding-left:var(--space-4);
+ margin:var(--space-1) 0;max-width:var(--measure)}
+.enum-list li::before{content:counter(enum);position:absolute;left:0;top:0;
+ font-family:var(--font-mono);font-size:var(--fs-label);color:var(--text-tertiary)}
+.point{margin:var(--space-2) 0 0;max-width:var(--measure);color:var(--text-primary)}
+.points__block{list-style:none}
+.points__block::before{display:none}
+/* --- 总结 + 细节 清单（失效模式用） --- */
+.pair-list li{margin:var(--space-2) 0;max-width:var(--measure)}
+.pair__sum{display:block;font-weight:600;color:var(--text-primary)}
+.pair__detail{display:block;color:var(--text-secondary)}
+.relchain__label{font-size:var(--fs-label);color:var(--text-tertiary)}
+/* --- 术语表 / 证据表：多维对照一律用表 --- */
+.terms-table td:first-child,.ev-table td:first-child{white-space:nowrap}
+/* --- 锚点目标：跳转落点留白 + 高亮（页首导读的落点） --- */
+:target{scroll-margin-top:var(--space-5)}
+h2:target,h3:target{background:var(--brand-soft);border-radius:var(--radius)}
+
+/* --- 页脚 --- */
+.site-foot{margin-top:var(--space-6);padding-top:var(--space-3);
+ padding-bottom:var(--space-5);border-top:1px solid var(--border-subtle);
+ color:var(--text-secondary);font-size:var(--fs-label)}
+/* ★ 页脚在 .layout 之内（2026-10-15）：窄屏档横向内边距由 .layout 提供 ⇒ 收回 .wrap 的内边距，
+   否则会叠成两倍（16→24→32 各加一次）。≥1180 档 .layout 横向内边距为 0，故改由 .site-foot 自带。 */
+.layout>.site-foot .wrap{padding-left:0;padding-right:0}
+.footer__credits{border-top:1px solid var(--border-subtle);margin-top:var(--space-3);
+ padding-top:var(--space-2)}
+.footer__credits h2{font-size:var(--fs-label);border:0;padding:0;margin:0 0 var(--space-1);
+ color:var(--text-secondary);letter-spacing:0.08em;text-transform:uppercase}
+.credits{list-style:none;margin:0;padding:0}
+.credits li{margin:var(--space-1) 0;color:var(--text-secondary)}
+
+/* --- 面包屑与元信息 --- */
+.crumbs{font-size:var(--fs-label);color:var(--text-secondary);margin:var(--space-2) 0}
+.crumbs ol{list-style:none;display:flex;flex-wrap:wrap;gap:var(--space-1);margin:0;padding:0}
+.crumbs li+li::before{content:"›";margin-right:var(--space-1);color:var(--text-tertiary)}
+.lede{color:var(--text-secondary);max-width:var(--measure)}
+.meta-line{display:flex;flex-wrap:wrap;gap:var(--space-1) var(--space-2);align-items:center;
+ color:var(--text-secondary);font-size:var(--fs-label);margin:var(--space-1) 0 var(--space-3)}
+
+/* --- 卡片四件套（渐变底 + border-card + shadow-1 + 顶 1px 高光） ---
+   ★ 两类卡片：`.card` 是**可点卡片**（含 .card__title-link 拉伸层，有悬停反馈）；
+   `.card--flat` 是**纯内容块**（无链接 ⇒ 无悬停反馈、无 pointer 光标，
+   ⛔ 不得有「看起来能点」的假可供性——H2 硬规则 2）。 */
+.card{position:relative;isolation:isolate;margin:var(--space-3) 0;
+ padding:var(--space-3);
+ background:linear-gradient(180deg,var(--surface-raised) 0%,
+  color-mix(in srgb,var(--brand-primary) 4%,var(--surface-raised)) 100%);
+ border:1px solid var(--border-card);border-radius:var(--radius-lg);
+ box-shadow:var(--shadow-1),inset 0 1px 0 var(--edge-highlight);
+ transition:transform var(--dur-2) var(--ease-out),
+  box-shadow var(--dur-2) var(--ease-out),border-color var(--dur-2) var(--ease-out)}
+.card--flat{position:relative;margin:var(--space-3) 0;padding:var(--space-3);
+ background:var(--surface-subtle);border:1px solid var(--border-subtle);
+ border-radius:var(--radius-lg);cursor:auto}
+.card>:first-child,.card--flat>:first-child{margin-top:0}
+.card>:last-child,.card--flat>:last-child{margin-bottom:0}
+/* ★ 拉伸层：反馈面 ≡ 热区。containing block 必须是卡片本体（.card 无 transform/filter/
+   will-change，故定位基准即卡片自身）。⛔ 成对：卡内其它真链接必须抬升到 z-index:2。 */
+.card__title-link{color:var(--text-primary);font-weight:600}
+.card__title-link::after{content:"";position:absolute;inset:0;z-index:1}
+.card__links{position:relative;z-index:2}
+
+.grid{display:grid;gap:var(--space-3);grid-template-columns:repeat(auto-fit,minmax(15rem,1fr))}
+.two-col{display:grid;gap:var(--space-3);grid-template-columns:repeat(auto-fit,minmax(17rem,1fr))}
+
+/* --- 表格 --- */
+table{border-collapse:collapse;width:100%;margin:var(--space-3) 0;font-size:var(--fs-nav)}
+caption{text-align:left;color:var(--text-secondary);font-size:var(--fs-label);
+ padding-bottom:var(--space-1)}
+th,td{border:1px solid var(--border-subtle);padding:var(--space-1) var(--space-2);
+ text-align:left;vertical-align:top}
+thead th{background:var(--surface-subtle)}
+tbody tr:nth-child(even){background:var(--surface-stripe)}
+.table-scroll{overflow-x:auto;max-width:100%}
+
+/* --- 术语 / 列表 / 代码 --- */
+dl.terms{margin:0}
+dl.terms dt{font-weight:600;margin-top:var(--space-2)}
+dl.terms dd{margin:var(--space-1) 0 0 var(--space-3);color:var(--text-secondary)}
+code{background:var(--surface-subtle);border:1px solid var(--border-subtle);
+ border-radius:var(--radius);padding:0 var(--space-1);font-size:var(--fs-label)}
+pre{background:var(--surface-subtle);border:1px solid var(--border-subtle);
+ border-radius:var(--radius);padding:var(--space-2) var(--space-3);overflow:auto;max-width:100%;
+ /* ★ 代码块折行（2026-10-15）：用户反馈 #1「尽可能不要有左右翻动的需求」——长命令行不折行
+    会把代码块变成横向滚动区（P38 D 段实测 pe-f-01 溢出 637px / pe-r-02 208px）。
+    ⛔ 不为变绿而放宽 P38：修的是产物，不是阈值。 */
+ white-space:pre-wrap;word-break:break-word}
+pre code{background:none;border:0;padding:0;font-size:var(--fs-label)}
+blockquote{margin:var(--space-3) 0;padding:var(--space-2) var(--space-3);
+ border-left:1px solid var(--border-line);background:var(--surface-subtle);
+ color:var(--text-secondary)}
+hr{border:0;border-top:1px solid var(--border-subtle);margin:var(--space-4) 0}
+
+/* --- 徽标 / 标签（★ 胶囊圆角走令牌；⛔ 无组色相） --- */
+.badge{display:inline-block;border:1px solid var(--border-line);
+ border-radius:var(--radius-pill);padding:0 var(--space-2);font-size:var(--fs-label);
+ line-height:1.7;color:var(--text-secondary)}
+.badge--ok{border-color:var(--brand-primary);color:var(--text-primary)}
+.badge--pending{color:var(--text-secondary)}
+.badge--warn{border-color:var(--warning);color:var(--warning)}
+.badge--danger{border-color:var(--danger);color:var(--danger)}
+.tier{font-size:var(--fs-label);color:var(--text-secondary);
+ border:1px solid var(--border-subtle);border-radius:var(--radius);padding:0 var(--space-1)}
+.gseq{font-family:var(--font-mono);font-weight:700;font-size:var(--fs-label);
+ color:var(--text-secondary);letter-spacing:0.04em}
+.gchip{display:inline-flex;align-items:center;gap:var(--space-1);min-height:44px;
+ background:var(--surface-subtle);border:1px solid var(--border-subtle);
+ border-radius:var(--radius-pill);padding:0 var(--space-2);
+ font-size:var(--fs-label);font-weight:500;color:var(--text-primary)}
+.gchip__name{font-weight:400}
+.legend{display:flex;flex-wrap:wrap;gap:var(--space-2) var(--space-3);align-items:center;
+ font-size:var(--fs-label);color:var(--text-secondary);margin:var(--space-2) 0 var(--space-3)}
+.layer-block{border:1px solid var(--border-subtle);border-radius:var(--radius-lg);
+ padding:var(--space-2) var(--space-3);margin:var(--space-2) 0;
+ background:var(--surface-stripe)}
+.layer-block h3{margin-top:0}
+.why-layer{color:var(--text-secondary);font-size:var(--fs-label);margin:var(--space-1) 0 0}
+.node-list{list-style:none;padding:0;margin:var(--space-1) 0 0}
+.node-list li{margin:var(--space-1) 0}
+.nid{font-family:var(--font-mono);font-size:var(--fs-label);color:var(--text-secondary)}
+.kv{display:grid;grid-template-columns:auto 1fr;gap:var(--space-1) var(--space-2);
+ margin:var(--space-2) 0;font-size:var(--fs-nav)}
+.kv dt{color:var(--text-secondary)}
+.kv dd{margin:0}
+.summary-box{border-left:1px solid var(--brand-primary);background:var(--surface-subtle);
+ padding:var(--space-2) var(--space-3);border-radius:0 var(--radius) var(--radius) 0;
+ margin:var(--space-3) 0}
+.pitfall-list li{margin:var(--space-1) 0}
+.pitfall-list li::marker{color:var(--danger)}
+.use-list li::marker{color:var(--brand-primary)}
+.avoid-list li::marker{color:var(--warning)}
+.notice{border:1px solid var(--border-line);border-left-width:2px;
+ border-radius:0 var(--radius) var(--radius) 0;background:var(--surface-subtle);
+ padding:var(--space-2) var(--space-3);margin:var(--space-3) 0}
+.notice strong{color:var(--warning)}
+.danger-note{border:1px solid var(--border-line);border-left-width:2px;
+ border-radius:0 var(--radius) var(--radius) 0;background:var(--surface-subtle);
+ padding:var(--space-2) var(--space-3);margin:var(--space-3) 0}
+.danger-note strong{color:var(--danger)}
+.ev{border:1px solid var(--border-subtle);border-radius:var(--radius);
+ padding:var(--space-2) var(--space-3);margin:var(--space-2) 0;
+ background:var(--surface-stripe)}
+.ev .claim{font-weight:600;margin:0 0 var(--space-1)}
+.ev .quote{margin:var(--space-1) 0 0;color:var(--text-secondary);
+ border-left:1px solid var(--border-subtle);padding-left:var(--space-2);
+ font-size:var(--fs-nav)}
+.ev .src{font-size:var(--fs-label);color:var(--text-secondary);margin:var(--space-1) 0 0;
+ word-break:break-all}
+
+/* --- skip link（body 第一个子元素）--- */
+.skip{position:absolute;left:-100vw;top:0;background:var(--brand-primary);
+ color:var(--on-brand);padding:var(--space-1) var(--space-2);border-radius:var(--radius);
+ z-index:99}
+.skip:focus{left:var(--space-2);top:var(--space-2);position:fixed}
+
+/* --- 背景层（真实摄影素材；DOM 顺序即堆叠顺序）--- */
+.backdrop{position:fixed;inset:0;z-index:-1;pointer-events:none;overflow:hidden}
+.backdrop__photo,.backdrop__veil,.backdrop__scrim{position:absolute;inset:0}
+.backdrop__photo{background-size:cover;background-position:center;
+ transform:scale(1.07);opacity:0.62}
+.backdrop__photo--day{background-image:url("../assets/backdrop/day-1920.webp");
+ filter:hue-rotate(-18deg) saturate(0.9)}
+.backdrop__photo--night{background-image:url("../assets/backdrop/night-portrait-1080.webp");
+ filter:contrast(1.5) brightness(0.62);display:none}
+.backdrop__veil--day{background:linear-gradient(180deg,
+ color-mix(in srgb,var(--surface-page) 88%,transparent) 0%,
+ color-mix(in srgb,var(--surface-page) 94%,transparent) 100%)}
+.backdrop__veil--night{background:linear-gradient(180deg,
+ color-mix(in srgb,var(--surface-page) 72%,transparent) 0%,
+ color-mix(in srgb,var(--surface-page) 86%,transparent) 100%);display:none}
+.backdrop__scrim{background:linear-gradient(180deg,transparent 0%,
+ color-mix(in srgb,var(--surface-page) var(--scrim-3),transparent) 100%)}
+html[data-theme="dark"] .backdrop__photo--day,
+html[data-theme="dark"] .backdrop__veil--day{display:none}
+html[data-theme="dark"] .backdrop__photo--night,
+html[data-theme="dark"] .backdrop__veil--night{display:block}
+@media (prefers-color-scheme: dark){
+ html:not([data-theme="light"]) .backdrop__photo--day,
+ html:not([data-theme="light"]) .backdrop__veil--day{display:none}
+ html:not([data-theme="light"]) .backdrop__photo--night,
+ html:not([data-theme="light"]) .backdrop__veil--night{display:block}
+}
+
+/* --- 分辨率阶梯（显式媒体查询；⛔ 不用 image-set）--- */
+@media (min-width: 760px){
+ .backdrop__photo--night{background-image:url("../assets/backdrop/night-1280.webp")}
+ .backdrop__photo--day{background-image:url("../assets/backdrop/day-1920.webp")}
+}
+@media (min-width: 1100px){
+ .backdrop__photo--night{background-image:url("../assets/backdrop/night-1920.webp")}
+ .backdrop__photo--day{background-image:url("../assets/backdrop/day-2560.webp")}
+}
+@media (min-width: 1100px) and (min-resolution: 2dppx){
+ .backdrop__photo--night{background-image:url("../assets/backdrop/night-2560.webp")}
+ .backdrop__photo--day{background-image:url("../assets/backdrop/day-2560.webp")}
+}
+@media (min-width: 1900px){
+ .backdrop__photo--night{background-image:url("../assets/backdrop/night-2560.webp")}
+ .backdrop__photo--day{background-image:url("../assets/backdrop/day-2560.webp")}
+}
+
+/* --- 交互图容器 --- */
+.cy-wrap{border:1px solid var(--border-subtle);border-radius:var(--radius-lg);
+ background:var(--surface-raised);overflow:hidden}
+#cy{width:100%;height:min(72vh,40rem);display:block}
+.cy-bar{display:flex;flex-wrap:wrap;gap:var(--space-2);align-items:center;
+ justify-content:space-between;padding:var(--space-1) var(--space-2);
+ border-bottom:1px solid var(--border-subtle)}
+.cy-bar .hint{color:var(--text-secondary);font-size:var(--fs-label)}
+.cy-bar__btn{font:inherit;font-size:var(--fs-label);cursor:pointer;min-height:44px;
+ background:var(--surface-subtle);color:var(--text-primary);
+ border:1px solid var(--border-line);border-radius:var(--radius);padding:0 var(--space-2)}
+.cy-bar__btn[disabled]{cursor:not-allowed;opacity:0.6}
+
+/* --- 动效层：[data-reveal] ★ 用独立 translate 属性，⛔ 不用 transform ---
+   ★ 错峰步长 60ms：进场完成时间上界 1800ms 的预算反解。
+   ★ **阈值的唯一来源是 `gate_prototype.MOTION_REVEAL_MAX`（当前 32）与 P28 的实读** ——
+     本注释**⛔ 不写第二份阈值**（原文写「单页最大 16 个」，与门控常量 32 不符，属「同一名词两个口径」；
+     2026-10-16 第 6 轮按 T-4 改为**只引来源、不抄数字**）。
+   ★ 另修同族缺陷：本条注释此前**逐字重复了两遍**（第 785/786 行）⇒ 已去重。
+   实测：第 6 轮收口时单页最大 [data-reveal] = 10 ⇒ 进场 = 60ms×(10−1) + --dur-4(850ms) = 1390ms ≤ 1800ms。
+   该推导同时写进门控 P28 的说明，⛔ 不得只写在这里。 */
+html.js-motion [data-reveal]{opacity:0;translate:0 var(--reveal-shift)}
+html.js-motion [data-reveal].is-in{
+ opacity:1;translate:0 0;
+ animation:reveal-in var(--dur-4) var(--ease-out) both;
+ animation-delay:calc(var(--i,0) * 60ms)}
+@keyframes reveal-in{
+ from{opacity:0;translate:0 var(--reveal-shift)}
+ to{opacity:1;translate:0 0}
+}
+/* 熔断一：系统「减少动态效果」 */
+@media (prefers-reduced-motion: reduce){
+ :root:not([data-motion="on"]) *,
+ :root:not([data-motion="on"]) *::before,
+ :root:not([data-motion="on"]) *::after{
+  animation-duration:0.001s;animation-iteration-count:1;transition-duration:0.001s}
+ :root:not([data-motion="on"]) [data-reveal]{opacity:1;translate:0 0}
+}
+/* 熔断二：显式关闭（三态开关的 off 档） */
+:root[data-motion="off"] *,
+:root[data-motion="off"] *::before,
+:root[data-motion="off"] *::after{
+ animation-duration:0.001s;animation-iteration-count:1;transition-duration:0.001s}
+:root[data-motion="off"] [data-reveal]{opacity:1;translate:0 0}
+
+/* --- 容器内边距 16 → 24(≥640) → 32(≥1024) --- */
+@media (min-width: 640px){
+ .layout,.wrap{padding-left:var(--space-4);padding-right:var(--space-4)}
+}
+@media (min-width: 768px){
+ .grid{grid-template-columns:repeat(auto-fit,minmax(17rem,1fr))}
+}
+@media (min-width: 1024px){
+ .layout,.wrap{padding-left:var(--space-5);padding-right:var(--space-5)}
+}
+/* ★ 导航二选一：≥1180 顶部导航 display:none ＋ 左栏 rail 可见；⛔ 不叠加。
+   ★ 显示开关随导航同档切换：<1180 在顶部导航内、≥1180 在 rail 底部（`.rail__foot`）
+   ⇒ 任一宽度档下**可见的开关实例恰 1 组**（另一组由 display:none 关闭，不参与交互与
+   无障碍树）。rail 自身 align-self:stretch ⇒ 撑满 grid 行高（＝正文 ＋ 页脚，故左栏铺满整页
+   竖向）而非止于 100dvh。 */
+@media (min-width: 1180px){
+ .site-head{display:none}
+ .rail{display:block;align-self:stretch;grid-row:1 / span 2}
+ .layout{display:grid;grid-template-columns:var(--rail-w) minmax(0,1fr);
+  align-items:start;padding-left:0;padding-right:0}
+ .layout>main{padding:0 var(--space-5)}
+ /* 页脚独占第 2 行、跨两列 ⇒ rail（跨 1–2 行）连同页脚区一并铺满竖向。
+    ⛔ 页脚不得留在 .layout 之外：那样左栏只到正文底，页脚旁仍是空档。 */
+ .layout>.site-foot{grid-column:1 / -1;padding-left:var(--space-5);padding-right:var(--space-5)}
+}
+@media (min-width: 1900px){
+ .layout{max-width:var(--container)}
+}
+
+/* --- 悬停态：★ 全站 :hover 一律包在 @media (hover: hover) 内 --- */
+@media (hover: hover){
+ a:hover{color:var(--brand-primary);text-decoration:underline}
+ .nav__link:hover{color:var(--text-primary)}
+ .rail__link:hover{color:var(--text-primary);background:var(--surface-subtle)}
+ .switch__btn:hover{border-color:var(--brand-primary);color:var(--text-primary)}
+ .cy-bar__btn:hover{border-color:var(--brand-primary);color:var(--text-primary)}
+ .card:hover{transform:translateY(-3px);border-color:var(--brand-tint);
+  box-shadow:var(--shadow-2),inset 0 1px 0 var(--edge-highlight)}
+ .card__title-link:hover{color:var(--brand-primary)}
+ .gchip:hover{border-color:var(--border-line);color:var(--text-primary)}
+ summary:hover{color:var(--text-primary)}
+ .skip:hover{background:var(--brand-primary);color:var(--on-brand)}
+}
+
+/* --- 打印 --- */
+@media print{
+ .site-head,.rail,.switch,.switches,.cy-bar__btn,.backdrop{display:none}
+ body{background:var(--surface-raised)}
+}
+</style>
+</head>
+<body class="page-node" data-page-kind="node" data-page-id="PE-V-03">
+<a class="skip" href="#main">跳到正文</a>
+<div class="backdrop" aria-hidden="true"><div class="backdrop__photo backdrop__photo--day"></div><div class="backdrop__photo backdrop__photo--night"></div><div class="backdrop__veil backdrop__veil--day"></div><div class="backdrop__veil backdrop__veil--night"></div><div class="backdrop__scrim"></div></div>
+<header class="site-head"><div class="wrap head-in">
+<a class="brand" href="../index.html">新一代提示词工程 · 知识全景图<span>面向有工程基础、提示词工程尚未系统化的工程师</span></a>
+<nav class="nav" aria-label="站内导航"><a class="nav__link" href="../13-interactive/index.html">全景图</a><a class="nav__link" href="../14-views/01-learning-path.html">学习路径</a><a class="nav__link" href="../14-views/02-frontier.html">新一代模块</a><a class="nav__link" href="../12-groups/index.html">知识分组</a><a class="nav__link" href="../12-groups/g08.html">多模态</a></nav>
+<details class="settings"><summary class="settings__summary">显示设置</summary><div class="switches"><div class="switch" role="group" aria-label="配色主题"><span class="switch__legend" aria-hidden="true">主题</span><button type="button" class="switch__btn" data-theme-set="system" aria-pressed="true">主题：跟随系统</button><button type="button" class="switch__btn" data-theme-set="light" aria-pressed="false">主题：浅色</button><button type="button" class="switch__btn" data-theme-set="dark" aria-pressed="false">主题：深色</button></div><div class="switch" role="group" aria-label="动效偏好"><span class="switch__legend" aria-hidden="true">动效</span><button type="button" class="switch__btn" data-motion-set="system" aria-pressed="true">动效：跟随系统</button><button type="button" class="switch__btn" data-motion-set="on" aria-pressed="false">动效：开</button><button type="button" class="switch__btn" data-motion-set="off" aria-pressed="false">动效：关</button></div><div class="switch" role="group" aria-label="背景素材"><span class="switch__legend" aria-hidden="true">背景</span><button type="button" class="switch__btn" data-backdrop-set="on" aria-pressed="true">背景：开</button><button type="button" class="switch__btn" data-backdrop-set="off" aria-pressed="false">背景：关</button></div><div class="switch" role="group" aria-label="正文字号"><span class="switch__legend" aria-hidden="true">字号</span><button type="button" class="switch__btn" data-fontsize-set="standard" aria-pressed="true">字号：标准</button><button type="button" class="switch__btn" data-fontsize-set="large" aria-pressed="false">字号：大</button></div></div></details>
+</div></header>
+<div class="layout">
+<aside class="rail" aria-label="站点侧栏：站内导航与显示设置（宽屏形态）"><div class="rail__in"><p class="rail__title">站内导航</p><ul class="rail__list"><li><a class="rail__link" href="../index.html">首页</a></li><li><a class="rail__link" href="../13-interactive/index.html">全景图</a></li><li><a class="rail__link" href="../14-views/01-learning-path.html">学习路径</a></li><li><a class="rail__link" href="../14-views/02-frontier.html">新一代模块</a></li><li><a class="rail__link" href="../12-groups/index.html">知识分组</a></li><li><a class="rail__link" href="../12-groups/g08.html">多模态</a></li></ul><div class="rail__foot"><p class="rail__title">显示设置</p><div class="switches"><div class="switch" role="group" aria-label="配色主题"><span class="switch__legend" aria-hidden="true">主题</span><button type="button" class="switch__btn" data-theme-set="system" aria-pressed="true">主题：跟随系统</button><button type="button" class="switch__btn" data-theme-set="light" aria-pressed="false">主题：浅色</button><button type="button" class="switch__btn" data-theme-set="dark" aria-pressed="false">主题：深色</button></div><div class="switch" role="group" aria-label="动效偏好"><span class="switch__legend" aria-hidden="true">动效</span><button type="button" class="switch__btn" data-motion-set="system" aria-pressed="true">动效：跟随系统</button><button type="button" class="switch__btn" data-motion-set="on" aria-pressed="false">动效：开</button><button type="button" class="switch__btn" data-motion-set="off" aria-pressed="false">动效：关</button></div><div class="switch" role="group" aria-label="背景素材"><span class="switch__legend" aria-hidden="true">背景</span><button type="button" class="switch__btn" data-backdrop-set="on" aria-pressed="true">背景：开</button><button type="button" class="switch__btn" data-backdrop-set="off" aria-pressed="false">背景：关</button></div><div class="switch" role="group" aria-label="正文字号"><span class="switch__legend" aria-hidden="true">字号</span><button type="button" class="switch__btn" data-fontsize-set="standard" aria-pressed="true">字号：标准</button><button type="button" class="switch__btn" data-fontsize-set="large" aria-pressed="false">字号：大</button></div></div></div></div></aside>
+<main id="main">
+<nav class="crumbs" aria-label="面包屑"><ol><li><a href="../index.html">首页</a></li><li><a href="../12-groups/index.html">知识分组</a></li><li><a href="../12-groups/g08.html">G08 多模态</a></li><li aria-current="page">PE-V-03</li></ol></nav>
+<h1>位置敏感与注意力耗散</h1>
+<p class="page-en">Positional Sensitivity and Attention Dissipation</p>
+<p class="meta-line"><span class="nid">PE-V-03</span><span class="badge badge--ok">内容已写满</span><a class="gchip" href="../12-groups/g08.html"><span class="gseq">G08</span><span class="gchip__name">多模态</span></a><span>第 11 层</span></p>
+<div class="tag-row" aria-label="标签"><span class="tier">多模态</span><span class="tier">位置偏差</span><span class="tier">长上下文</span></div>
+<section class="read-map" aria-label="本页导读" data-reveal="1" style="--i:0"><p class="read-map__label">一句话结论</p><p class="read-map__claim">位置规律在文本长上下文上已实测、在多模态侧仍是待验假设，工程上只当构造原则用：把最要紧的内容放在序列两头、对长输入做切分与编号引用，并在真实长度上实测，而不是靠重复来加权。</p><p class="read-map__label">本页结构（可跳转）</p><ul class="read-map__nav"><li><a href="#sec-why">01 为什么需要它</a></li><li><a href="#sec-intro">02 机制说明</a></li><li><a href="#sec-when">03 何时该用 / 何时不该用</a></li><li><a href="#sec-lab">04 实验台</a></li><li><a href="#sec-evidence">05 证据</a></li><li><a href="#sec-terms">06 术语</a></li><li><a href="#sec-pitfalls">07 失效模式</a></li><li><a href="#sec-rel">08 在本站知识结构中的位置</a></li></ul></section>
+<figure class="fig" id="fig-pe-v-03" data-reveal="1" style="--i:1"><svg class="fig__svg" role="img" aria-label="位置图：文本长上下文实测的首尾优先与中段退化、四条由该实测外推的应对手段，以及「多模态侧须在真实序列长度上重测」的纪律。"
+ viewBox="0.00 0.00 827.50 360.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 356)">
+
+<g id="node1" class="node">
+<title>W</title>
+<path fill="var(--brand-soft)" stroke="var(--brand-primary)" d="M208,-352C208,-352 12,-352 12,-352 6,-352 0,-346 0,-340 0,-340 0,-290 0,-290 0,-284 6,-278 12,-278 12,-278 208,-278 208,-278 214,-278 220,-284 220,-290 220,-290 220,-340 220,-340 220,-346 214,-352 208,-352"/>
+<text text-anchor="middle" x="110" y="-332.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">文本长上下文的窗口条（已实测）</text>
+<text text-anchor="middle" x="110" y="-318.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">同一段内容的三个位置</text>
+<text text-anchor="middle" x="110" y="-304.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">多模态是否沿用属待验假设</text>
+<text text-anchor="middle" x="110" y="-290.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">须按目标模型与真实序列长度重测</text>
+</g>
+<g id="node2" class="node">
+<title>H</title>
+<path fill="var(--surface-raised)" stroke="var(--success)" d="M157,-242C157,-242 63,-242 63,-242 57,-242 51,-236 51,-230 51,-230 51,-194 51,-194 51,-188 57,-182 63,-182 63,-182 157,-182 157,-182 163,-182 169,-188 169,-194 169,-194 169,-230 169,-230 169,-236 163,-242 157,-242"/>
+<text text-anchor="middle" x="110" y="-222.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">首部</text>
+<text text-anchor="middle" x="110" y="-208.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">最易被采信</text>
+<text text-anchor="middle" x="110" y="-194.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">（文本侧实测）</text>
+</g>
+<g id="edge1" class="edge">
+<title>W&#45;&gt;H</title>
+<path fill="none" stroke="var(--border-line)" d="M110,-277.82C110,-268.62 110,-258.73 110,-249.51"/>
+<polygon fill="var(--border-line)" stroke="var(--border-line)" points="112.45,-249.29 110,-242.29 107.55,-249.29 112.45,-249.29"/>
+</g>
+<g id="node3" class="node">
+<title>M</title>
+<path fill="var(--surface-raised)" stroke="var(--danger)" d="M306.5,-242C306.5,-242 199.5,-242 199.5,-242 193.5,-242 187.5,-236 187.5,-230 187.5,-230 187.5,-194 187.5,-194 187.5,-188 193.5,-182 199.5,-182 199.5,-182 306.5,-182 306.5,-182 312.5,-182 318.5,-188 318.5,-194 318.5,-194 318.5,-230 318.5,-230 318.5,-236 312.5,-242 306.5,-242"/>
+<text text-anchor="middle" x="253" y="-222.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">中部</text>
+<text text-anchor="middle" x="253" y="-208.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">中段取用显著退化</text>
+<text text-anchor="middle" x="253" y="-194.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">（文本侧实测）</text>
+</g>
+<g id="edge2" class="edge">
+<title>H&#45;&gt;M</title>
+<path fill="none" stroke="var(--border-line)" d="M169.21,-212C175.21,-212 181.21,-212 187.21,-212"/>
+</g>
+<g id="node4" class="node">
+<title>T</title>
+<path fill="var(--surface-raised)" stroke="var(--success)" d="M443,-242C443,-242 349,-242 349,-242 343,-242 337,-236 337,-230 337,-230 337,-194 337,-194 337,-188 343,-182 349,-182 349,-182 443,-182 443,-182 449,-182 455,-188 455,-194 455,-194 455,-230 455,-230 455,-236 449,-242 443,-242"/>
+<text text-anchor="middle" x="396" y="-222.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">尾部</text>
+<text text-anchor="middle" x="396" y="-208.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">最易被采信</text>
+<text text-anchor="middle" x="396" y="-194.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">（文本侧实测）</text>
+</g>
+<g id="edge3" class="edge">
+<title>M&#45;&gt;T</title>
+<path fill="none" stroke="var(--border-line)" d="M318.63,-212C324.68,-212 330.72,-212 336.77,-212"/>
+</g>
+<g id="node5" class="node">
+<title>A1</title>
+<path fill="var(--surface-raised)" stroke="var(--success)" d="M301.5,-146C301.5,-146 204.5,-146 204.5,-146 198.5,-146 192.5,-140 192.5,-134 192.5,-134 192.5,-122 192.5,-122 192.5,-116 198.5,-110 204.5,-110 204.5,-110 301.5,-110 301.5,-110 307.5,-110 313.5,-116 313.5,-122 313.5,-122 313.5,-134 313.5,-134 313.5,-140 307.5,-146 301.5,-146"/>
+<text text-anchor="middle" x="253" y="-124.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">① 关键图置首尾</text>
+</g>
+<g id="node9" class="node">
+<title>N</title>
+<polygon fill="var(--surface-subtle)" stroke="var(--border-line)" points="422,-74 78,-74 78,0 428,0 428,-68 422,-74"/>
+<polyline fill="none" stroke="var(--border-line)" points="422,-74 422,-68 "/>
+<polyline fill="none" stroke="var(--border-line)" points="428,-68 422,-68 "/>
+<text text-anchor="middle" x="253" y="-54.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">注意力预算：token 越多，单位 token 分得的注意力越少</text>
+<text text-anchor="middle" x="253" y="-40.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">文本侧已实测：首尾更易被采信、中段退化</text>
+<text text-anchor="middle" x="253" y="-26.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">多模态是否沿用属待验假设，幅度未验</text>
+<text text-anchor="middle" x="253" y="-12.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">四条应对是外推的构造原则，非实测结论</text>
+</g>
+<g id="node6" class="node">
+<title>A2</title>
+<path fill="var(--surface-raised)" stroke="var(--success)" d="M466,-146C466,-146 344,-146 344,-146 338,-146 332,-140 332,-134 332,-134 332,-122 332,-122 332,-116 338,-110 344,-110 344,-110 466,-110 466,-110 472,-110 478,-116 478,-122 478,-122 478,-134 478,-134 478,-140 472,-146 466,-146"/>
+<text text-anchor="middle" x="405" y="-124.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">② 编号建立显式对应</text>
+</g>
+<g id="node7" class="node">
+<title>A3</title>
+<path fill="var(--surface-raised)" stroke="var(--success)" d="M630,-146C630,-146 508,-146 508,-146 502,-146 496,-140 496,-134 496,-134 496,-122 496,-122 496,-116 502,-110 508,-110 508,-110 630,-110 630,-110 636,-110 642,-116 642,-122 642,-122 642,-134 642,-134 642,-140 636,-146 630,-146"/>
+<text text-anchor="middle" x="569" y="-124.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">③ 长序列先筛选压缩</text>
+</g>
+<g id="node8" class="node">
+<title>A4</title>
+<path fill="var(--surface-raised)" stroke="var(--success)" d="M807.5,-146C807.5,-146 672.5,-146 672.5,-146 666.5,-146 660.5,-140 660.5,-134 660.5,-134 660.5,-122 660.5,-122 660.5,-116 666.5,-110 672.5,-110 672.5,-110 807.5,-110 807.5,-110 813.5,-110 819.5,-116 819.5,-122 819.5,-122 819.5,-134 819.5,-134 819.5,-140 813.5,-146 807.5,-146"/>
+<text text-anchor="middle" x="740" y="-124.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">④ 必要时拆成多次调用</text>
+</g>
+<g id="node10" class="node">
+<title>E</title>
+<polygon fill="var(--surface-subtle)" stroke="var(--border-line)" points="724,-60 446,-60 446,-14 730,-14 730,-54 724,-60"/>
+<polyline fill="none" stroke="var(--border-line)" points="724,-60 724,-54 "/>
+<polyline fill="none" stroke="var(--border-line)" points="730,-54 724,-54 "/>
+<text text-anchor="middle" x="588" y="-40.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">评测纪律：多模态侧须在真实序列长度上重测</text>
+<text text-anchor="middle" x="588" y="-26.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">短样本或理想化设定上的结论不能外推</text>
+</g>
+</g>
+</svg><figcaption>位置图：文本长上下文实测的首尾优先与中段退化、四条由该实测外推的应对手段，以及「多模态侧须在真实序列长度上重测」的纪律。 <span class="fig__src">（本站自制）</span></figcaption></figure>
+<h2 id="sec-why"><span class="sec-no">01</span>为什么需要它</h2>
+<p class="claim">输入各段在序列中的位置会系统性影响它被采信的程度：在文本长上下文上已实测到，首段与末段更容易被采信、中段容易被跳过，且当输入长度超过上下文窗口的某一占比之后，位置效应的形态本身还会改变。</p>
+<ul class="points"><li>多模态输入是否同样受这条约束支配，目前只是待验假设：同一张图放在序列的不同位置、图文相对次序不同会不会改变结果、改变多少，都还没有实测结论，必须按目标模型与目标任务单独测量。</li><li>因此这条规律在多模态侧给出的是构造原则，即长输入必须重排与切分，而不是把同一句话多写几遍。</li></ul>
+<div class="boundary"><p class="boundary__label">适用边界</p><p>这条规律的适用面按证据强度分档：位置偏差与形态随长度改变，是文本长上下文上的实测结论，可直接用于纯文本输入；迁移到图像与文本交错的多模态输入时，它只提供构造原则，位置收益与耗散幅度都属未验项，必须在目标模型、目标序列长度与目标任务上重新测量之后才能写入结论。</p></div>
+<h2 id="sec-intro"><span class="sec-no">02</span>机制说明</h2>
+<p class="claim">机制分两条，两条的证据强度不同。</p>
+<ul class="points"><li>第一条是位置偏差：注意力在序列首尾更强、中段的有效注意力被稀释，关键信息埋在中段时容易被忽略；这一条在纯文本长上下文上已有实测支持，实测还给出了形态随长度改变的分界，即输入占上下文窗口约一半以内时位置偏差最强，超过之后首因偏差减弱、近因偏差相对稳定。</li><li>多模态输入是否沿用同一机制，目前只能作为待验假设：图像与文本交错时位置是否同样起作用、幅度多大，都没有可直接引用的实测，必须按目标模型单独测量。</li><li>第二条是耗散：序列越长，模态之间的引用越不可靠，模型更容易忽略早期图像，或把文本与图像错误绑定；这一条同样属于待验假设，其幅度随模型与序列长度变化。</li><li>工程上的应对有四条，它们是由文本侧实测外推的构造原则，不是多模态实测结论：把关键图像放在首尾这类注意力较强位置；用编号显式建立文本与图像的对应关系，减少对位置指代的依赖；对长序列先做筛选与压缩，只保留与任务相关的模态片段；在必须保留长序列时拆成多次调用而非一次塞入。</li><li>评测侧要在真实序列长度与真实管线上验证，不能用短样本或理想化设定的结论外推，复现研究已经点出这是排序类结论的主要方差来源。</li></ul>
+<h2 id="sec-when"><span class="sec-no">03</span>何时该用 / 何时不该用</h2>
+<div class="table-scroll"><table class="cmp-table"><caption>按场景对照：先看条件，再看该怎么做。</caption><thead><tr><th>类别</th><th>场景 / 条件（总结）</th><th>具体做法（细节）</th></tr></thead><tbody><tr><td>该用</td><td>长多模态序列构造</td><td>把最要紧的图像与指令放在序列首尾、中段只放可被牺牲的补充材料；这是由文本侧实测外推的构造原则，收益须在目标模型上实测确认。</td></tr><tr><td>该用</td><td>序列长度接近上下文窗口上限</td><td>文本侧实测显示位置效应的形态会随输入占比改变，因此应先筛选压缩或拆成多次调用，不要按短样本的经验直接铺满。</td></tr><tr><td>该用</td><td>图文混合输入</td><td>用编号显式建立文本与图像的对应关系，减少对位置指代的依赖；编号引用是构造层建议，其效果同样须在目标模型上实测。</td></tr><tr><td>不该用</td><td>用短序列的结论外推</td><td>位置规律随长度与模型变化，必须在该长度上实测。</td></tr><tr><td>不该用</td><td>靠重复同一句话来加权</td><td>重复会挤占注意力预算，正确做法是重排与切分。</td></tr></tbody></table></div>
+<h2 id="sec-lab"><span class="sec-no">04</span>实验台</h2>
+<ol class="steps"><li><p class="meta-line"><span class="badge">shell</span><span class="tier">bash</span></p><details class="acc"><summary>查看代码</summary><pre><code>python3 - &lt;&lt;&#x27;PY&#x27;
+BODY = [&#x27;文档 %d：与任务无关的补充材料。&#x27; % i for i in range(12)]
+NEEDLE = &#x27;关键约束：输出必须使用 JSON。&#x27;
+
+def build(where):
+    rows = list(BODY)
+    pos = {&#x27;head&#x27;: 0, &#x27;middle&#x27;: len(rows) // 2, &#x27;tail&#x27;: len(rows)}[where]
+    rows.insert(pos, NEEDLE)
+    return rows
+
+for where in (&#x27;head&#x27;, &#x27;middle&#x27;, &#x27;tail&#x27;):
+    rows = build(where)
+    idx = rows.index(NEEDLE)
+    ratio = idx / (len(rows) - 1)
+    print(&#x27;%-6s 关键句行号 %2d / %2d  相对位置 %.2f&#x27; % (where, idx, len(rows) - 1, ratio))
+    if where == &#x27;middle&#x27;:
+        assert 0.4 &lt; ratio &lt; 0.6, ratio
+print(&#x27;中间档相对位置落在 0.4 到 0.6 之间，确认关键句被埋在序列中段&#x27;)
+PY</code></pre></details><p class="lede">预期观察：脚本打印三种排布下关键句的行号与相对位置：首尾两档接近 0 与 1，中间档落在 0.4 到 0.6 之间并通过断言。这只证明排布构造正确；位置对采信度的实际影响必须在真实序列长度上调用模型测量，文本侧的实测结论不能直接当作多模态结论。</p></li><li><p class="meta-line"><span class="badge">prompt</span><span class="tier">markdown</span></p><details class="acc"><summary>查看代码</summary><pre><code>[图 1 · 关键] 整体架构截图
+…… 此处为 10 张与结论无关的补充截图 ……
+[图 12 · 关键] 报错栈截图
+
+任务：对照图 1 与图 12，判断报错发生在架构的哪一层，并说明依据。
+
+引用规则：正文只写「图 3」这类编号，不得写「上面那张图」「后面那张图」这类位置指代；补充截图仅供核对，不改变结论。</code></pre></details><p class="lede">预期观察：关键图分别位于序列首尾并以编号被引用，中段只放补充材料；正文引用一律走编号，位置指代被消除，指代关系不再依赖交错次序。这是输入构造层的检查项；编号引用能否降低定位错误，仍须在目标模型上实测。</p></li></ol>
+<h2 id="sec-evidence"><span class="sec-no">05</span>证据</h2>
+<div class="kv-blocks"><article class="kv-block"><p class="kv-block__row"><span class="kv-block__k">主张</span><span class="kv-block__v">一手论文在文本长上下文上实测：相关信息位于输入首尾时表现最好，必须到中段取用时显著退化；本条支持的是文本上下文的位置效应，不能直接当作视觉或多模态结论。</span></p><p class="kv-block__row"><span class="kv-block__k">分级</span><span class="kv-block__v"><span class="tier">official</span></span></p><p class="kv-block__row"><span class="kv-block__k">来源</span><span class="kv-block__v"><span class="nid">S-0063</span> <a href="https://aclanthology.org/2024.tacl-1.9/" rel="noopener noreferrer">https://aclanthology.org/2024.tacl-1.9/</a></span></p><p class="kv-block__row"><span class="kv-block__k">原文</span><span class="kv-block__v"><details class="acc"><summary>展开原文关键句</summary><blockquote class="quote">performance is often highest when relevant information occurs at the beginning or end of the input context ... degrades when models must access relevant information in the middle of long contexts</blockquote></details></span></p></article><article class="kv-block"><p class="kv-block__row"><span class="kv-block__k">主张</span><span class="kv-block__v">该预印本在文本长上下文上给出阈值：位置偏差在输入占上下文窗口约一半以内最强，超过之后首因偏差减弱而近因偏差相对稳定，即位置效应的形态随占比改变；该结论同样只覆盖文本侧，多模态侧须另行测量。</span></p><p class="kv-block__row"><span class="kv-block__k">分级</span><span class="kv-block__v"><span class="tier">paper</span></span></p><p class="kv-block__row"><span class="kv-block__k">来源</span><span class="kv-block__v"><span class="nid">S-0064</span> <a href="https://arxiv.org/abs/2508.07479" rel="noopener noreferrer">https://arxiv.org/abs/2508.07479</a></span></p><p class="kv-block__row"><span class="kv-block__k">原文</span><span class="kv-block__v"><details class="acc"><summary>展开原文关键句</summary><blockquote class="quote">the LiM effect is strongest when inputs occupy up to 50% of a model&#x27;s context window. Beyond that, the primacy bias weakens, while recency bias remains relatively stable.</blockquote></details></span></p></article><article class="kv-block"><p class="kv-block__row"><span class="kv-block__k">主张</span><span class="kv-block__v">该复现研究指出，排序效应的测量结论受主题抽样影响很大，理想化设定下的结论不一定迁移到真实文本检索管线，因此位置类结论必须在真实长度与真实管线上复测。</span></p><p class="kv-block__row"><span class="kv-block__k">分级</span><span class="kv-block__v"><span class="tier">paper</span></span></p><p class="kv-block__row"><span class="kv-block__k">来源</span><span class="kv-block__v"><span class="nid">S-0065</span> <a href="https://arxiv.org/abs/2605.27105" rel="noopener noreferrer">https://arxiv.org/abs/2605.27105</a></span></p><p class="kv-block__row"><span class="kv-block__k">原文</span><span class="kv-block__v"><details class="acc"><summary>展开原文关键句</summary><blockquote class="quote">topic sampling is a major source of variance: small topic sets can mask or exaggerate ordering effects ... conclusions drawn from idealised setups do not always transfer to real-world RAG pipelines.</blockquote></details></span></p></article></div>
+<h2 id="sec-terms"><span class="sec-no">06</span>术语</h2>
+<div class="kv-blocks"><article class="kv-block"><p class="kv-block__row"><span class="kv-block__k">术语</span><span class="kv-block__v"><strong>位置敏感与注意力耗散</strong>　Positional Sensitivity and Attention Dissipation</span></p><p class="kv-block__row"><span class="kv-block__k">界定</span><span class="kv-block__v">输入各段在序列中的位置影响其被采信程度的规律；文本长上下文侧已有实测，多模态侧是否沿用同一机制仍属待验假设，幅度须按目标模型单独测量。</span></p><p class="kv-block__row"><span class="kv-block__k">相关节点</span><span class="kv-block__v">—</span></p></article><article class="kv-block"><p class="kv-block__row"><span class="kv-block__k">术语</span><span class="kv-block__v"><strong>注意力预算</strong>　Attention Budget</span></p><p class="kv-block__row"><span class="kv-block__k">界定</span><span class="kv-block__v">模型在单个上下文窗口内可分配的有效注意力总量有限；token 越多，单位 token 可分得的注意力越少，这一约束构成上下文衰减的机制基础。</span></p><p class="kv-block__row"><span class="kv-block__k">相关节点</span><span class="kv-block__v">—</span></p></article><article class="kv-block"><p class="kv-block__row"><span class="kv-block__k">术语</span><span class="kv-block__v"><strong>迷失在中间</strong>　Lost in the Middle</span></p><p class="kv-block__row"><span class="kv-block__k">界定</span><span class="kv-block__v">相关信息位于长上下文首尾时表现最好、位于中间时显著退化的位置偏差；该效应在输入接近上下文窗口上限时会被距离型偏差取代，现有实测均来自文本长上下文。</span></p><p class="kv-block__row"><span class="kv-block__k">相关节点</span><span class="kv-block__v">—</span></p></article></div>
+<h2 id="sec-pitfalls"><span class="sec-no">07</span>失效模式</h2>
+<ul class="tight pitfall-list pair-list"><li><span class="pair__sum">把关键图像埋在长序列中段</span><span class="pair__detail">文本侧实测的注意力分布是首尾强、中段弱，多模态侧是否沿用尚未实测；把关键图放在中段，等于把结论押在一条未验假设上。</span></li><li><span class="pair__sum">用位置指代代替编号</span><span class="pair__detail">写「上面那张图」这类说法时，指代成立与否完全依赖交错次序，次序一改就可能错位；编号引用把这一依赖移到显式标识上，属于构造层建议。</span></li><li><span class="pair__sum">把长序列一次塞满</span><span class="pair__detail">跨模态引用随长度是否变得不可靠尚未实测，但单次调用的成本与延迟上升是确定的；先筛选压缩或拆成多次调用是可先落地的构造原则。</span></li><li><span class="pair__sum">把文本侧实测当成多模态实测</span><span class="pair__detail">支持这条规律的三条来源全部是文本长上下文研究，据此在多模态任务上下判断，等于在没有依据的地方做决策。</span></li><li><span class="pair__sum">用短样本的结论外推长序列</span><span class="pair__detail">文本侧实测已经显示位置效应的形态随输入占比改变，且测量结论受主题抽样影响；短样本上有效的排布在真实长度上可能完全失效。</span></li></ul>
+<h2 id="sec-rel"><span class="sec-no">08</span>在本站知识结构中的位置</h2>
+<dl class="kv"><dt>所属分组</dt><dd><a href="../12-groups/g08.html"><span class="gchip"><span class="gseq">G08</span><span class="gchip__name">多模态</span></span></a></dd><dt>依赖深度</dt><dd>第 11 层（同层节点彼此无先后约束）</dd></dl>
+<div class="relchain"><span class="relchain__label">前置</span><a class="gchip" href="../11-node-pages/pe-v-01.html">PE-V-01</a><span class="relchain__arrow">→</span><span class="gchip"><span class="nid">PE-V-03</span> 本节点</span><span class="relchain__arrow">→</span><span class="relchain__label">后继</span><a class="gchip" href="../11-node-pages/pe-p-05.html">PE-P-05</a></div>
+<p class="lede">在 <a href="../13-interactive/index.html#node-PE-V-03">交互全景图</a> 中定位本节点。</p>
+</main>
+<footer class="site-foot"><div class="wrap">
+<p>本站为原型产物：结构由生成器统一产出，内容按两态登记（已写满 / 架构在册）。读者锚点：面向有工程基础、提示词工程尚未系统化的工程师。</p>
+<p class="footer__nav"><a href="../index.html">回到首页</a> · <a href="../13-interactive/index.html">交互全景图</a> · <a href="../14-views/01-learning-path.html">学习路径</a></p>
+<div class="footer__credits"><h2>背景素材与许可</h2><p>本页背景为真实摄影素材（非自绘）。夜间帧取自 ESO 公开影像，许可 CC BY 4.0，须署名；日间帧取自 Wikimedia Commons 收录的 Unsplash 作品，许可 CC0 1.0，不要求署名。素材按视口宽度与像素密度分档加载，仅当前主题的帧被渲染。许可台账随素材同目录存放：LICENSES.json（背景摄影素材许可台账（逐件素材的出处 / 许可 / 派生说明 / 逐文件字节数）。）</p><ul class="credits"><li><span class="credits__name">A 340-million pixel starscape from Paranal</span> · <span class="credits__author">S. Guisard (ESO)</span> · <span class="credits__license">CC BY 4.0</span> · <a href="https://www.eso.org/public/images/eso0934a/" rel="noopener noreferrer">https://www.eso.org/public/images/eso0934a/</a> <span class="credits__files">（本站副本：night-1280.webp、night-1920.webp、night-2560.webp、night-portrait-1080.webp）</span></li><li><span class="credits__name">Lofoten, Norway</span> · <span class="credits__author">Unsplash 贡献者（原始上传见 Wikimedia Commons）</span> · <span class="credits__license">CC0 1.0</span> · <a href="https://upload.wikimedia.org/wikipedia/commons/8/86/Lofoten%2C_Norway_%28Unsplash%29.jpg" rel="noopener noreferrer">https://upload.wikimedia.org/wikipedia/commons/8/86/Lofoten%2C_Norway_%28Unsplash%29.jpg</a> <span class="credits__files">（本站副本：day-1280.webp、day-1920.webp、day-2560.webp）</span></li></ul></div>
+</div></footer>
+</div>
+</body>
+</html>

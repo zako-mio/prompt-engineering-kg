@@ -809,6 +809,287 @@ FIGS["pe-r-08"] = dict(
   S1 -> L [style=dotted, arrowhead=none];
 }""" % dict(node=NODE_ATTR, edge=EDGE_ATTR))
 
+# ★ 2026-10-16 内容波次 4：G07「模型迁移与成本」4 条 + G08「多模态」3 条 +
+#   G09「落地实践」6 条（PE-P-02 已于波次 3 出图，本波补其余 6 条），共 13 个节点页各自一张自制图。
+#   ★ 成对纪律：本处每条必须与 `gen-nodes.NODE_FIG` 的那条**同 fid 同 caption** 一起加
+#     （`figure_html` 对缺失图 id **静默返回空串** ⇒ 只加一处会让节点页 P35 ⑧ FAIL）。
+#   ★ 规格纪律（同波次 1/2/3）：`gen-figs.check_spec` 两条界同时生效 ——
+#     804px 内容列下渲染高 ≤ 600px、缩放比 `804 / viewBox 宽` ≥ 0.90（⇒ 宽 ≤ 893）。
+#   ★ 布局手法：本波 13 图一律 `rankdir=TB` + `{rank=same; …}`（此时才是**同一行**）：
+#     把「并列分支 / 手段 / 要点」排成行 ⇒ 宽度涨得可控、高度涨得慢，两条界同时满足。
+#     ★ 有向环或「同一 rank 内要求严格先后」的语义（如「弱档失败升到强档」）⛔ 不排成环，
+#       改写为行内并列 + 边标签，避免 `rank=same` 与链式约束相互抵消。
+#   ⛔ 色值只用 HEX2VAR 的 16 个；⛔ 无裸 hex / 无固定 width·height / 无外链。
+FIGS["pe-m-01"] = dict(
+    caption="机制图：请求按难度分派到不同档位、弱档失败再升档，以及「各档各自建基线 + 档位写成配置」两个前提。",
+    dot="""digraph fig {
+  rankdir=TB; bgcolor="transparent";
+  %(node)s %(edge)s
+  Q [label="同一批请求：难度与成本敏感度差异很大\\n⇒ 用同一档模型处理既不经济也不必要", fillcolor="#dfe6fb", color="#2f4bd8"];
+  R [label="分派规则：按难度 / 任务类型 / 数据敏感度\\n可以是规则、轻量分类器，或由强模型自我判断", fillcolor="#dfe6fb", color="#2f4bd8"];
+  T1 [label="廉价档\\n路由与抽取类请求", color="#136f3a"];
+  T2 [label="高档\\n难题与高价值请求", color="#9a5310"];
+  N [label="两个前提\\n① 各档各自建评测基线，否则无法判断换档是否可接受\\n② 档位写成配置而非硬编码，换模型只改配置并重跑评测", shape=note, fillcolor="#e9eef8"];
+  M [label="监控侧：分别记录各层调用量、质量与成本\\n以便持续校准分派阈值", shape=note, fillcolor="#e9eef8"];
+  Q -> R;
+  R -> T1 [label="按难度"];
+  R -> T2 [label="直接分派"];
+  T1 -> T2 [style=dashed, label="弱档失败即升档"];
+  {rank=same; T1; T2;}
+  {rank=same; N; M;}
+  T1 -> N [style=invis];
+  T2 -> M [style=invis];
+}""" % dict(node=NODE_ATTR, edge=EDGE_ATTR))
+
+FIGS["pe-m-02"] = dict(
+    caption="对照图：同一套标记写法在两个模型上收益相反、标记泄漏这一判据，以及按模型维护标记配置的应对。",
+    dot="""digraph fig {
+  rankdir=TB; bgcolor="transparent";
+  %(node)s %(edge)s
+  M [label="同一套标记写法（例如用 XML 标签包裹各段）", fillcolor="#dfe6fb", color="#2f4bd8"];
+  A [label="模型甲：对齐训练覆盖此类标记\\n⇒ 标签被当作结构信号，收益明显", color="#136f3a"];
+  B [label="模型乙：未覆盖此类标记\\n⇒ 忽略标签，甚至把标签当正文打印", color="#b3181f"];
+  J [label="测试判据不只看准确率\\n还要看标记是否泄漏到输出\\n泄漏通常意味着结构信号未被识别", color="#9a5310"];
+  N [label="三个来源\\n训练数据中该类标记的出现频率 · 指令微调阶段是否用过这类标记\\n分词器对标记的切分方式（可能切成不利于整体识别的片段）", shape=note, fillcolor="#e9eef8"];
+  M -> A [label="敏感"];
+  M -> B [label="不敏感"];
+  A -> J [style=invis];
+  B -> J;
+  {rank=same; A; B;}
+  {rank=same; J; N;}
+}""" % dict(node=NODE_ATTR, edge=EDGE_ATTR))
+
+FIGS["pe-m-03"] = dict(
+    caption="流程图：换模型后的四步固定动作（建新基线 → 分离差异 → 针对性调整 → 跑全量回归），以及「哪些必须重建、哪些可以复用」。",
+    dot="""digraph fig {
+  rankdir=TB; bgcolor="transparent";
+  %(node)s %(edge)s
+  S1 [label="① 建立新基线\\n跑现有评测集", fillcolor="#dfe6fb", color="#2f4bd8"];
+  S2 [label="② 分离差异\\n模型差异与提示词问题", fillcolor="#dfe6fb", color="#2f4bd8"];
+  S3 [label="③ 针对性调整\\n只改失败项", fillcolor="#dfe6fb", color="#2f4bd8"];
+  S4 [label="④ 跑全量回归\\n确认没有新增失败", fillcolor="#dfe6fb", color="#2f4bd8"];
+  N [label="须重建的部分（与模型绑定）\\n指令措辞 · 示例 · 参数档位 · 格式约束强度", color="#9a5310"];
+  K [label="可复用的部分（与模型无关）\\n任务定义 · 输出契约 · 评测集 · 校验器", color="#136f3a"];
+  C [label="声明式编译路线：换模型后重跑编译即可产出新配置\\n这正是编译路线相对手工改提示的价值", shape=note, fillcolor="#e9eef8"];
+  S1 -> S2 -> S3 -> S4;
+  {rank=same; S1; S2; S3; S4;}
+  {rank=same; N; K;}
+  S2 -> N [style=dotted, arrowhead=none];
+  S2 -> K [style=invis];
+  N -> C [style=dotted, arrowhead=none];
+}""" % dict(node=NODE_ATTR, edge=EDGE_ATTR))
+
+FIGS["pe-m-04"] = dict(
+    caption="权衡图：三项指标互相牵制、三组典型取舍，以及「先定质量下限与延迟上限，再在约束内压成本」的工程做法。",
+    dot="""digraph fig {
+  rankdir=TB; bgcolor="transparent";
+  %(node)s %(edge)s
+  C [label="成本\\ntoken 与调用费用", color="#9a5310"];
+  Q [label="质量\\n任务达成程度", fillcolor="#dfe6fb", color="#2f4bd8"];
+  L [label="延迟\\n首字与总耗时", color="#9a5310"];
+  T1 [label="取舍一 推理深度与延迟成本\\n思考更久通常更准，也更慢更贵", color="#136f3a"];
+  T2 [label="取舍二 上下文规模与成本延迟\\n资料更多提高召回，也推高 token 与延迟", color="#136f3a"];
+  T3 [label="取舍三 采样次数与鲁棒性\\n多路径投票更稳，成本近线性增长", color="#136f3a"];
+  P [label="工程做法\\n先设定可接受的目标组合\\n质量下限 · 延迟上限 · 成本上限\\n再在满足约束的候选中选最便宜的方案", shape=note, fillcolor="#e9eef8"];
+  H [label="可用手段\\n模型分层与路由 · 提示缓存 · 输出格式压缩\\n推理深度档位调整 · 两阶段拆分\\n把重推理放在低频路径上", shape=note, fillcolor="#e9eef8"];
+  C -> Q [dir=both, label="牵制"];
+  Q -> L [dir=both, label="牵制"];
+  C -> L [dir=both, style=dashed];
+  {rank=same; C; Q; L;}
+  {rank=same; T1; T2; T3;}
+  {rank=same; P; H;}
+  Q -> T1 [style=invis];
+  T1 -> P [style=invis];
+}""" % dict(node=NODE_ATTR, edge=EDGE_ATTR))
+
+FIGS["pe-v-01"] = dict(
+    caption="结构图：文本与图像交错成序列的三种排布写法与其指代构造要点（可靠性须按目标模型实测），以及三条设计要点与一条边界。",
+    dot="""digraph fig {
+  rankdir=TB; bgcolor="transparent";
+  %(node)s %(edge)s
+  S [label="多模态输入的真实形态：文本与图像按原始顺序交错成长序列\\n⇒ 交错顺序本身是一项需要被固定与测试的输入设计", fillcolor="#dfe6fb", color="#2f4bd8"];
+  A [label="写法一 图像集中堆在末尾\\n指代关系只能靠位置猜测", color="#b3181f"];
+  B [label="写法二 图像就近放在被引用的文本旁\\n指代关系明确", color="#136f3a"];
+  C [label="写法三 给图像显式编号\\n文本中按编号指代，避免「上面那张图」", color="#136f3a"];
+  N [label="三条设计要点\\n顺序语义化：图像放在被引用的文本附近\\n编号与引用：多张图加编号，文本按编号指代\\n控制交错次数：过多交替会拉长序列并加剧注意力耗散", shape=note, fillcolor="#e9eef8"];
+  X [label="边界\\n多模态的位置敏感度不是单调规律\\n不能直接套用纯文本的「首尾优先」经验，须以实测为准", shape=note, fillcolor="#e9eef8"];
+  S -> A [label="对照"];
+  S -> B;
+  S -> C;
+  {rank=same; A; B; C;}
+  {rank=same; N; X;}
+  A -> X [style=invis];
+}""" % dict(node=NODE_ATTR, edge=EDGE_ATTR))
+
+FIGS["pe-v-02"] = dict(
+    caption="两段图：把「先定位再推断」拆成可复核的中间读数，以及不可信图像与不可信文本同等设防。",
+    dot="""digraph fig {
+  rankdir=TB; bgcolor="transparent";
+  %(node)s %(edge)s
+  Q [label="多模态任务：图表与文档截图类问题", fillcolor="#dfe6fb", color="#2f4bd8"];
+  A [label="第一步 定位\\n指出与问题相关的区域或元素：坐标 · 图例 · 数值位置", color="#136f3a"];
+  B [label="第二步 推断\\n基于定位结果做计算与判断", fillcolor="#dfe6fb", color="#2f4bd8"];
+  Z [label="对照写法：直接给结论\\n整体判断不可验证，错了也无法定位", color="#b3181f"];
+  N [label="价值：把不可验证的整体判断，变成可部分验证的中间结论\\n⇒ 中间读数可复核，错误定位能被指出来", shape=note, fillcolor="#e9eef8"];
+  S [label="跨模态安全\\n仅用文本数据做指令层级训练，只部分迁移到多模态攻击\\n需要跨模态解码、重建或推理指令时仍会失败\\n⇒ 不可信图像与不可信文本同等设防：标注 · 限权 · 校验", color="#9a5310"];
+  Q -> A [label="拆成两段"];
+  A -> B;
+  Q -> Z [style=dashed, label="对照"];
+  {rank=same; B; Z;}
+  {rank=same; N; S;}
+  B -> N [style=invis];
+}""" % dict(node=NODE_ATTR, edge=EDGE_ATTR))
+
+FIGS["pe-v-03"] = dict(
+    caption="位置图：文本长上下文实测的首尾优先与中段退化、四条由该实测外推的应对手段，以及「多模态侧须在真实序列长度上重测」的纪律。",
+    dot="""digraph fig {
+  rankdir=TB; bgcolor="transparent";
+  %(node)s %(edge)s
+  W [label="文本长上下文的窗口条（已实测）\\n同一段内容的三个位置\\n多模态是否沿用属待验假设\\n须按目标模型与真实序列长度重测", fillcolor="#dfe6fb", color="#2f4bd8"];
+  H [label="首部\\n最易被采信\\n（文本侧实测）", color="#136f3a"];
+  M [label="中部\\n中段取用显著退化\\n（文本侧实测）", color="#b3181f"];
+  T [label="尾部\\n最易被采信\\n（文本侧实测）", color="#136f3a"];
+  A1 [label="① 关键图置首尾", color="#136f3a"];
+  A2 [label="② 编号建立显式对应", color="#136f3a"];
+  A3 [label="③ 长序列先筛选压缩", color="#136f3a"];
+  A4 [label="④ 必要时拆成多次调用", color="#136f3a"];
+  N [label="注意力预算：token 越多，单位 token 分得的注意力越少\\n文本侧已实测：首尾更易被采信、中段退化\\n多模态是否沿用属待验假设，幅度未验\\n四条应对是外推的构造原则，非实测结论", shape=note, fillcolor="#e9eef8"];
+  E [label="评测纪律：多模态侧须在真实序列长度上重测\\n短样本或理想化设定上的结论不能外推", shape=note, fillcolor="#e9eef8"];
+  W -> H;
+  H -> M [style=solid, arrowhead=none];
+  M -> T [style=solid, arrowhead=none];
+  {rank=same; H; M; T;}
+  {rank=same; A1; A2; A3; A4;}
+  {rank=same; N; E;}
+  M -> A1 [style=invis];
+  A1 -> N [style=invis];
+}""" % dict(node=NODE_ATTR, edge=EDGE_ATTR))
+
+FIGS["pe-p-01"] = dict(
+    caption="结构图：提示词面的四层构成（常驻 / 按需 / 传递 / 判据）、各自的验证方式，以及盘点产出的清单形态。",
+    dot="""digraph fig {
+  rankdir=TB; bgcolor="transparent";
+  %(node)s %(edge)s
+  S [label="提示词面：一个 agent 的行为不只由系统提示决定", fillcolor="#dfe6fb", color="#2f4bd8"];
+  L1 [label="常驻层\\n系统提示 · 工具定义\\n安全规则", fillcolor="#dfe6fb", color="#2f4bd8"];
+  L2 [label="按需层\\n技能文件 · 检索资料\\n外部文档", fillcolor="#dfe6fb", color="#2f4bd8"];
+  L3 [label="传递层\\n子 Agent 任务描述\\n与返回契约", fillcolor="#dfe6fb", color="#2f4bd8"];
+  L4 [label="判据层\\n门控脚本 · 校验器\\n评测集判据", fillcolor="#dfe6fb", color="#2f4bd8"];
+  N [label="四层的更新节奏与验证方式不同\\n常驻层改动影响面最大 ⇒ 必须跑全量回归\\n按需层用渐进式披露控制占用\\n传递层需要契约稳定\\n判据层自身也需要负向自检", shape=note, fillcolor="#e9eef8"];
+  R [label="盘点的产出是一张清单\\n标注每部分的常驻策略 · 更新频率 · 验证方式\\n这张清单本身就是后续优化的依据", shape=note, fillcolor="#e9eef8"];
+  S -> L1;
+  S -> L2;
+  S -> L3;
+  S -> L4;
+  {rank=same; L1; L2; L3; L4;}
+  {rank=same; N; R;}
+  L3 -> N [style=invis];
+}""" % dict(node=NODE_ATTR, edge=EDGE_ATTR))
+
+FIGS["pe-p-03"] = dict(
+    caption="契约图：任务描述的五项自包含字段与返回结果的四项固定字段，以及模板化、可解析、可追溯三条工程要点。",
+    dot="""digraph fig {
+  rankdir=TB; bgcolor="transparent";
+  %(node)s %(edge)s
+  M [label="主 Agent 把可独立完成的子任务交给子 Agent", fillcolor="#dfe6fb", color="#2f4bd8"];
+  D [label="任务描述：五项自包含\\n目标\\n背景与约束\\n可用资源与工具\\n产出格式\\n失败时的处理方式", color="#136f3a"];
+  R [label="返回契约：四项固定字段\\n结论\\n依据（可追溯到具体来源或步骤）\\n未解决项\\n置信度或不确定性说明", color="#136f3a"];
+  N1 [label="三条工程要点\\n① 委派提示词模板化并版本化，使契约变更可被评审\\n② 返回结果用固定字段，可被机械解析而非自然语言段落", shape=note, fillcolor="#e9eef8"];
+  N2 [label="③ 保留子 Agent 原始输出以便复核\\n避免只留摘要后无法追溯\\n⇒ 契约可评审 · 结果可解析 · 过程可追溯", shape=note, fillcolor="#e9eef8"];
+  M -> D [label="发出"];
+  M -> R [label="收回"];
+  {rank=same; D; R;}
+  {rank=same; N1; N2;}
+  D -> N1 [style=invis];
+}""" % dict(node=NODE_ATTR, edge=EDGE_ATTR))
+
+FIGS["pe-p-04"] = dict(
+    caption="对照图：判据的四要素与三种失败形态（恒真 / 假绿 / 代理判据），以及失败输出三元组、不设豁免的纪律。",
+    dot="""digraph fig {
+  rankdir=TB; bgcolor="transparent";
+  %(node)s %(edge)s
+  G [label="一条可用的判据包含四要素\\n断言：检查什么 · 级别：失败是否阻断\\n证据：失败时输出什么定位信息\\n负向自检：一个必须触发失败的负例", fillcolor="#dfe6fb", color="#2f4bd8"];
+  F1 [label="形态一 恒真判据\\n断言永远为真 ⇒ 从不报错", color="#b3181f"];
+  F2 [label="形态二 假绿\\n门控全绿，而问题从未被检查", color="#b3181f"];
+  F3 [label="形态三 代理判据\\n优化了易测的代理量，真实目标未动", color="#b3181f"];
+  N [label="三条纪律\\n每个判据配一个负例夹具，改动判据后重跑全部负例\\n失败输出必须给出对象标识 · 期望 · 实测三元组\\n不设置死代码或死令牌豁免，豁免会成为新的漏洞面", shape=note, fillcolor="#e9eef8"];
+  D [label="与评测集的分工\\n评测集回答「质量是否变好」\\n门控回答「约束是否被违反」", shape=note, fillcolor="#e9eef8"];
+  G -> F1;
+  G -> F2;
+  G -> F3;
+  {rank=same; F1; F2; F3;}
+  {rank=same; N; D;}
+  F2 -> N [style=invis];
+}""" % dict(node=NODE_ATTR, edge=EDGE_ATTR))
+
+FIGS["pe-p-05"] = dict(
+    caption="生命周期图：记忆的四个动作（写入 / 检索 / 复核 / 退役）与零和预算，以及「未复核的反思结论不得入库」。",
+    dot="""digraph fig {
+  rankdir=TB; bgcolor="transparent";
+  %(node)s %(edge)s
+  W [label="写入\\n带来源与适用边界\\n设预算上限", fillcolor="#dfe6fb", color="#2f4bd8"];
+  R [label="检索\\n何时注入\\n注入多少", fillcolor="#dfe6fb", color="#2f4bd8"];
+  V [label="复核\\n被再次引用时\\n是否仍成立", fillcolor="#dfe6fb", color="#2f4bd8"];
+  X [label="退役\\n标记失效并归档\\n不删除", fillcolor="#dfe6fb", color="#2f4bd8"];
+  N [label="零和替换：新条目挤掉旧条目，避免记忆无限膨胀", color="#136f3a"];
+  F [label="反思与记忆的衔接\\n反思产生候选结论\\n只有经过复核的候选才能进入长期记忆", color="#9a5310"];
+  B [label="为什么必须配套复核与退役\\n记忆是过期经验的放大器：一条在旧模型上成立的结论\\n会持续影响新决策而不被质疑", shape=note, fillcolor="#e9eef8"];
+  W -> R -> V -> X;
+  {rank=same; W; R; V; X;}
+  {rank=same; N; F;}
+  V -> N [style=invis];
+  F -> B [style=dotted, arrowhead=none];
+}""" % dict(node=NODE_ATTR, edge=EDGE_ATTR))
+
+FIGS["pe-p-06"] = dict(
+    caption="结构图：接入实况的四个方面（来源与签名 / 传输与权限 / 能力面 / 可观测性），以及传输不是沙箱、规范转无状态两条硬事实。",
+    dot="""digraph fig {
+  rankdir=TB; bgcolor="transparent";
+  %(node)s %(edge)s
+  S [label="接入协议的真实工作量集中在治理与运维，而不是协议解析", fillcolor="#dfe6fb", color="#2f4bd8"];
+  A1 [label="来源与签名\\n服务端来自哪里\\n是否可核验\\n是否固定版本", fillcolor="#dfe6fb", color="#2f4bd8"];
+  A2 [label="传输与权限\\n用哪种传输\\n服务端进程\\n拥有什么权限", fillcolor="#dfe6fb", color="#2f4bd8"];
+  A3 [label="能力面\\n暴露了哪些工具与资源\\n是否包含写操作", fillcolor="#dfe6fb", color="#2f4bd8"];
+  A4 [label="可观测性\\n调用是否被记录\\n失败是否可归因", fillcolor="#dfe6fb", color="#2f4bd8"];
+  N [label="两条硬事实\\n① 标准输入输出传输不是沙箱，官方对此有明确表述\\n② 现行规范转为无状态，并移除了初始化握手与会话\\n旧实现需要改造", shape=note, fillcolor="#e9eef8"];
+  R [label="高风险工具加确认\\n并限制服务端权限", color="#9a5310"];
+  S -> A1;
+  S -> A2;
+  S -> A3;
+  S -> A4;
+  {rank=same; A1; A2; A3; A4;}
+  {rank=same; N; R;}
+  A2 -> R [style=invis];
+}""" % dict(node=NODE_ATTR, edge=EDGE_ATTR))
+
+FIGS["pe-p-07"] = dict(
+    caption="对照图：跨运行时差异的五处来源、最小复现三步流程，以及「搬得走结构、搬不走效力」的迁移边界。",
+    dot="""digraph fig {
+  rankdir=TB; bgcolor="transparent";
+  %(node)s %(edge)s
+  S [label="同一套提示词与编排逻辑，换运行时后表现不同", fillcolor="#dfe6fb", color="#2f4bd8"];
+  D1 [label="上下文注入", color="#9a5310"];
+  D2 [label="工具定义", color="#9a5310"];
+  D3 [label="记忆机制", color="#9a5310"];
+  D4 [label="门控入口", color="#9a5310"];
+  D5 [label="输出通道", color="#9a5310"];
+  P1 [label="① 最小复现\\n同一任务 · 同一模型\\n只换运行时，对比输出差异", color="#136f3a"];
+  P2 [label="② 差异归类\\n运行时隐式注入\\n工具定义差异\\n能力缺失", color="#136f3a"];
+  P3 [label="③ 逐类处置\\n决定是适配\\n还是放弃该能力", color="#136f3a"];
+  N [label="最容易被低估的一处\\n运行时对上下文的隐式注入会与提示词自身的指令竞争\\n且它不在提示词文件里可见", shape=note, fillcolor="#e9eef8"];
+  E [label="迁移边界：搬得走结构，搬不走效力\\n跨运行时结论必须在新环境重新验证，不能直接套用旧环境的结论", shape=note, fillcolor="#e9eef8"];
+  S -> D1;
+  S -> D2;
+  S -> D3;
+  S -> D4;
+  S -> D5;
+  {rank=same; D1; D2; D3; D4; D5;}
+  {rank=same; P1; P2; P3;}
+  {rank=same; N; E;}
+  D1 -> P1 [style=invis];
+  P1 -> N [style=invis];
+}""" % dict(node=NODE_ATTR, edge=EDGE_ATTR))
+
 
 # ---------------------------------------------------------------- 组页 mini-DAG（★ 2026-10-16 第 6 轮：G19 / B″ 收口）
 #

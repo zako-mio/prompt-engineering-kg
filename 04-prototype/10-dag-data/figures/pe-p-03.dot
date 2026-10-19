@@ -1,0 +1,14 @@
+digraph fig {
+  rankdir=TB; bgcolor="transparent";
+  node[shape=box, style="rounded,filled", fillcolor="#ffffff", color="#7c8aa5", fontcolor="#0e1729", fontname="Noto Sans CJK SC", fontsize=13, margin="0.20,0.12"]; edge[color="#7c8aa5", fontcolor="#46536b", fontname="Noto Sans CJK SC", fontsize=11, arrowsize=0.7];
+  M [label="主 Agent 把可独立完成的子任务交给子 Agent", fillcolor="#dfe6fb", color="#2f4bd8"];
+  D [label="任务描述：五项自包含\n目标\n背景与约束\n可用资源与工具\n产出格式\n失败时的处理方式", color="#136f3a"];
+  R [label="返回契约：四项固定字段\n结论\n依据（可追溯到具体来源或步骤）\n未解决项\n置信度或不确定性说明", color="#136f3a"];
+  N1 [label="三条工程要点\n① 委派提示词模板化并版本化，使契约变更可被评审\n② 返回结果用固定字段，可被机械解析而非自然语言段落", shape=note, fillcolor="#e9eef8"];
+  N2 [label="③ 保留子 Agent 原始输出以便复核\n避免只留摘要后无法追溯\n⇒ 契约可评审 · 结果可解析 · 过程可追溯", shape=note, fillcolor="#e9eef8"];
+  M -> D [label="发出"];
+  M -> R [label="收回"];
+  {rank=same; D; R;}
+  {rank=same; N1; N2;}
+  D -> N1 [style=invis];
+}

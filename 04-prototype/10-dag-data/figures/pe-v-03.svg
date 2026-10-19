@@ -1,0 +1,86 @@
+<svg class="fig__svg" role="img" aria-label="位置图：文本长上下文实测的首尾优先与中段退化、四条由该实测外推的应对手段，以及「多模态侧须在真实序列长度上重测」的纪律。"
+ viewBox="0.00 0.00 827.50 360.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 356)">
+
+<g id="node1" class="node">
+<title>W</title>
+<path fill="var(--brand-soft)" stroke="var(--brand-primary)" d="M208,-352C208,-352 12,-352 12,-352 6,-352 0,-346 0,-340 0,-340 0,-290 0,-290 0,-284 6,-278 12,-278 12,-278 208,-278 208,-278 214,-278 220,-284 220,-290 220,-290 220,-340 220,-340 220,-346 214,-352 208,-352"/>
+<text text-anchor="middle" x="110" y="-332.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">文本长上下文的窗口条（已实测）</text>
+<text text-anchor="middle" x="110" y="-318.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">同一段内容的三个位置</text>
+<text text-anchor="middle" x="110" y="-304.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">多模态是否沿用属待验假设</text>
+<text text-anchor="middle" x="110" y="-290.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">须按目标模型与真实序列长度重测</text>
+</g>
+<g id="node2" class="node">
+<title>H</title>
+<path fill="var(--surface-raised)" stroke="var(--success)" d="M157,-242C157,-242 63,-242 63,-242 57,-242 51,-236 51,-230 51,-230 51,-194 51,-194 51,-188 57,-182 63,-182 63,-182 157,-182 157,-182 163,-182 169,-188 169,-194 169,-194 169,-230 169,-230 169,-236 163,-242 157,-242"/>
+<text text-anchor="middle" x="110" y="-222.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">首部</text>
+<text text-anchor="middle" x="110" y="-208.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">最易被采信</text>
+<text text-anchor="middle" x="110" y="-194.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">（文本侧实测）</text>
+</g>
+<g id="edge1" class="edge">
+<title>W&#45;&gt;H</title>
+<path fill="none" stroke="var(--border-line)" d="M110,-277.82C110,-268.62 110,-258.73 110,-249.51"/>
+<polygon fill="var(--border-line)" stroke="var(--border-line)" points="112.45,-249.29 110,-242.29 107.55,-249.29 112.45,-249.29"/>
+</g>
+<g id="node3" class="node">
+<title>M</title>
+<path fill="var(--surface-raised)" stroke="var(--danger)" d="M306.5,-242C306.5,-242 199.5,-242 199.5,-242 193.5,-242 187.5,-236 187.5,-230 187.5,-230 187.5,-194 187.5,-194 187.5,-188 193.5,-182 199.5,-182 199.5,-182 306.5,-182 306.5,-182 312.5,-182 318.5,-188 318.5,-194 318.5,-194 318.5,-230 318.5,-230 318.5,-236 312.5,-242 306.5,-242"/>
+<text text-anchor="middle" x="253" y="-222.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">中部</text>
+<text text-anchor="middle" x="253" y="-208.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">中段取用显著退化</text>
+<text text-anchor="middle" x="253" y="-194.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">（文本侧实测）</text>
+</g>
+<g id="edge2" class="edge">
+<title>H&#45;&gt;M</title>
+<path fill="none" stroke="var(--border-line)" d="M169.21,-212C175.21,-212 181.21,-212 187.21,-212"/>
+</g>
+<g id="node4" class="node">
+<title>T</title>
+<path fill="var(--surface-raised)" stroke="var(--success)" d="M443,-242C443,-242 349,-242 349,-242 343,-242 337,-236 337,-230 337,-230 337,-194 337,-194 337,-188 343,-182 349,-182 349,-182 443,-182 443,-182 449,-182 455,-188 455,-194 455,-194 455,-230 455,-230 455,-236 449,-242 443,-242"/>
+<text text-anchor="middle" x="396" y="-222.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">尾部</text>
+<text text-anchor="middle" x="396" y="-208.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">最易被采信</text>
+<text text-anchor="middle" x="396" y="-194.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">（文本侧实测）</text>
+</g>
+<g id="edge3" class="edge">
+<title>M&#45;&gt;T</title>
+<path fill="none" stroke="var(--border-line)" d="M318.63,-212C324.68,-212 330.72,-212 336.77,-212"/>
+</g>
+<g id="node5" class="node">
+<title>A1</title>
+<path fill="var(--surface-raised)" stroke="var(--success)" d="M301.5,-146C301.5,-146 204.5,-146 204.5,-146 198.5,-146 192.5,-140 192.5,-134 192.5,-134 192.5,-122 192.5,-122 192.5,-116 198.5,-110 204.5,-110 204.5,-110 301.5,-110 301.5,-110 307.5,-110 313.5,-116 313.5,-122 313.5,-122 313.5,-134 313.5,-134 313.5,-140 307.5,-146 301.5,-146"/>
+<text text-anchor="middle" x="253" y="-124.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">① 关键图置首尾</text>
+</g>
+<g id="node9" class="node">
+<title>N</title>
+<polygon fill="var(--surface-subtle)" stroke="var(--border-line)" points="422,-74 78,-74 78,0 428,0 428,-68 422,-74"/>
+<polyline fill="none" stroke="var(--border-line)" points="422,-74 422,-68 "/>
+<polyline fill="none" stroke="var(--border-line)" points="428,-68 422,-68 "/>
+<text text-anchor="middle" x="253" y="-54.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">注意力预算：token 越多，单位 token 分得的注意力越少</text>
+<text text-anchor="middle" x="253" y="-40.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">文本侧已实测：首尾更易被采信、中段退化</text>
+<text text-anchor="middle" x="253" y="-26.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">多模态是否沿用属待验假设，幅度未验</text>
+<text text-anchor="middle" x="253" y="-12.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">四条应对是外推的构造原则，非实测结论</text>
+</g>
+<g id="node6" class="node">
+<title>A2</title>
+<path fill="var(--surface-raised)" stroke="var(--success)" d="M466,-146C466,-146 344,-146 344,-146 338,-146 332,-140 332,-134 332,-134 332,-122 332,-122 332,-116 338,-110 344,-110 344,-110 466,-110 466,-110 472,-110 478,-116 478,-122 478,-122 478,-134 478,-134 478,-140 472,-146 466,-146"/>
+<text text-anchor="middle" x="405" y="-124.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">② 编号建立显式对应</text>
+</g>
+<g id="node7" class="node">
+<title>A3</title>
+<path fill="var(--surface-raised)" stroke="var(--success)" d="M630,-146C630,-146 508,-146 508,-146 502,-146 496,-140 496,-134 496,-134 496,-122 496,-122 496,-116 502,-110 508,-110 508,-110 630,-110 630,-110 636,-110 642,-116 642,-122 642,-122 642,-134 642,-134 642,-140 636,-146 630,-146"/>
+<text text-anchor="middle" x="569" y="-124.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">③ 长序列先筛选压缩</text>
+</g>
+<g id="node8" class="node">
+<title>A4</title>
+<path fill="var(--surface-raised)" stroke="var(--success)" d="M807.5,-146C807.5,-146 672.5,-146 672.5,-146 666.5,-146 660.5,-140 660.5,-134 660.5,-134 660.5,-122 660.5,-122 660.5,-116 666.5,-110 672.5,-110 672.5,-110 807.5,-110 807.5,-110 813.5,-110 819.5,-116 819.5,-122 819.5,-122 819.5,-134 819.5,-134 819.5,-140 813.5,-146 807.5,-146"/>
+<text text-anchor="middle" x="740" y="-124.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">④ 必要时拆成多次调用</text>
+</g>
+<g id="node10" class="node">
+<title>E</title>
+<polygon fill="var(--surface-subtle)" stroke="var(--border-line)" points="724,-60 446,-60 446,-14 730,-14 730,-54 724,-60"/>
+<polyline fill="none" stroke="var(--border-line)" points="724,-60 724,-54 "/>
+<polyline fill="none" stroke="var(--border-line)" points="730,-54 724,-54 "/>
+<text text-anchor="middle" x="588" y="-40.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">评测纪律：多模态侧须在真实序列长度上重测</text>
+<text text-anchor="middle" x="588" y="-26.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">短样本或理想化设定上的结论不能外推</text>
+</g>
+</g>
+</svg>

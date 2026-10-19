@@ -57,7 +57,7 @@
 ## 第 7 层 · 4 个节点
 
 - PE-C-02 G03 RAG 提示模式（RAG Prompting Patterns）（架构在册）
-- PE-M-01 G07 模型分层选型（Model Tiering）（架构在册）
+- PE-M-01 G07 模型分层选型（Model Tiering）
 - PE-R-02 G02 范式反转：推理模型上经典技巧掉分（Paradigm Reversal: Classic Techniques Lose Ground on Reasoning Models）
 - PE-S-02 G01 三档严格度（Three Tiers of Strictness）
 
@@ -70,7 +70,7 @@
 ## 第 8 层 · 4 个节点
 
 - PE-C-03 G03 图检索与全局观（Graph Retrieval and Global View）（架构在册）
-- PE-M-02 G07 标记敏感度的迁移性（Transferability of Markup Sensitivity）（架构在册）
+- PE-M-02 G07 标记敏感度的迁移性（Transferability of Markup Sensitivity）
 - PE-O-01 G04 提示词链（Prompt Chaining）（架构在册）
 - PE-S-03 G01 推理与格式的冲突（Reasoning–Format Conflict）
 
@@ -84,7 +84,7 @@
 - PE-C-04 G03 检索质量与垃圾进垃圾出（Retrieval Quality and GIGO）（架构在册）
 - PE-O-02 G04 路由（Routing）（架构在册）
 - PE-S-04 G01 格式选型与词元效率（Format Choice and Token Efficiency）
-- PE-V-01 G08 交错输入（Interleaved Input）（架构在册）
+- PE-V-01 G08 交错输入（Interleaved Input）
 
 - 为什么在这层：PE-C-04 ← PE-C-03（PREREQ）无论哪种检索通道，质量都决定上限，故先建通道再谈质量
 - 为什么在这层：PE-O-02 ← PE-O-01（PREREQ）链是单一路径的流程，路由是在多条路径之间选择
@@ -97,7 +97,7 @@
 - PE-E-01 G05 为什么必须先建评测集（Why Build an Eval Set First）
 - PE-O-03 G04 并行化与投票（Parallelization and Voting）（架构在册）
 - PE-S-05 G01 校验与修复回路（Validation and Repair Loop）
-- PE-V-02 G08 视觉推理链（Visual Reasoning Chain）（架构在册）
+- PE-V-02 G08 视觉推理链（Visual Reasoning Chain）
 
 - 为什么在这层：PE-C-05 ← PE-C-04（PREREQ）检索质量解决「取到没取到」，位置偏差解决「取到了是否用上」
 - 为什么在这层：PE-E-01 ← PE-C-04（PREREQ）检索质量的教训是「先度量再优化」，这正是评测集的作用
@@ -112,7 +112,7 @@
 - PE-E-02 G05 测试集构造（Test Set Construction）
 - PE-O-04 G04 编排者—工作者（Orchestrator–Workers）（架构在册）
 - PE-R-03 G02 自一致性与多数投票（Self-Consistency and Majority Voting）
-- PE-V-03 G08 位置敏感与注意力耗散（Positional Sensitivity and Attention Dissipation）（架构在册）
+- PE-V-03 G08 位置敏感与注意力耗散（Positional Sensitivity and Attention Dissipation）
 
 - 为什么在这层：PE-C-06 ← PE-C-05（PREREQ）位置安排决定了提示的稳定结构，正是缓存可命中的前提
 - 为什么在这层：PE-E-02 ← PE-E-01（PREREQ）先建立评测集必要性，再谈如何构造才有区分度
@@ -167,7 +167,7 @@
 ## 第 16 层 · 3 个节点
 
 - PE-A-04 G06 过拒与安全—可用性权衡（Over-refusal and the Safety–Usability Tradeoff）
-- PE-P-01 G09 我的 agent 的提示词面（My Agent's Prompt Surface）（架构在册）
+- PE-P-01 G09 我的 agent 的提示词面（My Agent's Prompt Surface）
 - PE-R-08 G02 反思与自评回路（Reflection and Self-Critique Loop）
 
 - 为什么在这层：PE-A-04 ← PE-A-03（PREREQ）清单给出风险面，过拒讨论防御强度与可用性的取舍
@@ -191,7 +191,7 @@
 
 - PE-A-06 G06 不可信内容的标注与隔离（Tagging and Isolating Untrusted Content）
 - PE-E-06 G05 声明式编译与签名（Declarative Compilation and Signatures）
-- PE-P-03 G09 子 Agent 委派与返回契约（Sub-agent Delegation and Return Contract）（架构在册）
+- PE-P-03 G09 子 Agent 委派与返回契约（Sub-agent Delegation and Return Contract）
 
 - 为什么在这层：PE-A-06 ← PE-A-05（PREREQ）先掌握指令该怎么写，再学不可信内容该如何标注与隔离
 - 为什么在这层：PE-A-06 ← PE-C-02（PREREQ）检索资料是不可信内容的主要来源，提示模式须与标注配套
@@ -203,7 +203,7 @@
 
 - PE-E-04 G05 评测工具链与红蓝对抗（Evaluation Toolchain and Red Teaming）
 - PE-E-07 G05 文本梯度与反思式进化（Textual Gradient and Reflective Evolution）
-- PE-M-03 G07 换模型即失效与重编译（Model Swap Invalidates and Requires Recompilation）（架构在册）
+- PE-M-03 G07 换模型即失效与重编译（Model Swap Invalidates and Requires Recompilation）
 
 - 为什么在这层：PE-E-04 ← PE-A-06（FLOW）隔离措施是否有效只能靠对抗评测度量，故接评测工具链
 - 为什么在这层：PE-E-04 ← PE-E-03（PREREQ）先理解裁判偏差，才能正确使用工具链中的模型辅助断言
@@ -215,7 +215,7 @@
 ## 第 20 层 · 2 个节点
 
 - PE-E-08 G05 元提示（Meta-prompting）
-- PE-M-04 G07 成本—质量—延迟三角（Cost–Quality–Latency Triangle）（架构在册）
+- PE-M-04 G07 成本—质量—延迟三角（Cost–Quality–Latency Triangle）
 
 - 为什么在这层：PE-E-08 ← PE-E-07（PREREQ）先能改进组件，再让模型生成或改写提示词本身
 - 为什么在这层：PE-M-04 ← PE-M-03（PREREQ）重编译涉及预算，必须与成本、质量、延迟三项指标一起决策
@@ -231,7 +231,7 @@
 
 ## 第 22 层 · 1 个节点
 
-- PE-P-04 G09 门控即判据（Gate as Executable Criterion）（架构在册）
+- PE-P-04 G09 门控即判据（Gate as Executable Criterion）
 
 - 为什么在这层：PE-P-04 ← PE-E-09（FLOW）版本化与回归的判据形态，就是可执行的门控脚本
 - 为什么在这层：PE-P-04 ← PE-P-03（PREREQ）委派需要可验证的返回契约，门控即判据是它的机械形态
@@ -239,7 +239,7 @@
 
 ## 第 23 层 · 1 个节点
 
-- PE-P-05 G09 记忆与反思（Memory and Reflection）（架构在册）
+- PE-P-05 G09 记忆与反思（Memory and Reflection）
 
 - 为什么在这层：PE-P-05 ← PE-E-07（PREREQ）反思式进化与记忆机制共用同一套「候选—复核—落库」流程
 - 为什么在这层：PE-P-05 ← PE-O-06（PREREQ）持久化状态与长期记忆是同一类「跨调用事实」的两种载体
@@ -248,7 +248,7 @@
 
 ## 第 24 层 · 1 个节点
 
-- PE-P-06 G09 模型上下文协议接入实况（MCP in Practice）（架构在册）
+- PE-P-06 G09 模型上下文协议接入实况（MCP in Practice）
 
 - 为什么在这层：PE-P-06 ← PE-C-07（FLOW）协议原理落到自己的运行时上就是接入实况
 - 为什么在这层：PE-P-06 ← PE-P-05（PREREQ）记忆与上下文管理就绪后，再接入外部数据源与工具
@@ -256,7 +256,7 @@
 
 ## 第 25 层 · 1 个节点
 
-- PE-P-07 G09 跨运行时迁移教训（Lessons from Cross-runtime Migration）（架构在册）
+- PE-P-07 G09 跨运行时迁移教训（Lessons from Cross-runtime Migration）
 
 - 为什么在这层：PE-P-07 ← PE-P-06（PREREQ）接入实况之后是跨运行时迁移，后者会重新暴露接入差异
 

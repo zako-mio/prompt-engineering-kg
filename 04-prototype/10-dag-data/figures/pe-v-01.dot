@@ -1,0 +1,16 @@
+digraph fig {
+  rankdir=TB; bgcolor="transparent";
+  node[shape=box, style="rounded,filled", fillcolor="#ffffff", color="#7c8aa5", fontcolor="#0e1729", fontname="Noto Sans CJK SC", fontsize=13, margin="0.20,0.12"]; edge[color="#7c8aa5", fontcolor="#46536b", fontname="Noto Sans CJK SC", fontsize=11, arrowsize=0.7];
+  S [label="多模态输入的真实形态：文本与图像按原始顺序交错成长序列\n⇒ 交错顺序本身是一项需要被固定与测试的输入设计", fillcolor="#dfe6fb", color="#2f4bd8"];
+  A [label="写法一 图像集中堆在末尾\n指代关系只能靠位置猜测", color="#b3181f"];
+  B [label="写法二 图像就近放在被引用的文本旁\n指代关系明确", color="#136f3a"];
+  C [label="写法三 给图像显式编号\n文本中按编号指代，避免「上面那张图」", color="#136f3a"];
+  N [label="三条设计要点\n顺序语义化：图像放在被引用的文本附近\n编号与引用：多张图加编号，文本按编号指代\n控制交错次数：过多交替会拉长序列并加剧注意力耗散", shape=note, fillcolor="#e9eef8"];
+  X [label="边界\n多模态的位置敏感度不是单调规律\n不能直接套用纯文本的「首尾优先」经验，须以实测为准", shape=note, fillcolor="#e9eef8"];
+  S -> A [label="对照"];
+  S -> B;
+  S -> C;
+  {rank=same; A; B; C;}
+  {rank=same; N; X;}
+  A -> X [style=invis];
+}

@@ -1,0 +1,20 @@
+digraph fig {
+  rankdir=TB; bgcolor="transparent";
+  node[shape=box, style="rounded,filled", fillcolor="#ffffff", color="#7c8aa5", fontcolor="#0e1729", fontname="Noto Sans CJK SC", fontsize=13, margin="0.20,0.12"]; edge[color="#7c8aa5", fontcolor="#46536b", fontname="Noto Sans CJK SC", fontsize=11, arrowsize=0.7];
+  C [label="成本\ntoken 与调用费用", color="#9a5310"];
+  Q [label="质量\n任务达成程度", fillcolor="#dfe6fb", color="#2f4bd8"];
+  L [label="延迟\n首字与总耗时", color="#9a5310"];
+  T1 [label="取舍一 推理深度与延迟成本\n思考更久通常更准，也更慢更贵", color="#136f3a"];
+  T2 [label="取舍二 上下文规模与成本延迟\n资料更多提高召回，也推高 token 与延迟", color="#136f3a"];
+  T3 [label="取舍三 采样次数与鲁棒性\n多路径投票更稳，成本近线性增长", color="#136f3a"];
+  P [label="工程做法\n先设定可接受的目标组合\n质量下限 · 延迟上限 · 成本上限\n再在满足约束的候选中选最便宜的方案", shape=note, fillcolor="#e9eef8"];
+  H [label="可用手段\n模型分层与路由 · 提示缓存 · 输出格式压缩\n推理深度档位调整 · 两阶段拆分\n把重推理放在低频路径上", shape=note, fillcolor="#e9eef8"];
+  C -> Q [dir=both, label="牵制"];
+  Q -> L [dir=both, label="牵制"];
+  C -> L [dir=both, style=dashed];
+  {rank=same; C; Q; L;}
+  {rank=same; T1; T2; T3;}
+  {rank=same; P; H;}
+  Q -> T1 [style=invis];
+  T1 -> P [style=invis];
+}

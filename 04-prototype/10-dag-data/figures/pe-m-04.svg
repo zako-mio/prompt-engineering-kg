@@ -1,0 +1,82 @@
+<svg class="fig__svg" role="img" aria-label="权衡图：三项指标互相牵制、三组典型取舍，以及「先定质量下限与延迟上限，再在约束内压成本」的工程做法。"
+ viewBox="0.00 0.00 853.50 262.54" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 258.54)">
+
+<g id="node1" class="node">
+<title>C</title>
+<path fill="var(--surface-raised)" stroke="var(--warning)" d="M119,-240C119,-240 12,-240 12,-240 6,-240 0,-234 0,-228 0,-228 0,-206 0,-206 0,-200 6,-194 12,-194 12,-194 119,-194 119,-194 125,-194 131,-200 131,-206 131,-206 131,-228 131,-228 131,-234 125,-240 119,-240"/>
+<text text-anchor="middle" x="65.5" y="-220.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">成本</text>
+<text text-anchor="middle" x="65.5" y="-206.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">token 与调用费用</text>
+</g>
+<g id="node2" class="node">
+<title>Q</title>
+<path fill="var(--brand-soft)" stroke="var(--brand-primary)" d="M265,-240C265,-240 184,-240 184,-240 178,-240 172,-234 172,-228 172,-228 172,-206 172,-206 172,-200 178,-194 184,-194 184,-194 265,-194 265,-194 271,-194 277,-200 277,-206 277,-206 277,-228 277,-228 277,-234 271,-240 265,-240"/>
+<text text-anchor="middle" x="224.5" y="-220.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">质量</text>
+<text text-anchor="middle" x="224.5" y="-206.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">任务达成程度</text>
+</g>
+<g id="edge1" class="edge">
+<title>C&#45;&gt;Q</title>
+<path fill="none" stroke="var(--border-line)" d="M138.1,-217C146.94,-217 155.89,-217 164.51,-217"/>
+<polygon fill="var(--border-line)" stroke="var(--border-line)" points="138.09,-214.55 131.09,-217 138.09,-219.45 138.09,-214.55"/>
+<polygon fill="var(--border-line)" stroke="var(--border-line)" points="164.67,-219.45 171.67,-217 164.67,-214.55 164.67,-219.45"/>
+<text text-anchor="middle" x="151.5" y="-223.2" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="11.00" fill="var(--text-secondary)">牵制</text>
+</g>
+<g id="node3" class="node">
+<title>L</title>
+<path fill="var(--surface-raised)" stroke="var(--warning)" d="M411,-240C411,-240 330,-240 330,-240 324,-240 318,-234 318,-228 318,-228 318,-206 318,-206 318,-200 324,-194 330,-194 330,-194 411,-194 411,-194 417,-194 423,-200 423,-206 423,-206 423,-228 423,-228 423,-234 417,-240 411,-240"/>
+<text text-anchor="middle" x="370.5" y="-220.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">延迟</text>
+<text text-anchor="middle" x="370.5" y="-206.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">首字与总耗时</text>
+</g>
+<g id="edge3" class="edge">
+<title>C&#45;&gt;L</title>
+<path fill="none" stroke="var(--border-line)" stroke-dasharray="5,2" d="M138.08,-241.77C149.48,-244.77 161.22,-247.35 172.5,-249 218.67,-255.76 231.47,-256.7 277.5,-249 288.52,-247.16 299.98,-244.17 310.93,-240.74"/>
+<polygon fill="var(--border-line)" stroke="var(--border-line)" points="138.43,-239.33 131.03,-239.86 137.15,-244.06 138.43,-239.33"/>
+<polygon fill="var(--border-line)" stroke="var(--border-line)" points="311.78,-243.04 317.68,-238.55 310.27,-238.38 311.78,-243.04"/>
+</g>
+<g id="edge2" class="edge">
+<title>Q&#45;&gt;L</title>
+<path fill="none" stroke="var(--border-line)" d="M284.42,-217C293.09,-217 302,-217 310.66,-217"/>
+<polygon fill="var(--border-line)" stroke="var(--border-line)" points="284.21,-214.55 277.21,-217 284.21,-219.45 284.21,-214.55"/>
+<polygon fill="var(--border-line)" stroke="var(--border-line)" points="310.87,-219.45 317.87,-217 310.87,-214.55 310.87,-219.45"/>
+<text text-anchor="middle" x="297.5" y="-223.2" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="11.00" fill="var(--text-secondary)">牵制</text>
+</g>
+<g id="node4" class="node">
+<title>T1</title>
+<path fill="var(--surface-raised)" stroke="var(--success)" d="M316,-157C316,-157 133,-157 133,-157 127,-157 121,-151 121,-145 121,-145 121,-123 121,-123 121,-117 127,-111 133,-111 133,-111 316,-111 316,-111 322,-111 328,-117 328,-123 328,-123 328,-145 328,-145 328,-151 322,-157 316,-157"/>
+<text text-anchor="middle" x="224.5" y="-137.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">取舍一 推理深度与延迟成本</text>
+<text text-anchor="middle" x="224.5" y="-123.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">思考更久通常更准，也更慢更贵</text>
+</g>
+<g id="node7" class="node">
+<title>P</title>
+<polygon fill="var(--surface-subtle)" stroke="var(--border-line)" points="341,-74 102,-74 102,0 347,0 347,-68 341,-74"/>
+<polyline fill="none" stroke="var(--border-line)" points="341,-74 341,-68 "/>
+<polyline fill="none" stroke="var(--border-line)" points="347,-68 341,-68 "/>
+<text text-anchor="middle" x="224.5" y="-54.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">工程做法</text>
+<text text-anchor="middle" x="224.5" y="-40.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">先设定可接受的目标组合</text>
+<text text-anchor="middle" x="224.5" y="-26.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">质量下限 · 延迟上限 · 成本上限</text>
+<text text-anchor="middle" x="224.5" y="-12.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">再在满足约束的候选中选最便宜的方案</text>
+</g>
+<g id="node5" class="node">
+<title>T2</title>
+<path fill="var(--surface-raised)" stroke="var(--success)" d="M595,-157C595,-157 358,-157 358,-157 352,-157 346,-151 346,-145 346,-145 346,-123 346,-123 346,-117 352,-111 358,-111 358,-111 595,-111 595,-111 601,-111 607,-117 607,-123 607,-123 607,-145 607,-145 607,-151 601,-157 595,-157"/>
+<text text-anchor="middle" x="476.5" y="-137.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">取舍二 上下文规模与成本延迟</text>
+<text text-anchor="middle" x="476.5" y="-123.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">资料更多提高召回，也推高 token 与延迟</text>
+</g>
+<g id="node6" class="node">
+<title>T3</title>
+<path fill="var(--surface-raised)" stroke="var(--success)" d="M833.5,-157C833.5,-157 637.5,-157 637.5,-157 631.5,-157 625.5,-151 625.5,-145 625.5,-145 625.5,-123 625.5,-123 625.5,-117 631.5,-111 637.5,-111 637.5,-111 833.5,-111 833.5,-111 839.5,-111 845.5,-117 845.5,-123 845.5,-123 845.5,-145 845.5,-145 845.5,-151 839.5,-157 833.5,-157"/>
+<text text-anchor="middle" x="735.5" y="-137.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">取舍三 采样次数与鲁棒性</text>
+<text text-anchor="middle" x="735.5" y="-123.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">多路径投票更稳，成本近线性增长</text>
+</g>
+<g id="node8" class="node">
+<title>H</title>
+<polygon fill="var(--surface-subtle)" stroke="var(--border-line)" points="642,-74 365,-74 365,0 648,0 648,-68 642,-74"/>
+<polyline fill="none" stroke="var(--border-line)" points="642,-74 642,-68 "/>
+<polyline fill="none" stroke="var(--border-line)" points="648,-68 642,-68 "/>
+<text text-anchor="middle" x="506.5" y="-54.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">可用手段</text>
+<text text-anchor="middle" x="506.5" y="-40.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">模型分层与路由 · 提示缓存 · 输出格式压缩</text>
+<text text-anchor="middle" x="506.5" y="-26.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">推理深度档位调整 · 两阶段拆分</text>
+<text text-anchor="middle" x="506.5" y="-12.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">把重推理放在低频路径上</text>
+</g>
+</g>
+</svg>

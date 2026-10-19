@@ -1,0 +1,16 @@
+digraph fig {
+  rankdir=TB; bgcolor="transparent";
+  node[shape=box, style="rounded,filled", fillcolor="#ffffff", color="#7c8aa5", fontcolor="#0e1729", fontname="Noto Sans CJK SC", fontsize=13, margin="0.20,0.12"]; edge[color="#7c8aa5", fontcolor="#46536b", fontname="Noto Sans CJK SC", fontsize=11, arrowsize=0.7];
+  G [label="一条可用的判据包含四要素\n断言：检查什么 · 级别：失败是否阻断\n证据：失败时输出什么定位信息\n负向自检：一个必须触发失败的负例", fillcolor="#dfe6fb", color="#2f4bd8"];
+  F1 [label="形态一 恒真判据\n断言永远为真 ⇒ 从不报错", color="#b3181f"];
+  F2 [label="形态二 假绿\n门控全绿，而问题从未被检查", color="#b3181f"];
+  F3 [label="形态三 代理判据\n优化了易测的代理量，真实目标未动", color="#b3181f"];
+  N [label="三条纪律\n每个判据配一个负例夹具，改动判据后重跑全部负例\n失败输出必须给出对象标识 · 期望 · 实测三元组\n不设置死代码或死令牌豁免，豁免会成为新的漏洞面", shape=note, fillcolor="#e9eef8"];
+  D [label="与评测集的分工\n评测集回答「质量是否变好」\n门控回答「约束是否被违反」", shape=note, fillcolor="#e9eef8"];
+  G -> F1;
+  G -> F2;
+  G -> F3;
+  {rank=same; F1; F2; F3;}
+  {rank=same; N; D;}
+  F2 -> N [style=invis];
+}

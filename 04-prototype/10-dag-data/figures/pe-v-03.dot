@@ -1,0 +1,22 @@
+digraph fig {
+  rankdir=TB; bgcolor="transparent";
+  node[shape=box, style="rounded,filled", fillcolor="#ffffff", color="#7c8aa5", fontcolor="#0e1729", fontname="Noto Sans CJK SC", fontsize=13, margin="0.20,0.12"]; edge[color="#7c8aa5", fontcolor="#46536b", fontname="Noto Sans CJK SC", fontsize=11, arrowsize=0.7];
+  W [label="文本长上下文的窗口条（已实测）\n同一段内容的三个位置\n多模态是否沿用属待验假设\n须按目标模型与真实序列长度重测", fillcolor="#dfe6fb", color="#2f4bd8"];
+  H [label="首部\n最易被采信\n（文本侧实测）", color="#136f3a"];
+  M [label="中部\n中段取用显著退化\n（文本侧实测）", color="#b3181f"];
+  T [label="尾部\n最易被采信\n（文本侧实测）", color="#136f3a"];
+  A1 [label="① 关键图置首尾", color="#136f3a"];
+  A2 [label="② 编号建立显式对应", color="#136f3a"];
+  A3 [label="③ 长序列先筛选压缩", color="#136f3a"];
+  A4 [label="④ 必要时拆成多次调用", color="#136f3a"];
+  N [label="注意力预算：token 越多，单位 token 分得的注意力越少\n文本侧已实测：首尾更易被采信、中段退化\n多模态是否沿用属待验假设，幅度未验\n四条应对是外推的构造原则，非实测结论", shape=note, fillcolor="#e9eef8"];
+  E [label="评测纪律：多模态侧须在真实序列长度上重测\n短样本或理想化设定上的结论不能外推", shape=note, fillcolor="#e9eef8"];
+  W -> H;
+  H -> M [style=solid, arrowhead=none];
+  M -> T [style=solid, arrowhead=none];
+  {rank=same; H; M; T;}
+  {rank=same; A1; A2; A3; A4;}
+  {rank=same; N; E;}
+  M -> A1 [style=invis];
+  A1 -> N [style=invis];
+}

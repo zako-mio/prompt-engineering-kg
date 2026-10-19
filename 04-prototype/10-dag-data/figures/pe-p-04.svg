@@ -1,0 +1,66 @@
+<svg class="fig__svg" role="img" aria-label="对照图：判据的四要素与三种失败形态（恒真 / 假绿 / 代理判据），以及失败输出三元组、不设豁免的纪律。"
+ viewBox="0.00 0.00 671.50 274.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 270)">
+
+<g id="node1" class="node">
+<title>G</title>
+<path fill="var(--brand-soft)" stroke="var(--brand-primary)" d="M404,-266C404,-266 177,-266 177,-266 171,-266 165,-260 165,-254 165,-254 165,-204 165,-204 165,-198 171,-192 177,-192 177,-192 404,-192 404,-192 410,-192 416,-198 416,-204 416,-204 416,-254 416,-254 416,-260 410,-266 404,-266"/>
+<text text-anchor="middle" x="290.5" y="-246.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">一条可用的判据包含四要素</text>
+<text text-anchor="middle" x="290.5" y="-232.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">断言：检查什么 · 级别：失败是否阻断</text>
+<text text-anchor="middle" x="290.5" y="-218.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">证据：失败时输出什么定位信息</text>
+<text text-anchor="middle" x="290.5" y="-204.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">负向自检：一个必须触发失败的负例</text>
+</g>
+<g id="node2" class="node">
+<title>F1</title>
+<path fill="var(--surface-raised)" stroke="var(--danger)" d="M163,-156C163,-156 12,-156 12,-156 6,-156 0,-150 0,-144 0,-144 0,-122 0,-122 0,-116 6,-110 12,-110 12,-110 163,-110 163,-110 169,-110 175,-116 175,-122 175,-122 175,-144 175,-144 175,-150 169,-156 163,-156"/>
+<text text-anchor="middle" x="87.5" y="-136.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">形态一 恒真判据</text>
+<text text-anchor="middle" x="87.5" y="-122.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">断言永远为真 ⇒ 从不报错</text>
+</g>
+<g id="edge1" class="edge">
+<title>G&#45;&gt;F1</title>
+<path fill="none" stroke="var(--border-line)" d="M212.6,-191.93C188.99,-180.99 163.57,-169.23 141.86,-159.17"/>
+<polygon fill="var(--border-line)" stroke="var(--border-line)" points="142.63,-156.83 135.25,-156.11 140.57,-161.27 142.63,-156.83"/>
+</g>
+<g id="node3" class="node">
+<title>F2</title>
+<path fill="var(--surface-raised)" stroke="var(--danger)" d="M375.5,-156C375.5,-156 205.5,-156 205.5,-156 199.5,-156 193.5,-150 193.5,-144 193.5,-144 193.5,-122 193.5,-122 193.5,-116 199.5,-110 205.5,-110 205.5,-110 375.5,-110 375.5,-110 381.5,-110 387.5,-116 387.5,-122 387.5,-122 387.5,-144 387.5,-144 387.5,-150 381.5,-156 375.5,-156"/>
+<text text-anchor="middle" x="290.5" y="-136.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">形态二 假绿</text>
+<text text-anchor="middle" x="290.5" y="-122.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">门控全绿，而问题从未被检查</text>
+</g>
+<g id="edge2" class="edge">
+<title>G&#45;&gt;F2</title>
+<path fill="none" stroke="var(--border-line)" d="M290.5,-191.93C290.5,-182.45 290.5,-172.34 290.5,-163.27"/>
+<polygon fill="var(--border-line)" stroke="var(--border-line)" points="292.95,-163.25 290.5,-156.25 288.05,-163.25 292.95,-163.25"/>
+</g>
+<g id="node4" class="node">
+<title>F3</title>
+<path fill="var(--surface-raised)" stroke="var(--danger)" d="M626,-156C626,-156 417,-156 417,-156 411,-156 405,-150 405,-144 405,-144 405,-122 405,-122 405,-116 411,-110 417,-110 417,-110 626,-110 626,-110 632,-110 638,-116 638,-122 638,-122 638,-144 638,-144 638,-150 632,-156 626,-156"/>
+<text text-anchor="middle" x="521.5" y="-136.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">形态三 代理判据</text>
+<text text-anchor="middle" x="521.5" y="-122.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">优化了易测的代理量，真实目标未动</text>
+</g>
+<g id="edge3" class="edge">
+<title>G&#45;&gt;F3</title>
+<path fill="none" stroke="var(--border-line)" d="M379.15,-191.93C406.36,-180.85 435.68,-168.92 460.6,-158.78"/>
+<polygon fill="var(--border-line)" stroke="var(--border-line)" points="461.61,-161.02 467.17,-156.11 459.76,-156.48 461.61,-161.02"/>
+</g>
+<g id="node5" class="node">
+<title>N</title>
+<polygon fill="var(--surface-subtle)" stroke="var(--border-line)" points="445.5,-74 129.5,-74 129.5,0 451.5,0 451.5,-68 445.5,-74"/>
+<polyline fill="none" stroke="var(--border-line)" points="445.5,-74 445.5,-68 "/>
+<polyline fill="none" stroke="var(--border-line)" points="451.5,-68 445.5,-68 "/>
+<text text-anchor="middle" x="290.5" y="-54.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">三条纪律</text>
+<text text-anchor="middle" x="290.5" y="-40.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">每个判据配一个负例夹具，改动判据后重跑全部负例</text>
+<text text-anchor="middle" x="290.5" y="-26.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">失败输出必须给出对象标识 · 期望 · 实测三元组</text>
+<text text-anchor="middle" x="290.5" y="-12.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">不设置死代码或死令牌豁免，豁免会成为新的漏洞面</text>
+</g>
+<g id="node6" class="node">
+<title>D</title>
+<polygon fill="var(--surface-subtle)" stroke="var(--border-line)" points="657.5,-67 469.5,-67 469.5,-7 663.5,-7 663.5,-61 657.5,-67"/>
+<polyline fill="none" stroke="var(--border-line)" points="657.5,-67 657.5,-61 "/>
+<polyline fill="none" stroke="var(--border-line)" points="663.5,-61 657.5,-61 "/>
+<text text-anchor="middle" x="566.5" y="-47.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">与评测集的分工</text>
+<text text-anchor="middle" x="566.5" y="-33.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">评测集回答「质量是否变好」</text>
+<text text-anchor="middle" x="566.5" y="-19.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">门控回答「约束是否被违反」</text>
+</g>
+</g>
+</svg>

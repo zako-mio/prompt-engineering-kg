@@ -1,0 +1,77 @@
+<svg class="fig__svg" role="img" aria-label="结构图：接入实况的四个方面（来源与签名 / 传输与权限 / 能力面 / 可观测性），以及传输不是沙箱、规范转无状态两条硬事实。"
+ viewBox="0.00 0.00 605.50 264.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 260)">
+
+<g id="node1" class="node">
+<title>S</title>
+<path fill="var(--brand-soft)" stroke="var(--brand-primary)" d="M431,-256C431,-256 95,-256 95,-256 89,-256 83,-250 83,-244 83,-244 83,-232 83,-232 83,-226 89,-220 95,-220 95,-220 431,-220 431,-220 437,-220 443,-226 443,-232 443,-232 443,-244 443,-244 443,-250 437,-256 431,-256"/>
+<text text-anchor="middle" x="263" y="-234.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">接入协议的真实工作量集中在治理与运维，而不是协议解析</text>
+</g>
+<g id="node2" class="node">
+<title>A1</title>
+<path fill="var(--brand-soft)" stroke="var(--brand-primary)" d="M106,-184C106,-184 12,-184 12,-184 6,-184 0,-178 0,-172 0,-172 0,-122 0,-122 0,-116 6,-110 12,-110 12,-110 106,-110 106,-110 112,-110 118,-116 118,-122 118,-122 118,-172 118,-172 118,-178 112,-184 106,-184"/>
+<text text-anchor="middle" x="59" y="-164.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">来源与签名</text>
+<text text-anchor="middle" x="59" y="-150.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">服务端来自哪里</text>
+<text text-anchor="middle" x="59" y="-136.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">是否可核验</text>
+<text text-anchor="middle" x="59" y="-122.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">是否固定版本</text>
+</g>
+<g id="edge1" class="edge">
+<title>S&#45;&gt;A1</title>
+<path fill="none" stroke="var(--border-line)" d="M215.94,-219.94C189.76,-210.09 156.76,-197.1 128,-184 126.9,-183.5 125.79,-182.99 124.68,-182.47"/>
+<polygon fill="var(--border-line)" stroke="var(--border-line)" points="125.64,-180.22 118.27,-179.43 123.55,-184.64 125.64,-180.22"/>
+</g>
+<g id="node3" class="node">
+<title>A2</title>
+<path fill="var(--brand-soft)" stroke="var(--brand-primary)" d="M229.5,-184C229.5,-184 148.5,-184 148.5,-184 142.5,-184 136.5,-178 136.5,-172 136.5,-172 136.5,-122 136.5,-122 136.5,-116 142.5,-110 148.5,-110 148.5,-110 229.5,-110 229.5,-110 235.5,-110 241.5,-116 241.5,-122 241.5,-122 241.5,-172 241.5,-172 241.5,-178 235.5,-184 229.5,-184"/>
+<text text-anchor="middle" x="189" y="-164.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">传输与权限</text>
+<text text-anchor="middle" x="189" y="-150.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">用哪种传输</text>
+<text text-anchor="middle" x="189" y="-136.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">服务端进程</text>
+<text text-anchor="middle" x="189" y="-122.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">拥有什么权限</text>
+</g>
+<g id="edge2" class="edge">
+<title>S&#45;&gt;A2</title>
+<path fill="none" stroke="var(--border-line)" d="M248.73,-219.84C241.58,-211.24 232.58,-200.41 223.74,-189.79"/>
+<polygon fill="var(--border-line)" stroke="var(--border-line)" points="225.51,-188.08 219.15,-184.26 221.74,-191.21 225.51,-188.08"/>
+</g>
+<g id="node4" class="node">
+<title>A3</title>
+<path fill="var(--brand-soft)" stroke="var(--brand-primary)" d="M404,-177C404,-177 272,-177 272,-177 266,-177 260,-171 260,-165 260,-165 260,-129 260,-129 260,-123 266,-117 272,-117 272,-117 404,-117 404,-117 410,-117 416,-123 416,-129 416,-129 416,-165 416,-165 416,-171 410,-177 404,-177"/>
+<text text-anchor="middle" x="338" y="-157.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">能力面</text>
+<text text-anchor="middle" x="338" y="-143.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">暴露了哪些工具与资源</text>
+<text text-anchor="middle" x="338" y="-129.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">是否包含写操作</text>
+</g>
+<g id="edge3" class="edge">
+<title>S&#45;&gt;A3</title>
+<path fill="none" stroke="var(--border-line)" d="M277.46,-219.84C286.4,-209.23 298.19,-195.24 308.99,-182.43"/>
+<polygon fill="var(--border-line)" stroke="var(--border-line)" points="310.91,-183.95 313.55,-177.02 307.16,-180.79 310.91,-183.95"/>
+</g>
+<g id="node5" class="node">
+<title>A4</title>
+<path fill="var(--brand-soft)" stroke="var(--brand-primary)" d="M540,-177C540,-177 446,-177 446,-177 440,-177 434,-171 434,-165 434,-165 434,-129 434,-129 434,-123 440,-117 446,-117 446,-117 540,-117 540,-117 546,-117 552,-123 552,-129 552,-129 552,-165 552,-165 552,-171 546,-177 540,-177"/>
+<text text-anchor="middle" x="493" y="-157.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">可观测性</text>
+<text text-anchor="middle" x="493" y="-143.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">调用是否被记录</text>
+<text text-anchor="middle" x="493" y="-129.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">失败是否可归因</text>
+</g>
+<g id="edge4" class="edge">
+<title>S&#45;&gt;A4</title>
+<path fill="none" stroke="var(--border-line)" d="M323.53,-219.89C354.36,-210.5 392.18,-197.94 425,-184 427.77,-182.83 430.57,-181.58 433.39,-180.28"/>
+<polygon fill="var(--border-line)" stroke="var(--border-line)" points="434.68,-182.38 439.97,-177.18 432.59,-177.95 434.68,-182.38"/>
+</g>
+<g id="node7" class="node">
+<title>R</title>
+<path fill="var(--surface-raised)" stroke="var(--warning)" d="M242.5,-60C242.5,-60 135.5,-60 135.5,-60 129.5,-60 123.5,-54 123.5,-48 123.5,-48 123.5,-26 123.5,-26 123.5,-20 129.5,-14 135.5,-14 135.5,-14 242.5,-14 242.5,-14 248.5,-14 254.5,-20 254.5,-26 254.5,-26 254.5,-48 254.5,-48 254.5,-54 248.5,-60 242.5,-60"/>
+<text text-anchor="middle" x="189" y="-40.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">高风险工具加确认</text>
+<text text-anchor="middle" x="189" y="-26.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">并限制服务端权限</text>
+</g>
+<g id="node6" class="node">
+<title>N</title>
+<polygon fill="var(--surface-subtle)" stroke="var(--border-line)" points="591.5,-74 272.5,-74 272.5,0 597.5,0 597.5,-68 591.5,-74"/>
+<polyline fill="none" stroke="var(--border-line)" points="591.5,-74 591.5,-68 "/>
+<polyline fill="none" stroke="var(--border-line)" points="597.5,-68 591.5,-68 "/>
+<text text-anchor="middle" x="435" y="-54.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">两条硬事实</text>
+<text text-anchor="middle" x="435" y="-40.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">① 标准输入输出传输不是沙箱，官方对此有明确表述</text>
+<text text-anchor="middle" x="435" y="-26.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">② 现行规范转为无状态，并移除了初始化握手与会话</text>
+<text text-anchor="middle" x="435" y="-12.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">旧实现需要改造</text>
+</g>
+</g>
+</svg>

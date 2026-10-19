@@ -1,0 +1,17 @@
+digraph fig {
+  rankdir=TB; bgcolor="transparent";
+  node[shape=box, style="rounded,filled", fillcolor="#ffffff", color="#7c8aa5", fontcolor="#0e1729", fontname="Noto Sans CJK SC", fontsize=13, margin="0.20,0.12"]; edge[color="#7c8aa5", fontcolor="#46536b", fontname="Noto Sans CJK SC", fontsize=11, arrowsize=0.7];
+  S1 [label="① 建立新基线\n跑现有评测集", fillcolor="#dfe6fb", color="#2f4bd8"];
+  S2 [label="② 分离差异\n模型差异与提示词问题", fillcolor="#dfe6fb", color="#2f4bd8"];
+  S3 [label="③ 针对性调整\n只改失败项", fillcolor="#dfe6fb", color="#2f4bd8"];
+  S4 [label="④ 跑全量回归\n确认没有新增失败", fillcolor="#dfe6fb", color="#2f4bd8"];
+  N [label="须重建的部分（与模型绑定）\n指令措辞 · 示例 · 参数档位 · 格式约束强度", color="#9a5310"];
+  K [label="可复用的部分（与模型无关）\n任务定义 · 输出契约 · 评测集 · 校验器", color="#136f3a"];
+  C [label="声明式编译路线：换模型后重跑编译即可产出新配置\n这正是编译路线相对手工改提示的价值", shape=note, fillcolor="#e9eef8"];
+  S1 -> S2 -> S3 -> S4;
+  {rank=same; S1; S2; S3; S4;}
+  {rank=same; N; K;}
+  S2 -> N [style=dotted, arrowhead=none];
+  S2 -> K [style=invis];
+  N -> C [style=dotted, arrowhead=none];
+}

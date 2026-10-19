@@ -1,0 +1,56 @@
+<svg class="fig__svg" role="img" aria-label="对照图：同一套标记写法在两个模型上收益相反、标记泄漏这一判据，以及按模型维护标记配置的应对。"
+ viewBox="0.00 0.00 774.50 235.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 231)">
+
+<g id="node1" class="node">
+<title>M</title>
+<path fill="var(--brand-soft)" stroke="var(--brand-primary)" d="M368,-227C368,-227 103,-227 103,-227 97,-227 91,-221 91,-215 91,-215 91,-203 91,-203 91,-197 97,-191 103,-191 103,-191 368,-191 368,-191 374,-191 380,-197 380,-203 380,-203 380,-215 380,-215 380,-221 374,-227 368,-227"/>
+<text text-anchor="middle" x="235.5" y="-205.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">同一套标记写法（例如用 XML 标签包裹各段）</text>
+</g>
+<g id="node2" class="node">
+<title>A</title>
+<path fill="var(--surface-raised)" stroke="var(--success)" d="M211,-143C211,-143 12,-143 12,-143 6,-143 0,-137 0,-131 0,-131 0,-109 0,-109 0,-103 6,-97 12,-97 12,-97 211,-97 211,-97 217,-97 223,-103 223,-109 223,-109 223,-131 223,-131 223,-137 217,-143 211,-143"/>
+<text text-anchor="middle" x="111.5" y="-123.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">模型甲：对齐训练覆盖此类标记</text>
+<text text-anchor="middle" x="111.5" y="-109.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">⇒ 标签被当作结构信号，收益明显</text>
+</g>
+<g id="edge1" class="edge">
+<title>M&#45;&gt;A</title>
+<path fill="none" stroke="var(--border-line)" d="M211,-190.81C193.27,-178.37 168.99,-161.33 148.85,-147.2"/>
+<polygon fill="var(--border-line)" stroke="var(--border-line)" points="150.15,-145.13 143.02,-143.11 147.34,-149.14 150.15,-145.13"/>
+<text text-anchor="middle" x="197" y="-164.2" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="11.00" fill="var(--text-secondary)">敏感</text>
+</g>
+<g id="node3" class="node">
+<title>B</title>
+<path fill="var(--surface-raised)" stroke="var(--danger)" d="M465.5,-143C465.5,-143 253.5,-143 253.5,-143 247.5,-143 241.5,-137 241.5,-131 241.5,-131 241.5,-109 241.5,-109 241.5,-103 247.5,-97 253.5,-97 253.5,-97 465.5,-97 465.5,-97 471.5,-97 477.5,-103 477.5,-109 477.5,-109 477.5,-131 477.5,-131 477.5,-137 471.5,-143 465.5,-143"/>
+<text text-anchor="middle" x="359.5" y="-123.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">模型乙：未覆盖此类标记</text>
+<text text-anchor="middle" x="359.5" y="-109.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">⇒ 忽略标签，甚至把标签当正文打印</text>
+</g>
+<g id="edge2" class="edge">
+<title>M&#45;&gt;B</title>
+<path fill="none" stroke="var(--border-line)" d="M260,-190.81C277.73,-178.37 302.01,-161.33 322.15,-147.2"/>
+<polygon fill="var(--border-line)" stroke="var(--border-line)" points="323.66,-149.14 327.98,-143.11 320.85,-145.13 323.66,-149.14"/>
+<text text-anchor="middle" x="317.5" y="-164.2" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="11.00" fill="var(--text-secondary)">不敏感</text>
+</g>
+<g id="node4" class="node">
+<title>J</title>
+<path fill="var(--surface-raised)" stroke="var(--warning)" d="M332.5,-60C332.5,-60 136.5,-60 136.5,-60 130.5,-60 124.5,-54 124.5,-48 124.5,-48 124.5,-12 124.5,-12 124.5,-6 130.5,0 136.5,0 136.5,0 332.5,0 332.5,0 338.5,0 344.5,-6 344.5,-12 344.5,-12 344.5,-48 344.5,-48 344.5,-54 338.5,-60 332.5,-60"/>
+<text text-anchor="middle" x="234.5" y="-40.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">测试判据不只看准确率</text>
+<text text-anchor="middle" x="234.5" y="-26.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">还要看标记是否泄漏到输出</text>
+<text text-anchor="middle" x="234.5" y="-12.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">泄漏通常意味着结构信号未被识别</text>
+</g>
+<g id="edge4" class="edge">
+<title>B&#45;&gt;J</title>
+<path fill="none" stroke="var(--border-line)" d="M327.96,-96.79C314.04,-86.99 297.38,-75.27 282.01,-64.44"/>
+<polygon fill="var(--border-line)" stroke="var(--border-line)" points="283.09,-62.21 275.96,-60.19 280.27,-66.22 283.09,-62.21"/>
+</g>
+<g id="node5" class="node">
+<title>N</title>
+<polygon fill="var(--surface-subtle)" stroke="var(--border-line)" points="760.5,-60 362.5,-60 362.5,0 766.5,0 766.5,-54 760.5,-60"/>
+<polyline fill="none" stroke="var(--border-line)" points="760.5,-60 760.5,-54 "/>
+<polyline fill="none" stroke="var(--border-line)" points="766.5,-54 760.5,-54 "/>
+<text text-anchor="middle" x="564.5" y="-40.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">三个来源</text>
+<text text-anchor="middle" x="564.5" y="-26.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">训练数据中该类标记的出现频率 · 指令微调阶段是否用过这类标记</text>
+<text text-anchor="middle" x="564.5" y="-12.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">分词器对标记的切分方式（可能切成不利于整体识别的片段）</text>
+</g>
+</g>
+</svg>

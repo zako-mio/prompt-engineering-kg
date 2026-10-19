@@ -1,0 +1,65 @@
+<svg class="fig__svg" role="img" aria-label="结构图：文本与图像交错成序列的三种排布写法与其指代构造要点（可靠性须按目标模型实测），以及三条设计要点与一条边界。"
+ viewBox="0.00 0.00 797.50 259.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 255)">
+
+<g id="node1" class="node">
+<title>S</title>
+<path fill="var(--brand-soft)" stroke="var(--brand-primary)" d="M570,-251C570,-251 221,-251 221,-251 215,-251 209,-245 209,-239 209,-239 209,-217 209,-217 209,-211 215,-205 221,-205 221,-205 570,-205 570,-205 576,-205 582,-211 582,-217 582,-217 582,-239 582,-239 582,-245 576,-251 570,-251"/>
+<text text-anchor="middle" x="395.5" y="-231.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">多模态输入的真实形态：文本与图像按原始顺序交错成长序列</text>
+<text text-anchor="middle" x="395.5" y="-217.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">⇒ 交错顺序本身是一项需要被固定与测试的输入设计</text>
+</g>
+<g id="node2" class="node">
+<title>A</title>
+<path fill="var(--surface-raised)" stroke="var(--danger)" d="M247.5,-157C247.5,-157 99.5,-157 99.5,-157 93.5,-157 87.5,-151 87.5,-145 87.5,-145 87.5,-123 87.5,-123 87.5,-117 93.5,-111 99.5,-111 99.5,-111 247.5,-111 247.5,-111 253.5,-111 259.5,-117 259.5,-123 259.5,-123 259.5,-145 259.5,-145 259.5,-151 253.5,-157 247.5,-157"/>
+<text text-anchor="middle" x="173.5" y="-137.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">写法一 图像集中堆在末尾</text>
+<text text-anchor="middle" x="173.5" y="-123.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">指代关系只能靠位置猜测</text>
+</g>
+<g id="edge1" class="edge">
+<title>S&#45;&gt;A</title>
+<path fill="none" stroke="var(--border-line)" d="M342.33,-204.96C309.5,-191.36 267.3,-173.87 233.31,-159.79"/>
+<polygon fill="var(--border-line)" stroke="var(--border-line)" points="234.03,-157.43 226.62,-157.02 232.15,-161.96 234.03,-157.43"/>
+<text text-anchor="middle" x="310" y="-178.2" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="11.00" fill="var(--text-secondary)">对照</text>
+</g>
+<g id="node3" class="node">
+<title>B</title>
+<path fill="var(--surface-raised)" stroke="var(--success)" d="M501.5,-157C501.5,-157 289.5,-157 289.5,-157 283.5,-157 277.5,-151 277.5,-145 277.5,-145 277.5,-123 277.5,-123 277.5,-117 283.5,-111 289.5,-111 289.5,-111 501.5,-111 501.5,-111 507.5,-111 513.5,-117 513.5,-123 513.5,-123 513.5,-145 513.5,-145 513.5,-151 507.5,-157 501.5,-157"/>
+<text text-anchor="middle" x="395.5" y="-137.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">写法二 图像就近放在被引用的文本旁</text>
+<text text-anchor="middle" x="395.5" y="-123.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">指代关系明确</text>
+</g>
+<g id="edge2" class="edge">
+<title>S&#45;&gt;B</title>
+<path fill="none" stroke="var(--border-line)" d="M395.5,-204.73C395.5,-192.52 395.5,-177.25 395.5,-164.11"/>
+<polygon fill="var(--border-line)" stroke="var(--border-line)" points="397.95,-164.07 395.5,-157.07 393.05,-164.07 397.95,-164.07"/>
+</g>
+<g id="node4" class="node">
+<title>C</title>
+<path fill="var(--surface-raised)" stroke="var(--success)" d="M777.5,-157C777.5,-157 543.5,-157 543.5,-157 537.5,-157 531.5,-151 531.5,-145 531.5,-145 531.5,-123 531.5,-123 531.5,-117 537.5,-111 543.5,-111 543.5,-111 777.5,-111 777.5,-111 783.5,-111 789.5,-117 789.5,-123 789.5,-123 789.5,-145 789.5,-145 789.5,-151 783.5,-157 777.5,-157"/>
+<text text-anchor="middle" x="660.5" y="-137.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">写法三 给图像显式编号</text>
+<text text-anchor="middle" x="660.5" y="-123.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">文本中按编号指代，避免「上面那张图」</text>
+</g>
+<g id="edge3" class="edge">
+<title>S&#45;&gt;C</title>
+<path fill="none" stroke="var(--border-line)" d="M458.97,-204.96C498.57,-191.22 549.58,-173.51 590.37,-159.35"/>
+<polygon fill="var(--border-line)" stroke="var(--border-line)" points="591.28,-161.63 597.09,-157.02 589.67,-157 591.28,-161.63"/>
+</g>
+<g id="node6" class="node">
+<title>X</title>
+<polygon fill="var(--surface-subtle)" stroke="var(--border-line)" points="341,-67 0,-67 0,-7 347,-7 347,-61 341,-67"/>
+<polyline fill="none" stroke="var(--border-line)" points="341,-67 341,-61 "/>
+<polyline fill="none" stroke="var(--border-line)" points="347,-61 341,-61 "/>
+<text text-anchor="middle" x="173.5" y="-47.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">边界</text>
+<text text-anchor="middle" x="173.5" y="-33.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">多模态的位置敏感度不是单调规律</text>
+<text text-anchor="middle" x="173.5" y="-19.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">不能直接套用纯文本的「首尾优先」经验，须以实测为准</text>
+</g>
+<g id="node5" class="node">
+<title>N</title>
+<polygon fill="var(--surface-subtle)" stroke="var(--border-line)" points="694,-74 365,-74 365,0 700,0 700,-68 694,-74"/>
+<polyline fill="none" stroke="var(--border-line)" points="694,-74 694,-68 "/>
+<polyline fill="none" stroke="var(--border-line)" points="700,-68 694,-68 "/>
+<text text-anchor="middle" x="532.5" y="-54.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">三条设计要点</text>
+<text text-anchor="middle" x="532.5" y="-40.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">顺序语义化：图像放在被引用的文本附近</text>
+<text text-anchor="middle" x="532.5" y="-26.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">编号与引用：多张图加编号，文本按编号指代</text>
+<text text-anchor="middle" x="532.5" y="-12.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">控制交错次数：过多交替会拉长序列并加剧注意力耗散</text>
+</g>
+</g>
+</svg>

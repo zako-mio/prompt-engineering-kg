@@ -94,12 +94,22 @@ CHANGE_DECL_12 = ("16-checkpoint/CRITERIA-CHANGE-R08.md（2026-10-16 第 8 轮�
                   "⑤ 图件补 `aria-label`（由 `gen-figs` 从图注首句派生）并去掉 Graphviz 的无信息 `<title>fig</title>`。"
                   "★ 触发事实：SH4 落地时 P09/P12 **整站 FAIL** 51 页（判假探针 `_probe/r8_t1_p09_probe.py` 实测），"
                   "根因是「判据对象 > 断言对象」（R-23 同型第 3 次复发）；P01–P41 编号未动）")
+CHANGE_DECL_13 = ("16-checkpoint/CRITERIA-CHANGE-R09.md（2026-10-19 第 9 轮**执行通道变更**：修 `_ci_gate.sh` 的两条实测缺陷，"
+                  "⛔ 未改任何判据的断言。① 数据侧自检的路径由 `10-dag-data/_selfcheck.py` 改为 "
+                  "`../10-dag-data/_selfcheck.py` —— 该脚本已 cd 到 `16-checkpoint/`，原路径不存在 ⇒ "
+                  "**full 档在这一步恒 FAIL**，数据侧自检（C28–C33 / C58）从未被这条通道真正行使。"
+                  "② full 档补 **P38 的对象条件**：`_probe/channel.json` 存在 ⇒ 跑全量（含 P38）；"
+                  "不存在（CI，因过程证据整层不入库）⇒ 显式排除 P38 并打印理由，"
+                  "⛔ 不是静默通过、⛔ 不是放宽 P38。★ 触发事实：2026-10-19 的定时任务实测红"
+                  "（schedule 触发 full 档，gate job 失败）；两条都属「恒 FAIL 型」缺陷，潜伏一整个发布周期。"
+                  "★ 提炼的元判据：**装置没跑 ＝ 没验证**（一条执行通道若从未被行使，它的正确性没有任何判据）；"
+                  "**同一档在不同环境也是两个扫描面**（说某档绿必须指明环境）。")
 ASSET_DECL = ("16-checkpoint/CRITERIA-CHANGE-P23.md 与 gen-common.BACKDROP_CREDITS："
               "`assets/backdrop/` 为站点级只读图片资产（真实摄影素材），"
               "与 `13-interactive/vendor/` 的脚本白名单**分开声明、互不包含**；"
               "夜间帧 CC BY 4.0（须署名）、日间帧 CC0 1.0；页脚逐素材登记署名与出处")
 
-ROUND = 8      # ★ 2026-10-16 第 8 轮：产出本快照的轮次
+ROUND = 9      # ★ 2026-10-19 第 9 轮：产出本快照的轮次（内容波次 4：G07 / G08 / G09 共 13 个节点）
 
 
 MD_EXTS = (".md",)
@@ -202,6 +212,7 @@ def state_doc():
                   "criteria_change_P38_P40": CHANGE_DECL_10,
                   "criteria_change_P39": CHANGE_DECL_11,
                   "criteria_change_R08": CHANGE_DECL_12,
+                  "criteria_change_R09": CHANGE_DECL_13,
                   "assets": ASSET_DECL},
         "repo": None,
     }

@@ -1,0 +1,18 @@
+digraph fig {
+  rankdir=TB; bgcolor="transparent";
+  node[shape=box, style="rounded,filled", fillcolor="#ffffff", color="#7c8aa5", fontcolor="#0e1729", fontname="Noto Sans CJK SC", fontsize=13, margin="0.20,0.12"]; edge[color="#7c8aa5", fontcolor="#46536b", fontname="Noto Sans CJK SC", fontsize=11, arrowsize=0.7];
+  S [label="接入协议的真实工作量集中在治理与运维，而不是协议解析", fillcolor="#dfe6fb", color="#2f4bd8"];
+  A1 [label="来源与签名\n服务端来自哪里\n是否可核验\n是否固定版本", fillcolor="#dfe6fb", color="#2f4bd8"];
+  A2 [label="传输与权限\n用哪种传输\n服务端进程\n拥有什么权限", fillcolor="#dfe6fb", color="#2f4bd8"];
+  A3 [label="能力面\n暴露了哪些工具与资源\n是否包含写操作", fillcolor="#dfe6fb", color="#2f4bd8"];
+  A4 [label="可观测性\n调用是否被记录\n失败是否可归因", fillcolor="#dfe6fb", color="#2f4bd8"];
+  N [label="两条硬事实\n① 标准输入输出传输不是沙箱，官方对此有明确表述\n② 现行规范转为无状态，并移除了初始化握手与会话\n旧实现需要改造", shape=note, fillcolor="#e9eef8"];
+  R [label="高风险工具加确认\n并限制服务端权限", color="#9a5310"];
+  S -> A1;
+  S -> A2;
+  S -> A3;
+  S -> A4;
+  {rank=same; A1; A2; A3; A4;}
+  {rank=same; N; R;}
+  A2 -> R [style=invis];
+}

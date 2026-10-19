@@ -11,6 +11,7 @@
 对比度按 WCAG 2.x 公式 (L1+0.05)/(L2+0.05) 现场复算，不采信登记值。
 """
 import json
+import os
 import re
 import sys
 from collections import deque
@@ -529,22 +530,34 @@ for _p in _PACKS:
 
 _q_bad = list(_pack_err)
 _n_quotes = 0
-if not _PACKS:
-    _q_bad.append(("(引文库)", "01-research/evidence/A*.json 一个都读不到 ⇒ fail-closed"))
+# ★ 2026-10-19 第 9 轮（见 `16-checkpoint/CRITERIA-CHANGE-R09.md`）：**C58 的对象条件**。
+#   引文库 `01-research/` 按 `.gitignore` 规则①**整层不入库** ⇒ 任何**新 checkout**（CI 或新克隆）
+#   都没有它。此时 C58 **无对象**：既不能判「逐字回源」（无从比对），也**不得静默算通过**。
+#   ⇒ 处置：**只有**在「库确实不存在」且**调用方显式声明**（环境变量）时，本条打印 `[SKIP]` 并给出理由；
+#     库在盘上时**开关无效**（fail-closed 语义原样保留：读不到库 ⇒ FAIL）。
+#   ★ 这是「显式不跑」而非「放宽」：本判据在**本机**（库在）仍必须跑、仍必须 PASS。
+_NO_LIB_DECLARED = (not _PACKS) and (os.environ.get("PEKG_INPUT_LIBRARY_ABSENT") == "1")
+if _NO_LIB_DECLARED:
+    print("[SKIP] C58-quote-provenance 本 checkout 无输入层（`01-research/evidence/A*.json` 不在盘上）"
+          " ⇒ 本判据**无对象**；★ 由调用方显式声明（`PEKG_INPUT_LIBRARY_ABSENT=1`），"
+          "⛔ 不是静默通过、⛔ 不得读作「引文回源已覆盖」")
 else:
-    for _n in nodes:
-        for _i, _ev in enumerate(_n.get("evidence", []) or []):
-            _n_quotes += 1
-            _frags = [f for f in _ELISION.split(_ws(_ev.get("quote", ""))) if f.strip()]
-            if not _frags:
-                _q_bad.append((_n["id"], _i, "quote 为空（无可比对片段）"))
-                continue
-            for _f in _frags:
-                if not any(_f in _pq for _pq in _pack_quotes):
-                    _q_bad.append((_n["id"], _i, _f[:56]))
-chk("C58-quote-provenance", not _q_bad,
-    f"evidence 引文逐片段可在引文库逐字回源（节点侧 {_n_quotes} 条 evidence / "
-    f"库内 {len(_pack_quotes)} 条唯一引文，源件 {len(_PACKS)} 个；坏：{_q_bad[:5]}）")
+    if not _PACKS:
+        _q_bad.append(("(引文库)", "01-research/evidence/A*.json 一个都读不到 ⇒ fail-closed"))
+    else:
+        for _n in nodes:
+            for _i, _ev in enumerate(_n.get("evidence", []) or []):
+                _n_quotes += 1
+                _frags = [f for f in _ELISION.split(_ws(_ev.get("quote", ""))) if f.strip()]
+                if not _frags:
+                    _q_bad.append((_n["id"], _i, "quote 为空（无可比对片段）"))
+                    continue
+                for _f in _frags:
+                    if not any(_f in _pq for _pq in _pack_quotes):
+                        _q_bad.append((_n["id"], _i, _f[:56]))
+    chk("C58-quote-provenance", not _q_bad,
+        f"evidence 引文逐片段可在引文库逐字回源（节点侧 {_n_quotes} 条 evidence / "
+        f"库内 {len(_pack_quotes)} 条唯一引文，源件 {len(_PACKS)} 个；坏：{_q_bad[:5]}）")
 
 # ---- C58 的 frontier 侧：**报告项**（⛔ 不判 FAIL，⛔ 不得读作「已覆盖」）----
 _frontier = load("frontier.json")
@@ -556,10 +569,15 @@ for _it in (_frontier or {}).get("items", []):
         for _f in [x for x in _ELISION.split(_ws(_ev.get("quote", ""))) if x.strip()]:
             if not any(_f in _pq for _pq in _pack_quotes):
                 _f_bad.append((_it["id"], _ev.get("source_id", ""), _f[:40]))
-warn("C58b-frontier-quotes",
-     f"**报告项**（⛔ 不判 FAIL）：frontier 侧 {_f_n} 条 evidence 中有 {len(_f_bad)} 片无法在 A 池逐字回源 "
-     f"{_f_bad[:4]}；形态为作者期注记而非原文引用 ⇒ 本轮**不改数据**，如实登记为缺口"
-     f"（见 CRITERIA-CHANGE-P13-C58-P41.md）")
+if _NO_LIB_DECLARED:
+    # ★ 同上：库不在盘上时本报告项无意义（空库会把命中率算成 100%），显式声明而不静默给出误导读数。
+    print("[SKIP] C58b-frontier-quotes 本 checkout 无输入层 ⇒ 该**报告项**无对象"
+          "（⛔ 不得读作「frontier 引文已全部回源」）")
+else:
+    warn("C58b-frontier-quotes",
+         f"**报告项**（⛔ 不判 FAIL）：frontier 侧 {_f_n} 条 evidence 中有 {len(_f_bad)} 片无法在 A 池逐字回源 "
+         f"{_f_bad[:4]}；形态为作者期注记而非原文引用 ⇒ 本轮**不改数据**，如实登记为缺口"
+         f"（见 CRITERIA-CHANGE-P13-C58-P41.md）")
 
 print("\n-- 实测对比度（对页面底色，WCAG 2.x） --")
 for name, mode, c in measured:

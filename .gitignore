@@ -37,6 +37,8 @@ _selfcheck_stage1.py
 04-prototype/16-checkpoint/_wave3_parts/
 04-prototype/16-checkpoint/__pycache__/
 04-prototype/16-checkpoint/_wave3_solo/
+04-prototype/16-checkpoint/_wave4_parts/
+04-prototype/16-checkpoint/_wave4_solo/
 
 # --- 上游站点的 vendor 例外：`13-interactive/vendor/` **须入库**（它是发布产物的一部分）---
 !04-prototype/13-interactive/vendor/

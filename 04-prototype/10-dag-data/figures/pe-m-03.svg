@@ -1,0 +1,73 @@
+<svg class="fig__svg" role="img" aria-label="流程图：换模型后的四步固定动作（建新基线 → 分离差异 → 针对性调整 → 跑全量回归），以及「哪些必须重建、哪些可以复用」。"
+ viewBox="0.00 0.00 669.50 218.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 214)">
+
+<g id="node1" class="node">
+<title>S1</title>
+<path fill="var(--brand-soft)" stroke="var(--brand-primary)" d="M200,-210C200,-210 116,-210 116,-210 110,-210 104,-204 104,-198 104,-198 104,-176 104,-176 104,-170 110,-164 116,-164 116,-164 200,-164 200,-164 206,-164 212,-170 212,-176 212,-176 212,-198 212,-198 212,-204 206,-210 200,-210"/>
+<text text-anchor="middle" x="158" y="-190.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">① 建立新基线</text>
+<text text-anchor="middle" x="158" y="-176.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">跑现有评测集</text>
+</g>
+<g id="node2" class="node">
+<title>S2</title>
+<path fill="var(--brand-soft)" stroke="var(--brand-primary)" d="M374,-210C374,-210 242,-210 242,-210 236,-210 230,-204 230,-198 230,-198 230,-176 230,-176 230,-170 236,-164 242,-164 242,-164 374,-164 374,-164 380,-164 386,-170 386,-176 386,-176 386,-198 386,-198 386,-204 380,-210 374,-210"/>
+<text text-anchor="middle" x="308" y="-190.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">② 分离差异</text>
+<text text-anchor="middle" x="308" y="-176.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">模型差异与提示词问题</text>
+</g>
+<g id="edge1" class="edge">
+<title>S1&#45;&gt;S2</title>
+<path fill="none" stroke="var(--border-line)" d="M212.2,-187C215.68,-187 219.16,-187 222.64,-187"/>
+<polygon fill="var(--border-line)" stroke="var(--border-line)" points="222.79,-189.45 229.79,-187 222.79,-184.55 222.79,-189.45"/>
+</g>
+<g id="node3" class="node">
+<title>S3</title>
+<path fill="var(--brand-soft)" stroke="var(--brand-primary)" d="M500,-210C500,-210 416,-210 416,-210 410,-210 404,-204 404,-198 404,-198 404,-176 404,-176 404,-170 410,-164 416,-164 416,-164 500,-164 500,-164 506,-164 512,-170 512,-176 512,-176 512,-198 512,-198 512,-204 506,-210 500,-210"/>
+<text text-anchor="middle" x="458" y="-190.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">③ 针对性调整</text>
+<text text-anchor="middle" x="458" y="-176.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">只改失败项</text>
+</g>
+<g id="edge2" class="edge">
+<title>S2&#45;&gt;S3</title>
+<path fill="none" stroke="var(--border-line)" d="M386.22,-187C389.72,-187 393.21,-187 396.71,-187"/>
+<polygon fill="var(--border-line)" stroke="var(--border-line)" points="396.89,-189.45 403.89,-187 396.89,-184.55 396.89,-189.45"/>
+</g>
+<g id="node5" class="node">
+<title>N</title>
+<path fill="var(--surface-raised)" stroke="var(--warning)" d="M293.5,-128C293.5,-128 28.5,-128 28.5,-128 22.5,-128 16.5,-122 16.5,-116 16.5,-116 16.5,-94 16.5,-94 16.5,-88 22.5,-82 28.5,-82 28.5,-82 293.5,-82 293.5,-82 299.5,-82 305.5,-88 305.5,-94 305.5,-94 305.5,-116 305.5,-116 305.5,-122 299.5,-128 293.5,-128"/>
+<text text-anchor="middle" x="161" y="-108.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">须重建的部分（与模型绑定）</text>
+<text text-anchor="middle" x="161" y="-94.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">指令措辞 · 示例 · 参数档位 · 格式约束强度</text>
+</g>
+<g id="edge4" class="edge">
+<title>S2&#45;&gt;N</title>
+<path fill="none" stroke="var(--border-line)" stroke-dasharray="1,5" d="M267.44,-163.93C246.88,-152.74 221.97,-139.18 201.43,-128"/>
+</g>
+<g id="node6" class="node">
+<title>K</title>
+<path fill="var(--surface-raised)" stroke="var(--success)" d="M574.5,-128C574.5,-128 335.5,-128 335.5,-128 329.5,-128 323.5,-122 323.5,-116 323.5,-116 323.5,-94 323.5,-94 323.5,-88 329.5,-82 335.5,-82 335.5,-82 574.5,-82 574.5,-82 580.5,-82 586.5,-88 586.5,-94 586.5,-94 586.5,-116 586.5,-116 586.5,-122 580.5,-128 574.5,-128"/>
+<text text-anchor="middle" x="455" y="-108.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">可复用的部分（与模型无关）</text>
+<text text-anchor="middle" x="455" y="-94.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">任务定义 · 输出契约 · 评测集 · 校验器</text>
+</g>
+<g id="node4" class="node">
+<title>S4</title>
+<path fill="var(--brand-soft)" stroke="var(--brand-primary)" d="M649.5,-210C649.5,-210 542.5,-210 542.5,-210 536.5,-210 530.5,-204 530.5,-198 530.5,-198 530.5,-176 530.5,-176 530.5,-170 536.5,-164 542.5,-164 542.5,-164 649.5,-164 649.5,-164 655.5,-164 661.5,-170 661.5,-176 661.5,-176 661.5,-198 661.5,-198 661.5,-204 655.5,-210 649.5,-210"/>
+<text text-anchor="middle" x="596" y="-190.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">④ 跑全量回归</text>
+<text text-anchor="middle" x="596" y="-176.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">确认没有新增失败</text>
+</g>
+<g id="edge3" class="edge">
+<title>S3&#45;&gt;S4</title>
+<path fill="none" stroke="var(--border-line)" d="M512.18,-187C515.83,-187 519.49,-187 523.15,-187"/>
+<polygon fill="var(--border-line)" stroke="var(--border-line)" points="523.18,-189.45 530.18,-187 523.18,-184.55 523.18,-189.45"/>
+</g>
+<g id="node7" class="node">
+<title>C</title>
+<polygon fill="var(--surface-subtle)" stroke="var(--border-line)" points="316,-46 0,-46 0,0 322,0 322,-40 316,-46"/>
+<polyline fill="none" stroke="var(--border-line)" points="316,-46 316,-40 "/>
+<polyline fill="none" stroke="var(--border-line)" points="322,-40 316,-40 "/>
+<text text-anchor="middle" x="161" y="-26.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">声明式编译路线：换模型后重跑编译即可产出新配置</text>
+<text text-anchor="middle" x="161" y="-12.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">这正是编译路线相对手工改提示的价值</text>
+</g>
+<g id="edge6" class="edge">
+<title>N&#45;&gt;C</title>
+<path fill="none" stroke="var(--border-line)" stroke-dasharray="1,5" d="M161,-81.72C161,-70.62 161,-57.24 161,-46.16"/>
+</g>
+</g>
+</svg>

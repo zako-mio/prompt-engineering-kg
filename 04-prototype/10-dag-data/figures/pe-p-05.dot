@@ -1,0 +1,16 @@
+digraph fig {
+  rankdir=TB; bgcolor="transparent";
+  node[shape=box, style="rounded,filled", fillcolor="#ffffff", color="#7c8aa5", fontcolor="#0e1729", fontname="Noto Sans CJK SC", fontsize=13, margin="0.20,0.12"]; edge[color="#7c8aa5", fontcolor="#46536b", fontname="Noto Sans CJK SC", fontsize=11, arrowsize=0.7];
+  W [label="写入\n带来源与适用边界\n设预算上限", fillcolor="#dfe6fb", color="#2f4bd8"];
+  R [label="检索\n何时注入\n注入多少", fillcolor="#dfe6fb", color="#2f4bd8"];
+  V [label="复核\n被再次引用时\n是否仍成立", fillcolor="#dfe6fb", color="#2f4bd8"];
+  X [label="退役\n标记失效并归档\n不删除", fillcolor="#dfe6fb", color="#2f4bd8"];
+  N [label="零和替换：新条目挤掉旧条目，避免记忆无限膨胀", color="#136f3a"];
+  F [label="反思与记忆的衔接\n反思产生候选结论\n只有经过复核的候选才能进入长期记忆", color="#9a5310"];
+  B [label="为什么必须配套复核与退役\n记忆是过期经验的放大器：一条在旧模型上成立的结论\n会持续影响新决策而不被质疑", shape=note, fillcolor="#e9eef8"];
+  W -> R -> V -> X;
+  {rank=same; W; R; V; X;}
+  {rank=same; N; F;}
+  V -> N [style=invis];
+  F -> B [style=dotted, arrowhead=none];
+}

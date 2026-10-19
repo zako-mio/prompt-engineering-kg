@@ -1,0 +1,25 @@
+digraph fig {
+  rankdir=TB; bgcolor="transparent";
+  node[shape=box, style="rounded,filled", fillcolor="#ffffff", color="#7c8aa5", fontcolor="#0e1729", fontname="Noto Sans CJK SC", fontsize=13, margin="0.20,0.12"]; edge[color="#7c8aa5", fontcolor="#46536b", fontname="Noto Sans CJK SC", fontsize=11, arrowsize=0.7];
+  S [label="同一套提示词与编排逻辑，换运行时后表现不同", fillcolor="#dfe6fb", color="#2f4bd8"];
+  D1 [label="上下文注入", color="#9a5310"];
+  D2 [label="工具定义", color="#9a5310"];
+  D3 [label="记忆机制", color="#9a5310"];
+  D4 [label="门控入口", color="#9a5310"];
+  D5 [label="输出通道", color="#9a5310"];
+  P1 [label="① 最小复现\n同一任务 · 同一模型\n只换运行时，对比输出差异", color="#136f3a"];
+  P2 [label="② 差异归类\n运行时隐式注入\n工具定义差异\n能力缺失", color="#136f3a"];
+  P3 [label="③ 逐类处置\n决定是适配\n还是放弃该能力", color="#136f3a"];
+  N [label="最容易被低估的一处\n运行时对上下文的隐式注入会与提示词自身的指令竞争\n且它不在提示词文件里可见", shape=note, fillcolor="#e9eef8"];
+  E [label="迁移边界：搬得走结构，搬不走效力\n跨运行时结论必须在新环境重新验证，不能直接套用旧环境的结论", shape=note, fillcolor="#e9eef8"];
+  S -> D1;
+  S -> D2;
+  S -> D3;
+  S -> D4;
+  S -> D5;
+  {rank=same; D1; D2; D3; D4; D5;}
+  {rank=same; P1; P2; P3;}
+  {rank=same; N; E;}
+  D1 -> P1 [style=invis];
+  P1 -> N [style=invis];
+}

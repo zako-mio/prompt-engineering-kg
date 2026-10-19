@@ -1,0 +1,15 @@
+digraph fig {
+  rankdir=TB; bgcolor="transparent";
+  node[shape=box, style="rounded,filled", fillcolor="#ffffff", color="#7c8aa5", fontcolor="#0e1729", fontname="Noto Sans CJK SC", fontsize=13, margin="0.20,0.12"]; edge[color="#7c8aa5", fontcolor="#46536b", fontname="Noto Sans CJK SC", fontsize=11, arrowsize=0.7];
+  M [label="同一套标记写法（例如用 XML 标签包裹各段）", fillcolor="#dfe6fb", color="#2f4bd8"];
+  A [label="模型甲：对齐训练覆盖此类标记\n⇒ 标签被当作结构信号，收益明显", color="#136f3a"];
+  B [label="模型乙：未覆盖此类标记\n⇒ 忽略标签，甚至把标签当正文打印", color="#b3181f"];
+  J [label="测试判据不只看准确率\n还要看标记是否泄漏到输出\n泄漏通常意味着结构信号未被识别", color="#9a5310"];
+  N [label="三个来源\n训练数据中该类标记的出现频率 · 指令微调阶段是否用过这类标记\n分词器对标记的切分方式（可能切成不利于整体识别的片段）", shape=note, fillcolor="#e9eef8"];
+  M -> A [label="敏感"];
+  M -> B [label="不敏感"];
+  A -> J [style=invis];
+  B -> J;
+  {rank=same; A; B;}
+  {rank=same; J; N;}
+}

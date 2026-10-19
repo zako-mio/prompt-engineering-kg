@@ -1,0 +1,60 @@
+<svg class="fig__svg" role="img" aria-label="契约图：任务描述的五项自包含字段与返回结果的四项固定字段，以及模板化、可解析、可追溯三条工程要点。"
+ viewBox="0.00 0.00 649.50 291.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 287)">
+
+<g id="node1" class="node">
+<title>M</title>
+<path fill="var(--brand-soft)" stroke="var(--brand-primary)" d="M411,-283C411,-283 145,-283 145,-283 139,-283 133,-277 133,-271 133,-271 133,-259 133,-259 133,-253 139,-247 145,-247 145,-247 411,-247 411,-247 417,-247 423,-253 423,-259 423,-259 423,-271 423,-271 423,-277 417,-283 411,-283"/>
+<text text-anchor="middle" x="278" y="-261.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">主 Agent 把可独立完成的子任务交给子 Agent</text>
+</g>
+<g id="node2" class="node">
+<title>D</title>
+<path fill="var(--surface-raised)" stroke="var(--success)" d="M241,-199C241,-199 109,-199 109,-199 103,-199 97,-193 97,-187 97,-187 97,-109 97,-109 97,-103 103,-97 109,-97 109,-97 241,-97 241,-97 247,-97 253,-103 253,-109 253,-109 253,-187 253,-187 253,-193 247,-199 241,-199"/>
+<text text-anchor="middle" x="175" y="-179.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">任务描述：五项自包含</text>
+<text text-anchor="middle" x="175" y="-165.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">目标</text>
+<text text-anchor="middle" x="175" y="-151.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">背景与约束</text>
+<text text-anchor="middle" x="175" y="-137.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">可用资源与工具</text>
+<text text-anchor="middle" x="175" y="-123.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">产出格式</text>
+<text text-anchor="middle" x="175" y="-109.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">失败时的处理方式</text>
+</g>
+<g id="edge1" class="edge">
+<title>M&#45;&gt;D</title>
+<path fill="none" stroke="var(--border-line)" d="M262.36,-246.53C252.23,-235.23 238.44,-219.83 224.8,-204.6"/>
+<polygon fill="var(--border-line)" stroke="var(--border-line)" points="226.29,-202.59 219.79,-199.01 222.64,-205.86 226.29,-202.59"/>
+<text text-anchor="middle" x="256.5" y="-220.2" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="11.00" fill="var(--text-secondary)">发出</text>
+</g>
+<g id="node3" class="node">
+<title>R</title>
+<path fill="var(--surface-raised)" stroke="var(--success)" d="M479,-192C479,-192 283,-192 283,-192 277,-192 271,-186 271,-180 271,-180 271,-116 271,-116 271,-110 277,-104 283,-104 283,-104 479,-104 479,-104 485,-104 491,-110 491,-116 491,-116 491,-180 491,-180 491,-186 485,-192 479,-192"/>
+<text text-anchor="middle" x="381" y="-172.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">返回契约：四项固定字段</text>
+<text text-anchor="middle" x="381" y="-158.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">结论</text>
+<text text-anchor="middle" x="381" y="-144.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">依据（可追溯到具体来源或步骤）</text>
+<text text-anchor="middle" x="381" y="-130.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">未解决项</text>
+<text text-anchor="middle" x="381" y="-116.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">置信度或不确定性说明</text>
+</g>
+<g id="edge2" class="edge">
+<title>M&#45;&gt;R</title>
+<path fill="none" stroke="var(--border-line)" d="M293.64,-246.53C305.37,-233.44 322.03,-214.84 337.66,-197.39"/>
+<polygon fill="var(--border-line)" stroke="var(--border-line)" points="339.63,-198.87 342.47,-192.02 335.98,-195.6 339.63,-198.87"/>
+<text text-anchor="middle" x="329.5" y="-220.2" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="11.00" fill="var(--text-secondary)">收回</text>
+</g>
+<g id="node4" class="node">
+<title>N1</title>
+<polygon fill="var(--surface-subtle)" stroke="var(--border-line)" points="344,-60 0,-60 0,0 350,0 350,-54 344,-60"/>
+<polyline fill="none" stroke="var(--border-line)" points="344,-60 344,-54 "/>
+<polyline fill="none" stroke="var(--border-line)" points="350,-54 344,-54 "/>
+<text text-anchor="middle" x="175" y="-40.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">三条工程要点</text>
+<text text-anchor="middle" x="175" y="-26.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">① 委派提示词模板化并版本化，使契约变更可被评审</text>
+<text text-anchor="middle" x="175" y="-12.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">② 返回结果用固定字段，可被机械解析而非自然语言段落</text>
+</g>
+<g id="node5" class="node">
+<title>N2</title>
+<polygon fill="var(--surface-subtle)" stroke="var(--border-line)" points="635.5,-60 368.5,-60 368.5,0 641.5,0 641.5,-54 635.5,-60"/>
+<polyline fill="none" stroke="var(--border-line)" points="635.5,-60 635.5,-54 "/>
+<polyline fill="none" stroke="var(--border-line)" points="641.5,-54 635.5,-54 "/>
+<text text-anchor="middle" x="505" y="-40.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">③ 保留子 Agent 原始输出以便复核</text>
+<text text-anchor="middle" x="505" y="-26.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">避免只留摘要后无法追溯</text>
+<text text-anchor="middle" x="505" y="-12.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">⇒ 契约可评审 · 结果可解析 · 过程可追溯</text>
+</g>
+</g>
+</svg>

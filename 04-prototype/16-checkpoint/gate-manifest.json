@@ -1,10 +1,10 @@
 {
   "site": "prompt-engineering-kg",
   "schema_note": "范式沿用同类卫星站的声明式门控清单（形状照 hub 的 `scripts/check_ci_manifest.py`）。★ 本文件由**站点仓内**版本化，⛔ 不含任何豁免 / 白名单字段（`waivers` / `exempt` / `allow` / `skip` / `ignore` 一类键在本件中**不存在** —— 缺口一律写进 `not_covered`）。",
-  "generated_by": "2026-10-16 第 8 轮（发布级强化）：本站在此之前**没有**声明式门控清单，判据实现与执行入口分散在 `gate_prototype.py` 的文件头与 `_ci_gate.sh` 的 `--only` 清单里 ⇒ 「本仓有哪几条判据、各在什么强度下执行、哪些面**没有**判据」三问都要读源码才能回答。本件把它变成可机读的一份。★ 判据实现见 `gate_prototype.py`（P01–P41）、`gate_a11y.py`（A1–A7）、`gate_seo_meta.py`（S1–S11）；登记见 `CRITERIA-CHANGE-R08.md`。",
+  "generated_by": "2026-10-16 第 8 轮（发布级强化）：本站在此之前**没有**声明式门控清单，判据实现与执行入口分散在 `gate_prototype.py` 的文件头与 `_ci_gate.sh` 的 `--only` 清单里 ⇒ 「本仓有哪几条判据、各在什么强度下执行、哪些面**没有**判据」三问都要读源码才能回答。本件把它变成可机读的一份。★ 判据实现见 `gate_prototype.py`（P01–P41）、`gate_a11y.py`（A1–A7）、`gate_seo_meta.py`（S1–S11）；登记见 `CRITERIA-CHANGE-R08.md`。★ 2026-10-19 第 9 轮更新：`full` 档补两条**对象条件**（P38 / C58），并把「像素层未进 CI」的归因更正为「`_probe/` 整层不入库」这一直接原因；登记见 `CRITERIA-CHANGE-R09.md`。★ 本清单自身仍**没有**判据校验它的编号集合与实现一致（`not_covered` 里如实留行）。",
   "coverage_modes": {
     "push_fast": "push 档（每次 push 到 main）：`_ci_gate.sh fast` —— 跑 `gate_prototype.py` 的**结构性判据子集** ＋ A 段 7 条 ＋ S 段 11 条，各带 `--selftest`。★ 有意不跑：P38（需渲染证据与开工期探测）、P41（源文件散文扫描，属轮次收口对象）。",
-    "full": "全量档（`workflow_dispatch` ＋ 每周一 03:17 UTC）：`_ci_gate.sh full` —— 全部 P01–P41 ＋ `--selftest`（41 条判据 / 176 条负例夹具）＋ 数据侧 `10-dag-data/_selfcheck.py` ＋ 图件规格两侧探针 `_selfcheck_figs_spec.py`。",
+    "full": "全量档（`workflow_dispatch` ＋ 每周一 03:17 UTC）：`_ci_gate.sh full` —— 全部 P01–P41 ＋ `--selftest` ＋ 数据侧 `../10-dag-data/_selfcheck.py` ＋ 图件规格两侧探针 `_selfcheck_figs_spec.py`。★ 2026-10-19 第 9 轮起本档有**两条对象条件**（见 `CRITERIA-CHANGE-R09.md`）：① **P38** 的对象 `_probe/channel.json` 按规则②不入库 ⇒ 该文件不在盘上时本档**显式排除 P38** 并打印理由（本机在盘上 ⇒ 照跑）；② 数据侧自检的 **C58**（引文逐片段回源）的对象 `01-research/evidence/A*.json` 按规则①不入库 ⇒ 输入层不在盘上时由调用方显式声明，脚本打印 `[SKIP]` 并给出理由（本机在盘上 ⇒ 照跑且必须 PASS）。★ 因此「**本机 full**」与「**CI full**」是**两个不同的扫描面**：说「full 档绿」必须指明环境。",
     "local_render": "本机渲染档（⛔ 不进 CI）：`_render.py`（非 snap Chrome）＋ `_probe_channel.py`（像素读数与横向溢出直接量）＋ `_geom_interactive.py`（交互图几何复算）。★ 本机有该通道；CI runner 没有，故如实列为未覆盖。"
   },
   "gates": [
@@ -66,7 +66,7 @@
     }
   ],
   "not_covered": [
-    "★ **渲染期像素层未进 CI**：`P38` 的渲染产物非退化断言、`_probe_channel.py` 的横向溢出直接量、`P11` 的背景合成对比度，三者都要**非 snap Chrome**（本机在 `~/.cache/ms-playwright/`）⇒ CI runner 没有该通道。本机 `full` 档照样跑，⛔ 但 CI 全绿**不得**读作「像素层已验证」。",
+    "★ **渲染期像素层未进 CI**：`P38` 的渲染产物非退化断言、`_probe_channel.py` 的横向溢出直接量、`P11` 的背景合成对比度，三者都要**非 snap Chrome**（本机在 `~/.cache/ms-playwright/`）⇒ CI runner 没有该通道。★ 2026-10-19 第 9 轮更正归因：**直接原因**是 `_probe/` 按 `.gitignore` 规则②**整层不入库** ⇒ CI 上连 `channel.json`（P38 的对象）都不存在，本档因此**显式排除 P38**（见 `CRITERIA-CHANGE-R09.md`）；「runner 没有 Chrome」是**第二层**原因（即便有 manifest，CI 也没有渲染产物）。本机 `full` 档照样跑 P38，⛔ 但 CI 全绿**不得**读作「像素层已验证」。",
     "★ **`P41` 的扫描面不含任务根与 `_probe/`**：它只扫 `16-checkpoint/` 顶层的 `*.py` ⇒ 上一级与 `_probe/` 下的脚本**没有判据管辖**（台账 `G39` 已登记，本轮未扩面）。",
     "★ **`_probe/` 目录本身无判据管辖**：它的四类对象（取证件 / 核对台 / PNG 凭证 / 假绿物证）按人为清理纪律维护；删错不会有任何门控报警。",
     "★ **A/S 两段是两个独立脚本**：CI 必须分别调用三个门控（`_ci_gate.sh` 已这么做），⚠ 但**漏调其中一个不会有任何报警** —— 这是「装置覆盖」缺口，不是判据缺口。",

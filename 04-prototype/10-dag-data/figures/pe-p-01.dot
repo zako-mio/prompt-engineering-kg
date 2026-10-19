@@ -1,0 +1,18 @@
+digraph fig {
+  rankdir=TB; bgcolor="transparent";
+  node[shape=box, style="rounded,filled", fillcolor="#ffffff", color="#7c8aa5", fontcolor="#0e1729", fontname="Noto Sans CJK SC", fontsize=13, margin="0.20,0.12"]; edge[color="#7c8aa5", fontcolor="#46536b", fontname="Noto Sans CJK SC", fontsize=11, arrowsize=0.7];
+  S [label="提示词面：一个 agent 的行为不只由系统提示决定", fillcolor="#dfe6fb", color="#2f4bd8"];
+  L1 [label="常驻层\n系统提示 · 工具定义\n安全规则", fillcolor="#dfe6fb", color="#2f4bd8"];
+  L2 [label="按需层\n技能文件 · 检索资料\n外部文档", fillcolor="#dfe6fb", color="#2f4bd8"];
+  L3 [label="传递层\n子 Agent 任务描述\n与返回契约", fillcolor="#dfe6fb", color="#2f4bd8"];
+  L4 [label="判据层\n门控脚本 · 校验器\n评测集判据", fillcolor="#dfe6fb", color="#2f4bd8"];
+  N [label="四层的更新节奏与验证方式不同\n常驻层改动影响面最大 ⇒ 必须跑全量回归\n按需层用渐进式披露控制占用\n传递层需要契约稳定\n判据层自身也需要负向自检", shape=note, fillcolor="#e9eef8"];
+  R [label="盘点的产出是一张清单\n标注每部分的常驻策略 · 更新频率 · 验证方式\n这张清单本身就是后续优化的依据", shape=note, fillcolor="#e9eef8"];
+  S -> L1;
+  S -> L2;
+  S -> L3;
+  S -> L4;
+  {rank=same; L1; L2; L3; L4;}
+  {rank=same; N; R;}
+  L3 -> N [style=invis];
+}

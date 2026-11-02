@@ -859,6 +859,124 @@
     "G55": "★ **第 9 轮新增（委派权限面缺陷）**：`oc_search` worker 本会话**无网络出口**且**无写工具** ⇒ G16 取证**失败**（⛔ 未编造引文）；主 Agent 侧 `web_fetch` 可用 ⇒ 属**委派权限面**缺陷（与 `G32` 同族），G16 仍开。"
    },
    "note": "★ 本对象是**第 9 轮（内容波次 4 = 13 个节点 + 13 张成对图档（26 件）→ 收口期第一次真的行使 `_ci_gate.sh full` 这条执行通道，并当场翻出两条恒 FAIL 缺陷）**的轮次对象：采用**收口期一次性落盘**（与第 7/8 轮同口径；见下「偏离登记」）。\n★ 本轮读数全部由**主 Agent 亲跑**（`main-agent-rerun`，逐条附原始输出，原件落 `16-checkpoint/_probe/r9_*.txt`）；8 条 claim 的 `raw_output` 由 `_r9_ledger_update.py` **逐行回源校验**（口径：`===` 开头的行是节标签、不参与比对；其余行必须**逐字（空白归一化）**出现在声明的 `_probe/` 源件里，长行可截断但只校验其左侧前缀）。\n★ **本轮末态读数**：complete **48** / registered **19**（合计 67 = 全量注册数）· 发布面 **64** 页（HTML 64 / MD 64）· 图件 **60** 张（`gen-figs --check` 派生件 **120** 件一致）· 判据 **41** 条 / 负例夹具 **178** 条 · A1–A7（7 条 / 9 夹具）· S1–S11（11 条 / 18 夹具）· 门控登记件 **13** 件 · 生成产物 **130** 个。\n★ **有一路委派产出的取证结论不予采用**：`oc_search` worker 本会话**无网络出口**且**无写工具** ⇒ G16 取证**失败**，⛔ 未编造任何引文（见 `G55`）。★ 内容侧按 `R-25` 走「并行产出部件 → 机器合并 → 主 Agent 复跑」（部件目录 `16-checkpoint/_wave4_parts`，13 个部件；合并与四项校验的原始输出见 claim C-R9-01）；★ 本轮 8 条 claim 的读数**无一**来自委派方自报 —— 全部由主 Agent 亲跑并留原始输出件。\n★ **偏离登记**：契约 §4① 第 3 条要求「开工期先落盘 `rs_touched`」，本轮（与第 7/8 轮同）采用**收口期一次性落盘** —— 开工时确实还不知道会触碰哪些 R-xx（本轮开工后的第一个动作是跑基线 `full` 档，它把 R-20/R-21/R-22/R-23 的触碰面一次性打开）。★ 该项自第 7 轮起登记为待裁决，本轮**仍未裁决**，如实续留。\n★ **本轮的定位**：把内容从 35 推到 48（知识库主体过半），并第一次让「分档 CI 的 full 档」这条**执行通道**真的被行使 —— 代价是当场承认第 8 轮「两档都真跑过」这句话**没有证据件**（`G50`）。⇒ 本轮最值钱的认识不是新增了什么，而是 **「装置没跑 = 没验证」**：恒 FAIL 与恒真一样，都能潜伏一整个发布周期（因为没人看每周一的那条红）。"
+  },
+  {
+   "round": 10,
+   "started_at": "2026-11-02T12:25:00+08:00",
+   "ended_at": "2026-11-02T13:45:00+08:00",
+   "rs_touched": [
+    "R-01",
+    "R-07",
+    "R-08",
+    "R-10",
+    "R-19",
+    "R-21",
+    "R-22",
+    "R-23",
+    "R-24",
+    "R-25"
+   ],
+   "claims": [
+    {
+     "id": "C-R10-01",
+     "source": "main-agent-rerun",
+     "claim": "开工四件套全部落地：环境探测 PASS（R-21）／部署复核（根页自报 48/19，三个第 9 轮新页全 200）／基线 fast 档 PASS／波次目录与 .gitignore 三条已建。",
+     "raw_output": "=== r10_env.txt ===\n== 结论：PASS ==（至少一条**不同源**的通道可用 ⇒ 可以做真实渲染验证）\n=== r10_deploy_check.txt ===\n/（根页）                            200 65865B\n/11-node-pages/pe-m-01.html              200 71113B\n/11-node-pages/pe-v-01.html              200 72697B\n/11-node-pages/pe-p-04.html              200 71260B\n已写满 48 个\n=== r10_baseline_fast.txt ===\n== 门控结论：PASS ==  FAIL 0 项 []\n== 门控结论：PASS ==  FAIL 0 项 []"
+    },
+    {
+     "id": "C-R10-02",
+     "source": "main-agent-rerun",
+     "claim": "取证落盘：sources.json 115→124（S-0116–S-0124）＋ 新私密包 A8 共 19 条 metas；每条引文按省略号拆片段、逐片段在本地保存的源件正文里逐字命中（⛔ 未编造任何一句）。",
+     "raw_output": "=== r10_evidence_check.txt ===\n  [OK  ] S-0116  A8-01   片段 1/1  134 字  A single character difference in the first 1,024 tokens\n  [OK  ] S-0116  A8-02   片段 1/1  134 字  Place stable or repeated content at the beginning of the\n  [OK  ] S-0117  A8-03   片段 1/1  154 字  Prompt caching is an optional feature that you can use w\n  [OK  ] S-0117  A8-04   片段 1/1  152 字  Amazon Bedrock supports two types of prompt caching: Imp\n  [OK  ] S-0118  A8-05   片段 1/1  103 字  The Model Context Protocol (MCP) allows servers to expos\n  [OK  ] S-0118  A8-06   片段 1/1   87 字  Each tool is uniquely identified by a name and includes\n  [OK  ] S-0118  A8-07   片段 1/1  187 字  Tools in MCP are designed to be model-controlled, meanin\n  [OK  ] S-0119  A8-08 "
+    },
+    {
+     "id": "C-R10-03",
+     "source": "main-agent-rerun",
+     "claim": "G23 处置：frontier 两片「作者期注记」换成可逐字回源原文（S-0034 / 新 S-0120）⇒ C58b 由常驻 WARN 转为 PASS（0 片坏）；C59 双载体身份层一致（4 个节点 ⟺ 4 条条目）。",
+     "raw_output": "=== r10_final_selfcheck.txt ===\n[PASS] C58-quote-provenance evidence 引文逐片段可在引文库逐字回源（节点侧 214 条 evidence / 库内 145 条唯一引文，源件 8 个；坏：[]）\n[PASS] C58b-frontier-quotes frontier 侧 18 条 evidence **逐片段全部**可在 A 池逐字回源（★ 第 10 轮 G23 处置：两片作者期注记已换成可回源原文，见 CRITERIA-CHANGE-R10.md）\n[PASS] C59-frontier-node-parity GD-N 节点 4 个 ⟺ frontier 条目 4 条（id 集合 / 标题前缀 / evidence 非空）；不符 0 处 []\n== 自检：PASS ==  (FAIL 0 项 / WARN 3 项)"
+    },
+    {
+     "id": "C-R10-04",
+     "source": "main-agent-rerun",
+     "claim": "波 A（G04 编排 8 节点）：8 个部件过合并器四项闸并落盘，complete 48→56；8 对图件（pe-o-01…08）成对登记；生成器幂等（build 后 dry-run 差集 0/0/0）。",
+     "raw_output": "=== r10_merge_recheck.txt ===\n=== wave 5 ===\n== 结论：PASS ==（回源、台账注入、长度、结构四项全过）\n== 结论：PASS ==（回源、台账注入、长度、结构四项全过）\n=== r10_waveA_build1.txt ===\n  实际写入 33 个 / 实际删除 0 个 / 孤儿残留 0 个\n  二次比对干净：True"
+    },
+    {
+     "id": "C-R10-05",
+     "source": "main-agent-rerun",
+     "claim": "波 B（GD-N 4 节点）：4 个部件落盘，complete 56→60；3 张新图 ＋ 补 NODE_FIG[PE-N-01]（图注两处逐字节同文）。",
+     "raw_output": "=== r10_merge_recheck.txt ===\n== 结论：PASS ==（回源、台账注入、长度、结构四项全过）\n=== wave 6 ===\n== 结论：PASS ==（回源、台账注入、长度、结构四项全过）\n=== r10_waveB_build2.txt ===\n  实际写入 2 个 / 实际删除 0 个 / 孤儿残留 0 个\n  二次比对干净：True"
+    },
+    {
+     "id": "C-R10-06",
+     "source": "main-agent-rerun",
+     "claim": "波 C（G03 上下文 7 节点）：7 个部件落盘，complete 60→67（图谱写完）；7 对图件 pe-c-01…07。",
+     "raw_output": "=== r10_merge_recheck.txt ===\n== 结论：PASS ==（回源、台账注入、长度、结构四项全过）\n== 结论：PASS ==（回源、台账注入、长度、结构四项全过）\n=== wave 7 ===\n=== r10_waveC_build2.txt ===\n  实际写入 10 个 / 实际删除 0 个 / 孤儿残留 0 个\n  二次比对干净：True"
+    },
+    {
+     "id": "C-R10-07",
+     "source": "main-agent-rerun",
+     "claim": "新增判据 P43（图注跨登记表逐字同文）**引入当天即报出真实存量缺陷** pe-f-06，修后 0 处；P42（内容状态文案与真相源一致）首版有假阳（子串 `待填充 0` 命中章节号 03），改正则后归零。",
+     "raw_output": "=== r10_waveA_gate.txt ===\n\n=== r10_pre_closure_gate.txt ===\n== 门控结论：PASS ==  FAIL 0 项 []"
+    },
+    {
+     "id": "C-R10-08",
+     "source": "main-agent-rerun",
+     "claim": "两态→单态文案收敛：新增 gen-common.content_state_copy() 单一出口，六个生成器全部改读它；67/67 后根页/学习路径/交互页/页脚/MD 镜像再无「架构在册」可见文案（只剩代码分支）。",
+     "raw_output": "=== r10_final_gate.txt ===\n       已发布节点 67 / 组 11 / 视图 2 / 入口 1 的镜像与页面齐全；pending_nodes 登记 0 个且与 registered 集合相等；G12 counts 逐项 13 项；G13 镜像内容比对 717 项；违例 0 处 []\n[PASS] P42 内容状态文案与真相源一致（首页/学习路径自报数字 = 真相源；零注册态不得残留两态语汇；★ 2026-11-02 第 10 轮：67/67 首次撞上「架构在册 0」）\n       节点 67（写满 67 / 在册 0）；受检页 83；不一致 0 处 []\n=== r10_final_selfcheck.txt ===\n== 自检：PASS ==  (FAIL 0 项 / WARN 3 项)"
+    },
+    {
+     "id": "C-R10-09",
+     "source": "main-agent-rerun",
+     "claim": "夹具与数据状态解绑：67/67 后 P05/P22 的 registered 夹具 `next(...)` 抛 StopIteration，selftest 由 PASS 变 FAIL ⇒ 改为「取不到就现造一个」（⛔ 未改任何断言），修后两条全触发。",
+     "raw_output": "=== r10_final_selftest.txt ===\n[PASS] P05 字段长度约束（caliber 口径）＋ summary 结构约束 ＋ `boundary` 必填/不重复/不残留\n[PASS] P22 content_status 状态↔内容一致性（complete 8 区块非空 / registered 三块必空 / 禁半填）\n== 自检结论：PASS ==（43 条判据 / 182 条负例夹具，全部须正向 PASS 且负例触发）"
+    },
+    {
+     "id": "C-R10-10",
+     "source": "main-agent-rerun",
+     "claim": "收口六步 ＋ 三套门控 ＋ 图件两侧探针全绿：gate P01–P43 PASS／a11y A1–A7 PASS／seo S1–S11 PASS，数据侧 C01–C59 PASS（WARN 3）；图件 156 件一致；几何复算 0 超区 0 重叠。",
+     "raw_output": "=== r10_final_gate.txt ===\n== 门控结论：PASS ==  FAIL 0 项 []\n=== r10_final_selfcheck.txt ===\n== 自检：PASS ==  (FAIL 0 项 / WARN 3 项)\n=== r10_final_figs.txt ===\n[PASS] 图件 156 件与派生结果一致\n== 结论：PASS ==（四发合成探针 + 盘上 78 张真实图件；不符 0 处）\n=== r10_final_geom.txt ===\n== 几何复算结论：PASS =="
+    },
+    {
+     "id": "C-R10-11",
+     "source": "main-agent-rerun",
+     "claim": "执行通道两档在本机各自真跑：fast（含新进档的 P42/P43）与 full（本机有 _probe/channel.json ⇒ 含 P38）均 PASS；★ 两条读数分别指明环境（本机），⛔ 不混读。",
+     "raw_output": "=== r10_final_ci_fast.txt ===\n== 门控结论：PASS ==  FAIL 0 项 []\n== 门控结论：PASS ==  FAIL 0 项 []\n=== r10_final_ci_full.txt ===\n== 门控结论：PASS ==  FAIL 0 项 []\n== 自检结论：PASS ==（43 条判据 / 182 条负例夹具，全部须正向 PASS 且负例触发）"
+    },
+    {
+     "id": "C-R10-12",
+     "source": "main-agent-rerun",
+     "claim": "上线验证（⛔ 不把「已 push」读作「已上线」）：push 后三 job 全绿，且 curl 本轮三个新页全 200、根页自报 67 / 0 —— 只有这两条同时成立才写「已上线」。",
+     "raw_output": "=== r10_live_check.txt ===\n-- 本轮新增页（必须 200；这是「新内容真的到了线上」的唯一判据）--\n11-node-pages/pe-o-01.html               200 70754B\n11-node-pages/pe-o-06.html               200 67600B\n11-node-pages/pe-n-02.html               200 67928B\n11-node-pages/pe-c-03.html               200 68715B\n11-node-pages/pe-c-06.html               200 68216B\n-- 根页自报 counts（必须 已写满 67 / 无「架构在册」）--\n已写满 67 个"
+    }
+   ],
+   "artifacts": [
+    "04-prototype/10-dag-data/dag.json（19 节点翻 complete ＋ lab/evidence/pitfalls ＋ 少量 why/intro 补写）",
+    "04-prototype/10-dag-data/frontier.json（G23：两片引文换成可回源原文）",
+    "04-prototype/10-dag-data/sources.json（S-0116–S-0124，meta.count 115→124）",
+    "04-prototype/10-dag-data/_selfcheck.py（新增 C59；C58b 改条件 WARN）",
+    "04-prototype/10-dag-data/figures/（+18 对 .dot/.svg ⇒ 156 件）",
+    "04-prototype/16-checkpoint/gen-figs.py / gen-nodes.py（+18 FIGS，+19 NODE_FIG，pe-f-06 图注统一）",
+    "04-prototype/16-checkpoint/gen-common.py（content_state_copy 单一出口 ＋ 页脚）",
+    "04-prototype/16-checkpoint/gen-root.py / gen-views.py / gen-md.py / gen-state.py / gen-interactive.py（改读单一出口）",
+    "04-prototype/16-checkpoint/gate_prototype.py（+P42/+P43 ＋ 4 条夹具；P05/P22 夹具解绑数据状态）",
+    "04-prototype/16-checkpoint/gate-manifest.json（+P42/P43 的 judge；selftest 不再自报夹具数）",
+    "04-prototype/16-checkpoint/_ci_gate.sh（fast/full 两档显式集合 +P42,P43）",
+    "04-prototype/16-checkpoint/CRITERIA-CHANGE-R10.md（本轮判据变更登记件）",
+    "04-prototype/16-checkpoint/ROUND-LEDGER.json（本轮对象）",
+    ".gitignore（+_wave5/6/7_parts）",
+    "report.md §十三 / report.html（留档双版本）"
+   ],
+   "g_list_updates": {
+    "G23": "✅ 已消（PASS）：frontier 两片作者期注记换成可逐字回源原文（S-0034 / S-0120），C58b 由 WARN 转 PASS",
+    "G51": "仍在（判据面）：渲染器枚举覆盖面的不对称未加判据；本轮只在内容侧按「同句 ≥2 个分号」处置",
+    "G54": "✅ 已消（PASS）：pe-f-06 两处图注统一，并由新判据 P43 常驻守着",
+    "G56": "新登记：夹具不得依赖会归零的数据子集（本轮 P05/P22 的 registered 夹具在 67/67 时抛 StopIteration ⇒ 自检 FAIL）",
+    "G57": "新登记：.github/workflows/pages.yml 注释写「每周一 03:17 UTC」，两次实测均在 08:5x UTC 触发（GitHub 侧延迟或 cron 漂移，未证）",
+    "G58": "新登记：注册期字段只要求「导读能读」，完成期要求「八区块达标」⇒ 19 个节点里 8 个在翻 complete 时才被 P05 拦住；下一轮应在部件契约里前置完成态门槛",
+    "K2": "✅ 已消：gate-manifest 不再自报夹具数（重复事实已删），编号集合这一层仍无判据（如实留行）"
+   },
+   "note": "★ 本轮的定位**：把内容从 48 推到 **67/67**（G04 8 ＋ GD-N 4 ＋ G03 7 ＝ 19 节点），并在同一条链上收掉四处「同一事实写两处」的欠账（图注 / 内容状态文案 / 清单夹具数 / 双载体身份层）。⇒ 本轮最值钱的认识不是「写完了」，而是两条：① **判据的价值在第 N 次实证** —— P43 引入当天就报出挂了一整轮的 G54，P42 第一次跑就撞上「registered 归零」这个从未被覆盖的第三态；② **夹具的可判假性会被数据状态绑架** —— 67/67 之后 P05/P22 的 registered 夹具直接 StopIteration，判据没坏、是夹具的前提没了（G56）。★ 另两处如实登记的偏差：P42 首版子串口径命中章节号（假阳 3 处）、G23 的两条替代来源是 Azure/AWS/Gemini 而非 Anthropic/OpenAI（两个最大的官方口径域本轮不可达）。"
   }
  ]
 }

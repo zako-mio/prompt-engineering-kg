@@ -94,12 +94,11 @@ def root_page(dag, frontier, page_exists, page_rel=None):
         % C.esc(C.DIR_VIEWS + "/02-frontier.html"), reveal_index=nxt()))
     body.append("</div>")
 
-    body.append("<h2>内容状态（两态登记）</h2>")
-    body.append('<div class="notice"><strong>已写满 %d 个</strong>：八个区块（为什么需要它、机制说明、'
-                "何时该用与不该用、实验台、证据、术语、失效模式、一句话小结）全部非空，"
-                "可点进节点页完整阅读。<br><strong>架构在册 %d 个</strong>：知识架构位置已确定、"
-                "导读已写，节点页待后续波次填充 —— 这一状态在组页与学习路径上以徽标显式标注，"
-                "不隐藏、不静默留白。</div>" % (len(complete), len(registered)))
+    # ★ 2026-11-02 第 10 轮：文案改由 `C.content_state_copy()` 单一出口产出
+    #   （单态时「架构在册 0 个」会自相矛盾，已由该入口分支处理；判据 P42 守着）。
+    _state = C.content_state_copy(len(complete), len(registered))
+    body.append("<h2>%s</h2>" % C.esc(_state["root_heading"]))
+    body.append(_state["root_notice"])
     body.append('<div class="table-scroll"><table><caption>已写满的节点（可直接阅读）。</caption>'
                 "<thead><tr><th>节点</th><th>名称</th><th>分组</th><th>依赖深度</th></tr></thead><tbody>")
     for n in sorted(complete, key=lambda x: x["layer"]):

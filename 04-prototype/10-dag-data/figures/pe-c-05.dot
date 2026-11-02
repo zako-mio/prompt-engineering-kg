@@ -1,0 +1,19 @@
+digraph fig {
+  rankdir=TB; bgcolor="transparent"; ranksep=0.28; nodesep=0.24;
+  node[shape=box, style="rounded,filled", fillcolor="#ffffff", color="#7c8aa5", fontcolor="#0e1729", fontname="Noto Sans CJK SC", fontsize=13, margin="0.20,0.12"]; edge[color="#7c8aa5", fontcolor="#46536b", fontname="Noto Sans CJK SC", fontsize=11, arrowsize=0.7];
+  w  [label="窗口条：同一段资料的三个位置\n容量不等于有效注意力", fillcolor="#dfe6fb", color="#2f4bd8"];
+  h  [label="首部\n最易被用到", color="#136f3a"];
+  m  [label="中部\n显著退化", color="#b3181f"];
+  t  [label="尾部\n最易被用到", color="#136f3a"];
+  p  [label="占窗口一半以内：中部最易被忽略\n超过一半：首因偏差减弱、近因偏差稳定\n→ 中部忽略转为距离型偏差", color="#9a5310"];
+  a1 [label="① 长资料置前\n指令与问题置后", color="#136f3a"];
+  a2 [label="② 关键结论先引用\n再让模型作答", color="#136f3a"];
+  a3 [label="③ 先压缩再放入\n避开高占比区间", color="#136f3a"];
+  w -> h;
+  h -> m [style=solid, arrowhead=none];
+  m -> t [style=solid, arrowhead=none];
+  m -> p [style=dashed, label="条件"];
+  p -> a1 [style=invis];
+  {rank=same; h; m; t;}
+  {rank=same; a1; a2; a3;}
+}

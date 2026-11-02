@@ -1,0 +1,16 @@
+digraph fig {
+  rankdir=LR; bgcolor="transparent"; ranksep=0.45; nodesep=0.20;
+  node[shape=box, style="rounded,filled", fillcolor="#ffffff", color="#7c8aa5", fontcolor="#0e1729", fontname="Noto Sans CJK SC", fontsize=13, margin="0.20,0.12"]; edge[color="#7c8aa5", fontcolor="#46536b", fontname="Noto Sans CJK SC", fontsize=11, arrowsize=0.7];
+  w  [label="上下文窗口\n等于工作内存\n容量不等于可用容量", fillcolor="#dfe6fb", color="#2f4bd8"];
+  s1 [label="① 写入\n把复用结论沉淀为\n记忆或笔记\n作用在会话之间"];
+  s2 [label="② 选择\n按需检索与按需加载\n作用在推理之前"];
+  s3 [label="③ 压缩\n长历史摘要与抽取\n保住结论、丢弃过程"];
+  s4 [label="④ 隔离\n子任务独立上下文\n只回传结论"];
+  j  [label="取舍依据\n模型有效注意力\n与任务串行深度\n须由评测集确认", color="#9a5310"];
+  nt [label="常见错位\n把四策略当清单照做", shape=note, fillcolor="#e9eef8"];
+  w -> s1; w -> s2; w -> s3; w -> s4;
+  s2 -> j [style=dashed, label="依据"];
+  s3 -> j [style=dashed];
+  {rank=same; s1; s2; s3; s4;}
+  {rank=same; w; nt;}
+}

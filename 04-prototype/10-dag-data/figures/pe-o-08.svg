@@ -1,0 +1,57 @@
+<svg class="fig__svg" role="img" aria-label="治理图：名称 / 描述 / 参数模式本身就是提示面，工具膨胀诱发误选，四个治理动作（合并 · 命名 · 描述 · 权限分离）与两条监控信号。"
+ viewBox="0.00 0.00 678.00 238.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 234)">
+
+<g id="node1" class="node">
+<title>T</title>
+<path fill="var(--brand-soft)" stroke="var(--brand-primary)" d="M156,-74C156,-74 12,-74 12,-74 6,-74 0,-68 0,-62 0,-62 0,-26 0,-26 0,-20 6,-14 12,-14 12,-14 156,-14 156,-14 162,-14 168,-20 168,-26 168,-26 168,-62 168,-62 168,-68 162,-74 156,-74"/>
+<text text-anchor="middle" x="84" y="-54.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">一个工具的定义</text>
+<text text-anchor="middle" x="84" y="-40.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">名称 · 描述 · 参数模式</text>
+<text text-anchor="middle" x="84" y="-26.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">这一层就是提示面</text>
+</g>
+<g id="node2" class="node">
+<title>G</title>
+<path fill="var(--brand-soft)" stroke="var(--brand-primary)" d="M415,-88C415,-88 216,-88 216,-88 210,-88 204,-82 204,-76 204,-76 204,-12 204,-12 204,-6 210,0 216,0 216,0 415,0 415,0 421,0 427,-6 427,-12 427,-12 427,-76 427,-76 427,-82 421,-88 415,-88"/>
+<text text-anchor="middle" x="315.5" y="-68.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">四个治理动作</text>
+<text text-anchor="middle" x="315.5" y="-54.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">① 合并：语义相近的工具合并</text>
+<text text-anchor="middle" x="315.5" y="-40.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">② 命名：一致且描述性</text>
+<text text-anchor="middle" x="315.5" y="-26.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">③ 描述：写何时用与何时不用</text>
+<text text-anchor="middle" x="315.5" y="-12.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">④ 权限：高风险工具分离并加确认</text>
+</g>
+<g id="edge1" class="edge">
+<title>T&#45;&gt;G</title>
+<path fill="none" stroke="var(--border-line)" d="M168.18,-44C177.47,-44 187.06,-44 196.68,-44"/>
+<polygon fill="var(--border-line)" stroke="var(--border-line)" points="196.68,-46.45 203.68,-44 196.68,-41.55 196.68,-46.45"/>
+</g>
+<g id="node3" class="node">
+<title>B</title>
+<path fill="var(--surface-raised)" stroke="var(--danger)" d="M626,-74C626,-74 507,-74 507,-74 501,-74 495,-68 495,-62 495,-62 495,-26 495,-26 495,-20 501,-14 507,-14 507,-14 626,-14 626,-14 632,-14 638,-20 638,-26 638,-26 638,-62 638,-62 638,-68 632,-74 626,-74"/>
+<text text-anchor="middle" x="566.5" y="-54.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">膨胀的代价</text>
+<text text-anchor="middle" x="566.5" y="-40.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">工具越多越容易误选</text>
+<text text-anchor="middle" x="566.5" y="-26.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">描述含糊诱发误用</text>
+</g>
+<g id="edge2" class="edge">
+<title>G&#45;&gt;B</title>
+<path fill="none" stroke="var(--border-line)" d="M427.17,-44C447.64,-44 468.62,-44 487.86,-44"/>
+<polygon fill="var(--border-line)" stroke="var(--border-line)" points="487.86,-46.45 494.86,-44 487.86,-41.55 487.86,-46.45"/>
+</g>
+<g id="node4" class="node">
+<title>M</title>
+<polygon fill="var(--surface-subtle)" stroke="var(--border-line)" points="664,-152 463,-152 463,-92 670,-92 670,-146 664,-152"/>
+<polyline fill="none" stroke="var(--border-line)" points="664,-152 664,-146 "/>
+<polyline fill="none" stroke="var(--border-line)" points="670,-146 664,-146 "/>
+<text text-anchor="middle" x="566.5" y="-132.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">监控信号</text>
+<text text-anchor="middle" x="566.5" y="-118.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">近零调用：描述或场景不匹配</text>
+<text text-anchor="middle" x="566.5" y="-104.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">高频误用：与别的工具语义重叠</text>
+</g>
+<g id="node5" class="node">
+<title>N</title>
+<polygon fill="var(--surface-subtle)" stroke="var(--border-line)" points="645,-230 482,-230 482,-170 651,-170 651,-224 645,-230"/>
+<polyline fill="none" stroke="var(--border-line)" points="645,-230 645,-224 "/>
+<polyline fill="none" stroke="var(--border-line)" points="651,-224 645,-224 "/>
+<text text-anchor="middle" x="566.5" y="-210.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">边界</text>
+<text text-anchor="middle" x="566.5" y="-196.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">权限须在系统层收窄</text>
+<text text-anchor="middle" x="566.5" y="-182.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">只写在提示里不构成控制</text>
+</g>
+</g>
+</svg>

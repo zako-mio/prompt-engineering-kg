@@ -1,0 +1,72 @@
+<svg class="fig__svg" role="img" aria-label="对照图：分段（买延迟，取决于切分与合并）与投票（买鲁棒性，取决于错误是否发散）两种并行形态，以及并行前必须确认的任务结构与聚合判据。"
+ viewBox="0.00 0.00 647.00 184.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 180)">
+
+<g id="node1" class="node">
+<title>q</title>
+<path fill="var(--surface-raised)" stroke="var(--border-line)" d="M157,-98C157,-98 25,-98 25,-98 19,-98 13,-92 13,-86 13,-86 13,-50 13,-50 13,-44 19,-38 25,-38 25,-38 157,-38 157,-38 163,-38 169,-44 169,-50 169,-50 169,-86 169,-86 169,-92 163,-98 157,-98"/>
+<text text-anchor="middle" x="91" y="-78.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">同一批输入</text>
+<text text-anchor="middle" x="91" y="-64.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">先判定：任务可否切分</text>
+<text text-anchor="middle" x="91" y="-50.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">错误是否发散</text>
+</g>
+<g id="node2" class="node">
+<title>a</title>
+<path fill="var(--brand-soft)" stroke="var(--brand-primary)" d="M408,-138C408,-138 276,-138 276,-138 270,-138 264,-132 264,-126 264,-126 264,-90 264,-90 264,-84 270,-78 276,-78 276,-78 408,-78 408,-78 414,-78 420,-84 420,-90 420,-90 420,-126 420,-126 420,-132 414,-138 408,-138"/>
+<text text-anchor="middle" x="342" y="-118.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">形态一 分段</text>
+<text text-anchor="middle" x="342" y="-104.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">切成互不依赖的子任务</text>
+<text text-anchor="middle" x="342" y="-90.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">并行处理后合并</text>
+</g>
+<g id="edge1" class="edge">
+<title>q&#45;&gt;a</title>
+<path fill="none" stroke="var(--border-line)" d="M169.08,-80.38C196.86,-84.85 228.35,-89.9 256.72,-94.46"/>
+<polygon fill="var(--border-line)" stroke="var(--border-line)" points="256.56,-96.92 263.86,-95.61 257.33,-92.08 256.56,-96.92"/>
+<text text-anchor="middle" x="223" y="-94.2" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="11.00" fill="var(--text-secondary)">可切分</text>
+</g>
+<g id="node3" class="node">
+<title>b</title>
+<path fill="var(--brand-soft)" stroke="var(--brand-primary)" d="M401.5,-60C401.5,-60 282.5,-60 282.5,-60 276.5,-60 270.5,-54 270.5,-48 270.5,-48 270.5,-12 270.5,-12 270.5,-6 276.5,0 282.5,0 282.5,0 401.5,0 401.5,0 407.5,0 413.5,-6 413.5,-12 413.5,-12 413.5,-48 413.5,-48 413.5,-54 407.5,-60 401.5,-60"/>
+<text text-anchor="middle" x="342" y="-40.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">形态二 投票</text>
+<text text-anchor="middle" x="342" y="-26.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">同一输入多次采样</text>
+<text text-anchor="middle" x="342" y="-12.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">按多数或按判据聚合</text>
+</g>
+<g id="edge2" class="edge">
+<title>q&#45;&gt;b</title>
+<path fill="none" stroke="var(--border-line)" d="M169.08,-56.24C198.96,-51.68 233.13,-46.46 263.09,-41.89"/>
+<polygon fill="var(--border-line)" stroke="var(--border-line)" points="263.66,-44.28 270.22,-40.8 262.93,-39.44 263.66,-44.28"/>
+<text text-anchor="middle" x="223" y="-54.2" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="11.00" fill="var(--text-secondary)">答案唯一</text>
+</g>
+<g id="node4" class="node">
+<title>a2</title>
+<path fill="var(--surface-raised)" stroke="var(--border-line)" d="M607.5,-138C607.5,-138 488.5,-138 488.5,-138 482.5,-138 476.5,-132 476.5,-126 476.5,-126 476.5,-90 476.5,-90 476.5,-84 482.5,-78 488.5,-78 488.5,-78 607.5,-78 607.5,-78 613.5,-78 619.5,-84 619.5,-90 619.5,-90 619.5,-126 619.5,-126 619.5,-132 613.5,-138 607.5,-138"/>
+<text text-anchor="middle" x="548" y="-118.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">买的是延迟</text>
+<text text-anchor="middle" x="548" y="-104.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">收益看切分是否均匀</text>
+<text text-anchor="middle" x="548" y="-90.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">与合并是否无损</text>
+</g>
+<g id="edge3" class="edge">
+<title>a&#45;&gt;a2</title>
+<path fill="none" stroke="var(--border-line)" d="M420.12,-108C436.17,-108 453.09,-108 469.16,-108"/>
+<polygon fill="var(--border-line)" stroke="var(--border-line)" points="469.48,-110.45 476.48,-108 469.48,-105.55 469.48,-110.45"/>
+</g>
+<g id="node5" class="node">
+<title>b2</title>
+<path fill="var(--surface-raised)" stroke="var(--border-line)" d="M627,-60C627,-60 469,-60 469,-60 463,-60 457,-54 457,-48 457,-48 457,-12 457,-12 457,-6 463,0 469,0 469,0 627,0 627,0 633,0 639,-6 639,-12 639,-12 639,-48 639,-48 639,-54 633,-60 627,-60"/>
+<text text-anchor="middle" x="548" y="-40.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">买的是鲁棒性</text>
+<text text-anchor="middle" x="548" y="-26.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">收益看错误是否发散</text>
+<text text-anchor="middle" x="548" y="-12.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">错误同向时投票放大置信度</text>
+</g>
+<g id="edge4" class="edge">
+<title>b&#45;&gt;b2</title>
+<path fill="none" stroke="var(--border-line)" d="M413.78,-30C425.42,-30 437.66,-30 449.81,-30"/>
+<polygon fill="var(--border-line)" stroke="var(--border-line)" points="449.94,-32.45 456.94,-30 449.94,-27.55 449.94,-32.45"/>
+</g>
+<g id="node6" class="node">
+<title>nt</title>
+<polygon fill="var(--surface-subtle)" stroke="var(--border-line)" points="176,-176 0,-176 0,-116 182,-116 182,-170 176,-176"/>
+<polyline fill="none" stroke="var(--border-line)" points="176,-176 176,-170 "/>
+<polyline fill="none" stroke="var(--border-line)" points="182,-170 176,-170 "/>
+<text text-anchor="middle" x="91" y="-156.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">并行不免费</text>
+<text text-anchor="middle" x="91" y="-142.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">样本数按边际收益曲线设定</text>
+<text text-anchor="middle" x="91" y="-128.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">无判据的聚合只是随机选择</text>
+</g>
+</g>
+</svg>

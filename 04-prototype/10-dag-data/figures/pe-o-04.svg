@@ -1,0 +1,77 @@
+<svg class="fig__svg" role="img" aria-label="结构图：编排者拆解 → 多个工作者并行 → 汇总，以及多 Agent 相对对话约十五倍的 token 消耗这一成本张力。"
+ viewBox="0.00 0.00 585.00 217.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 213)">
+
+<g id="node1" class="node">
+<title>O</title>
+<path fill="var(--brand-soft)" stroke="var(--brand-primary)" d="M156,-110C156,-110 12,-110 12,-110 6,-110 0,-104 0,-98 0,-98 0,-76 0,-76 0,-70 6,-64 12,-64 12,-64 156,-64 156,-64 162,-64 168,-70 168,-76 168,-76 168,-98 168,-98 168,-104 162,-110 156,-110"/>
+<text text-anchor="middle" x="84" y="-90.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">编排者</text>
+<text text-anchor="middle" x="84" y="-76.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">拆解任务 · 分派 · 汇总</text>
+</g>
+<g id="node2" class="node">
+<title>W1</title>
+<path fill="var(--surface-raised)" stroke="var(--border-line)" d="M335,-174C335,-174 216,-174 216,-174 210,-174 204,-168 204,-162 204,-162 204,-140 204,-140 204,-134 210,-128 216,-128 216,-128 335,-128 335,-128 341,-128 347,-134 347,-140 347,-140 347,-162 347,-162 347,-168 341,-174 335,-174"/>
+<text text-anchor="middle" x="275.5" y="-154.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">工作者 1</text>
+<text text-anchor="middle" x="275.5" y="-140.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">收到自包含任务描述</text>
+</g>
+<g id="edge1" class="edge">
+<title>O&#45;&gt;W1</title>
+<path fill="none" stroke="var(--border-line)" d="M153.15,-110.02C168.14,-115.08 184.11,-120.47 199.37,-125.63"/>
+<polygon fill="var(--border-line)" stroke="var(--border-line)" points="198.91,-128.06 206.32,-127.97 200.47,-123.41 198.91,-128.06"/>
+</g>
+<g id="node3" class="node">
+<title>W2</title>
+<path fill="var(--surface-raised)" stroke="var(--border-line)" d="M322.5,-110C322.5,-110 228.5,-110 228.5,-110 222.5,-110 216.5,-104 216.5,-98 216.5,-98 216.5,-76 216.5,-76 216.5,-70 222.5,-64 228.5,-64 228.5,-64 322.5,-64 322.5,-64 328.5,-64 334.5,-70 334.5,-76 334.5,-76 334.5,-98 334.5,-98 334.5,-104 328.5,-110 322.5,-110"/>
+<text text-anchor="middle" x="275.5" y="-90.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">工作者 2</text>
+<text text-anchor="middle" x="275.5" y="-76.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">独立上下文并行</text>
+</g>
+<g id="edge2" class="edge">
+<title>O&#45;&gt;W2</title>
+<path fill="none" stroke="var(--border-line)" d="M168.12,-87C181.88,-87 195.97,-87 209.21,-87"/>
+<polygon fill="var(--border-line)" stroke="var(--border-line)" points="209.47,-89.45 216.47,-87 209.47,-84.55 209.47,-89.45"/>
+</g>
+<g id="node4" class="node">
+<title>W3</title>
+<path fill="var(--surface-raised)" stroke="var(--border-line)" d="M329,-46C329,-46 222,-46 222,-46 216,-46 210,-40 210,-34 210,-34 210,-12 210,-12 210,-6 216,0 222,0 222,0 329,0 329,0 335,0 341,-6 341,-12 341,-12 341,-34 341,-34 341,-40 335,-46 329,-46"/>
+<text text-anchor="middle" x="275.5" y="-26.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">工作者 n</text>
+<text text-anchor="middle" x="275.5" y="-12.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">只回传结构化结论</text>
+</g>
+<g id="edge3" class="edge">
+<title>O&#45;&gt;W3</title>
+<path fill="none" stroke="var(--border-line)" d="M153.15,-63.98C169.3,-58.53 186.58,-52.69 202.88,-47.19"/>
+<polygon fill="var(--border-line)" stroke="var(--border-line)" points="203.96,-49.41 209.81,-44.85 202.39,-44.77 203.96,-49.41"/>
+</g>
+<g id="node5" class="node">
+<title>S</title>
+<path fill="var(--surface-raised)" stroke="var(--border-line)" d="M533.5,-117C533.5,-117 426.5,-117 426.5,-117 420.5,-117 414.5,-111 414.5,-105 414.5,-105 414.5,-69 414.5,-69 414.5,-63 420.5,-57 426.5,-57 426.5,-57 533.5,-57 533.5,-57 539.5,-57 545.5,-63 545.5,-69 545.5,-69 545.5,-105 545.5,-105 545.5,-111 539.5,-117 533.5,-117"/>
+<text text-anchor="middle" x="480" y="-97.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">汇总</text>
+<text text-anchor="middle" x="480" y="-83.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">合并冲突结论</text>
+<text text-anchor="middle" x="480" y="-69.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">交叉验证后再输出</text>
+</g>
+<g id="edge4" class="edge">
+<title>W1&#45;&gt;S</title>
+<path fill="none" stroke="var(--border-line)" d="M347.04,-128.71C366.64,-122.51 387.95,-115.78 407.6,-109.57"/>
+<polygon fill="var(--border-line)" stroke="var(--border-line)" points="408.54,-111.84 414.48,-107.39 407.06,-107.17 408.54,-111.84"/>
+</g>
+<g id="edge5" class="edge">
+<title>W2&#45;&gt;S</title>
+<path fill="none" stroke="var(--border-line)" d="M334.53,-87C357.09,-87 383.17,-87 406.92,-87"/>
+<polygon fill="var(--border-line)" stroke="var(--border-line)" points="407.2,-89.45 414.2,-87 407.2,-84.55 407.2,-89.45"/>
+</g>
+<g id="edge6" class="edge">
+<title>W3&#45;&gt;S</title>
+<path fill="none" stroke="var(--border-line)" d="M341.13,-43.43C362.23,-50.09 385.78,-57.54 407.36,-64.36"/>
+<polygon fill="var(--border-line)" stroke="var(--border-line)" points="406.88,-66.78 414.29,-66.55 408.35,-62.1 406.88,-66.78"/>
+</g>
+<g id="node6" class="node">
+<title>ct</title>
+<polygon fill="var(--surface-subtle)" stroke="var(--border-line)" points="571,-209 383,-209 383,-135 577,-135 577,-203 571,-209"/>
+<polyline fill="none" stroke="var(--border-line)" points="571,-209 571,-203 "/>
+<polyline fill="none" stroke="var(--border-line)" points="577,-203 571,-203 "/>
+<text text-anchor="middle" x="480" y="-189.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">成本张力</text>
+<text text-anchor="middle" x="480" y="-175.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">多 Agent 相对对话约 15 倍</text>
+<text text-anchor="middle" x="480" y="-161.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">普通 Agent 相对对话约 4 倍</text>
+<text text-anchor="middle" x="480" y="-147.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">只在并行探索有实质增益时用</text>
+</g>
+</g>
+</svg>

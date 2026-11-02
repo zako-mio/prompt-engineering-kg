@@ -1,0 +1,18 @@
+digraph fig {
+  rankdir=LR; bgcolor="transparent";
+  node[shape=box, style="rounded,filled", fillcolor="#ffffff", color="#7c8aa5", fontcolor="#0e1729", fontname="Noto Sans CJK SC", fontsize=13, margin="0.20,0.12"]; edge[color="#7c8aa5", fontcolor="#46536b", fontname="Noto Sans CJK SC", fontsize=11, arrowsize=0.7];
+  O  [label="编排者\n拆解任务 · 分派 · 汇总", fillcolor="#dfe6fb", color="#2f4bd8"];
+  W1 [label="工作者 1\n收到自包含任务描述"];
+  W2 [label="工作者 2\n独立上下文并行"];
+  W3 [label="工作者 n\n只回传结构化结论"];
+  S  [label="汇总\n合并冲突结论\n交叉验证后再输出"];
+  ct [label="成本张力\n多 Agent 相对对话约 15 倍\n普通 Agent 相对对话约 4 倍\n只在并行探索有实质增益时用", shape=note, fillcolor="#e9eef8"];
+  O -> W1;
+  O -> W2;
+  O -> W3;
+  W1 -> S;
+  W2 -> S;
+  W3 -> S;
+  {rank=same; W1; W2; W3;}
+  {rank=same; S; ct;}
+}

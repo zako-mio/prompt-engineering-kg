@@ -65,7 +65,7 @@
 - 证据（S-0031，official）：https://raw.githubusercontent.com/GenAI-Security-Project/GenAI-LLM-Top10/main/2026/README.md
   - 原文关键句：Status: Published | Release date: August 4, 2026 ... LLM01:2026 Prompt Injection | LLM02 Sensitive Information Disclosure | LLM03 Excessive Agency | LLM04 Supply Chain | LLM05 Data and Model Poisoning | LLM06 Unbounded Consumption | LLM07 Misinformation | LLM08 Hidden Context Exposure | LLM09 Vector and Embedding Weaknesses | LLM10 Improper Output Handling
 - 证据（S-0034，official）：https://genai.owasp.org/llm-top-10/
-  - 原文关键句：（同步落差证据：官网索引页在 2026-10-14 抓取时仍以 2025 版十条为展示主体，与官方仓库 2026/README.md 标注的 2026 版并存）
+  - 原文关键句：TOP 10 FOR GEN AI 2025 Top 10 Risk & Mitigations for LLMs and Gen AI Apps
 
 离线复现：步骤：① 在本地复制条目集合文件；② 只修改其中一条条目的状态与取代关系，并把时间锚更新为新版次；③ 重跑生成器并记录除该模块外其余产物文件的摘要变化数（应为 0）；④ 断言版次与时间锚一致，否则判为假刷新。注意：本条机制的描述取自协议与厂商文档的现行实践，未在本机跑通完整生成器，故只给出可执行的复现步骤而非实测结论。
 
@@ -86,8 +86,8 @@
   - 原文关键句：Prompts: Pre-defined templates or instructions ... Resources: Structured data or content that provides additional context ... Tools: Executable functions ... | Prompts | User-controlled | Resources | Application-controlled | Tools | Model-controlled |
 - 证据（S-0083，official）：https://api.github.com/repos/stanfordnlp/dspy/releases/latest
   - 原文关键句："tag_name":"3.4.1" ... "published_at":"2026-10-12T23:12:32Z" ... "DSPy 3.4.1 makes GEPA's structured InstructionProposer the default instruction proposer"
-- 证据（S-0105，official）：https://developers.openai.com/api/docs/deprecations
-  - 原文关键句：（退役时间线入口；该域直连曾返回 403，精确退役日期未取得一手页面 ⇒ 不得据此断言具体日期）
+- 证据（S-0120，official）：https://ai.google.dev/gemini-api/docs/deprecations
+  - 原文关键句：Deprecation announcements are made on the Release notes page, and the announced earliest shutdown dates are tracked on this page.
 
 离线复现：步骤：① 对每条待刷新结论，从四类渠道中各取至少一个一手来源；② 记录回源日期与页面自身日期（无日期戳者标注「时效不确定」）；③ 若结论来自厂商自述数字，标注立场偏差并不作中立证据；④ 与上一版次条目比对，改动即触发条目更新并记录取代关系。注意：渠道清单本身未在本机做端到端自动抓取，只给出人工可执行的最小流程。
 

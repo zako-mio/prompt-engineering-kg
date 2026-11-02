@@ -1,0 +1,75 @@
+<svg class="fig__svg" role="img" aria-label="状态图：状态集合、转移条件、检查点落盘与恢复语义（副作用步骤按幂等标识安全重放），以及状态粒度过粗或过细的两侧代价。"
+ viewBox="0.00 0.00 839.00 212.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 208)">
+
+<g id="node1" class="node">
+<title>s1</title>
+<path fill="var(--brand-soft)" stroke="var(--brand-primary)" d="M124.5,-142C124.5,-142 43.5,-142 43.5,-142 37.5,-142 31.5,-136 31.5,-130 31.5,-130 31.5,-108 31.5,-108 31.5,-102 37.5,-96 43.5,-96 43.5,-96 124.5,-96 124.5,-96 130.5,-96 136.5,-102 136.5,-108 136.5,-108 136.5,-130 136.5,-130 136.5,-136 130.5,-142 124.5,-142"/>
+<text text-anchor="middle" x="84" y="-122.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">状态 1 准备</text>
+<text text-anchor="middle" x="84" y="-108.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">输入校验通过</text>
+</g>
+<g id="node2" class="node">
+<title>s2</title>
+<path fill="var(--brand-soft)" stroke="var(--brand-primary)" d="M413,-142C413,-142 262,-142 262,-142 256,-142 250,-136 250,-130 250,-130 250,-108 250,-108 250,-102 256,-96 262,-96 262,-96 413,-96 413,-96 419,-96 425,-102 425,-108 425,-108 425,-130 425,-130 425,-136 419,-142 413,-142"/>
+<text text-anchor="middle" x="337.5" y="-122.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">状态 2 执行</text>
+<text text-anchor="middle" x="337.5" y="-108.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">含副作用：写库 · 调外部</text>
+</g>
+<g id="edge1" class="edge">
+<title>s1&#45;&gt;s2</title>
+<path fill="none" stroke="var(--border-line)" d="M136.5,-119C167.08,-119 206.8,-119 242.77,-119"/>
+<polygon fill="var(--border-line)" stroke="var(--border-line)" points="242.91,-121.45 249.91,-119 242.91,-116.55 242.91,-121.45"/>
+<text text-anchor="middle" x="209" y="-122.2" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="11.00" fill="var(--text-secondary)">转移条件</text>
+</g>
+<g id="node4" class="node">
+<title>ck</title>
+<polygon fill="var(--surface-subtle)" stroke="var(--border-line)" points="162,-60 0,-60 0,0 168,0 168,-54 162,-60"/>
+<polyline fill="none" stroke="var(--border-line)" points="162,-60 162,-54 "/>
+<polyline fill="none" stroke="var(--border-line)" points="168,-54 162,-54 "/>
+<text text-anchor="middle" x="84" y="-40.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">检查点落盘</text>
+<text text-anchor="middle" x="84" y="-26.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">每个状态结束即写：</text>
+<text text-anchor="middle" x="84" y="-12.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">状态 · 幂等标识 · 时间</text>
+</g>
+<g id="edge3" class="edge">
+<title>s1&#45;&gt;ck</title>
+<path fill="none" stroke="var(--border-line)" stroke-dasharray="5,2" d="M84,-95.59C84,-83.81 84,-72.03 84,-60.25"/>
+</g>
+<g id="node3" class="node">
+<title>s3</title>
+<path fill="var(--brand-soft)" stroke="var(--brand-primary)" d="M619.5,-197C619.5,-197 550.5,-197 550.5,-197 544.5,-197 538.5,-191 538.5,-185 538.5,-185 538.5,-163 538.5,-163 538.5,-157 544.5,-151 550.5,-151 550.5,-151 619.5,-151 619.5,-151 625.5,-151 631.5,-157 631.5,-163 631.5,-163 631.5,-185 631.5,-185 631.5,-191 625.5,-197 619.5,-197"/>
+<text text-anchor="middle" x="585" y="-177.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">状态 3 收尾</text>
+<text text-anchor="middle" x="585" y="-163.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">落盘并交付</text>
+</g>
+<g id="edge2" class="edge">
+<title>s2&#45;&gt;s3</title>
+<path fill="none" stroke="var(--border-line)" d="M425.05,-138.39C460.6,-146.36 500.6,-155.32 531.58,-162.26"/>
+<polygon fill="var(--border-line)" stroke="var(--border-line)" points="531.09,-164.66 538.45,-163.8 532.16,-159.87 531.09,-164.66"/>
+<text text-anchor="middle" x="466" y="-155.2" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="11.00" fill="var(--text-secondary)">转移条件</text>
+</g>
+<g id="node5" class="node">
+<title>rs</title>
+<polygon fill="var(--surface-subtle)" stroke="var(--border-line)" points="657,-133 507,-133 507,-73 663,-73 663,-127 657,-133"/>
+<polyline fill="none" stroke="var(--border-line)" points="657,-133 657,-127 "/>
+<polyline fill="none" stroke="var(--border-line)" points="663,-127 657,-127 "/>
+<text text-anchor="middle" x="585" y="-113.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">恢复语义</text>
+<text text-anchor="middle" x="585" y="-99.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">重启从最近检查点续跑</text>
+<text text-anchor="middle" x="585" y="-85.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">副作用按幂等标识重放</text>
+</g>
+<g id="edge4" class="edge">
+<title>s2&#45;&gt;rs</title>
+<path fill="none" stroke="var(--border-line)" stroke-dasharray="5,2" d="M425.05,-113.36C451.7,-111.62 480.84,-109.72 506.81,-108.03"/>
+</g>
+<g id="node6" class="node">
+<title>nt</title>
+<polygon fill="var(--surface-subtle)" stroke="var(--border-line)" points="825,-204 700,-204 700,-144 831,-144 831,-198 825,-204"/>
+<polyline fill="none" stroke="var(--border-line)" points="825,-204 825,-198 "/>
+<polyline fill="none" stroke="var(--border-line)" points="831,-198 825,-198 "/>
+<text text-anchor="middle" x="765.5" y="-184.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">粒度权衡</text>
+<text text-anchor="middle" x="765.5" y="-170.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">过粗丢进度</text>
+<text text-anchor="middle" x="765.5" y="-156.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">过细推高写入成本</text>
+</g>
+<g id="edge5" class="edge">
+<title>s3&#45;&gt;nt</title>
+<path fill="none" stroke="var(--border-line)" stroke-dasharray="1,5" d="M631.5,-174C652.27,-174 677.22,-174 699.88,-174"/>
+</g>
+</g>
+</svg>

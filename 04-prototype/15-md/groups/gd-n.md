@@ -2,7 +2,7 @@
 
 - 英文名：Frontier Module
 - 分区序号：10
-- 组内节点：4 个（已写满 0）
+- 组内节点：4 个（已写满 4）
 - 层范围：第 26 – 29 层
 
 ## 本组导读
@@ -13,10 +13,10 @@
 
 | 依赖深度 | 节点 | 名称 | 内容状态 |
 |---|---|---|---|
-| 26 | PE-N-01 | 三代范式脉络（Three-Generation Paradigm Arc） | 架构在册 · 内容待填充 |
-| 27 | PE-N-02 | 当前共识与争议（Current Consensus and Disputes） | 架构在册 · 内容待填充 |
-| 28 | PE-N-03 | 模块维护机制（Module Maintenance Mechanism） | 架构在册 · 内容待填充 |
-| 29 | PE-N-04 | 跟踪渠道（Tracking Channels） | 架构在册 · 内容待填充 |
+| 26 | PE-N-01 | 三代范式脉络（Three-Generation Paradigm Arc） | 内容已写满 |
+| 27 | PE-N-02 | 当前共识与争议（Current Consensus and Disputes） | 内容已写满 |
+| 28 | PE-N-03 | 模块维护机制（Module Maintenance Mechanism） | 内容已写满 |
+| 29 | PE-N-04 | 跟踪渠道（Tracking Channels） | 内容已写满 |
 
 ## 本组学习路径
 

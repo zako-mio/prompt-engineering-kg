@@ -1,0 +1,71 @@
+<svg class="fig__svg" role="img" aria-label="分流图：两阶段图索引（实体与关系图 → 社区摘要）回答全局问题的路径，与单片段可答问题走向量通道的分流，以及「上游已进维护模式、索引昂贵」的通道定位。"
+ viewBox="0.00 0.00 531.00 148.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 144)">
+
+<g id="node1" class="node">
+<title>q</title>
+<path fill="var(--brand-soft)" stroke="var(--brand-primary)" d="M68,-90C68,-90 12,-90 12,-90 6,-90 0,-84 0,-78 0,-78 0,-56 0,-56 0,-50 6,-44 12,-44 12,-44 68,-44 68,-44 74,-44 80,-50 80,-56 80,-56 80,-78 80,-78 80,-84 74,-90 68,-90"/>
+<text text-anchor="middle" x="40" y="-70.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">问题</text>
+<text text-anchor="middle" x="40" y="-56.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">先判类型</text>
+</g>
+<g id="node2" class="node">
+<title>v</title>
+<path fill="var(--surface-raised)" stroke="var(--border-line)" d="M222.5,-133C222.5,-133 154.5,-133 154.5,-133 148.5,-133 142.5,-127 142.5,-121 142.5,-121 142.5,-85 142.5,-85 142.5,-79 148.5,-73 154.5,-73 154.5,-73 222.5,-73 222.5,-73 228.5,-73 234.5,-79 234.5,-85 234.5,-85 234.5,-121 234.5,-121 234.5,-127 228.5,-133 222.5,-133"/>
+<text text-anchor="middle" x="188.5" y="-113.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">向量通道</text>
+<text text-anchor="middle" x="188.5" y="-99.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">单片段可答</text>
+<text text-anchor="middle" x="188.5" y="-85.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">直接作答</text>
+</g>
+<g id="edge1" class="edge">
+<title>q&#45;&gt;v</title>
+<path fill="none" stroke="var(--border-line)" d="M80.26,-76.65C97.17,-80.8 117.19,-85.72 135.32,-90.18"/>
+<polygon fill="var(--border-line)" stroke="var(--border-line)" points="135.05,-92.63 142.43,-91.92 136.21,-87.87 135.05,-92.63"/>
+<text text-anchor="middle" x="108" y="-90.2" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="11.00" fill="var(--text-secondary)">定位型</text>
+</g>
+<g id="node3" class="node">
+<title>g1</title>
+<path fill="var(--brand-soft)" stroke="var(--brand-primary)" d="M229,-60C229,-60 148,-60 148,-60 142,-60 136,-54 136,-48 136,-48 136,-12 136,-12 136,-6 142,0 148,0 148,0 229,0 229,0 235,0 241,-6 241,-12 241,-12 241,-48 241,-48 241,-54 235,-60 229,-60"/>
+<text text-anchor="middle" x="188.5" y="-40.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">第一阶段</text>
+<text text-anchor="middle" x="188.5" y="-26.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">实体与关系图</text>
+<text text-anchor="middle" x="188.5" y="-12.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">跨文档连接</text>
+</g>
+<g id="edge2" class="edge">
+<title>q&#45;&gt;g1</title>
+<path fill="none" stroke="var(--border-line)" d="M80.26,-57.08C95.24,-53.3 112.66,-48.9 129.04,-44.76"/>
+<polygon fill="var(--border-line)" stroke="var(--border-line)" points="129.81,-47.1 135.99,-43.01 128.61,-42.35 129.81,-47.1"/>
+<text text-anchor="middle" x="108" y="-56.2" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="11.00" fill="var(--text-secondary)">全局型</text>
+</g>
+<g id="node4" class="node">
+<title>g2</title>
+<path fill="var(--brand-soft)" stroke="var(--brand-primary)" d="M357,-60C357,-60 276,-60 276,-60 270,-60 264,-54 264,-48 264,-48 264,-12 264,-12 264,-6 270,0 276,0 276,0 357,0 357,0 363,0 369,-6 369,-12 369,-12 369,-48 369,-48 369,-54 363,-60 357,-60"/>
+<text text-anchor="middle" x="316.5" y="-40.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">第二阶段</text>
+<text text-anchor="middle" x="316.5" y="-26.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">社区摘要</text>
+<text text-anchor="middle" x="316.5" y="-12.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">聚合部分结论</text>
+</g>
+<g id="edge3" class="edge">
+<title>g1&#45;&gt;g2</title>
+<path fill="none" stroke="var(--border-line)" d="M241.11,-30C246.25,-30 251.5,-30 256.7,-30"/>
+<polygon fill="var(--border-line)" stroke="var(--border-line)" points="256.76,-32.45 263.76,-30 256.76,-27.55 256.76,-32.45"/>
+</g>
+<g id="node5" class="node">
+<title>an</title>
+<path fill="var(--surface-raised)" stroke="var(--success)" d="M511,-53C511,-53 404,-53 404,-53 398,-53 392,-47 392,-41 392,-41 392,-19 392,-19 392,-13 398,-7 404,-7 404,-7 511,-7 511,-7 517,-7 523,-13 523,-19 523,-19 523,-41 523,-41 523,-47 517,-53 511,-53"/>
+<text text-anchor="middle" x="457.5" y="-33.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">全局回答</text>
+<text text-anchor="middle" x="457.5" y="-19.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">整批资料说了什么</text>
+</g>
+<g id="edge4" class="edge">
+<title>g2&#45;&gt;an</title>
+<path fill="none" stroke="var(--border-line)" d="M369.26,-30C374.35,-30 379.58,-30 384.83,-30"/>
+<polygon fill="var(--border-line)" stroke="var(--border-line)" points="384.98,-32.45 391.98,-30 384.98,-27.55 384.98,-32.45"/>
+</g>
+<g id="node6" class="node">
+<title>nt</title>
+<polygon fill="var(--surface-subtle)" stroke="var(--border-line)" points="517,-140 392,-140 392,-66 523,-66 523,-134 517,-140"/>
+<polyline fill="none" stroke="var(--border-line)" points="517,-140 517,-134 "/>
+<polyline fill="none" stroke="var(--border-line)" points="523,-134 517,-134 "/>
+<text text-anchor="middle" x="457.5" y="-120.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">通道定位</text>
+<text text-anchor="middle" x="457.5" y="-106.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">上游已进维护模式</text>
+<text text-anchor="middle" x="457.5" y="-92.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">索引昂贵</text>
+<text text-anchor="middle" x="457.5" y="-78.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">→ 第二通道</text>
+</g>
+</g>
+</svg>

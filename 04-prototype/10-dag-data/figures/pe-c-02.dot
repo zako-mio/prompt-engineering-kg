@@ -1,0 +1,14 @@
+digraph fig {
+  rankdir=LR; bgcolor="transparent"; ranksep=0.75; nodesep=0.28;
+  node[shape=box, style="rounded,filled", fillcolor="#ffffff", color="#7c8aa5", fontcolor="#0e1729", fontname="Noto Sans CJK SC", fontsize=13, margin="0.20,0.12"]; edge[color="#7c8aa5", fontcolor="#46536b", fontname="Noto Sans CJK SC", fontsize=11, arrowsize=0.7];
+  a  [label="检索\n分块 · 向量化\n排序", fillcolor="#dfe6fb", color="#2f4bd8"];
+  f1 [label="① 引用片段\n先摘引依据\n再给结论", color="#136f3a"];
+  f2 [label="② 结构化上下文\n分节 + 固定标记\n资料与指令分离", color="#136f3a"];
+  f3 [label="③ 允许拒答\n资料不足即说明\n拒答率是检索信号", color="#136f3a"];
+  nt [label="注入位置\n长资料置前\n指令与问题置后", shape=note, fillcolor="#e9eef8"];
+  g  [label="生成\n只依据资料作答", fillcolor="#dfe6fb", color="#2f4bd8"];
+  a -> f1; a -> f2; a -> f3;
+  f1 -> g; f2 -> g; f3 -> g;
+  a -> nt [style=dotted, arrowhead=none];
+  {rank=same; f1; f2; f3; nt;}
+}

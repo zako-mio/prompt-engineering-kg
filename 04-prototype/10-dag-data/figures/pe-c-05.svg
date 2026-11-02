@@ -1,0 +1,74 @@
+<svg class="fig__svg" role="img" aria-label="位置图：首 / 中 / 尾三处可用性差异、占窗口一半前后偏差形态的变化，以及由此推出的三个工程动作。"
+ viewBox="0.00 0.00 580.00 280.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 276)">
+
+<g id="node1" class="node">
+<title>w</title>
+<path fill="var(--brand-soft)" stroke="var(--brand-primary)" d="M195,-272C195,-272 12,-272 12,-272 6,-272 0,-266 0,-260 0,-260 0,-238 0,-238 0,-232 6,-226 12,-226 12,-226 195,-226 195,-226 201,-226 207,-232 207,-238 207,-238 207,-260 207,-260 207,-266 201,-272 195,-272"/>
+<text text-anchor="middle" x="103.5" y="-252.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">窗口条：同一段资料的三个位置</text>
+<text text-anchor="middle" x="103.5" y="-238.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">容量不等于有效注意力</text>
+</g>
+<g id="node2" class="node">
+<title>h</title>
+<path fill="var(--surface-raised)" stroke="var(--success)" d="M137.5,-205C137.5,-205 69.5,-205 69.5,-205 63.5,-205 57.5,-199 57.5,-193 57.5,-193 57.5,-171 57.5,-171 57.5,-165 63.5,-159 69.5,-159 69.5,-159 137.5,-159 137.5,-159 143.5,-159 149.5,-165 149.5,-171 149.5,-171 149.5,-193 149.5,-193 149.5,-199 143.5,-205 137.5,-205"/>
+<text text-anchor="middle" x="103.5" y="-185.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">首部</text>
+<text text-anchor="middle" x="103.5" y="-171.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">最易被用到</text>
+</g>
+<g id="edge1" class="edge">
+<title>w&#45;&gt;h</title>
+<path fill="none" stroke="var(--border-line)" d="M103.5,-225.99C103.5,-221.64 103.5,-217.01 103.5,-212.46"/>
+<polygon fill="var(--border-line)" stroke="var(--border-line)" points="105.95,-212.43 103.5,-205.43 101.05,-212.43 105.95,-212.43"/>
+</g>
+<g id="node3" class="node">
+<title>m</title>
+<path fill="var(--surface-raised)" stroke="var(--danger)" d="M251.5,-205C251.5,-205 195.5,-205 195.5,-205 189.5,-205 183.5,-199 183.5,-193 183.5,-193 183.5,-171 183.5,-171 183.5,-165 189.5,-159 195.5,-159 195.5,-159 251.5,-159 251.5,-159 257.5,-159 263.5,-165 263.5,-171 263.5,-171 263.5,-193 263.5,-193 263.5,-199 257.5,-205 251.5,-205"/>
+<text text-anchor="middle" x="223.5" y="-185.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">中部</text>
+<text text-anchor="middle" x="223.5" y="-171.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">显著退化</text>
+</g>
+<g id="edge2" class="edge">
+<title>h&#45;&gt;m</title>
+<path fill="none" stroke="var(--border-line)" d="M149.91,-182C161.02,-182 172.14,-182 183.25,-182"/>
+</g>
+<g id="node4" class="node">
+<title>t</title>
+<path fill="var(--surface-raised)" stroke="var(--success)" d="M377.5,-205C377.5,-205 309.5,-205 309.5,-205 303.5,-205 297.5,-199 297.5,-193 297.5,-193 297.5,-171 297.5,-171 297.5,-165 303.5,-159 309.5,-159 309.5,-159 377.5,-159 377.5,-159 383.5,-159 389.5,-165 389.5,-171 389.5,-171 389.5,-193 389.5,-193 389.5,-199 383.5,-205 377.5,-205"/>
+<text text-anchor="middle" x="343.5" y="-185.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">尾部</text>
+<text text-anchor="middle" x="343.5" y="-171.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">最易被用到</text>
+</g>
+<g id="edge3" class="edge">
+<title>m&#45;&gt;t</title>
+<path fill="none" stroke="var(--border-line)" d="M263.81,-182C275.02,-182 286.22,-182 297.43,-182"/>
+</g>
+<g id="node5" class="node">
+<title>p</title>
+<path fill="var(--surface-raised)" stroke="var(--warning)" d="M340.5,-127C340.5,-127 106.5,-127 106.5,-127 100.5,-127 94.5,-121 94.5,-115 94.5,-115 94.5,-79 94.5,-79 94.5,-73 100.5,-67 106.5,-67 106.5,-67 340.5,-67 340.5,-67 346.5,-67 352.5,-73 352.5,-79 352.5,-79 352.5,-115 352.5,-115 352.5,-121 346.5,-127 340.5,-127"/>
+<text text-anchor="middle" x="223.5" y="-107.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">占窗口一半以内：中部最易被忽略</text>
+<text text-anchor="middle" x="223.5" y="-93.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">超过一半：首因偏差减弱、近因偏差稳定</text>
+<text text-anchor="middle" x="223.5" y="-79.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">→ 中部忽略转为距离型偏差</text>
+</g>
+<g id="edge4" class="edge">
+<title>m&#45;&gt;p</title>
+<path fill="none" stroke="var(--border-line)" stroke-dasharray="5,2" d="M223.5,-158.76C223.5,-151.26 223.5,-142.67 223.5,-134.37"/>
+<polygon fill="var(--border-line)" stroke="var(--border-line)" points="225.95,-134.18 223.5,-127.18 221.05,-134.18 225.95,-134.18"/>
+<text text-anchor="middle" x="235" y="-140.2" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="11.00" fill="var(--text-secondary)">条件</text>
+</g>
+<g id="node6" class="node">
+<title>a1</title>
+<path fill="var(--surface-raised)" stroke="var(--success)" d="M270.5,-46C270.5,-46 176.5,-46 176.5,-46 170.5,-46 164.5,-40 164.5,-34 164.5,-34 164.5,-12 164.5,-12 164.5,-6 170.5,0 176.5,0 176.5,0 270.5,0 270.5,0 276.5,0 282.5,-6 282.5,-12 282.5,-12 282.5,-34 282.5,-34 282.5,-40 276.5,-46 270.5,-46"/>
+<text text-anchor="middle" x="223.5" y="-26.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">① 长资料置前</text>
+<text text-anchor="middle" x="223.5" y="-12.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">指令与问题置后</text>
+</g>
+<g id="node7" class="node">
+<title>a2</title>
+<path fill="var(--surface-raised)" stroke="var(--success)" d="M421.5,-46C421.5,-46 311.5,-46 311.5,-46 305.5,-46 299.5,-40 299.5,-34 299.5,-34 299.5,-12 299.5,-12 299.5,-6 305.5,0 311.5,0 311.5,0 421.5,0 421.5,0 427.5,0 433.5,-6 433.5,-12 433.5,-12 433.5,-34 433.5,-34 433.5,-40 427.5,-46 421.5,-46"/>
+<text text-anchor="middle" x="366.5" y="-26.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">② 关键结论先引用</text>
+<text text-anchor="middle" x="366.5" y="-12.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">再让模型作答</text>
+</g>
+<g id="node8" class="node">
+<title>a3</title>
+<path fill="var(--surface-raised)" stroke="var(--success)" d="M560,-46C560,-46 463,-46 463,-46 457,-46 451,-40 451,-34 451,-34 451,-12 451,-12 451,-6 457,0 463,0 463,0 560,0 560,0 566,0 572,-6 572,-12 572,-12 572,-34 572,-34 572,-40 566,-46 560,-46"/>
+<text text-anchor="middle" x="511.5" y="-26.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">③ 先压缩再放入</text>
+<text text-anchor="middle" x="511.5" y="-12.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">避开高占比区间</text>
+</g>
+</g>
+</svg>

@@ -280,7 +280,7 @@ def index_md(dag, frontier, page_exists):
          "- 边语义：%s" % "、".join(meta["edge_semantics"]),
          "- 依赖方向：A→B 表示先学 A 再学 B；层序由该方向推导",
          "- 无环：是",
-         "- 内容状态：已写满 %d 个 / 架构在册 %d 个" % (len(complete), len(registered)), "",
+         C.content_state_copy(len(complete), len(registered))["md_status"], "",
          "## 目录", "",
          "- [知识分组](groups/index.md)",
          "- [学习路径](learning-path.md)",

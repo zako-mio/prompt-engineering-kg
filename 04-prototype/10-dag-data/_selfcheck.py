@@ -573,11 +573,39 @@ if _NO_LIB_DECLARED:
     # ★ 同上：库不在盘上时本报告项无意义（空库会把命中率算成 100%），显式声明而不静默给出误导读数。
     print("[SKIP] C58b-frontier-quotes 本 checkout 无输入层 ⇒ 该**报告项**无对象"
           "（⛔ 不得读作「frontier 引文已全部回源」）")
-else:
+elif _f_bad:
     warn("C58b-frontier-quotes",
          f"**报告项**（⛔ 不判 FAIL）：frontier 侧 {_f_n} 条 evidence 中有 {len(_f_bad)} 片无法在 A 池逐字回源 "
-         f"{_f_bad[:4]}；形态为作者期注记而非原文引用 ⇒ 本轮**不改数据**，如实登记为缺口"
-         f"（见 CRITERIA-CHANGE-P13-C58-P41.md）")
+         f"{_f_bad[:4]}；形态为作者期注记而非原文引用 ⇒ **G23 已于第 10 轮处置过一轮**，此处再出现即新缺口"
+         f"（处置与依据见 `16-checkpoint/CRITERIA-CHANGE-R10.md`）")
+else:
+    print(f"[PASS] C58b-frontier-quotes frontier 侧 {_f_n} 条 evidence **逐片段全部**可在 A 池逐字回源"
+          f"（★ 第 10 轮 G23 处置：两片作者期注记已换成可回源原文，见 CRITERIA-CHANGE-R10.md）")
+
+# ---------------------------------------------------------------- C59（2026-11-02 第 10 轮新增）
+# ★ 为什么这条必须有：GD-N 的内容有**两个载体** —— `dag.json` 里 4 个节点页（教程侧）与
+#   `frontier.json` 里 4 条条目（数据模块侧）。同一批知识点写两处 = 漂移面（本仓最贵的一类教训，
+#   同族见 P43 的图注两处不同文）。⛔ 不要求两处文字相同（载体不同、读者目标不同），
+#   只断言**身份层**一致：id 集合相等 / 条数相等 / 标题前缀一致 / 每条至少 1 条 evidence。
+_gdn = [n for n in nodes if n.get("group") == "GD-N"]
+_items = (_frontier or {}).get("items", []) or []
+_c59 = []
+if sorted(n["id"] for n in _gdn) != sorted(str(i.get("id")) for i in _items):
+    _c59.append(("id 集合不等", sorted(n["id"] for n in _gdn), sorted(str(i.get("id")) for i in _items)))
+_by_id = {str(i.get("id")): i for i in _items}
+for _n in _gdn:
+    _it = _by_id.get(_n["id"])
+    if _it is None:
+        continue
+    _name_core = _n["name"].split("（")[0].strip()
+    _title_core = (_it.get("title") or "").split("：")[0].strip()
+    if _name_core != _title_core:
+        _c59.append((_n["id"], "标题前缀不符", _name_core, _title_core))
+    if not (_it.get("evidence") or []):
+        _c59.append((_n["id"], "条目无 evidence"))
+chk("C59-frontier-node-parity", not _c59,
+    f"GD-N 节点 {len(_gdn)} 个 ⟺ frontier 条目 {len(_items)} 条（id 集合 / 标题前缀 / evidence 非空）；"
+    f"不符 {len(_c59)} 处 {_c59[:4]}")
 
 print("\n-- 实测对比度（对页面底色，WCAG 2.x） --")
 for name, mode, c in measured:

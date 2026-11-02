@@ -1091,6 +1091,371 @@ FIGS["pe-p-07"] = dict(
 }""" % dict(node=NODE_ATTR, edge=EDGE_ATTR))
 
 
+# ★ 2026-10-16 第 10 轮（内容波次 A · G04「编排」8 条）：PE-O-01…08 各一张自制图。
+#   ★ 成对纪律：本处每条必须与 `gen-nodes.NODE_FIG` 的同 fid、**逐字节相同**的 caption
+#     一起加（`figure_html` 对缺失图 id **静默返回空串** ⇒ 只加一处会让节点页 P35 ⑧ FAIL）。
+#   ★ 规格纪律（同波次 1/2/3/4）：`check_spec` 两条界同时生效 —— 804px 内容列下
+#     渲染高 ≤ 600px、缩放比 `804 / viewBox 宽` ≥ 0.90（⇒ 宽 ≤ 893）。
+#     本波 8 图一律按「宽 > 高」排：`rankdir=LR` + `{rank=same; …}`（此时才是**同列纵向堆叠**），
+#     辅助说明用 `shape=note` 与主流并列，⛔ 不做竖长条、⛔ 不靠 label 换行堆高度。
+#   ⛔ 色值只用 HEX2VAR 的 16 个；⛔ 无裸 hex / 无固定 width·height / 无外链。
+#   ⛔ 图内字形只用 CJK / ASCII / · / … / → / —（⛔ 下标、⛔ emoji、⛔ 特殊数学符号）。
+FIGS["pe-o-01"] = dict(
+    caption="链路图：步骤边界按可验证产出划分，步间以固定结构的输出契约相连，每步带校验与失败分支，以及「该不该上链看中间产物是否需被固化」的判据。",
+    dot="""digraph fig {
+  rankdir=LR; bgcolor="transparent"; ranksep=0.32; nodesep=0.22;
+  %(node)s %(edge)s
+  in  [label="输入"];
+  s1  [label="步骤 1\\n按可验证产出\\n划边界", fillcolor="#dfe6fb", color="#2f4bd8"];
+  s2  [label="步骤 2\\n只读上一步\\n的契约", fillcolor="#dfe6fb", color="#2f4bd8"];
+  s3  [label="步骤 3\\n合并并交付", fillcolor="#dfe6fb", color="#2f4bd8"];
+  out [label="产出"];
+  ct  [label="步间输出契约\\n结构固定 · 字段可解析\\n下游只读契约", shape=note, fillcolor="#e9eef8"];
+  fb  [label="每步校验\\n失败回喂具体错误\\n超限转人工", shape=note, fillcolor="#e9eef8"];
+  nt  [label="判据\\n看中间产物\\n是否需被固化", shape=note, fillcolor="#e9eef8"];
+  in -> s1;
+  s1 -> s2;
+  s2 -> s3;
+  s3 -> out;
+  s1 -> ct [style=dashed, arrowhead=none];
+  s2 -> fb [style=dashed, arrowhead=none];
+  out -> nt [style=dotted, arrowhead=none];
+  {rank=same; s1; ct;}
+  {rank=same; s2; fb;}
+  {rank=same; out; nt;}
+}""" % dict(node=NODE_ATTR, edge=EDGE_ATTR))
+
+FIGS["pe-o-02"] = dict(
+    caption="分派图：输入先过轻量分类再走向不同路径与模型档位，保留低置信兜底，以及「误分派可能比不做路由更差」的代价口径。",
+    dot="""digraph fig {
+  rankdir=LR; bgcolor="transparent";
+  %(node)s %(edge)s
+  q  [label="输入请求\\n类型 · 难度 · 敏感度"];
+  c  [label="轻量分类\\n轻量模型或规则\\n判据须建评测集", fillcolor="#dfe6fb", color="#2f4bd8"];
+  p1 [label="轻档路径\\n快模型 · 低单价\\n抽取与分类类请求"];
+  p2 [label="强档路径\\n强模型 · 多步推导\\n推理与生成类请求"];
+  p3 [label="兜底路径\\n分类不确定时走安全一侧\\n不强行分派", color="#136f3a"];
+  nt [label="代价口径\\n误分派把请求送进不适合的路径\\n效果可能比不做路由更差\\n档位差异不够大时，开销吃掉节省", shape=note, fillcolor="#e9eef8"];
+  q -> c;
+  c -> p1 [label="类型 A"];
+  c -> p2 [label="类型 B"];
+  c -> p3 [style=dashed, label="低置信"];
+  {rank=same; p1; p2; p3;}
+  {rank=same; q; nt;}
+}""" % dict(node=NODE_ATTR, edge=EDGE_ATTR))
+
+FIGS["pe-o-03"] = dict(
+    caption="对照图：分段（买延迟，取决于切分与合并）与投票（买鲁棒性，取决于错误是否发散）两种并行形态，以及并行前必须确认的任务结构与聚合判据。",
+    dot="""digraph fig {
+  rankdir=LR; bgcolor="transparent";
+  %(node)s %(edge)s
+  q  [label="同一批输入\\n先判定：任务可否切分\\n错误是否发散"];
+  a  [label="形态一 分段\\n切成互不依赖的子任务\\n并行处理后合并", fillcolor="#dfe6fb", color="#2f4bd8"];
+  b  [label="形态二 投票\\n同一输入多次采样\\n按多数或按判据聚合", fillcolor="#dfe6fb", color="#2f4bd8"];
+  a2 [label="买的是延迟\\n收益看切分是否均匀\\n与合并是否无损"];
+  b2 [label="买的是鲁棒性\\n收益看错误是否发散\\n错误同向时投票放大置信度"];
+  nt [label="并行不免费\\n样本数按边际收益曲线设定\\n无判据的聚合只是随机选择", shape=note, fillcolor="#e9eef8"];
+  q -> a [label="可切分"];
+  q -> b [label="答案唯一"];
+  a -> a2;
+  b -> b2;
+  {rank=same; a; b;}
+  {rank=same; a2; b2;}
+  {rank=same; q; nt;}
+}""" % dict(node=NODE_ATTR, edge=EDGE_ATTR))
+
+FIGS["pe-o-04"] = dict(
+    caption="结构图：编排者拆解 → 多个工作者并行 → 汇总，以及多 Agent 相对对话约十五倍的 token 消耗这一成本张力。",
+    dot="""digraph fig {
+  rankdir=LR; bgcolor="transparent";
+  %(node)s %(edge)s
+  O  [label="编排者\\n拆解任务 · 分派 · 汇总", fillcolor="#dfe6fb", color="#2f4bd8"];
+  W1 [label="工作者 1\\n收到自包含任务描述"];
+  W2 [label="工作者 2\\n独立上下文并行"];
+  W3 [label="工作者 n\\n只回传结构化结论"];
+  S  [label="汇总\\n合并冲突结论\\n交叉验证后再输出"];
+  ct [label="成本张力\\n多 Agent 相对对话约 15 倍\\n普通 Agent 相对对话约 4 倍\\n只在并行探索有实质增益时用", shape=note, fillcolor="#e9eef8"];
+  O -> W1;
+  O -> W2;
+  O -> W3;
+  W1 -> S;
+  W2 -> S;
+  W3 -> S;
+  {rank=same; W1; W2; W3;}
+  {rank=same; S; ct;}
+}""" % dict(node=NODE_ATTR, edge=EDGE_ATTR))
+
+FIGS["pe-o-05"] = dict(
+    caption="回路图：生成 → 按判据评估 → 带修改点回喂再生成 → 达标交付或触上限，以及「质量上限由判据质量决定，不由轮数决定」。",
+    dot="""digraph fig {
+  rankdir=LR; bgcolor="transparent";
+  %(node)s %(edge)s
+  g  [label="生成者\\n按产出契约给候选", fillcolor="#dfe6fb", color="#2f4bd8"];
+  e  [label="评估者\\n按可判定判据打分\\n反馈具体到修改点", fillcolor="#dfe6fb", color="#2f4bd8"];
+  ok [label="达标\\n交付并留档", color="#136f3a"];
+  no [label="未达标\\n带修改点回喂", color="#9a5310"];
+  nt [label="终止条件\\n迭代上限 + 未收敛样本记录\\n上限由判据质量决定", shape=note, fillcolor="#e9eef8"];
+  g -> e;
+  e -> ok [label="通过"];
+  e -> no [label="不通过"];
+  no -> g [style=dashed, label="再生成", constraint=false];
+  {rank=same; ok; no;}
+  {rank=same; e; nt;}
+}""" % dict(node=NODE_ATTR, edge=EDGE_ATTR))
+
+FIGS["pe-o-06"] = dict(
+    caption="状态图：状态集合、转移条件、检查点落盘与恢复语义（副作用步骤按幂等标识安全重放），以及状态粒度过粗或过细的两侧代价。",
+    dot="""digraph fig {
+  rankdir=LR; bgcolor="transparent";
+  %(node)s %(edge)s
+  s1 [label="状态 1 准备\\n输入校验通过", fillcolor="#dfe6fb", color="#2f4bd8"];
+  s2 [label="状态 2 执行\\n含副作用：写库 · 调外部", fillcolor="#dfe6fb", color="#2f4bd8"];
+  s3 [label="状态 3 收尾\\n落盘并交付", fillcolor="#dfe6fb", color="#2f4bd8"];
+  ck [label="检查点落盘\\n每个状态结束即写：\\n状态 · 幂等标识 · 时间", shape=note, fillcolor="#e9eef8"];
+  rs [label="恢复语义\\n重启从最近检查点续跑\\n副作用按幂等标识重放", shape=note, fillcolor="#e9eef8"];
+  nt [label="粒度权衡\\n过粗丢进度\\n过细推高写入成本", shape=note, fillcolor="#e9eef8"];
+  s1 -> s2 [label="转移条件"];
+  s2 -> s3 [label="转移条件"];
+  s1 -> ck [style=dashed, arrowhead=none];
+  s2 -> rs [style=dashed, arrowhead=none];
+  s3 -> nt [style=dotted, arrowhead=none];
+  {rank=same; s1; ck;}
+  {rank=same; s3; rs;}
+}""" % dict(node=NODE_ATTR, edge=EDGE_ATTR))
+
+FIGS["pe-o-07"] = dict(
+    caption="边界图：主上下文只下发自包含任务描述、只收回结构化结论，中间发现留在子上下文不回传，以及隔离失效的三种原因。",
+    dot="""digraph fig {
+  rankdir=LR; bgcolor="transparent"; ranksep=0.32; nodesep=0.22;
+  %(node)s %(edge)s
+  M [label="主上下文\\n任务说明与结论\\n不含过程细节", fillcolor="#dfe6fb", color="#2f4bd8"];
+  T [label="自包含任务描述\\n背景 · 约束\\n产出格式与失败处理", fillcolor="#dfe6fb", color="#2f4bd8"];
+  S [label="子上下文\\n独立窗口\\n试错都在此处"];
+  R [label="结构化结论\\n结论 · 依据\\n未解决项 · 置信度", color="#136f3a"];
+  ct [label="中间发现\\n试错轨迹\\n不回传", shape=note, fillcolor="#e9eef8"];
+  nt [label="三种失效\\n描述不自包含\\n返回格式自由\\n子任务隐式依赖", shape=note, fillcolor="#e9eef8"];
+  M -> T [label="下发"];
+  T -> S;
+  S -> R [label="只回传结论"];
+  R -> M [style=dashed, label="回收", constraint=false];
+  S -> ct [style=dotted, arrowhead=none];
+  {rank=same; S; ct;}
+  {rank=same; M; nt;}
+}""" % dict(node=NODE_ATTR, edge=EDGE_ATTR))
+
+FIGS["pe-o-08"] = dict(
+    caption="治理图：名称 / 描述 / 参数模式本身就是提示面，工具膨胀诱发误选，四个治理动作（合并 · 命名 · 描述 · 权限分离）与两条监控信号。",
+    dot="""digraph fig {
+  rankdir=LR; bgcolor="transparent";
+  %(node)s %(edge)s
+  T [label="一个工具的定义\\n名称 · 描述 · 参数模式\\n这一层就是提示面", fillcolor="#dfe6fb", color="#2f4bd8"];
+  G [label="四个治理动作\\n① 合并：语义相近的工具合并\\n② 命名：一致且描述性\\n③ 描述：写何时用与何时不用\\n④ 权限：高风险工具分离并加确认", fillcolor="#dfe6fb", color="#2f4bd8"];
+  B [label="膨胀的代价\\n工具越多越容易误选\\n描述含糊诱发误用", color="#b3181f"];
+  M [label="监控信号\\n近零调用：描述或场景不匹配\\n高频误用：与别的工具语义重叠", shape=note, fillcolor="#e9eef8"];
+  N [label="边界\\n权限须在系统层收窄\\n只写在提示里不构成控制", shape=note, fillcolor="#e9eef8"];
+  T -> G;
+  G -> B;
+  {rank=same; B; M; N;}
+}""" % dict(node=NODE_ATTR, edge=EDGE_ATTR))
+
+
+# ★ 2026-10-16 第 10 轮（内容波次 B · GD-N「新一代模块」）：新增 `pe-n-02/03/04` 三图
+#   （`PE-N-01` 的图沿用上面的 `pe-n-01`，本轮只补 `gen-nodes.NODE_FIG` 的登记，⛔ 不动那张 dot）。
+#   规格纪律与波 A 完全一致：`check_spec` 两条界**同时**生效（804px 内容列下渲染高 ≤ 600px、
+#   缩放比 `804 / viewBox 宽` ≥ 0.90 ⇒ 宽 ≤ 893）。故三图一律按「宽 > 高」排：
+#   `rankdir=LR` + `{rank=same; …}`（此时同列才是**纵向堆叠**），辅助说明用 `shape=note` 与主流并列。
+#   ⛔ 色值只用 HEX2VAR 的 16 个；⛔ 字形只用 CJK / ASCII / · / … / → / — / ①②③④。
+FIGS["pe-n-02"] = dict(
+    caption="分类图：一条技术结论先分入「两条共识」或「三处争议」，争议项按任务域与模型类别分别表述，以及「未被收录不等于已被证伪」的判定纪律。",
+    dot="""digraph fig {
+  rankdir=LR; bgcolor="transparent"; ranksep=0.34; nodesep=0.20;
+  %(node)s %(edge)s
+  q  [label="引用一条结论之前\\n先判它属于哪一类", fillcolor="#dfe6fb", color="#2f4bd8"];
+  c  [label="共识 · 两条\\n① 模型越强，越少手写步骤\\n② 指令层级已被部分内化\\n→ 可直接引用，仍写适用边界", color="#136f3a"];
+  d  [label="争议 · 三处\\n① 范式反转的适用范围\\n② 编译与微调的临界点\\n③ 原生推理与外部编排分工\\n→ 按任务域与模型类别实测", color="#9a5310"];
+  nt [label="判定纪律\\n未被收录不等于已被证伪\\n争议项不得当结论使用", shape=note, fillcolor="#e9eef8"];
+  q -> c [label="共识"];
+  q -> d [label="争议"];
+  d -> nt [style=dotted, arrowhead=none];
+  {rank=same; c; d;}
+}""" % dict(node=NODE_ATTR, edge=EDGE_ATTR))
+
+FIGS["pe-n-03"] = dict(
+    caption="机制图：刷新只改条目集合（数据）再重跑生成器与门控、页面模板零改动，以及「取代关系标记旧条目而非删除」所保留的历史可解释性。",
+    dot="""digraph fig {
+  rankdir=LR; bgcolor="transparent"; ranksep=0.34; nodesep=0.22;
+  %(node)s %(edge)s
+  m [label="条目集合（只含数据）\\n时间锚 · 版次 · 取代关系\\n状态三值：已确认 / 有争议 / 未证实", fillcolor="#dfe6fb", color="#2f4bd8"];
+  r [label="刷新动作\\n① 改条目与时间锚\\n② 重跑生成器与门控\\n③ 页面模板零改动", fillcolor="#dfe6fb", color="#2f4bd8"];
+  p [label="页面与教程正文\\n内容随数据更新"];
+  v [label="假刷新判据\\n版次与时间锚不一致\\n即判为假刷新", shape=note, fillcolor="#e9eef8"];
+  s [label="取代关系\\n旧条目标记而非删除\\n读者能看懂旧建议\\n为何曾经成立", shape=note, fillcolor="#e9eef8"];
+  m -> r [label="改一处"];
+  r -> p [label="重跑"];
+  r -> v [style=dashed, arrowhead=none];
+  m -> s [style=dotted, arrowhead=none];
+  {rank=same; m; s;}
+  {rank=same; r; v;}
+}""" % dict(node=NODE_ATTR, edge=EDGE_ATTR))
+
+FIGS["pe-n-04"] = dict(
+    caption="渠道图：四类跟踪渠道（学术 / 厂商 / 协议标准 / 包仓库）汇入同一套刷新流程，以及回源日期、无日期戳标注、厂商自述数字标注立场偏差三条使用纪律。",
+    dot="""digraph fig {
+  rankdir=LR; bgcolor="transparent"; ranksep=0.36; nodesep=0.16;
+  %(node)s %(edge)s
+  a1 [label="学术侧\\n预印本平台 NLP 与安全分类"];
+  a2 [label="厂商侧\\n开发者文档与更新日志"];
+  a3 [label="协议与标准侧\\n规范页 · 风险清单仓库"];
+  a4 [label="包与仓库侧\\n注册表元数据 · 维护活跃度"];
+  u  [label="三条使用纪律\\n① 每次刷新记录回源日期\\n② 无日期戳页面标注时效不确定\\n③ 厂商自述数字标注立场偏差", fillcolor="#dfe6fb", color="#2f4bd8"];
+  n  [label="边界\\n渠道只保证可达\\n正确性仍须交叉验证", shape=note, fillcolor="#e9eef8"];
+  a1 -> u; a2 -> u; a3 -> u; a4 -> u;
+  u -> n [style=dotted, arrowhead=none];
+  {rank=same; a1; a2; a3; a4;}
+}""" % dict(node=NODE_ATTR, edge=EDGE_ATTR))
+
+
+# ★ 2026-10-16 第 10 轮（内容波次 C · G03「上下文工程」7 条：PE-C-01…07）。与 `gen-nodes.NODE_FIG`
+#   成对，caption 两处**逐字节相同**（P43 判它：一条只加在一侧或两处措辞不同 ⇒ 节点页缺图 / 图文不同文）。
+#   规格纪律与波 A / 波 B 完全一致：`check_spec` 两条界**同时**生效（804px 内容列下渲染高 ≤ 600px、
+#   缩放比 `804 / viewBox 宽` ≥ 0.90 ⇒ 宽 ≤ 893）。本波七图一律按「宽 > 高」排：
+#     · 链式语义用 `rankdir=LR` + `{rank=same; …}`（此时同列 = **纵向堆叠**，只涨高不涨宽）；
+#     · 并列语义用 `rankdir=TB` + `{rank=same; …}`（此时同 rank 才是**同一行**）。
+#   ⛔ 色值只用 HEX2VAR 的 16 个；⛔ 字形只用 CJK / ASCII / · / … / → / — / ①②③④（⛔ 下标 · emoji · ⇒）。
+FIGS["pe-c-01"] = dict(
+    caption="策略图：把上下文当有限工作内存后，写入 / 选择 / 压缩 / 隔离四策略各自作用在哪一步，以及取舍依据来自有效注意力与任务串行深度。",
+    dot="""digraph fig {
+  rankdir=LR; bgcolor="transparent"; ranksep=0.45; nodesep=0.20;
+  %(node)s %(edge)s
+  w  [label="上下文窗口\\n等于工作内存\\n容量不等于可用容量", fillcolor="#dfe6fb", color="#2f4bd8"];
+  s1 [label="① 写入\\n把复用结论沉淀为\\n记忆或笔记\\n作用在会话之间"];
+  s2 [label="② 选择\\n按需检索与按需加载\\n作用在推理之前"];
+  s3 [label="③ 压缩\\n长历史摘要与抽取\\n保住结论、丢弃过程"];
+  s4 [label="④ 隔离\\n子任务独立上下文\\n只回传结论"];
+  j  [label="取舍依据\\n模型有效注意力\\n与任务串行深度\\n须由评测集确认", color="#9a5310"];
+  nt [label="常见错位\\n把四策略当清单照做", shape=note, fillcolor="#e9eef8"];
+  w -> s1; w -> s2; w -> s3; w -> s4;
+  s2 -> j [style=dashed, label="依据"];
+  s3 -> j [style=dashed];
+  {rank=same; s1; s2; s3; s4;}
+  {rank=same; w; nt;}
+}""" % dict(node=NODE_ATTR, edge=EDGE_ATTR))
+
+FIGS["pe-c-02"] = dict(
+    caption="流程图：检索 → 注入 → 生成三个环节里，引用片段 / 结构化上下文 / 允许拒答三种形态，以及「长资料置前、指令与问题置后」这一注入位置约束。",
+    dot="""digraph fig {
+  rankdir=LR; bgcolor="transparent"; ranksep=0.75; nodesep=0.28;
+  %(node)s %(edge)s
+  a  [label="检索\\n分块 · 向量化\\n排序", fillcolor="#dfe6fb", color="#2f4bd8"];
+  f1 [label="① 引用片段\\n先摘引依据\\n再给结论", color="#136f3a"];
+  f2 [label="② 结构化上下文\\n分节 + 固定标记\\n资料与指令分离", color="#136f3a"];
+  f3 [label="③ 允许拒答\\n资料不足即说明\\n拒答率是检索信号", color="#136f3a"];
+  nt [label="注入位置\\n长资料置前\\n指令与问题置后", shape=note, fillcolor="#e9eef8"];
+  g  [label="生成\\n只依据资料作答", fillcolor="#dfe6fb", color="#2f4bd8"];
+  a -> f1; a -> f2; a -> f3;
+  f1 -> g; f2 -> g; f3 -> g;
+  a -> nt [style=dotted, arrowhead=none];
+  {rank=same; f1; f2; f3; nt;}
+}""" % dict(node=NODE_ATTR, edge=EDGE_ATTR))
+
+FIGS["pe-c-03"] = dict(
+    caption="分流图：两阶段图索引（实体与关系图 → 社区摘要）回答全局问题的路径，与单片段可答问题走向量通道的分流，以及「上游已进维护模式、索引昂贵」的通道定位。",
+    dot="""digraph fig {
+  rankdir=LR; bgcolor="transparent"; ranksep=0.30; nodesep=0.18;
+  %(node)s %(edge)s
+  q  [label="问题\\n先判类型", fillcolor="#dfe6fb", color="#2f4bd8"];
+  v  [label="向量通道\\n单片段可答\\n直接作答"];
+  g1 [label="第一阶段\\n实体与关系图\\n跨文档连接", fillcolor="#dfe6fb", color="#2f4bd8"];
+  g2 [label="第二阶段\\n社区摘要\\n聚合部分结论", fillcolor="#dfe6fb", color="#2f4bd8"];
+  an [label="全局回答\\n整批资料说了什么", color="#136f3a"];
+  nt [label="通道定位\\n上游已进维护模式\\n索引昂贵\\n→ 第二通道", shape=note, fillcolor="#e9eef8"];
+  q -> v [label="定位型"];
+  q -> g1 [label="全局型"];
+  g1 -> g2;
+  g2 -> an;
+  {rank=same; v; g1;}
+  {rank=same; an; nt;}
+}""" % dict(node=NODE_ATTR, edge=EDGE_ATTR))
+
+FIGS["pe-c-04"] = dict(
+    caption="归因图：相关性的真实度量是是否满足信息需求，检索侧与生成侧分层评测的先后，混合检索与查询规划两条改法，以及「先修检索、再改提示」的顺序。",
+    dot="""digraph fig {
+  rankdir=TB; bgcolor="transparent"; ranksep=0.32; nodesep=0.90;
+  %(node)s %(edge)s
+  q  [label="端到端质量不达标\\n先归因，再动手", fillcolor="#dfe6fb", color="#2f4bd8"];
+  l1 [label="检索侧分层评测\\n答案片段是否被召回\\n召回的片段有多少无关", color="#136f3a"];
+  l2 [label="生成侧分层评测\\n端到端质量与拒答率", color="#136f3a"];
+  d  [label="相关性的真实度量\\n是否满足信息需求\\n不是分数本身", color="#9a5310"];
+  h1 [label="改法一 混合检索\\n关键词精度 + 向量语义\\n再配语义排序", color="#136f3a"];
+  h2 [label="改法二 查询规划\\n多轮检索与改写", color="#136f3a"];
+  od [label="顺序\\n先修检索\\n再改提示", shape=note, fillcolor="#e9eef8"];
+  q -> l1; q -> l2;
+  l1 -> d; l2 -> d;
+  d -> h1; d -> h2;
+  h1 -> od [style=dotted, arrowhead=none];
+  {rank=same; l1; l2;}
+  {rank=same; h1; h2; od;}
+}""" % dict(node=NODE_ATTR, edge=EDGE_ATTR))
+
+FIGS["pe-c-05"] = dict(
+    caption="位置图：首 / 中 / 尾三处可用性差异、占窗口一半前后偏差形态的变化，以及由此推出的三个工程动作。",
+    dot="""digraph fig {
+  rankdir=TB; bgcolor="transparent"; ranksep=0.28; nodesep=0.24;
+  %(node)s %(edge)s
+  w  [label="窗口条：同一段资料的三个位置\\n容量不等于有效注意力", fillcolor="#dfe6fb", color="#2f4bd8"];
+  h  [label="首部\\n最易被用到", color="#136f3a"];
+  m  [label="中部\\n显著退化", color="#b3181f"];
+  t  [label="尾部\\n最易被用到", color="#136f3a"];
+  p  [label="占窗口一半以内：中部最易被忽略\\n超过一半：首因偏差减弱、近因偏差稳定\\n→ 中部忽略转为距离型偏差", color="#9a5310"];
+  a1 [label="① 长资料置前\\n指令与问题置后", color="#136f3a"];
+  a2 [label="② 关键结论先引用\\n再让模型作答", color="#136f3a"];
+  a3 [label="③ 先压缩再放入\\n避开高占比区间", color="#136f3a"];
+  w -> h;
+  h -> m [style=solid, arrowhead=none];
+  m -> t [style=solid, arrowhead=none];
+  m -> p [style=dashed, label="条件"];
+  p -> a1 [style=invis];
+  {rank=same; h; m; t;}
+  {rank=same; a1; a2; a3;}
+}""" % dict(node=NODE_ATTR, edge=EDGE_ATTR))
+
+FIGS["pe-c-06"] = dict(
+    caption="分层图：提示按稳定性排序（稳定前缀在前、易变内容压到末尾、对话只追加），命中要求头 1,024 token 逐字一致，以及四个常见的破坏方式。",
+    dot="""digraph fig {
+  rankdir=TB; bgcolor="transparent"; ranksep=0.26;
+  %(node)s %(edge)s
+  s1 [label="最稳定：产品级约束与安全策略", fillcolor="#dfe6fb", color="#2f4bd8", width=3.6];
+  s2 [label="次稳定：任务级指令与工具定义", fillcolor="#dfe6fb", color="#2f4bd8", width=3.6];
+  s3 [label="易变：本次输入与检索资料", color="#b3181f", width=3.6];
+  k  [label="命中条件：头 1,024 token 内逐字一致\\n差一个字符即 miss（命中数为 0）", color="#9a5310", width=3.6];
+  f  [label="四个破坏方式\\n前缀里插时间戳或随机标识\\n随会话变化的内容写进系统提示\\n动态拼接工具定义\\n同一段指令在不同调用点措辞不同", shape=note, fillcolor="#e9eef8", width=3.6];
+  s1 -> s2 [label="只追加"];
+  s2 -> s3 [label="只追加"];
+  s3 -> k [label="判据"];
+  k -> f [style=dotted, arrowhead=none];
+  {rank=same; k; f;}
+}""" % dict(node=NODE_ATTR, edge=EDGE_ATTR))
+
+FIGS["pe-c-07"] = dict(
+    caption="结构图：客户端与服务端之间的三类原语及其控制权归属、传输选项与已弃用项，以及现行规范无状态化带来的改造点。",
+    dot="""digraph fig {
+  rankdir=LR; bgcolor="transparent"; ranksep=0.34; nodesep=0.18;
+  %(node)s %(edge)s
+  cl [label="客户端\\n宿主应用", fillcolor="#dfe6fb", color="#2f4bd8"];
+  tr [label="传输\\n标准输入输出\\n可流式 HTTP\\n旧 HTTP 加 SSE 已弃用", shape=note, fillcolor="#e9eef8"];
+  sv [label="服务端\\n数据与工具源", fillcolor="#dfe6fb", color="#2f4bd8"];
+  gv [label="规范与治理\\n现行版 2026-07-28\\n转为无状态、移除握手与会话\\n旧实现需改造", shape=note, fillcolor="#e9eef8"];
+  p1 [label="① 提示模板\\n用户控制"];
+  p2 [label="② 资源\\n应用控制"];
+  p3 [label="③ 工具\\n模型控制"];
+  cl -> sv [dir=both, label="JSON-RPC"];
+  sv -> p1; sv -> p2; sv -> p3;
+  {rank=same; cl; tr;}
+  {rank=same; sv; gv;}
+  {rank=same; p1; p2; p3;}
+}""" % dict(node=NODE_ATTR, edge=EDGE_ATTR))
+
+
 # ---------------------------------------------------------------- 组页 mini-DAG（★ 2026-10-16 第 6 轮：G19 / B″ 收口）
 #
 # ★ 为什么是**派生**而不是手绘 11 张：用户裁决 B″ 要求组页图「由 `10-dag-data/dag.json` 数据派生」。

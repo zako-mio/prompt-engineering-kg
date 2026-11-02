@@ -1,7 +1,7 @@
 {
   "site": "prompt-engineering-kg",
   "schema_note": "范式沿用同类卫星站的声明式门控清单（形状照 hub 的 `scripts/check_ci_manifest.py`）。★ 本文件由**站点仓内**版本化，⛔ 不含任何豁免 / 白名单字段（`waivers` / `exempt` / `allow` / `skip` / `ignore` 一类键在本件中**不存在** —— 缺口一律写进 `not_covered`）。",
-  "generated_by": "2026-10-16 第 8 轮（发布级强化）：本站在此之前**没有**声明式门控清单，判据实现与执行入口分散在 `gate_prototype.py` 的文件头与 `_ci_gate.sh` 的 `--only` 清单里 ⇒ 「本仓有哪几条判据、各在什么强度下执行、哪些面**没有**判据」三问都要读源码才能回答。本件把它变成可机读的一份。★ 判据实现见 `gate_prototype.py`（P01–P41）、`gate_a11y.py`（A1–A7）、`gate_seo_meta.py`（S1–S11）；登记见 `CRITERIA-CHANGE-R08.md`。★ 2026-10-19 第 9 轮更新：`full` 档补两条**对象条件**（P38 / C58），并把「像素层未进 CI」的归因更正为「`_probe/` 整层不入库」这一直接原因；登记见 `CRITERIA-CHANGE-R09.md`。★ 本清单自身仍**没有**判据校验它的编号集合与实现一致（`not_covered` 里如实留行）。",
+  "generated_by": "2026-10-16 第 8 轮（发布级强化）：本站在此之前**没有**声明式门控清单，判据实现与执行入口分散在 `gate_prototype.py` 的文件头与 `_ci_gate.sh` 的 `--only` 清单里 ⇒ 「本仓有哪几条判据、各在什么强度下执行、哪些面**没有**判据」三问都要读源码才能回答。本件把它变成可机读的一份。★ 判据实现见 `gate_prototype.py`（P01–P41）、`gate_a11y.py`（A1–A7）、`gate_seo_meta.py`（S1–S11）；登记见 `CRITERIA-CHANGE-R08.md`。★ 2026-10-19 第 9 轮更新：`full` 档补两条**对象条件**（P38 / C58），并把「像素层未进 CI」的归因更正为「`_probe/` 整层不入库」这一直接原因；登记见 `CRITERIA-CHANGE-R09.md`。★ 本清单自身仍**没有**判据校验它的编号集合与实现一致（`not_covered` 里如实留行）。；★ 2026-11-02 第 10 轮更新：新增 `P42`（内容状态文案与真相源一致）与 `P43`（图注跨登记表逐字同文），两条**进 push 档**；`selftest` 字段不再自报夹具数（`K2` 的重复事实已消除）；登记见 `CRITERIA-CHANGE-R10.md`。",
   "coverage_modes": {
     "push_fast": "push 档（每次 push 到 main）：`_ci_gate.sh fast` —— 跑 `gate_prototype.py` 的**结构性判据子集** ＋ A 段 7 条 ＋ S 段 11 条，各带 `--selftest`。★ 有意不跑：P38（需渲染证据与开工期探测）、P41（源文件散文扫描，属轮次收口对象）。",
     "full": "全量档（`workflow_dispatch` ＋ 每周一 03:17 UTC）：`_ci_gate.sh full` —— 全部 P01–P41 ＋ `--selftest` ＋ 数据侧 `../10-dag-data/_selfcheck.py` ＋ 图件规格两侧探针 `_selfcheck_figs_spec.py`。★ 2026-10-19 第 9 轮起本档有**两条对象条件**（见 `CRITERIA-CHANGE-R09.md`）：① **P38** 的对象 `_probe/channel.json` 按规则②不入库 ⇒ 该文件不在盘上时本档**显式排除 P38** 并打印理由（本机在盘上 ⇒ 照跑）；② 数据侧自检的 **C58**（引文逐片段回源）的对象 `01-research/evidence/A*.json` 按规则①不入库 ⇒ 输入层不在盘上时由调用方显式声明，脚本打印 `[SKIP]` 并给出理由（本机在盘上 ⇒ 照跑且必须 PASS）。★ 因此「**本机 full**」与「**CI full**」是**两个不同的扫描面**：说「full 档绿」必须指明环境。",
@@ -23,9 +23,11 @@
         {"id": "P38", "mode": "hard", "note": "验证通道：能力声明与事实一致 ＋ 渲染产物非退化（判据自己解码 PNG）；★ 依赖 `_probe/channel.json`，**不进 push 档**"},
         {"id": "P39-P40", "mode": "hard", "note": "判据变更登记件引用解析（双向闭合 ＋ 结构化出口闭合）、轮次台账结构合规"},
         {"id": "P41", "mode": "hard", "note": "源文件散文能力声明扫描（窄版：只判已登记的历史句是否复活）；★ **不进 push 档**"},
+        {"id": "P42", "mode": "hard", "note": "内容状态文案与真相源一致（首页/学习路径自报数字 = 真相源；零注册态不得残留「架构在册/内容待填充」语汇）；★ **进 push 档**"},
+        {"id": "P43", "mode": "hard", "note": "图注跨登记表逐字同文（`gen-figs.FIGS[fid].caption` ⟺ `gen-nodes.NODE_FIG[nid]`）；★ **进 push 档**"},
         {"id": "P35-report", "mode": "report-only", "note": "长文可扫性（无因果阈值可定 ⇒ 只打印、⛔ 不判 FAIL；该面由真实渲染 + 人看兜）"}
       ],
-      "selftest": "python3 gate_prototype.py --selftest（41 条判据 / 176 条负例夹具，逐条触发）",
+      "selftest": "python3 gate_prototype.py --selftest（逐条触发；★ **本清单不复述夹具数** —— 判据数与夹具数以该脚本自己的结论行为准。第 10 轮 `K2` 的根因就是这份重复事实：清单写 176，实测 178）",
       "not_covered": []
     },
     {

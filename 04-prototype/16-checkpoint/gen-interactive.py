@@ -786,8 +786,7 @@ APP_JS = r"""
       position:{x:0, y:0}}); }
     render(els);
     if (viewEl) { viewEl.textContent = "下钻 · " + g.id + " " + g.name + " · " + mem.length + " 个节点"; }
-    if (hintEl) { hintEl.textContent = "行主序网格（第 1 行起自左向右 = 依赖层由浅到深）；"
-      + "虚线边框表示内容待填充的节点。点击空白处或「返回总览」回到组级视图。"; }
+    if (hintEl) { hintEl.textContent = __STATE_HINT__; }
     if (backBtn) { backBtn.disabled = false; }
     showGroupDetail(g);
   }
@@ -922,11 +921,12 @@ def interactive_page(page_rel=None):
     lede = ('%s。本页先给出 <strong>组级总览</strong>（%d 个分组节点与它们之间的依赖），'
             '分组节点按<strong>依赖层分行</strong>摆放：行自上而下依赖逐层加深，行内自左向右是课程顺序，'
             '因此无需缩放或拖拽即可一眼看全。点击任一分组即下钻到该组的全部节点；'
-            '虚线边框表示内容待填充的节点，实线边框表示内容已写满。'
+            '%s'
             '依赖方向约定：A→B 表示先学 A 再学 B；双向箭头表示两个方向都有依赖'
             '（互为正反的两条依赖合成一条连线，避免两条边完全重合）。组身份由序号与名称承载，'
             '画布统一使用品牌色，不按分组分配色相。'
-            % (C.esc(data["meta"]["audience"]), data["meta"]["groupCount"]))
+            % (C.esc(data["meta"]["audience"]), data["meta"]["groupCount"],
+               C.esc(C.content_state_copy()["interactive_lede_rule"])))
     body.append('<p class="lede">%s</p>' % lede)
     body.append('<p class="meta-line"><span>节点 %d</span><span>边 %d</span><span>分组 %d</span>'
                 "<span>依赖深度层 %d</span><span>数据时点 %s</span><span>版次 %s</span></p>"
@@ -946,18 +946,21 @@ def interactive_page(page_rel=None):
                 % "".join(C.group_chip(g["id"], g["name"]) for g in groups))
     body.append('<div class="legend" data-reveal="1" style="--i:1">'
                 '<span class="badge badge--ok">内容已写满</span>'
-                '<span class="badge badge--pending">架构在册 · 内容待填充</span>'
+                '%s'
                 '<span class="tier">虚线边 = 概念升级</span>'
                 '<span class="tier">双向箭头 = 两个方向都有依赖</span>'
                 '<span class="tier">数字 = 该连线上的依赖条数（≥%d 才标注，未标注 = 1 条）</span>'
                 '<span class="tier">行 = 依赖层（自上而下加深）</span>'
                 '<span class="tier">行内自左向右 = 课程顺序</span></div>'
-                % lay["edgeLabelMinCount"])
+                % (C.content_state_copy()["interactive_pending_chip"], lay["edgeLabelMinCount"]))
     body.append("<h2>分组与节点清单（无脚本时的等价导航）</h2>")
     body.append("\n".join(fallback))
     body.append('<script type="application/json" id="cy-data">%s</script>'
                 % json.dumps(data, ensure_ascii=False, sort_keys=True).replace("</", "<\\/"))
-    body.append("<script>%s</script>" % APP_JS.replace("__FONT__", json.dumps(FONT_STACK)))
+    # ★ 第 10 轮：内容状态文案走单一出口（单态时 JS 提示行也不再提「待填充」）
+    _state = C.content_state_copy()
+    body.append("<script>%s</script>" % APP_JS.replace("__FONT__", json.dumps(FONT_STACK))
+                .replace("__STATE_HINT__", json.dumps(_state["interactive_hint"], ensure_ascii=False)))
     head_extra = '<script src="vendor/cytoscape.min.js"></script>\n'
     return C.page_shell(BASE, "interactive", "INTERACTIVE", "交互全景图", "\n".join(body),
                         head_extra=head_extra,

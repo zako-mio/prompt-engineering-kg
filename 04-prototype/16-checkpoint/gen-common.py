@@ -374,6 +374,85 @@ def status_badge(status):
     return '<span class="%s">%s</span>' % (cls, esc(status_label(status)))
 
 
+# ---------------------------------------------------------------- 两态 / 单态文案
+# ★ 2026-11-02 第 10 轮（判据 P42 的对象）：本站在第 10 轮**首次**出现「registered == 0」的形态。
+#   此前「架构在册 N 个」这句话在五个生成器里各自拼装；一旦 N 归零，它们会同时变成
+#   「架构在册 0 个：知识架构位置已确定、导读已写，节点页待后续波次填充」这种**自相矛盾**的公开文案。
+#   ⇒ 处置不是逐处改字符串，而是把这句话收敛成**一个入口**：所有出门的文案都读 `content_state_copy()`。
+#   ⛔ 新增页面/新文案要显示内容状态时，也读这里（⛔ 不要就地再拼一遍数字）。
+
+_STATE_COUNTS = None
+
+
+def state_counts():
+    """全站两态计数（唯一入口；结果进程内缓存）。"""
+    global _STATE_COUNTS
+    if _STATE_COUNTS is None:
+        dag = load_json("dag.json")
+        total = len(dag["nodes"])
+        done = sum(1 for n in dag["nodes"] if n.get("content_status") == "complete")
+        _STATE_COUNTS = {"nodes": total, "complete": done, "registered": total - done}
+    return _STATE_COUNTS
+
+
+def content_state_copy(complete_n=None, registered_n=None):
+    """内容状态文案（两态 / 单态）。
+
+    返回字典，键与调用点一一对应：
+      done            —— 是否已「全部写满」（registered == 0）
+      root_heading    —— 首页区块标题
+      root_notice     —— 首页 notice 整段 HTML
+      views_meta      —— 学习路径页 meta-line 的片段
+      md_status       —— 纯文本镜像里的一行
+      footer          —— 全站页脚那句
+      pending_note    —— `PUBLISH-STATE.json` 的 `pending_note`
+      interactive_lede_rule —— 交互图导语里那句边框语义
+      interactive_hint      —— 交互图 JS 提示行
+      interactive_pending_chip —— 交互图图例里的「待填充」徽标（单态时为空）
+    """
+    c = state_counts() if complete_n is None else {"complete": complete_n,
+                                                  "registered": registered_n if registered_n is not None else 0,
+                                                  "nodes": (complete_n or 0) + (registered_n or 0)}
+    done = c["registered"] == 0
+    if done:
+        return {
+            "done": True,
+            "root_heading": "内容状态（已全部写满）",
+            "root_notice": '<div class="notice"><strong>已写满 %d 个</strong>：八个区块（为什么需要它、'
+                           "机制说明、何时该用与不该用、实验台、证据、术语、失效模式、一句话小结）全部非空，"
+                           "可点进节点页完整阅读。<br><strong>架构已全部落页</strong>：%d 个节点的知识架构位置"
+                           "都已对应到可读页面，站内不再有待填充的条目。</div>" % (c["complete"], c["nodes"]),
+            "views_meta": "<span>已写满 %d</span><span>架构已全部落页</span>" % c["complete"],
+            "md_status": "- 内容状态：已写满 %d 个（架构已全部落页，无待填充项）" % c["complete"],
+            "footer": "本站为原型产物：结构由生成器统一产出，内容已全部写满（无待填充节点）。",
+            "pending_note": ("当前**没有** `registered` 节点：%d 个节点全部落页，`pending_nodes` 为空数组。"
+                             "该字段保留是为了让「还剩哪些没写」这一问在任何时刻都可被机器回答 —— "
+                             "⛔ 不要因为它是空的就删掉字段。" % c["nodes"]),
+            "interactive_lede_rule": "实线边框表示内容已写满（本站已无待填充节点）。",
+            "interactive_hint": "行主序网格（第 1 行起自左向右 = 依赖层由浅到深）。点击空白处或「返回总览」回到组级视图。",
+            "interactive_pending_chip": "",
+        }
+    return {
+        "done": False,
+        "root_heading": "内容状态（两态登记）",
+        "root_notice": '<div class="notice"><strong>已写满 %d 个</strong>：八个区块（为什么需要它、'
+                       "机制说明、何时该用与不该用、实验台、证据、术语、失效模式、一句话小结）全部非空，"
+                       "可点进节点页完整阅读。<br><strong>架构在册 %d 个</strong>：知识架构位置已确定、"
+                       "导读已写，节点页待后续波次填充 —— 这一状态在组页与学习路径上以徽标显式标注，"
+                       "不隐藏、不静默留白。</div>" % (c["complete"], c["registered"]),
+        "views_meta": "<span>已写满 %d</span><span>架构在册 %d</span>" % (c["complete"], c["registered"]),
+        "md_status": "- 内容状态：已写满 %d 个 / 架构在册 %d 个" % (c["complete"], c["registered"]),
+        "footer": "本站为原型产物：结构由生成器统一产出，内容按两态登记（已写满 / 架构在册）。",
+        "pending_note": ("节点页按内容波次逐步落盘（只落 `complete` 节点）；`registered` 节点的知识"
+                         "架构位置已确定、导读已写，其「架构在册」状态在组页、学习路径与交互图上"
+                         "以徽标显式标注，并在此逐条登记，⛔ 不静默留白。"),
+        "interactive_lede_rule": "虚线边框表示内容待填充的节点，实线边框表示内容已写满。",
+        "interactive_hint": "行主序网格（第 1 行起自左向右 = 依赖层由浅到深）；"
+                            "虚线边框表示内容待填充的节点。点击空白处或「返回总览」回到组级视图。",
+        "interactive_pending_chip": '<span class="badge badge--pending">架构在册 · 内容待填充</span>',
+    }
+
+
 def frontier_status_badge(status):
     m = {"confirmed": ("badge badge--ok", "已确认"), "disputed": ("badge badge--warn", "有争议"),
          "unverified": ("badge badge--pending", "未证实")}
@@ -1626,8 +1705,7 @@ def page_shell(base, kind, page_id, title, body, head_extra="", nav_extra=(), ba
         #   宽屏左栏只覆盖到正文底、页脚旁边仍是空档 ⇒ 与「侧栏占满整个竖直空间」相抵。
         #   ≥1180 档：rail 跨第 1–2 行、页脚 grid-column:1 / -1 独占第 2 行（见 BASE_CSS）。
         '<footer class="site-foot"><div class="wrap">\n',
-        "<p>本站为原型产物：结构由生成器统一产出，内容按两态登记（已写满 / 架构在册）。"
-        "读者锚点：%s。</p>\n" % esc(SITE_TAGLINE),
+        "<p>%s读者锚点：%s。</p>\n" % (esc(content_state_copy()["footer"]), esc(SITE_TAGLINE)),
         '<p class="footer__nav"><a href="%s">回到首页</a> · <a href="%s">交互全景图</a> · '
         '<a href="%s">学习路径</a></p>\n'
         % (esc(root_href), esc(base + DIR_INTERACTIVE + "/index.html"),

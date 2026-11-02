@@ -45,7 +45,7 @@
 
 ## 第 6 层 · 3 个节点
 
-- PE-C-01 G03 上下文即工作内存与四策略（Context as Working Memory and Four Strategies）（架构在册）
+- PE-C-01 G03 上下文即工作内存与四策略（Context as Working Memory and Four Strategies）
 - PE-R-01 G02 思维链与零样本思维链（Chain-of-Thought and Zero-shot CoT）
 - PE-S-01 G01 结构模式与约束解码（JSON Schema and Constrained Decoding）
 
@@ -56,7 +56,7 @@
 
 ## 第 7 层 · 4 个节点
 
-- PE-C-02 G03 RAG 提示模式（RAG Prompting Patterns）（架构在册）
+- PE-C-02 G03 RAG 提示模式（RAG Prompting Patterns）
 - PE-M-01 G07 模型分层选型（Model Tiering）
 - PE-R-02 G02 范式反转：推理模型上经典技巧掉分（Paradigm Reversal: Classic Techniques Lose Ground on Reasoning Models）
 - PE-S-02 G01 三档严格度（Three Tiers of Strictness）
@@ -69,9 +69,9 @@
 
 ## 第 8 层 · 4 个节点
 
-- PE-C-03 G03 图检索与全局观（Graph Retrieval and Global View）（架构在册）
+- PE-C-03 G03 图检索与全局观（Graph Retrieval and Global View）
 - PE-M-02 G07 标记敏感度的迁移性（Transferability of Markup Sensitivity）
-- PE-O-01 G04 提示词链（Prompt Chaining）（架构在册）
+- PE-O-01 G04 提示词链（Prompt Chaining）
 - PE-S-03 G01 推理与格式的冲突（Reasoning–Format Conflict）
 
 - 为什么在这层：PE-C-03 ← PE-C-02（PREREQ）先掌握片段级检索的提示模式，再引入需要全局观的图检索
@@ -81,8 +81,8 @@
 
 ## 第 9 层 · 4 个节点
 
-- PE-C-04 G03 检索质量与垃圾进垃圾出（Retrieval Quality and GIGO）（架构在册）
-- PE-O-02 G04 路由（Routing）（架构在册）
+- PE-C-04 G03 检索质量与垃圾进垃圾出（Retrieval Quality and GIGO）
+- PE-O-02 G04 路由（Routing）
 - PE-S-04 G01 格式选型与词元效率（Format Choice and Token Efficiency）
 - PE-V-01 G08 交错输入（Interleaved Input）
 
@@ -93,9 +93,9 @@
 
 ## 第 10 层 · 5 个节点
 
-- PE-C-05 G03 长上下文位置偏差（Long-context Positional Bias）（架构在册）
+- PE-C-05 G03 长上下文位置偏差（Long-context Positional Bias）
 - PE-E-01 G05 为什么必须先建评测集（Why Build an Eval Set First）
-- PE-O-03 G04 并行化与投票（Parallelization and Voting）（架构在册）
+- PE-O-03 G04 并行化与投票（Parallelization and Voting）
 - PE-S-05 G01 校验与修复回路（Validation and Repair Loop）
 - PE-V-02 G08 视觉推理链（Visual Reasoning Chain）
 
@@ -108,9 +108,9 @@
 
 ## 第 11 层 · 5 个节点
 
-- PE-C-06 G03 提示缓存（Prompt Caching）（架构在册）
+- PE-C-06 G03 提示缓存（Prompt Caching）
 - PE-E-02 G05 测试集构造（Test Set Construction）
-- PE-O-04 G04 编排者—工作者（Orchestrator–Workers）（架构在册）
+- PE-O-04 G04 编排者—工作者（Orchestrator–Workers）
 - PE-R-03 G02 自一致性与多数投票（Self-Consistency and Majority Voting）
 - PE-V-03 G08 位置敏感与注意力耗散（Positional Sensitivity and Attention Dissipation）
 
@@ -124,8 +124,8 @@
 
 ## 第 12 层 · 3 个节点
 
-- PE-C-07 G03 模型上下文协议（Model Context Protocol）（架构在册）
-- PE-O-05 G04 生成者—评估者（Generator–Evaluator）（架构在册）
+- PE-C-07 G03 模型上下文协议（Model Context Protocol）
+- PE-O-05 G04 生成者—评估者（Generator–Evaluator）
 - PE-R-04 G02 思维树与思维图（Tree of Thoughts and Graph of Thoughts）
 
 - 为什么在这层：PE-C-07 ← PE-A-02（PREREQ）外部数据源接入后，间接注入成为主要攻击面
@@ -137,7 +137,7 @@
 
 - PE-A-03 G06 大模型应用十大风险（Top 10 Risks for LLM Applications）
 - PE-E-03 G05 模型即裁判及其偏差（LLM-as-a-Judge and Its Biases）
-- PE-O-06 G04 状态机与持久化（State Machine and Persistence）（架构在册）
+- PE-O-06 G04 状态机与持久化（State Machine and Persistence）
 - PE-R-05 G02 步骤回溯与改写变体（Step Backtracking and Rewrite Variants）
 
 - 为什么在这层：PE-A-03 ← PE-A-02（PREREQ）理解注入的结构后，再看它在风险清单中的位置与相关条目
@@ -149,7 +149,7 @@
 
 ## 第 14 层 · 2 个节点
 
-- PE-O-07 G04 子 Agent 上下文隔离（Sub-agent Context Isolation）（架构在册）
+- PE-O-07 G04 子 Agent 上下文隔离（Sub-agent Context Isolation）
 - PE-R-06 G02 极简推理草稿（Chain of Draft）
 
 - 为什么在这层：PE-O-07 ← PE-O-06（PREREQ）状态是跨调用的事实，子 Agent 隔离是跨上下文的边界，两者配套
@@ -157,7 +157,7 @@
 
 ## 第 15 层 · 2 个节点
 
-- PE-O-08 G04 工具定义与滥用治理（Tool Definition and Abuse Governance）（架构在册）
+- PE-O-08 G04 工具定义与滥用治理（Tool Definition and Abuse Governance）
 - PE-R-07 G02 ReAct 推理—行动交织（ReAct: Interleaved Reasoning and Acting）
 
 - 为什么在这层：PE-O-08 ← PE-O-07（PREREQ）子 Agent 能做什么由工具定义决定，故先学隔离再学工具治理
@@ -262,26 +262,26 @@
 
 ## 第 26 层 · 1 个节点
 
-- PE-N-01 GD-N 三代范式脉络（Three-Generation Paradigm Arc）（架构在册）
+- PE-N-01 GD-N 三代范式脉络（Three-Generation Paradigm Arc）
 
 - 为什么在这层：PE-N-01 ← PE-P-07（FLOW）迁移教训引出对三代范式脉络的整体回看
 
 ## 第 27 层 · 1 个节点
 
-- PE-N-02 GD-N 当前共识与争议（Current Consensus and Disputes）（架构在册）
+- PE-N-02 GD-N 当前共识与争议（Current Consensus and Disputes）
 
 - 为什么在这层：PE-N-02 ← PE-N-01（PREREQ）先有三代脉络，才能把各条结论归入共识或争议
 
 ## 第 28 层 · 1 个节点
 
-- PE-N-03 GD-N 模块维护机制（Module Maintenance Mechanism）（架构在册）
+- PE-N-03 GD-N 模块维护机制（Module Maintenance Mechanism）
 
 - 为什么在这层：PE-N-03 ← PE-M-04（PREREQ）刷新是有成本的动作，须先有成本与收益的取舍框架
 - 为什么在这层：PE-N-03 ← PE-N-02（PREREQ）先区分共识与争议，再定义这个分区如何被维护与刷新
 
 ## 第 29 层 · 1 个节点
 
-- PE-N-04 GD-N 跟踪渠道（Tracking Channels）（架构在册）
+- PE-N-04 GD-N 跟踪渠道（Tracking Channels）
 
 - 为什么在这层：PE-N-04 ← PE-N-03（PREREQ）维护机制确定后，才谈得上用哪些渠道定期核验
 - 为什么在这层：PE-N-04 ← PE-P-01（FLOW）自身 agent 的提示词面盘点，决定需要跟踪哪些渠道的变化

@@ -1,0 +1,17 @@
+digraph fig {
+  rankdir=LR; bgcolor="transparent";
+  node[shape=box, style="rounded,filled", fillcolor="#ffffff", color="#7c8aa5", fontcolor="#0e1729", fontname="Noto Sans CJK SC", fontsize=13, margin="0.20,0.12"]; edge[color="#7c8aa5", fontcolor="#46536b", fontname="Noto Sans CJK SC", fontsize=11, arrowsize=0.7];
+  q  [label="同一批输入\n先判定：任务可否切分\n错误是否发散"];
+  a  [label="形态一 分段\n切成互不依赖的子任务\n并行处理后合并", fillcolor="#dfe6fb", color="#2f4bd8"];
+  b  [label="形态二 投票\n同一输入多次采样\n按多数或按判据聚合", fillcolor="#dfe6fb", color="#2f4bd8"];
+  a2 [label="买的是延迟\n收益看切分是否均匀\n与合并是否无损"];
+  b2 [label="买的是鲁棒性\n收益看错误是否发散\n错误同向时投票放大置信度"];
+  nt [label="并行不免费\n样本数按边际收益曲线设定\n无判据的聚合只是随机选择", shape=note, fillcolor="#e9eef8"];
+  q -> a [label="可切分"];
+  q -> b [label="答案唯一"];
+  a -> a2;
+  b -> b2;
+  {rank=same; a; b;}
+  {rank=same; a2; b2;}
+  {rank=same; q; nt;}
+}

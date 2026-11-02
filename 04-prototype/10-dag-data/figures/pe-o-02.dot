@@ -1,0 +1,16 @@
+digraph fig {
+  rankdir=LR; bgcolor="transparent";
+  node[shape=box, style="rounded,filled", fillcolor="#ffffff", color="#7c8aa5", fontcolor="#0e1729", fontname="Noto Sans CJK SC", fontsize=13, margin="0.20,0.12"]; edge[color="#7c8aa5", fontcolor="#46536b", fontname="Noto Sans CJK SC", fontsize=11, arrowsize=0.7];
+  q  [label="输入请求\n类型 · 难度 · 敏感度"];
+  c  [label="轻量分类\n轻量模型或规则\n判据须建评测集", fillcolor="#dfe6fb", color="#2f4bd8"];
+  p1 [label="轻档路径\n快模型 · 低单价\n抽取与分类类请求"];
+  p2 [label="强档路径\n强模型 · 多步推导\n推理与生成类请求"];
+  p3 [label="兜底路径\n分类不确定时走安全一侧\n不强行分派", color="#136f3a"];
+  nt [label="代价口径\n误分派把请求送进不适合的路径\n效果可能比不做路由更差\n档位差异不够大时，开销吃掉节省", shape=note, fillcolor="#e9eef8"];
+  q -> c;
+  c -> p1 [label="类型 A"];
+  c -> p2 [label="类型 B"];
+  c -> p3 [style=dashed, label="低置信"];
+  {rank=same; p1; p2; p3;}
+  {rank=same; q; nt;}
+}

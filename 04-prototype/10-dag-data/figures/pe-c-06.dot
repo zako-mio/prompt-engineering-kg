@@ -1,0 +1,14 @@
+digraph fig {
+  rankdir=TB; bgcolor="transparent"; ranksep=0.26;
+  node[shape=box, style="rounded,filled", fillcolor="#ffffff", color="#7c8aa5", fontcolor="#0e1729", fontname="Noto Sans CJK SC", fontsize=13, margin="0.20,0.12"]; edge[color="#7c8aa5", fontcolor="#46536b", fontname="Noto Sans CJK SC", fontsize=11, arrowsize=0.7];
+  s1 [label="最稳定：产品级约束与安全策略", fillcolor="#dfe6fb", color="#2f4bd8", width=3.6];
+  s2 [label="次稳定：任务级指令与工具定义", fillcolor="#dfe6fb", color="#2f4bd8", width=3.6];
+  s3 [label="易变：本次输入与检索资料", color="#b3181f", width=3.6];
+  k  [label="命中条件：头 1,024 token 内逐字一致\n差一个字符即 miss（命中数为 0）", color="#9a5310", width=3.6];
+  f  [label="四个破坏方式\n前缀里插时间戳或随机标识\n随会话变化的内容写进系统提示\n动态拼接工具定义\n同一段指令在不同调用点措辞不同", shape=note, fillcolor="#e9eef8", width=3.6];
+  s1 -> s2 [label="只追加"];
+  s2 -> s3 [label="只追加"];
+  s3 -> k [label="判据"];
+  k -> f [style=dotted, arrowhead=none];
+  {rank=same; k; f;}
+}

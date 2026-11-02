@@ -1,0 +1,16 @@
+digraph fig {
+  rankdir=LR; bgcolor="transparent"; ranksep=0.30; nodesep=0.18;
+  node[shape=box, style="rounded,filled", fillcolor="#ffffff", color="#7c8aa5", fontcolor="#0e1729", fontname="Noto Sans CJK SC", fontsize=13, margin="0.20,0.12"]; edge[color="#7c8aa5", fontcolor="#46536b", fontname="Noto Sans CJK SC", fontsize=11, arrowsize=0.7];
+  q  [label="问题\n先判类型", fillcolor="#dfe6fb", color="#2f4bd8"];
+  v  [label="向量通道\n单片段可答\n直接作答"];
+  g1 [label="第一阶段\n实体与关系图\n跨文档连接", fillcolor="#dfe6fb", color="#2f4bd8"];
+  g2 [label="第二阶段\n社区摘要\n聚合部分结论", fillcolor="#dfe6fb", color="#2f4bd8"];
+  an [label="全局回答\n整批资料说了什么", color="#136f3a"];
+  nt [label="通道定位\n上游已进维护模式\n索引昂贵\n→ 第二通道", shape=note, fillcolor="#e9eef8"];
+  q -> v [label="定位型"];
+  q -> g1 [label="全局型"];
+  g1 -> g2;
+  g2 -> an;
+  {rank=same; v; g1;}
+  {rank=same; an; nt;}
+}

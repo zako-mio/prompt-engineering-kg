@@ -1,0 +1,15 @@
+digraph fig {
+  rankdir=LR; bgcolor="transparent";
+  node[shape=box, style="rounded,filled", fillcolor="#ffffff", color="#7c8aa5", fontcolor="#0e1729", fontname="Noto Sans CJK SC", fontsize=13, margin="0.20,0.12"]; edge[color="#7c8aa5", fontcolor="#46536b", fontname="Noto Sans CJK SC", fontsize=11, arrowsize=0.7];
+  g  [label="生成者\n按产出契约给候选", fillcolor="#dfe6fb", color="#2f4bd8"];
+  e  [label="评估者\n按可判定判据打分\n反馈具体到修改点", fillcolor="#dfe6fb", color="#2f4bd8"];
+  ok [label="达标\n交付并留档", color="#136f3a"];
+  no [label="未达标\n带修改点回喂", color="#9a5310"];
+  nt [label="终止条件\n迭代上限 + 未收敛样本记录\n上限由判据质量决定", shape=note, fillcolor="#e9eef8"];
+  g -> e;
+  e -> ok [label="通过"];
+  e -> no [label="不通过"];
+  no -> g [style=dashed, label="再生成", constraint=false];
+  {rank=same; ok; no;}
+  {rank=same; e; nt;}
+}

@@ -1,0 +1,71 @@
+<svg class="fig__svg" role="img" aria-label="渠道图：四类跟踪渠道（学术 / 厂商 / 协议标准 / 包仓库）汇入同一套刷新流程，以及回源日期、无日期戳标注、厂商自述数字标注立场偏差三条使用纪律。"
+ viewBox="0.00 0.00 601.00 228.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 224)">
+
+<g id="node1" class="node">
+<title>a1</title>
+<path fill="var(--surface-raised)" stroke="var(--border-line)" d="M175.5,-220C175.5,-220 12.5,-220 12.5,-220 6.5,-220 0.5,-214 0.5,-208 0.5,-208 0.5,-186 0.5,-186 0.5,-180 6.5,-174 12.5,-174 12.5,-174 175.5,-174 175.5,-174 181.5,-174 187.5,-180 187.5,-186 187.5,-186 187.5,-208 187.5,-208 187.5,-214 181.5,-220 175.5,-220"/>
+<text text-anchor="middle" x="94" y="-200.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">学术侧</text>
+<text text-anchor="middle" x="94" y="-186.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">预印本平台 NLP 与安全分类</text>
+</g>
+<g id="node5" class="node">
+<title>u</title>
+<path fill="var(--brand-soft)" stroke="var(--brand-primary)" d="M412,-147C412,-147 226,-147 226,-147 220,-147 214,-141 214,-135 214,-135 214,-85 214,-85 214,-79 220,-73 226,-73 226,-73 412,-73 412,-73 418,-73 424,-79 424,-85 424,-85 424,-135 424,-135 424,-141 418,-147 412,-147"/>
+<text text-anchor="middle" x="319" y="-127.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">三条使用纪律</text>
+<text text-anchor="middle" x="319" y="-113.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">① 每次刷新记录回源日期</text>
+<text text-anchor="middle" x="319" y="-99.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">② 无日期戳页面标注时效不确定</text>
+<text text-anchor="middle" x="319" y="-85.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">③ 厂商自述数字标注立场偏差</text>
+</g>
+<g id="edge1" class="edge">
+<title>a1&#45;&gt;u</title>
+<path fill="none" stroke="var(--border-line)" d="M171.38,-173.98C177.03,-172.03 182.62,-170.03 188,-168 202.44,-162.55 217.56,-156.31 232.19,-149.99"/>
+<polygon fill="var(--border-line)" stroke="var(--border-line)" points="233.43,-152.12 238.87,-147.08 231.47,-147.63 233.43,-152.12"/>
+</g>
+<g id="node2" class="node">
+<title>a2</title>
+<path fill="var(--surface-raised)" stroke="var(--border-line)" d="M160,-162C160,-162 28,-162 28,-162 22,-162 16,-156 16,-150 16,-150 16,-128 16,-128 16,-122 22,-116 28,-116 28,-116 160,-116 160,-116 166,-116 172,-122 172,-128 172,-128 172,-150 172,-150 172,-156 166,-162 160,-162"/>
+<text text-anchor="middle" x="94" y="-142.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">厂商侧</text>
+<text text-anchor="middle" x="94" y="-128.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">开发者文档与更新日志</text>
+</g>
+<g id="edge2" class="edge">
+<title>a2&#45;&gt;u</title>
+<path fill="none" stroke="var(--border-line)" d="M172.06,-128.98C183.21,-127.53 194.88,-126.01 206.54,-124.49"/>
+<polygon fill="var(--border-line)" stroke="var(--border-line)" points="207.17,-126.88 213.8,-123.55 206.54,-122.02 207.17,-126.88"/>
+</g>
+<g id="node3" class="node">
+<title>a3</title>
+<path fill="var(--surface-raised)" stroke="var(--border-line)" d="M163,-104C163,-104 25,-104 25,-104 19,-104 13,-98 13,-92 13,-92 13,-70 13,-70 13,-64 19,-58 25,-58 25,-58 163,-58 163,-58 169,-58 175,-64 175,-70 175,-70 175,-92 175,-92 175,-98 169,-104 163,-104"/>
+<text text-anchor="middle" x="94" y="-84.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">协议与标准侧</text>
+<text text-anchor="middle" x="94" y="-70.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">规范页 · 风险清单仓库</text>
+</g>
+<g id="edge3" class="edge">
+<title>a3&#45;&gt;u</title>
+<path fill="none" stroke="var(--border-line)" d="M175.19,-91.43C185.44,-92.76 196.06,-94.14 206.69,-95.52"/>
+<polygon fill="var(--border-line)" stroke="var(--border-line)" points="206.41,-97.96 213.66,-96.43 207.04,-93.1 206.41,-97.96"/>
+</g>
+<g id="node4" class="node">
+<title>a4</title>
+<path fill="var(--surface-raised)" stroke="var(--border-line)" d="M176,-46C176,-46 12,-46 12,-46 6,-46 0,-40 0,-34 0,-34 0,-12 0,-12 0,-6 6,0 12,0 12,0 176,0 176,0 182,0 188,-6 188,-12 188,-12 188,-34 188,-34 188,-40 182,-46 176,-46"/>
+<text text-anchor="middle" x="94" y="-26.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">包与仓库侧</text>
+<text text-anchor="middle" x="94" y="-12.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">注册表元数据 · 维护活跃度</text>
+</g>
+<g id="edge4" class="edge">
+<title>a4&#45;&gt;u</title>
+<path fill="none" stroke="var(--border-line)" d="M171.38,-46.02C177.03,-47.97 182.62,-49.97 188,-52 202.44,-57.45 217.56,-63.69 232.19,-70.01"/>
+<polygon fill="var(--border-line)" stroke="var(--border-line)" points="231.47,-72.37 238.87,-72.92 233.43,-67.88 231.47,-72.37"/>
+</g>
+<g id="node6" class="node">
+<title>n</title>
+<polygon fill="var(--surface-subtle)" stroke="var(--border-line)" points="587,-140 450,-140 450,-80 593,-80 593,-134 587,-140"/>
+<polyline fill="none" stroke="var(--border-line)" points="587,-140 587,-134 "/>
+<polyline fill="none" stroke="var(--border-line)" points="593,-134 587,-134 "/>
+<text text-anchor="middle" x="521.5" y="-120.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">边界</text>
+<text text-anchor="middle" x="521.5" y="-106.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">渠道只保证可达</text>
+<text text-anchor="middle" x="521.5" y="-92.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">正确性仍须交叉验证</text>
+</g>
+<g id="edge5" class="edge">
+<title>u&#45;&gt;n</title>
+<path fill="none" stroke="var(--border-line)" stroke-dasharray="1,5" d="M424.07,-110C432.84,-110 441.57,-110 450,-110"/>
+</g>
+</g>
+</svg>

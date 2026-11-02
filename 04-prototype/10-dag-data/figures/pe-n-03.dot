@@ -1,0 +1,15 @@
+digraph fig {
+  rankdir=LR; bgcolor="transparent"; ranksep=0.34; nodesep=0.22;
+  node[shape=box, style="rounded,filled", fillcolor="#ffffff", color="#7c8aa5", fontcolor="#0e1729", fontname="Noto Sans CJK SC", fontsize=13, margin="0.20,0.12"]; edge[color="#7c8aa5", fontcolor="#46536b", fontname="Noto Sans CJK SC", fontsize=11, arrowsize=0.7];
+  m [label="条目集合（只含数据）\n时间锚 · 版次 · 取代关系\n状态三值：已确认 / 有争议 / 未证实", fillcolor="#dfe6fb", color="#2f4bd8"];
+  r [label="刷新动作\n① 改条目与时间锚\n② 重跑生成器与门控\n③ 页面模板零改动", fillcolor="#dfe6fb", color="#2f4bd8"];
+  p [label="页面与教程正文\n内容随数据更新"];
+  v [label="假刷新判据\n版次与时间锚不一致\n即判为假刷新", shape=note, fillcolor="#e9eef8"];
+  s [label="取代关系\n旧条目标记而非删除\n读者能看懂旧建议\n为何曾经成立", shape=note, fillcolor="#e9eef8"];
+  m -> r [label="改一处"];
+  r -> p [label="重跑"];
+  r -> v [style=dashed, arrowhead=none];
+  m -> s [style=dotted, arrowhead=none];
+  {rank=same; m; s;}
+  {rank=same; r; v;}
+}

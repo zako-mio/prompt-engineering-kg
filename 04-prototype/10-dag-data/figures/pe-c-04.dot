@@ -1,0 +1,17 @@
+digraph fig {
+  rankdir=TB; bgcolor="transparent"; ranksep=0.32; nodesep=0.90;
+  node[shape=box, style="rounded,filled", fillcolor="#ffffff", color="#7c8aa5", fontcolor="#0e1729", fontname="Noto Sans CJK SC", fontsize=13, margin="0.20,0.12"]; edge[color="#7c8aa5", fontcolor="#46536b", fontname="Noto Sans CJK SC", fontsize=11, arrowsize=0.7];
+  q  [label="端到端质量不达标\n先归因，再动手", fillcolor="#dfe6fb", color="#2f4bd8"];
+  l1 [label="检索侧分层评测\n答案片段是否被召回\n召回的片段有多少无关", color="#136f3a"];
+  l2 [label="生成侧分层评测\n端到端质量与拒答率", color="#136f3a"];
+  d  [label="相关性的真实度量\n是否满足信息需求\n不是分数本身", color="#9a5310"];
+  h1 [label="改法一 混合检索\n关键词精度 + 向量语义\n再配语义排序", color="#136f3a"];
+  h2 [label="改法二 查询规划\n多轮检索与改写", color="#136f3a"];
+  od [label="顺序\n先修检索\n再改提示", shape=note, fillcolor="#e9eef8"];
+  q -> l1; q -> l2;
+  l1 -> d; l2 -> d;
+  d -> h1; d -> h2;
+  h1 -> od [style=dotted, arrowhead=none];
+  {rank=same; l1; l2;}
+  {rank=same; h1; h2; od;}
+}

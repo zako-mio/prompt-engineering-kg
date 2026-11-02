@@ -1,0 +1,66 @@
+<svg class="fig__svg" role="img" aria-label="机制图：刷新只改条目集合（数据）再重跑生成器与门控、页面模板零改动，以及「取代关系标记旧条目而非删除」所保留的历史可解释性。"
+ viewBox="0.00 0.00 607.00 181.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 177)">
+
+<g id="node1" class="node">
+<title>m</title>
+<path fill="var(--brand-soft)" stroke="var(--brand-primary)" d="M218,-166C218,-166 12,-166 12,-166 6,-166 0,-160 0,-154 0,-154 0,-118 0,-118 0,-112 6,-106 12,-106 12,-106 218,-106 218,-106 224,-106 230,-112 230,-118 230,-118 230,-154 230,-154 230,-160 224,-166 218,-166"/>
+<text text-anchor="middle" x="115" y="-146.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">条目集合（只含数据）</text>
+<text text-anchor="middle" x="115" y="-132.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">时间锚 · 版次 · 取代关系</text>
+<text text-anchor="middle" x="115" y="-118.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">状态三值：已确认 / 有争议 / 未证实</text>
+</g>
+<g id="node2" class="node">
+<title>r</title>
+<path fill="var(--brand-soft)" stroke="var(--brand-primary)" d="M422,-173C422,-173 300,-173 300,-173 294,-173 288,-167 288,-161 288,-161 288,-111 288,-111 288,-105 294,-99 300,-99 300,-99 422,-99 422,-99 428,-99 434,-105 434,-111 434,-111 434,-161 434,-161 434,-167 428,-173 422,-173"/>
+<text text-anchor="middle" x="361" y="-153.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">刷新动作</text>
+<text text-anchor="middle" x="361" y="-139.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">① 改条目与时间锚</text>
+<text text-anchor="middle" x="361" y="-125.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">② 重跑生成器与门控</text>
+<text text-anchor="middle" x="361" y="-111.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">③ 页面模板零改动</text>
+</g>
+<g id="edge1" class="edge">
+<title>m&#45;&gt;r</title>
+<path fill="none" stroke="var(--border-line)" d="M230.14,-136C247.14,-136 264.33,-136 280.41,-136"/>
+<polygon fill="var(--border-line)" stroke="var(--border-line)" points="280.71,-138.45 287.71,-136 280.71,-133.55 280.71,-138.45"/>
+<text text-anchor="middle" x="259" y="-139.2" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="11.00" fill="var(--text-secondary)">改一处</text>
+</g>
+<g id="node5" class="node">
+<title>s</title>
+<polygon fill="var(--surface-subtle)" stroke="var(--border-line)" points="180.5,-74 43.5,-74 43.5,0 186.5,0 186.5,-68 180.5,-74"/>
+<polyline fill="none" stroke="var(--border-line)" points="180.5,-74 180.5,-68 "/>
+<polyline fill="none" stroke="var(--border-line)" points="186.5,-68 180.5,-68 "/>
+<text text-anchor="middle" x="115" y="-54.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">取代关系</text>
+<text text-anchor="middle" x="115" y="-40.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">旧条目标记而非删除</text>
+<text text-anchor="middle" x="115" y="-26.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">读者能看懂旧建议</text>
+<text text-anchor="middle" x="115" y="-12.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">为何曾经成立</text>
+</g>
+<g id="edge4" class="edge">
+<title>m&#45;&gt;s</title>
+<path fill="none" stroke="var(--border-line)" stroke-dasharray="1,5" d="M115,-105.55C115,-95.07 115,-84.6 115,-74.12"/>
+</g>
+<g id="node3" class="node">
+<title>p</title>
+<path fill="var(--surface-raised)" stroke="var(--border-line)" d="M587,-159C587,-159 493,-159 493,-159 487,-159 481,-153 481,-147 481,-147 481,-125 481,-125 481,-119 487,-113 493,-113 493,-113 587,-113 587,-113 593,-113 599,-119 599,-125 599,-125 599,-147 599,-147 599,-153 593,-159 587,-159"/>
+<text text-anchor="middle" x="540" y="-139.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">页面与教程正文</text>
+<text text-anchor="middle" x="540" y="-125.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">内容随数据更新</text>
+</g>
+<g id="edge2" class="edge">
+<title>r&#45;&gt;p</title>
+<path fill="none" stroke="var(--border-line)" d="M434.25,-136C447.31,-136 460.87,-136 473.72,-136"/>
+<polygon fill="var(--border-line)" stroke="var(--border-line)" points="473.78,-138.45 480.78,-136 473.78,-133.55 473.78,-138.45"/>
+<text text-anchor="middle" x="457.5" y="-139.2" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="11.00" fill="var(--text-secondary)">重跑</text>
+</g>
+<g id="node4" class="node">
+<title>v</title>
+<polygon fill="var(--surface-subtle)" stroke="var(--border-line)" points="426.5,-67 289.5,-67 289.5,-7 432.5,-7 432.5,-61 426.5,-67"/>
+<polyline fill="none" stroke="var(--border-line)" points="426.5,-67 426.5,-61 "/>
+<polyline fill="none" stroke="var(--border-line)" points="432.5,-61 426.5,-61 "/>
+<text text-anchor="middle" x="361" y="-47.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">假刷新判据</text>
+<text text-anchor="middle" x="361" y="-33.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">版次与时间锚不一致</text>
+<text text-anchor="middle" x="361" y="-19.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">即判为假刷新</text>
+</g>
+<g id="edge3" class="edge">
+<title>r&#45;&gt;v</title>
+<path fill="none" stroke="var(--border-line)" stroke-dasharray="5,2" d="M361,-98.89C361,-88.32 361,-77.74 361,-67.16"/>
+</g>
+</g>
+</svg>

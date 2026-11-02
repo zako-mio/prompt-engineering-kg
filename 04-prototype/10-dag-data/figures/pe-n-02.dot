@@ -1,0 +1,12 @@
+digraph fig {
+  rankdir=LR; bgcolor="transparent"; ranksep=0.34; nodesep=0.20;
+  node[shape=box, style="rounded,filled", fillcolor="#ffffff", color="#7c8aa5", fontcolor="#0e1729", fontname="Noto Sans CJK SC", fontsize=13, margin="0.20,0.12"]; edge[color="#7c8aa5", fontcolor="#46536b", fontname="Noto Sans CJK SC", fontsize=11, arrowsize=0.7];
+  q  [label="引用一条结论之前\n先判它属于哪一类", fillcolor="#dfe6fb", color="#2f4bd8"];
+  c  [label="共识 · 两条\n① 模型越强，越少手写步骤\n② 指令层级已被部分内化\n→ 可直接引用，仍写适用边界", color="#136f3a"];
+  d  [label="争议 · 三处\n① 范式反转的适用范围\n② 编译与微调的临界点\n③ 原生推理与外部编排分工\n→ 按任务域与模型类别实测", color="#9a5310"];
+  nt [label="判定纪律\n未被收录不等于已被证伪\n争议项不得当结论使用", shape=note, fillcolor="#e9eef8"];
+  q -> c [label="共识"];
+  q -> d [label="争议"];
+  d -> nt [style=dotted, arrowhead=none];
+  {rank=same; c; d;}
+}

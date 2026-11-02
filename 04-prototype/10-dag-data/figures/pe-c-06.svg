@@ -1,0 +1,60 @@
+<svg class="fig__svg" role="img" aria-label="分层图：提示按稳定性排序（稳定前缀在前、易变内容压到末尾、对话只追加），命中要求头 1,024 token 逐字一致，以及四个常见的破坏方式。"
+ viewBox="0.00 0.00 562.00 300.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 296)">
+
+<g id="node1" class="node">
+<title>s1</title>
+<path fill="var(--brand-soft)" stroke="var(--brand-primary)" d="M247,-292C247,-292 12,-292 12,-292 6,-292 0,-286 0,-280 0,-280 0,-268 0,-268 0,-262 6,-256 12,-256 12,-256 247,-256 247,-256 253,-256 259,-262 259,-268 259,-268 259,-280 259,-280 259,-286 253,-292 247,-292"/>
+<text text-anchor="middle" x="129.5" y="-270.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">最稳定：产品级约束与安全策略</text>
+</g>
+<g id="node2" class="node">
+<title>s2</title>
+<path fill="var(--brand-soft)" stroke="var(--brand-primary)" d="M247,-224C247,-224 12,-224 12,-224 6,-224 0,-218 0,-212 0,-212 0,-200 0,-200 0,-194 6,-188 12,-188 12,-188 247,-188 247,-188 253,-188 259,-194 259,-200 259,-200 259,-212 259,-212 259,-218 253,-224 247,-224"/>
+<text text-anchor="middle" x="129.5" y="-202.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">次稳定：任务级指令与工具定义</text>
+</g>
+<g id="edge1" class="edge">
+<title>s1&#45;&gt;s2</title>
+<path fill="none" stroke="var(--border-line)" d="M129.5,-255.66C129.5,-248.29 129.5,-239.57 129.5,-231.55"/>
+<polygon fill="var(--border-line)" stroke="var(--border-line)" points="131.95,-231.45 129.5,-224.45 127.05,-231.45 131.95,-231.45"/>
+<text text-anchor="middle" x="146.5" y="-237.2" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="11.00" fill="var(--text-secondary)">只追加</text>
+</g>
+<g id="node3" class="node">
+<title>s3</title>
+<path fill="var(--surface-raised)" stroke="var(--danger)" d="M247,-156C247,-156 12,-156 12,-156 6,-156 0,-150 0,-144 0,-144 0,-132 0,-132 0,-126 6,-120 12,-120 12,-120 247,-120 247,-120 253,-120 259,-126 259,-132 259,-132 259,-144 259,-144 259,-150 253,-156 247,-156"/>
+<text text-anchor="middle" x="129.5" y="-134.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">易变：本次输入与检索资料</text>
+</g>
+<g id="edge2" class="edge">
+<title>s2&#45;&gt;s3</title>
+<path fill="none" stroke="var(--border-line)" d="M129.5,-187.66C129.5,-180.29 129.5,-171.57 129.5,-163.55"/>
+<polygon fill="var(--border-line)" stroke="var(--border-line)" points="131.95,-163.45 129.5,-156.45 127.05,-163.45 131.95,-163.45"/>
+<text text-anchor="middle" x="146.5" y="-169.2" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="11.00" fill="var(--text-secondary)">只追加</text>
+</g>
+<g id="node4" class="node">
+<title>k</title>
+<path fill="var(--surface-raised)" stroke="var(--warning)" d="M247,-67C247,-67 12,-67 12,-67 6,-67 0,-61 0,-55 0,-55 0,-33 0,-33 0,-27 6,-21 12,-21 12,-21 247,-21 247,-21 253,-21 259,-27 259,-33 259,-33 259,-55 259,-55 259,-61 253,-67 247,-67"/>
+<text text-anchor="middle" x="129.5" y="-47.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">命中条件：头 1,024 token 内逐字一致</text>
+<text text-anchor="middle" x="129.5" y="-33.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">差一个字符即 miss（命中数为 0）</text>
+</g>
+<g id="edge3" class="edge">
+<title>s3&#45;&gt;k</title>
+<path fill="none" stroke="var(--border-line)" d="M129.5,-119.7C129.5,-106.9 129.5,-89.18 129.5,-74.21"/>
+<polygon fill="var(--border-line)" stroke="var(--border-line)" points="131.95,-74.11 129.5,-67.11 127.05,-74.11 131.95,-74.11"/>
+<text text-anchor="middle" x="141" y="-101.2" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="11.00" fill="var(--text-secondary)">判据</text>
+</g>
+<g id="node5" class="node">
+<title>f</title>
+<polygon fill="var(--surface-subtle)" stroke="var(--border-line)" points="548,-88 295,-88 295,0 554,0 554,-82 548,-88"/>
+<polyline fill="none" stroke="var(--border-line)" points="548,-88 548,-82 "/>
+<polyline fill="none" stroke="var(--border-line)" points="554,-82 548,-82 "/>
+<text text-anchor="middle" x="424.5" y="-68.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">四个破坏方式</text>
+<text text-anchor="middle" x="424.5" y="-54.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">前缀里插时间戳或随机标识</text>
+<text text-anchor="middle" x="424.5" y="-40.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">随会话变化的内容写进系统提示</text>
+<text text-anchor="middle" x="424.5" y="-26.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">动态拼接工具定义</text>
+<text text-anchor="middle" x="424.5" y="-12.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">同一段指令在不同调用点措辞不同</text>
+</g>
+<g id="edge4" class="edge">
+<title>k&#45;&gt;f</title>
+<path fill="none" stroke="var(--border-line)" stroke-dasharray="1,5" d="M259.14,-44C271.09,-44 283.04,-44 294.99,-44"/>
+</g>
+</g>
+</svg>

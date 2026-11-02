@@ -112,11 +112,12 @@ def learning_path_page(dag, page_exists, page_rel=None):
     body = []
     body.append(C.crumbs(BASE, [("首页", "index.html"), ("学习路径", None)]))
     body.append("<h1>学习路径</h1>")
-    body.append('<p class="meta-line"><span>层数 %d</span><span>节点 %d</span><span>边 %d</span>'
-                '<span>已写满 %d</span><span>架构在册 %d</span></p>'
+    # ★ 第 10 轮：内容状态片段走单一出口（单态时不再出现「架构在册 0」）。
+    body.append('<p class="meta-line"><span>层数 %d</span><span>节点 %d</span><span>边 %d</span>%s</p>'
                 % (len(by_layer), len(nodes), len(edges),
-                   sum(1 for n in nodes if n["content_status"] == "complete"),
-                   sum(1 for n in nodes if n["content_status"] == "registered")))
+                   C.content_state_copy(
+                       sum(1 for n in nodes if n["content_status"] == "complete"),
+                       sum(1 for n in nodes if n["content_status"] == "registered"))["views_meta"]))
     body.append(C.read_map_html(C.lead_sentence(intro), tuple(sections), reveal=nxt()))
     body.append(C.section("本页导读", 1, "sec-intro"))
     body.append(C.prose_html(intro))

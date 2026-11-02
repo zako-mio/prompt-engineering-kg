@@ -1,0 +1,73 @@
+<svg class="fig__svg" role="img" aria-label="分派图：输入先过轻量分类再走向不同路径与模型档位，保留低置信兜底，以及「误分派可能比不做路由更差」的代价口径。"
+ viewBox="0.00 0.00 622.00 231.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 227)">
+
+<g id="node1" class="node">
+<title>q</title>
+<path fill="var(--surface-raised)" stroke="var(--border-line)" d="M175.5,-131C175.5,-131 44.5,-131 44.5,-131 38.5,-131 32.5,-125 32.5,-119 32.5,-119 32.5,-97 32.5,-97 32.5,-91 38.5,-85 44.5,-85 44.5,-85 175.5,-85 175.5,-85 181.5,-85 187.5,-91 187.5,-97 187.5,-97 187.5,-119 187.5,-119 187.5,-125 181.5,-131 175.5,-131"/>
+<text text-anchor="middle" x="110" y="-111.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">输入请求</text>
+<text text-anchor="middle" x="110" y="-97.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">类型 · 难度 · 敏感度</text>
+</g>
+<g id="node2" class="node">
+<title>c</title>
+<path fill="var(--brand-soft)" stroke="var(--brand-primary)" d="M363,-138C363,-138 269,-138 269,-138 263,-138 257,-132 257,-126 257,-126 257,-90 257,-90 257,-84 263,-78 269,-78 269,-78 363,-78 363,-78 369,-78 375,-84 375,-90 375,-90 375,-126 375,-126 375,-132 369,-138 363,-138"/>
+<text text-anchor="middle" x="316" y="-118.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">轻量分类</text>
+<text text-anchor="middle" x="316" y="-104.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">轻量模型或规则</text>
+<text text-anchor="middle" x="316" y="-90.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">判据须建评测集</text>
+</g>
+<g id="edge1" class="edge">
+<title>q&#45;&gt;c</title>
+<path fill="none" stroke="var(--border-line)" d="M187.54,-108C207.98,-108 229.88,-108 249.66,-108"/>
+<polygon fill="var(--border-line)" stroke="var(--border-line)" points="249.84,-110.45 256.84,-108 249.84,-105.55 249.84,-110.45"/>
+</g>
+<g id="node3" class="node">
+<title>p1</title>
+<path fill="var(--surface-raised)" stroke="var(--border-line)" d="M583,-216C583,-216 476,-216 476,-216 470,-216 464,-210 464,-204 464,-204 464,-168 464,-168 464,-162 470,-156 476,-156 476,-156 583,-156 583,-156 589,-156 595,-162 595,-168 595,-168 595,-204 595,-204 595,-210 589,-216 583,-216"/>
+<text text-anchor="middle" x="529.5" y="-196.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">轻档路径</text>
+<text text-anchor="middle" x="529.5" y="-182.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">快模型 · 低单价</text>
+<text text-anchor="middle" x="529.5" y="-168.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">抽取与分类类请求</text>
+</g>
+<g id="edge2" class="edge">
+<title>c&#45;&gt;p1</title>
+<path fill="none" stroke="var(--border-line)" d="M375.07,-129.42C400.44,-138.77 430.43,-149.83 457.14,-159.68"/>
+<polygon fill="var(--border-line)" stroke="var(--border-line)" points="456.44,-162.04 463.86,-162.16 458.14,-157.44 456.44,-162.04"/>
+<text text-anchor="middle" x="410" y="-150.2" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="11.00" fill="var(--text-secondary)">类型 A</text>
+</g>
+<g id="node4" class="node">
+<title>p2</title>
+<path fill="var(--surface-raised)" stroke="var(--border-line)" d="M586,-138C586,-138 473,-138 473,-138 467,-138 461,-132 461,-126 461,-126 461,-90 461,-90 461,-84 467,-78 473,-78 473,-78 586,-78 586,-78 592,-78 598,-84 598,-90 598,-90 598,-126 598,-126 598,-132 592,-138 586,-138"/>
+<text text-anchor="middle" x="529.5" y="-118.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">强档路径</text>
+<text text-anchor="middle" x="529.5" y="-104.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">强模型 · 多步推导</text>
+<text text-anchor="middle" x="529.5" y="-90.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">推理与生成类请求</text>
+</g>
+<g id="edge3" class="edge">
+<title>c&#45;&gt;p2</title>
+<path fill="none" stroke="var(--border-line)" d="M375.07,-108C399.33,-108 427.82,-108 453.62,-108"/>
+<polygon fill="var(--border-line)" stroke="var(--border-line)" points="453.82,-110.45 460.82,-108 453.82,-105.55 453.82,-110.45"/>
+<text text-anchor="middle" x="410" y="-111.2" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="11.00" fill="var(--text-secondary)">类型 B</text>
+</g>
+<g id="node5" class="node">
+<title>p3</title>
+<path fill="var(--surface-raised)" stroke="var(--success)" d="M602,-60C602,-60 457,-60 457,-60 451,-60 445,-54 445,-48 445,-48 445,-12 445,-12 445,-6 451,0 457,0 457,0 602,0 602,0 608,0 614,-6 614,-12 614,-12 614,-48 614,-48 614,-54 608,-60 602,-60"/>
+<text text-anchor="middle" x="529.5" y="-40.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">兜底路径</text>
+<text text-anchor="middle" x="529.5" y="-26.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">分类不确定时走安全一侧</text>
+<text text-anchor="middle" x="529.5" y="-12.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">不强行分派</text>
+</g>
+<g id="edge4" class="edge">
+<title>c&#45;&gt;p3</title>
+<path fill="none" stroke="var(--border-line)" stroke-dasharray="5,2" d="M375.07,-86.58C395.13,-79.19 418.09,-70.72 440.02,-62.63"/>
+<polygon fill="var(--border-line)" stroke="var(--border-line)" points="441.07,-64.85 446.79,-60.13 439.38,-60.26 441.07,-64.85"/>
+<text text-anchor="middle" x="410" y="-81.2" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="11.00" fill="var(--text-secondary)">低置信</text>
+</g>
+<g id="node6" class="node">
+<title>nt</title>
+<polygon fill="var(--surface-subtle)" stroke="var(--border-line)" points="214,-223 0,-223 0,-149 220,-149 220,-217 214,-223"/>
+<polyline fill="none" stroke="var(--border-line)" points="214,-223 214,-217 "/>
+<polyline fill="none" stroke="var(--border-line)" points="220,-217 214,-217 "/>
+<text text-anchor="middle" x="110" y="-203.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">代价口径</text>
+<text text-anchor="middle" x="110" y="-189.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">误分派把请求送进不适合的路径</text>
+<text text-anchor="middle" x="110" y="-175.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">效果可能比不做路由更差</text>
+<text text-anchor="middle" x="110" y="-161.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">档位差异不够大时，开销吃掉节省</text>
+</g>
+</g>
+</svg>

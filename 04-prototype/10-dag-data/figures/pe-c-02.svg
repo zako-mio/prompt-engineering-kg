@@ -1,0 +1,83 @@
+<svg class="fig__svg" role="img" aria-label="流程图：检索 → 注入 → 生成三个环节里，引用片段 / 结构化上下文 / 允许拒答三种形态，以及「长资料置前、指令与问题置后」这一注入位置约束。"
+ viewBox="0.00 0.00 476.00 308.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 304)">
+
+<g id="node1" class="node">
+<title>a</title>
+<path fill="var(--brand-soft)" stroke="var(--brand-primary)" d="M99,-180C99,-180 12,-180 12,-180 6,-180 0,-174 0,-168 0,-168 0,-132 0,-132 0,-126 6,-120 12,-120 12,-120 99,-120 99,-120 105,-120 111,-126 111,-132 111,-132 111,-168 111,-168 111,-174 105,-180 99,-180"/>
+<text text-anchor="middle" x="55.5" y="-160.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">检索</text>
+<text text-anchor="middle" x="55.5" y="-146.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">分块 · 向量化</text>
+<text text-anchor="middle" x="55.5" y="-132.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">排序</text>
+</g>
+<g id="node2" class="node">
+<title>f1</title>
+<path fill="var(--surface-raised)" stroke="var(--success)" d="M266,-300C266,-300 195,-300 195,-300 189,-300 183,-294 183,-288 183,-288 183,-252 183,-252 183,-246 189,-240 195,-240 195,-240 266,-240 266,-240 272,-240 278,-246 278,-252 278,-252 278,-288 278,-288 278,-294 272,-300 266,-300"/>
+<text text-anchor="middle" x="230.5" y="-280.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">① 引用片段</text>
+<text text-anchor="middle" x="230.5" y="-266.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">先摘引依据</text>
+<text text-anchor="middle" x="230.5" y="-252.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">再给结论</text>
+</g>
+<g id="edge1" class="edge">
+<title>a&#45;&gt;f1</title>
+<path fill="none" stroke="var(--border-line)" d="M95.63,-180.03C116.03,-195.38 141.55,-214.12 165,-230 168.81,-232.58 172.78,-235.2 176.8,-237.81"/>
+<polygon fill="var(--border-line)" stroke="var(--border-line)" points="175.5,-239.88 182.71,-241.6 178.14,-235.76 175.5,-239.88"/>
+</g>
+<g id="node3" class="node">
+<title>f2</title>
+<path fill="var(--surface-raised)" stroke="var(--success)" d="M279,-220C279,-220 182,-220 182,-220 176,-220 170,-214 170,-208 170,-208 170,-172 170,-172 170,-166 176,-160 182,-160 182,-160 279,-160 279,-160 285,-160 291,-166 291,-172 291,-172 291,-208 291,-208 291,-214 285,-220 279,-220"/>
+<text text-anchor="middle" x="230.5" y="-200.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">② 结构化上下文</text>
+<text text-anchor="middle" x="230.5" y="-186.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">分节 + 固定标记</text>
+<text text-anchor="middle" x="230.5" y="-172.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">资料与指令分离</text>
+</g>
+<g id="edge2" class="edge">
+<title>a&#45;&gt;f2</title>
+<path fill="none" stroke="var(--border-line)" d="M111.24,-162.66C127.52,-166.42 145.55,-170.59 162.52,-174.51"/>
+<polygon fill="var(--border-line)" stroke="var(--border-line)" points="162.35,-176.99 169.72,-176.18 163.45,-172.21 162.35,-176.99"/>
+</g>
+<g id="node4" class="node">
+<title>f3</title>
+<path fill="var(--surface-raised)" stroke="var(--success)" d="M284,-140C284,-140 177,-140 177,-140 171,-140 165,-134 165,-128 165,-128 165,-92 165,-92 165,-86 171,-80 177,-80 177,-80 284,-80 284,-80 290,-80 296,-86 296,-92 296,-92 296,-128 296,-128 296,-134 290,-140 284,-140"/>
+<text text-anchor="middle" x="230.5" y="-120.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">③ 允许拒答</text>
+<text text-anchor="middle" x="230.5" y="-106.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">资料不足即说明</text>
+<text text-anchor="middle" x="230.5" y="-92.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">拒答率是检索信号</text>
+</g>
+<g id="edge3" class="edge">
+<title>a&#45;&gt;f3</title>
+<path fill="none" stroke="var(--border-line)" d="M111.24,-137.34C126,-133.93 142.2,-130.18 157.75,-126.59"/>
+<polygon fill="var(--border-line)" stroke="var(--border-line)" points="158.57,-128.92 164.84,-124.95 157.46,-124.14 158.57,-128.92"/>
+</g>
+<g id="node5" class="node">
+<title>nt</title>
+<polygon fill="var(--surface-subtle)" stroke="var(--border-line)" points="283.5,-60 171.5,-60 171.5,0 289.5,0 289.5,-54 283.5,-60"/>
+<polyline fill="none" stroke="var(--border-line)" points="283.5,-60 283.5,-54 "/>
+<polyline fill="none" stroke="var(--border-line)" points="289.5,-54 283.5,-54 "/>
+<text text-anchor="middle" x="230.5" y="-40.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">注入位置</text>
+<text text-anchor="middle" x="230.5" y="-26.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">长资料置前</text>
+<text text-anchor="middle" x="230.5" y="-12.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">指令与问题置后</text>
+</g>
+<g id="edge7" class="edge">
+<title>a&#45;&gt;nt</title>
+<path fill="none" stroke="var(--border-line)" stroke-dasharray="1,5" d="M95.63,-119.97C116.03,-104.62 141.55,-85.88 165,-70 169.8,-66.75 174.86,-63.43 179.94,-60.17"/>
+</g>
+<g id="node6" class="node">
+<title>g</title>
+<path fill="var(--brand-soft)" stroke="var(--brand-primary)" d="M456,-213C456,-213 362,-213 362,-213 356,-213 350,-207 350,-201 350,-201 350,-179 350,-179 350,-173 356,-167 362,-167 362,-167 456,-167 456,-167 462,-167 468,-173 468,-179 468,-179 468,-201 468,-201 468,-207 462,-213 456,-213"/>
+<text text-anchor="middle" x="409" y="-193.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">生成</text>
+<text text-anchor="middle" x="409" y="-179.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">只依据资料作答</text>
+</g>
+<g id="edge4" class="edge">
+<title>f1&#45;&gt;g</title>
+<path fill="none" stroke="var(--border-line)" d="M278.34,-248.77C300.55,-238.7 327.3,-226.58 350.71,-215.96"/>
+<polygon fill="var(--border-line)" stroke="var(--border-line)" points="351.86,-218.14 357.22,-213.01 349.84,-213.67 351.86,-218.14"/>
+</g>
+<g id="edge5" class="edge">
+<title>f2&#45;&gt;g</title>
+<path fill="none" stroke="var(--border-line)" d="M291.25,-190C307.79,-190 325.83,-190 342.67,-190"/>
+<polygon fill="var(--border-line)" stroke="var(--border-line)" points="342.8,-192.45 349.8,-190 342.8,-187.55 342.8,-192.45"/>
+</g>
+<g id="edge6" class="edge">
+<title>f3&#45;&gt;g</title>
+<path fill="none" stroke="var(--border-line)" d="M296.22,-139.33C313.94,-147.37 333.02,-156.02 350.32,-163.86"/>
+<polygon fill="var(--border-line)" stroke="var(--border-line)" points="349.72,-166.27 357.1,-166.93 351.74,-161.81 349.72,-166.27"/>
+</g>
+</g>
+</svg>

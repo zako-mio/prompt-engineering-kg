@@ -1,0 +1,12 @@
+digraph fig {
+  rankdir=LR; bgcolor="transparent";
+  node[shape=box, style="rounded,filled", fillcolor="#ffffff", color="#7c8aa5", fontcolor="#0e1729", fontname="Noto Sans CJK SC", fontsize=13, margin="0.20,0.12"]; edge[color="#7c8aa5", fontcolor="#46536b", fontname="Noto Sans CJK SC", fontsize=11, arrowsize=0.7];
+  T [label="一个工具的定义\n名称 · 描述 · 参数模式\n这一层就是提示面", fillcolor="#dfe6fb", color="#2f4bd8"];
+  G [label="四个治理动作\n① 合并：语义相近的工具合并\n② 命名：一致且描述性\n③ 描述：写何时用与何时不用\n④ 权限：高风险工具分离并加确认", fillcolor="#dfe6fb", color="#2f4bd8"];
+  B [label="膨胀的代价\n工具越多越容易误选\n描述含糊诱发误用", color="#b3181f"];
+  M [label="监控信号\n近零调用：描述或场景不匹配\n高频误用：与别的工具语义重叠", shape=note, fillcolor="#e9eef8"];
+  N [label="边界\n权限须在系统层收窄\n只写在提示里不构成控制", shape=note, fillcolor="#e9eef8"];
+  T -> G;
+  G -> B;
+  {rank=same; B; M; N;}
+}

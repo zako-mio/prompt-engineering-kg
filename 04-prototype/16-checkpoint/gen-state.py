@@ -109,7 +109,18 @@ ASSET_DECL = ("16-checkpoint/CRITERIA-CHANGE-P23.md 与 gen-common.BACKDROP_CRED
               "与 `13-interactive/vendor/` 的脚本白名单**分开声明、互不包含**；"
               "夜间帧 CC BY 4.0（须署名）、日间帧 CC0 1.0；页脚逐素材登记署名与出处")
 
-ROUND = 9      # ★ 2026-10-19 第 9 轮：产出本快照的轮次（内容波次 4：G07 / G08 / G09 共 13 个节点）
+CHANGE_DECL_14 = ("16-checkpoint/CRITERIA-CHANGE-R10.md（2026-11-02 第 10 轮判据变更：**新增两条硬判据 + 一条数据侧判据**，"
+                  "并把三处「同一事实写两处」收敛到单一出口。① 新增 **P42** 内容状态文案与真相源一致："
+                  "首页/学习路径自报数字必须等于 `dag.json` 的 `content_status`，且 `registered == 0` 时全站不得再出现"
+                  "「架构在册」「内容待填充」（67/67 首次撞上这个形态；产物侧同批把六个生成器的文案收敛为 "
+                  "`gen-common.content_state_copy()` 单一出口）。② 新增 **P43** 图注跨登记表逐字同文："
+                  "`gen-figs.FIGS[fid].caption` ⟺ `gen-nodes.NODE_FIG[nid]`——引入当天即报出现场缺陷 `pe-f-06`（台账 G54）。"
+                  "③ 数据侧新增 **C59**（GD-N 节点 ⟺ `frontier.json` 条目的身份层一致），并把 `C58b` 由「常驻 WARN」"
+                  "改为「有坏才 WARN」（`G23` 两片作者期注记已换成可逐字回源原文：`S-0034` / `S-0120`）。"
+                  "④ `K2`：`gate-manifest.json` 不再自报夹具数（清单写 176、实测 178 的**重复事实**已删）。"
+                  "★ 两条新判据均**进 push 档**（只读产物与登记表，成本可忽略）。")
+
+ROUND = 10     # ★ 2026-11-02 第 10 轮：产出本快照的轮次（内容波次 5–7：G04 / GD-N / G03 共 19 个节点 ⇒ 67/67）
 
 
 MD_EXTS = (".md",)
@@ -196,11 +207,9 @@ def state_doc():
             "complete_nodes": complete,
         },
         "pending_nodes": registered,
-        "pending_note": ("节点页按内容波次逐步落盘（只落 `complete` 节点）；`registered` 节点的知识"
-                         "架构位置已确定、导读已写，其「架构在册」状态在组页、学习路径与交互图上"
-                         "以徽标显式标注，并在此逐条登记，⛔ 不静默留白。"
-                         "★ 措辞于 2026-10-16 改为与轮次无关（原文写死「待第 2 轮波次填充」，"
-                         "属会被后续轮次读旧的表述）。"),
+        # ★ 2026-11-02 第 10 轮：改由 `C.content_state_copy()` 单一出口产出 ——
+        #   67/67 时 pending 为空，本字段必须换成「空数组也是答案」的措辞而不是一句空话。
+        "pending_note": C.content_state_copy(len(complete), len(registered))["pending_note"],
         "gates": {"prototype": GATE_DECL, "criteria_change_P05": CHANGE_DECL,
                   "criteria_change_P22": CHANGE_DECL_4,
                   "criteria_change_P05_R5": CHANGE_DECL_5,
@@ -213,6 +222,7 @@ def state_doc():
                   "criteria_change_P39": CHANGE_DECL_11,
                   "criteria_change_R08": CHANGE_DECL_12,
                   "criteria_change_R09": CHANGE_DECL_13,
+                  "criteria_change_R10": CHANGE_DECL_14,
                   "assets": ASSET_DECL},
         "repo": None,
     }

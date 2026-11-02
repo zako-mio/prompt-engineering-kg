@@ -1,0 +1,16 @@
+digraph fig {
+  rankdir=LR; bgcolor="transparent"; ranksep=0.34; nodesep=0.18;
+  node[shape=box, style="rounded,filled", fillcolor="#ffffff", color="#7c8aa5", fontcolor="#0e1729", fontname="Noto Sans CJK SC", fontsize=13, margin="0.20,0.12"]; edge[color="#7c8aa5", fontcolor="#46536b", fontname="Noto Sans CJK SC", fontsize=11, arrowsize=0.7];
+  cl [label="客户端\n宿主应用", fillcolor="#dfe6fb", color="#2f4bd8"];
+  tr [label="传输\n标准输入输出\n可流式 HTTP\n旧 HTTP 加 SSE 已弃用", shape=note, fillcolor="#e9eef8"];
+  sv [label="服务端\n数据与工具源", fillcolor="#dfe6fb", color="#2f4bd8"];
+  gv [label="规范与治理\n现行版 2026-07-28\n转为无状态、移除握手与会话\n旧实现需改造", shape=note, fillcolor="#e9eef8"];
+  p1 [label="① 提示模板\n用户控制"];
+  p2 [label="② 资源\n应用控制"];
+  p3 [label="③ 工具\n模型控制"];
+  cl -> sv [dir=both, label="JSON-RPC"];
+  sv -> p1; sv -> p2; sv -> p3;
+  {rank=same; cl; tr;}
+  {rank=same; sv; gv;}
+  {rank=same; p1; p2; p3;}
+}

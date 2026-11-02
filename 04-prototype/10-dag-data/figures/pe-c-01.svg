@@ -1,0 +1,89 @@
+<svg class="fig__svg" role="img" aria-label="策略图：把上下文当有限工作内存后，写入 / 选择 / 压缩 / 隔离四策略各自作用在哪一步，以及取舍依据来自有效注意力与任务串行深度。"
+ viewBox="0.00 0.00 500.00 304.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 300)">
+
+<g id="node1" class="node">
+<title>w</title>
+<path fill="var(--brand-soft)" stroke="var(--brand-primary)" d="M131,-158C131,-158 12,-158 12,-158 6,-158 0,-152 0,-146 0,-146 0,-110 0,-110 0,-104 6,-98 12,-98 12,-98 131,-98 131,-98 137,-98 143,-104 143,-110 143,-110 143,-146 143,-146 143,-152 137,-158 131,-158"/>
+<text text-anchor="middle" x="71.5" y="-138.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">上下文窗口</text>
+<text text-anchor="middle" x="71.5" y="-124.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">等于工作内存</text>
+<text text-anchor="middle" x="71.5" y="-110.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">容量不等于可用容量</text>
+</g>
+<g id="node2" class="node">
+<title>s1</title>
+<path fill="var(--surface-raised)" stroke="var(--border-line)" d="M301,-296C301,-296 194,-296 194,-296 188,-296 182,-290 182,-284 182,-284 182,-234 182,-234 182,-228 188,-222 194,-222 194,-222 301,-222 301,-222 307,-222 313,-228 313,-234 313,-234 313,-284 313,-284 313,-290 307,-296 301,-296"/>
+<text text-anchor="middle" x="247.5" y="-276.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">① 写入</text>
+<text text-anchor="middle" x="247.5" y="-262.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">把复用结论沉淀为</text>
+<text text-anchor="middle" x="247.5" y="-248.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">记忆或笔记</text>
+<text text-anchor="middle" x="247.5" y="-234.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">作用在会话之间</text>
+</g>
+<g id="edge1" class="edge">
+<title>w&#45;&gt;s1</title>
+<path fill="none" stroke="var(--border-line)" d="M134.51,-158.09C137.48,-160.29 140.33,-162.59 143,-165 162.75,-182.86 156.93,-196.41 176,-215 176.59,-215.58 177.2,-216.15 177.81,-216.73"/>
+<polygon fill="var(--border-line)" stroke="var(--border-line)" points="176.64,-218.96 183.51,-221.76 179.88,-215.29 176.64,-218.96"/>
+</g>
+<g id="node3" class="node">
+<title>s2</title>
+<path fill="var(--surface-raised)" stroke="var(--border-line)" d="M307,-208C307,-208 188,-208 188,-208 182,-208 176,-202 176,-196 176,-196 176,-160 176,-160 176,-154 182,-148 188,-148 188,-148 307,-148 307,-148 313,-148 319,-154 319,-160 319,-160 319,-196 319,-196 319,-202 313,-208 307,-208"/>
+<text text-anchor="middle" x="247.5" y="-188.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">② 选择</text>
+<text text-anchor="middle" x="247.5" y="-174.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">按需检索与按需加载</text>
+<text text-anchor="middle" x="247.5" y="-160.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">作用在推理之前</text>
+</g>
+<g id="edge2" class="edge">
+<title>w&#45;&gt;s2</title>
+<path fill="none" stroke="var(--border-line)" d="M143.02,-148.26C151.57,-150.72 160.34,-153.24 168.98,-155.72"/>
+<polygon fill="var(--border-line)" stroke="var(--border-line)" points="168.47,-158.13 175.88,-157.71 169.83,-153.42 168.47,-158.13"/>
+</g>
+<g id="node4" class="node">
+<title>s3</title>
+<path fill="var(--surface-raised)" stroke="var(--border-line)" d="M307,-134C307,-134 188,-134 188,-134 182,-134 176,-128 176,-122 176,-122 176,-86 176,-86 176,-80 182,-74 188,-74 188,-74 307,-74 307,-74 313,-74 319,-80 319,-86 319,-86 319,-122 319,-122 319,-128 313,-134 307,-134"/>
+<text text-anchor="middle" x="247.5" y="-114.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">③ 压缩</text>
+<text text-anchor="middle" x="247.5" y="-100.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">长历史摘要与抽取</text>
+<text text-anchor="middle" x="247.5" y="-86.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">保住结论、丢弃过程</text>
+</g>
+<g id="edge3" class="edge">
+<title>w&#45;&gt;s3</title>
+<path fill="none" stroke="var(--border-line)" d="M143.02,-118.27C151.49,-117.11 160.16,-115.91 168.72,-114.73"/>
+<polygon fill="var(--border-line)" stroke="var(--border-line)" points="169.28,-117.12 175.88,-113.74 168.61,-112.27 169.28,-117.12"/>
+</g>
+<g id="node5" class="node">
+<title>s4</title>
+<path fill="var(--surface-raised)" stroke="var(--border-line)" d="M301,-60C301,-60 194,-60 194,-60 188,-60 182,-54 182,-48 182,-48 182,-12 182,-12 182,-6 188,0 194,0 194,0 301,0 301,0 307,0 313,-6 313,-12 313,-12 313,-48 313,-48 313,-54 307,-60 301,-60"/>
+<text text-anchor="middle" x="247.5" y="-40.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">④ 隔离</text>
+<text text-anchor="middle" x="247.5" y="-26.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">子任务独立上下文</text>
+<text text-anchor="middle" x="247.5" y="-12.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">只回传结论</text>
+</g>
+<g id="edge4" class="edge">
+<title>w&#45;&gt;s4</title>
+<path fill="none" stroke="var(--border-line)" d="M122.49,-97.87C139.38,-87.87 158.41,-76.79 176,-67 178.05,-65.86 180.14,-64.7 182.26,-63.54"/>
+<polygon fill="var(--border-line)" stroke="var(--border-line)" points="183.69,-65.56 188.66,-60.06 181.34,-61.25 183.69,-65.56"/>
+</g>
+<g id="node6" class="node">
+<title>j</title>
+<path fill="var(--surface-raised)" stroke="var(--warning)" d="M480,-177C480,-177 386,-177 386,-177 380,-177 374,-171 374,-165 374,-165 374,-115 374,-115 374,-109 380,-103 386,-103 386,-103 480,-103 480,-103 486,-103 492,-109 492,-115 492,-115 492,-165 492,-165 492,-171 486,-177 480,-177"/>
+<text text-anchor="middle" x="433" y="-157.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">取舍依据</text>
+<text text-anchor="middle" x="433" y="-143.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">模型有效注意力</text>
+<text text-anchor="middle" x="433" y="-129.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">与任务串行深度</text>
+<text text-anchor="middle" x="433" y="-115.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">须由评测集确认</text>
+</g>
+<g id="edge5" class="edge">
+<title>s2&#45;&gt;j</title>
+<path fill="none" stroke="var(--border-line)" stroke-dasharray="5,2" d="M319.18,-163.36C334.86,-160.12 351.39,-156.69 366.83,-153.49"/>
+<polygon fill="var(--border-line)" stroke="var(--border-line)" points="367.49,-155.86 373.84,-152.04 366.49,-151.06 367.49,-155.86"/>
+<text text-anchor="middle" x="346.5" y="-162.2" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="11.00" fill="var(--text-secondary)">依据</text>
+</g>
+<g id="edge6" class="edge">
+<title>s3&#45;&gt;j</title>
+<path fill="none" stroke="var(--border-line)" stroke-dasharray="5,2" d="M319.18,-117.87C334.86,-120.94 351.39,-124.19 366.83,-127.22"/>
+<polygon fill="var(--border-line)" stroke="var(--border-line)" points="366.5,-129.65 373.84,-128.59 367.45,-124.84 366.5,-129.65"/>
+</g>
+<g id="node7" class="node">
+<title>nt</title>
+<polygon fill="var(--surface-subtle)" stroke="var(--border-line)" points="137,-218 0,-218 0,-172 143,-172 143,-212 137,-218"/>
+<polyline fill="none" stroke="var(--border-line)" points="137,-218 137,-212 "/>
+<polyline fill="none" stroke="var(--border-line)" points="143,-212 137,-212 "/>
+<text text-anchor="middle" x="71.5" y="-198.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">常见错位</text>
+<text text-anchor="middle" x="71.5" y="-184.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">把四策略当清单照做</text>
+</g>
+</g>
+</svg>

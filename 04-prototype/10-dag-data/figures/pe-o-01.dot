@@ -1,0 +1,22 @@
+digraph fig {
+  rankdir=LR; bgcolor="transparent"; ranksep=0.32; nodesep=0.22;
+  node[shape=box, style="rounded,filled", fillcolor="#ffffff", color="#7c8aa5", fontcolor="#0e1729", fontname="Noto Sans CJK SC", fontsize=13, margin="0.20,0.12"]; edge[color="#7c8aa5", fontcolor="#46536b", fontname="Noto Sans CJK SC", fontsize=11, arrowsize=0.7];
+  in  [label="输入"];
+  s1  [label="步骤 1\n按可验证产出\n划边界", fillcolor="#dfe6fb", color="#2f4bd8"];
+  s2  [label="步骤 2\n只读上一步\n的契约", fillcolor="#dfe6fb", color="#2f4bd8"];
+  s3  [label="步骤 3\n合并并交付", fillcolor="#dfe6fb", color="#2f4bd8"];
+  out [label="产出"];
+  ct  [label="步间输出契约\n结构固定 · 字段可解析\n下游只读契约", shape=note, fillcolor="#e9eef8"];
+  fb  [label="每步校验\n失败回喂具体错误\n超限转人工", shape=note, fillcolor="#e9eef8"];
+  nt  [label="判据\n看中间产物\n是否需被固化", shape=note, fillcolor="#e9eef8"];
+  in -> s1;
+  s1 -> s2;
+  s2 -> s3;
+  s3 -> out;
+  s1 -> ct [style=dashed, arrowhead=none];
+  s2 -> fb [style=dashed, arrowhead=none];
+  out -> nt [style=dotted, arrowhead=none];
+  {rank=same; s1; ct;}
+  {rank=same; s2; fb;}
+  {rank=same; out; nt;}
+}

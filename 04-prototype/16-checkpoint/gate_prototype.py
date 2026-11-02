@@ -44,6 +44,7 @@ R-03 对齐为**正文承载页**，两处均带**显式对象集 + 全集闭合
 """
 
 import argparse
+import ast
 import copy
 import hashlib
 import html as _html
@@ -2411,7 +2412,13 @@ def mut_p05(ctx):
     n["summary"] = "本节点小结待填充。"
     out.append(c)
     c = copy.deepcopy(ctx)
-    n = next(x for x in c.data["dag"]["nodes"] if x["content_status"] == "registered")
+    # ★ 2026-11-02 第 10 轮（67/67 之后）：本夹具原先 `next(...registered)` 直接 StopIteration ——
+    #   夹具的可判假性被**数据状态**绑定了（registered 归零 ⇒ 整条 P05 自检报「负例未触发」）。
+    #   ⇒ 取不到就**现造一个**：把首条 complete 临时改成 registered（⛔ 不改断言，只让对象必然存在）。
+    _regs = [x for x in c.data["dag"]["nodes"] if x["content_status"] == "registered"]
+    n = _regs[0] if _regs else next(x for x in c.data["dag"]["nodes"] if x["content_status"] == "complete")
+    if not _regs:
+        n["content_status"] = "registered"
     n["intro"] = "机制很短。"
     out.append(c)
     # ★ 2026-10-16（B-1）新增三条：打 `boundary` 的三条硬断言
@@ -2659,15 +2666,17 @@ def mut_p22(ctx):
     n = next(x for x in c.data["dag"]["nodes"] if x["content_status"] == "complete")
     n["lab"] = []
     out.append(c)
-    c = copy.deepcopy(ctx)
-    r = next(x for x in c.data["dag"]["nodes"] if x["content_status"] == "registered")
-    r["pitfalls"] = ["半填：内容已写却仍标 registered（状态说谎）。"]
-    out.append(c)
-    c = copy.deepcopy(ctx)
-    r = next(x for x in c.data["dag"]["nodes"] if x["content_status"] == "registered")
-    r["evidence"] = [{"claim": "半填", "source_id": "S-0001",
-                      "url": "https://example.invalid/", "quote": "半填", "tier": "official"}]
-    out.append(c)
+    # ★ 2026-11-02 第 10 轮：同上 —— 67/67 之后没有 registered 节点，夹具现造一个（⛔ 不改断言）。
+    for _field, _val in (("pitfalls", ["半填：内容已写却仍标 registered（状态说谎）。"]),
+                         ("evidence", [{"claim": "半填", "source_id": "S-0001",
+                                        "url": "https://example.invalid/", "quote": "半填", "tier": "official"}])):
+        c = copy.deepcopy(ctx)
+        _regs = [x for x in c.data["dag"]["nodes"] if x["content_status"] == "registered"]
+        r = _regs[0] if _regs else next(x for x in c.data["dag"]["nodes"] if x["content_status"] == "complete")
+        if not _regs:
+            r["content_status"] = "registered"
+        r[_field] = _val
+        out.append(c)
     return out
 
 
@@ -5155,6 +5164,178 @@ def mut_p41(ctx):
     return c
 
 
+# ---------------------------------------------------------------- P42 / P43（2026-11-02 第 10 轮新增）
+# ★ 两条判据都由**本轮的现场缺陷**触发，⛔ 不是「先有判据再找场景」：
+#   · P42：本站 67 个节点写满后 `registered == 0`，而「架构在册 N 个」这句话此前由五个生成器**各自拼装**
+#     ⇒ 归零那天会同时变成「架构在册 0 个：…节点页待后续波次填充」这种自相矛盾的公开文案。
+#     处置是把文案收敛到 `gen-common.content_state_copy()` 单一出口（产物侧），判据守**产物与真相源一致**。
+#   · P43：`gen-figs.FIGS[fid].caption` 与 `gen-nodes.NODE_FIG[nid]` 的 caption 是同一句图的说明，
+#     但两处是**两份手维护的字面量** ⇒ 存量里已有一条不同文（`pe-f-06`，台账 G54）。判据守「逐字同文」。
+
+
+def _visible_text(text):
+    """HTML → 可见文本（剥 style/script/注释/标签，空白归一）。"""
+    body = re.sub(r"<(script|style)\b.*?</\1>", " ", text, flags=re.S | re.I)
+    body = re.sub(r"<!--.*?-->", " ", body, flags=re.S)
+    body = re.sub(r"<[^>]+>", " ", body)
+    return re.sub(r"\s+", " ", body)
+
+
+def check_p42(ctx):
+    """P42 内容状态文案与真相源一致（零注册态不得残留两态语汇）。"""
+    nodes = ((ctx.data or {}).get("dag") or {}).get("nodes") or []
+    if not nodes:
+        return False, "空集守卫：dag 无节点"
+    if not ctx.html:
+        return False, "空集守卫：无受检页面"
+    done = [n for n in nodes if n.get("content_status") == "complete"]
+    reg = [n for n in nodes if n.get("content_status") == "registered"]
+    bad = []
+    # ① 任何状态都不许出现「架构在册 0」这类归零残留
+    #   ★ 口径用正则而非子串：`0` 必须是**独立计数**，⛔ 不能命中紧随其后的章节号
+    #     （首版用子串 `待填充 0` 时，与「内容待填充」徽标后面的章节号 `03` 串成了假阳，实测 3 处）。
+    zero_pats = (re.compile(r"架构在册\s*0(?![\d])"), re.compile(r"内容待填充\s*0(?![\d])"))
+    for rel, text in sorted(ctx.html.items()):
+        vis = _visible_text(text)
+        for rx in zero_pats:
+            m = rx.search(vis)
+            if m:
+                bad.append((rel, "零注册态残留 %r" % m.group(0)))
+    # ② 首页与学习路径页自报的数字必须等于真相源
+    root = _visible_text(ctx.html.get("index.html", ""))
+    m = re.search(r"已写满 (\d+) 个", root)
+    if not m:
+        bad.append(("index.html", "首页找不到「已写满 N 个」"))
+    elif int(m.group(1)) != len(done):
+        bad.append(("index.html", "首页自报已写满 %s ≠ 真相源 %d" % (m.group(1), len(done))))
+    if reg:
+        m2 = re.search(r"架构在册 (\d+) 个", root)
+        if not m2:
+            bad.append(("index.html", "有 registered 节点但首页缺「架构在册 N 个」"))
+        elif int(m2.group(1)) != len(reg):
+            bad.append(("index.html", "首页自报架构在册 %s ≠ 真相源 %d" % (m2.group(1), len(reg))))
+    lp = _visible_text(ctx.html.get("14-views/01-learning-path.html", ""))
+    m3 = re.search(r"已写满 (\d+)", lp)
+    if not m3:
+        bad.append(("14-views/01-learning-path.html", "学习路径页找不到「已写满 N」"))
+    elif int(m3.group(1)) != len(done):
+        bad.append(("14-views/01-learning-path.html", "自报已写满 %s ≠ 真相源 %d" % (m3.group(1), len(done))))
+    # ③ 单态（registered == 0）⇒ 全站不得再出现两态语汇
+    if not reg:
+        for rel, text in sorted(ctx.html.items()):
+            vis = _visible_text(text)
+            for pat in ("架构在册", "内容待填充"):
+                if pat in vis:
+                    bad.append((rel, "单态残留两态语汇 %r" % pat))
+    return (not bad), ("节点 %d（写满 %d / 在册 %d）；受检页 %d；不一致 %d 处 %s"
+                       % (len(nodes), len(done), len(reg), len(ctx.html), len(bad), bad[:4]))
+
+
+def mut_p42(ctx):
+    out = []
+    # ① 数字漂移：首页自报数被改小 1 ⇒ 必须 FAIL（这是「文案与真相源脱钩」的最常见形态）
+    c = copy.deepcopy(ctx)
+    root = c.html.get("index.html", "")
+    m = re.search(r"(已写满 )(\d+)( 个)", root)
+    assert m, "P42 夹具锚点未命中：首页无「已写满 N 个」"
+    c.html["index.html"] = root[:m.start()] + m.group(1) + str(int(m.group(2)) - 1) + m.group(3) + root[m.end():]
+    out.append(c)
+    # ② 归零残留：任意页可见文案里出现「架构在册 0」
+    c = copy.deepcopy(ctx)
+    rel = _first_html(c)
+    c.html[rel] = c.html[rel].replace("</main>", "架构在册 0 个：知识架构位置已确定</main>", 1)
+    out.append(c)
+    return out
+
+
+def _parse_figs_captions(src):
+    """从 `gen-figs.py` 源码里取 `FIGS["<fid>"].caption`（AST，⛔ 不 import：那会渲染。"""
+    tree = ast.parse(src)
+    out = {}
+    for node in ast.walk(tree):
+        if not isinstance(node, ast.Assign) or len(node.targets) != 1:
+            continue
+        tgt = node.targets[0]
+        if not isinstance(tgt, ast.Subscript) or not isinstance(tgt.value, ast.Name):
+            continue
+        if tgt.value.id != "FIGS" or not isinstance(tgt.slice, ast.Constant):
+            continue
+        cap = None
+        if isinstance(node.value, ast.Call):
+            for kw in node.value.keywords:
+                if kw.arg == "caption" and isinstance(kw.value, ast.Constant):
+                    cap = kw.value.value
+        out[str(tgt.slice.value)] = cap
+    return out
+
+
+def _parse_node_fig(src):
+    """从 `gen-nodes.py` 源码里取 `NODE_FIG = {"<NID>": ("<fid>", "<caption>")}`。"""
+    tree = ast.parse(src)
+    for node in ast.walk(tree):
+        if (isinstance(node, ast.Assign) and len(node.targets) == 1
+                and isinstance(node.targets[0], ast.Name) and node.targets[0].id == "NODE_FIG"
+                and isinstance(node.value, ast.Dict)):
+            out = {}
+            for k, v in zip(node.value.keys, node.value.values):
+                if not isinstance(k, ast.Constant):
+                    continue
+                fid = cap = None
+                if isinstance(v, ast.Tuple) and len(v.elts) == 2:
+                    if isinstance(v.elts[0], ast.Constant):
+                        fid = v.elts[0].value
+                    if isinstance(v.elts[1], ast.Constant):
+                        cap = v.elts[1].value
+                out[str(k.value)] = (fid, cap)
+            return out
+    return {}
+
+
+def check_p43(ctx):
+    """P43 图注跨登记表逐字同文（`FIGS[fid].caption` ⟺ `NODE_FIG[nid]` 的 caption）。"""
+    figs_src = ctx.files.get("16-checkpoint/gen-figs.py") or open(
+        os.path.join(ctx.root, "16-checkpoint", "gen-figs.py"), encoding="utf-8").read()
+    nodes_src = ctx.files.get("16-checkpoint/gen-nodes.py") or open(
+        os.path.join(ctx.root, "16-checkpoint", "gen-nodes.py"), encoding="utf-8").read()
+    figs = _parse_figs_captions(figs_src)
+    node_fig = _parse_node_fig(nodes_src)
+    if not figs:
+        return False, "空集守卫：gen-figs.py 里解析不到任何 FIGS 条目"
+    if not node_fig:
+        return False, "空集守卫：gen-nodes.py 里解析不到 NODE_FIG 条目"
+    bad = []
+    for nid, (fid, cap) in sorted(node_fig.items()):
+        if not fid or fid not in figs:
+            bad.append((nid, "NODE_FIG 指向的图 id %r 不在 FIGS 里" % fid))
+            continue
+        if not cap or not isinstance(cap, str):
+            bad.append((nid, "NODE_FIG 的 caption 缺失"))
+            continue
+        if figs[fid] != cap:
+            bad.append((nid, "两处图注不同文：FIGS=%r / NODE_FIG=%r" % ((figs[fid] or "")[:40], cap[:40])))
+    return (not bad), "FIGS %d 条 / NODE_FIG %d 条；不同文 %d 处 %s" % (
+        len(figs), len(node_fig), len(bad), bad[:4])
+
+
+def mut_p43(ctx):
+    out = []
+    src = ctx.files.get("16-checkpoint/gen-nodes.py") or open(
+        os.path.join(ctx.root, "16-checkpoint", "gen-nodes.py"), encoding="utf-8").read()
+    node_fig = _parse_node_fig(src)
+    nid = "PE-F-01" if "PE-F-01" in node_fig else sorted(node_fig)[0]
+    cap = node_fig[nid][1]
+    assert cap and cap in src, "P43 夹具锚点未命中：%s 的 caption 未在源码里逐字出现" % nid
+    c = copy.deepcopy(ctx)
+    c.files["16-checkpoint/gen-nodes.py"] = src.replace(cap, cap + "（夹具改动）", 1)
+    out.append(c)
+    # ② 图 id 指向不存在的 FIGS 条目
+    c = copy.deepcopy(ctx)
+    fid = node_fig[nid][0]
+    c.files["16-checkpoint/gen-nodes.py"] = src.replace('("%s"' % fid, '("%sZZ"' % fid, 1)
+    out.append(c)
+    return out
+
+
 CHECKS = [
     ("P01", "真相源 JSON 合法且必填字段齐全", check_p01, mut_p01),    ("P02", "节点 id 唯一 / group 可解析 / prereq 与 successors 可解析", check_p02, mut_p02),
     ("P03", "rel 闭集 / 无环 / 拓扑层序与边方向一致", check_p03, mut_p03),
@@ -5223,6 +5404,10 @@ CHECKS = [
      check_p40, mut_p40),
     ("P41", "源文件里的散文能力声明（**已登记的历史句不得复活**；窄版；★ 2026-10-16 第 6 轮 G20）",
      check_p41, mut_p41),
+    ("P42", "内容状态文案与真相源一致（首页/学习路径自报数字 = 真相源；零注册态不得残留两态语汇；"
+            "★ 2026-11-02 第 10 轮：67/67 首次撞上「架构在册 0」）", check_p42, mut_p42),
+    ("P43", "图注跨登记表逐字同文（`gen-figs.FIGS[fid].caption` ⟺ `gen-nodes.NODE_FIG[nid]`；"
+            "★ 2026-11-02 第 10 轮：存量 `pe-f-06` 两处不同文，台账 G54）", check_p43, mut_p43),
 ]
 
 

@@ -1,0 +1,13 @@
+digraph fig {
+  rankdir=LR; bgcolor="transparent"; ranksep=0.36; nodesep=0.16;
+  node[shape=box, style="rounded,filled", fillcolor="#ffffff", color="#7c8aa5", fontcolor="#0e1729", fontname="Noto Sans CJK SC", fontsize=13, margin="0.20,0.12"]; edge[color="#7c8aa5", fontcolor="#46536b", fontname="Noto Sans CJK SC", fontsize=11, arrowsize=0.7];
+  a1 [label="学术侧\n预印本平台 NLP 与安全分类"];
+  a2 [label="厂商侧\n开发者文档与更新日志"];
+  a3 [label="协议与标准侧\n规范页 · 风险清单仓库"];
+  a4 [label="包与仓库侧\n注册表元数据 · 维护活跃度"];
+  u  [label="三条使用纪律\n① 每次刷新记录回源日期\n② 无日期戳页面标注时效不确定\n③ 厂商自述数字标注立场偏差", fillcolor="#dfe6fb", color="#2f4bd8"];
+  n  [label="边界\n渠道只保证可达\n正确性仍须交叉验证", shape=note, fillcolor="#e9eef8"];
+  a1 -> u; a2 -> u; a3 -> u; a4 -> u;
+  u -> n [style=dotted, arrowhead=none];
+  {rank=same; a1; a2; a3; a4;}
+}

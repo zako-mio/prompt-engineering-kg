@@ -1,0 +1,95 @@
+<svg class="fig__svg" role="img" aria-label="链路图：步骤边界按可验证产出划分，步间以固定结构的输出契约相连，每步带校验与失败分支，以及「该不该上链看中间产物是否需被固化」的判据。"
+ viewBox="0.00 0.00 644.00 144.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 140)">
+
+<g id="node1" class="node">
+<title>in</title>
+<path fill="var(--surface-raised)" stroke="var(--border-line)" d="M42,-124C42,-124 12,-124 12,-124 6,-124 0,-118 0,-112 0,-112 0,-100 0,-100 0,-94 6,-88 12,-88 12,-88 42,-88 42,-88 48,-88 54,-94 54,-100 54,-100 54,-112 54,-112 54,-118 48,-124 42,-124"/>
+<text text-anchor="middle" x="27" y="-102.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">输入</text>
+</g>
+<g id="node2" class="node">
+<title>s1</title>
+<path fill="var(--brand-soft)" stroke="var(--brand-primary)" d="M198.5,-136C198.5,-136 117.5,-136 117.5,-136 111.5,-136 105.5,-130 105.5,-124 105.5,-124 105.5,-88 105.5,-88 105.5,-82 111.5,-76 117.5,-76 117.5,-76 198.5,-76 198.5,-76 204.5,-76 210.5,-82 210.5,-88 210.5,-88 210.5,-124 210.5,-124 210.5,-130 204.5,-136 198.5,-136"/>
+<text text-anchor="middle" x="158" y="-116.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">步骤 1</text>
+<text text-anchor="middle" x="158" y="-102.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">按可验证产出</text>
+<text text-anchor="middle" x="158" y="-88.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">划边界</text>
+</g>
+<g id="edge1" class="edge">
+<title>in&#45;&gt;s1</title>
+<path fill="none" stroke="var(--border-line)" d="M54.11,-106C66.87,-106 82.8,-106 98.28,-106"/>
+<polygon fill="var(--border-line)" stroke="var(--border-line)" points="98.34,-108.45 105.34,-106 98.34,-103.55 98.34,-108.45"/>
+</g>
+<g id="node3" class="node">
+<title>s2</title>
+<path fill="var(--brand-soft)" stroke="var(--brand-primary)" d="M361.5,-136C361.5,-136 293.5,-136 293.5,-136 287.5,-136 281.5,-130 281.5,-124 281.5,-124 281.5,-88 281.5,-88 281.5,-82 287.5,-76 293.5,-76 293.5,-76 361.5,-76 361.5,-76 367.5,-76 373.5,-82 373.5,-88 373.5,-88 373.5,-124 373.5,-124 373.5,-130 367.5,-136 361.5,-136"/>
+<text text-anchor="middle" x="327.5" y="-116.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">步骤 2</text>
+<text text-anchor="middle" x="327.5" y="-102.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">只读上一步</text>
+<text text-anchor="middle" x="327.5" y="-88.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">的契约</text>
+</g>
+<g id="edge2" class="edge">
+<title>s1&#45;&gt;s2</title>
+<path fill="none" stroke="var(--border-line)" d="M210.62,-106C230.83,-106 253.98,-106 274.24,-106"/>
+<polygon fill="var(--border-line)" stroke="var(--border-line)" points="274.28,-108.45 281.28,-106 274.28,-103.55 274.28,-108.45"/>
+</g>
+<g id="node6" class="node">
+<title>ct</title>
+<polygon fill="var(--surface-subtle)" stroke="var(--border-line)" points="233,-60 77,-60 77,0 239,0 239,-54 233,-60"/>
+<polyline fill="none" stroke="var(--border-line)" points="233,-60 233,-54 "/>
+<polyline fill="none" stroke="var(--border-line)" points="239,-54 233,-54 "/>
+<text text-anchor="middle" x="158" y="-40.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">步间输出契约</text>
+<text text-anchor="middle" x="158" y="-26.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">结构固定 · 字段可解析</text>
+<text text-anchor="middle" x="158" y="-12.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">下游只读契约</text>
+</g>
+<g id="edge5" class="edge">
+<title>s1&#45;&gt;ct</title>
+<path fill="none" stroke="var(--border-line)" stroke-dasharray="5,2" d="M158,-76C158,-70.76 158,-65.52 158,-60.28"/>
+</g>
+<g id="node4" class="node">
+<title>s3</title>
+<path fill="var(--brand-soft)" stroke="var(--brand-primary)" d="M496,-129C496,-129 428,-129 428,-129 422,-129 416,-123 416,-117 416,-117 416,-95 416,-95 416,-89 422,-83 428,-83 428,-83 496,-83 496,-83 502,-83 508,-89 508,-95 508,-95 508,-117 508,-117 508,-123 502,-129 496,-129"/>
+<text text-anchor="middle" x="462" y="-109.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">步骤 3</text>
+<text text-anchor="middle" x="462" y="-95.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">合并并交付</text>
+</g>
+<g id="edge3" class="edge">
+<title>s2&#45;&gt;s3</title>
+<path fill="none" stroke="var(--border-line)" d="M373.73,-106C385.03,-106 397.24,-106 408.84,-106"/>
+<polygon fill="var(--border-line)" stroke="var(--border-line)" points="408.98,-108.45 415.98,-106 408.98,-103.55 408.98,-108.45"/>
+</g>
+<g id="node7" class="node">
+<title>fb</title>
+<polygon fill="var(--surface-subtle)" stroke="var(--border-line)" points="387,-60 262,-60 262,0 393,0 393,-54 387,-60"/>
+<polyline fill="none" stroke="var(--border-line)" points="387,-60 387,-54 "/>
+<polyline fill="none" stroke="var(--border-line)" points="393,-54 387,-54 "/>
+<text text-anchor="middle" x="327.5" y="-40.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">每步校验</text>
+<text text-anchor="middle" x="327.5" y="-26.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">失败回喂具体错误</text>
+<text text-anchor="middle" x="327.5" y="-12.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">超限转人工</text>
+</g>
+<g id="edge6" class="edge">
+<title>s2&#45;&gt;fb</title>
+<path fill="none" stroke="var(--border-line)" stroke-dasharray="5,2" d="M327.5,-76C327.5,-70.76 327.5,-65.52 327.5,-60.28"/>
+</g>
+<g id="node5" class="node">
+<title>out</title>
+<path fill="var(--surface-raised)" stroke="var(--border-line)" d="M598.5,-124C598.5,-124 568.5,-124 568.5,-124 562.5,-124 556.5,-118 556.5,-112 556.5,-112 556.5,-100 556.5,-100 556.5,-94 562.5,-88 568.5,-88 568.5,-88 598.5,-88 598.5,-88 604.5,-88 610.5,-94 610.5,-100 610.5,-100 610.5,-112 610.5,-112 610.5,-118 604.5,-124 598.5,-124"/>
+<text text-anchor="middle" x="583.5" y="-102.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">产出</text>
+</g>
+<g id="edge4" class="edge">
+<title>s3&#45;&gt;out</title>
+<path fill="none" stroke="var(--border-line)" d="M508.18,-106C521.77,-106 536.43,-106 549.11,-106"/>
+<polygon fill="var(--border-line)" stroke="var(--border-line)" points="549.33,-108.45 556.33,-106 549.33,-103.55 549.33,-108.45"/>
+</g>
+<g id="node8" class="node">
+<title>nt</title>
+<polygon fill="var(--surface-subtle)" stroke="var(--border-line)" points="630,-72 531,-72 531,-12 636,-12 636,-66 630,-72"/>
+<polyline fill="none" stroke="var(--border-line)" points="630,-72 630,-66 "/>
+<polyline fill="none" stroke="var(--border-line)" points="636,-66 630,-66 "/>
+<text text-anchor="middle" x="583.5" y="-52.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">判据</text>
+<text text-anchor="middle" x="583.5" y="-38.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">看中间产物</text>
+<text text-anchor="middle" x="583.5" y="-24.6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif" font-size="13.00" fill="var(--text-primary)">是否需被固化</text>
+</g>
+<g id="edge7" class="edge">
+<title>out&#45;&gt;nt</title>
+<path fill="none" stroke="var(--border-line)" stroke-dasharray="1,5" d="M583.5,-87.94C583.5,-82.62 583.5,-77.31 583.5,-72"/>
+</g>
+</g>
+</svg>

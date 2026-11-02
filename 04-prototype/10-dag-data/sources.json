@@ -2,8 +2,8 @@
   "meta": {
     "as_of": "2026-10",
     "edition": "v1",
-    "count": 115,
-    "provenance": "全部条目取自 01-research/evidence/A1-official-specs.json、A2-academic-frontier.json、A3-toolchain.json、A4-tutorial-ecosystem.json、A5-report-audit.json 中已回源的真实 URL；未新增任何未经回源的条目。",
+    "count": 124,
+    "provenance": "全部条目取自 01-research/evidence/A1-official-specs.json、A2-academic-frontier.json、A3-toolchain.json、A4-tutorial-ecosystem.json、A5-report-audit.json 中已回源的真实 URL；未新增任何未经回源的条目。；第 10 轮追加 S-0116–S-0124（主 Agent 亲自取回，见 `01-research/evidence/A8-round10-acquisition.json`）。",
     "license_discipline": "只登记题录（标题/URL/分级/日期/说明）与不超过 200 字的原文关键句；书籍、标准、论文正文不入库。",
     "tier_enum": ["official", "paper", "vendor", "community"],
     "tier_note": "official = 厂商/标准组织/项目官方文档与官方工程博客、官方仓库与包注册表元数据、顶会 proceedings 与期刊 DOI 页面；paper = arXiv 预印本或未取得正式 proceedings 收录的论文；vendor = 厂商自述营销/新闻稿类页面（立场偏差，不作中立证据）；community = 社区清单、二手转载、卖课引流等最低级信源。"
@@ -928,6 +928,78 @@
       "tier": "community",
       "date": "2026-10-09",
       "note": "否定一个常见前提：检索到的 brute 是 Ruby agent 框架的 prompt 模块化架构（按 provider 选择模块、回合时渲染），不是与 CO-STAR 并列的万能模板框架 ⇒ 「BRUTE 万能模板」应视为未证实。"
+    },
+    {
+      "id": "S-0116",
+      "title": "Microsoft Learn — Prompt caching with Azure OpenAI in Microsoft Foundry Models",
+      "url": "https://learn.microsoft.com/en-us/azure/ai-foundry/openai/how-to/prompt-caching",
+      "tier": "official",
+      "date": "2026-11-02",
+      "note": "提示缓存的机制与两条硬约束：命中要求**提示前缀**一致（头 1,024 token 内差一个字符即 miss，以 cached_tokens=0 表现）、工程动作是「稳定内容放前面、动态内容放后面并与对话只追加」。★ 与 Gemini 缓存页（JS 渲染、正文取不到）互补：本条是可直接逐字回源的现行口径。"
+    },
+    {
+      "id": "S-0117",
+      "title": "AWS — Prompt caching for faster model inference（Amazon Bedrock 用户指南）",
+      "url": "https://docs.aws.amazon.com/bedrock/latest/userguide/prompt-caching.html",
+      "tier": "official",
+      "date": "2026-11-02",
+      "note": "跨厂商交叉证据：提示缓存被定义为**可选**特性、分隐式与显式两类、按模型与 API 而异；适用面是「长且重复复用的上下文」。⇒ 说明它不是免费的结构保证，而是需要按厂商能力分别配置。"
+    },
+    {
+      "id": "S-0118",
+      "title": "Model Context Protocol — Server / Tools（规范 2026-07-28）",
+      "url": "https://modelcontextprotocol.io/specification/2026-07-28/server/tools",
+      "tier": "official",
+      "date": "2026-11-02",
+      "note": "工具定义的协议侧口径：工具由服务端暴露、由**模型控制**（模型自行发现与调用），每个工具由名字唯一标识并携带描述其 schema 的元数据。⇒ 「工具被滥用」的结构前提写在协议里，不是实现缺陷。"
+    },
+    {
+      "id": "S-0119",
+      "title": "OWASP GenAI — LLM06:2025 Excessive Agency",
+      "url": "https://genai.owasp.org/llmrisk/llm062025-excessive-agency/",
+      "tier": "official",
+      "date": "2026-11-02",
+      "note": "工具/扩展面风险的官方条目：代理权来自「能调函数、能接外部系统」；选择调用哪个扩展还可能被**委托给模型**；过度代理的后果是「对意外、含混或被操纵的输出做出破坏性动作」。"
+    },
+    {
+      "id": "S-0120",
+      "title": "Google — Gemini API deprecations（退役时间线页）",
+      "url": "https://ai.google.dev/gemini-api/docs/deprecations",
+      "tier": "official",
+      "date": "2026-11-02",
+      "note": "退役时间线的**一手入口**：弃用＝停止支持并将在近期关停的公告，公告发在 Release notes，最早关停日集中登记在本页；表中日期是「可能退役的最早日期」，确切日期另行提前通知。★ 本条目替换 `PE-N-04` 原先那条「作者期注记」（原引 `developers.openai.com` 直连 403，取不到原文）。"
+    },
+    {
+      "id": "S-0121",
+      "title": "arXiv:2404.16130 — From Local to Global: A Graph RAG Approach to Query-Focused Summarization (v2)",
+      "url": "https://arxiv.org/abs/2404.16130",
+      "tier": "paper",
+      "date": "2026-11-02",
+      "note": "图检索的学术一手：向量 RAG 在**面向整个语料的全局问题**上失效（那是 query-focused summarization 而非检索）；GraphRAG 用 LLM 建两层图索引（实体知识图谱 → 社区摘要）并聚合部分回答。"
+    },
+    {
+      "id": "S-0122",
+      "title": "microsoft/graphrag — README（研究原型仓）",
+      "url": "https://raw.githubusercontent.com/microsoft/graphrag/main/README.md",
+      "tier": "community",
+      "date": "2026-11-02",
+      "note": "★ **边界证据**（写进 `PE-C-03` 的「不适用于」）：官方自述该仓已进入**维护模式**、不再接受新特性，且代码是演示而非官方支持产品；索引本身是昂贵操作。⇒ 图检索是可选第二通道，不是默认架构。"
+    },
+    {
+      "id": "S-0123",
+      "title": "LangGraph（Python）— Persistence / Checkpointers and Stores",
+      "url": "https://docs.langchain.com/oss/python/langgraph/persistence",
+      "tier": "vendor",
+      "date": "2026-11-02",
+      "note": "状态机与持久化的实现侧口径：checkpointer 把线程的图状态存成检查点（短期、线程内、支持human-in-the-loop 与故障恢复）；store 存跨线程的长期数据。二者互补，多数应用同时用。"
+    },
+    {
+      "id": "S-0124",
+      "title": "Microsoft Learn — Relevance in Azure AI Search（检索相关性总览）",
+      "url": "https://learn.microsoft.com/en-us/azure/search/search-relevance-overview",
+      "tier": "official",
+      "date": "2026-11-02",
+      "note": "检索质量的官方口径：相关性的**真实度量**是「检索结果是否满足使用者的信息需求」，而不是分数本身；现行两条最佳做法是「混合检索 + 语义排序」与「带 LLM 查询规划的 agentic retrieval」。⇒ 「垃圾进垃圾出」在提示词层之前就被决定了：先修检索，再改提示。"
     }
   ]
 }

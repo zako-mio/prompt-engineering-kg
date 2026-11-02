@@ -1,0 +1,17 @@
+digraph fig {
+  rankdir=LR; bgcolor="transparent"; ranksep=0.32; nodesep=0.22;
+  node[shape=box, style="rounded,filled", fillcolor="#ffffff", color="#7c8aa5", fontcolor="#0e1729", fontname="Noto Sans CJK SC", fontsize=13, margin="0.20,0.12"]; edge[color="#7c8aa5", fontcolor="#46536b", fontname="Noto Sans CJK SC", fontsize=11, arrowsize=0.7];
+  M [label="主上下文\n任务说明与结论\n不含过程细节", fillcolor="#dfe6fb", color="#2f4bd8"];
+  T [label="自包含任务描述\n背景 · 约束\n产出格式与失败处理", fillcolor="#dfe6fb", color="#2f4bd8"];
+  S [label="子上下文\n独立窗口\n试错都在此处"];
+  R [label="结构化结论\n结论 · 依据\n未解决项 · 置信度", color="#136f3a"];
+  ct [label="中间发现\n试错轨迹\n不回传", shape=note, fillcolor="#e9eef8"];
+  nt [label="三种失效\n描述不自包含\n返回格式自由\n子任务隐式依赖", shape=note, fillcolor="#e9eef8"];
+  M -> T [label="下发"];
+  T -> S;
+  S -> R [label="只回传结论"];
+  R -> M [style=dashed, label="回收", constraint=false];
+  S -> ct [style=dotted, arrowhead=none];
+  {rank=same; S; ct;}
+  {rank=same; M; nt;}
+}

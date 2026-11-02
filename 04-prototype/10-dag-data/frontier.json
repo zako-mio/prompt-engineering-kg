@@ -155,7 +155,7 @@
         {
           "source_id": "S-0034",
           "url": "https://genai.owasp.org/llm-top-10/",
-          "quote": "（同步落差证据：官网索引页在 2026-10-14 抓取时仍以 2025 版十条为展示主体，与官方仓库 2026/README.md 标注的 2026 版并存）",
+          "quote": "TOP 10 FOR GEN AI 2025 Top 10 Risk & Mitigations for LLMs and Gen AI Apps",
           "tier": "official"
         }
       ],
@@ -193,9 +193,9 @@
           "tier": "official"
         },
         {
-          "source_id": "S-0105",
-          "url": "https://developers.openai.com/api/docs/deprecations",
-          "quote": "（退役时间线入口；该域直连曾返回 403，精确退役日期未取得一手页面 ⇒ 不得据此断言具体日期）",
+          "source_id": "S-0120",
+          "url": "https://ai.google.dev/gemini-api/docs/deprecations",
+          "quote": "Deprecation announcements are made on the Release notes page, and the announced earliest shutdown dates are tracked on this page.",
           "tier": "official"
         }
       ],

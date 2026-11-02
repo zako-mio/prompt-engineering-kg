@@ -1,0 +1,17 @@
+digraph fig {
+  rankdir=LR; bgcolor="transparent";
+  node[shape=box, style="rounded,filled", fillcolor="#ffffff", color="#7c8aa5", fontcolor="#0e1729", fontname="Noto Sans CJK SC", fontsize=13, margin="0.20,0.12"]; edge[color="#7c8aa5", fontcolor="#46536b", fontname="Noto Sans CJK SC", fontsize=11, arrowsize=0.7];
+  s1 [label="状态 1 准备\n输入校验通过", fillcolor="#dfe6fb", color="#2f4bd8"];
+  s2 [label="状态 2 执行\n含副作用：写库 · 调外部", fillcolor="#dfe6fb", color="#2f4bd8"];
+  s3 [label="状态 3 收尾\n落盘并交付", fillcolor="#dfe6fb", color="#2f4bd8"];
+  ck [label="检查点落盘\n每个状态结束即写：\n状态 · 幂等标识 · 时间", shape=note, fillcolor="#e9eef8"];
+  rs [label="恢复语义\n重启从最近检查点续跑\n副作用按幂等标识重放", shape=note, fillcolor="#e9eef8"];
+  nt [label="粒度权衡\n过粗丢进度\n过细推高写入成本", shape=note, fillcolor="#e9eef8"];
+  s1 -> s2 [label="转移条件"];
+  s2 -> s3 [label="转移条件"];
+  s1 -> ck [style=dashed, arrowhead=none];
+  s2 -> rs [style=dashed, arrowhead=none];
+  s3 -> nt [style=dotted, arrowhead=none];
+  {rank=same; s1; ck;}
+  {rank=same; s3; rs;}
+}

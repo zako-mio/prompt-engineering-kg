@@ -9,6 +9,7 @@
 `pending_nodes` 显式登记本轮"架构在册、内容待填充"的节点，⛔ 不让它们静默缺席。
 """
 
+import ast
 import importlib.util
 import json
 import os
@@ -29,8 +30,26 @@ def _imp(path, name):
 
 C = _imp(os.path.join(HERE, "gen-common.py"), "pekg_common")
 
-GATE_DECL = ("python3 16-checkpoint/gate_prototype.py（判据 P01–P41；退出码 0 = 全部 PASS；"
-             "本文件不缓存裁决，避免出现陈旧 PASS）")
+def _criteria_count():
+    """判据数（**单一出口**）：AST 解析 `gate_prototype.py` 的 `CHECKS` 条数。
+
+    ★ 2026-11-03 第 11 轮：原写法是**写死的字符串**「判据 P01–P41」⇒ 第 10 轮加 P42/P43 之后，
+      它连同 13 处文档一起陈旧，且**没有任何判据会失败**（台账 `G10`/`G29` 同族：
+      写死的规模读数被后续轮次读旧）。现改为派生 —— 派生源与门控自己的 `len(CHECKS)` 同源，
+      `P44` 再对「文档里的当前声明」做常驻校验（两边都不再靠手维护）。
+    """
+    path = os.path.join(HERE, "gate_prototype.py")
+    tree = ast.parse(open(path, encoding="utf-8").read())
+    for node in tree.body:
+        if (isinstance(node, ast.Assign) and len(node.targets) == 1
+                and isinstance(node.targets[0], ast.Name) and node.targets[0].id == "CHECKS"
+                and isinstance(node.value, (ast.List, ast.Tuple))):
+            return len(node.value.elts)
+    raise SystemExit("gen-state: 解析不到 gate_prototype.py 的 CHECKS（判据数无法派生）")
+
+
+GATE_DECL = ("python3 16-checkpoint/gate_prototype.py（判据 P01–P%02d；退出码 0 = 全部 PASS；"
+             "本文件不缓存裁决，避免出现陈旧 PASS）" % _criteria_count())
 CHANGE_DECL = ("16-checkpoint/CRITERIA-CHANGE-P05.md（2026-10-15 判据变更：`why` 上限与 `summary` 下限"
                "两次同型缺陷，处置均为「换判据」而非「改数字」；口径写死为 caliber = 汉字数 + 拉丁词数）")
 CHANGE_DECL_2 = ("16-checkpoint/CRITERIA-CHANGE-P23.md（2026-10-15 判据变更：设计系统换底座与交互重做"
@@ -93,7 +112,7 @@ CHANGE_DECL_12 = ("16-checkpoint/CRITERIA-CHANGE-R08.md（2026-10-16 第 8 轮�
                   "④ 新增 **A1–A7**（`gate_a11y.py`）与 **S1–S11**（`gate_seo_meta.py`）两个独立门控；"
                   "⑤ 图件补 `aria-label`（由 `gen-figs` 从图注首句派生）并去掉 Graphviz 的无信息 `<title>fig</title>`。"
                   "★ 触发事实：SH4 落地时 P09/P12 **整站 FAIL** 51 页（判假探针 `_probe/r8_t1_p09_probe.py` 实测），"
-                  "根因是「判据对象 > 断言对象」（R-23 同型第 3 次复发）；P01–P41 编号未动）")
+                  "根因是「判据对象 > 断言对象」（R-23 同型第 3 次复发）；判据编号范围当时未动）")
 CHANGE_DECL_13 = ("16-checkpoint/CRITERIA-CHANGE-R09.md（2026-10-19 第 9 轮**执行通道变更**：修 `_ci_gate.sh` 的两条实测缺陷，"
                   "⛔ 未改任何判据的断言。① 数据侧自检的路径由 `10-dag-data/_selfcheck.py` 改为 "
                   "`../10-dag-data/_selfcheck.py` —— 该脚本已 cd 到 `16-checkpoint/`，原路径不存在 ⇒ "
@@ -120,7 +139,18 @@ CHANGE_DECL_14 = ("16-checkpoint/CRITERIA-CHANGE-R10.md（2026-11-02 第 10 轮�
                   "④ `K2`：`gate-manifest.json` 不再自报夹具数（清单写 176、实测 178 的**重复事实**已删）。"
                   "★ 两条新判据均**进 push 档**（只读产物与登记表，成本可忽略）。")
 
-ROUND = 10     # ★ 2026-11-02 第 10 轮：产出本快照的轮次（内容波次 5–7：G04 / GD-N / G03 共 19 个节点 ⇒ 67/67）
+CHANGE_DECL_15 = ("16-checkpoint/CRITERIA-CHANGE-R11.md（2026-11-03 第 11 轮判据变更：**新增两条硬判据 + 扩一条既有断言**，"
+                  "并把「规模读数」收敛到单一出口。① 新增 **P44** 规模读数 ⟺ 实算：仓根 README 的进度表"
+                  "（节点/写满/分组/边/页面/节点页/组页/图件/图源件数）＋**全库的判据编号范围 `P01–PN`**（N = `len(CHECKS)`）"
+                  "＋ 单态语汇 ＋ 未分类文件的全集闭合。触发事实：第 10 轮加 P42/P43 后，README 仍写"
+                  "「已写满 35 / 架构在册待写 32」，而 `P01–P41` 在 13 个源文本 + 1 个生成物里各写一遍、全部陈旧，"
+                  "**两类读数都没有判据会失败**。② 新增 **P45** 门控清单 ⟺ 实现 ⟺ 执行入口：`gate-manifest.json` 的"
+                  "`judges[]` 展开 ⟺ 三脚本 `CHECKS`（双向）、`fast ⊆ full`、`_ci_gate.sh` 三脚本调用齐备 —— 收 `K1`/`K2`。"
+                  "③ 扩 **P35 ⑨**：增加**逐散文单元**的枚举覆盖断言（页级计数会掩盖「某单元出现枚举标记却切不出列表」"
+                  "⇒ 台账 `G51` 的真残余；⛔ 不是重开已消的账）。④ 本条所述「判据数」不再写死：`GATE_DECL` 改为由"
+                  "`gate_prototype.CHECKS` **派生**。★ 两条新判据均**进 push 档**（只读文档与脚本文本，成本可忽略）。")
+
+ROUND = 11     # ★ 2026-11-03 第 11 轮：产出本快照的轮次（规模读数单一出口 + 装置自洽判据 + 可扫性收口）
 
 
 MD_EXTS = (".md",)
@@ -223,6 +253,7 @@ def state_doc():
                   "criteria_change_R08": CHANGE_DECL_12,
                   "criteria_change_R09": CHANGE_DECL_13,
                   "criteria_change_R10": CHANGE_DECL_14,
+                  "criteria_change_R11": CHANGE_DECL_15,
                   "assets": ASSET_DECL},
         "repo": None,
     }

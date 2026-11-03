@@ -19,14 +19,14 @@
 
 | 项 | 数 | 说明 |
 |---|---:|---|
-| 知识节点 | 67 | 已写满 **35** / 架构在册待写 **32** |
+| 知识节点 | 67 | 已写满 **67**（`registered` = 0） |
 | 知识分组 | 11 | `g00`–`g09` ＋ `gd-n`（新一代模块） |
-| 依赖边 | 96 | 全部为有向依赖，DAG 无环 |
-| 页面 | 51 | 节点页 35 ＋ 组页 12 ＋ 视图页 2 ＋ 交互 1 ＋ 根入口 1 |
-| 图件 | 47 | 全部本站自制、内联、随主题 |
+| 依赖边 | 96 | 全部为有向依赖，DAG 无环；拓扑层 30 层 |
+| 页面 | 83 | 节点页 67 ＋ 组页 12 ＋ 视图页 2 ＋ 交互 1 ＋ 根入口 1（另有 MD 镜像 82 个，交互页无镜像） |
+| 图件 | 78 | 全部本站自制、内联、随主题 |
 
-★ **「架构在册待写」不是留白**：这 32 个节点在组页、学习路径与交互图上以**徽标显式标注**
-（虚线边框），并逐条登记在 `PUBLISH-STATE.json` 的 `pending_nodes`。⛔ 本站不静默留白。
+★ **内容已全部写完，本站没有留白**：67 个节点全部翻为 `complete`（八个区块全非空），
+`PUBLISH-STATE.json` 的 `pending_nodes` 是**空数组** —— 这是「没有未写节点」的显式答案，⛔ 不是没登记。
 
 ## 三、目录结构
 
@@ -37,8 +37,8 @@
 ├── sitemap.xml  robots.txt   # 站点级发现协议（由 gen-meta.py 生成）
 ├── .nojekyll                 # 关闭 Jekyll
 ├── 10-dag-data/              # ★ 唯一真相源（dag / glossary / sources / frontier / 令牌 / 调色板）
-│   └── figures/              #   图件源（.dot）与产物（.svg），94 件
-├── 11-node-pages/            # 节点页 35 个
+│   └── figures/              #   图件源（.dot）与产物（.svg），156 件
+├── 11-node-pages/            # 节点页 67 个
 ├── 12-groups/                # 组页 11 个 ＋ 分组索引
 ├── 13-interactive/           # 交互全景图（唯一允许引用同目录 vendor/ 本地脚本的页面）
 │   └── vendor/               #   cytoscape / cytoscape-dagre（脚本白名单，⛔ 不扩散）
@@ -54,7 +54,7 @@
 cd 04-prototype/16-checkpoint
 python3 build-all.py --dry-run        # 只输出新增/修改/删除清单
 python3 build-all.py --write          # 幂等落盘（二次比对必须干净）
-python3 gate_prototype.py             # 判据 P01–P41（退出码 0 = 全 PASS）
+python3 gate_prototype.py             # 判据 P01–P45（退出码 0 = 全 PASS）
 python3 gate_prototype.py --selftest  # 逐条触发负例（证明判据可判假）
 python3 gate_a11y.py                  # 无障碍判据 A1–A7
 python3 gate_seo_meta.py              # head 元数据判据 S1–S11
@@ -66,7 +66,7 @@ python3 gate_seo_meta.py              # head 元数据判据 S1–S11
 
 | 层 | 脚本 | 判据 | 判什么 |
 |---|---|---|---|
-| 站点自建 | `16-checkpoint/gate_prototype.py` | **P01–P41** | 真相源结构 / 自包含 / 主题与令牌 / 对比度 / 内容呈现 / 图件规格 / 交互几何 / 验证通道 / 留档闭合 |
+| 站点自建 | `16-checkpoint/gate_prototype.py` | **P01–P45** | 真相源结构 / 自包含 / 主题与令牌 / 对比度 / 内容呈现 / 图件规格 / 交互几何 / 验证通道 / 留档闭合 / 规模读数（P44）/ 清单↔实现↔入口（P45） |
 | 无障碍 | `16-checkpoint/gate_a11y.py` | **A1–A7** | skip 链 / 焦点可见 / 地标 / 内联图形可访问 / `lang` / 图标声明 / skip 的首停点 |
 | 元数据 | `16-checkpoint/gate_seo_meta.py` | **S1–S11** | head 六件 / canonical 自指 / og 一致 / 图标可达 / robots+sitemap 双向闭合 |
 
@@ -86,7 +86,7 @@ python3 gate_seo_meta.py              # head 元数据判据 S1–S11
 |:--:|---|---|---|
 | 1 | **发布根在子目录 `04-prototype/`**，经 `.github/workflows/pages.yml` 发布 | 本仓是**双面仓**：仓根是过程归档面（生成器、门控、设计契约、轮次台账），发布面是其下的一个子目录 | legacy 分支发布**不支持子目录** ⇒ 必须走 Actions ⇒ 每次发布都真跑一遍生成器 + 门控 |
 | 2 | **`.nojekyll` 既入库、又由 CI 的 build job 再 `touch` 一次** | 仓内一份保证 `04-prototype/` 直接可用；CI 一份满足「谁产出发布目录、谁负责 `.nojekyll`」 | 两处都要维护（⛔ 但两者必须一致，且都为空文件） |
-| 3 | **CI 分两档**：push 跑「CI 档」子集；全量 P01–P41 + 渲染探针走 `workflow_dispatch` ＋ 每周一次 | 全量档含渲染与几何复算，单次数分钟；push 档要快 | ⚠ **不是所有判据每次 push 都跑** —— 见 `16-checkpoint/_ci_gate.sh` 的 `--only` 清单，那是**有意**的分级 |
+| 3 | **CI 分两档**：push 跑「CI 档」子集；全量 P01–P45 + 渲染探针走 `workflow_dispatch` ＋ 每周一次 | 全量档含渲染与几何复算，单次数分钟；push 档要快 | ⚠ **不是所有判据每次 push 都跑** —— 见 `16-checkpoint/_ci_gate.sh` 的 `--only` 清单，那是**有意**的分级（`P45` 会机检「清单 ⟺ 实现 ⟺ 入口」三者不脱钩） |
 | 3b | **全量档有两条「对象条件」**（2026-10-19 第 9 轮补）：`P38` 的对象 `_probe/channel.json`（规则②）与数据侧自检 `C58` 的对象 `01-research/evidence/A*.json`（规则①）**都不入库** ⇒ 二者在新 checkout（CI）上**无对象** | 这两条判据的对象是**过程证据 / 私密输入层**，按本仓两条硬规则**不得入库**；若照旧无条件调用，CI 上必然恒 FAIL（实测：2026-10-19 的定时任务 gate job 红） | ★ **「本机 full」与「CI full」是两个不同的扫描面**：CI 上 `P38` 被**显式排除**（打印理由）、`C58` 打印 `[SKIP]`（由调用方显式声明）；⛔ CI 全绿**不得**读作「像素层 / 引文回源已在 CI 覆盖」。见 `16-checkpoint/CRITERIA-CHANGE-R09.md` |
 | 4 | **⛔ 不 vendor `vendor/pipeline/` 令牌管线** | 那套件服务的是「一站两形态（内联 ＋ 外链样式表）」；本站是**全站内联**（R-18 零外链）⇒ 无外链样式面 | 与同类站的值件/schema 形状**不对齐**（如实声明，⛔ 不假装已对齐） |
 

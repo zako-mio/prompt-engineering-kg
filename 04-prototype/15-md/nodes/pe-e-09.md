@@ -60,7 +60,7 @@ cat _wave3_solo/PE-E-09/regression-log.txt
 - **提示词与提示风格改动会在质量与成本之间换位，且步骤式推理一类风格并非普遍增益，故回归必须同时看成本与延迟。**（S-0037，paper）
   - 出处：https://arxiv.org/abs/2507.13525
   - 原文关键句：For high-performance LLMs, simple prompts often outperform more complex ones while reducing cost.
-- **官方公布的内部评测显示精简系统提示词可同时提升评分并大幅削减 token 与成本，说明提示词改动确实以成本换质量，其数字必须逐版留档。**（S-0012，official）
+- **官方公布的内部评测显示精简系统提示词可同时提升评分并大幅削减 token 与成本，说明精简提示词可以同时提升评分并削减 token 与成本（并非以成本换质量），其数字必须逐版留档。**（S-0012，official）
   - 出处：https://developers.openai.com/api/docs/guides/latest-model
   - 原文关键句：In a sample of internal coding-agent eval runs, configurations with leaner system prompts improved evaluation scores by roughly 10–15% while reducing total tokens by 41–66% and cost by 33–67%.
 

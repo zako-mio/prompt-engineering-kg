@@ -88,7 +88,7 @@
 ## Reference Files (必读)
   04-prototype/16-checkpoint/DESIGN-CONTRACT.md   ← 本契约（规则表 + 未落实清单）
   04-prototype/16-checkpoint/CONTENT-V2.md        ← 内容呈现契约
-  04-prototype/16-checkpoint/gate_prototype.py    ← 现有 41 条判据（P01–P41）
+  04-prototype/16-checkpoint/gate_prototype.py    ← 现有 45 条判据（P01–P45；★ 第 11 轮起该读数由 P44 机检，⛔ 不再靠手改）
 ## Task: 对 {本轮改动范围} 做契约审核
   ① 逐条读 R-01..R-25，对每条在产物里找**落实证据**（选择器/结构/文件行号）；
   ② 判「已落实」的标准：存在**机检判据**且该判据在产物上为 PASS；

@@ -96,7 +96,7 @@ print('两档素材集合相同：',
 ## 术语
 
 - **交错输入（Interleaved Input）**：把文本、图像等不同模态按原始顺序混排进同一上下文的多模态输入形态。
-- **位置敏感与注意力耗散（Positional Sensitivity and Attention Dissipation）**：多模态长序列中，图像与文本的相对位置显著影响结果，且模态间注意力随序列增长而耗散。
+- **位置敏感与注意力耗散（Positional Sensitivity and Attention Dissipation）**：多模态长序列中，图像与文本的相对位置可能影响结果（文本侧长上下文已实测，多模态侧仍属待验假设），且模态间注意力随序列增长而耗散。
 
 ## 失效模式
 

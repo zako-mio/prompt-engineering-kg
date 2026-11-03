@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""gate_prototype.py —— 原型站门控（判据 P01–P41）
+"""gate_prototype.py —— 原型站门控（判据 P01–P45）
 
-判据基线：SCHEMA.md 的 P01–P14；P15–P22 对应 ADR-001 的 quality_scenarios；
+判据基线：SCHEMA.md 的「P01–P14」；P15–P22 对应 ADR-001 的 quality_scenarios；
 P23–P32 为「设计系统换底座 + 交互重做」同批新增（见 CRITERIA-CHANGE-P23.md）；
 P34 为 2026-10-15 用户走查反馈轮新增（见 CRITERIA-CHANGE-P34.md）；P35–P36 为同日「内容呈现 v2」
 新增（见 CONTENT-V2.md 与 CRITERIA-CHANGE-P34.md 续）；P37 为同日「结构化交互图」新增
@@ -20,10 +20,18 @@ R-03 对齐为**正文承载页**，两处均带**显式对象集 + 全集闭合
 路径由 `10-dag-data/_selfcheck.py` 改为 `../10-dag-data/_selfcheck.py`（原路径不存在 ⇒ full 档在该步恒 FAIL），
 并给 full 档补 **P38 的对象条件** —— `_probe/channel.json` 存在则跑全量（含 P38），不存在（CI）则
 **显式排除 P38 并打印理由**（⛔ 不是静默通过、⛔ 不是放宽 P38）。见 CRITERIA-CHANGE-R09.md。
+★ 2026-11-03（第 11 轮）**新增两条判据 + 扩一条断言**（⛔ 未放宽任何既有断言）：**P44** 规模读数 ⟺ 实算
+（仓根 README 的进度表 / 全库的判据编号范围 / 单态语汇 / 未分类文件闭合）；**P45** 门控清单 ⟺ 实现 ⟺
+执行入口（收台账 K1/K2）；**P35 ⑨** 增加**逐散文单元**的枚举覆盖断言（收 `G51` 的真残余：页级计数会
+掩盖单元级缺口）。触发事实：第 10 轮加 P42/P43 后，README 仍写「已写满 35 / 架构在册待写 32」，
+而 `P01–P41` 这一读数在 13 个源文本 + 1 个生成物里各写一遍、全部陈旧 —— 两类读数**都没有判据会失败**。
+见 `CRITERIA-CHANGE-R11.md`。
 
-★ 判据编号说明（⛔ 不改任何判据的作用域）：本文件的编号集合现为 **P01–P41**；文件头曾写作
-  「P01–P37」（第 35–37 条落地前的时点快照），于 2026-10-16 随 P22 变更同批更正为 P01–P40，
-  同轮（第 6 轮）随 P41 落地更正为 **P01–P41**。
+★ 判据编号说明（⛔ 不改任何判据的作用域）：本文件的编号集合现为 **P01–P45**（P44/P45 于 2026-11-03
+  第 11 轮新增，见 `CRITERIA-CHANGE-R11.md`）。历史上的「P01–P37」「P01–P40」「P01–P41」都是各自
+  **时点快照** ⇒ 本段一律写成**引号包裹的提及**，⛔ 不得当成当前读数。
+  ★ 从此这条读数**不再靠人维护**：`P44` 逐条断言「文档里的当前声明 = `len(CHECKS)` 的实算」，
+    并把未被登记/排除的同类文件判 FAIL（供应链 = 显式对象集 + 排除清单 + 全集闭合断言）。
 
 ★ **「显式对象集 + 全集闭合断言」是本仓的通用作用域机制（2026-10-16 第 6 轮首次成型）**：
   凡判据只对**某几类对象**生效时，必须同时写出 ① 对象集 ② 排除集（逐条理由）③ `set(受检) == 对象集 ∪ 排除集`
@@ -729,7 +737,7 @@ def build_probes():
     return probe
 
 
-# ---------------------------------------------------------------- P01–P14（基线）
+# ---------------------------------------------------------------- P01 至 P14（基线）
 
 def check_p01(ctx):
     """真相源 JSON 合法且必填字段齐全。"""
@@ -3626,6 +3634,22 @@ def check_p35(ctx):
             lists = _enum_lists(text)
             exp = _enum_expect_texts(texts)
             pat = _enum_pattern_hit_texts(texts)
+            # ★ 2026-11-03 第 11 轮（台账 `G51` 的**真残余**，⛔ 不是「重开一条已消的账」）：
+            #   上面几条都是**页级聚合**计数（`sum(lists)` / `len(lists)`），而渲染器是按
+            #   **散文单元**切分的（`prose_html` 逐句 `split_enum`）。⇒ 当一个页面上**另一句**
+            #   已经渲染出 `.enum-list` 时，某个「出现枚举标记、却因跨句而切不出列表」的单元会被
+            #   聚合计数掩盖（`len(lists) == exp` 照样成立）—— 这正是「判据绿了、版面没动」的同型缺口。
+            #   ⇒ 逐单元断言：命中标记而切不出 ≥2 项 ⇒ FAIL。
+            C = _common()
+            for _t in texts:
+                _body, _b = C.split_boundary(_t or "")
+                for _s in sentences(_body):
+                    if not C.ENUM_MARK_RE.search(_s or ""):
+                        continue
+                    _head, _items = C.split_enum(_s)
+                    if len(_items) < 2:
+                        bad.append((rel, "该散文单元出现枚举标记但渲染口径切不出列表（跨句枚举 ⇒ "
+                                         "判据页级计数掩盖了它）", (_s or "")[:40]))
             if pat:
                 enum_pat_pages.append(rel)
                 enum_lists_total += len(lists)
@@ -4266,6 +4290,14 @@ def mut_p35(ctx):
     # ⑨' 枚举列表只剩 1 条（条数 < 2 ⇒ 未成列）
     c = copy.deepcopy(ctx)
     out.append(_sub_first_enum_to_one_li(c))
+    # ⑨''（★ 2026-11-03 第 11 轮，台账 `G51` 的真残余）：**页级计数掩盖单元级缺口** ——
+    #   在**已经渲染出 `.enum-list` 的页**（`14-views/02-frontier.html`）上追加一个独立句，
+    #   该句命中「其一，」却切不出 2 项（无分号）⇒ 页级的 sum/len 断言全部成立，
+    #   只有新增的**逐单元**断言 FAIL。这条夹具直接证明新断言不是页级计数的重复。
+    c = copy.deepcopy(ctx)
+    _fi = c.data["frontier"]["items"][0]
+    _fi["summary"] = (_fi.get("summary") or "") + "另需注意：其一，甲。"
+    out.append(c)
     # ⑩ 证据区不再是竖表（去掉 .kv-blocks）
     c = copy.deepcopy(ctx)
     out.append(_sub_in_section(c, "sec-evidence", '<div class="kv-blocks">', '<div class="zz-kv">'))
@@ -5336,6 +5368,378 @@ def mut_p43(ctx):
     return out
 
 
+# ---------------------------------------------------------------- P44 / P45（2026-11-03 第 11 轮新增）
+# ★ 两条判据都由**本轮开工实测的现场缺陷**触发（⛔ 不是先立判据再找场景）：
+#   · P44：第 10 轮加了 P42/P43 之后，`04-prototype/README.md` 的进度表仍写
+#     「已写满 35 / 架构在册待写 32」（公开仓 raw 实测 200，内容确为陈旧），而判据族编号 `P01–P41`
+#     在 **13 个源文本 + 1 个生成物**里各写一遍、全部陈旧 ⇒ 两类读数都**没有任何判据会失败**。#     这与台账 `G10`/`G29` 同族：**写死的规模读数被后续轮次读旧**（第 N 次复发）。
+#   · P45：`gate-manifest.json` 的编号集合 / 三个门控脚本的 `CHECKS` / `_ci_gate.sh` 的档位集合，
+#     三者互为事实却**互不校验**（`K2` 的残余）⇒「漏登记一条判据」「漏调一个门控脚本」都不报警。
+#
+# ★ 对象在 CI 的 checkout 里存在吗？（第 9 轮 `G42` 纪律的现场应用）
+#   P44 的对象 = `README.md`（入库）＋ 三脚本 ＋ `_ci_gate.sh` ＋ `gate-manifest.json` ＋
+#   `DESIGN-CONTRACT.md` ＋ `PUBLISH-STATE.json`（全部入库）；P45 的对象同为一组入库文件
+#   ⇒ **两条都不需要「对象不在」分支**（⛔ 不得照抄 P38/C58 的对象条件模板）。
+
+# ★ 口径：**只认全角连接号 `–`**（散文里的「当前判据族总数」写法）。
+#   机器标识里的范围一律用 ASCII 连字符（如 `gate-manifest.json` 的 `P01-P08` 判官分组），
+#   ⛔ 不属本判据对象 —— 那类范围由 P45 在「清单 ⟺ 实现」里逐段展开核对。
+P44_CRITERIA_RANGE_RE = re.compile(r"P01–P(\d{2})")
+
+#: ★ 显式对象集：会**声明当前规模读数**的入库文档（⛔ 不做「猜哪些文件有数字」的启发式）
+P44_DOCS = (
+    "README.md",
+    "16-checkpoint/gate_prototype.py",
+    "16-checkpoint/gate_a11y.py",
+    "16-checkpoint/gate_seo_meta.py",
+    "16-checkpoint/_ci_gate.sh",
+    "16-checkpoint/gate-manifest.json",
+    "16-checkpoint/DESIGN-CONTRACT.md",
+    "PUBLISH-STATE.json",
+)
+
+#: ★ 显式排除集（逐条理由）：这些文件里的读数**是各自时点的快照**，⛔ 不回改（契约 §4 的历史纪律）
+P44_EXCLUDED = (
+    (re.compile(r"^CONTINUE-PROMPT-D\d+\.md$"), "历史工作令：写的是各轮**开工时点**的读数"),
+    (re.compile(r"^CRITERIA-CHANGE-.*\.md$"), "判据变更登记件：记录的是**变更当时**的读数"),
+    (re.compile(r"^(HANDOFF|ARCHIVE-HANDOFF).*\.md$"), "轮次交接件：各自时点快照"),
+    (re.compile(r"^_r\d+_ledger_update\.py$"), "台账写入器：载荷＝历史轮次的原文"),
+    (re.compile(r"^ROUND-LEDGER\.json$"), "轮次台账：append-only 的历史"),
+)
+
+
+def _p44_mentions(text):
+    """把 `P01–PN` 拆成「当前声明」与「引号包裹的提及」。
+
+    ★ 判定与 `P41` 同源：**被引号包裹的 = 提及**（记录历史/引用子范围时的正当写法），其余 = **断言**。
+      引号口径 = `「…」`（中文引号）或 `` `…` ``（行内代码）—— 两种都在站内被用作「这是引文/记号，
+      ⛔ 不是当前读数」的约定，且毛判据在两者上都见过实测（`P41` 用「」、本判据的历史段用反引号）。
+      ⇒ 历史沿革与**子范围**（如 SCHEMA 的 `「P01–P14」`）可以写进文档，但必须加引号，
+        否则它会被当成「当前判据族总数」而判 FAIL。
+    """
+    claims, mentions = [], []
+    spans = []
+    for opener, closer in (("「", "」"), ("`", "`")):
+        for m in re.finditer(re.escape(opener) + r"[^" + re.escape(closer) + r"]*" + re.escape(closer),
+                             text or ""):
+            spans.append((m.start(), m.end()))
+    for m in P44_CRITERIA_RANGE_RE.finditer(text or ""):
+        inside = any(a <= m.start() and m.end() <= b for a, b in spans)
+        (mentions if inside else claims).append(m.group(1))
+    return claims, mentions
+
+
+def _p44_truth(ctx):
+    """规模读数的**实算值**（判据自己数，⛔ 不采信任何文档或 `counts` 自报）。
+
+    ★ 与 `P13` 的 `G12` **同源同口径**（产物侧 html/node_pages/group_pages/view_pages/interactive/root，
+      真相源侧 nodes/groups/edges），⛔ 不另写第二套算法 —— 否则「同一事实两个口径」会在这里复发。
+    """
+    dag = ctx.data["dag"]
+    nodes = dag["nodes"]
+    html = ctx.html
+    fig_dir = os.path.join(DATA_DIR, "figures")
+    svgs = [fn for fn in os.listdir(fig_dir) if fn.endswith(".svg")]
+    dots = [fn for fn in os.listdir(fig_dir) if fn.endswith(".dot")]
+    return {
+        "nodes": len(nodes),
+        "complete": len([n for n in nodes if n.get("content_status") == "complete"]),
+        "registered": len([n for n in nodes if n.get("content_status") == "registered"]),
+        "groups": len(dag["groups"]),
+        "edges": len(dag["edges"]),
+        "html": len(html),
+        "node_pages": len([r for r in html if r.startswith("11-node-pages/")]),
+        "group_pages": len([r for r in html if r.startswith("12-groups/")]),
+        "view_pages": len([r for r in html if r.startswith("14-views/")]),
+        "interactive": len([r for r in html if r == INTERACTIVE]),
+        "root": len([r for r in html if r == "index.html"]),
+        "figures": len(svgs),
+        "figure_files": len(svgs) + len(dots),
+        "criteria": len(CHECKS),
+    }
+
+
+#: README §二 §三 的读数锚点：`(标签, 正则, 实算键)`；键为 None 的那行按**多列**处理
+P44_README_ANCHORS = (
+    ("知识节点", re.compile(r"\|\s*知识节点\s*\|\s*(\d+)\s*\|"), "nodes"),
+    ("已写满", re.compile(r"已写满\s*\*\*(\d+)\*\*"), "complete"),
+    ("知识分组", re.compile(r"\|\s*知识分组\s*\|\s*(\d+)\s*\|"), "groups"),
+    ("依赖边", re.compile(r"\|\s*依赖边\s*\|\s*(\d+)\s*\|"), "edges"),
+    ("图件", re.compile(r"\|\s*图件\s*\|\s*(\d+)\s*\|"), "figures"),
+    ("页面", re.compile(r"\|\s*页面\s*\|\s*(\d+)\s*\|\s*节点页\s*(\d+)\s*＋\s*组页\s*(\d+)"
+                        r"\s*＋\s*视图页\s*(\d+)\s*＋\s*交互\s*(\d+)\s*＋\s*根入口\s*(\d+)"), None),
+    ("节点页注释", re.compile(r"11-node-pages/\s*#\s*节点页\s*(\d+)\s*个"), "node_pages"),
+    ("图源件数", re.compile(r"与产物（\.svg），(\d+)\s*件"), "figure_files"),
+)
+
+#: 单态（`registered == 0`）时 ⛔ 不得残留的两态语汇（与 `P42` ③ **同一个词表**，对象换成仓根 README）
+P44_TWO_STATE_VOCAB = ("架构在册", "内容待填充")
+
+
+def check_p44(ctx):
+    """P44 规模读数 ⟺ 实算（仓根 README 进度表 / 判据编号范围 / 单态语汇 / 全集闭合）。"""
+    if not ctx.html:
+        return False, "空集守卫：无受检页面"
+    t = _p44_truth(ctx)
+    if t["criteria"] < 1:
+        return False, "空集守卫：CHECKS 为空 ⇒ 判据自己都不存在"
+    bad = []
+    readme = _read_text(ctx, "README.md")
+    if readme is None:
+        return False, "对象缺失：发布根 `README.md` 读不到（它是仓库的公开说明面）"
+    # ---- ① README 进度表：逐项读数等于实算 ----
+    for label, rx, key in P44_README_ANCHORS:
+        m = rx.search(readme)
+        if not m:
+            bad.append(("README.md", "锚点未命中：「%s」读数（文档格式变更须**同批**改判据）" % label))
+            continue
+        if key is None:
+            got = [int(x) for x in m.groups()]
+            want = [t["html"], t["node_pages"], t["group_pages"], t["view_pages"],
+                    t["interactive"], t["root"]]
+            if got != want:
+                bad.append(("README.md", "「页面」行读数 %s ≠ 实算 %s" % (got, want)))
+            elif sum(got[1:]) != got[0]:
+                bad.append(("README.md", "「页面」行自相矛盾：分项和 %d ≠ 总数 %d"
+                            % (sum(got[1:]), got[0])))
+            continue
+        if int(m.group(1)) != t[key]:
+            bad.append(("README.md", "「%s」自报 %s ≠ 实算 %d" % (label, m.group(1), t[key])))
+    # ---- ② 单态语汇（与 P42 ③ 同源；P42 的对象是产物页，本条把它扩到仓根 README）----
+    if t["registered"] == 0:
+        for pat in P44_TWO_STATE_VOCAB:
+            if pat in readme:
+                bad.append(("README.md", "单态（registered = 0）残留两态语汇 %r" % pat))
+    # ---- ③ 判据编号范围：登记文档里的**当前声明**必须等于 CHECKS 实算条数 ----
+    want_n = "%02d" % t["criteria"]
+    claims_total = 0
+    for rel in P44_DOCS:
+        text = _read_text(ctx, rel)
+        if text is None:
+            bad.append((rel, "登记对象缺失（对象清单与磁盘脱钩）"))
+            continue
+        claims, _mentions = _p44_mentions(text)
+        for n in claims:
+            claims_total += 1
+            if n != want_n:
+                bad.append((rel, "判据编号范围 P01–P%s ≠ 实算 P01–P%s" % (n, want_n)))
+    if claims_total == 0:
+        bad.append(("(对象集)", "空集守卫：登记文档里一个「当前声明」都没有 ⇒ 判据恒真"))
+    # ---- ③b 清单自身的**基数**写法（`它 N 条判据`）——与范围写法是同一事实的两种字面 ----
+    #   ★ 只对 `gate-manifest.json` 的这一处判：别处的「N 条判据」有**大量正当用法**
+    #     （如 A 段 7 条 / S 段 11 条 / 历史快照里的 37 条）⇒ ⛔ 不做全库基数扫描（会大量假阳）。
+    man_txt = _read_text(ctx, "16-checkpoint/gate-manifest.json") or ""
+    for m in re.finditer(r"它\s*(\d+)\s*条判据", man_txt):
+        if int(m.group(1)) != t["criteria"]:
+            bad.append(("16-checkpoint/gate-manifest.json",
+                        "清单自报「%s 条判据」≠ 实算 %d" % (m.group(1), t["criteria"])))
+    # ---- ④ 全集闭合：出现该模式的文件必须是「对象」或「显式排除」，否则 FAIL ----
+    cands = set()
+    for fn in os.listdir(HERE):
+        if fn.endswith((".py", ".md", ".sh", ".json", ".yml")) and os.path.isfile(os.path.join(HERE, fn)):
+            cands.add("16-checkpoint/" + fn)
+    for rel in ctx.files:                      # 夹具可注入（`_read_text` 优先 ctx.files）
+        if rel.startswith("16-checkpoint/") and rel.endswith((".py", ".md", ".sh", ".json", ".yml")):
+            cands.add(rel)
+    unclassified = []
+    for rel in sorted(cands):
+        if rel in P44_DOCS:
+            continue
+        text = _read_text(ctx, rel)
+        if text is None:
+            continue
+        if not _p44_mentions(text)[0]:
+            continue                           # 只有「提及」⇒ 不属本判据对象
+        fn = rel.split("/", 1)[1]
+        if any(rx.match(fn) for rx, _why in P44_EXCLUDED):
+            continue
+        unclassified.append(rel)
+    for rel in unclassified:
+        bad.append((rel, "未分类的规模读数文件：既不在对象集、也不在排除清单 ⇒ 作用域与对象脱钩"))
+    return (not bad), ("节点 %d（写满 %d / 在册 %d）／分组 %d／边 %d／页 %d（节点 %d ＋ 组 %d ＋ 视图 %d "
+                       "＋ 交互 %d ＋ 根 %d）／图件 %d（%d 件）／判据 %d；受检文档 %d；不一致 %d 处 %s"
+                       % (t["nodes"], t["complete"], t["registered"], t["groups"], t["edges"], t["html"],
+                          t["node_pages"], t["group_pages"], t["view_pages"], t["interactive"],
+                          t["root"], t["figures"], t["figure_files"], t["criteria"],
+                          len(P44_DOCS), len(bad), bad[:4]))
+
+
+def mut_p44(ctx):
+    out = []
+    readme = _read_text(ctx, "README.md")
+    assert readme, "P44 夹具锚点未命中：README.md 读不到"
+    # ① 「页面」行的总数 +1（分项不动 ⇒ 同时撞上「总数 ≠ 实算」与「分项和 ≠ 总数」）
+    rx = P44_README_ANCHORS[5][1]
+    m = rx.search(readme)
+    assert m, "P44 夹具锚点未命中：「页面」行"
+    c = copy.deepcopy(ctx)
+    c.files["README.md"] = readme[:m.start(1)] + str(int(m.group(1)) + 1) + readme[m.end(1):]
+    out.append(c)
+    # ② 某个源件的**当前声明**改成不存在的编号（★ 用拼接构造：⛔ 不让夹具的字面量被本判据扫到 ——
+    #    这正是 P41 第 6 轮「判据把自己的装置自检判成违例」的同型自伤，当场避掉）
+    sh = _read_text(ctx, "16-checkpoint/_ci_gate.sh")
+    assert sh and P44_CRITERIA_RANGE_RE.search(sh), "P44 夹具锚点未命中：_ci_gate.sh 无当前声明"
+    _bad_range = "P01–P" + "%02d" % 99
+    c = copy.deepcopy(ctx)
+    c.files["16-checkpoint/_ci_gate.sh"] = P44_CRITERIA_RANGE_RE.sub(_bad_range, sh, count=1)
+    out.append(c)
+    # ③ 图源件数 +2（与节点状态无关 ⇒ ⛔ 不会随 67/67 这类数据状态失效，见台账 G56）
+    rx = P44_README_ANCHORS[7][1]
+    m = rx.search(readme)
+    assert m, "P44 夹具锚点未命中：「图源件数」行"
+    c = copy.deepcopy(ctx)
+    c.files["README.md"] = readme[:m.start(1)] + str(int(m.group(1)) + 2) + readme[m.end(1):]
+    out.append(c)
+    # ④ 未分类文档：注入一份含当前声明形态、既不在对象集也不在排除清单的文件
+    c = copy.deepcopy(ctx)
+    c.files["16-checkpoint/Z-PROBE-31.md"] = "历史小节：本仓判据族现为 %s。\n" % _bad_range
+    out.append(c)
+    return out
+
+
+#: `P45` 的实现来源（三脚本）与清单里的**非判据伪条目**（逐条给理由，⛔ 不静默跳过）
+P45_SCRIPTS = ("gate_prototype.py", "gate_a11y.py", "gate_seo_meta.py")
+P45_PSEUDO = {"P35-report": "P35 的**报告项**（长文可扫性，⛔ 不判 FAIL）不是独立判据 ⇒ 以伪条目登记"}
+
+
+def _p45_ids_from_source(src):
+    """AST 取模块级 `CHECKS = [(id, …), …]` 的编号（⛔ 不 import：那会跑测试）。"""
+    tree = ast.parse(src)
+    for node in getattr(tree, "body", []):
+        if (isinstance(node, ast.Assign) and len(node.targets) == 1
+                and isinstance(node.targets[0], ast.Name) and node.targets[0].id == "CHECKS"
+                and isinstance(node.value, (ast.List, ast.Tuple))):
+            ids = []
+            for elt in node.value.elts:
+                if isinstance(elt, ast.Tuple) and elt.elts and isinstance(elt.elts[0], ast.Constant):
+                    ids.append(str(elt.elts[0].value))
+            return ids
+    return []
+
+
+def _p45_expand(jid):
+    """展开清单里的范围写法（`P01-P08`）；非范围 / 跨前缀一律原样返回。"""
+    m = re.match(r"^([A-Z])(\d+)[-–]([A-Z])(\d+)$", jid or "")
+    if not m or m.group(1) != m.group(3):
+        return [jid]
+    pre, lo, hi = m.group(1), m.group(2), m.group(4)
+    return ["%s%0*d" % (pre, len(lo), k) for k in range(int(lo), int(hi) + 1)]
+
+
+def _p45_entry_sets(text):
+    """取 `_ci_gate.sh` 里的档位集合与三条不跑理由（⛔ 不执行脚本，只读文本）。"""
+    def arr(name):
+        m = re.search(r"\b%s=\"([^\"]*)\"" % re.escape(name), text or "")
+        return [x.strip() for x in (m.group(1).split(",") if m else []) if x.strip()]
+    return {
+        "fast": arr("FAST_ONLY"),
+        "full": arr("FULL_ONLY_NO_P38"),
+        "reasons": {k: arr(k) for k in ("FAST_NOTRUN_REASON", "FULL_P38_NOTRUN_REASON",
+                                        "FULL_C58_NOTRUN_REASON")},
+    }
+
+
+def check_p45(ctx):
+    """P45 门控清单 ⟺ 实现 ⟺ 执行入口（K1 / K2 的机检化）。"""
+    impl = {}
+    for fn in P45_SCRIPTS:
+        src = _read_text(ctx, "16-checkpoint/" + fn)
+        if src is None:
+            return False, "对象缺失：16-checkpoint/%s 读不到" % fn
+        ids = _p45_ids_from_source(src)
+        if not ids:
+            return False, "空集守卫：%s 的 CHECKS 解析为空（AST 口径失效或注册表改名）" % fn
+        impl[fn] = ids
+    all_impl = set()
+    for ids in impl.values():
+        all_impl |= set(ids)
+    bad = []
+    # ---- ① 清单 ⟺ 实现（双向）----
+    man_txt = _read_text(ctx, "16-checkpoint/gate-manifest.json")
+    if man_txt is None:
+        return False, "对象缺失：16-checkpoint/gate-manifest.json"
+    try:
+        man = json.loads(man_txt)
+    except Exception as e:                    # noqa: BLE001 —— 解析失败即 FAIL，不吞异常
+        return False, "gate-manifest.json 解析失败：%s: %s" % (type(e).__name__, e)
+    man_ids, scripts_decl, pseudo_seen = set(), set(), set()
+    for g in (man.get("gates") or []):
+        if g.get("script"):
+            scripts_decl.add(g["script"])
+        for j in (g.get("judges") or []):
+            jid = str(j.get("id", ""))
+            if jid in P45_PSEUDO:
+                pseudo_seen.add(jid)
+                continue
+            man_ids |= set(_p45_expand(jid))
+    if not man_ids:
+        return False, "空集守卫：清单里一条判据编号都解析不到"
+    for cid in sorted(all_impl - man_ids):
+        bad.append(("清单缺登记", cid, "实现里有、gate-manifest.json 没登记"))
+    for cid in sorted(man_ids - all_impl):
+        bad.append(("清单幽灵条目", cid, "清单里登记了、三脚本 CHECKS 里没有实现"))
+    # ---- ② 清单声明的脚本集 = 实现来源集 ----
+    for fn in sorted(set(P45_SCRIPTS) - scripts_decl):
+        bad.append(("清单缺脚本", fn, "清单的 gates[].script 里没有它"))
+    for fn in sorted(scripts_decl - set(P45_SCRIPTS)):
+        bad.append(("清单幽灵脚本", fn, "清单声明了本判据不认识的脚本"))
+    # ---- ③ 执行入口：fast ⊆ full；full ∪ {P38} = 实现；三脚本调用齐备；理由非空 ----
+    sh = _read_text(ctx, "16-checkpoint/_ci_gate.sh")
+    if sh is None:
+        return False, "对象缺失：16-checkpoint/_ci_gate.sh"
+    sets = _p45_entry_sets(sh)
+    fast, full = set(sets["fast"]), set(sets["full"])
+    if not fast or not full:
+        return False, "空集守卫：fast / full 档位集合解析为空（⭐ 档位集合为空时判据恒真）"
+    # ★ `_ci_gate.sh` 的 `--only` 清单只作用于 `gate_prototype.py` 的 **P 段**；
+    #   A/S 两段由同一条通道里的**独立脚本调用**覆盖（下面第 ④ 组断言）⇒ 这里的集合比较
+    #   **只比 P 段**，⛔ 不把 A/S 判成「full 档漏跑」（首版正是这个口径错误，当场报 22 条假阳）。
+    p_impl = set(cid for cid in all_impl if cid.startswith("P"))
+    for cid in sorted(fast - full):
+        bad.append(("fast 不在 full 内", cid, "fast 档跑、full 档反而漏跑"))
+    for cid in sorted(full - p_impl):
+        bad.append(("full 档幽灵判据", cid, "full 档跑了一条不存在的 P 段判据"))
+    for cid in sorted(p_impl - full - {"P38"}):
+        bad.append(("full 档漏跑", cid, "实现里有、full 档既没跑也没声明对象条件"))
+    for fn in P45_SCRIPTS:
+        if not re.search(r"python3\s+%s\b" % re.escape(fn), sh):
+            bad.append(("执行入口漏调", fn, "`_ci_gate.sh` 里找不到 `python3 %s` 调用" % fn))
+    for name, vals in sorted(sets["reasons"].items()):
+        if not vals:
+            bad.append(("排除理由为空", name, "声明「本档有意不跑」必须逐条给理由"))
+    return (not bad), ("实现 P%d / A%d / S%d（并集 %d）⟺ 清单 %d（伪条目 %d）；fast %d ⊆ full %d；"
+                       "入口三脚本调用齐备；不一致 %d 条 %s"
+                       % (len(impl["gate_prototype.py"]), len(impl["gate_a11y.py"]),
+                          len(impl["gate_seo_meta.py"]), len(all_impl), len(man_ids), len(pseudo_seen),
+                          len(fast), len(full), len(bad), bad[:4]))
+
+
+def mut_p45(ctx):
+    out = []
+    man_txt = _read_text(ctx, "16-checkpoint/gate-manifest.json")
+    assert man_txt, "P45 夹具锚点未命中：gate-manifest.json 读不到"
+    man = json.loads(man_txt)
+    # ① 清单里删掉一条已实现的判据（P43）⇒ 「清单缺登记」
+    doc = copy.deepcopy(man)
+    for g in doc.get("gates") or []:
+        g["judges"] = [j for j in (g.get("judges") or []) if str(j.get("id")) != "P43"]
+    c = copy.deepcopy(ctx)
+    c.files["16-checkpoint/gate-manifest.json"] = json.dumps(doc, ensure_ascii=False, indent=2)
+    out.append(c)
+    # ② fast 档塞一条不存在的判据 ⇒ 「fast 不在 full 内」且「full 档漏跑」
+    sh = _read_text(ctx, "16-checkpoint/_ci_gate.sh")
+    assert sh and 'FAST_ONLY="' in sh, "P45 夹具锚点未命中：FAST_ONLY"
+    c = copy.deepcopy(ctx)
+    c.files["16-checkpoint/_ci_gate.sh"] = re.sub(
+        r'(FAST_ONLY=")([^"]*)(")', lambda m: m.group(1) + m.group(2) + ",P99" + m.group(3), sh, count=1)
+    out.append(c)
+    # ③ 删掉对一个门控脚本的调用 ⇒ 「执行入口漏调」（K1 的原始形态：漏调一个脚本没有任何报警）
+    c = copy.deepcopy(ctx)
+    c.files["16-checkpoint/_ci_gate.sh"] = re.sub(r"python3\s+gate_a11y\.py", "true", sh)
+    out.append(c)
+    return out
+
+
 CHECKS = [
     ("P01", "真相源 JSON 合法且必填字段齐全", check_p01, mut_p01),    ("P02", "节点 id 唯一 / group 可解析 / prereq 与 successors 可解析", check_p02, mut_p02),
     ("P03", "rel 闭集 / 无环 / 拓扑层序与边方向一致", check_p03, mut_p03),
@@ -5408,6 +5812,11 @@ CHECKS = [
             "★ 2026-11-02 第 10 轮：67/67 首次撞上「架构在册 0」）", check_p42, mut_p42),
     ("P43", "图注跨登记表逐字同文（`gen-figs.FIGS[fid].caption` ⟺ `gen-nodes.NODE_FIG[nid]`；"
             "★ 2026-11-02 第 10 轮：存量 `pe-f-06` 两处不同文，台账 G54）", check_p43, mut_p43),
+    ("P44", "规模读数 ⟺ 实算（仓根 README 进度表 / 判据编号范围 P01–PN / 单态语汇 / 全集闭合；"
+            "★ 2026-11-03 第 11 轮：README 仍写「已写满 35 / 在册 32」，13 源文本 + 1 生成物仍是 `P01–P41`）",
+     check_p44, mut_p44),
+    ("P45", "门控清单 ⟺ 实现 ⟺ 执行入口（manifest judges 展开 ⟺ 三脚本 CHECKS 双向；fast ⊆ full；"
+            "`_ci_gate.sh` 三脚本调用齐备；★ 2026-11-03 第 11 轮收 K1/K2）", check_p45, mut_p45),
 ]
 
 

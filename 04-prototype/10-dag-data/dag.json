@@ -2215,7 +2215,7 @@
           "tier": "official"
         },
         {
-          "claim": "官方明确指出延迟与成本问题有时换一个模型就能改善，因此档位分派应排在继续打磨提示词之前。",
+          "claim": "官方明确指出延迟与成本问题有时换一个模型就能改善——这说明模型档位本身也是一项可调参数，而不只是提示词写法。",
           "source_id": "S-0002",
           "url": "https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/overview",
           "quote": "Not every success criteria or failing eval is best solved by prompt engineering. For example, you can sometimes improve latency and cost more easily by selecting a different model.",
@@ -2716,7 +2716,7 @@
       ],
       "evidence": [
         {
-          "claim": "官方把「成功标准」与「失败的评测」放在提示工程之前：先界定判据，再决定该改提示词还是该换模型。",
+          "claim": "官方指出并非所有成功标准或失败的评测都该用提示工程解决（有时换一个模型更省）；本节点据此先界定判据，再决定改提示词还是换模型。",
           "source_id": "S-0002",
           "url": "https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/overview",
           "quote": "Not every success criteria or failing eval is best solved by prompt engineering. For example, you can sometimes improve latency and cost more easily by selecting a different model.",
@@ -2886,7 +2886,7 @@
           "tier": "official"
         },
         {
-          "claim": "位置类偏差的强度不是常数：在长上下文检索场景中，输入占上下文窗口比例超过约一半后，首因偏差减弱而近因偏差保持稳定，原本的中间位置效应被距离型偏差取代 ⇒ 位置偏差需按输入规模重新标定，不能当作固定的分数偏移量。",
+          "claim": "位置类偏差的强度不是常数：在长上下文输入场景中，输入占窗口比例超过约一半后首因偏差减弱、近因偏差保持稳定 ⇒ 至少在这类场景下位置效应须按输入规模标定，不能当作固定偏移量。",
           "source_id": "S-0064",
           "url": "https://arxiv.org/abs/2508.07479",
           "quote": "the LiM effect is strongest when inputs occupy up to 50% of a model's context window. Beyond that, the primacy bias weakens, while recency bias remains relatively stable.",
@@ -3661,7 +3661,7 @@
           "tier": "paper"
         },
         {
-          "claim": "安全—可用性权衡的代价在厂商自述数据里可见：指令层级增强让对抗类指标明显上升，但同期对话胜率与偏好得分出现回退，因此安全侧收益必须以成对指标呈现，不能只报上升的那一列。",
+          "claim": "安全—可用性权衡的代价在厂商自述数据里可见：指令层级增强的同期，对话胜率 0.71→0.66、偏好得分 0.46→0.40 出现回退，因此安全侧收益必须以成对指标呈现。",
           "source_id": "S-0017",
           "url": "https://openai.com/index/instruction-hierarchy-challenge/",
           "quote": "OpenAI's models are trained to follow a clear instruction hierarchy: System > developer > user > tool ... Chat WinRate vs o1 0.71 → 0.66 (-0.05); Preference Score 0.46 → 0.40 (-0.06).",
@@ -3816,17 +3816,10 @@
       ],
       "evidence": [
         {
-          "claim": "官方风险正文指出，模型在架构上不给指令与数据做区分，且提示注入是当前生成式 AI 的固有性质，因此不存在可靠的拦截式防线。",
+          "claim": "官方风险正文指出，模型在架构上不给指令与数据做区分、提示注入是当前生成式 AI 的固有性质，且不存在可靠的拦截式防线 ⇒ 防御必须转向架构性。",
           "source_id": "S-0032",
           "url": "https://raw.githubusercontent.com/GenAI-Security-Project/GenAI-LLM-Top10/main/2026/final/LLM01_PromptInjection.md",
-          "quote": "LLMs make no architectural distinction between \"instructions\" and \"data\"... Prompt injection is intrinsic to current generative AI...",
-          "tier": "official"
-        },
-        {
-          "claim": "同一份官方正文给出的处置口径是转向架构性防御，而不是继续在单一提示层加拦截：这正支持「收窄权限」是标注四步里不可省的一环。",
-          "source_id": "S-0032",
-          "url": "https://raw.githubusercontent.com/GenAI-Security-Project/GenAI-LLM-Top10/main/2026/final/LLM01_PromptInjection.md",
-          "quote": "no reliable prevention mechanism exists today... Defense is therefore architectural rather than interceptive.",
+          "quote": "LLMs make no architectural distinction between \"instructions\" and \"data\"... Prompt injection is intrinsic to current generative AI... Defense is therefore architectural rather than interceptive.",
           "tier": "official"
         },
         {
@@ -3844,7 +3837,7 @@
           "tier": "paper"
         },
         {
-          "claim": "预印本指出智能体系统带来间接提示注入、代码执行利用与 RAG 索引投毒等新向量，并主张必须纵深防御、不存在单一可靠屏障，为标注之外还要收窄权限提供依据，属预印本级别。",
+          "claim": "预印本指出智能体系统带来间接提示注入、代码执行利用与 RAG 索引投毒等新向量，并主张必须纵深防御、不存在单一可靠屏障，（预印本级别；本文由此把收窄权限列为纵深的一层）。",
           "source_id": "S-0044",
           "url": "https://arxiv.org/abs/2603.22928",
           "quote": "agentic systems introduce new vectors for indirect prompt injection, code execution exploits... Defense-in-depth is therefore mandatory: no single safeguard is reliable under worst-case inputs.",

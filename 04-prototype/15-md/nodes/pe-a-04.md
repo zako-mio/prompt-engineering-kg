@@ -62,7 +62,7 @@ PY
 - **过拒率是可量化的训练侧指标：该工作在多级指令层级上同时提高优先级遵循并把过拒率压到标准 DPO 的一半，说明「更守层级」与「更少误拒」并非只能二选一。**（S-0041，paper）
   - 出处：https://arxiv.org/abs/2606.10860
   - 原文关键句：We formalize a k-level instruction hierarchy problem and instantiate it for k=5 ... raising macro pairwise priority adherence while keeping over-refusal at half the standard DPO rate.
-- **安全—可用性权衡的代价在厂商自述数据里可见：指令层级增强让对抗类指标明显上升，但同期对话胜率与偏好得分出现回退，因此安全侧收益必须以成对指标呈现，不能只报上升的那一列。**（S-0017，vendor）
+- **安全—可用性权衡的代价在厂商自述数据里可见：指令层级增强的同期，对话胜率 0.71→0.66、偏好得分 0.46→0.40 出现回退，因此安全侧收益必须以成对指标呈现。**（S-0017，vendor）
   - 出处：https://openai.com/index/instruction-hierarchy-challenge/
   - 原文关键句：OpenAI's models are trained to follow a clear instruction hierarchy: System > developer > user > tool ... Chat WinRate vs o1 0.71 → 0.66 (-0.05); Preference Score 0.46 → 0.40 (-0.06).
 - **把防御下沉到模型内部表示层可以把梯度类注入攻击的成功率压低数倍，这为「不必靠整段拒绝来换安全」提供了可引用的技术路线；其代价是该方法需要训练或微调，不属于纯提示词手段。**（S-0042，paper）

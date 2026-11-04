@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""gate_prototype.py —— 原型站门控（判据 P01–P45）
+"""gate_prototype.py —— 原型站门控（判据 P01–P46）
 
 判据基线：SCHEMA.md 的「P01–P14」；P15–P22 对应 ADR-001 的 quality_scenarios；
 P23–P32 为「设计系统换底座 + 交互重做」同批新增（见 CRITERIA-CHANGE-P23.md）；
@@ -27,11 +27,14 @@ R-03 对齐为**正文承载页**，两处均带**显式对象集 + 全集闭合
 而 `P01–P41` 这一读数在 13 个源文本 + 1 个生成物里各写一遍、全部陈旧 —— 两类读数**都没有判据会失败**。
 见 `CRITERIA-CHANGE-R11.md`。
 
-★ 判据编号说明（⛔ 不改任何判据的作用域）：本文件的编号集合现为 **P01–P45**（P44/P45 于 2026-11-03
-  第 11 轮新增，见 `CRITERIA-CHANGE-R11.md`）。历史上的「P01–P37」「P01–P40」「P01–P41」都是各自
+★ 判据编号说明（⛔ 不改任何判据的作用域）：本文件的编号集合现为 **P01–P46**（P44/P45 于 2026-11-03
+  第 11 轮新增、P46 于 2026-11-05 第 12 轮新增，见 `CRITERIA-CHANGE-R11.md` / `CRITERIA-CHANGE-R12.md`）。
+  历史上的「P01–P37」「P01–P40」「P01–P41」都是各自
   **时点快照** ⇒ 本段一律写成**引号包裹的提及**，⛔ 不得当成当前读数。
   ★ 从此这条读数**不再靠人维护**：`P44` 逐条断言「文档里的当前声明 = `len(CHECKS)` 的实算」，
     并把未被登记/排除的同类文件判 FAIL（供应链 = 显式对象集 + 排除清单 + 全集闭合断言）。
+  ★ 第 12 轮实证：加 P46 之后 `P44` **当场报出 13 处未跟随**（README 3 / 本文件 2 / a11y 1 / seo 1 /
+    `_ci_gate.sh` 3 / `gate-manifest` 2 / `DESIGN-CONTRACT` 1）⇒ 这正是它该起的作用（第 11 轮建、第 12 轮用）。
 
 ★ **「显式对象集 + 全集闭合断言」是本仓的通用作用域机制（2026-10-16 第 6 轮首次成型）**：
   凡判据只对**某几类对象**生效时，必须同时写出 ① 对象集 ② 排除集（逐条理由）③ `set(受检) == 对象集 ∪ 排除集`
@@ -5740,6 +5743,98 @@ def mut_p45(ctx):
     return out
 
 
+# ---------------------------------------------------------------- P46（2026-11-05 第 12 轮新增）
+# ★ 触发事实（台账 `G18` ⑨ → `K5`）：**分组索引页的 6 列短值表不在任何判据的作用域内** ——
+#   `P35 ⑫` 的切片只覆盖组页的 `#sec-nodes` / `#sec-rel` 两个区块，而分组索引是**跨 11 组的一览表**。
+#   若有人把「说明」这类长文字段塞进这张表，R-11（长文字段一律竖表、零横向滚动）会**静默失效**：
+#   它既不会被 ⑫ 看到，也不会被 ⑪ 看到（⑪ 只作用于组页）。
+# ★ 本条断言**直接量**（列数 + 逐单元格长度），⛔ 不是「列数代理」：对象只有这一张表，可以逐格量。
+#   ★ 与 `P38` 的关系：`P38` 的横向溢出是**渲染期直接量**，但它依赖 `_probe/channel.json`（不入库 ⇒ CI 无对象）；
+#     本条是**纯产物文本**判据，在任何 checkout 上都可跑 ⇒ 两者互补，⛔ 不得把本条读作「替代 P38」。
+
+P46_INDEX_PAGE = "12-groups/index.html"
+P46_INDEX_COLS = 6            # 契约：序号 / 名称 / 节点数 / 层范围 / 组内边 / 已写满
+P46_CELL_CALIBER_MAX = 24     # 单元格 caliber 上界（2026-11-05 实测最长 11，留 2 倍余量）
+
+
+def _p46_rows(table_html):
+    """把一张表解析成 [[(tag, 可见文本), …], …]（tag ∈ {h, d}）。"""
+    rows = []
+    for row in re.findall(r"<tr\b[^>]*>(.*?)</tr>", table_html, re.S):
+        cells = []
+        for tag, body in re.findall(r"<t([hd])\b[^>]*>(.*?)</t\1>", row, re.S):
+            plain = re.sub(r"\s+", "", re.sub(r"<[^>]+>", "", body))
+            cells.append((tag, plain))
+        if cells:
+            rows.append(cells)
+    return rows
+
+
+def check_p46(ctx):
+    """P46 分组索引表：6 列短值表的**直接量**断言（K5 的机检化）。"""
+    text = ctx.html.get(P46_INDEX_PAGE)
+    if text is None:
+        return False, "对象缺失：%s 读不到（分组索引是发布面的一部分）" % P46_INDEX_PAGE
+    tables = re.findall(r"<table\b.*?</table>", text, re.S)
+    if not tables:
+        return False, "空集守卫：分组索引页没有 <table> ⇒ 判据无对象（可能是被改成卡片或整表被删）"
+    bad = []
+    if len(tables) != 1:
+        bad.append(("表数 %d ≠ 1" % len(tables), "分组索引只应有这一张一览表"))
+    rows = _p46_rows(tables[0])
+    if not rows:
+        return False, "空集守卫：表格解析不到任何行（`<tr>` 结构失效）"
+    head = rows[0]
+    if any(tag != "h" for tag, _v in head):
+        bad.append(("首行不是表头（<th>）", [v for _t, v in head][:3]))
+        ncol = len(rows[1]) if len(rows) > 1 else 0
+    else:
+        ncol = len(head)
+        if ncol != P46_INDEX_COLS:
+            bad.append(("列数 %d ≠ 契约 %d" % (ncol, P46_INDEX_COLS), [v for _t, v in head]))
+        for i, row in enumerate(rows[1:], 1):
+            if len(row) != ncol:
+                bad.append(("第 %d 行 %d 列 ≠ 表头 %d 列" % (i, len(row), ncol), ""))
+    over = []
+    longest = 0
+    for i, row in enumerate(rows):
+        for j, (_tag, v) in enumerate(row):
+            longest = max(longest, caliber(v))
+            if caliber(v) > P46_CELL_CALIBER_MAX:
+                over.append((i, j, v))
+    for i, j, v in over[:4]:
+        bad.append(("单元格 caliber %d > %d" % (caliber(v), P46_CELL_CALIBER_MAX),
+                    "r%dc%d %r" % (i, j, v[:24])))
+    if not re.search(r'<div class="table-scroll"[^>]*>\s*<table', text):
+        bad.append(("表格未包在 .table-scroll 容器内", "窄屏没有滚动兜底"))
+    return (not bad), ("表数 %d；列数 %d（契约 %d）；数据行 %d；单元格最长 caliber %d（上界 %d）；违例 %d 处 %s"
+                       % (len(tables), len(head), P46_INDEX_COLS, max(0, len(rows) - 1),
+                          longest, P46_CELL_CALIBER_MAX, len(bad), bad[:4]))
+
+
+def mut_p46(ctx):
+    out = []
+    base = ctx.html.get(P46_INDEX_PAGE)
+    assert base and "<table" in base, "P46 夹具锚点未命中：分组索引页或表格不在"
+    # ① 表头加一列（7 列）⇒ 列数不符，且每行少一列
+    c = copy.deepcopy(ctx)
+    c.html[P46_INDEX_PAGE] = base.replace("<th>已写满</th>", "<th>已写满</th><th>备注</th>", 1)
+    out.append(c)
+    # ② 单元格塞长文本（caliber 超上界）⇒ 短值表的直接量被破坏
+    c = copy.deepcopy(ctx)
+    long_cell = "这是一段很长的补充说明文字，用来占满单元格并破坏一览表的可看齐性"
+    patched, n = re.subn(r"<td>(\d+)</td>",
+                         lambda m: "<td>%s</td>" % long_cell, base, count=1)
+    assert n == 1, "P46 夹具锚点未命中：找不到纯数字单元格"
+    c.html[P46_INDEX_PAGE] = patched
+    out.append(c)
+    # ③ 整表降级为普通块（没有 <table>）⇒ 空集守卫 FAIL
+    c = copy.deepcopy(ctx)
+    c.html[P46_INDEX_PAGE] = base.replace("<table>", '<div class="zz-table">', 1).replace("</table>", "</div>", 1)
+    out.append(c)
+    return out
+
+
 CHECKS = [
     ("P01", "真相源 JSON 合法且必填字段齐全", check_p01, mut_p01),    ("P02", "节点 id 唯一 / group 可解析 / prereq 与 successors 可解析", check_p02, mut_p02),
     ("P03", "rel 闭集 / 无环 / 拓扑层序与边方向一致", check_p03, mut_p03),
@@ -5813,10 +5908,13 @@ CHECKS = [
     ("P43", "图注跨登记表逐字同文（`gen-figs.FIGS[fid].caption` ⟺ `gen-nodes.NODE_FIG[nid]`；"
             "★ 2026-11-02 第 10 轮：存量 `pe-f-06` 两处不同文，台账 G54）", check_p43, mut_p43),
     ("P44", "规模读数 ⟺ 实算（仓根 README 进度表 / 判据编号范围 P01–PN / 单态语汇 / 全集闭合；"
-            "★ 2026-11-03 第 11 轮：README 仍写「已写满 35 / 在册 32」，13 源文本 + 1 生成物仍是 `P01–P41`）",
+            "★ 第 11 轮触发事实：README 曾写「已写满 35 / 在册 32」，13 源文本 + 1 生成物曾是 `P01–P41`；"
+            "第 12 轮加 P46 时它当场报出 13 处未跟随）",
      check_p44, mut_p44),
     ("P45", "门控清单 ⟺ 实现 ⟺ 执行入口（manifest judges 展开 ⟺ 三脚本 CHECKS 双向；fast ⊆ full；"
             "`_ci_gate.sh` 三脚本调用齐备；★ 2026-11-03 第 11 轮收 K1/K2）", check_p45, mut_p45),
+    ("P46", "分组索引表 = 6 列短值表（直接量：列数 / 逐单元格 caliber 上界 / `.table-scroll` 容器；"
+            "★ 2026-11-05 第 12 轮：该表此前**不在任何判据的作用域内**，台账 K5）", check_p46, mut_p46),
 ]
 
 

@@ -60,7 +60,7 @@ npx promptfoo@latest eval -c promptfooconfig.yaml --no-cache
 
 ## 证据
 
-- **官方把「成功标准」与「失败的评测」放在提示工程之前：先界定判据，再决定该改提示词还是该换模型。**（S-0002，official）
+- **官方指出并非所有成功标准或失败的评测都该用提示工程解决（有时换一个模型更省）；本节点据此先界定判据，再决定改提示词还是换模型。**（S-0002，official）
   - 出处：https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/overview
   - 原文关键句：Not every success criteria or failing eval is best solved by prompt engineering. For example, you can sometimes improve latency and cost more easily by selecting a different model.
 - **一次提示词瘦身的收益是在内部评测集上量出来的：评测分数提升 10–15%，同时 token 与成本大幅下降——没有评测集这类改动无法被证实。**（S-0012，official）

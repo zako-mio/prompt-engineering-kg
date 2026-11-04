@@ -71,7 +71,7 @@ assert hits == len(CASES), "分派判据与评测集不一致"
 - **官方把路由与提示词链、并行化（分段与投票）并列写成预定义代码路径下的工作流模式，说明路由是代码层的分派而不是模型自发行为。**（S-0005，official）
   - 出处：https://www.anthropic.com/engineering/building-effective-agents
   - 原文关键句：Workflows are systems where LLMs and tools are orchestrated through predefined code paths. ... Prompt chaining ... Routing ... Parallelization (Sectioning / Voting)
-- **官方明确指出延迟与成本问题有时换一个模型就能改善，因此档位分派应排在继续打磨提示词之前。**（S-0002，official）
+- **官方明确指出延迟与成本问题有时换一个模型就能改善——这说明模型档位本身也是一项可调参数，而不只是提示词写法。**（S-0002，official）
   - 出处：https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/overview
   - 原文关键句：Not every success criteria or failing eval is best solved by prompt engineering. For example, you can sometimes improve latency and cost more easily by selecting a different model.
 - **高推理档模型只需高层指导而普通档模型需要精确指令，所以分派路径时必须连同提示形态一起切换。**（S-0011，official）

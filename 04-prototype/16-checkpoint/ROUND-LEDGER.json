@@ -1088,6 +1088,87 @@
     "G39": "仍在：任务根两个探针与 `_probe/` 脚本不在 P41 扫描面内。"
    },
    "note": "★ 本轮定位：**内容收口后的第一轮质量纵深** —— 不加节点，收「同一事实写多处」的最后一类欠账（**规模读数**）与装置自洽。三件最值钱的：① **新判据当天就要报真缺陷**：P44 首跑 31 处、P45 首跑 4 条（口径修正后），两条都不是空转；② **判据扫源码时会扫到自己**：P44 首版把自带夹具的字面量当读数，与 P41 第 6 轮同型 —— 「夹具字面量必须构造、⛔ 不得写字面量」应成为所有「读源码」的判据的通用纪律；③ **两个扫描面不算两个真相**：审核方报的「G8 读数过期」其实是 `_probe_metrics.py`（全部散文）与 P35 报告项（只取 `.claim`/`.points li`）的口径差 ⇒ 登记 G59，⛔ 不互相引用。★ 如实登记的偏差：P45 首版口径错（A/S 段）报 22 条假阳；P44 首版假阳（夹具字面量 + 子范围）；T6 的 6 条 medium/low 未改（改 claim 需重取一手引文，⛔ 不编造）⇒ G60。"
+  },
+  {
+   "round": 12,
+   "started_at": "2026-11-05T00:17:00+08:00",
+   "ended_at": "2026-11-05T00:40:00+08:00",
+   "rs_touched": [
+    "R-10",
+    "R-19",
+    "R-20",
+    "R-21",
+    "R-22",
+    "R-23",
+    "R-24",
+    "R-25"
+   ],
+   "claims": [
+    {
+     "id": "C-R12-01",
+     "source": "main-agent-rerun",
+     "claim": "开工实测：内容 67/67 · 判据 45（P01–P45）· 三套门控 PASS · 远端与 origin 同步（6016e08）· 站点 200。★ 本轮两类触发都来自**上一轮自己登记的欠账**：① `K5`/`G18` ⑨ —— 分组索引的 6 列短值表不在任何判据的作用域内（`P35 ⑫` 的切片只到组页的 `#sec-nodes`/`#sec-rel`）；② `G60` —— 第 11 轮只读审核报出的 6 条引文语境外推 ＋ 1 条同源同质化。",
+     "raw_output": "=== r12_step1_env.txt ===\n== 结论：PASS ==（至少一条**不同源**的通道可用 ⇒ 可以做真实渲染验证）\n=== r12_step3_gate.txt ===\n== 门控结论：PASS ==  FAIL 0 项 []"
+    },
+    {
+     "id": "C-R12-02",
+     "source": "main-agent-rerun",
+     "claim": "`G60` 处置（⛔ 未编造、⛔ 未补源，全部靠**改作者归纳**或**合并同源证据**）：① `PE-A-06` 两条同引 `S-0032` 的 evidence **合并为一条**（用库里已存的合并引文，3 个 `...` 片段逐字可回源）⇒ 该节点 4 条 evidence 对应 4 个**独立** `source_id`；② 5 条 claim 收回到引文范围内（`PE-A-06` 收窄权限 / `PE-O-02` 先后 / `PE-E-01` 放在之前 / `PE-E-03` 对象跳到裁判 / `PE-A-04` 对抗指标）。★ `C58` 复跑 PASS（节点侧 213 条 evidence / 库内 145 条唯一引文 / 坏 0），⛔ 未动任何 `quote`。",
+     "raw_output": "=== r12_data_selfcheck.txt ===\n[PASS] C29-complete-blocks complete 节点 8 区块全非空（空：[]）\n[PASS] C31-evidence-contract evidence 每条字段齐全且可回源（坏：[]）\n[PASS] C33-terms-resolvable 节点 terms 逐条可在 glossary 解析（未命中：[]）\n[PASS] C58-quote-provenance evidence 引文逐片段可在引文库逐字回源（节点侧 213 条 evidence / 库内 145 条唯一引文，源件 8 个；坏：[]）\n[PASS] C58b-frontier-quotes frontier 侧 18 条 evidence **逐片段全部**可在 A 池逐字回源（★ 第 10 轮 G23 处置：两片作者期注记已换成可回源原文，见 CRITERIA-CHANGE-R10.md）\n== 自检：PASS ==  (FAIL 0 项 / WARN 3 项)"
+    },
+    {
+     "id": "C-R12-03",
+     "source": "main-agent-rerun",
+     "claim": "新增 **P46** 分组索引表 = 6 列短值表（直接量：表数恰 1 / 列数 = 6 / 逐单元格 caliber ≤ 24 / `.table-scroll` 容器），3 条负例全部触发；★ **如实标注：首跑即 PASS，未在引入当天报红**（那张表本来就合规）⇒ 它的价值是「把没人管的一格纳入管辖」，⛔ 不得与 P42/P43/P44 的「引入即红」并列。★ 同时实证了上一轮的机制：加 P46 后 **P44 当场报出 13 处读数未跟随**。",
+     "raw_output": "=== r12_step3_gate.txt ===\n[PASS] P46 分组索引表 = 6 列短值表（直接量：列数 / 逐单元格 caliber 上界 / `.table-scroll` 容器；★ 2026-11-05 第 12 轮：该表此前**不在任何判据的作用域内**，台账 K5）\n       表数 1；列数 6（契约 6）；数据行 11；单元格最长 caliber 10（上界 24）；违例 0 处 []\n=== r12_step4_selftest.txt ===\n[PASS] P46 分组索引表 = 6 列短值表（直接量：列数 / 逐单元格 caliber 上界 / `.table-scroll` 容器；★ 2026-11-05 第 12 轮：该表此前**不在任何判据的作用域内**，台账 K5）\n== 自检结论：PASS ==（46 条判据 / 193 条负例夹具，全部须正向 PASS 且负例触发）"
+    },
+    {
+     "id": "C-R12-04",
+     "source": "main-agent-rerun",
+     "claim": "13 处判据编号读数按 P44 的报错改到位（README 3 / `gate_prototype.py` 2 / `gate_a11y.py` 1 / `gate_seo_meta.py` 1 / `_ci_gate.sh` 3 / `gate-manifest.json` 2 / `DESIGN-CONTRACT.md` 1），`gen-state` 增 `CHANGE_DECL_16`、`ROUND` 11→12、`gates.criteria_change_R12`；P44 复跑 **0 处不一致**，P39 的登记件集合 15 → **16**（断链 0 / 孤儿 0），P45 的清单并集 63 → **64**。",
+     "raw_output": "=== r12_step3_gate.txt ===\n[PASS] P39 判据变更登记件引用解析（三处引用 ⟺ 磁盘存在性，双向闭合；★ 2026-10-16 第 7 轮补④ 结构化出口闭合：`PUBLISH-STATE.gates` 的 `criteria_change_*` 键集合 ⟺ 磁盘登记件集合）\n       引用点 3 处（gate_prototype.py / gen-state.py / PUBLISH-STATE.json）；被引用的登记件 16 个 / 磁盘登记件 16 个 / 结构化出口键 16 个；断链 0 处 / 孤儿 0 处；违例 0 处 []\n       节点 67（写满 67 / 在册 0）；受检页 83；不一致 0 处 []\n[PASS] P44 规模读数 ⟺ 实算（仓根 README 进度表 / 判据编号范围 P01–PN / 单态语汇 / 全集闭合；★ 第 11 轮触发事实：README 曾写「已写满 35 / 在册 32」，13 源文本 + 1 生成物曾是 `P01–P41`；第 12 轮加 P46 时它当场报出 13 处未跟随）\n       节点 67（写满 67 / 在册 0）／分组 11／边 96／页 83（节点 67 ＋ 组 12 ＋ 视图 2 ＋ 交互 1 ＋ 根 1）／图件 78（156 件）／判据 46；受检文档 8；不一致 0 处 []"
+    },
+    {
+     "id": "C-R12-05",
+     "source": "main-agent-rerun",
+     "claim": "收口六步 ＋ 三套门控 ＋ 两档（本机）：env PASS / 渲染 83 页横向溢出 0（87.4s）/ gate P01–P46 PASS（FAIL 0）/ selftest PASS（**46 判据 / 193 夹具**）/ build 二次比对干净 / 几何 PASS；A 段与 S 段各 PASS（含 --selftest）；`_ci_gate.sh fast` 与 `full` 在本机各自真跑并全 PASS。",
+     "raw_output": "=== r12_step2_channel.txt ===\n-- D. 全站横向溢出普查（视口 1440×900；83 页）--\n   [PASS] 全站 83 页：文档级与元素级横向溢出均为 0\n== 结论：PASS ==（用时 87.4s；manifest → 16-checkpoint/_probe/channel.json）\n=== r12_step3_gate.txt ===\n== 门控结论：PASS ==  FAIL 0 项 []\n=== r12_step4_selftest.txt ===\n== 自检结论：PASS ==（46 条判据 / 193 条负例夹具，全部须正向 PASS 且负例触发）\n=== r12_step6_geom.txt ===\n== 几何复算结论：PASS ==\n=== r12_ci_fast.txt ===\n== _ci_gate.sh [fast] 结论：PASS ==\n=== r12_ci_full.txt ===\n== _ci_gate.sh [full] 结论：PASS =="
+    },
+    {
+     "id": "C-R12-06",
+     "source": "main-agent-rerun",
+     "claim": "数据侧与图件面未回归：`_selfcheck.py` PASS（FAIL 0 / WARN 3）；`gen-figs.py --check` 156 件一致；`_selfcheck_figs_spec.py` 78 张全部合规；`P35` 报告项（长文可扫性，`.claim`/`.points li` 口径）读数见原始件（⛔ 不与 `_probe_metrics.py` 的口径互引，见台账 `G59`）。",
+     "raw_output": "=== r12_data_selfcheck.txt ===\n== 自检：PASS ==  (FAIL 0 项 / WARN 3 项)\n=== r12_figs_check.txt ===\n[PASS] 图件 156 件与派生结果一致\n=== r12_figs_spec.txt ===\n== 结论：PASS ==（四发合成探针 + 盘上 78 张真实图件；不符 0 处）\n=== r12_step3_gate.txt ===\n[NOTE] P35 报告项（⛔ 不判 FAIL，按判据分档原则）：**长文可扫性**——逐页最长「无句末标点游程」（caliber 口径，取 `.claim` 与 `.points li` 两个可扫单元）：受检页 81 个；最长 105（11-node-pages/pe-a-04.html）；> 110 的页 0 个 []。★ 为什么只作报告项：实测（`_probe_metrics.py` B 段）全站最长 151 / p90 130 / 中位 78，而「长度合规的散文照样可以是一堵墙」⇒ 无因果阈值可定（与 `CRITERIA-CHANGE-P05.md` 的上限撤销同源）。★ 本条同时是**诚实边界**：门控对「读起来是否成墙」**没有断言**，该面由报告项 + 真实渲染（P38）共同兜。"
+    }
+   ],
+   "artifacts": [
+    "04-prototype/16-checkpoint/gate_prototype.py（+P46 ＋ 3 条夹具；P44 的 CHECKS 标题改为「触发事实」措辞）",
+    "04-prototype/16-checkpoint/gate-manifest.json（judges +P46、generated_by / full / mode_note 的 46 条）",
+    "04-prototype/16-checkpoint/_ci_gate.sh（FAST_ONLY / FULL_ONLY_NO_P38 +P46；三处读数 P01–P46）",
+    "04-prototype/16-checkpoint/gen-state.py（CHANGE_DECL_16、ROUND=12、gates.criteria_change_R12）",
+    "04-prototype/16-checkpoint/CRITERIA-CHANGE-R12.md（六段范式登记件）",
+    "04-prototype/README.md（3 处判据范围 P01–P46）",
+    "04-prototype/16-checkpoint/gate_a11y.py / gate_seo_meta.py / DESIGN-CONTRACT.md（各 1 处读数）",
+    "04-prototype/10-dag-data/dag.json（PE-A-06 合并两条 evidence ＋ 5 条 claim 收回引文范围）",
+    "04-prototype/PUBLISH-STATE.json（重生成：round 12 / 判据 P01–P46 / criteria_change_R12）",
+    "04-prototype/11-node-pages/{pe-a-06,pe-o-02,pe-e-01,pe-e-03,pe-a-04}.html 与 15-md 镜像（重生成）",
+    "04-prototype/16-checkpoint/_probe/r12_*.txt（16 份收口原始输出 ＋ 新增 3 份 P46 夹具证据）"
+   ],
+   "g_list_updates": {
+    "K5": "✅ 已消（P46：分组索引表的 6 列 / 逐单元格 caliber / 容器三组直接量断言 ＋ 3 条夹具）。",
+    "G18": "第 12 轮逐项：⑨ **分组索引 6 列短值表** → ✅ 已消（同 `K5`，P46）；⑧ P35 ⑫ 代理判据仍未退役（留行，需先有 CI 可用的直接量）；⑩ 组页 `intro` 无枚举模式（留行）；⑪ P40 只断结构、如实性不可机检（明文登记）；⑫ P38 不判 PNG 新鲜度（留行）；⑬ `report.html` 的 `<title>` 仍写「第 1 轮」（刻意不改）；⑭ A/S 两段是两个独立脚本（第 11 轮由 P45 机检化）。",
+    "G60": "✅ 已消（2026-11-05 第 12 轮）：6 条引文语境外推**全部**靠改写 claim 收回到引文范围（`PE-A-06` 收窄权限 / `PE-O-02` 先后 / `PE-E-01` 放在之前 / `PE-E-03` 对象跳到裁判 / `PE-A-04` 对抗指标 ＋ 1 条 low），同源同质化（`PE-A-06` 两条 `S-0032`）**合并为一条**、该节点 4 条 evidence 对应 4 个独立 `source_id`；★ ⛔ 未补新源、⛔ 未编造引文（改 claim 不需要新证据，这是本轮的处置原则）。",
+    "G59": "仍在（两个扫描面）：`_probe_metrics.py`（全部散文）与 P35 报告项（`.claim`/`.points li`）口径不同 ⇒ 引用游程读数必须写明口径与日期，⛔ 不得互引。",
+    "G8": "**仍在**（报告项）：长文可扫性不可机检；本轮 P35 报告项读数见 `_probe/r12_step3_gate.txt`（⛔ 不与 G59 的另一口径混用）。",
+    "G61": "新登记（判据文案的时效性）：`P44` 的 CHECKS 标题原写「README 仍写…」这类**现状断言**，修好后它每次运行都在打印一句已不成立的话 ⇒ 本轮改为「触发事实」措辞。★ 教训：判据/生成器的**运行期文案**要写「触发事实」或「守护什么」，⛔ 不写会过期的现状断言。",
+    "K3": "仍在：`_probe/` 目录无判据管辖（本轮又增 20+ 件）。",
+    "K4": "仍在：`P35 ⑫` 代理判据未退役（需先有 CI 可用的直接量替代；`P38` 依赖不入库的 `_probe/channel.json`）。",
+    "K7": "仍在：`G25`（`P41` 窄版），本轮未动。",
+    "K9": "仍在：契约 §4① 的流程偏离（开工期落盘 vs 收口期一次性）仍未裁决；第 12 轮第五次沿用收口期落盘并在 note 明示。",
+    "G38": "仍在：`PE-E-03` / `PE-A-05` 的核心机制句无一手可引用原文（⛔ 未改、⛔ 未编造）。",
+    "G39": "仍在：任务根两个探针与 `_probe/` 脚本不在 `P41` 扫描面内。"
+   },
+   "note": "★ 本轮定位：**内容语义收口 ＋ 一个「没人管的对象」判据化**，仍不加节点。三件最值钱的：① **P44 第一次被真实使用** —— 加 P46 后它当场报出 13 处读数未跟随，第 11 轮建的机制在第 12 轮立刻兑现；② **`G60` 的处置原则** —— 引文语境外推**不必补新源**：把作者归纳收回到引文范围即可（⛔ 不编造），同源同质化的正解是**合并**而不是「再找一条凑数」；③ **判据的运行期文案不能写现状** —— `P44` 的标题曾写「README 仍写 35/32」，修好之后它每次运行都在打印一句已不成立的话 ⇒ `G61`。★ 如实登记的偏差：P46 **首跑即绿**（对象本来就合规），与 P42/P43/P44 的「引入即红」形态不同，⛔ 不得并列引用；`K3/K4/K7/K9/G38/G39/G59` 仍开。"
   }
  ]
 }

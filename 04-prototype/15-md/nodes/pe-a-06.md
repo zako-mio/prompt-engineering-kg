@@ -61,19 +61,16 @@ PY
 
 ## 证据
 
-- **官方风险正文指出，模型在架构上不给指令与数据做区分，且提示注入是当前生成式 AI 的固有性质，因此不存在可靠的拦截式防线。**（S-0032，official）
+- **官方风险正文指出，模型在架构上不给指令与数据做区分、提示注入是当前生成式 AI 的固有性质，且不存在可靠的拦截式防线 ⇒ 防御必须转向架构性。**（S-0032，official）
   - 出处：https://raw.githubusercontent.com/GenAI-Security-Project/GenAI-LLM-Top10/main/2026/final/LLM01_PromptInjection.md
-  - 原文关键句：LLMs make no architectural distinction between "instructions" and "data"... Prompt injection is intrinsic to current generative AI...
-- **同一份官方正文给出的处置口径是转向架构性防御，而不是继续在单一提示层加拦截：这正支持「收窄权限」是标注四步里不可省的一环。**（S-0032，official）
-  - 出处：https://raw.githubusercontent.com/GenAI-Security-Project/GenAI-LLM-Top10/main/2026/final/LLM01_PromptInjection.md
-  - 原文关键句：no reliable prevention mechanism exists today... Defense is therefore architectural rather than interceptive.
+  - 原文关键句：LLMs make no architectural distinction between "instructions" and "data"... Prompt injection is intrinsic to current generative AI... Defense is therefore architectural rather than interceptive.
 - **一手论文的实验证据表明，模型常把系统提示与来自不可信用户和第三方的文本视为同等优先级，说明优先级顺序不会自动生效，必须由外部标注来显式声明。**（S-0040，paper）
   - 出处：https://arxiv.org/abs/2404.13208
   - 原文关键句：LLMs often consider system prompts (e.g., text from an application developer) to be the same priority as text from untrusted users and third parties
 - **预印本把优先级形式化为 k 层指令层级问题，并给出可提升优先级遵循率的训练方法：这是标注体系在模型侧的对应研究与量化证据，属预印本级别。**（S-0041，paper）
   - 出处：https://arxiv.org/abs/2606.10860
   - 原文关键句：We formalize a k-level instruction hierarchy problem and instantiate it for k=5, yielding ten pairwise priority relations ... GW-DPO with the bilateral schedule Pareto-improves over standard DPO
-- **预印本指出智能体系统带来间接提示注入、代码执行利用与 RAG 索引投毒等新向量，并主张必须纵深防御、不存在单一可靠屏障，为标注之外还要收窄权限提供依据，属预印本级别。**（S-0044，paper）
+- **预印本指出智能体系统带来间接提示注入、代码执行利用与 RAG 索引投毒等新向量，并主张必须纵深防御、不存在单一可靠屏障，（预印本级别；本文由此把收窄权限列为纵深的一层）。**（S-0044，paper）
   - 出处：https://arxiv.org/abs/2603.22928
   - 原文关键句：agentic systems introduce new vectors for indirect prompt injection, code execution exploits... Defense-in-depth is therefore mandatory: no single safeguard is reliable under worst-case inputs.
 

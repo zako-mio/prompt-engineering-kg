@@ -150,7 +150,17 @@ CHANGE_DECL_15 = ("16-checkpoint/CRITERIA-CHANGE-R11.md（2026-11-03 第 11 轮�
                   "⇒ 台账 `G51` 的真残余；⛔ 不是重开已消的账）。④ 本条所述「判据数」不再写死：`GATE_DECL` 改为由"
                   "`gate_prototype.CHECKS` **派生**。★ 两条新判据均**进 push 档**（只读文档与脚本文本，成本可忽略）。")
 
-ROUND = 11     # ★ 2026-11-03 第 11 轮：产出本快照的轮次（规模读数单一出口 + 装置自洽判据 + 可扫性收口）
+CHANGE_DECL_16 = ("16-checkpoint/CRITERIA-CHANGE-R12.md（2026-11-05 第 12 轮判据变更：**新增 P46**，"
+                  "并把 `G60` 的 6 条引文语境外推与 1 条同源同质化收口。① 新增 **P46** 分组索引表 = 6 列短值表："
+                  "断言表数恰 1、列数 = 6、逐单元格 caliber ≤ 24、表格在 `.table-scroll` 容器内 —— 该表此前"
+                  "**不在任何判据的作用域内**（`P35 ⑫` 只覆盖组页的 `#sec-nodes`/`#sec-rel` 切片）⇒ 收台账 `K5`。"
+                  "② 内容侧：`PE-A-06` 两条同引 `S-0032` 的 evidence **合并为一条**（同一段落两个命题，⛔ 不虚增证据条数），"
+                  "并改写 5 条 claim 使其不越过所引原文（`PE-A-06` 的「收窄权限」、`PE-O-02` 的「先后」、"
+                  "`PE-E-01` 的「放在之前」、`PE-E-03` 的「裁判偏差」、`PE-A-04` 的「对抗指标上升」）⇒ 收台账 `G60`。"
+                  "★ `P46` **进 push 档**（只读产物文本）。★ 本条也是 `P44` 的第一次真实使用：加 P46 后它当场报出"
+                  "13 处读数未跟随（README 3 / 三脚本 4 / `_ci_gate.sh` 3 / 清单 2 / 契约 1）。")
+
+ROUND = 12     # ★ 2026-11-05 第 12 轮：产出本快照的轮次（内容语义收口 + 分组索引表判据化）
 
 
 MD_EXTS = (".md",)
@@ -254,6 +264,7 @@ def state_doc():
                   "criteria_change_R09": CHANGE_DECL_13,
                   "criteria_change_R10": CHANGE_DECL_14,
                   "criteria_change_R11": CHANGE_DECL_15,
+                  "criteria_change_R12": CHANGE_DECL_16,
                   "assets": ASSET_DECL},
         "repo": None,
     }

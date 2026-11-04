@@ -67,7 +67,7 @@ PY
 - **官方把 evaluator-optimizer（生成者—评估者）列为五种工作流模式之一：评估者是编排回路中的独立角色，其判断直接决定迭代方向，因此裁判偏差会沿回路放大，必须被单独控制。**（S-0005，official）
   - 出处：https://www.anthropic.com/engineering/building-effective-agents
   - 原文关键句：Workflows are systems where LLMs and tools are orchestrated through predefined code paths. … Parallelization (Sectioning / Voting) … Orchestrator-workers … Evaluator-optimizer.
-- **位置类偏差的强度不是常数：在长上下文检索场景中，输入占上下文窗口比例超过约一半后，首因偏差减弱而近因偏差保持稳定，原本的中间位置效应被距离型偏差取代 ⇒ 位置偏差需按输入规模重新标定，不能当作固定的分数偏移量。**（S-0064，paper）
+- **位置类偏差的强度不是常数：在长上下文输入场景中，输入占窗口比例超过约一半后首因偏差减弱、近因偏差保持稳定 ⇒ 至少在这类场景下位置效应须按输入规模标定，不能当作固定偏移量。**（S-0064，paper）
   - 出处：https://arxiv.org/abs/2508.07479
   - 原文关键句：the LiM effect is strongest when inputs occupy up to 50% of a model's context window. Beyond that, the primacy bias weakens, while recency bias remains relatively stable.
 

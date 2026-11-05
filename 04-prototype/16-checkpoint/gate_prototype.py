@@ -5961,6 +5961,19 @@ def mut_p47(ctx):
     c = copy.deepcopy(ctx)
     c.p47_probe = s
     out.append(c)
+    # ⑤ 空集：台账 entries 为空 ⇒ 空集守卫（★ 方法论 §4.1：空集必须判 FAIL，不能恒真）
+    s = copy.deepcopy(base)
+    s["manifest"]["entries"] = []
+    s["manifest"]["count"] = 0
+    c = copy.deepcopy(ctx)
+    c.p47_probe = s
+    out.append(c)
+    # ⑥ 空集：磁盘一件都扫不到（目录被清空 / 扫描口径打错）⇒ 空集守卫
+    s = copy.deepcopy(base)
+    s["files"] = {}
+    c = copy.deepcopy(ctx)
+    c.p47_probe = s
+    out.append(c)
     return out
 
 

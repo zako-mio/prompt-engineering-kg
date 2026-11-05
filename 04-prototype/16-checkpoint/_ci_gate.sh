@@ -10,7 +10,7 @@
 #     · **fast 档**（默认，每次 push）：只跑**不依赖渲染证据**的判据子集 + A/S 两段全量 + 幂等复跑。
 #       ⛔ 排除 P38（它要解码 PNG 并与 `_probe/channel.json` 的事实一致 —— 那是**开工期**的探测，
 #          不是每次构建都该重跑的东西）与 P41（源文件散文扫描：那是**轮次收口**的对象）。
-#     · **full 档**（`workflow_dispatch` ＋ 每周一次）：跑全部 P01–P46 ＋ `--selftest` ＋ 数据自检 ＋
+#     · **full 档**（`workflow_dispatch` ＋ 每周一次）：跑全部 P01–P47 ＋ `--selftest` ＋ 数据自检 ＋
 #       图件规格两侧探针。★ 这才是「全绿」的口径。
 #       ★ 2026-10-19 第 9 轮实测补：**P38 有对象条件** —— 它读 `_probe/channel.json`（本机渲染通道
 #         探测件），而 `_probe/` 按 `.gitignore` 规则② **整层不入库** ⇒ **CI 上该文件不存在**。
@@ -30,12 +30,12 @@ cd "$HERE"
 # ★ 本档显式声明它**跑**哪些判据、**不跑**哪些 —— ⛔ 不用「默认全跑」：
 #   排除集必须逐条给理由，否则「漏跑」与「有意不跑」无法区分（这正是本仓 R-23 的纪律）。
 FAST_ONLY="P02,P03,P04,P05,P06,P07,P08,P09,P10,P11,P12,P13,P14,P15,P16,P17,P18,P19,P20,P21,P22,P23,P24,P25,P26,P27,P28,P29,P30,P31,P32,P33,P34,P35,P36,P37,P39,P40,P42,P43,P44,P45,P46"
-FAST_NOTRUN_REASON="P01 属真相源解析（由 P02–P07 覆盖其后果）；P38 需渲染证据与开工期探测；P41 是轮次收口的对象。★ 第 10 轮起 P42/P43 **进 push 档**（它们只读产物与登记表，成本可忽略，且文案/图注漂移正是每次 push 都该拦的面）；★ 第 11 轮起 P44/P45 **同样进 push 档**（只读文档与脚本文本，成本可忽略；规模读数漂移与「清单↔实现↔入口」脱钩正是每次 push 都该拦的面）；★ 第 12 轮起 P46 **也进 push 档**（只读分组索引页的表格结构，成本可忽略）"
+FAST_NOTRUN_REASON="P01 属真相源解析（由 P02–P07 覆盖其后果）；P38 需渲染证据与开工期探测；P41 是轮次收口的对象。★ 第 10 轮起 P42/P43 **进 push 档**（它们只读产物与登记表，成本可忽略，且文案/图注漂移正是每次 push 都该拦的面）；★ 第 11 轮起 P44/P45 **同样进 push 档**（只读文档与脚本文本，成本可忽略；规模读数漂移与「清单↔实现↔入口」脱钩正是每次 push 都该拦的面）；★ 第 12 轮起 P46 **也进 push 档**（只读分组索引页的表格结构，成本可忽略）；★ 第 13 轮起 P47 **不进任何 CI 档**：它的对象 `_probe/MANIFEST.json` 按规则②不入库 ⇒ CI 上无对象（与 P38 同一处置，见 FULL_P38_NOTRUN_REASON）"
 
 # ★ full 档的 P38 对象条件（见文件头 ★ 2026-10-19 第 9 轮实测补）：
 #   对象在 ⇒ 跑全量（含 P38）；对象不在 ⇒ 显式排除 P38 并打印理由（⛔ 不静默通过）。
 FULL_ONLY_NO_P38="P01,P02,P03,P04,P05,P06,P07,P08,P09,P10,P11,P12,P13,P14,P15,P16,P17,P18,P19,P20,P21,P22,P23,P24,P25,P26,P27,P28,P29,P30,P31,P32,P33,P34,P35,P36,P37,P39,P40,P41,P42,P43,P44,P45,P46"
-FULL_P38_NOTRUN_REASON="P38 的对象 _probe/channel.json 不在库（.gitignore 规则②把过程证据整层排除）⇒ 本环境显式排除 P38；★ 本机存在该文件时 full 档照跑 P38（本档⛔ 不得读作「像素层已验证」）"
+FULL_P38_NOTRUN_REASON="P38 的对象 _probe/channel.json 不在库（.gitignore 规则②把过程证据整层排除）⇒ 本环境显式排除 P38；★ 本机存在该文件时 full 档照跑 P38（本档⛔ 不得读作「像素层已验证」）；★ 第 13 轮起 P47 同因被排除 —— 它的对象 _probe/MANIFEST.json 同属规则②（本档⛔ 不得读作「过程证据已登记」）"
 
 # ★ full 档的 **C58 对象条件**（★ 2026-10-19 第 9 轮 CI 对象审计当场报出，见 CRITERIA-CHANGE-R09.md）：
 #   数据侧自检的 C58 读 `01-research/evidence/A*.json`，而 `01-research/` 按规则①**整层不入库**
@@ -53,12 +53,12 @@ python3 build-all.py --dry-run | tail -6 || rc=1
 
 if [ "$MODE" = "full" ]; then
   if [ -f _probe/channel.json ]; then
-    step "[full] gate_prototype P01–P46（全量；本机存在 _probe/channel.json ⇒ 含 P38）"
+    step "[full] gate_prototype P01–P47（全量；本机存在 _probe/channel.json 与 _probe/MANIFEST.json ⇒ 含 P38 与 P47）"
     python3 gate_prototype.py || rc=1
     step "[full] gate_prototype --selftest（逐条负例）"
     python3 gate_prototype.py --selftest || rc=1
   else
-    step "[full] gate_prototype --only（P01–P46 减 P38；本环境无 _probe/channel.json）"
+    step "[full] gate_prototype --only（P01–P47 减 P38 与 P47；本环境无 `_probe/`）"
     printf '   （本档有意不跑：%s）\n' "$FULL_P38_NOTRUN_REASON"
     python3 gate_prototype.py --only "$FULL_ONLY_NO_P38" || rc=1
     step "[full] gate_prototype --selftest --only（同一对象集）"

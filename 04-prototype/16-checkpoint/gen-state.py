@@ -160,7 +160,16 @@ CHANGE_DECL_16 = ("16-checkpoint/CRITERIA-CHANGE-R12.md（2026-11-05 第 12 轮�
                   "★ `P46` **进 push 档**（只读产物文本）。★ 本条也是 `P44` 的第一次真实使用：加 P46 后它当场报出"
                   "13 处读数未跟随（README 3 / 三脚本 4 / `_ci_gate.sh` 3 / 清单 2 / 契约 1）。")
 
-ROUND = 12     # ★ 2026-11-05 第 12 轮：产出本快照的轮次（内容语义收口 + 分组索引表判据化）
+CHANGE_DECL_17 = ("16-checkpoint/CRITERIA-CHANGE-R13.md（2026-11-05 第 13 轮判据变更：**新增 P47**，"
+                  "并给 `G38` 的两个节点各补一条一手可引用原文。① 新增 **P47** 过程证据台账闭合："
+                  "`_probe/MANIFEST.json` ⟺ 磁盘件（双向闭合 + 逐件字节/sha256 + 类/轮次字段域）—— "
+                  "该目录按 `.gitignore` 规则②**整层不入库且此前没有任何判据管辖**（台账 `K3` / `G18` ⑯）"
+                  "⇒ 收 `K3`。② `G38`：`PE-E-03` 补 `S-0125`（MT-Bench 三类裁判偏差的一手出处）、"
+                  "`PE-A-05` 补 `S-0126`（「不要提到 X」的讽刺性反弹实验）⇒ 两个节点的核心机制句"
+                  "**不再无一手引文**。★ `P47` **不进任何 CI 档**（对象不入库，与 `P38` 同一处置），"
+                  "`P45` 的对象条件豁免集相应扩为 {P38, P47}。")
+
+ROUND = 13     # ★ 2026-11-05 第 13 轮：产出本快照的轮次（`G38` 补源 + 过程证据台账判据化）
 
 
 MD_EXTS = (".md",)
@@ -265,6 +274,7 @@ def state_doc():
                   "criteria_change_R10": CHANGE_DECL_14,
                   "criteria_change_R11": CHANGE_DECL_15,
                   "criteria_change_R12": CHANGE_DECL_16,
+                  "criteria_change_R13": CHANGE_DECL_17,
                   "assets": ASSET_DECL},
         "repo": None,
     }

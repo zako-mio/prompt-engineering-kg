@@ -2891,6 +2891,13 @@
           "url": "https://arxiv.org/abs/2508.07479",
           "quote": "the LiM effect is strongest when inputs occupy up to 50% of a model's context window. Beyond that, the primacy bias weakens, while recency bias remains relatively stable.",
           "tier": "paper"
+        },
+        {
+          "claim": "模型裁判的位置、冗长与自我偏好三类偏差由一手研究系统列出，并同时给出部分缓解方案：偏差是评测设计的固定项，不是偶发噪声。",
+          "source_id": "S-0125",
+          "url": "https://arxiv.org/abs/2306.05685",
+          "quote": "We examine the usage and limitations of LLM-as-a-judge, including position, verbosity, and self-enhancement biases ... propose solutions to mitigate some of them.",
+          "tier": "paper"
         }
       ],
       "terms": [
@@ -3757,6 +3764,13 @@
           "url": "https://ai.google.dev/gemini-api/docs/prompting-strategies",
           "quote": "Be precise and direct ... Avoid unnecessary or overly persuasive language.",
           "tier": "official"
+        },
+        {
+          "claim": "「不要提到 X」这类否定指令会让被禁概念在模型内部一并激活：压制需要先激活，因而可能引发讽刺性反弹，且实验中反弹在否定之后立即出现。该结论来自单一预印本与开源模型，并限定这种指令形态。",
+          "source_id": "S-0126",
+          "url": "https://arxiv.org/abs/2511.12381",
+          "quote": "suppressing a concept requires internally activating it, which may prime rebound instead of avoidance. ... rebound consistently arises immediately after negation",
+          "tier": "paper"
         }
       ],
       "terms": [

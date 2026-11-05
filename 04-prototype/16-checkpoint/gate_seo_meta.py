@@ -3,7 +3,7 @@
 """gate_seo_meta.py —— 发布级 head 元数据与站点级发现协议门控（判据 S1–S11，**硬档**）
 
 ★ 为什么单独一个门控文件（2026-10-16 第 8 轮，SH0–SH5 的 SH4 基线）：
-  head 元数据是**搜索引擎与社交抓取器**的接口，与 `gate_prototype.py` 的 P01–P46（本站自建判据族）
+  head 元数据是**搜索引擎与社交抓取器**的接口，与 `gate_prototype.py` 的 P01–P47（本站自建判据族）
   来源不同；混在一起会让「这条判据出自哪条要求」无法回答。⇒ 分文件、判据编号前缀（S）区分。
   ⛔ 判据实现**不复制**：本文件一律 `import` `gate_prototype` 的工具（`load_ctx`、`_link_tags`、
   `_abs_url` 的真相源 `gen-common`、`SITE_BASE_URL`）。

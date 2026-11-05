@@ -70,6 +70,9 @@ PY
 - **位置类偏差的强度不是常数：在长上下文输入场景中，输入占窗口比例超过约一半后首因偏差减弱、近因偏差保持稳定 ⇒ 至少在这类场景下位置效应须按输入规模标定，不能当作固定偏移量。**（S-0064，paper）
   - 出处：https://arxiv.org/abs/2508.07479
   - 原文关键句：the LiM effect is strongest when inputs occupy up to 50% of a model's context window. Beyond that, the primacy bias weakens, while recency bias remains relatively stable.
+- **模型裁判的位置、冗长与自我偏好三类偏差由一手研究系统列出，并同时给出部分缓解方案：偏差是评测设计的固定项，不是偶发噪声。**（S-0125，paper）
+  - 出处：https://arxiv.org/abs/2306.05685
+  - 原文关键句：We examine the usage and limitations of LLM-as-a-judge, including position, verbosity, and self-enhancement biases ... propose solutions to mitigate some of them.
 
 ## 术语
 

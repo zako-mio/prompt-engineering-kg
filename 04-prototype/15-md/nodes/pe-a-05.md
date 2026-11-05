@@ -67,6 +67,9 @@ print("负向指令 %d 条，已配正向改写 %d 条" % (total, hits))
 - **另一家厂商的官方提示指南同样以「精确直接、避免不必要的说服性语言」表达相近方向，可作旁证但非同一命题。**（S-0018，official）
   - 出处：https://ai.google.dev/gemini-api/docs/prompting-strategies
   - 原文关键句：Be precise and direct ... Avoid unnecessary or overly persuasive language.
+- **「不要提到 X」这类否定指令会让被禁概念在模型内部一并激活：压制需要先激活，因而可能引发讽刺性反弹，且实验中反弹在否定之后立即出现。该结论来自单一预印本与开源模型，并限定这种指令形态。**（S-0126，paper）
+  - 出处：https://arxiv.org/abs/2511.12381
+  - 原文关键句：suppressing a concept requires internally activating it, which may prime rebound instead of avoidance. ... rebound consistently arises immediately after negation
 
 ## 术语
 

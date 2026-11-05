@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""gate_prototype.py —— 原型站门控（判据 P01–P46）
+"""gate_prototype.py —— 原型站门控（判据 P01–P47）
 
 判据基线：SCHEMA.md 的「P01–P14」；P15–P22 对应 ADR-001 的 quality_scenarios；
 P23–P32 为「设计系统换底座 + 交互重做」同批新增（见 CRITERIA-CHANGE-P23.md）；
@@ -27,8 +27,8 @@ R-03 对齐为**正文承载页**，两处均带**显式对象集 + 全集闭合
 而 `P01–P41` 这一读数在 13 个源文本 + 1 个生成物里各写一遍、全部陈旧 —— 两类读数**都没有判据会失败**。
 见 `CRITERIA-CHANGE-R11.md`。
 
-★ 判据编号说明（⛔ 不改任何判据的作用域）：本文件的编号集合现为 **P01–P46**（P44/P45 于 2026-11-03
-  第 11 轮新增、P46 于 2026-11-05 第 12 轮新增，见 `CRITERIA-CHANGE-R11.md` / `CRITERIA-CHANGE-R12.md`）。
+★ 判据编号说明（⛔ 不改任何判据的作用域）：本文件的编号集合现为 **P01–P47**（P44/P45 于 2026-11-03
+  第 11 轮新增、P46 于 2026-11-05 第 12 轮新增、P47 于同一天第 13 轮新增，见 `CRITERIA-CHANGE-R11.md` / `CRITERIA-CHANGE-R12.md` / `CRITERIA-CHANGE-R13.md`）。
   历史上的「P01–P37」「P01–P40」「P01–P41」都是各自
   **时点快照** ⇒ 本段一律写成**引号包裹的提及**，⛔ 不得当成当前读数。
   ★ 从此这条读数**不再靠人维护**：`P44` 逐条断言「文档里的当前声明 = `len(CHECKS)` 的实算」，
@@ -5702,7 +5702,9 @@ def check_p45(ctx):
         bad.append(("fast 不在 full 内", cid, "fast 档跑、full 档反而漏跑"))
     for cid in sorted(full - p_impl):
         bad.append(("full 档幽灵判据", cid, "full 档跑了一条不存在的 P 段判据"))
-    for cid in sorted(p_impl - full - {"P38"}):
+    # ★ 2026-11-05 第 13 轮：豁免集从 {P38} 扩为 {P38, P47} —— 两者都是**对象条件**判据
+    #   （对象 `_probe/` 整层按规则②不入库 ⇒ CI 上无对象），由 `_ci_gate.sh` 显式排除并打印理由。
+    for cid in sorted(p_impl - full - {"P38", "P47"}):
         bad.append(("full 档漏跑", cid, "实现里有、full 档既没跑也没声明对象条件"))
     for fn in P45_SCRIPTS:
         if not re.search(r"python3\s+%s\b" % re.escape(fn), sh):
@@ -5835,6 +5837,133 @@ def mut_p46(ctx):
     return out
 
 
+
+# ---------------------------------------------------------------- P47（2026-11-05 第 13 轮新增）
+# ★ 触发事实（台账 `K3` ← `G18` ⑯）：`_probe/` 是**取证件与核对台的存放地**，按 `.gitignore` 规则②
+#   整层不入库，且此前**没有任何判据管辖** —— 每轮新增十几件，删改与替换不留痕；
+#   `_probe/README.md` 的五类寿命表只能靠人读。⇒ 给该目录一份**台账**（`MANIFEST.json`）并机检其闭合。
+# ★ 本条断言**结构闭合 + 逐件指纹**（可判假），⛔ 不断言「某一类到底该不该删」——那是人读的面。
+# ★ 对象条件（与 `P38` 同类）：对象 `_probe/MANIFEST.json` 按规则②不入库 ⇒ CI 上无对象。
+#   本机（对象在盘上）必须 PASS；对象不在盘上时**只有**调用方显式声明 `PEKG_PROBE_ABSENT=1`
+#   才打印 `[SKIP]` 并给出理由，⛔ 不静默通过。CI 档按 `_ci_gate.sh` 的显式排除集处理（与 P38 同一处置）。
+# ★ 扫描口径只此一处：`_probe_manifest.py` 的 `snapshot()`；⛔ 不在判据里另写一份扫描规则（两处必漂移）。
+
+P47_ENV = "PEKG_PROBE_ABSENT"
+
+
+def _p47_pm():
+    return _imp(os.path.join(HERE, "_probe_manifest.py"), "pekg_probe_manifest")
+
+
+def _p47_snapshot():
+    return _p47_pm().snapshot()
+
+
+def check_p47(ctx):
+    """P47 过程证据台账：`_probe/MANIFEST.json` ⟺ 磁盘件（双向闭合 + 逐件字节/sha256）。"""
+    pm = _p47_pm()
+    snap = getattr(ctx, "p47_probe", None)
+    if snap is None:
+        if not os.path.isdir(pm.PROBE_DIR):
+            if os.environ.get(P47_ENV) == "1":
+                return True, ("[SKIP] 本 checkout 无 `_probe/`（过程证据层按 .gitignore 规则②不入库）"
+                              " ⇒ 本判据**无对象**；★ 由调用方显式声明（%s=1），⛔ 不是静默通过、"
+                              "⛔ 不得读作「过程证据已登记」" % P47_ENV)
+            return False, ("对象缺失：`_probe/` 不在盘上，且调用方未显式声明（%s=1）⇒ ⛔ 不静默放行；"
+                           "★ 若这是全新 checkout，请显式声明后重跑" % P47_ENV)
+        snap = _p47_snapshot()
+    man, files = snap.get("manifest"), (snap.get("files") or {})
+    if man is None:
+        return False, ("对象缺失：`_probe/MANIFEST.json` 读不到（%s）"
+                       " ⇒ 先跑 `python3 _probe_manifest.py --write`" % snap.get("manifest_error"))
+    entries = man.get("entries") or []
+    if not entries:
+        return False, "空集守卫：台账 entries 为空 ⇒ 判据恒真"
+    if not files:
+        return False, "空集守卫：磁盘一件都扫不到 ⇒ 判据恒真"
+    bad = []
+    enum = set(pm.CLASS_ENUM)
+    man_by_path = {}
+    for i, e in enumerate(entries):
+        p = e.get("path")
+        if not isinstance(p, str) or not p:
+            bad.append(("#%d" % i, "缺 path"))
+            continue
+        if p in man_by_path:
+            bad.append((p, "台账内重复登记"))
+            continue
+        man_by_path[p] = e
+        if not isinstance(e.get("bytes"), int) or e.get("bytes", -1) < 0:
+            bad.append((p, "bytes 非法"))
+        if not pm.HEX64.match(str(e.get("sha256", ""))):
+            bad.append((p, "sha256 非法"))
+        if e.get("class") not in enum:
+            bad.append((p, "class 越界 %r" % (e.get("class"),)))
+        if not re.match(r"^(r\d+|legacy)$", str(e.get("round", ""))):
+            bad.append((p, "round 非法 %r" % (e.get("round"),)))
+        if not isinstance(e.get("deletable"), bool):
+            bad.append((p, "deletable 非布尔"))
+    if man.get("schema") != "probe-evidence-manifest/1":
+        bad.append(("schema", "≠ probe-evidence-manifest/1"))
+    if man.get("count") != len(entries):
+        bad.append(("count=%r" % (man.get("count"),), "≠ entries %d" % len(entries)))
+    missing = sorted(set(man_by_path) - set(files))
+    orphan = sorted(set(files) - set(man_by_path))
+    for p in missing[:5]:
+        bad.append((p, "清单有、磁盘无（断链）"))
+    for p in orphan[:5]:
+        bad.append((p, "磁盘有、清单无（孤儿）"))
+    fp_bad = []
+    for p in sorted(set(files) & set(man_by_path)):
+        e = man_by_path[p]
+        if e.get("sha256") != files[p].get("sha256") or e.get("bytes") != files[p].get("bytes"):
+            fp_bad.append(p)
+    for p in fp_bad[:5]:
+        bad.append((p, "指纹不符（字节或 sha256 与台账不一致）"))
+    counts = {}
+    for e in man_by_path.values():
+        counts[e.get("class")] = counts.get(e.get("class"), 0) + 1
+    return (not bad), ("清单 %d 件 ⟺ 磁盘 %d 件；断链 %d / 孤儿 %d / 指纹不符 %d；分类 %s；违例 %d 处 %s"
+                       % (len(man_by_path), len(files), len(missing), len(orphan), len(fp_bad),
+                          " / ".join("%s %d" % (k, counts[k]) for k in sorted(counts)), len(bad), bad[:4]))
+
+
+def mut_p47(ctx):
+    pm = _p47_pm()
+    base = pm.snapshot()
+    assert base.get("manifest") and base.get("files"), "P47 夹具锚点未命中：台账或磁盘为空"
+    out = []
+    # ① 磁盘多一件（孤儿）：新增取证件未登记
+    s = copy.deepcopy(base)
+    s["files"]["r13_stray-unregistered.txt"] = {"bytes": 3, "sha256": "0" * 64}
+    c = copy.deepcopy(ctx)
+    c.p47_probe = s
+    out.append(c)
+    # ② 清单多一件（断链）：登记件已被删却仍留在台账
+    s = copy.deepcopy(base)
+    e = copy.deepcopy(s["manifest"]["entries"][0])
+    e["path"] = "r13_ghost-deleted.txt"
+    s["manifest"]["entries"].append(e)
+    s["manifest"]["count"] = len(s["manifest"]["entries"])
+    c = copy.deepcopy(ctx)
+    c.p47_probe = s
+    out.append(c)
+    # ③ 指纹不符：内容被替换（覆盖式重跑 / 手改）而台账未跟随
+    s = copy.deepcopy(base)
+    p0 = s["manifest"]["entries"][0]["path"]
+    s["files"][p0]["sha256"] = "f" * 64
+    c = copy.deepcopy(ctx)
+    c.p47_probe = s
+    out.append(c)
+    # ④ 分类越界：台账字段被写成枚举外的值
+    s = copy.deepcopy(base)
+    s["manifest"]["entries"][0]["class"] = "mystery"
+    c = copy.deepcopy(ctx)
+    c.p47_probe = s
+    out.append(c)
+    return out
+
+
 CHECKS = [
     ("P01", "真相源 JSON 合法且必填字段齐全", check_p01, mut_p01),    ("P02", "节点 id 唯一 / group 可解析 / prereq 与 successors 可解析", check_p02, mut_p02),
     ("P03", "rel 闭集 / 无环 / 拓扑层序与边方向一致", check_p03, mut_p03),
@@ -5915,6 +6044,8 @@ CHECKS = [
             "`_ci_gate.sh` 三脚本调用齐备；★ 2026-11-03 第 11 轮收 K1/K2）", check_p45, mut_p45),
     ("P46", "分组索引表 = 6 列短值表（直接量：列数 / 逐单元格 caliber 上界 / `.table-scroll` 容器；"
             "★ 2026-11-05 第 12 轮：该表此前**不在任何判据的作用域内**，台账 K5）", check_p46, mut_p46),
+    ("P47", "过程证据台账闭合（`_probe/MANIFEST.json` ⟺ 磁盘件：双向闭合 + 逐件字节/sha256；"
+            "★ 2026-11-05 第 13 轮：该目录此前**没有任何判据管辖**，台账 K3）", check_p47, mut_p47),
 ]
 
 

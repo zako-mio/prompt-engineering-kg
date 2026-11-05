@@ -2,8 +2,8 @@
   "meta": {
     "as_of": "2026-10",
     "edition": "v1",
-    "count": 124,
-    "provenance": "全部条目取自 01-research/evidence/A1-official-specs.json、A2-academic-frontier.json、A3-toolchain.json、A4-tutorial-ecosystem.json、A5-report-audit.json 中已回源的真实 URL；未新增任何未经回源的条目。；第 10 轮追加 S-0116–S-0124（主 Agent 亲自取回，见 `01-research/evidence/A8-round10-acquisition.json`）。",
+    "count": 126,
+    "provenance": "全部条目取自 01-research/evidence/A1-official-specs.json、A2-academic-frontier.json、A3-toolchain.json、A4-tutorial-ecosystem.json、A5-report-audit.json 中已回源的真实 URL；未新增任何未经回源的条目。；第 10 轮追加 S-0116–S-0124（主 Agent 亲自取回，见 `01-research/evidence/A8-round10-acquisition.json`）。；第 13 轮追加 S-0125–S-0126（主 Agent 亲自 curl arXiv 摘要页取回，见 `01-research/evidence/A9-round13-g38.json`）。",
     "license_discipline": "只登记题录（标题/URL/分级/日期/说明）与不超过 200 字的原文关键句；书籍、标准、论文正文不入库。",
     "tier_enum": ["official", "paper", "vendor", "community"],
     "tier_note": "official = 厂商/标准组织/项目官方文档与官方工程博客、官方仓库与包注册表元数据、顶会 proceedings 与期刊 DOI 页面；paper = arXiv 预印本或未取得正式 proceedings 收录的论文；vendor = 厂商自述营销/新闻稿类页面（立场偏差，不作中立证据）；community = 社区清单、二手转载、卖课引流等最低级信源。"
@@ -1000,6 +1000,22 @@
       "tier": "official",
       "date": "2026-11-02",
       "note": "检索质量的官方口径：相关性的**真实度量**是「检索结果是否满足使用者的信息需求」，而不是分数本身；现行两条最佳做法是「混合检索 + 语义排序」与「带 LLM 查询规划的 agentic retrieval」。⇒ 「垃圾进垃圾出」在提示词层之前就被决定了：先修检索，再改提示。"
+    },
+    {
+      "id": "S-0125",
+      "title": "arXiv:2306.05685 — Judging LLM-as-a-Judge with MT-Bench and Chatbot Arena",
+      "url": "https://arxiv.org/abs/2306.05685",
+      "tier": "paper",
+      "date": "2026-11-05",
+      "note": "模型裁判三类系统性偏差的一手出处：论文自述考察 position / verbosity / self-enhancement 偏差并给出部分缓解方案，同时报告强裁判与人类偏好的一致率（>80%）。⇒ 偏差是评测设计的固定项，不是偶发噪声；「裁判分数当绝对度量」因此不成立。"
+    },
+    {
+      "id": "S-0126",
+      "title": "arXiv:2511.12381 — Don't Think of the White Bear: Ironic Negation in Transformer Models Under Cognitive Load",
+      "url": "https://arxiv.org/abs/2511.12381",
+      "tier": "paper",
+      "date": "2026-11-05",
+      "note": "「不要提到 X」这类否定指令的反弹证据：压制一个概念需要先在内部激活它，因而可能引发讽刺性反弹；实验观察到的反弹在否定之后立即出现（更长或语义型干扰会增强它，重复则支持抑制）。★ 边界：2025-11 预印本、实验模型为开源模型、指令形态限定「do not mention X」——⛔ 不推广为所有否定式约束的普适定律。"
     }
   ]
 }
